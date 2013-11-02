@@ -6,7 +6,6 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBTVOutController.h"
 
 
 @interface SBTVOutController : XXUnknownSuperclass {
@@ -16,16 +15,19 @@
 @property(assign, nonatomic) int tvOutMode;
 + (id)sharedInstance;
 - (id)init;
+- (void)_handleIapServerConnectionDied;
+- (void)_mediaServerConnectionDied:(id)died;
+- (void)_pickableRoutesChanged:(id)changed;
+- (void)_tetherSettingChanged:(id)changed;
+- (void)_updateAVRoutes;
+- (void)addClone:(id)clone stevenoteAllowed:(BOOL)allowed;
 - (void)dealloc;
 - (void)setIntialTVModeIfNeeded;
+- (void)startListeningForAVSystemControllerNotifications;
+- (void)startListeningForSettingsChanges;
+- (void)stopListeningForAVSystemControllerNotifications;
+- (void)stopListeningForSettingsChanges;
 - (void)updateLayerKitSettings;
 - (void)updateSettings;
-@end
-
-@interface SBTVOutController (private)
-- (void)_handleIapServerConnectionDied;
-- (void)_tetherSettingChanged:(id)changed;
-- (void)startListeningForSettingsChanges;
-- (void)stopListeningForSettingsChanges;
 @end
 

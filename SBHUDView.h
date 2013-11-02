@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIImageView, UIImage, NSString, UILabel;
+@class NSString, UIImage, UIImageView, UILabel;
 
 @interface SBHUDView : XXUnknownSuperclass {
 	int _level;

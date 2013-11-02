@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIView, SBAlertDisplay, NSMutableDictionary, NSMutableArray;
+@class NSMutableDictionary, NSMutableArray, UIView, SBAlertDisplay;
 
 @interface SBAlertWindow : XXUnknownSuperclass {
 	UIView *_contentLayer;

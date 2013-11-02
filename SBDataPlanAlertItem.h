@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBDataPlanAlertItem : SBAlertItem {
+@interface SBDataPlanAlertItem : XXUnknownSuperclass {
 }
 - (void)didDeactivateForReason:(int)reason;
 @end

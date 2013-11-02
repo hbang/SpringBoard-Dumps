@@ -5,54 +5,74 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBLeafIcon.h"
 
-@class SSDownload, SSDownloadStatus, SBDownloadingProgressBar, NSString;
+@class NSString, NSMutableArray, SSDownload, SSDownloadStatus, NSOperation;
 
 @interface SBDownloadingIcon : SBLeafIcon {
 	NSString *_leafIdentifier;
 	NSString *_applicationBundleID;
 	SSDownload *_download;
-	SBDownloadingProgressBar *_progressView;
 	float _progress;
 	BOOL _installing;
 	BOOL _wasUninstalledByUser;
+	BOOL _isNewsstandDownload;
 	SSDownloadStatus *_lastStatus;
+	SSDownload *_downloadForImageDataBeingLoaded;
+	NSOperation *_iconImageGenerationOperation;
+	NSMutableArray *_imageCacheFilePaths;
+	BOOL _imageCacheBeingRead;
 }
++ (id)__darkenedIconImageForImage:(id)image;
++ (id)__iconImageFromData:(id)data format:(int)format scale:(float)scale options:(int)options darken:(BOOL)darken;
++ (id)__imageCacheDirectoryPath;
++ (dispatch_queue_s *)backgroundQueue;
 + (id)leafIdentifierForDownload:(id)download;
 + (id)leafIdentifierForDownloadUniqueID:(id)downloadUniqueID;
++ (void)setupDownloadingIconImageCache;
 - (id)initWithDownload:(id)download;
 - (id)initWithLeafIdentifier:(id)leafIdentifier;
-- (id)_realDisplayName;
+- (int)_iconImageOptions;
+- (void)_reloadThumbnailImage;
+- (void)_removeImageCacheFileAtPath:(id)path;
 - (void)_showAlertForError:(id)error;
-- (void)_thumbnailAvailableNotification:(id)notification;
 - (BOOL)allowsUninstall;
 - (id)applicationBundleID;
+- (BOOL)canEllipsizeLabel;
 - (void)completeUninstall;
 - (void)dealloc;
 - (id)description;
 - (id)displayName;
 - (id)download;
 - (id)generateIconImage:(int)image;
+- (id)getGenericIconImage:(int)image;
+- (BOOL)iconAppearsInNewsstand;
+- (int)iconFormatForLocation:(int)location;
 - (id)identifierForCorrespondingApplicationIcon;
+- (BOOL)isDone;
+- (BOOL)isNewsstandDownload;
 - (void)launch;
 - (id)leafIdentifier;
+- (void)loadAndDarkenHomeScreenIconImageInBackground;
+- (BOOL)matchesRepresentation:(id)representation;
 - (float)progress;
+- (id)realDisplayName;
 - (void)reloadForStatusChange;
 - (void)remove;
+- (id)representation;
 - (void)retry;
 - (void)setApplicationBundleID:(id)anId;
-- (void)setDisplayedIconImage:(id)image;
 - (void)setDownload:(id)download;
-- (void)setGhostly:(BOOL)ghostly requester:(int)requester;
 - (void)setLeafIdentifier:(id)identifier;
+- (void)setNewsstandDownload:(BOOL)download;
 - (void)setUninstalledByUser:(BOOL)user;
-- (BOOL)shouldEllipsizeLabel;
+- (BOOL)shouldCacheImageForFormat:(int)format;
+- (id)undarkenedHomeScreenIconImage;
 - (id)uninstallAlertBody;
 - (id)uninstallAlertCancelTitle;
 - (id)uninstallAlertConfirmTitle;
 - (id)uninstallAlertTitle;
 - (BOOL)uninstalledByUser;
-- (void)updateDisplayName;
 @end
 

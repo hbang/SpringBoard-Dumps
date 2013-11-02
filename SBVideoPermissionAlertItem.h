@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSURL;
 
-@interface SBVideoPermissionAlertItem : SBAlertItem {
+@interface SBVideoPermissionAlertItem : XXUnknownSuperclass {
 	NSURL *_url;
 }
 - (id)initWithURL:(id)url;

@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBAlertDisplay.h"
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
+#import "SBAlertDisplay.h"
 
 @class SBAlert;
 
@@ -25,6 +25,7 @@
 - (void)dismiss;
 - (BOOL)displaysAboveStatusBar;
 - (BOOL)isReadyToBeRemovedFromView;
+- (BOOL)isSupportedInterfaceOrientation:(int)orientation;
 - (void)launchURL:(id)url;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)setAlert:(id)alert;
@@ -39,9 +40,5 @@
 
 @interface SBAlertDisplay (PhoneNumberResolution)
 + (id)imageForPerson:(void *)person display:(id)display isFullscreen:(BOOL *)fullscreen;
-@end
-
-@interface SBAlertDisplay (SIMToolkitExtensions)
-+ (id)alertBackgroundColor;
 @end
 

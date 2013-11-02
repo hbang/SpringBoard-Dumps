@@ -17,10 +17,14 @@
 @property(retain, nonatomic) NSIndexPath *listIndexes;
 + (id)indexPathWithIconIndex:(unsigned)iconIndex;
 + (id)indexPathWithIconIndex:(unsigned)iconIndex listIndex:(unsigned)index;
+- (id)_iconIndexes;
+- (id)_listIndexes;
 - (void)dealloc;
+- (id)description;
 - (id)indexPathByPoppingOutermostListAndIconIndexes;
 - (id)indexPathByPushingOutermostListIndex:(unsigned)index iconIndex:(unsigned)index2;
 - (BOOL)isEmpty;
+- (BOOL)isEqualToIndexPath:(id)indexPath;
 - (unsigned)outermostIconIndex;
 - (unsigned)outermostListIndex;
 - (unsigned)popIconIndex;

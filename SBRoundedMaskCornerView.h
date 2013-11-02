@@ -9,7 +9,6 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
 @interface SBRoundedMaskCornerView : XXUnknownSuperclass {
 	float _cornerRadius;
 	unsigned _corner;

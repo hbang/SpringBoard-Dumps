@@ -11,16 +11,19 @@
 
 @interface SBAwayLockBar : XXUnknownSuperclass {
 	UIButton *_slideshowButton;
+	UIButton *_cameraButton;
 	NSMutableDictionary *_orientationToButtonImages;
 }
-- (id)_newButtonWithAction:(SEL)action tag:(int)tag;
+- (void)_cameraButtonHit:(id)hit;
+- (id)_newButtonWithAction:(SEL)action tag:(int)tag hasComposedImage:(BOOL)image;
 - (id)_selectedImageForButtonTag:(int)buttonTag interfaceOrientation:(int)orientation;
 - (void)_setImagesForButton:(id)button orientation:(int)orientation;
-- (void)_setShowsButton:(BOOL)button button:(id *)button2 buttonTag:(int)tag action:(SEL)action animated:(BOOL)animated;
+- (void)_setShowsButton:(BOOL)button button:(id *)button2 buttonTag:(int)tag hasComposedImage:(BOOL)image action:(SEL)action animated:(BOOL)animated;
 - (void)_slideshowButtonActivated:(id)activated;
 - (id)_unselectedImageForButtonTag:(int)buttonTag interfaceOrientation:(int)orientation;
 - (void)dealloc;
 - (void)setOrientation:(int)orientation;
+- (void)setShowsCameraButton:(BOOL)button;
 - (void)setShowsSlideshowButton:(BOOL)button;
 - (void)setSlideshowButtonSelected:(BOOL)selected;
 @end

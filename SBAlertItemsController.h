@@ -5,11 +5,13 @@
  * Source: (null)
  */
 
+#import "BBObserverDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class CPDistributedNotificationCenter, NSTimer, NSMutableArray;
+@class NSMutableArray, CPDistributedNotificationCenter, NSTimer, BBObserver;
 
-@interface SBAlertItemsController : XXUnknownSuperclass {
+@interface SBAlertItemsController : XXUnknownSuperclass <BBObserverDelegate> {
 	NSMutableArray *_lockedAlertItems;
 	NSMutableArray *_unlockedAlertItems;
 	NSMutableArray *_pendingAlertItems;
@@ -18,18 +20,20 @@
 	unsigned _notificationClientCount;
 	BOOL _systemShuttingDown;
 	BOOL _forceAlertsToPend;
+	BBObserver *_bbObserver;
 }
 + (id)sharedInstance;
 - (id)init;
 - (void)_notificationClientEnded:(id)ended;
 - (void)_notificationClientStarted:(id)started;
+- (void)_postAlertPresentedNotificationForType:(int)type sender:(id)sender date:(id)date;
 - (void)activateAlertItem:(id)item;
 - (id)alertItemOfClass:(Class)aClass;
 - (id)alertItemsOfClass:(Class)aClass;
 - (void)autoDismissAlertItem:(id)item;
-- (BOOL)canDeactivateAlertForMenuClick;
-- (void)convertAnimatingUnlockedAlertsToLockedAlerts;
-- (BOOL)deactivateAlertForMenuClickWithAnimation:(BOOL)animation;
+- (BOOL)canDeactivateAlertForMenuClickOrSystemGesture;
+- (void)convertUnlockedAlertsToLockedAlerts;
+- (BOOL)deactivateAlertForMenuClickOrSystemGestureWithAnimation:(BOOL)animation;
 - (void)deactivateAlertItem:(id)item;
 - (void)deactivateAlertItem:(id)item reason:(int)reason;
 - (void)deactivateAlertItem:(id)item reason:(int)reason animated:(BOOL)animated;
@@ -48,6 +52,7 @@
 - (void)noteSystemShuttingDown;
 - (void)noteVolumeOrLockPressedOverLockedAlerts;
 - (void)notifySystemOfAlertItemActivation:(id)alertItemActivation;
+- (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
 - (void)resetAutoDismissTimer;
 - (void)setForceAlertsToPend:(BOOL)pend;
 - (id)visibleAlertItem;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBLowPowerAlertItem : SBAlertItem {
+@interface SBLowPowerAlertItem : XXUnknownSuperclass {
 	unsigned _talkLevel;
 }
 + (BOOL)_shouldIgnoreChangeToBatteryLevel:(unsigned)batteryLevel;
@@ -17,6 +17,7 @@
 + (void)saveLowBatteryLogWithCapacity:(int)capacity voltage:(int)voltage;
 + (void)setBatteryLevel:(unsigned)level;
 + (id)systemVersionDescription;
+- (id)init;
 - (id)initWithLevel:(unsigned)level;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

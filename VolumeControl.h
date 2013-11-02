@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableSet, NSString;
+@class NSString, NSMutableSet;
 
 @interface VolumeControl : XXUnknownSuperclass {
 	BOOL _debounce;
@@ -22,7 +22,6 @@
 + (float)volumeStep;
 - (id)init;
 - (BOOL)_HUDIsDisplayableForCategory:(id)category;
-- (BOOL)_allowVolumeAdjust;
 - (float)_calcButtonRepeatDelay;
 - (void)_changeVolumeBy:(float)by;
 - (void)_effectiveVolumeChanged:(id)changed;

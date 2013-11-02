@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class SBApplication;
 
-@interface SBRemoteNotificationEnableSystemwideAlert : SBAlertItem {
+@interface SBRemoteNotificationEnableSystemwideAlert : XXUnknownSuperclass {
 	SBApplication *_app;
 }
 - (id)initWithApplication:(id)application;

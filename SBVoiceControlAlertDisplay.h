@@ -10,7 +10,7 @@
 #import "VSSpeechSynthesizerDelegate.h"
 #import "VSRecognitionSessionDelegate.h"
 
-@class NSMutableSet, UIView, NSTimer, AVController, VSRecognitionSession, NSInvocation, NSMutableIndexSet, NSDictionary, UIKeyboard, NSMutableArray, UITextField;
+@class UITextField, NSMutableSet, UIView, NSTimer, AVController, NSDictionary, VSRecognitionSession, NSInvocation, NSMutableIndexSet, NSMutableArray;
 
 @interface SBVoiceControlAlertDisplay : SBSlidingAlertDisplay <VSRecognitionSessionDelegate, VSSpeechSynthesizerDelegate> {
 	VSRecognitionSession *_session;
@@ -24,7 +24,6 @@
 	int _currentClipNo;
 	BOOL _voiceTranscription;
 	UITextField *_textField;
-	UIKeyboard *_keyboard;
 	NSMutableArray *_transcripts;
 	NSMutableArray *_voiceClips;
 	AVController *_avController;

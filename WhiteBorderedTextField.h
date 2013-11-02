@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBManualKeyboardTextField.h"
 
 
-@interface WhiteBorderedTextField : XXUnknownSuperclass {
+@interface WhiteBorderedTextField : SBManualKeyboardTextField {
 }
 - (void)drawBorder:(CGRect)border;
 - (void)drawRect:(CGRect)rect;

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, SBApplication;
+@class SBApplication, NSString;
 
 @interface SBProxyRemoteView : XXUnknownSuperclass {
 	id _delegate;

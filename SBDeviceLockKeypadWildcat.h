@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBDeviceLockKeypad.h"
+#import "SpringBoard-Structs.h"
 
 @class UIView;
 

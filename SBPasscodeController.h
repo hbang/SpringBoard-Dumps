@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDate, NSString, SBPasscodeComplianceAlertItem, SBPasscodeAlertItem;
+@class SBPasscodeComplianceAlertItem, SBPasscodeAlertItem, NSString, NSDate;
 
 @interface SBPasscodeController : XXUnknownSuperclass {
 	SBPasscodeAlertItem *_passcodeAlertItem;
@@ -17,6 +17,7 @@
 	int _unlockScreenType;
 	SBPasscodeComplianceAlertItem *_complianceAlertItem;
 	NSDate *_forcedComplianceDate;
+	id _telephonyNotificationObserver;
 }
 + (id)sharedInstance;
 - (void)_abort;

@@ -9,7 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "RadiosPreferencesDelegate.h"
 
-@class RadiosPreferences, SBSIMLockAlertItem, SBSIMLockEntryAlert, NSString;
+@class RadiosPreferences, NSString, SBSIMLockAlertItem, SBSIMLockEntryAlert;
 
 @interface SBSIMLockManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
 	BOOL _isInitialUpdate;
@@ -19,15 +19,23 @@
 	SBSIMLockEntryAlert *_lockEntryAlert;
 	NSString *_languageCode;
 	RadiosPreferences *_radiosPrefs;
+	BOOL _hasHadSIMWhileNotBricked;
+	BOOL _wasActivated;
+	BOOL _neededUIM;
 }
 + (id)sharedInstance;
 - (id)init;
 - (int)_CTToSBSIMStatus:(CFStringRef)sbsimstatus;
+- (void)_activationDidChange;
+- (void)_displayLaunched:(id)launched;
+- (void)_handlePromptForUnlock;
 - (BOOL)_hopelesslyPUKLocked;
 - (void)_initialUpdate;
-- (void)_lockdownChanged;
+- (void)_postponementDidChange;
+- (BOOL)_shouldSuppressAlert;
 - (int)_statusFromCT;
 - (void)_tearDownAlertAndUpdateStatus;
+- (void)_telephonyDidRestart;
 - (void)_tryToUpdateStatus;
 - (void)_updateSIMStatus:(CFStringRef)status withOptions:(CFDictionaryRef)options;
 - (void)_updateToStatus:(int)status;

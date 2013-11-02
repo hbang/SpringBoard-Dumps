@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 @class UIImageView;
 
@@ -15,7 +15,6 @@
 	UIImageView *_fillView;
 	float _progress;
 }
-+ (CGRect)defaultFrameForIconBounds:(CGRect)iconBounds;
 + (float)defaultHeight;
 - (id)initWithFrame:(CGRect)frame;
 - (void)dealloc;

@@ -11,7 +11,7 @@
 
 @protocol UIWindowDelegate <NSObject>
 @optional
-- (void)getRotationContentSettings:(XXStruct_3B_lsC *)settings forWindow:(id)window;
+- (void)getRotationContentSettings:(XXStruct_3uUjXA *)settings forWindow:(id)window;
 - (id)rotatingContentViewForWindow:(id)window;
 - (id)rotatingFooterViewForWindow:(id)window;
 - (id)rotatingHeaderViewForWindow:(id)window;

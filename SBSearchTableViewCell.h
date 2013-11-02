@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIFont, NSArray, NSString;
+@class NSString, UIFont;
 
 @interface SBSearchTableViewCell : XXUnknownSuperclass {
 	UIFont *_titleFont;
@@ -16,7 +16,7 @@
 	UIFont *_topHitFont;
 	NSString *_title;
 	NSString *_subtitle;
-	NSArray *_subtitleComponents;
+	NSString *_summary;
 	NSString *_auxiliaryTitle;
 	NSString *_auxiliarySubtitle;
 	BOOL _badged;
@@ -37,7 +37,7 @@
 @property(assign, nonatomic, getter=isFirstInTableView) BOOL firstInTableView;
 @property(assign, nonatomic) float sectionHeaderWidth;
 @property(retain, nonatomic) NSString *subtitle;
-@property(retain, nonatomic) NSArray *subtitleComponents;
+@property(retain, nonatomic) NSString *summary;
 @property(retain, nonatomic) NSString *title;
 @property(assign, nonatomic, getter=isTopHit) BOOL topHit;
 @property(assign, nonatomic) BOOL usesAlternateBackgroundColor;

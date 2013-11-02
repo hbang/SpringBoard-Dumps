@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBDeviceLockView.h"
 #import "SpringBoard-Structs.h"
+#import "SBDeviceLockView.h"
 
 @class UIKeyboard;
 
@@ -15,12 +15,14 @@
 	BOOL _isAnimating;
 	BOOL _wasMinimizedWhenAnimationStarted;
 	BOOL _triedToMinMaxWhileRotating;
+	BOOL _previousKeyboardShowedInlineCandidates;
 }
 - (void)_acceptOrCancelReturnKeyPress;
 - (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (void)_layoutEntryView;
 - (void)_layoutForCurrentOrientation;
 - (void)animateToInterfaceInterfaceOrientation:(int)interfaceInterfaceOrientation;
+- (BOOL)becomeFirstResponder;
 - (void)dealloc;
 - (void)didAnimateToInterfaceOrientation:(int)interfaceOrientation;
 - (void)geometryChanged:(id)changed;
@@ -29,6 +31,7 @@
 - (id)keypadView;
 - (void)maximize;
 - (void)minimize;
+- (BOOL)resignFirstResponder;
 - (void)returnKeyPressed:(id)pressed;
 - (void)setInterfaceOrientation:(int)orientation;
 - (void)setMinimized:(BOOL)minimized;

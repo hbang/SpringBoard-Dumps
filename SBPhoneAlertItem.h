@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSString;
 
-@interface SBPhoneAlertItem : SBAlertItem {
+@interface SBPhoneAlertItem : XXUnknownSuperclass {
 	NSString *_bodyText;
 	NSString *_title;
 }

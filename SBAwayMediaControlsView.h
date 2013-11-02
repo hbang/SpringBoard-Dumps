@@ -5,15 +5,14 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIButton, MPAudioDeviceController, MPVolumeView;
+@class MPVolumeView, UIButton;
 
 @interface SBAwayMediaControlsView : XXUnknownSuperclass {
 	unsigned _beganSeeking : 1;
 	int _seekingDirection;
-	MPAudioDeviceController *_audioDeviceController;
 	UIButton *_prevButton;
 	UIButton *_nextButton;
 	UIButton *_playPauseButton;

@@ -5,52 +5,43 @@
  * Source: (null)
  */
 
-#import "UIKeyInput.h"
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIPasscodeField, UITextInputTraits, NSString;
+@class NSString, UIPasscodeField, UITextInputTraits;
 
-@interface SBDeviceLockEntryField : XXUnknownSuperclass <UIKeyInput> {
+@interface SBDeviceLockEntryField : XXUnknownSuperclass {
 	int _style;
 	int _interfaceOrientation;
 	UIPasscodeField *_passcodeField;
 	UITextInputTraits *_textInputTraits;
 	CFCharacterSetRef _numericTrimmingSet;
+	BOOL _highlighted;
 	id _delegate;
 }
-@property(assign, nonatomic) int autocapitalizationType;
-@property(assign, nonatomic) int autocorrectionType;
 @property(assign, nonatomic) id delegate;
-@property(assign, nonatomic) BOOL enablesReturnKeyAutomatically;
+@property(assign, nonatomic, getter=isHighlighted) BOOL highlighted;
 @property(assign, nonatomic) int interfaceOrientation;
-@property(assign, nonatomic) int keyboardAppearance;
-@property(assign, nonatomic) int keyboardType;
 @property(assign, nonatomic, getter=isOkayButtonEnabled) BOOL okayButtonEnabled;
-@property(assign, nonatomic) int returnKeyType;
-@property(assign, nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property(copy, nonatomic) NSString *stringValue;
 - (id)initWithStyle:(int)style interfaceOrientation:(int)orientation;
+- (id)_backgroundImage;
 - (CGSize)_fieldSizeForCurrentDevice;
+- (void)_handleKeyEvent:(GSEventRef)event;
 - (void)_layoutForCurrentDevice;
 - (void)appendString:(id)string;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (void)dealloc;
-- (void)deleteBackward;
 - (void)deleteLastCharacter;
-- (void)forwardInvocation:(id)invocation;
-- (BOOL)hasText;
-- (void)insertText:(id)text;
 - (BOOL)isFirstResponder;
 - (id)methodSignatureForSelector:(SEL)selector;
 - (id)passcodeField;
 - (BOOL)passcodeField:(id)field shouldInsertText:(id)text;
 - (void)passcodeFieldDidAcceptEntry:(id)passcodeField;
 - (void)passcodeFieldTextDidChange:(id)passcodeFieldText;
+- (BOOL)resignFirstResponder;
 - (BOOL)respondsToSelector:(SEL)selector;
-- (void)setText:(id)text;
-- (id)text;
 - (id)textInputTraits;
 @end
 

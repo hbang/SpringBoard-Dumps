@@ -7,17 +7,22 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSSet, NSMutableDictionary, NSDictionary, NSMutableSet, SBRootFolder;
+@class NSMutableSet, NSMutableDictionary, SBRootFolder, SBNewsstandIcon, NSSet, NSDictionary;
 
 @interface SBIconModel : XXUnknownSuperclass {
 	NSDictionary *_lastKnownUserGeneratedIconState;
+	NSSet *_lastKnownUserGeneratedIconStateFlattened;
 	NSMutableDictionary *_leafIconsByIdentifier;
 	NSSet *_hiddenIconTags;
 	NSSet *_visibleIconTags;
+	BOOL _tagsHaveBeenSet;
 	NSMutableSet *_downloadedIconIDs;
 	SBRootFolder *_rootFolder;
+	SBNewsstandIcon *_newsstandIcon;
 	BOOL _needsRelayout;
+	BOOL _allowReadingCachedStateFromDisk;
 }
++ (id)_migrateLeafIdentifierIfNecessary:(id)necessary;
 + (id)_modernIconCellForCell:(id)cell;
 + (id)_modernIconListForList:(id)list;
 + (id)_modernIconListsForLists:(id)lists;
@@ -25,41 +30,65 @@
 + (id)sharedInstance;
 - (id)init;
 - (void)_addNewIconToDesignatedLocation:(id)designatedLocation;
+- (void)_addNodeToRootLists:(id)rootLists node:(id)node createListIfNecessary:(BOOL)necessary;
+- (id)_applicationIcons;
+- (id)_cachedIconStatePath;
+- (void)_createIconLists;
+- (id)_deepCopyIconState:(id)state;
+- (id)_deepCopyListForIconState:(id)iconState;
+- (void)_flattenIconListState:(id)state intoArray:(id)array;
+- (id)_flattenIconState:(id)state;
+- (id)_iTunesDictionaryForDownloadingIcon:(id)downloadingIcon;
 - (id)_iTunesDictionaryForLeafIcon:(id)leafIcon;
-- (id)_iTunesIconCellForCell:(id)cell preApex:(BOOL)apex;
-- (id)_iTunesIconListForList:(id)list preApex:(BOOL)apex;
-- (id)_iTunesIconListsForLists:(id)lists preApex:(BOOL)apex;
-- (id)_iconState;
+- (id)_iTunesDictionaryForLeafIdentifier:(id)leafIdentifier;
+- (id)_iTunesIconCellForCell:(id)cell preApex:(BOOL)apex forPending:(BOOL)pending;
+- (id)_iTunesIconListForList:(id)list preApex:(BOOL)apex forPending:(BOOL)pending;
+- (id)_iTunesIconListsForLists:(id)lists preApex:(BOOL)apex forPending:(BOOL)pending;
+- (id)_iconState:(BOOL)state;
+- (id)_indexPathForFirstFreeNewsstandSlot;
 - (id)_indexPathForIdentifier:(id)identifier inListRepresentation:(id)listRepresentation;
 - (id)_indexPathForIdentifier:(id)identifier inListsRepresentation:(id)listsRepresentation;
-- (void)_replaceAppIconWithDownloadingIcon:(id)downloadingIcon;
+- (id)_newsstandIconIdentifiersFromIconState:(id)iconState;
 - (void)_replaceAppIconsWithDownloadingIcons;
-- (void)_writeIconStateWithNotification:(BOOL)notification;
+- (void)_replaceAppIconsWithDownloadingIcons:(id)downloadingIcons;
+- (id)_trimList:(id)list toMaxSize:(int)maxSize;
+- (void)_writeCachedIconState;
+- (void)_writeCurrentIconStateWithNotification:(BOOL)notification;
+- (BOOL)_writeIconState:(id)state toPath:(id)path;
+- (BOOL)_writeIconState:(id)state toPath:(id)path withFormat:(unsigned)format;
 - (id)addBookmarkIconForWebClip:(id)webClip;
 - (id)addDownloadingIconForDownload:(id)download;
 - (id)addDownloadingIconForIdentifier:(id)identifier;
 - (void)addIcon:(id)icon;
 - (void)addIconForApplication:(id)application;
+- (void)addNewsstandIcon;
 - (id)applicationIconForDisplayIdentifier:(id)displayIdentifier;
-- (id)applicationIcons;
 - (void)clearCachedUserGeneratedIconState;
-- (void)createIconLists;
+- (void)clearCachedUserGeneratedIconStateIfPossible;
 - (void)dealloc;
 - (void)deleteIconState;
-- (id)designatedIndexPathForNewIcon:(id)newIcon replaceExistingIcon:(BOOL *)icon;
 - (id)downloadedIconIDs;
+- (id)downloadingIconForIdentifier:(id)identifier;
+- (id)exportFlattenedState:(BOOL)state;
+- (id)exportPendingState:(BOOL)state;
 - (id)exportState:(BOOL)state;
+- (id)firstPageLeafIdentifiers;
+- (id)forecastedLayoutForIconState:(id)iconState;
 - (BOOL)hasCachedUserGeneratedIconState;
 - (id)iconState;
 - (id)iconStatePath;
 - (BOOL)importState:(id)state;
 - (id)indexPathForIconInPlatformState:(id)platformState;
+- (id)indexPathForNewIcon:(id)newIcon isDesignatedLocation:(BOOL *)location replaceExistingIconAtIndexPath:(id *)indexPath;
 - (BOOL)isIconVisible:(id)visible;
 - (id)leafIconForIdentifier:(id)identifier;
 - (id)leafIcons;
 - (void)loadAllIcons;
 - (void)localeChanged;
-- (void)noteDownloadsCompletedForIconIDs:(id)iconIDs;
+- (id)newsstandFolder;
+- (id)newsstandFolderFromIconState:(id)iconState;
+- (id)newsstandIcon;
+- (void)noteDownloadCompletedForIconID:(id)iconID;
 - (void)noteDownloadsEnded;
 - (void)noteFolderStoppedAnimating;
 - (void)noteIconStateChangedExternally;
@@ -68,13 +97,11 @@
 - (void)removeDownloadedIconID:(id)anId;
 - (void)removeIcon:(id)icon;
 - (void)removeIconForIdentifier:(id)identifier;
-- (void)replaceDownloadingIconIdentifiers:(id)identifiers withAppIconIdentifiers:(id)appIconIdentifiers;
 - (id)rootFolder;
 - (void)saveIconState;
 - (void)setVisibilityOfIconsWithVisibleTags:(id)visibleTags hiddenTags:(id)tags;
 - (void)uninstallApplicationIcon:(id)icon;
 - (void)uninstallBookmarkIcon:(id)icon;
-- (void)uninstallLeafIcon:(id)icon;
 - (id)visibleIconIdentifiers;
 @end
 

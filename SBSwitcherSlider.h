@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 @interface SBSwitcherSlider : XXUnknownSuperclass {
@@ -14,7 +14,6 @@
 - (id)initWithFrame:(CGRect)frame;
 - (UIEdgeInsets)_thumbHitEdgeInsets;
 - (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;
-- (void)setSliderEnabled:(BOOL)enabled withDuration:(double)duration;
 - (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value;
 - (CGRect)trackRectForBounds:(CGRect)bounds;
 @end

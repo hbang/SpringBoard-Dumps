@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIBezierPath, UIColor;
+@class UIColor, UIBezierPath;
 
 @interface SBResetProgressView : XXUnknownSuperclass {
 	UIColor *_progressColor;

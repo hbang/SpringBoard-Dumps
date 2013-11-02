@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBSlidingViewHighlight, SBWallpaperView, SBFolderNotchHighlightView, SBLinenNotchView, UIView, UIImageView, SBFolderView;
+@class SBSlidingViewHighlight, UIImageView, SBWallpaperView, SBFolderNotchHighlightView, SBFolderNotchView, UIView, SBFolderView;
 
 @interface SBFolderSlidingView : XXUnknownSuperclass {
 	int _position;
@@ -19,12 +19,11 @@
 	UIView *_rasterizationView;
 	UIView *_wallpaperContainerView;
 	SBWallpaperView *_wallpaperView;
-	SBLinenNotchView *_linenNotchView;
+	SBFolderNotchView *_linenNotchView;
 	SBSlidingViewHighlight *_highlightView;
 	SBFolderNotchHighlightView *_notchHighlightView;
 	UIImageView *_dockView;
 	UIImageView *_outgoingDockView;
-	BOOL _touchDownInWallpaper;
 }
 - (id)initWithPosition:(int)position folderView:(id)view;
 - (id)_newDockViewForOrientation:(int)orientation;
@@ -32,12 +31,11 @@
 - (CGRect)_rectByAddingOverlapToRect:(CGRect)rect;
 - (void)cleanUpAfterDockOrientationChange;
 - (void)dealloc;
+- (id)folderView;
+- (void)handleTapGestureInWallpaperContainer:(id)wallpaperContainer;
 - (void)prepareToSetDockOrientation:(int)setDockOrientation;
 - (void)setOrientation:(int)orientation wallpaperRect:(CGRect)rect notchInfo:(XXStruct_9ihRqB)info;
 - (void)setShouldRasterize:(BOOL)rasterize;
 - (void)setShowsHighlight:(BOOL)highlight;
-- (void)touchesBegan:(id)began withEvent:(id)event;
-- (void)touchesCancelled:(id)cancelled withEvent:(id)event;
-- (void)touchesEnded:(id)ended withEvent:(id)event;
 @end
 

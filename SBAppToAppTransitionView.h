@@ -5,36 +5,35 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIView, CALayer, SBApplication, NSTimer;
+@class CATransformLayer, CALayer, UIView, SBApplication;
 
 @interface SBAppToAppTransitionView : XXUnknownSuperclass {
 	id _delegate;
-	SBApplication *_fromApplication;
 	SBApplication *_toApplication;
+	CATransformLayer *_transformLayer;
 	CALayer *_startLayer;
 	CALayer *_stopLayer;
 	UIView *_fromView;
 	UIView *_toView;
 	BOOL _animating;
+	BOOL _workspaceIsReadyForAnimationCleanup;
 	int _orientation;
-	NSTimer *_timer;
 }
 @property(assign, nonatomic) id delegate;
-@property(retain, nonatomic) SBApplication *fromApp;
 @property(assign, nonatomic) int orientation;
 @property(retain, nonatomic) SBApplication *toApp;
 - (id)initWithFrame:(CGRect)frame;
-- (void)_animationDidStop:(id)_animation;
-- (void)_beginTransition;
 - (float)_rotationRadians;
 - (id)_rotationValueFunction;
 - (void)_transitionBegun:(double)begun;
+- (void)animationDidStop:(id)animation finished:(BOOL)finished;
 - (void)beginTransition;
 - (void)dealloc;
-- (BOOL)isAnimating;
+- (void)endTransition;
+- (void)noteWorkspaceIsReadyForAnimationCleanupWithActivatingApp:(id)activatingApp;
 - (void)setFromView:(id)view;
 - (void)setToView:(id)view;
 @end

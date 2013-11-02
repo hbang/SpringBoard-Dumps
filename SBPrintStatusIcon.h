@@ -5,13 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBLeafIcon.h"
 
 
 @interface SBPrintStatusIcon : SBLeafIcon {
 }
-- (id)init;
 - (id)applicationBundleID;
 - (BOOL)delaysUnhighlightWhenTapped;
 - (id)displayName;

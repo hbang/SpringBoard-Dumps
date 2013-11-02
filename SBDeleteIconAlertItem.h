@@ -5,15 +5,21 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
 #import "UIAlertViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class SBIcon;
 
-@interface SBDeleteIconAlertItem : SBAlertItem <UIAlertViewDelegate> {
+@interface SBDeleteIconAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBIcon *_icon;
+	BOOL _checkedDocumentsInCloudState;
+	BOOL _appHasDocumentsInCloud;
+	BOOL _appHasDocumentsWithPendingUpdates;
+	BOOL _askedUserAboutDocumentsDocumentsInCloud;
+	BOOL _askedUserAboutDocumentsWithPendingUpdates;
 }
 - (id)initWithIcon:(id)icon;
+- (void)_checkDocumentsInCloudStateIfNeeded;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;

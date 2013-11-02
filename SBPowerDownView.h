@@ -5,15 +5,15 @@
  * Source: (null)
  */
 
-#import "SBAlertDisplay.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlertDisplay.h"
 
-@class UIView, TPTopLockBar, SBPowerDownController, NSTimer, TPBottomButtonBar;
+@class SBPowerDownController, NSTimer, TPBottomSingleButtonBar, UIView, TPTopLockBar;
 
 @interface SBPowerDownView : SBAlertDisplay {
 	UIView *_dimView;
 	TPTopLockBar *_lockView;
-	TPBottomButtonBar *_cancelView;
+	TPBottomSingleButtonBar *_cancelView;
 	SBPowerDownController *_powerDownController;
 	NSTimer *_autoDismissTimer;
 }
@@ -26,6 +26,7 @@
 - (void)dealloc;
 - (void)finishedAnimatingIn;
 - (void)finishedAnimatingOut;
+- (BOOL)isSupportedInterfaceOrientation:(int)orientation;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)lockBarStartedTracking:(id)tracking;
 - (void)lockBarStoppedTracking:(id)tracking;

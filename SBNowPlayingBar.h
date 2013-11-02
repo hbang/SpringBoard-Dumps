@@ -5,18 +5,19 @@
  * Source: (null)
  */
 
-#import "SBIconDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBSwitcherPopoverWindowControllerDelegate.h"
 #import "UIPopoverControllerDelegate.h"
+#import "SBIconViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBSwitcherSlider, SBAirPlayBarView, UIButton, MPAudioDeviceController, SBApplication, SBNowPlayingBarView, MPAudioVideoRoutingActionSheet, MPAudioVideoRoutingPopoverController;
+@class SBSwitcherVolumeSlider, MPAudioVideoRoutingActionSheet, UIViewController, MPAudioVideoRoutingPopoverController, SBAirPlayBarView, UIButton, SBApplication, SBNowPlayingBarView, MPAudioDeviceController;
 
-@interface SBNowPlayingBar : XXUnknownSuperclass <SBIconDelegate, UIPopoverControllerDelegate, SBSwitcherPopoverWindowControllerDelegate> {
+@interface SBNowPlayingBar : XXUnknownSuperclass <SBIconViewDelegate, UIPopoverControllerDelegate, SBSwitcherPopoverWindowControllerDelegate> {
 	SBNowPlayingBarView *_barView;
 	SBAirPlayBarView *_airPlayView;
 	MPAudioVideoRoutingActionSheet *_airPlayActionSheet;
-	SBSwitcherSlider *_volumeSlider;
+	UIViewController *_airPlayController;
+	SBSwitcherVolumeSlider *_volumeSlider;
 	UIButton *_airPlayButton;
 	SBApplication *_nowPlayingApp;
 	int _scanDirection;
@@ -28,12 +29,13 @@
 - (id)init;
 - (void)_airPlayButtonHit:(id)hit;
 - (void)_brightnessSliderChanged:(id)changed;
+- (void)_dismissAirPlayDetail;
 - (void)_iapExtendedModeChanged:(id)changed;
 - (BOOL)_isAirPlayOn;
+- (void)_nowPlayingInfoChanged;
 - (void)_playButtonHit:(id)hit;
 - (BOOL)_shouldShowAirPlayButton;
 - (void)_showAudioRoutingPopover;
-- (void)_systemVolumeChanged:(id)changed;
 - (void)_toggleButtonHit:(id)hit;
 - (void)_trackButtonCancel:(id)cancel;
 - (void)_trackButtonDown:(id)down;
@@ -44,7 +46,6 @@
 - (void)_updateNowPlayingApp;
 - (void)_updateNowPlayingButtonImages;
 - (void)_updateNowPlayingInfo;
-- (void)_volumeChanged:(id)changed;
 - (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
 - (void)audioDeviceControllerMediaServerDied:(id)died;
 - (void)backlightLevelChanged;
@@ -53,7 +54,6 @@
 - (void)iconTapped:(id)tapped;
 - (void)iconTouchBegan:(id)began;
 - (void)popoverControllerDidDismissPopover:(id)popoverController;
-- (void)prepareToAppear;
 - (void)prepareToDisappear;
 - (int)scanDirection;
 - (BOOL)shouldScrollCancelInContentForView:(id)view;
@@ -61,6 +61,8 @@
 - (void)switcherPopoverController:(id)controller willRotateToOrientation:(int)orientation duration:(double)duration;
 - (void)viewAtIndexDidAppear:(int)viewAtIndex;
 - (void)viewAtIndexDidDisappear:(int)viewAtIndex;
+- (void)viewControllerRequestsDismissal:(id)dismissal;
+- (void)viewDidAppear;
 - (id)views;
 @end
 

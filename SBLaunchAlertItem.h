@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class SBDisplay, NSString;
 
-@interface SBLaunchAlertItem : SBAlertItem {
+@interface SBLaunchAlertItem : XXUnknownSuperclass {
 	SBDisplay *_associatedDisplay;
 	int _type;
 	NSString *_bundleID;

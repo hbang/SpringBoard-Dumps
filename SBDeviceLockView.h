@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, SBDeviceLockEntryField, NSString, SBDeviceLockTitle;
+@class NSString, SBDeviceLockTitle, SBDeviceLockEntryField, UIView;
 
 @interface SBDeviceLockView : XXUnknownSuperclass {
 	int _style;
@@ -23,26 +23,32 @@
 @property(readonly, assign, nonatomic) UIView *keypadView;
 @property(retain, nonatomic) NSString *passcode;
 @property(assign, nonatomic) BOOL playsKeyboardClicks;
+@property(assign, nonatomic, getter=isShowingEntryStatusWarning) BOOL showingEntryStatusWarning;
 @property(assign, nonatomic, getter=isShowingStatusWarning) BOOL showingStatusWarning;
 @property(assign, nonatomic) BOOL showsEmergencyCallButton;
 @property(retain, nonatomic) NSString *statusSubtitle;
 @property(retain, nonatomic) NSString *statusTitle;
 @property(readonly, assign, nonatomic) UIView *statusView;
 @property(readonly, assign, nonatomic) int style;
++ (int)defaultStyle;
 + (id)newWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (void)animateToInterfaceInterfaceOrientation:(int)interfaceInterfaceOrientation;
+- (BOOL)becomeFirstResponder;
 - (void)blinkStatusView;
+- (BOOL)canBecomeFirstResponder;
 - (void)dealloc;
 - (BOOL)deviceLockEntryField:(id)field shouldInsertText:(id)text;
 - (void)deviceLockEntryFieldDidAcceptEntry:(id)deviceLockEntryField;
 - (void)deviceLockEntryFieldDidCancelEntry:(id)deviceLockEntryField;
 - (void)deviceLockEntryFieldTextDidChange:(id)deviceLockEntryFieldText;
 - (void)didAnimateToInterfaceOrientation:(int)interfaceOrientation;
+- (BOOL)isFirstResponder;
 - (void)notifyDelegateThatCancelButtonWasPressed;
 - (void)notifyDelegateThatEmergencyCallButtonWasPressed;
 - (void)notifyDelegateThatPasscodeDidChange;
 - (void)notifyDelegateThatPasscodeWasEntered;
+- (BOOL)resignFirstResponder;
 - (void)setUserInteractionEnabled:(BOOL)enabled;
 - (void)willAnimateToInterfaceOrientation:(int)interfaceOrientation;
 @end

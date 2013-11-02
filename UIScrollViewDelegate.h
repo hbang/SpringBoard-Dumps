@@ -6,6 +6,7 @@
  */
 
 #import "NSObject.h"
+#import "SpringBoard-Structs.h"
 
 
 @protocol UIScrollViewDelegate <NSObject>
@@ -21,6 +22,7 @@
 - (void)scrollViewWillBeginDecelerating:(id)scrollView;
 - (void)scrollViewWillBeginDragging:(id)scrollView;
 - (void)scrollViewWillBeginZooming:(id)scrollView withView:(id)view;
+- (void)scrollViewWillEndDragging:(id)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)offset;
 - (id)viewForZoomingInScrollView:(id)scrollView;
 @end
 

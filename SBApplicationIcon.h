@@ -11,22 +11,31 @@
 
 @interface SBApplicationIcon : SBLeafIcon {
 	NSString *_displayIdentifier;
+	unsigned _appIsBeingCleaned : 1;
 }
 - (id)initWithApplication:(id)application;
-- (id)_automationID;
+- (id)__loadIconImage:(id)image format:(int)format scale:(float)scale;
+- (void)_setAppIsBeingCleanedFlag;
 - (void)_setBadge:(id)badge;
+- (void)_terminationAssertionDidChange;
 - (id)application;
 - (id)applicationBundleID;
+- (id)automationID;
+- (BOOL)canEllipsizeLabel;
+- (BOOL)canGenerateGhostlyImageInBackground;
 - (void)dealloc;
 - (id)displayName;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
 - (id)generateIconImage:(int)image;
+- (void)generateIconImageInBackground:(id)background;
+- (void)generateIconImageInBackgroundForFormat:(int)format complete:(id)complete;
 - (void)launch;
 - (BOOL)launchEnabled;
+- (void)launchFromViewSwitcher;
 - (id)leafIdentifier;
 - (void)setBadge:(id)badge;
-- (BOOL)shouldEllipsizeLabel;
+- (BOOL)shouldCacheImageForFormat:(int)format;
 - (id)tags;
 @end
 

@@ -5,26 +5,34 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class NSString;
+@class NSString, SBIconLabelImage;
 
 @interface SBIconLabel : XXUnknownSuperclass {
+	SBIconLabelImage *_labelImage;
 	NSString *_label;
 	unsigned _drawMoreLegibly : 1;
 	unsigned _inDock : 1;
 	unsigned _ellipsizesText : 1;
-	unsigned _kerningAllowed : 1;
 	unsigned _onWallpaper : 1;
 }
+- (id)initWithSize:(CGSize)size text:(id)text inDock:(BOOL)dock onWallpaper:(BOOL)wallpaper ellipsizes:(BOOL)ellipsizes;
+- (id)_textColor;
+- (id)_textFont;
+- (id)_textShadowColor;
+- (CGSize)_textShadowOffset;
+- (void)_updateImage;
+- (CGImageRef)buildLabelImage;
 - (void)dealloc;
 - (id)description;
-- (void)drawRect:(CGRect)rect;
+- (float)heightOfCurrentString;
+- (void)setBounds:(CGRect)bounds;
 - (void)setDisplaysOnWallpaper:(BOOL)wallpaper;
 - (void)setEllipsizesText:(BOOL)text;
+- (void)setFrame:(CGRect)frame;
 - (void)setInDock:(BOOL)dock;
-- (void)setKerningAllowed:(BOOL)allowed;
 - (void)setText:(id)text;
 @end
 

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSString;
 
-@interface SBPasscodeComplianceAlertItem : SBAlertItem {
+@interface SBPasscodeComplianceAlertItem : XXUnknownSuperclass {
 	NSString *_title;
 	NSString *_message;
 	NSString *_continueButtonTitle;

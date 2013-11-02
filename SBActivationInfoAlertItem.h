@@ -7,7 +7,7 @@
 
 #import "SBDismissOnlyAlertItem.h"
 
-@class UITextView, NSString;
+@class NSString, UITextView;
 
 @interface SBActivationInfoAlertItem : SBDismissOnlyAlertItem {
 	UITextView *_textView;
@@ -20,11 +20,13 @@
 - (id)init;
 - (void)_simStatusChanged:(id)changed;
 - (void)_updateTextView;
+- (BOOL)allowInSetup;
+- (void)cleanPreviousConfiguration;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;
 - (void)didPresentAlertView:(id)view;
+- (BOOL)forcesModalAlertAppearance;
 - (void)willActivate;
-- (BOOL)willShowInAwayItems;
 @end
 

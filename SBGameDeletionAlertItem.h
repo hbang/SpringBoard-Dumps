@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
 #import "UIAlertViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class SBUserInstalledApplicationIcon;
 
-@interface SBGameDeletionAlertItem : SBAlertItem <UIAlertViewDelegate> {
+@interface SBGameDeletionAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBUserInstalledApplicationIcon *_icon;
 }
 - (id)initWithIcon:(id)icon;

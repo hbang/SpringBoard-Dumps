@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconListView.h"
 #import "SpringBoard-Structs.h"
+#import "SBIconListView.h"
 
 
 @interface SBFolderIconListView : SBIconListView {

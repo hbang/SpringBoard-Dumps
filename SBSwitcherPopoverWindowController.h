@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "UIWindowDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, UIWindow;
+@class UIWindow, UIView;
 @protocol SBSwitcherPopoverWindowControllerDelegate;
 
 @interface SBSwitcherPopoverWindowController : XXUnknownSuperclass <UIWindowDelegate> {

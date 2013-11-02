@@ -5,12 +5,13 @@
  * Source: (null)
  */
 
-#import "SBHUDView.h"
 #import "SpringBoard-Structs.h"
+#import "SBHUDView.h"
 
 
 @interface SBRotationLockHUDView : SBHUDView {
 	BOOL _locked;
+	BOOL locked;
 }
 @property(assign, nonatomic, getter=isLocked) BOOL locked;
 - (id)init;

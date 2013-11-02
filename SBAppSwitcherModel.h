@@ -24,5 +24,6 @@
 - (id)identifierAtIndex:(unsigned)index;
 - (id)identifiers;
 - (void)remove:(id)remove;
+- (id)snapshot;
 @end
 

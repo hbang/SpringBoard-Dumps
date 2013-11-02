@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDictionary, UIImage, NSString, AVController, NSTimer;
+@class NSString, AVController, UIImage, NSTimer, NSDictionary;
 
-@interface SBUserNotificationAlert : SBAlertItem {
+__attribute__((visibility("hidden")))
+@interface SBUserNotificationAlert : XXUnknownSuperclass {
 	unsigned _replyPort;
 	int _token;
 	int _timeout;
@@ -51,9 +52,30 @@
 	unsigned _allowMenuButtonDismissal : 1;
 	unsigned _oneButtonPerLine : 1;
 	unsigned _groupsTextFields : 1;
+	unsigned _configuredLocked : 1;
+	unsigned _configuredNeedsPasscode : 1;
 	UIImage *_alertImage;
 	AVController *_avController;
 }
+@property(retain) NSString *alertHeader;
+@property(retain) UIImage *alertImage;
+@property(retain) NSString *alertMessage;
+@property(retain) NSString *alertMessageDelimiter;
+@property(retain) NSString *alternateButtonTitle;
+@property(retain) id autocapitalizationTypes;
+@property(retain) id autocorrectionTypes;
+@property(retain) NSDictionary *avControllerAttributes;
+@property(retain) NSDictionary *avItemAttributes;
+@property(retain) NSString *defaultButtonTitle;
+@property(retain) id keyboardTypes;
+@property(retain) NSString *otherButtonTitle;
+@property(retain) NSString *soundPath;
+@property(retain) id textFieldButtonDisplayDefaultButtonTitles;
+@property(retain) id textFieldButtonDisplayDefaultButtonURLs;
+@property(retain) id textFieldButtonDisplayTitles;
+@property(retain) id textFieldButtonImagePaths;
+@property(retain) id textFieldTitles;
+@property(retain) id textFieldValues;
 - (id)initWithMessage:(id)message replyPort:(unsigned)port requestFlags:(int)flags;
 - (BOOL)_needsDismissalWithClickedButtonIndex:(int)clickedButtonIndex;
 - (id)_safeLocalizedValue:(id)value withBundle:(id)bundle;
@@ -67,12 +89,14 @@
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;
+- (void)didFailToActivate;
 - (BOOL)dismissOnLock;
 - (void)noteVolumeOrLockPressed;
 - (void)performUnlockAction;
 - (BOOL)shouldShowInLockScreen;
 - (void)stopSound;
 - (int)token;
+- (void)updateWithMessage:(id)message requestFlags:(int)flags;
 - (void)wakeup;
 - (void)willActivate;
 - (void)willDeactivateForReason:(int)reason;

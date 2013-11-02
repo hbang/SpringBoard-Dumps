@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBSlidingAlertDisplay.h"
 #import "SpringBoard-Structs.h"
+#import "SBSlidingAlertDisplay.h"
 
 
 @interface SBTTYPromptAlertDisplay : SBSlidingAlertDisplay {

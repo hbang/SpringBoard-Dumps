@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSArray, SBFolderIcon;
+@class SBFolderIcon, NSArray;
 
 @interface SBIconsIntoFolderAnimationContext : XXUnknownSuperclass {
 	SBFolderIcon *_folderIcon;

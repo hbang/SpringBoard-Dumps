@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, SBDismissOnlyAlertItem;
+@class SBDismissOnlyAlertItem, NSString;
 
 @interface SBLockdownManager : XXUnknownSuperclass {
 	int _state;

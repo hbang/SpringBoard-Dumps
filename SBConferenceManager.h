@@ -5,22 +5,16 @@
  * Source: (null)
  */
 
-#import "CNFSoundPlayerDelegateProtocol.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDate, CNFConferenceController, SBVideoAlert, CNFAudioPlayer;
+@class CNFConferenceController;
 
-@interface SBConferenceManager : XXUnknownSuperclass <CNFSoundPlayerDelegateProtocol> {
+@interface SBConferenceManager : XXUnknownSuperclass {
 	CNFConferenceController *_conferenceController;
-	SBVideoAlert *_currentVideoAlert;
-	unsigned _avState;
-	unsigned _endedReason;
-	NSDate *_conferenceStartedDate;
-	CNFAudioPlayer *_player;
+	unsigned _chatState;
 }
 @property(readonly, assign) unsigned chatState;
 @property(readonly, assign) CNFConferenceController *conferenceController;
-@property(readonly, assign) SBVideoAlert *currentVideoAlert;
 + (void)initialize;
 + (id)sharedInstance;
 - (id)init;
@@ -28,21 +22,14 @@
 - (void)_conferenceCapabilityChanged:(id)changed;
 - (void)_conferenceStateChanged:(id)changed;
 - (void)_handleInvitation:(id)invitation;
-- (void)_handleMissedInvitation:(id)invitation;
 - (void)_updateStatusBar;
-- (void)alertHasBeenHandled;
-- (void)answerIncomingConference;
-- (void)audioPlayerDidStopPlaying:(id)audioPlayer;
+- (BOOL)activeFaceTimeCallExists;
 - (BOOL)canStartConference;
+- (id)currentCallRemoteUserId;
+- (id)currentCallStatusDisplayString;
 - (void)dealloc;
-- (void)declineIncomingConference;
-- (id)durationString;
 - (void)endConference;
 - (BOOL)inConference;
-- (BOOL)invitationIsFaceTimeUpgrade;
-- (void)playSound:(int)sound numOfLoops:(int)loops pauseDuration:(float)duration;
-- (BOOL)shouldCreateMissedFaceTimeCall;
-- (void)stopAudioPlayer;
 - (void)updateStatusBar;
 - (BOOL)videoConferenceInvitationExists;
 @end

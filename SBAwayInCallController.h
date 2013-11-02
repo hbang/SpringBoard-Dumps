@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class TPLCDView, UIImage, NSString, NSTimer;
+@class NSString, UIImage, NSTimer, TPLCDView;
 
 @interface SBAwayInCallController : XXUnknownSuperclass {
 	TPLCDView *_lcdView;

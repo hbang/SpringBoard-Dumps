@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, SBProcess, NSLock;
+@class NSLock, SBProcess, NSString;
 
 @interface SBProcessAssertion : XXUnknownSuperclass {
 	unsigned _clientPort;
@@ -23,6 +23,7 @@
 	unsigned _preventIdleSleep : 1;
 }
 @property(readonly, assign) unsigned clientPort;
+@property(readonly, assign) BOOL hasFixedStartTime;
 @property(retain, nonatomic) NSString *identifier;
 @property(readonly, assign) int ownerPID;
 @property(readonly, assign) double permittedBackgroundDuration;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSMutableDictionary;
 
@@ -17,6 +17,7 @@
 	dispatch_queue_s *_writeQueue;
 }
 + (id)_statePath;
++ (void)migrateSystemLocalNotifications;
 + (id)sharedInstance;
 - (id)init;
 - (void)_flushSynchronously;

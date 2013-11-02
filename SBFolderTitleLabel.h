@@ -11,6 +11,7 @@
 
 @interface SBFolderTitleLabel : XXUnknownSuperclass {
 }
++ (float)labelFontSize;
 - (void)drawRect:(CGRect)rect;
 - (CGSize)sizeThatFits:(CGSize)fits;
 @end
