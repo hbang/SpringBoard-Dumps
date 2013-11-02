@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class UIColor, NSString, UIFont;
+@class UIFont, UIColor, NSString;
 
 @interface SBTextDisplayView : UIView {
 	NSString *_text;

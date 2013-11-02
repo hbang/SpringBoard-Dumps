@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlert.h"
 
-@class NSString, CNFConferenceController, CNFDisplayController, NSURL;
+@class NSURL, NSString, CNFConferenceController, CNFDisplayController;
 
 @interface SBVideoAlert : SBAlert {
 	CNFConferenceController *_conferenceController;
@@ -17,7 +17,6 @@
 	NSString *_conferenceID;
 }
 - (id)initWithConferenceController:(id)conferenceController inviter:(id)inviter conferenceID:(id)anId;
-- (BOOL)_tearDownFencedWindowWithObserver;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (id)conferenceController;
 - (id)conferenceID;

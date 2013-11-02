@@ -11,7 +11,7 @@
 #import "UITableViewDelegate.h"
 #import "UITableViewDataSource.h"
 
-@class NSDateFormatter, NSCalendar, SBSearchView, NSDate;
+@class NSCalendar, SBSearchView, NSDate, NSDateFormatter;
 
 @interface SBSearchController : NSObject <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
 	SBSearchView *_searchView;

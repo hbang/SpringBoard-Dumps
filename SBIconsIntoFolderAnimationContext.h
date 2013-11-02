@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, SBFolderIcon;
+@class SBFolderIcon, NSArray;
 
 @interface SBIconsIntoFolderAnimationContext : NSObject {
 	SBFolderIcon *_folderIcon;

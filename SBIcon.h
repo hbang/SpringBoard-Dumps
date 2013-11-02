@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
 #import "SBIcon.h"
-#import <UIKit/UIView.h>
 
-@class SBIconLabel, SBIconBadge, NSTimer, UIImageView, SBIconImageContainerView, UIImage, SBIconImageView;
+@class SBIconLabel, SBIconBadge, NSTimer, SBIconImageContainerView, UIImageView, UIImage, SBIconImageView;
 @protocol SBIconDelegate;
 
 @interface SBIcon : UIView {
@@ -49,7 +49,7 @@
 	CGPoint _unjitterPoint;
 	CGPoint _grabPoint;
 	NSTimer *_longPressTimer;
-	UIImage *_cachedIconImages[3];
+	UIImage *_cachedIconImages[7];
 }
 @property(assign, nonatomic) id<SBIconDelegate> delegate;
 + (id)_jitterPositionAnimation;
@@ -63,9 +63,11 @@
 - (id)_automationID;
 - (void)_darkenIconImage:(float)image;
 - (void)_delayedUnhighlight;
+- (int)_delegateCloseBoxType;
 - (BOOL)_delegatePositionIsEditable;
 - (BOOL)_delegateTapAllowed;
 - (void)_delegateTouchEnded:(BOOL)ended;
+- (id)_newCloseBoxOfType:(int)type;
 - (float)_reflectionImageOffset;
 - (id)_shadowImageName;
 - (void)_updateShadow;
@@ -80,6 +82,7 @@
 - (id)badgeView;
 - (BOOL)canReceiveGrabbedIcon:(id)icon;
 - (void)cancelLongPressTimer;
+- (void)closeBoxTapped;
 - (void)completeUninstall;
 - (CGImageRef)createComposedIconImageUsingContext:(CGContextRef)context;
 - (id)createShadowImageView;
@@ -135,7 +138,6 @@
 - (id)representation;
 - (void)setAllowJitter:(BOOL)jitter;
 - (void)setBadge:(id)badge;
-- (void)setCloseBox:(id)box;
 - (void)setDisplayedIconImage:(id)image;
 - (void)setDisplaysInSwitcher:(BOOL)switcher;
 - (void)setDisplaysOnWallpaper:(BOOL)wallpaper;
@@ -156,6 +158,7 @@
 - (void)setLabelDisplaysOnWallpaper:(BOOL)wallpaper;
 - (void)setRefusesRecipientStatus:(BOOL)status;
 - (void)setShadowsHidden:(BOOL)hidden;
+- (void)setShowsCloseBox:(BOOL)box;
 - (void)setShowsImages:(BOOL)images;
 - (void)setTouchDownInIcon:(BOOL)icon;
 - (void)setUninstalled;
@@ -175,7 +178,6 @@
 - (id)uninstallAlertCancelTitle;
 - (id)uninstallAlertConfirmTitle;
 - (id)uninstallAlertTitle;
-- (void)uninstallClicked:(id)clicked;
 - (void)updateLabel;
 - (void)updateLabelKerningAndEllipsing;
 - (void)updateLabelOrigin;

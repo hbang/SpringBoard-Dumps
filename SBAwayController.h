@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlert.h"
 
-@class NSMutableDictionary, NSTimer, SBAwayView, NSDictionary, NSString, NSMutableArray, PCPersistentTimer, SBUIController, NSDate, SBSlidingAlertDisplay, NSNumber, SBAlertItem, NSTimeZone, SBAwayModel;
+@class SBAwayModel, SBAwayView, NSTimer, NSMutableDictionary, NSDictionary, NSString, NSMutableArray, SBUIController, PCPersistentTimer, NSDate, SBSlidingAlertDisplay, SBAlertItem, NSNumber, NSTimeZone;
 
 @interface SBAwayController : SBAlert {
 	SBUIController *_uiController;
@@ -152,6 +152,7 @@
 - (void)lockBarStartedTracking:(id)tracking;
 - (void)lockBarStoppedTracking:(id)tracking;
 - (void)makeEmergencyCall;
+- (float)mediaControlHeightDelta;
 - (BOOL)moveAlertItemToAwayView:(id)awayView;
 - (id)nameOfPluginController:(id)pluginController;
 - (void)notePasscodeGracePeriodMayHaveChanged;

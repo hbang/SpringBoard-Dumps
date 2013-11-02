@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlertDisplay.h"
 
-@class SBEmergencyCallView, UIImageView, SBDeviceLockView, UIImage;
+@class SBEmergencyCallView, SBDeviceLockView, UIImageView, UIImage;
 
 @interface SBSlidingAlertDisplay : SBAlertDisplay {
 	UIImageView *_backgroundView;

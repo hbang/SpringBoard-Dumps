@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSLock, SBProcess, NSString;
+@class NSLock, NSString, SBProcess;
 
 @interface SBProcessAssertion : NSObject {
 	unsigned _clientPort;

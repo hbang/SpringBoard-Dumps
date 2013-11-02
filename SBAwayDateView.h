@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class TPLCDTextView, UILabel, NSString, NSTimer, SBAwayMediaControlsView;
+@class SBAwayMediaControlsView, TPLCDTextView, UILabel, NSString, NSTimer;
 @protocol SBAwayDateViewDelegate;
 
 @interface SBAwayDateView : UIView {

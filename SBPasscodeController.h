@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class SBPasscodeAlertItem, NSString, NSDate, SBPasscodeComplianceAlertItem;
+@class SBPasscodeComplianceAlertItem, SBPasscodeAlertItem, NSString, NSDate;
 
 @interface SBPasscodeController : NSObject {
 	SBPasscodeAlertItem *_passcodeAlertItem;
@@ -20,7 +20,10 @@
 }
 + (id)sharedInstance;
 - (void)_abort;
+- (void)_didEndCall;
 - (void)_passwordEntered:(id)entered;
+- (void)_startListeningToTelephonyNotifications;
+- (void)_stopListeningToTelephonyNotifications;
 - (void)_userWantsToComplyNow:(BOOL)complyNow;
 - (void)checkPasscodeCompliance;
 - (void)dealloc;

@@ -14,18 +14,12 @@
 }
 + (id)sharedInstance;
 - (void)addDeviceNotification:(id)notification;
-- (void)avrcpPause:(id)pause;
-- (void)avrcpPerformPause:(id)pause;
-- (void)avrcpPerformPlay:(id)play;
-- (void)avrcpPerformStop:(id)stop;
-- (void)avrcpPerformToggle:(id)toggle;
-- (void)avrcpPlay:(id)play;
-- (void)avrcpStop:(id)stop;
 - (void)batteryChanged:(id)changed;
 - (int)batteryLevel;
 - (BOOL)canReportBatteryLevel;
 - (void)connectionChanged:(id)changed;
 - (void)dealloc;
+- (id)deviceForAudioRoute:(id)audioRoute;
 - (id)firstBTDeviceToReportBatteryLevel;
 - (void)iapDeviceChanged:(id)changed;
 - (void)noteDevicesChanged;

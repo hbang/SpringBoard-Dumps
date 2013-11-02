@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
-@class NSMutableSet, NSMutableDictionary;
+@class NSMutableDictionary, NSMutableSet;
 
 @interface SBDisplay : NSObject {
 	NSMutableDictionary *_displayValues;

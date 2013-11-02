@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class UIImageView, UILabel;
+@class UILabel, UIImageView;
 
 @interface SBIconBadge : UIView {
 	UIImageView *_backgroundImageView;
@@ -17,6 +17,7 @@
 	BOOL _highlighted;
 	float _brightness;
 }
++ (float)badgeLabelVerticalOffset;
 + (id)iconBadgeWithBadgeString:(id)badgeString;
 - (id)initWithBadgeString:(id)badgeString;
 - (id)initWithFrame:(CGRect)frame;

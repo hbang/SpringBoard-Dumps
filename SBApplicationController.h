@@ -7,13 +7,15 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSDictionary, NSOperationQueue, NSMutableSet, CPDistributedNotificationCenter, NSLock, SBProcess;
+@class NSDictionary, NSMutableSet, NSOperationQueue, NSMutableDictionary, NSTimer, CPDistributedNotificationCenter, SBProcess, NSLock;
 
 @interface SBApplicationController : NSObject {
 	NSDictionary *_pendingApplicationDictionaries;
 	NSMutableDictionary *_applications;
 	NSMutableDictionary *_applicationsByBundleIdentifer;
 	NSMutableSet *_applicationsUsingLocation;
+	NSTimer *_locationIconTimer;
+	BOOL _locationIconRemovalPending;
 	SBProcess *_processCurrentlyRecordingAudio;
 	NSDictionary *_backgroundDisplayDict;
 	unsigned _ignoreUninstallationEventCount;
@@ -30,11 +32,15 @@
 - (void)_awayControllerDidLock:(id)_awayController;
 - (id)_defaultRoleForApplication:(id)application;
 - (void)_handleInstalledApplicationDictionaryIfReceived;
+- (BOOL)_hasRequiredCapabilities:(id)capabilities;
 - (BOOL)_locationActiveForAppWithDetails:(id)details;
+- (void)_locationIconTimerFired:(id)fired;
 - (void)_recordingStateChanged:(id)changed;
 - (void)_registerForAudioRecordingNotifications;
 - (void)_registerForAwayControllerDidLockNotification;
 - (void)_reloadBackgroundIDsDict;
+- (void)_removeLocationIconTimer;
+- (void)_setLocationIconTimer;
 - (void)_setSuspendTypeForApp:(id)app;
 - (void)_updateLocationState;
 - (id)allApplications;

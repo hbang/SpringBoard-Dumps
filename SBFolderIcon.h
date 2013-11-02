@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBIcon.h"
 
-@class NSMutableSet, UIImageView, SBFolder, SBDownloadingProgressBar;
+@class NSMutableSet, SBFolder, UIImageView, SBDownloadingProgressBar;
 
 @interface SBFolderIcon : SBIcon {
 	SBFolder *_folder;

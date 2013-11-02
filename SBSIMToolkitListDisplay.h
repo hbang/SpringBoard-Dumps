@@ -10,7 +10,7 @@
 #import "UITableViewDataSource.h"
 #import "SBSlidingAlertDisplay.h"
 
-@class UITableView, NSArray;
+@class NSArray, UITableView;
 
 @interface SBSIMToolkitListDisplay : SBSlidingAlertDisplay <UITableViewDelegate, UITableViewDataSource> {
 	UITableView *_table;

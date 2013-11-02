@@ -5,22 +5,19 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
+#import "UIAlertViewDelegate.h"
 #import "SBAlertItem.h"
 
-@class NSString;
+@class SBUserInstalledApplicationIcon;
 
-@interface SBCallFailureAlertItem : SBAlertItem {
-	int _causeCode;
-	NSString *_address;
-	CTCallRef _call;
+@interface SBGameDeletionAlertItem : SBAlertItem <UIAlertViewDelegate> {
+	SBUserInstalledApplicationIcon *_icon;
 }
-- (id)initWithCauseCode:(long)causeCode call:(CTCallRef)call;
-- (void)_callback;
+- (id)initWithIcon:(id)icon;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (id)lockLabel;
-- (void)performUnlockAction;
+- (BOOL)dismissOnLock;
+- (BOOL)shouldShowInLockScreen;
 @end
 

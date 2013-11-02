@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
-@class SBAwayController, NSMutableArray;
+@class NSMutableArray, SBAwayController;
 
 @interface SBAwayModel : NSObject {
 	SBAwayController *_controller;

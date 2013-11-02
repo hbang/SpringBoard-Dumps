@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class UIView, UIWindow, SBHUDView;
+@class SBHUDView, UIView, UIWindow;
 
 @interface SBHUDController : NSObject {
 	UIWindow *_hudWindow;

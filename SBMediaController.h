@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
-@class NSDictionary, NSTimer;
+@class NSTimer, NSDictionary;
 
 @interface SBMediaController : NSObject {
 	int _manualVolumeChangeCount;
@@ -28,13 +28,14 @@
 - (void)_changeVolumeBy:(float)by;
 - (void)_commitVolumeChange:(id)change;
 - (void)_delayedExtendSleepTimer;
-- (void)_nowPlayingAppIsPlayingDidChange:(id)_nowPlayingAppIsPlaying;
+- (void)_nowPlayingAppIsPlayingDidChange;
 - (id)_nowPlayingInfo;
-- (void)_nowPlayingPIDChanged:(id)changed;
-- (void)_registerForAVSystemControllerNotifications;
+- (void)_nowPlayingPIDChanged;
+- (void)_registerForNotifications;
 - (void)_serverConnectionDied:(id)died;
+- (void)_systemMuteChanged:(id)changed;
 - (void)_systemVolumeChanged:(id)changed;
-- (void)_unregisterForAVSystemControllerNotifications;
+- (void)_unregisterForNotifications;
 - (BOOL)beginSeek:(int)seek;
 - (void)cancelVolumeEvent;
 - (BOOL)changeTrack:(int)track;

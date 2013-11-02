@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class UIImageView, UILabel, UIImage, NSString;
+@class UILabel, UIImageView, UIImage, NSString;
 
 @interface SBHUDView : UIView {
 	int _level;

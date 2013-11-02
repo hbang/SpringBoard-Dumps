@@ -32,7 +32,7 @@
 - (void)_resetImage;
 - (void)_setOrientation:(int)orientation duration:(double)duration force:(BOOL)force;
 - (void)_setOrientationAnimationFinished;
-- (void)_setUsesComposedImage:(BOOL)image;
+- (void)_setUsesComposedImage:(BOOL)image createGradientsIfNeeded:(BOOL)needed;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_wallpaperChanged;
 - (float)alpha;

@@ -9,7 +9,7 @@
 #import <UIKit/UIView.h>
 #import "SBAppSwitcherScrollViewDelegate.h"
 
-@class UIImageView, SBAppSwitcherScrollView, NSMutableArray;
+@class SBAppSwitcherScrollView, UIImageView, NSMutableArray;
 @protocol SBAppSwitcherBarViewDelegate;
 
 @interface SBAppSwitcherBarView : UIView <SBAppSwitcherScrollViewDelegate> {

@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSString, NSDictionary;
 
 @interface SBVODAlarm : NSObject {
 	NSString *_title;

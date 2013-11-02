@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <UIKit/UIPageControl.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIPageControl.h>
 
 @protocol SBIconListPageControlDelegate;
 

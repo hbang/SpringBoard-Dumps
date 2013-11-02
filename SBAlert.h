@@ -18,7 +18,6 @@
 + (id)alertWindow;
 + (void)registerForAlerts;
 + (void)test;
-- (BOOL)_tearDownFencedWindowWithObserver;
 - (void)_updateStatusBarLockAndTime;
 - (void)activate;
 - (id)alertDisplayViewWithSize:(CGSize)size;

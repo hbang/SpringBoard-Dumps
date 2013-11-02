@@ -7,10 +7,11 @@
 
 #import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
+#import "RadiosPreferencesDelegate.h"
 
 @class NSString, NSTimer, RadiosPreferences;
 
-@interface SBTelephonyManager : NSObject {
+@interface SBTelephonyManager : NSObject <RadiosPreferencesDelegate> {
 	void *_suspendDormancyAssertion;
 	NSString *_operatorName;
 	unsigned _suspendDormancyEnabled;
@@ -51,6 +52,7 @@
 - (void)_updateState;
 - (void)_wokeFromSleep:(id)sleep;
 - (BOOL)activeCallExists;
+- (void)airplaneModeChanged;
 - (id)allMissedCallsAfterRowID:(long long)anId;
 - (void)answerIncomingCall;
 - (void)answerIncomingCallEndingOthers;
@@ -91,6 +93,7 @@
 - (int)registrationStatus;
 - (void)setCallForwardingIndicator:(int)indicator;
 - (void)setFastDormancySuspended:(BOOL)suspended;
+- (void)setIsInAirplaneMode:(BOOL)airplaneMode;
 - (void)setIsUsingVPNConnection:(BOOL)connection;
 - (void)setIsUsingWiFiConnection:(BOOL)connection;
 - (void)setIsUsingWirelessModem:(BOOL)modem;

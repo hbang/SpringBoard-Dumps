@@ -6,13 +6,15 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
+#import <UIKit/UIImageView.h>
 
 
-@interface SBFolderShadowView : UIView {
+@interface SBLinenNotchView : UIImageView {
 	XXStruct_9ihRqB _notchInfo;
 }
++ (id)_imageForNotchInfo:(XXStruct_9ihRqB)notchInfo;
++ (id)_keyForNotchInfo:(XXStruct_9ihRqB)notchInfo;
++ (id)notchForNotchInfo:(XXStruct_9ihRqB)notchInfo;
 - (id)initWithFrame:(CGRect)frame notchInfo:(XXStruct_9ihRqB)info;
-- (void)drawRect:(CGRect)rect;
 @end
 

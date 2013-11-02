@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
-@class NSMutableSet, NSString, NSSet;
+@class NSSet, NSMutableSet, NSString;
 
 @interface SBProcess : NSObject {
 	NSMutableSet *_assertions;
@@ -22,6 +22,7 @@
 	unsigned _recordingAudio : 1;
 	unsigned _usesSocketMonitoring : 1;
 	unsigned _supportsBackgroundTaskAssertions : 1;
+	unsigned _hasWatchdogAssertionsOut : 1;
 	int _backgroundJetsamPriority;
 	int _currentJetsamPriority;
 	int _activationDecounter;
@@ -39,15 +40,19 @@
 	int _pid;
 	unsigned _eventPort;
 	unsigned _taskNamePort;
+	SBProcessTimes _times;
 }
 @property(copy) NSSet *allowedLockedFilePaths;
 @property(assign) int backgroundJetsamPriority;
+@property(readonly, assign, getter=isBeingDebugged) BOOL beingDebugged;
 @property(readonly, assign, getter=isBeingPtraced) BOOL beingPtraced;
 @property(readonly, assign) int currentJetsamPriority;
 @property(readonly, assign) double elapsedCPUTime;
 @property(readonly, assign) unsigned eventPort;
+@property(readonly, assign) double execTime;
 @property(assign, getter=isFrontmost) BOOL frontmost;
 @property(readonly, assign) BOOL hasResumeAssertion;
+@property(assign) BOOL hasWatchdogAssertionsOut;
 @property(copy) NSString *jobLabel;
 @property(readonly, assign) NSSet *lockedFilePathsIgnoringAllowed;
 @property(readonly, assign) NSString *name;
@@ -69,16 +74,22 @@
 + (void)_logJetsamPriorities;
 + (void)cancelTaskCompletionAllowIdleSleep;
 + (int)defaultBackgroundJetsamPriority;
++ (void)hostwideUserElapsedCPUTime:(double *)time systemElapsedCPUTime:(double *)time2 idleElapsedCPUTime:(double *)time3;
 + (void)initialize;
 + (id)launchedProcessWithBundleIdentifier:(id)bundleIdentifier path:(id)path arguments:(id)arguments environment:(id)environment standardOutputPath:(id)path5 standardErrorPath:(id)path6 machServices:(id)services threadPriority:(long long)priority frontmost:(BOOL)frontmost backgroundJetsamPriority:(int)priority10 waitForDebugger:(BOOL)debugger allowedLockedFilePaths:(id)paths terminateOnSuspension:(BOOL)suspension;
 + (id)processForPid:(int)pid;
 + (void)scheduleTaskCompletionAllowIdleSleep;
 + (void)shutdownSuspendedProcessSockets;
-- (id)initWithPid:(int)pid frontmost:(BOOL)frontmost backgroundJetsamPriority:(int)priority jobLabel:(id)label eventPortName:(id)name allowedLockedFilePaths:(id)paths terminateOnSuspension:(BOOL)suspension;
+- (id)initWithPid:(int)pid frontmost:(BOOL)frontmost backgroundJetsamPriority:(int)priority jobLabel:(id)label eventPortName:(id)name allowedLockedFilePaths:(id)paths terminateOnSuspension:(BOOL)suspension execTime:(double)time;
+- (id)_crashReportCPUUsageInfo;
+- (id)_crashReportThermalsInfo;
+- (void)_forceCrashReportWithReason:(int)reason description:(id)description;
 - (void)_notifyOfExpirationWarning;
 - (void)addAssertion:(id)assertion;
 - (id)assertions;
 - (void)assertionsQueue_cancelTaskCompletionAllowIdleSleep;
+- (BOOL)assertionsQueue_isBeingDebugged;
+- (void)assertionsQueue_markWatchdogCPUTimes;
 - (double)assertionsQueue_permittedBackgroundDuration;
 - (void)assertionsQueue_scheduleTaskCompletionAllowIdleSleep;
 - (dispatch_source_s *)assertionsQueue_setupOneShotTimer:(double)timer withBlock:(id)block;
@@ -89,12 +100,11 @@
 - (BOOL)decrementCounter:(int *)counter queue:(dispatch_queue_s *)queue ifBlockSucceeds:(id)succeeds;
 - (id)description;
 - (void)dispatchSharedLockCheck;
-- (void)forceCrashReportWithReason:(int)reason description:(id)description stop:(BOOL)stop;
-- (void)forceCrashWithReason:(int)reason descriptionWithFormat:(id)format;
 - (unsigned)hash;
 - (BOOL)incrementCounter:(int *)counter queue:(dispatch_queue_s *)queue ifBlockSucceeds:(id)succeeds;
 - (BOOL)isEqual:(id)equal;
 - (void)killWithSignal:(int)signal;
+- (void)markWatchdogCPUTimes;
 - (void)removeAllAssertions;
 - (void)removeAssertion:(id)assertion;
 - (BOOL)resume;
@@ -110,5 +120,6 @@
 - (BOOL)throttleUpQueue_setPriority:(int)priority;
 - (BOOL)throttleUpUI;
 - (void)waitToExecOrExit;
+- (void)watchdogTerminateWithReason:(int)reason format:(id)format;
 @end
 

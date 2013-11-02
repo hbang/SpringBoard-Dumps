@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class CPAggregateDictionary, NSMutableDictionary, NSTimer;
+@class NSTimer, NSMutableDictionary, CPAggregateDictionary;
 
 @interface SBAggregateDCommunicator : NSObject {
 	CPAggregateDictionary *_dictionary;
@@ -49,6 +49,7 @@
 - (void)reportNANDUsage;
 - (void)reportScreenHasDimmed;
 - (void)reportScreenHasUndimmed;
+- (void)reportSpringBoardDidLaunch;
 - (void)reportVPNStatusChanged;
 - (void)synchronousCommit;
 @end

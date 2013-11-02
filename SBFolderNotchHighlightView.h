@@ -8,15 +8,11 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class UIImage;
 
-@interface SBFolderNotchView : UIView {
+@interface SBFolderNotchHighlightView : UIView {
 	XXStruct_9ihRqB _notchInfo;
-	UIImage *_wallpaper;
 }
-- (id)initWithNotchInfo:(XXStruct_9ihRqB)notchInfo wallpaper:(id)wallpaper;
-- (void)dealloc;
+- (id)initWithNotchInfo:(XXStruct_9ihRqB)notchInfo;
 - (void)drawRect:(CGRect)rect;
-- (void)setWallpaper:(id)wallpaper;
 @end
 

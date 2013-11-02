@@ -14,6 +14,7 @@
 	CNFConferenceController *_conferenceController;
 	SBVideoAlert *_currentVideoAlert;
 	unsigned _avState;
+	unsigned _endedReason;
 	NSDate *_conferenceStartedDate;
 	CNFAudioPlayer *_player;
 }
@@ -30,12 +31,15 @@
 - (void)alertHasBeenHandled;
 - (void)answerIncomingConference;
 - (void)audioPlayerDidStopPlaying:(id)audioPlayer;
+- (BOOL)canStartConference;
 - (void)dealloc;
 - (void)declineIncomingConference;
 - (id)durationString;
 - (void)endConference;
 - (BOOL)inConference;
+- (BOOL)invitationIsFaceTimeUpgrade;
 - (void)playSound:(int)sound numOfLoops:(int)loops pauseDuration:(float)duration;
+- (BOOL)shouldCreateMissedFaceTimeCall;
 - (void)stopAudioPlayer;
 - (void)updateStatusBar;
 - (BOOL)videoConferenceInvitationExists;

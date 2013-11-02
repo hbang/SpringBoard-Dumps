@@ -9,7 +9,7 @@
 #import "UIKeyInput.h"
 #import "SBSlidingAlertDisplay.h"
 
-@class SBAwayChargingView, SBAwaySwipeGestureRecognizer, NSTimer, SBAwayItemsView, NSDictionary, TPBottomButtonBar, SBAwayViewPluginController, SBAwayLockBar, MPAudioDeviceController, UIAlertView, UIPushButton, SBActivationView, SBAwayInCallController, SBAlertImageView, SBAwayDateView;
+@class SBAwayChargingView, SBAwaySwipeGestureRecognizer, NSTimer, SBAwayItemsView, NSDictionary, TPBottomButtonBar, SBAwayLockBar, SBAwayViewPluginController, MPAudioDeviceController, SBActivationView, UIAlertView, UIPushButton, SBAwayInCallController, SBAlertImageView, SBAwayDateView;
 
 @interface SBAwayView : SBSlidingAlertDisplay <UIKeyInput> {
 	BOOL _isDimmed;
@@ -43,6 +43,7 @@
 	SBAwayLockBar *_lockBar;
 	TPBottomButtonBar *_cancelSyncBar;
 	UIPushButton *_infoButton;
+	float _mediaControlHeightDelta;
 }
 @property(assign, nonatomic) int autocapitalizationType;
 @property(assign, nonatomic) int autocorrectionType;
@@ -123,6 +124,7 @@
 - (void)lockBarStoppedTracking:(id)tracking;
 - (void)lockBarUnlocked:(id)unlocked;
 - (void)lockBarUnlocked:(id)unlocked freezeKnobInLockedPosition:(BOOL)lockedPosition;
+- (float)mediaControlHeightDelta;
 - (void)postLockCompletedNotification:(BOOL)notification;
 - (void)removeAlertSheet;
 - (void)removeBlockedStatus;

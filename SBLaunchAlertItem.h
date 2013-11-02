@@ -7,7 +7,7 @@
 
 #import "SBAlertItem.h"
 
-@class NSString, SBDisplay;
+@class SBDisplay, NSString;
 
 @interface SBLaunchAlertItem : SBAlertItem {
 	SBDisplay *_associatedDisplay;

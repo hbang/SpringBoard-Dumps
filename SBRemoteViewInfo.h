@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
 
-@class NSString, SBProxyRemoteView, SBApplication;
+@class SBApplication, NSString, SBProxyRemoteView;
 
 @interface SBRemoteViewInfo : NSObject {
 	NSString *_remoteViewIdentifier;

@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class UIImageView, UILabel;
+@class UILabel, UIImageView;
 
 @interface SBAlertImageView : UIView {
 	UIImageView *_imageView;

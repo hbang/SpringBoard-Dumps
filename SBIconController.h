@@ -12,7 +12,7 @@
 #import "SBIconDelegate.h"
 #import <Foundation/NSObject.h>
 
-@class SBSearchController, NSTimer, SBIconListPageControl, UITouch, SBIconScrollView, UIKeyboard, SBFolderNotchView, NSMutableArray, SBIconModel, SBFolderSlidingView, SBDockIconListView, SBFolder, SBIconListView, SBFolderView, SBLeafIcon, SBRootFolder, SBIconIndexPath, SBIcon, SBSearchView, TPLCDTextView, UIView;
+@class TPLCDTextView, UIView, SBSearchController, NSTimer, SBIconListPageControl, UITouch, SBIconScrollView, UIKeyboard, SBIconModel, SBWallpaperNotchView, NSMutableArray, SBFolderSlidingView, SBDockIconListView, SBFolder, SBIconListView, SBFolderView, SBLeafIcon, SBRootFolder, SBIconIndexPath, SBIcon, SBSearchView;
 
 @interface SBIconController : NSObject <UIScrollViewDelegate, SBIconListPageControlDelegate, SBIconDelegate> {
 	SBIconModel *_iconModel;
@@ -38,7 +38,7 @@
 	SBFolderSlidingView *_upperSlidingView;
 	SBFolderSlidingView *_lowerSlidingView;
 	UIView *_upperIconsSlidingView;
-	SBFolderNotchView *_notchView;
+	SBWallpaperNotchView *_slidingNotchView;
 	SBIconListView *_ghostedIconListForFolder;
 	SBIconListView *_ghostedIconListForSwitcher;
 	int _currentIconListIndex;
@@ -103,6 +103,7 @@
 - (void)cancelDragPauseTimer;
 - (void)cancelFolderSpringloadTimer;
 - (void)cancelScrollTimer;
+- (int)closeBoxTypeForIcon:(id)icon;
 - (void)closeFolderTimerFired;
 - (void)compactIconsInIconListsInFolder:(id)folder moveNow:(BOOL)now limitToIconList:(id)iconList;
 - (void)compactRootIconLists;
@@ -133,6 +134,7 @@
 - (void)icon:(id)icon touchMovedWithEvent:(id)event;
 - (BOOL)iconAllowJitter:(id)jitter;
 - (BOOL)iconAppearsOnCurrentPage:(id)page;
+- (void)iconCloseBoxTapped:(id)tapped;
 - (void)iconDidBeginGrab:(id)icon;
 - (void)iconDownloadStateChanged:(id)changed;
 - (void)iconGrabbed:(id)grabbed;
@@ -234,9 +236,10 @@
 - (unsigned)_folderRowsForIconCount:(unsigned)iconCount;
 - (id)_iconsOnGhostedListForRequester:(int)requester;
 - (void)_insertFolderViewAndSlidingViewsForFolder:(id)folder;
-- (void)_openCloseFolderAnimationEnded:(id)ended finished:(id)finished context:(void *)context;
+- (void)_openCloseFolderAnimationEnded:(id)ended finished:(id)finished context:(id)context;
 - (void)_outOfFolderAnimation:(id)folderAnimation didFinish:(id)finish context:(id)context;
 - (id)_proposedFolderNameForGrabbedIcon:(id)grabbedIcon recipientIcon:(id)icon;
+- (void)_runFolderOpenCloseTest;
 - (void)_setHasAnimatingFolder:(BOOL)folder;
 - (void)_slideFolderOpen:(BOOL)open animated:(BOOL)animated;
 - (void)_snapshotFadeDidStop:(id)_snapshotFade finished:(id)finished snapshot:(id)snapshot;

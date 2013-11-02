@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class UIButton, UISlider, UILabel, MPAudioDeviceController;
+@class MPAudioDeviceController, UIButton, UISlider, UILabel;
 
 @interface SBAwayMediaControlsView : UIView {
 	unsigned _beganSeeking : 1;

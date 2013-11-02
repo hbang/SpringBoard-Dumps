@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, NSMutableArray, SBFolderIcon;
+@class NSMutableSet, NSMutableDictionary, NSString, SBFolderIcon, NSMutableArray;
 
 @interface SBFolder : NSObject {
 	NSString *_displayName;
@@ -60,7 +60,9 @@
 - (BOOL)matchesRepresentation:(id)representation;
 - (void)noteIconAdded:(id)added;
 - (void)noteIconRemoved:(id)removed;
+- (id)performCascadingIconInsertion:(id)insertion listIndex:(unsigned)index iconIndex:(unsigned)index3 addPageIfNecessary:(BOOL)necessary;
 - (id)placeIcon:(id)icon atIndexPath:(id *)indexPath;
+- (void)purgeIconImages;
 - (void)purgeLists;
 - (void)removeEmptyList:(id)list;
 - (void)removeIconAtIndexPath:(id)indexPath;

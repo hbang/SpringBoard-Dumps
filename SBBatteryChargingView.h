@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class UIImageView, UILabel, UIImage;
+@class UILabel, UIImageView, UIImage;
 
 @interface SBBatteryChargingView : UIView {
 	int _type;

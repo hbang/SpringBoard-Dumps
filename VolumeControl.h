@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
-@class NSMutableSet, NSString;
+@class NSString, NSMutableSet;
 
 @interface VolumeControl : NSObject {
 	BOOL _debounce;

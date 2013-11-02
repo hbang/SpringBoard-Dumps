@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableSet, NSTimer, NSMutableArray;
+@class NSTimer, NSMutableArray, NSMutableSet;
 
 @interface SBVODController : NSObject {
 	NSMutableArray *_alarms;

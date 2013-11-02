@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class UILabel, UISearchBar, SBKeyboard, SBRoundedCornersView, UITableView;
+@class UITableView, UILabel, SBKeyboard, UISearchBar, SBRoundedCornersView;
 
 @interface SBSearchView : UIView {
 	SBRoundedCornersView *_roundedCornersView;

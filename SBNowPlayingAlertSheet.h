@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIAlertView.h>
 
-@class UIButton, UISlider, UILabel;
+@class UIButton, UILabel, UISlider;
 
 @interface SBNowPlayingAlertSheet : UIAlertView {
 	CGRect normalSliderFrame;

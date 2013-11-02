@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class SBDismissOnlyAlertItem, NSString;
+@class NSString, SBDismissOnlyAlertItem;
 
 @interface SBLockdownManager : NSObject {
 	int _state;

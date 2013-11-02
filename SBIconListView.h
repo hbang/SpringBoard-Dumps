@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, SBIconListModel, SBIcon;
+@class SBIconListModel, NSMutableArray, SBIcon;
 
 @interface SBIconListView : UIView {
 	SBIconListModel *_model;

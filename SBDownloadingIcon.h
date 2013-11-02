@@ -7,7 +7,7 @@
 
 #import "SBLeafIcon.h"
 
-@class NSString, SBDownloadingProgressBar, SSDownload, SSDownloadStatus;
+@class SSDownload, SSDownloadStatus, NSString, SBDownloadingProgressBar;
 
 @interface SBDownloadingIcon : SBLeafIcon {
 	NSString *_leafIdentifier;
@@ -27,6 +27,7 @@
 - (void)_thumbnailAvailableNotification:(id)notification;
 - (BOOL)allowsUninstall;
 - (id)applicationBundleID;
+- (void)closeBoxTapped;
 - (void)completeUninstall;
 - (void)dealloc;
 - (id)description;
@@ -50,7 +51,6 @@
 - (id)uninstallAlertCancelTitle;
 - (id)uninstallAlertConfirmTitle;
 - (id)uninstallAlertTitle;
-- (void)uninstallClicked:(id)clicked;
 - (void)updateDisplayName;
 @end
 

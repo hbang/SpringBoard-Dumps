@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SBIconDelegate.h"
+#import <Foundation/NSObject.h>
 
-@class UIButton, SBIconLabel, SBApplicationIcon, UIView, SBApplication;
+@class SBApplication, SBIconLabel, SBApplicationIcon, UIButton, UIView;
 
 @interface SBNowPlayingBar : NSObject <SBIconDelegate> {
 	UIView *_containerView;

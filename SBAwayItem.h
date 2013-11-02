@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDate, NSString;
+@class NSString, NSDate;
 
 @interface SBAwayItem : NSObject {
 	NSString *_title;

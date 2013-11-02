@@ -9,9 +9,6 @@
 
 
 @protocol APSConnectionDelegate <NSObject>
-@optional
-- (void)connection:(id)connection didReceiveDarwinNotificationNamed:(id)named;
-@required
 - (void)connection:(id)connection didReceiveMessageForTopic:(id)topic userInfo:(id)info;
 - (void)connection:(id)connection didReceivePublicToken:(id)token;
 @end

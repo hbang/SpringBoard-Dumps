@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSDictionary, NSString;
+@class NSDictionary, NSMutableDictionary, NSString;
 
 @interface SBPlatformController : NSObject {
 	NSString *_currentConfigurationName;

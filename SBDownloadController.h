@@ -8,7 +8,7 @@
 #import <Foundation/NSObject.h>
 #import "SSDownloadQueueObserver.h"
 
-@class NSMutableSet, SSDownloadQueue;
+@class SSDownloadQueue, NSMutableSet;
 
 @interface SBDownloadController : NSObject <SSDownloadQueueObserver> {
 	SSDownloadQueue *_downloadQueue;

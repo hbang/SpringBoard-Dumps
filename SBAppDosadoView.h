@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
 
-@class CALayer, NSTimer, SBApplication;
+@class SBApplication, CALayer, NSTimer;
 
 @interface SBAppDosadoView : UIView {
 	id _delegate;
