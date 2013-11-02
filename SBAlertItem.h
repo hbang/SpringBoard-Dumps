@@ -5,32 +5,38 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
 #import <Foundation/NSObject.h>
-#import "UIModalViewDelegate.h"
+#import "UIAlertViewDelegate.h"
 
-@class UIModalView;
+@class UIAlertView;
 
-@interface SBAlertItem : NSObject <UIModalViewDelegate> {
-	UIModalView *_alertSheet;
+@interface SBAlertItem : NSObject <UIAlertViewDelegate> {
+	UIAlertView *_alertSheet;
 	BOOL _disallowUnlockAction;
 	BOOL _orderOverSBAlert;
 	BOOL _preventLockOver;
+	BOOL _didEverActivate;
 }
+- (id)alertItemNotificationDate;
+- (id)alertItemNotificationSender;
+- (int)alertItemNotificationType;
 - (id)alertSheet;
 - (Class)alertSheetClass;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowAutoUnlock;
 - (BOOL)allowMenuButtonDismissal;
 - (double)autoDismissInterval;
 - (id)awayItem;
+- (void)buttonDismissed;
 - (void)cleanPreviousConfiguration;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)didActivate;
 - (void)didDeactivateForReason:(int)reason;
-- (BOOL)dimissOnAlertActivation;
 - (BOOL)disallowsUnlockAction;
 - (void)dismiss;
+- (void)dismiss:(int)dismiss;
+- (BOOL)dismissOnAlertActivation;
 - (BOOL)dismissOnLock;
 - (id)lockLabel;
 - (float)lockLabelFontSize;
@@ -50,9 +56,5 @@
 - (void)willDeactivateForReason:(int)reason;
 - (void)willRelockForButtonPress:(BOOL)buttonPress;
 - (BOOL)willShowInAwayItems;
-@end
-
-@interface SBAlertItem (CallFailurePredicate)
-- (BOOL)isCallFailureAlertItem;
 @end
 

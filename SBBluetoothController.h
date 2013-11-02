@@ -22,7 +22,7 @@
 - (void)avrcpPlay:(id)play;
 - (void)avrcpStop:(id)stop;
 - (void)batteryChanged:(id)changed;
-- (float)batteryLevel;
+- (int)batteryLevel;
 - (BOOL)canReportBatteryLevel;
 - (void)connectionChanged:(id)changed;
 - (void)dealloc;

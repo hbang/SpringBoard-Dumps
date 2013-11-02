@@ -5,17 +5,16 @@
  * Source: (null)
  */
 
+#import "UIAlertViewDelegate.h"
 #import "SBAlertItem.h"
-#import "UIModalViewDelegate.h"
 
 @class SBVODAlarm;
 
-@interface SBVODAlertItem : SBAlertItem <UIModalViewDelegate> {
+@interface SBVODAlertItem : SBAlertItem <UIAlertViewDelegate> {
 	SBVODAlarm *_alarm;
 }
 + (id)activeAlertForAlarm:(id)alarm;
 - (void)_updateText;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)screenWillUndim;

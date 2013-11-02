@@ -15,10 +15,10 @@
 }
 @property(assign, nonatomic) id delegate;
 - (id)initWithNetworkName:(id)networkName;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (void)dismiss;
+- (void)dismiss:(int)dismiss;
 - (BOOL)dismissOnLock;
 - (void)returnKeyPressed:(id)pressed;
 @end

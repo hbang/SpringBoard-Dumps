@@ -10,7 +10,7 @@
 
 @interface SBSIMToolkitGetYesNoInputDisplay : SBSIMToolkitGetInputDisplay {
 }
-+ (id)createBottomBarForInstance:(id)instance;
++ (id)newBottomBarForInstance:(id)instance;
 - (void)noPressed:(id)pressed;
 - (void)yesPressed:(id)pressed;
 @end

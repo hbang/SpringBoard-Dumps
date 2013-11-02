@@ -13,9 +13,11 @@
 	int _error;
 	NSString *_reason;
 	BOOL _suggestWiFi;
+	int _settingsButtonIndex;
 }
 - (id)initWithErrorCode:(int)errorCode reason:(id)reason suggestWiFi:(BOOL)fi;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)_showNetworkPrefs;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (BOOL)dismissOnLock;

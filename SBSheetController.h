@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, UIWindow;
+@class UIWindow, NSMutableDictionary;
 
 @interface SBSheetController : NSObject {
 	NSMutableDictionary *_appToSheetMap;

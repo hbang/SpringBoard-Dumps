@@ -7,12 +7,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class SBIconList, SBIcon;
+@class SBIcon, SBIconListView;
 
 @interface SBMovePlan : NSObject {
 	SBIcon *_icon;
-	SBIconList *_source;
-	SBIconList *_destination;
+	SBIconListView *_source;
+	SBIconListView *_destination;
 	int _index;
 }
 - (id)initWithIcon:(id)icon index:(int)index source:(id)source destination:(id)destination;

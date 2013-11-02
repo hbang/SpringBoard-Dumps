@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBSIMToolkitAlert.h"
 #import "SpringBoard-Structs.h"
 #import "SBAlert.h"
+#import "SBSIMToolkitAlert.h"
 
-@class AVController, AVQueue, NSString, NSTimer;
+@class NSTimer, AVController, AVQueue, NSString;
 
 @interface SBSIMToolkitAlert : SBAlert {
 	BOOL _needsResponse;

@@ -10,8 +10,9 @@
 
 @interface SBDeviceLockViewWithKeyboardPhone : SBDeviceLockViewWithKeyboard {
 }
-- (id)initWithStyle:(int)style interfaceOrientation:(int)orientation;
+- (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (void)_layoutForCurrentOrientation;
+- (void)hardwareReturnKeyPressed:(id)pressed;
 - (void)returnKeyPressed:(id)pressed;
 - (void)setShowsEmergencyCallButton:(BOOL)button;
 - (BOOL)showsEmergencyCallButton;

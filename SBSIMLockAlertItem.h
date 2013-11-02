@@ -10,13 +10,15 @@
 
 @interface SBSIMLockAlertItem : SBAlertItem {
 	int _status;
+	int _okButtonIndex;
+	int _unlockButtonIndex;
 }
 + (id)alertTitleForStatus:(int)status;
 + (id)alertTitleForStatus:(int)status languageCode:(id)code;
 - (id)initWithStatus:(int)status;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (id)alertTextForLanguageCode:(id)languageCode;
 - (id)alertTitleForLanguageCode:(id)languageCode;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)canUnlock;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;

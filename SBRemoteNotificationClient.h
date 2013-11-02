@@ -8,7 +8,7 @@
 #import <Foundation/NSObject.h>
 #import "NSCoding.h"
 
-@class NSDictionary, NSData, SBRemoteNotificationAlert, NSString, NSDate;
+@class NSDictionary, NSData, NSString, NSDate;
 
 @interface SBRemoteNotificationClient : NSObject <NSCoding> {
 	NSString *_bundleIdentifier;
@@ -20,11 +20,9 @@
 	NSDate *_missingDate;
 	BOOL _hasShownSystemwideEnableAlert;
 	NSDictionary *_lastUserInfo;
-	SBRemoteNotificationAlert *_currentAlertItem;
 }
 @property(assign, nonatomic) int appEnabledTypes;
 @property(readonly, retain, nonatomic) NSString *bundleIdentifier;
-@property(retain, nonatomic) SBRemoteNotificationAlert *currentAlertItem;
 @property(retain, nonatomic) NSString *environment;
 @property(assign, nonatomic) BOOL hasShownSystemwideEnableAlert;
 @property(retain, nonatomic) NSData *lastKnownDeviceToken;

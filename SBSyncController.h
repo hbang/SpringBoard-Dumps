@@ -6,29 +6,31 @@
  */
 
 #import <Foundation/NSObject.h>
-#import "SpringBoard-Structs.h"
 
+@class NSTimer;
 
 @interface SBSyncController : NSObject {
 	int _syncState;
 	int _restoreState;
 	int _resetState;
 	int _sofwareUpdateState;
-	CFMachPortRef _backupAgentCFPort;
+	int _restoreTimerState;
+	NSTimer *_restoreTimer;
 	BOOL _showingResetUI;
 }
 + (id)sharedInstance;
 - (void)_delayedBeginReset;
 - (void)_delayedQuitApplications;
-- (void)_didEndRestoringWithRestoreFailed;
-- (void)_invalidateBackupAgentCFPort;
+- (void)_invalidateRestoreTimer;
+- (BOOL)_isBackupAgentRunning;
 - (void)_killApplications;
 - (void)_notifyAppsSyncWillBegin;
 - (void)_notifyRestoreCanProceed;
 - (void)_rebootNow;
 - (void)_resetEnded:(id)ended;
 - (void)_resetStarted:(id)started;
-- (BOOL)_setupBackupAgentPort;
+- (void)_restoreTimerFired:(id)fired;
+- (void)_setupRestoreTimer;
 - (void)beginResetting:(BOOL)resetting;
 - (void)beginRestoring;
 - (void)beginSyncing;

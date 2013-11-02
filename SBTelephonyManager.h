@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
 
-@class NSString;
+@class NSString, NSTimer, RadiosPreferences;
 
 @interface SBTelephonyManager : NSObject {
 	void *_suspendDormancyAssertion;
@@ -20,19 +20,26 @@
 	unsigned _pretendingToSearch : 1;
 	unsigned _callForwardingIndicator : 2;
 	unsigned _usingWirelessModem : 1;
+	NSString *_inCallStatusPreamble;
+	NSTimer *_inCallTimer;
+	RadiosPreferences *_radioPrefs;
 }
 + (id)sharedTelephonyManager;
++ (id)sharedTelephonyManagerCreatingIfNecessary:(BOOL)necessary;
 - (id)init;
 - (BOOL)EDGEIsOn;
 - (BOOL)MALoggingEnabled;
 - (void)SBTelephonyDaemonRestartHandler;
 - (id)SIMStatus;
+- (void)_avSystemControllerDidError:(id)_avSystemController;
 - (void)_cancelFakeService;
 - (void)_delayedAudioResume;
 - (id)_fetchOperatorName;
 - (void)_headphoneChanged:(id)changed;
+- (void)_postStartupNotification;
 - (BOOL)_pretendingToSearch;
 - (void)_proximityChanged:(id)changed;
+- (id)_radioPrefs;
 - (void)_reallySetOperatorName:(id)name;
 - (void)_resetCTMMode;
 - (CTServerConnectionRef)_serverConnection;
@@ -51,7 +58,6 @@
 - (int)callForwardingIndicator;
 - (BOOL)callWouldUseReceiver:(BOOL)receiver;
 - (void)carrierBundleChanged;
-- (BOOL)cellularRadioCapabilityIsActive;
 - (void)checkForRegistrationSoon;
 - (void)configureForTTY:(BOOL)tty;
 - (void)copyICCID:(id *)iccid IMEI:(id *)imei;
@@ -69,8 +75,10 @@
 - (double)inCallDuration;
 - (BOOL)inCallUsingReceiver;
 - (BOOL)incomingCallExists;
+- (BOOL)isInAirplaneMode;
 - (BOOL)isNetworkRegistrationEnabled;
-- (BOOL)isUsingDataConnection;
+- (BOOL)isTTYEnabled;
+- (BOOL)isUsingSlowDataConnection;
 - (BOOL)isUsingVPNConnection;
 - (BOOL)isUsingWiFiConnection;
 - (BOOL)isUsingWirelessModem;
@@ -79,7 +87,6 @@
 - (void)operatorBundleChanged;
 - (id)operatorName;
 - (BOOL)outgoingCallExists;
-- (void)powerOffRadio;
 - (int)registrationCauseCode;
 - (int)registrationStatus;
 - (void)setCallForwardingIndicator:(int)indicator;
@@ -100,8 +107,9 @@
 - (void)updateCalls;
 - (BOOL)updateLocale;
 - (BOOL)updateNetworkLocale;
-- (void)updatePhoneNumberPrefs;
 - (void)updateSpringBoard;
+- (void)updateStatusBarCallDuration;
+- (void)updateStatusBarCallState:(BOOL)state;
 - (void)updateTTYIndicator;
 - (id)urlWithScheme:(id)scheme fromDialingNumber:(id)dialingNumber abUID:(int)uid urlPathAddition:(id)addition;
 @end

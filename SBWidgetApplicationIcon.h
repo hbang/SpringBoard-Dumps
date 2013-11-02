@@ -5,7 +5,6 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBApplicationIcon.h"
 
 @class UIWebClip;
@@ -14,9 +13,11 @@
 	UIWebClip *_webClip;
 }
 - (id)initWithApplication:(id)application;
-- (BOOL)allowsCloseBox;
+- (BOOL)allowsUninstall;
 - (void)completeUninstall;
 - (void)dealloc;
+- (id)folderFallbackTitle;
+- (id)folderTitleOptions;
 - (id)generateIconImage:(int)image;
 - (BOOL)shouldEllipsizeLabel;
 - (id)uninstallAlertBody;

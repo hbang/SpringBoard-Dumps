@@ -9,17 +9,17 @@
 #import "UITextFieldDelegate.h"
 #import "SBAlertDisplay.h"
 
-@class UITextField, TPBottomButtonBar, UITransitionView, UIScroller, UIProgressIndicator, SBTextDisplayView;
+@class UIScrollView, UIActivityIndicatorView, SBTextDisplayView, UITextField, TPBottomButtonBar, UITransitionView;
 
 @interface SBUSSDAlertDisplay : SBAlertDisplay <UITextFieldDelegate> {
 	TPBottomButtonBar *_responseBar;
 	UIView *_notifyView;
 	UIView *_replyView;
 	UITransitionView *_transitionView;
-	UIScroller *_scroller;
+	UIScrollView *_scroller;
 	SBTextDisplayView *_contentView;
 	SBTextDisplayView *_charsRemainingView;
-	UIProgressIndicator *_progressIndicator;
+	UIActivityIndicatorView *_progressIndicator;
 	UITextField *_responseField;
 	BOOL _allowsResponse;
 }
@@ -38,7 +38,6 @@
 - (BOOL)allowsResponse;
 - (void)dealloc;
 - (void)displayString:(id)string centerVertically:(BOOL)vertically;
-- (void)navigationBar:(id)bar buttonClicked:(int)clicked;
 - (void)setAllowsResponse:(BOOL)response;
 - (BOOL)textField:(id)field shouldInsertText:(id)text replacingRange:(NSRange)range;
 @end

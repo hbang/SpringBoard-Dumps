@@ -5,17 +5,17 @@
  * Source: (null)
  */
 
+#import "UIAlertViewDelegate.h"
 #import "SBAlertItem.h"
-#import "UIModalViewDelegate.h"
 
 @class SBApplicationIcon;
 
-@interface SBAppProfileNotTrustedAlertItem : SBAlertItem <UIModalViewDelegate> {
+@interface SBAppProfileNotTrustedAlertItem : SBAlertItem <UIAlertViewDelegate> {
 	SBApplicationIcon *_icon;
 	BOOL _launchApp;
 }
 - (id)initWithIcon:(id)icon;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;

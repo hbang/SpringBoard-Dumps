@@ -14,7 +14,6 @@
 	NSString *_title;
 }
 - (id)initWithTitle:(id)title bodyText:(id)text;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 @end

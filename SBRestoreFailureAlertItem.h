@@ -9,12 +9,15 @@
 
 
 @interface SBRestoreFailureAlertItem : SBAlertItem {
+	BOOL _runningModal;
 }
 - (void)_rebootNow;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (void)alertView:(id)view didDismissWithButtonIndex:(int)buttonIndex;
 - (BOOL)allowMenuButtonDismissal;
 - (double)autoDismissInterval;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
+- (void)didPresentAlertView:(id)view;
 - (void)performUnlockAction;
 - (void)restartSystemEvent;
 - (BOOL)shouldShowInLockScreen;

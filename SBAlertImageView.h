@@ -5,16 +5,17 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIView.h>
 
-@class UILabel, UIImageView;
+@class UIImageView, UILabel;
 
 @interface SBAlertImageView : UIView {
 	UIImageView *_imageView;
 	UILabel *_labelView;
 }
 - (id)initWithFrame:(CGRect)frame errorString:(id)string;
+- (void)dealloc;
 - (void)layoutSubviews;
 @end
 

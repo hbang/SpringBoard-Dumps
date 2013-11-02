@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
-@class NSMutableArray, NSLock;
+@class NSLock, NSMutableArray;
 
 @interface SBAccelerometerInterface : NSObject {
 	NSLock *_lock;

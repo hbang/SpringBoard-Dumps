@@ -6,14 +6,14 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIPushButton.h>
+#import <UIKit/UIButton.h>
 
 
-@interface SBNowPlayingAlertItemPushButton : UIPushButton {
+@interface SBNowPlayingAlertItemPushButton : UIButton {
 	float _yOffset;
 	float _xOffset;
 }
-- (id)initWithImage:(id)image;
++ (id)newButtonWithImage:(id)image;
 - (CGRect)hitRect;
 - (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;
 - (void)setXOffset:(float)offset;

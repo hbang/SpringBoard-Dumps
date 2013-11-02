@@ -29,9 +29,12 @@
 - (void)_untag;
 - (id)address;
 - (id)alertImageData;
+- (id)alertItemNotificationDate;
+- (id)alertItemNotificationSender;
+- (int)alertItemNotificationType;
 - (id)alertSheet;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (Class)alertSheetClass;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (int)bodyTextAlignmentForAlertSheet:(id)alertSheet displayedLineCount:(int)count;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
@@ -46,7 +49,7 @@
 - (void)setMessage:(id)message;
 - (BOOL)shouldShowInEmergencyCall;
 - (void)willActivate;
-- (void)willPresentAlertSheet:(id)sheet;
+- (void)willPresentAlertView:(id)view;
 - (BOOL)willShowInAwayItems;
 @end
 

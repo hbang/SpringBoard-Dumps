@@ -7,17 +7,24 @@
 
 #import "SBAlertItem.h"
 
-@class NSString;
+@class NSString, NSDate;
 
 @interface SBVoiceMailAlertItem : SBAlertItem {
 	BOOL _isForVisualVoicemail;
 	unsigned _recordUID;
 	NSString *_title;
 	NSString *_body;
+	NSString *_rawSender;
+	NSDate *_date;
 }
+@property(retain, nonatomic) NSDate *date;
+@property(retain, nonatomic) NSString *rawSender;
 - (void)_launchPhoneAndDisplayVoicemailRecord:(int)record;
 - (void)_performAppropriateListenAction;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (id)alertItemNotificationDate;
+- (id)alertItemNotificationSender;
+- (int)alertItemNotificationType;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (id)bodyText;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;

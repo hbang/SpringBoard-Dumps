@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlert.h"
 
 @class NSTimer;
 
@@ -17,7 +17,7 @@
 }
 + (void)_daemonRestart:(id)restart;
 + (void)_newSIM:(id)sim;
-+ (id)errorStringForCode:(unsigned)code;
++ (id)errorStringForCode:(id)code;
 + (void)registerForAlerts;
 + (void)registerForSettingsAlerts;
 + (void)test;

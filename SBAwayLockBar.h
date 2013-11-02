@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <TelephonyUI/TPBottomLockBar.h>
+#import "SpringBoard-Structs.h"
 
-@class NSMutableDictionary, UIButton;
+@class UIButton, NSMutableDictionary;
 
 @interface SBAwayLockBar : TPBottomLockBar {
 	UIButton *_bluetoothButton;

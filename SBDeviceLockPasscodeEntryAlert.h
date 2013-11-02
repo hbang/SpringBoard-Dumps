@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlert.h"
 
 
 @interface SBDeviceLockPasscodeEntryAlert : SBAlert {
@@ -14,6 +14,6 @@
 + (id)sharedInstance;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)deactivate;
-- (int)statusBarMode;
+- (int)statusBarStyle;
 @end
 

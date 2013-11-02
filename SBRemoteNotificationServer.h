@@ -6,22 +6,18 @@
  */
 
 #import <Foundation/NSObject.h>
+#import "SBRemoteLocalNotificationAlertDelegate.h"
 #import "APSConnectionDelegate.h"
 
-@class NSString, NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 
-@interface SBRemoteNotificationServer : NSObject <APSConnectionDelegate> {
+@interface SBRemoteNotificationServer : NSObject <APSConnectionDelegate, SBRemoteLocalNotificationAlertDelegate> {
 	NSMutableDictionary *_bundleIdentifiersToClients;
 	NSMutableDictionary *_environmentsToConnections;
-	unsigned _lastPlayedAlertSound;
 	NSString *_lastNotificationReceivedBundleIdentifier;
 }
 + (id)sharedInstance;
 - (id)init;
-- (id)_clientsArchivePath;
-- (id)_localizedStringFromKey:(id)key defaultValue:(id)value inBundle:(id)bundle arguments:(id)arguments;
-- (void)_playAlertSound:(BOOL)sound soundName:(id)name inBundle:(id)bundle;
-- (void)_purgeMissingClients;
 - (id)allAppEnabledTypeValues;
 - (id)allSettingsEnabledTypeValues;
 - (void)calculateTopics;
@@ -35,12 +31,10 @@
 - (id)lastNotificationReceivedBundleIdentifier;
 - (void)noteApplicationFinishedLaunching:(id)launching;
 - (void)registerApplication:(id)application forEnvironment:(id)environment withTypes:(int)types;
-- (void)remoteNotificationAlertWasDismissedForApplication:(id)application launched:(BOOL)launched;
+- (void)remoteLocalNotificationAlertShouldLaunch:(id)remoteLocalNotificationAlert forApplication:(id)application;
 - (void)run;
-- (void)saveClientState;
 - (void)setSettingsTypes:(int)types forBundleIdentifier:(id)bundleIdentifier;
 - (void)setSystemwideEnabled:(BOOL)enabled;
-- (void)stopPlayingAlertSound;
 - (void)unregisterApplication:(id)application;
 @end
 

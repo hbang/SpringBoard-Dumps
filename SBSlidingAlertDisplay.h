@@ -5,13 +5,14 @@
  * Source: (null)
  */
 
-#import "SBAlertDisplay.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlertDisplay.h"
 
-@class UIImageView, SBEmergencyCallView, SBDeviceLockView;
+@class SBEmergencyCallView, UIImageView, SBDeviceLockView, UIImage;
 
 @interface SBSlidingAlertDisplay : SBAlertDisplay {
 	UIImageView *_backgroundView;
+	UIImage *_defaultDesktopImage;
 	UIView *_topBar;
 	UIView *_bottomBar;
 	UIView *_overlayView;
@@ -27,34 +28,38 @@
 	unsigned _showingDeviceUnlockFailure : 1;
 	unsigned _isDisplayingWallpaper : 1;
 	int _currentOrientation;
+	CGAffineTransform _originalStatusBarTransform;
 }
-+ (id)createBottomBarForInstance:(id)instance;
-+ (id)createTopBarForInstance:(id)instance;
++ (id)newBottomBarForInstance:(id)instance;
++ (id)newTopBarForInstance:(id)instance;
 + (void)setDisplayPropertiesForActivationOfAlert:(id)alert;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_animateToHidingOrShowingDeviceLockFinished;
 - (void)_animateView:(id)view direction:(int)direction;
 - (void)_clearUnlockFailedIndicator;
+- (id)_defaultDesktopImage;
 - (void)_enableEntry;
 - (void)_entryFinishedWithPassword:(id)password;
 - (void)_fadeOutCompleted:(id)completed;
 - (void)_fadeOutCompletedWithDisplayDisablingIconUnscatter:(BOOL)displayDisablingIconUnscatter;
-- (BOOL)_isShowingWallpaper;
+- (void)_moveTopBarForDoubleHeightStatusBar:(BOOL)doubleHeightStatusBar;
 - (void)_resetStatusTextView;
 - (void)_setTopBarImage:(id)image shadowColor:(id)color;
 - (BOOL)_shouldZoomDeviceLockView;
 - (void)_showUnlockFailedIndicator;
 - (id)_topBarLCDImage;
 - (id)_topBarLCDShadow;
+- (void)_updateDeviceLockFrameForDoubleHeightStatusBar:(BOOL)doubleHeightStatusBar;
 - (void)_updateOverlayViewFrame;
 - (void)_zoomInDeviceLockViewWithDelay:(double)delay;
 - (void)_zoomOutDeviceLockViewWithDelay:(double)delay;
 - (void)alertDisplayWillBecomeVisible;
+- (void)alertWindowResizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame2;
 - (void)animateDisplayIn:(float)anIn middleDelay:(float)delay animateStatusBar:(BOOL)bar;
 - (void)animateFromEmergencyCallWithDuration:(float)duration;
 - (void)animateToEmergencyCall;
 - (void)animateToHidingDeviceLockFinished;
-- (void)animateToShowingDeviceLock:(BOOL)showingDeviceLock;
+- (void)animateToShowingDeviceLock:(BOOL)showingDeviceLock duration:(float)duration;
 - (void)animateToShowingDeviceLockFinished;
 - (void)beginAnimatingDisplayIn:(BOOL)anIn;
 - (id)bottomBar;
@@ -83,6 +88,7 @@
 - (BOOL)isFullscreen;
 - (BOOL)isReadyToBeRemovedFromView;
 - (BOOL)isShowingDeviceLock;
+- (BOOL)isShowingWallpaper;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)leftNavigationButtonPressed;
 - (id)lockBar;

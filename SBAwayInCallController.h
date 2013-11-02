@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
-@class TPLCDView, UIImage, NSString, NSTimer;
+@class UIImage, NSString, NSTimer, TPLCDView;
 
 @interface SBAwayInCallController : NSObject {
 	TPLCDView *_lcdView;
@@ -23,7 +23,7 @@
 - (id)callerImage;
 - (BOOL)callerImageIsFullScreen;
 - (void)dealloc;
-- (void)fetchCallInformation:(id *)information name:(id *)name label:(id *)label image:(id *)image isFullScreen:(BOOL *)screen;
+- (void)fetchCallInformation:(id *)information name:(id *)name label:(id *)label image:(id *)image isFullScreen:(BOOL *)screen wantsHighResolution:(BOOL)resolution;
 - (void)reload;
 - (void)setShowsInCallInfo:(BOOL)callInfo;
 - (void)updateDuration;

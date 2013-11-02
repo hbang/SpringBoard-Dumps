@@ -8,13 +8,15 @@
 #import <Foundation/NSObject.h>
 #import "SSDownloadQueueObserver.h"
 
-@class SSDownloadQueue;
+@class NSMutableSet, SSDownloadQueue;
 
 @interface SBDownloadController : NSObject <SSDownloadQueueObserver> {
 	SSDownloadQueue *_downloadQueue;
+	NSMutableSet *_pendingDownloadRemovals;
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_delayedDownloadQueueChange;
 - (void)_showDownloadQueueError;
 - (BOOL)checkQueue;
 - (id)currentDownloads;

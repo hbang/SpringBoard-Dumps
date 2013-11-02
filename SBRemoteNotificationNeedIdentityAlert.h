@@ -13,10 +13,9 @@
 	SBApplication *_app;
 }
 - (id)initWithApplication:(id)application;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (BOOL)dimissOnAlertActivation;
+- (BOOL)dismissOnAlertActivation;
 - (BOOL)dismissOnLock;
 @end
 

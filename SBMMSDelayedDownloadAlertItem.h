@@ -14,7 +14,7 @@
 	int _messageCount;
 }
 - (void)_showNetworkPrefs;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)setMessage:(id)message;

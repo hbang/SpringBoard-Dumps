@@ -6,11 +6,11 @@
  */
 
 #import "SBFlippyAlertItem.h"
-#import "UIModalViewDelegate.h"
+#import "UIAlertViewDelegate.h"
 
 @class MPAudioDeviceController;
 
-@interface SBNowPlayingAlertItem : SBFlippyAlertItem <UIModalViewDelegate> {
+@interface SBNowPlayingAlertItem : SBFlippyAlertItem <UIAlertViewDelegate> {
 	unsigned _beganSeeking : 1;
 	unsigned _deferLayout : 1;
 	unsigned _needsLayout : 1;
@@ -21,34 +21,37 @@
 - (void)_changeTrackButtonEndSeek:(id)seek;
 - (void)_changeTrackButtonTouchPause:(id)pause;
 - (void)_changeTrackButtonUp:(id)up;
-- (id)_createButtonWithImage:(id)image action:(SEL)action tag:(int)tag;
+- (id)_newButtonWithImage:(id)image action:(SEL)action tag:(int)tag;
 - (void)_nowPlayingChanged:(id)changed;
 - (void)_playPauseButtonAction:(id)action;
+- (void)_registerForMuteNotifications;
 - (void)_registerForNowPlayingNotifications;
 - (void)_registerForVolumeNotifications;
+- (void)_systemMuteStatusChanged:(id)changed;
 - (void)_systemVolumeChanged:(id)changed;
+- (void)_unregisterForMuteNotifications;
 - (void)_unregisterForNowPlayingNotifications;
 - (void)_unregisterForVolumeNotifications;
 - (void)_updateLabelWithTag:(int)tag text:(id)text faded:(BOOL)faded cursor:(float *)cursor sheet:(id)sheet;
 - (void)_volumeChange:(id)change;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowMenuButtonDismissal;
 - (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
 - (void)audioDeviceControllerMediaServerDied:(id)died;
 - (void)audioRoutingPicker:(id)picker didSelectRouteAtIndex:(int)index;
 - (Class)backAlertSheetClass;
 - (void)configureFront:(BOOL)front requirePasscodeForActions:(BOOL)actions;
-- (id)createBackAlertSheet;
-- (id)createCenteredLabel:(BOOL)label;
-- (id)createFrontAlertSheet;
 - (void)dealloc;
-- (void)didPresentModalView:(id)view;
-- (BOOL)dimissOnAlertActivation;
+- (void)didPresentAlertView:(id)view;
+- (BOOL)dismissOnAlertActivation;
 - (BOOL)dismissOnLock;
 - (Class)frontAlertSheetClass;
+- (id)newBackAlertSheet;
+- (id)newCenteredLabel:(BOOL)label;
+- (id)newFrontAlertSheet;
 - (void)updateInformation;
 - (void)willActivate;
 - (void)willDeactivateForReason:(int)reason;
-- (void)willPresentModalView:(id)view;
+- (void)willPresentAlertView:(id)view;
 @end
 

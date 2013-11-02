@@ -11,8 +11,8 @@
 
 @interface SBCallFailureAlertDisplay : SBSlidingAlertDisplay {
 }
-+ (id)createBottomBarForInstance:(id)instance;
-+ (id)createTopBarForInstance:(id)instance;
++ (id)newBottomBarForInstance:(id)instance;
++ (id)newTopBarForInstance:(id)instance;
 - (void)callBack:(id)back;
 - (void)ignore:(id)ignore;
 - (void)setAlert:(id)alert;

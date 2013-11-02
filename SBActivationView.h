@@ -5,14 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIView.h>
 
-@class SBStatusBarBatteryView;
 
 @interface SBActivationView : UIView {
 	UIView *_backgroundView;
-	SBStatusBarBatteryView *_batteryView;
 	int _mode;
 }
 - (id)initWithFrame:(CGRect)frame mode:(int)mode;

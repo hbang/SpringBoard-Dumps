@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
-@class SBApplication, NSString, SBProxyRemoteView;
+@class NSString, SBProxyRemoteView, SBApplication;
 
 @interface SBRemoteViewInfo : NSObject {
 	NSString *_remoteViewIdentifier;

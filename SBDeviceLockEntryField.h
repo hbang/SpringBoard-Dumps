@@ -9,7 +9,7 @@
 #import <UIKit/UIView.h>
 #import "UIKeyInput.h"
 
-@class UIPasscodeField, UITextInputTraits, NSString;
+@class NSString, UIPasscodeField, UITextInputTraits;
 
 @interface SBDeviceLockEntryField : UIView <UIKeyInput> {
 	int _style;
@@ -42,6 +42,7 @@
 - (void)forwardInvocation:(id)invocation;
 - (BOOL)hasText;
 - (void)insertText:(id)text;
+- (BOOL)isFirstResponder;
 - (id)methodSignatureForSelector:(SEL)selector;
 - (id)passcodeField;
 - (BOOL)passcodeField:(id)field shouldInsertText:(id)text;

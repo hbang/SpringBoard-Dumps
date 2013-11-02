@@ -7,7 +7,7 @@
 
 #import "SBAlertItem.h"
 
-@class AVController, NSDictionary, NSString, NSTimer;
+@class NSDictionary, AVController, UIImage, NSString, NSTimer;
 
 @interface SBUserNotificationAlert : SBAlertItem {
 	unsigned _replyPort;
@@ -38,6 +38,9 @@
 	double _creationTime;
 	int _defaultButtonTag;
 	unsigned _replyFlags;
+	int _defaultButtonIndex;
+	int _alternateButtonIndex;
+	int _otherButtonIndex;
 	unsigned _cancel : 1;
 	unsigned _isActivated : 1;
 	unsigned _aboveLock : 1;
@@ -47,15 +50,17 @@
 	unsigned _allowMenuButtonDismissal : 1;
 	unsigned _oneButtonPerLine : 1;
 	unsigned _groupsTextFields : 1;
+	UIImage *_alertImage;
 	AVController *_avController;
 }
 - (id)initWithMessage:(id)message replyPort:(unsigned)port requestFlags:(int)flags;
+- (BOOL)_needsDismissalWithClickedButtonIndex:(int)clickedButtonIndex;
 - (id)_safeLocalizedValue:(id)value withBundle:(id)bundle;
 - (void)_sendResponse:(int)response;
 - (void)_setSheetDefaultButtonTitle:(id)title;
 - (void)_textFieldButtonPressed:(id)pressed;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (Class)alertSheetClass;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowMenuButtonDismissal;
 - (void)cancel;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

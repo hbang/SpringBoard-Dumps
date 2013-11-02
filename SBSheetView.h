@@ -7,7 +7,7 @@
 
 #import <UIKit/UIView.h>
 
-@class SBApplication, SBProxyRemoteView;
+@class SBProxyRemoteView, SBApplication;
 
 @interface SBSheetView : UIView {
 	SBProxyRemoteView *_remoteProxyView;

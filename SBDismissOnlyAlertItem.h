@@ -15,7 +15,6 @@
 	double _autoDismissInterval;
 }
 - (id)initWithTitle:(id)title body:(id)body;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (double)autoDismissInterval;
 - (id)bodyText;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

@@ -7,18 +7,18 @@
 
 #import "SBAlertItem.h"
 
-@class UIModalView;
+@class UIAlertView;
 
 @interface SBFlippyAlertItem : SBAlertItem {
-	UIModalView *_frontAlertSheet;
-	UIModalView *_backAlertSheet;
+	UIAlertView *_frontAlertSheet;
+	UIAlertView *_backAlertSheet;
 	BOOL _showingBack;
 	BOOL _isLocked;
 	BOOL _requirePasscode;
 }
 - (id)alertSheet;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (Class)alertSheetClass;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)animationDidStop:(id)animation finished:(BOOL)finished;
 - (id)backAlertSheet;
 - (Class)backAlertSheetClass;
@@ -26,11 +26,11 @@
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)configureBack:(BOOL)back requirePasscodeForActions:(BOOL)actions;
 - (void)configureFront:(BOOL)front requirePasscodeForActions:(BOOL)actions;
-- (id)createBackAlertSheet;
-- (id)createFrontAlertSheet;
 - (void)dealloc;
 - (void)flip;
 - (id)frontAlertSheet;
 - (Class)frontAlertSheetClass;
+- (id)newBackAlertSheet;
+- (id)newFrontAlertSheet;
 @end
 

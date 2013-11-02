@@ -7,7 +7,7 @@
 
 #import <UIKit/UIView.h>
 
-@class SBApplication, NSString;
+@class NSString, SBApplication;
 
 @interface SBProxyRemoteView : UIView {
 	id _delegate;

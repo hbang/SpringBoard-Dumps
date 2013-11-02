@@ -7,13 +7,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSTimer, CPAggregateDictionary, NSString;
+@class CPAggregateDictionary, NSMutableDictionary, NSTimer;
 
 @interface SBAggregateDCommunicator : NSObject {
 	CPAggregateDictionary *_dictionary;
 	NSTimer *_periodicFlushTimer;
-	NSString *_lastApplicationActivatedIdentifier;
-	double _lastApplicationActivatedTime;
+	NSMutableDictionary *_applicationLastStateTime;
 	double _backlightOnStartTime;
 	BOOL _backlightOnStartTimeWasOnBattery;
 	BOOL _backlightOnStartTimeIsValid;
@@ -26,7 +25,6 @@
 	double _vpnUsageStartTime;
 	BOOL _vpnUsageStartTimeIsValid;
 }
-@property(retain, nonatomic) NSString *lastApplicationActivatedIdentifier;
 + (id)sharedInstance;
 - (id)init;
 - (void)_batteryStatusChanged:(id)changed;
@@ -40,13 +38,15 @@
 - (void)_startVPNConnectionTimer;
 - (void)_stopVPNConnectionTimer;
 - (void)dealloc;
-- (void)reportApplicationActivated:(id)activated;
-- (void)reportApplicationDeactivated:(id)deactivated;
-- (void)reportApplicationQuit:(id)quit;
+- (void)reportAppSwitcherActivated;
+- (void)reportApplicationState:(id)state oldState:(unsigned)state2 newState:(unsigned)state3;
 - (void)reportCallDuration:(double)duration connectionType:(int)type;
 - (void)reportConnectionTypeChanged;
+- (void)reportCurrentThemalLevel:(int)level;
 - (void)reportDeviceHasAwoken;
 - (void)reportDeviceWillSleep;
+- (void)reportDiskUsage;
+- (void)reportNANDUsage;
 - (void)reportScreenHasDimmed;
 - (void)reportScreenHasUndimmed;
 - (void)reportVPNStatusChanged;

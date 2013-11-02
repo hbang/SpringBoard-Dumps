@@ -12,7 +12,7 @@
 @interface SBDeviceLockViewWithKeypadWildcat : SBDeviceLockViewWithKeypad {
 	UIView *_bottomContainer;
 }
-- (id)initWithStyle:(int)style interfaceOrientation:(int)orientation;
+- (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (void)dealloc;
 - (id)keypadView;
 @end

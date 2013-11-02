@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIView.h>
 
-@class SBAwayMediaControlsView, TPLCDTextView, UILabel, NSString, NSTimer;
+@class TPLCDTextView, UILabel, NSString, NSTimer, SBAwayMediaControlsView;
 @protocol SBAwayDateViewDelegate;
 
 @interface SBAwayDateView : UIView {
@@ -33,10 +33,10 @@
 - (id)initWithFrame:(CGRect)frame;
 - (id)controlsView;
 - (void)dealloc;
+- (void)didMoveToSuperview;
 - (BOOL)isShowingControls;
 - (id)labelWithFontSize:(float)fontSize origin:(CGPoint)origin;
 - (id)labelWithFontSize:(float)fontSize origin:(CGPoint)origin fontName:(const char *)name;
-- (void)movedToSuperview:(id)superview;
 - (id)newNowPlayingLabelWithFont:(id)font color:(id)color origin:(CGPoint)origin;
 - (void)removeFromSuperview;
 - (void)resizeNowPlayingLabels;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIView.h>
 
-@class UILabel, UIImageView, UIImage;
+@class UIImageView, UILabel, UIImage;
 
 @interface SBBatteryChargingView : UIView {
 	int _type;

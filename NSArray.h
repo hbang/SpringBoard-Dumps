@@ -9,6 +9,7 @@
 
 
 @interface NSArray (AlertItemsAdditions)
+- (void)addObjectsOfClass:(Class)aClass toArray:(id)array;
 - (id)objectOfClass:(Class)aClass;
 @end
 
