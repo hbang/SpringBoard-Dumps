@@ -5,16 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconAnimationSettings.h"
 
-@class SBFAnimationSettings;
 
 __attribute__((visibility("hidden")))
-@interface SBIconZoomSettings : XXUnknownSuperclass {
-	SBFAnimationSettings *_centralAnimationSettings;
+@interface SBIconZoomSettings : SBIconAnimationSettings {
 }
-@property(retain) SBFAnimationSettings *centralAnimationSettings;
 + (id)settingsControllerModule;
-- (void)setDefaultValues;
 @end
 

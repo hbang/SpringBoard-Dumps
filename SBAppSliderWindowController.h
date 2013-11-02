@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIActiveOrientationObserver.h"
 
-@class UIWindow, UIViewController, NSMutableSet, SBAppSliderWindow;
+@class UIWindow, UIViewController, SBAppSliderWindow, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSliderWindowController : XXUnknownSuperclass <SBUIActiveOrientationObserver> {

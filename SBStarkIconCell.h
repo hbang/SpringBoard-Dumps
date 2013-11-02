@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBCollectionViewCell.h"
 
-@class UIView, SBStarkIconImageView, SBIcon;
+@class SBIcon, UIView, SBStarkIconImageView;
 @protocol SBIconAccessoryView, SBStarkIconCellDelegate;
 
 __attribute__((visibility("hidden")))

@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBControlCenterObserver.h"
 #import "SBIconImageView.h"
+#import "SBControlCenterObserver.h"
 
 
 __attribute__((visibility("hidden")))

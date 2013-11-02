@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBPasscodeEntryAlertViewController, SBLockScreenViewControllerBase, NSHashTable, SBPasscodeLockDisableAssertion, NSMutableSet;
+@class SBPasscodeEntryAlertViewController, SBLockScreenViewControllerBase, SBPasscodeLockDisableAssertion, NSHashTable, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenManager : XXUnknownSuperclass {

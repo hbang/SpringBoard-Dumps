@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIDynamicAnimatorDelegate.h"
 #import "SBResponderTouchDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 
-@class UIDynamicAnimator, SBBouncingItem, UIGestureRecognizer, SBBounceBehavior, NSMutableSet, SBBouncingSystem, SBBounceSettings, NSSet, UIView;
+@class SBBounceBehavior, SBBounceSettings, NSMutableSet, NSSet, UIView, SBBouncingSystem, SBBouncingItem, UIDynamicAnimator, UIGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenBounceAnimator : XXUnknownSuperclass <UIDynamicAnimatorDelegate, _UISettingsKeyObserver, SBResponderTouchDelegate> {

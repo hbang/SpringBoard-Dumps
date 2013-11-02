@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, UILabel, UIView;
+@class UIView, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchTableHeaderView : XXUnknownSuperclass {

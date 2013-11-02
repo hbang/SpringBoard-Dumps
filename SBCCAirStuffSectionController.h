@@ -5,15 +5,15 @@
  * Source: (null)
  */
 
+#import "SBControlCenterSectionViewController.h"
 #import "SFAirDropDiscoveryControllerDelegate.h"
 #import "SFAirDropDiscoveryActionSheetDelegate.h"
 #import "UIActionSheetDelegate.h"
-#import "SBControlCenterSectionViewController.h"
 #import "SpringBoard-Structs.h"
 #import "MPAudioVideoRoutingViewControllerDelegate.h"
 #import "UIPopoverControllerDelegate.h"
 
-@class SBCCButtonLikeSectionView, MPAudioVideoRoutingActionSheet, MPAudioVideoRoutingViewController, MPAudioVideoRoutingPopoverController, SFAirDropDiscoveryController, BKSTimer;
+@class MPAudioVideoRoutingActionSheet, MPAudioVideoRoutingViewController, MPAudioVideoRoutingPopoverController, SFAirDropDiscoveryController, BKSTimer, SBCCButtonLikeSectionView;
 
 __attribute__((visibility("hidden")))
 @interface SBCCAirStuffSectionController : SBControlCenterSectionViewController <MPAudioVideoRoutingViewControllerDelegate, UIPopoverControllerDelegate, SFAirDropDiscoveryControllerDelegate, SFAirDropDiscoveryActionSheetDelegate, UIActionSheetDelegate> {

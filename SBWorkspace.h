@@ -5,15 +5,15 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "BKSWorkspaceDelegate.h"
 #import "SBAlertManagerDelegate.h"
 #import "SBAlertManagerObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWorkspaceTransactionGroupDelegate.h"
 #import "SBStarkScreenManagerDelegate.h"
 #import "SBStarkScreenControllerDelegate.h"
 
-@class SBScreenTimeTrackingController, SBAlertManager, NSObject, SBWorkspaceEventQueueLockAssertion, NSTimer, BKSWorkspace, SBWorkspaceTransaction, NSMutableArray;
+@class NSTimer, SBWorkspaceTransaction, BKSWorkspace, NSMutableArray, SBScreenTimeTrackingController, SBAlertManager, SBWorkspaceEventQueueLockAssertion, NSObject;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))

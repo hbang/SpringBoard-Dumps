@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class NSString, SBProxyRemoteView, SBApplication;
+@class NSString, SBApplication, SBProxyRemoteView;
 
 __attribute__((visibility("hidden")))
 @interface SBRemoteViewInfo : XXUnknownSuperclass {

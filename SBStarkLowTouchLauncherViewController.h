@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBStarkLauncher.h"
 #import "SBStarkTouchLauncherObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBStarkTouchLauncherViewController, SBStarkIconListModel, SBStarkFakeIconOperationController, UIButton;
+@class UIButton, SBStarkIconListModel, SBStarkFakeIconOperationController, SBStarkTouchLauncherViewController;
 @protocol SBStarkAutoHideControlBarDelegate;
 
 __attribute__((visibility("hidden")))

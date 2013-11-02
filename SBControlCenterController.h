@@ -9,7 +9,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBControlCenterViewControllerDelegate.h"
 
-@class _UIBackdropView, SBControlCenterViewController, NSMutableSet, NSHashTable, SBApplication, SBControlCenterWindow, SBChevronView, SBControlCenterRootView, UIView;
+@class NSMutableSet, SBChevronView, NSHashTable, UIView, SBApplication, _UIBackdropView, SBControlCenterWindow, SBControlCenterRootView, SBControlCenterViewController;
 
 __attribute__((visibility("hidden")))
 @interface SBControlCenterController : XXUnknownSuperclass <SBControlCenterViewControllerDelegate> {
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_allowsShowTransition;
 - (void)_beginPresentation;
 - (float)_controlCenterHeightForTouchLocation:(CGPoint)touchLocation;
-- (id)_createDynamicAnimationForShow:(BOOL)show currentValue:(double)value velocity:(double)velocity;
+- (id)_createDynamicAnimationForShow:(BOOL)show currentValue:(double)value velocity:(double)velocity unitSize:(double)size;
 - (void)_dismissOnLock;
 - (void)_dismissWithDuration:(double)duration additionalAnimations:(id)animations completion:(id)completion;
 - (void)_endPresentation;

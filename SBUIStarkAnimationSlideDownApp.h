@@ -7,7 +7,7 @@
 
 #import "SBUIStarkScreenAnimationController.h"
 
-@class SBAlert, UIView;
+@class UIView, SBAlert;
 
 __attribute__((visibility("hidden")))
 @interface SBUIStarkAnimationSlideDownApp : SBUIStarkScreenAnimationController {

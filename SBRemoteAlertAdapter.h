@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlertAdapter.h"
 #import "_SBRemoteAlertHostViewControllerDelegate.h"
+#import "SBAlertAdapter.h"
 
 @class NSString, _SBRemoteAlertHostViewController;
 

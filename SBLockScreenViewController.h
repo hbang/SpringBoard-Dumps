@@ -5,6 +5,7 @@
  * Source: (null)
  */
 
+#import "SBLockScreenViewControllerBase.h"
 #import "SBLockScreenViewDelegate.h"
 #import "SBLockScreenTimerViewControllerDelegate.h"
 #import "SBLockScreenNotificationListDelegate.h"
@@ -14,10 +15,9 @@
 #import "SBLockScreenCameraControllerDelegate.h"
 #import "SBLockScreenPluginControllerDelegate.h"
 #import "SBWallpaperObserver.h"
-#import "SBLockScreenViewControllerBase.h"
 #import "SpringBoard-Structs.h"
 
-@class SBLockScreenResetRestoreViewController, SBLockScreenInfoOverlayViewController, SBLockScreenCameraController, SBLockScreenTemperatureWarningViewController, SBLockScreenModalAlertViewController, NSMutableArray, SBLockScreenNotificationListController, SBLockScreenBuddyViewController, SBLockScreenDateViewController, SBLockScreenBatteryChargingViewController, SBLockScreenFullscreenBulletinViewController, SBLockOverlayContext, SBLockScreenSystemAlertFullscreenViewController, SBLockScreenNowPlayingPluginController, MPUSystemMediaControlsViewController, SBLockScreenTimerViewController, SBLockScreenLegalViewController, SBLockScreenEmergencyCallViewController, SBLockScreenPluginController, SBLockScreenDeviceBlockViewController;
+@class SBLockScreenNowPlayingPluginController, MPUSystemMediaControlsViewController, SBLockScreenDeviceBlockViewController, SBLockScreenEmergencyCallViewController, SBLockScreenLegalViewController, SBLockScreenPluginController, SBLockScreenResetRestoreViewController, SBLockScreenInfoOverlayViewController, SBLockScreenCameraController, SBLockScreenNotificationListController, SBLockScreenTemperatureWarningViewController, SBLockScreenModalAlertViewController, SBLockScreenBatteryChargingViewController, NSMutableArray, SBLockScreenDateViewController, SBLockScreenBuddyViewController, SBLockScreenFullscreenBulletinViewController, SBLockScreenSystemAlertFullscreenViewController, SBLockScreenTimerViewController, SBLockOverlayContext;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenViewController : SBLockScreenViewControllerBase <SBLockScreenViewDelegate, SBLockScreenTimerViewControllerDelegate, SBLockScreenNotificationListDelegate, SBUIPasscodeLockViewDelegate_Internal, SBLockScreenBatteryChargingViewControllerDelegate, SBLockScreenInfoOverlayDelegate, SBWallpaperObserver, SBLockScreenCameraControllerDelegate, SBLockScreenPluginControllerDelegate> {
@@ -273,6 +273,7 @@ __attribute__((visibility("hidden")))
 - (void)wallpaperLegibilitySettingsDidChange:(id)wallpaperLegibilitySettings forVariant:(int)variant;
 - (BOOL)wantsPasscodeLockForUIUnlockFromSource:(int)source withOptions:(id)options;
 - (BOOL)wantsToHandleAlert:(id)handleAlert;
+- (BOOL)wantsToShowStatusBarTime;
 - (BOOL)wasAutoUnlocked;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;

@@ -10,7 +10,7 @@
 #import "SBIconObserver.h"
 #import "SBIconIndexNodeObserver.h"
 
-@class NSMutableArray, SBFolder, NSHashTable, NSMutableSet;
+@class SBFolder, NSMutableArray, NSHashTable, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderIcon : SBIcon <SBFolderObserver, SBIconObserver, SBIconIndexNodeObserver> {

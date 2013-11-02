@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, UIScreen;
+@class UIScreen, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBSnapshotImageInfo : XXUnknownSuperclass {

@@ -9,7 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_SBFVibrantView.h"
 
-@class UIColor, UIView, _SBFVibrantSettings;
+@class UIView, UIColor, _SBFVibrantSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBChevronView : XXUnknownSuperclass <_SBFVibrantView> {

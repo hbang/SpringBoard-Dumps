@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class UIView, SBLockScreenViewControllerBase, SBLockScreenClippedSlideController;
+@class UIView, SBLockScreenClippedSlideController, SBLockScreenViewControllerBase;
 
 __attribute__((visibility("hidden")))
 @interface SBUILockscreenSlideAnimationController : SBUIMainScreenAnimationController {

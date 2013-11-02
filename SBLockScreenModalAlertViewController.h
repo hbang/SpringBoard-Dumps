@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBLockScreenModalAlertView, NSMutableArray, SBAlertItem;
+@class NSMutableArray, SBLockScreenModalAlertView, SBAlertItem;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenModalAlertViewController : XXUnknownSuperclass {

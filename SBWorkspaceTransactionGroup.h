@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBWorkspaceTransaction.h"
 #import "SBWorkspaceTransactionDelegate.h"
+#import "SBWorkspaceTransaction.h"
 
 @class NSMutableArray, NSArray;
 @protocol SBWorkspaceTransactionGroupDelegate;

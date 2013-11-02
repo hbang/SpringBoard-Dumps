@@ -5,16 +5,16 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBSearchGestureObserver.h"
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SPSearchAgentDelegate.h"
 #import "UISearchBarDelegate.h"
 #import "SBSearchHeaderDelegate.h"
 
-@class UILabel, SBSearchResultsBackdropView, UITapGestureRecognizer, UIPanGestureRecognizer, UIImage, UIView, SBSearchHeader, UITableView;
+@class SBSearchHeader, UIView, SBSearchResultsBackdropView, UITableView, UILabel, UITapGestureRecognizer, UIPanGestureRecognizer, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchViewController : XXUnknownSuperclass <UITableViewDelegate, UITableViewDataSource, SPSearchAgentDelegate, SBSearchGestureObserver, UISearchBarDelegate, SBSearchHeaderDelegate> {
@@ -32,8 +32,10 @@ __attribute__((visibility("hidden")))
 	BOOL _hasShownBackgroundSinceLastClear;
 	id _fadeOutCompletionBlock;
 	BOOL _fadingOut;
+	BOOL _visible;
 }
 @property(readonly, assign, nonatomic, getter=isFadingOut) BOOL fadingOut;
+@property(readonly, assign, nonatomic, getter=isVisible) BOOL visible;
 + (id)sharedInstance;
 - (id)init;
 - (id)_auxiliaryTitleForABRecordID:(int)abrecordID;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBWorkspaceTransaction.h"
 #import "SBAlertManagerObserver.h"
+#import "SBWorkspaceTransaction.h"
 
 @class SBAlertManager, SBStarkScreenController;
 

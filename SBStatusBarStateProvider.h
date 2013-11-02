@@ -10,7 +10,7 @@
 #import "UIStatusBarStateProvider.h"
 #import "SpringBoard-Structs.h"
 
-@class NSHashTable, SBStatusBarStateAggregator;
+@class SBStatusBarStateAggregator, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface SBStatusBarStateProvider : XXUnknownSuperclass <SBStatusBarStateAggregatorPosting, UIStatusBarStateProvider> {

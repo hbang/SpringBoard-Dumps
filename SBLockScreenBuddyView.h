@@ -8,7 +8,7 @@
 #import "SBLockOverlayView.h"
 #import "SpringBoard-Structs.h"
 
-@class UIImageView, _UILegibilitySettings, SBLockOverlayStylePropertiesFactory, UILabel, UIButton, UIView;
+@class UILabel, UIButton, _UILegibilitySettings, UIView, UIImageView, SBLockOverlayStylePropertiesFactory;
 @protocol SBLockScreenBuddyViewDelegate;
 
 __attribute__((visibility("hidden")))

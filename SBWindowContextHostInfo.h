@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWindowContextManagerObserver.h"
 
-@class SBWindowContextManager, UIScreen, NSDictionary, SBWindowContextHostWrapperView, NSMutableSet;
+@class UIScreen, NSDictionary, SBWindowContextHostWrapperView, SBWindowContextManager, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBWindowContextHostInfo : XXUnknownSuperclass <SBWindowContextManagerObserver> {

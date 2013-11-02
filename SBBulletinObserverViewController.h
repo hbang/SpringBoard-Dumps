@@ -5,15 +5,15 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 #import "BBObserverDelegate.h"
 #import "SBSizeObservingViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinViewControllerDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "SBNotificationCenterWidgetHost.h"
 #import "SBWidgetViewControllerHostDelegate.h"
 
-@class NSMutableDictionary, BBObserver, NSMutableArray, SBBulletinViewController, NSArray;
+@class BBObserver, NSMutableArray, SBBulletinViewController, NSArray, NSMutableDictionary;
 @protocol SBBulletinActionHandler;
 
 __attribute__((visibility("hidden")))

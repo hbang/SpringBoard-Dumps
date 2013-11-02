@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSNumber, NSString;
+@class NSString, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface SBControlCenterButton : XXUnknownSuperclass {

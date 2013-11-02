@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBIconView, SBIcon;
+@class SBIcon, SBIconView;
 @protocol SBIconViewDelegate;
 
 __attribute__((visibility("hidden")))

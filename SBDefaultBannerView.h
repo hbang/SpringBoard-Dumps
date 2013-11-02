@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBDateLabelDelegate.h"
 #import "SBUIBannerView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBDefaultBannerTextView, UIImageView, SBUIBannerContext, UILabel;
+@class SBUIBannerContext, UILabel, UIColor, UIView, SBDefaultBannerTextView, UIImageView;
 @protocol SBBulletinDateLabel, SBDefaultBannerViewSource;
 
 __attribute__((visibility("hidden")))
@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
 	UILabel<SBBulletinDateLabel> *_relevanceDateLabel;
 	SBDefaultBannerTextView *_textView;
 	UIImageView *_attachmentImageView;
-	CGSize _grabberImageSize;
-	UIImageView *_grabberImageView;
+	CGSize _grabberSize;
+	UIView *_grabberView;
 }
+@property(copy, nonatomic) UIColor *grabberColor;
++ (id)defaultGrabberColor;
 - (id)initWithContext:(id)context;
 - (id)initWithFrame:(CGRect)frame;
 - (id)bannerContext;

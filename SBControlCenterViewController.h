@@ -5,14 +5,14 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIGestureRecognizerDelegate.h"
 #import "SBControlCenterSectionViewControllerDelegate.h"
 #import "_UIBackdropViewObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBControlCenterObserver.h"
 #import "_UISettingsKeyObserver.h"
 
-@class UIPanGestureRecognizer, NSMutableArray, SBControlCenterContainerView, SBControlCenterContentView, SBControlCenterSettings, UITapGestureRecognizer;
+@class UIPanGestureRecognizer, NSMutableArray, SBControlCenterContentView, SBControlCenterSettings, UITapGestureRecognizer, SBControlCenterContainerView;
 @protocol SBControlCenterViewControllerDelegate;
 
 __attribute__((visibility("hidden")))

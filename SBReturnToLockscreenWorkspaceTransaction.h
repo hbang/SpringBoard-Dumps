@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBActivateAppUnderLockScreenWorkspaceTransaction.h"
 #import "SBUIAnimationControllerDelegate.h"
+#import "SBActivateAppUnderLockScreenWorkspaceTransaction.h"
 
-@class SBUIAnimationController, SBApplication;
+@class SBApplication, SBUIAnimationController;
 
 __attribute__((visibility("hidden")))
 @interface SBReturnToLockscreenWorkspaceTransaction : SBActivateAppUnderLockScreenWorkspaceTransaction <SBUIAnimationControllerDelegate> {

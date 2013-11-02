@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIViewController, UIView;
+@class UIView, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface SBAssistantRootViewController : XXUnknownSuperclass {

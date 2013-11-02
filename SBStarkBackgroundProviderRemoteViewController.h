@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIStarkHomeScreenBackgroundHostInterface.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIStarkHomeScreenBackgroundProviderInterface.h"
 
 @class SBStarkBackgroundProvider;

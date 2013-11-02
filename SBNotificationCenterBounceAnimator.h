@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBounceBehaviorDelegate.h"
 #import "UIDynamicAnimatorDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class _SBNotificationCenterBouncingItem, UIDynamicAnimator, SBBounceBehavior, SBBouncingSystem, SBBounceSettings;
+@class SBBounceBehavior, SBBounceSettings, SBBouncingSystem, _SBNotificationCenterBouncingItem, UIDynamicAnimator;
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationCenterBounceAnimator : XXUnknownSuperclass <UIDynamicAnimatorDelegate, SBBounceBehaviorDelegate> {

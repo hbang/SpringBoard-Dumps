@@ -8,7 +8,7 @@
 #import "SBUIAnimationControllerDelegate.h"
 #import "SBStarkToAppWorkspaceTransaction.h"
 
-@class BKSApplicationActivationAssertion, SBUIAnimationController, SBApplication;
+@class BKSApplicationActivationAssertion, SBApplication, SBUIAnimationController;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkAppToAppWorkspaceTransaction : SBStarkToAppWorkspaceTransaction <SBUIAnimationControllerDelegate> {

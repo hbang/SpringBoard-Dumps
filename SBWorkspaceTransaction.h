@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, NSDate, SBAlertManager, BKSWorkspace;
+@class NSMutableArray, SBAlertManager, NSDate, BKSWorkspace;
 @protocol SBWorkspaceTransactionDelegate;
 
 __attribute__((visibility("hidden")))

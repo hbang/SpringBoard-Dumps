@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BKSApplicationActivationAssertion, UIView, UIWindow, SBActivationContext, SBApplication;
+@class BKSApplicationActivationAssertion, UIView, SBActivationContext, UIWindow, SBApplication;
 @protocol SBUIAnimationControllerDelegate;
 
 __attribute__((visibility("hidden")))

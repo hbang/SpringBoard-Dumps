@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBAppSwitcherPageContentView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBWindowContextHostManager, SBWallpaperEffectView, UIView;
+@class SBWallpaperEffectView, UIView, SBWindowContextHostManager;
 @protocol SBWindowContextAppearance;
 
 __attribute__((visibility("hidden")))

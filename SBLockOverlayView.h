@@ -8,7 +8,7 @@
 #import "SBInteractionPassThroughView.h"
 #import "SpringBoard-Structs.h"
 
-@class _UILegibilitySettings, SBLockOverlayStylePropertiesFactory, UILabel, UIResizableView, UIButton;
+@class UIResizableView, UILabel, _UILegibilitySettings, UIButton, SBLockOverlayStylePropertiesFactory;
 @protocol SBLockOverlayViewDelegate;
 
 __attribute__((visibility("hidden")))

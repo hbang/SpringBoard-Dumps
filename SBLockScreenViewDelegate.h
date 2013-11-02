@@ -16,5 +16,6 @@
 - (void)lockScreenViewDidScrollWithNewScrollPercentage:(float)lockScreenView tracking:(BOOL)tracking;
 - (BOOL)lockScreenViewPhonePluginIsActive;
 - (void)lockScreenViewWillEndDraggingWithPercentScrolled:(float)lockScreenView percentScrolledVelocity:(float)velocity targetScrollPercentage:(float)percentage;
+- (BOOL)wantsToShowStatusBarTime;
 @end
 

@@ -5,18 +5,18 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUnlockActionHandler.h"
 #import "SpringBoard-Structs.h"
 #import "SBLockScreenNotificationViewDelegate.h"
 #import "SBLockScreenNotificationModel.h"
 #import "SBUIBannerSource.h"
 #import "SBVolumePressBandit.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerTargetManagerObserver.h"
 #import "SBLockScreenNotificationBannerItemDelegate.h"
 #import "BBObserverDelegate.h"
 
-@class SBUnlockActionContext, SBLockScreenNotificationListView, BBObserver, NSMutableArray;
+@class NSMutableArray, SBUnlockActionContext, SBLockScreenNotificationListView, BBObserver;
 @protocol SBLockScreenNotificationListDelegate, SBUIBannerTarget;
 
 __attribute__((visibility("hidden")))

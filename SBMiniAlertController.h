@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBApplication, UIView;
+@class UIView, SBApplication;
 
 __attribute__((visibility("hidden")))
 @interface SBMiniAlertController : XXUnknownSuperclass {

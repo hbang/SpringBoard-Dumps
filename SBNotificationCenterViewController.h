@@ -5,14 +5,14 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "SBSizeObservingViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinViewControllerDelegate.h"
 #import "SBNotificationCenterWidgetHost.h"
 #import "SBBulletinActionHandler.h"
 
-@class SBBulletinObserverViewController, SBChevronView, SBModeViewController, SBNotificationCenterSeparatorView, _UIBackdropView, UIView, UIStatusBar;
+@class UIView, UIStatusBar, UIColor, SBModeViewController, SBChevronView, SBBulletinObserverViewController, SBNotificationCenterSeparatorView, _UIBackdropView;
 @protocol SBNotificationCenterViewControllerDelegate, SBWidgetViewControllerHostDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 	UIView *_containerView;
 	UIView *_contentView;
 	UIView *_backgroundView;
-	UIView *_coveredContentContainer;
 	SBNotificationCenterSeparatorView *_bottomSeparator;
 	SBModeViewController *_modeController;
 	SBBulletinObserverViewController *_todayViewController;
@@ -50,8 +49,8 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) UIEdgeInsets clippingInsets;
 @property(readonly, assign, nonatomic) CGRect contentFrame;
 @property(assign, nonatomic) float contentViewAlpha;
-@property(retain, nonatomic) UIView *coveredContentSnapshot;
 @property(assign, nonatomic) id<SBNotificationCenterViewControllerDelegate> delegate;
+@property(readonly, assign, nonatomic) UIColor *grabberColor;
 @property(readonly, assign, nonatomic) SBChevronView *grabberView;
 @property(assign, nonatomic, getter=isGrabberViewEnabled) BOOL grabberViewEnabled;
 @property(assign, nonatomic) BOOL showsBackground;
@@ -98,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isGrabberLocked;
 - (void)loadView;
 - (CGRect)positionContentForTouchAtLocation:(CGPoint)location;
+- (void)prepareLayoutForPresentationFromBanner;
 - (void)presentGrabberView;
 - (void)registerSharedGrabberView:(id)view withHideBlock:(id)hideBlock;
 - (CGRect)revealRectForBulletin:(id)bulletin;

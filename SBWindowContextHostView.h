@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWindowContextManagerObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class NSMutableSet, SBWindowContextHostManager, NSMutableArray, NSSet, SBWindowContextManager, NSMutableOrderedSet, UIScreen;
+@class SBWindowContextManager, NSMutableSet, NSMutableArray, NSSet, NSMutableOrderedSet, UIScreen, SBWindowContextHostManager;
 
 __attribute__((visibility("hidden")))
 @interface SBWindowContextHostView : XXUnknownSuperclass <SBWindowContextManagerObserver> {

@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBScreenConnectionHandler.h"
 
-@class NSMapTable, SBStarkBackgroundProviderManager, SBStarkStatusBarStateProvider, SBStarkScreenController, SBSpuriousScreenUndimmingAssertion, SBPasscodeLockDisableAssertion;
+@class NSMapTable, SBStarkBackgroundProviderManager, SBStarkScreenController, SBPasscodeLockDisableAssertion, SBSpuriousScreenUndimmingAssertion, SBStarkStatusBarStateProvider;
 @protocol SBStarkScreenManagerDelegate;
 
 __attribute__((visibility("hidden")))

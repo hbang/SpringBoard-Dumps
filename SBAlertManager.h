@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMapTable, NSMutableArray, UIScreen, SBAlertWindow;
+@class NSMapTable, NSMutableArray, SBAlertWindow, UIScreen;
 @protocol SBAlertManagerDelegate;
 
 __attribute__((visibility("hidden")))

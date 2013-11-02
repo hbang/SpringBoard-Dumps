@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, BKSProcessAssertion;
+@class BKSProcessAssertion, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBBackgroundFetchTask : XXUnknownSuperclass {

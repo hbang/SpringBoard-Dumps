@@ -6,11 +6,11 @@
  */
 
 #import "SBUIControlCenterControlObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBControlCenterObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class NSMutableDictionary, SBUIControlCenterLabel, NSMutableArray, SBChevronView;
+@class SBUIControlCenterLabel, SBChevronView, NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBControlCenterGrabberView : XXUnknownSuperclass <SBUIControlCenterControlObserver, SBControlCenterObserver> {

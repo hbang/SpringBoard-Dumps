@@ -8,7 +8,7 @@
 #import "SBBBBulletinInfo.h"
 #import "SpringBoard-Structs.h"
 
-@class UIColor, SBNotificationsSectionInfo, UIImage;
+@class SBNotificationsSectionInfo, UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationsBulletinInfo : SBBBBulletinInfo {

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBPushStoreObserver.h"
 #import "BBRemoteDataProvider.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBSectionInfo, NSObject, NSMutableSet, NSString, BBDataProviderProxy;
+@class NSMutableSet, BBDataProviderProxy, NSString, BBSectionInfo, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))

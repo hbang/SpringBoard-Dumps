@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBMediaController, PCPersistentTimer, SBLockScreenViewController;
+@class PCPersistentTimer, SBMediaController, SBLockScreenViewController;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenNowPlayingPluginController : XXUnknownSuperclass {

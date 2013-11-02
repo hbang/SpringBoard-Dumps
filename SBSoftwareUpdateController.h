@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SUManagerClientDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SUNetworkObserver.h"
 
 @class SUManagerClient, SUDownload;

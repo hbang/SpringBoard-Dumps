@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBSearchGestureObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class UITextField, UIButton, SBWallpaperEffectView, UIView;
+@class UITextField, SBWallpaperEffectView, UIButton, UIView;
 @protocol SBSearchHeaderDelegate;
 
 __attribute__((visibility("hidden")))

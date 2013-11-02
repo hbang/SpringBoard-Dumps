@@ -9,7 +9,7 @@
 #import "SBIconObserver.h"
 #import "SBLSApplicationPlaceholderLifecycleObserver.h"
 
-@class SBApplicationController, SBLSApplicationWorkspaceObserver, NSMutableDictionary, NSMutableSet;
+@class SBLSApplicationWorkspaceObserver, SBApplicationController, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBApplicationPlaceholderController : XXUnknownSuperclass <SBIconObserver, SBLSApplicationPlaceholderLifecycleObserver> {

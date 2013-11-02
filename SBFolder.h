@@ -6,11 +6,11 @@
  */
 
 #import "SBIconIndexNode.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexMutableListObserver.h"
 #import "SBIconListModelObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBFolderIcon, NSMutableDictionary, SBIconIndexMutableList, NSMutableSet, NSHashTable, NSString;
+@class NSMutableSet, NSHashTable, SBFolderIcon, NSString, SBIconIndexMutableList, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBFolder : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver, SBIconListModelObserver> {

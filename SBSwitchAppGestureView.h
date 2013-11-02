@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBStretchTransformer, SBApplication, UIView;
+@class SBStretchTransformer, UIView, SBApplication;
 
 __attribute__((visibility("hidden")))
 @interface SBSwitchAppGestureView : XXUnknownSuperclass {

@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBWindowContextHostView, NSMutableDictionary, UIColor, NSString, SBWindowContextManager, UIScreen, SBOrderedRequesters;
+@class SBWindowContextManager, SBWindowContextHostView, SBOrderedRequesters, UIScreen, UIColor, NSString, NSMutableDictionary;
 @protocol SBWindowContextHostManagerDelegate;
 
 __attribute__((visibility("hidden")))

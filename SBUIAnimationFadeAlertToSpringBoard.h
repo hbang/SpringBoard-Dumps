@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class SBLockToAppStatusBarAnimator, SBAlert;
+@class SBAlert, SBLockToAppStatusBarAnimator;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadeAlertToSpringBoard : SBUIMainScreenAnimationController {

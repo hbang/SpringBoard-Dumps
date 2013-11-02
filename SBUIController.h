@@ -5,16 +5,16 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "SBUIActiveOrientationObserver.h"
 #import "SBAppSliderControllerDelegate.h"
 #import "SBScreenConnectionHandler.h"
 #import "SBWallpaperObserver.h"
 #import "_UISettingsKeyObserver.h"
 #import "UIWindowDelegate.h"
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBSwitchAppGestureView, SBWorkspaceEventQueueLockAssertion, UIWindow, SBAppSliderWindowController, SBAnimationStepper, NSMutableDictionary, UIView, UIStatusBar, NSArray, SBDismissOnlyAlertItem, SBApplication, NSMutableSet, NSMutableArray, SBAppSliderController, NSString;
+@class SBAppSliderController, NSMutableDictionary, SBDismissOnlyAlertItem, UIView, UIStatusBar, NSArray, NSMutableSet, NSMutableArray, UIWindow, SBSwitchAppGestureView, SBWorkspaceEventQueueLockAssertion, SBAppSliderWindowController, SBApplication, SBAnimationStepper, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBUIController : XXUnknownSuperclass <SBUIActiveOrientationObserver, SBAppSliderControllerDelegate, SBScreenConnectionHandler, SBWallpaperObserver, _UISettingsKeyObserver, UIWindowDelegate> {

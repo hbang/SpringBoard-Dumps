@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconListModelObserver.h"
 #import "SBStarkLauncher.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBLeafIconDataSource.h"
 #import "SpringBoard-Structs.h"
 
-@class NSMutableDictionary, NSMutableSet, SBStarkIconListModel, SBStarkFakeIconOperationController;
+@class NSMutableSet, SBStarkIconListModel, SBStarkFakeIconOperationController, NSMutableDictionary;
 @protocol SBStarkAutoHideControlBarDelegate;
 
 __attribute__((visibility("hidden")))

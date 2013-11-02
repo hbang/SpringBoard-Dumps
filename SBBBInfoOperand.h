@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBBBSectionInfo, SBBBBulletinInfo;
+@class SBBBBulletinInfo, SBBBSectionInfo;
 
 __attribute__((visibility("hidden")))
 @interface SBBBInfoOperand : XXUnknownSuperclass {

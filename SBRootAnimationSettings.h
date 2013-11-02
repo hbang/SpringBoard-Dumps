@@ -7,10 +7,11 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBCrossfadeZoomSettings, SBFolderZoomSettings, SBCenterZoomSettings, SBCenterAppZoomSettings;
+@class SBCenterZoomSettings, SBCenterAppZoomSettings, SBCrossfadeZoomSettings, SBFolderZoomSettings, SBReducedMotionFadeSettings;
 
 __attribute__((visibility("hidden")))
-@interface SBRootZoomSettings : XXUnknownSuperclass {
+@interface SBRootAnimationSettings : XXUnknownSuperclass {
+	SBReducedMotionFadeSettings *_reducedMotionSettings;
 	SBCenterZoomSettings *_unlockSettings;
 	SBCenterAppZoomSettings *_centerLaunchSettings;
 	SBCenterAppZoomSettings *_centerSuspendSettings;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain) SBCrossfadeZoomSettings *crossfadeSuspendSettings;
 @property(retain) SBFolderZoomSettings *folderCloseSettings;
 @property(retain) SBFolderZoomSettings *folderOpenSettings;
+@property(retain) SBReducedMotionFadeSettings *reducedMotionSettings;
 @property(retain) SBCenterZoomSettings *unlockSettings;
 + (id)settingsControllerModule;
 - (void)setDefaultValues;

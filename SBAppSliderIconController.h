@@ -11,7 +11,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBIconViewMapDelegate.h"
 
-@class NSMutableDictionary, SBStopScrollingGestureRecognizer, NSMutableArray, UIScrollView, UIView, NSArray;
+@class NSMutableArray, SBStopScrollingGestureRecognizer, UIScrollView, UIView, NSArray, NSMutableDictionary;
 @protocol SBAppSliderIconControllerDelegate;
 
 __attribute__((visibility("hidden")))

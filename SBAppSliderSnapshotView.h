@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "SBAppSwitcherPageContentView.h"
 
-@class SBSnapshotImageInfo, SBFakeStatusBarViewCache, NSObject, UIImageView, UIView, SBApplication, SBFakeStatusBarView, SBWallpaperEffectView, NSString;
+@class UIView, SBFakeStatusBarView, SBSnapshotImageInfo, SBWallpaperEffectView, SBFakeStatusBarViewCache, NSObject, SBApplication, UIImageView, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))

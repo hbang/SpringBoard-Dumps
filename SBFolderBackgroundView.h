@@ -10,7 +10,7 @@
 #import "_UISettingsKeyObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, SBFolderSettings, SBWallpaperEffectView;
+@class UIImageView, SBWallpaperEffectView, SBFolderSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderBackgroundView : XXUnknownSuperclass <_UISettingsKeyObserver, SBWallpaperObserver> {

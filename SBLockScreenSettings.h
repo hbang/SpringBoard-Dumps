@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBBounceSettings, SBSlideToUnlockFailureRecognizerSettings, SBFAnimationSettings, SBLockScreenPasscodeSettings;
+@class SBLockScreenPasscodeSettings, SBFAnimationSettings, SBSlideToUnlockFailureRecognizerSettings, SBBounceSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenSettings : XXUnknownSuperclass {

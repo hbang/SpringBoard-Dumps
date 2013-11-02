@@ -5,21 +5,21 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIImageView, UIView, NSMutableDictionary, NSTimer, UITableView, CADisplayLink;
+@class SBLockScreenNotificationTableView, CADisplayLink, UIView, NSMutableDictionary, NSTimer;
 @protocol SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenNotificationListView : XXUnknownSuperclass <UITableViewDataSource, UITableViewDelegate> {
-	UITableView *_tableView;
+	SBLockScreenNotificationTableView *_tableView;
 	UIView *_tableHeaderView;
 	UIView *_tableFooterView;
-	UIImageView *_topDropShadowView;
-	UIImageView *_bottomDropShadowView;
+	UIView *_topPocketView;
+	UIView *_bottomPocketView;
 	UIView *_containerView;
 	id<SBLockScreenNotificationViewDelegate> _delegate;
 	id<SBLockScreenNotificationModel> _model;
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_disableExistingContent;
 - (BOOL)_disableIdleTimer:(BOOL)timer;
 - (void)_pluginWillDisable:(id)_plugin;
+- (id)_pocketLineColor;
 - (void)_postludeForUpdateForRemoval:(BOOL)removal;
 - (void)_resetAllFadeTimers;
 - (int)_rowAnimationForDelete;

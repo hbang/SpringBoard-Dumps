@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconProgressViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "SBIconObserver.h"
 
-@class SBIcon, UIImageView, SBIconProgressView, UIImage;
+@class SBIcon, UIImage, SBIconProgressView, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface SBIconImageView : XXUnknownSuperclass <SBIconObserver, SBIconProgressViewDelegate> {

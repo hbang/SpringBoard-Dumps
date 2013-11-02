@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, SBLockScreenBatteryChargingView;
+@class SBLockScreenBatteryChargingView, NSTimer;
 @protocol SBLockScreenBatteryChargingViewControllerDelegate;
 
 __attribute__((visibility("hidden")))

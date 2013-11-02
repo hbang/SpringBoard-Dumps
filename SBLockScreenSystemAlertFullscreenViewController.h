@@ -8,7 +8,7 @@
 #import "SBLockOverlayViewController.h"
 #import "SBLockOverlayViewDelegate.h"
 
-@class NSString, SBLockOverlayView, SBSystemLocalNotificationAlert;
+@class NSString, SBSystemLocalNotificationAlert, SBLockOverlayView;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenSystemAlertFullscreenViewController : SBLockOverlayViewController <SBLockOverlayViewDelegate> {

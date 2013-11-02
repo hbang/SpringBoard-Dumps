@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBIconZoomAnimator.h"
 #import "SBIconListLayoutDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBIconZoomAnimator.h"
 
-@class SBFloatyFolderView, SBFolderZoomSettings, SBFolderIconView;
+@class SBFolderIconView, SBFloatyFolderView, SBFolderZoomSettings;
 
 __attribute__((visibility("hidden")))
 @interface _SBInnerFolderIconZoomAnimator : SBIconZoomAnimator <SBIconListLayoutDelegate> {
@@ -17,17 +17,17 @@ __attribute__((visibility("hidden")))
 	SBFolderIconView *_folderIconView;
 	CGAffineTransform _folderIconViewScaleTransform;
 }
-@property(retain, nonatomic) SBFolderZoomSettings *zoomSettings;
+@property(retain, nonatomic) SBFolderZoomSettings *settings;
 - (id)initWithFolderController:(id)folderController iconView:(id)view iconZoomScale:(float)scale;
-- (void)_animateToZoomFraction:(float)zoomFraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
+- (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (void)_applyFolderFadeForZoomFraction:(float)zoomFraction;
 - (void)_applyIconCrossfadeForZoomFraction:(float)zoomFraction;
 - (void)_applyIconTransformForZoomFraction:(float)zoomFraction;
 - (void)_calculateZoomedOffset:(CGPoint *)offset scale:(float *)scale forIcon:(id)icon withView:(id)view;
-- (void)_cleanupZoom;
+- (void)_cleanupAnimation;
 - (unsigned)_numberOfSignificantAnimations;
-- (void)_prepareZoom;
-- (void)_setZoomFraction:(float)fraction;
+- (void)_prepareAnimation;
+- (void)_setAnimationFraction:(float)fraction;
 - (void)dealloc;
 @end
 

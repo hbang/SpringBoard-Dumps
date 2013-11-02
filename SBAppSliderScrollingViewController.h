@@ -6,10 +6,10 @@
  */
 
 #import "UIScrollViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBStopScrollingGestureRecognizer, SBAppSliderScrollView, NSMutableArray, UITapGestureRecognizer;
+@class SBAppSliderScrollView, NSMutableArray, SBStopScrollingGestureRecognizer, UITapGestureRecognizer;
 @protocol SBAppSliderScrollingViewDelegate;
 
 __attribute__((visibility("hidden")))

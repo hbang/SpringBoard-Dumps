@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, SBPasscodeLockDisableAssertion;
+@class SBPasscodeLockDisableAssertion, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenDisableAssertion : XXUnknownSuperclass {

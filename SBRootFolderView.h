@@ -10,7 +10,7 @@
 #import "_UISettingsKeyObserver.h"
 #import "SpringBoard-Structs.h"
 
-@class TPLegacyLCDTextView, SBSearchViewController, SBDockIconListView, SBRootFolder, SBDockView, SBFParallaxSettings;
+@class SBDockIconListView, SBFParallaxSettings, SBSearchViewController, SBRootFolder, TPLegacyLCDTextView, SBDockView;
 
 __attribute__((visibility("hidden")))
 @interface SBRootFolderView : SBFolderView <_UISettingsKeyObserver, SBSearchGestureObserver> {

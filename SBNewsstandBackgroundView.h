@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, UIView, NSMutableArray;
+@class NSMutableArray, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBNewsstandBackgroundView : XXUnknownSuperclass {

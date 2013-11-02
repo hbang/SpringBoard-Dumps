@@ -9,7 +9,7 @@
 #import "SpringBoard-Structs.h"
 #import "_SBFVibrantView.h"
 
-@class SBLegibilityView, _SBFVibrantSettings, UIView;
+@class SBLegibilityView, UIView, _SBFVibrantSettings;
 @protocol SBResponderTouchDelegate;
 
 __attribute__((visibility("hidden")))

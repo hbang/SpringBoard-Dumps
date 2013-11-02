@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBWorkspaceTransaction.h"
 #import "SBUIAnimationControllerDelegate.h"
+#import "SBWorkspaceTransaction.h"
 
-@class BKSApplicationActivationAssertion, SBUIAnimationController, SBAlert, SBApplication;
+@class BKSApplicationActivationAssertion, SBAlert, SBApplication, SBUIAnimationController;
 
 __attribute__((visibility("hidden")))
 @interface SBAppToAlertWorkspaceTransaction : SBWorkspaceTransaction <SBUIAnimationControllerDelegate> {

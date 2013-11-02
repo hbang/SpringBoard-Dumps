@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationRestrictionDataSource.h"
 #import "SBLSApplicationLifecycleObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBLSApplicationWorkspaceObserver, SBApplicationRestrictionController, NSMutableDictionary, NSMutableSet, SBApplication, NSOperationQueue, BKSApplicationStateMonitor, NSDictionary, NSCountedSet, NSLock;
+@class NSMutableSet, NSOperationQueue, BKSApplicationStateMonitor, NSDictionary, NSCountedSet, NSLock, SBLSApplicationWorkspaceObserver, SBApplication, SBApplicationRestrictionController, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBApplicationController : XXUnknownSuperclass <SBApplicationRestrictionDataSource, SBLSApplicationLifecycleObserver> {

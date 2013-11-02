@@ -6,13 +6,13 @@
  */
 
 #import "SBNotificationCenterViewControllerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinWindowClient.h"
 #import "SBWidgetViewControllerHostDelegate.h"
 
-@class SBUnlockActionContext, SBNotificationCenterSettings, SBChevronView, SBWindow, SBNotificationCenterViewController, UIView, NSArray, SBApplication;
+@class UIView, NSArray, SBNotificationCenterSettings, SBUnlockActionContext, SBChevronView, SBWindow, SBApplication, SBNotificationCenterViewController;
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationCenterController : XXUnknownSuperclass <SBBulletinWindowClient, SBNotificationCenterViewControllerDelegate, SBWidgetViewControllerHostDelegate, _UISettingsKeyObserver> {
@@ -54,10 +54,13 @@ __attribute__((visibility("hidden")))
 - (void)_cleanupAfterTransition:(BOOL)transition;
 - (id)_copyDefaultEnabledWidgetIDs;
 - (BOOL)_handleActionOrRequestWithDefaultAction:(id)defaultAction lockedAction:(id)action;
+- (void)_insertCoveredContentSnapshotIfNecessary:(id)necessary;
+- (void)_invalidateCoveredContentSnapshot;
 - (BOOL)_isNotificationCenterViewAvailableWhileLockedWithProfileBlock:(id)profileBlock counterpartBlock:(id)block;
 - (BOOL)_isNotificationCenterViewWithFeatureKeyAvailableWhileLocked:(id)featureKeyAvailableWhileLocked isLockedDownByRestrictions:(BOOL *)restrictions;
 - (void)_present:(BOOL)present stepper:(id)stepper;
 - (void)_present:(BOOL)present withStandardAnimation:(BOOL)standardAnimation stepper:(id)stepper completion:(id)completion fromCurrentState:(BOOL)currentState;
+- (void)_removeCoveredContentSnapshot;
 - (id)_sectionForWidgetBundle:(id)widgetBundle forCategory:(int)category;
 - (id)_sectionWithIdentifier:(id)identifier forCategory:(int)category;
 - (void)_setGrabberEnabled:(BOOL)enabled;
@@ -65,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupForPresentationWithTouchLocation:(CGPoint)touchLocation;
 - (void)_setupForViewPresentation;
 - (BOOL)_shouldSelectViewControllerAtTouchLocation;
+- (void)_updateCoveredContentSnapshot;
 - (void)_updateForChangeInMessagePrivacy;
 - (id)_widgetSections;
 - (void)beginDismissalWithTouchLocation:(CGPoint)touchLocation;
@@ -89,7 +93,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)handleMenuButtonTap;
 - (void)hideGrabberAnimated:(BOOL)animated completion:(id)completion;
 - (void)invalidateUnlockActionContext;
-- (void)prepareLayoutForPresentation;
+- (void)prepareLayoutForPresentationFromBanner;
 - (void)presentAnimated:(BOOL)animated;
 - (void)presentAnimated:(BOOL)animated completion:(id)completion;
 - (void)publishSectionInfoIfNecessary;

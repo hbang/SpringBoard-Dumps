@@ -10,7 +10,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlertView.h"
 
-@class UILabel, UIPanGestureRecognizer, SBFGlintyStringView, UILongPressGestureRecognizer, _UIBackdropView, UIView, NSTimer, SBFakeStatusBarView;
+@class UIView, SBFakeStatusBarView, NSTimer, UILabel, SBShapeView, UIPanGestureRecognizer, UILongPressGestureRecognizer, SBFGlintyStringView, _UIBackdropView;
 @protocol SBPowerDownViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,7 +18,8 @@ __attribute__((visibility("hidden")))
 	NSTimer *_autoDismissTimer;
 	id<SBPowerDownViewDelegate> _delegate;
 	SBFakeStatusBarView *_fakeStatusBarView;
-	UIView *_darkeningUnderlay;
+	SBShapeView *_darkeningOutsideBarsUnderlay;
+	SBShapeView *_darkeningInsideBarsUnderlay;
 	UIView *_topContainer;
 	UIView *_topBar;
 	SBFGlintyStringView *_topBarLabel;
@@ -38,15 +39,19 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(CGRect)frame;
 - (void)_addFakeStatusBarIfNecessary;
 - (void)_animatePowerDown;
+- (float)_bottomBarOffset;
 - (void)_cancelAutoDismissTimer;
+- (id)_insideBarsPath;
 - (id)_lockScreenView;
-- (id)_newDarkeningView:(CGRect)view;
+- (id)_newDarkeningShapeView:(CGRect)view;
 - (void)_notifyDelegateCancelled;
 - (void)_notifyDelegatePowerDown;
+- (id)_outsideBarsPath;
 - (void)_removeFakeStatusBarIfNecessary;
 - (void)_resetAutoDismissTimer;
 - (void)_slideCompleted:(BOOL)completed;
 - (void)_slideGestureRecognizer:(id)recognizer;
+- (float)_topBarOffset;
 - (void)_touchGestureRecognizer:(id)recognizer;
 - (void)animateIn;
 - (void)animateOut;

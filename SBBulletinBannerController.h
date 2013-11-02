@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBVolumePressBandit.h"
 #import "SpringBoard-Structs.h"
 #import "SBUIBannerSource.h"

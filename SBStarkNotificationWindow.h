@@ -8,7 +8,7 @@
 #import "SBWindow.h"
 #import "SBStarkNotificationViewControllerDelegate.h"
 
-@class SBStarkScreenFocusController, SBStarkNotificationViewController;
+@class SBStarkNotificationViewController, SBStarkScreenFocusController;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkNotificationWindow : SBWindow <SBStarkNotificationViewControllerDelegate> {

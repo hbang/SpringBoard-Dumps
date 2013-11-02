@@ -9,7 +9,7 @@
 #import "SBAlertView.h"
 #import "SpringBoard-Structs.h"
 
-@class UIImageView, SBDeviceLockView, SBEmergencyCallView, UIView, UIStatusBar, UIImage;
+@class SBDeviceLockView, UIView, UIStatusBar, UIImage, UIImageView, SBEmergencyCallView;
 @protocol SBSlidingAlertDisplayDelegate;
 
 __attribute__((visibility("hidden")))

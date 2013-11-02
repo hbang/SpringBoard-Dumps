@@ -9,7 +9,7 @@
 #import "SBAlertView.h"
 #import "SpringBoard-Structs.h"
 
-@class UIImageView, TPSuperBottomBar, TPLCDView, UIView, UIImage;
+@class UIView, UIImage, TPSuperBottomBar, UIImageView, TPLCDView;
 
 __attribute__((visibility("hidden")))
 @interface SBTTYPromptAlertDisplay : SBAlertView <TPSuperBottomBarDelegateProtocol> {

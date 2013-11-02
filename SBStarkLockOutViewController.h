@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBStarkLockOutAnimation, UIStatusBar, UIView;
+@class UIView, SBStarkLockOutAnimation, UIStatusBar;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutViewController : XXUnknownSuperclass {

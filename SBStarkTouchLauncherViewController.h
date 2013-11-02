@@ -5,14 +5,14 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
+#import "SBStarkLauncherViewController.h"
 #import "UICollectionViewDataSource.h"
 #import "UICollectionViewDelegate.h"
 #import "SBStarkIconCellDelegate.h"
 #import "SBStarkLauncherLayoutDelegate.h"
-#import "SBStarkLauncherViewController.h"
+#import "SpringBoard-Structs.h"
 
-@class SBStarkLauncherLayout, UICollectionView;
+@class UICollectionView, SBStarkLauncherLayout;
 @protocol SBStarkTouchLauncherObserver;
 
 __attribute__((visibility("hidden")))

@@ -9,7 +9,7 @@
 #import "_UISettingsKeyObserver.h"
 #import "SpringBoard-Structs.h"
 
-@class SBLockScreenPluginLoader, NSMutableDictionary, SBLockScreenPlugin, SBLockScreenTestPluginSettings, UIWindow, SBLockScreenPluginTransitionFactory, SBLockScreenViewController;
+@class SBLockScreenPluginTransitionFactory, SBLockScreenPluginLoader, SBLockScreenTestPluginSettings, SBLockScreenViewController, UIWindow, SBLockScreenPlugin, NSMutableDictionary;
 @protocol SBLockScreenPluginControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithLockScreenViewController:(id)lockScreenViewController;
 - (void)_addObservers;
 - (void)_disablePluginsPassingTest:(id)test withReason:(id)reason;
+- (void)_handleApplicationExit:(id)exit;
 - (void)_handlePluginDisable:(id)disable;
 - (void)_handleUIRelock;
 - (id)_highestPriorityPluginIgnoringViewDisplay:(BOOL)display;

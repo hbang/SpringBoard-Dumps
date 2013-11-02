@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, _UILegibilitySettings;
+@class _UILegibilitySettings, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenDateViewController : XXUnknownSuperclass {

@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 #import "SBStarkBannerItemObserver.h"
 #import "SBUIBannerView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class SBStarkBannerItem, UIImageView, SBUIBannerContext, UILabel;
+@class SBUIBannerContext, UILabel, UIColor, SBStarkBannerItem, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBannerView : XXUnknownSuperclass <SBStarkBannerItemObserver, SBUIBannerView> {
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 	UIImageView *_actionImageView;
 	UIEdgeInsets _contentInsets;
 }
+@property(copy, nonatomic) UIColor *grabberColor;
 + (UIEdgeInsets)_contentInsetsForActionType:(int)actionType;
 + (id)_imageForActionType:(int)actionType;
 - (id)initWithContext:(id)context;

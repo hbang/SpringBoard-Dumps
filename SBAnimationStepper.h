@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSArray, CADisplayLink, UIView;
+@class UIView, NSArray, CADisplayLink;
 
 __attribute__((visibility("hidden")))
 @interface SBAnimationStepper : XXUnknownSuperclass {

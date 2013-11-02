@@ -7,7 +7,7 @@
 
 #import "SBLockScreenSlideUpController.h"
 
-@class UIView, UIImageView, NSDate, DeferredPUApplicationCameraViewController, SBPasscodeLockDisableAssertion, NSObject;
+@class UIView, UIImageView, NSDate, SBPasscodeLockDisableAssertion, DeferredPUApplicationCameraViewController, NSObject;
 @protocol OS_dispatch_queue, SBLockScreenCameraControllerDelegate;
 
 __attribute__((visibility("hidden")))

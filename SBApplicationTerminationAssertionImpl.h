@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationTerminationAssertion.h"
 
-@class NSString, SBApplicationTerminationAssertionManager;
+@class SBApplicationTerminationAssertionManager, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBApplicationTerminationAssertionImpl : XXUnknownSuperclass <SBApplicationTerminationAssertion> {

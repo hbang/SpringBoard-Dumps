@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBFolderViewDelegate.h"
 #import "SBFolderControllerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "SBFolderObserver.h"
 
-@class SBIcon, SBFolder, NSTimer, _UILegibilitySettings, NSMapTable, SBFolderView, SBIconZoomAnimator, SBFolderContext, NSArray;
+@class NSMapTable, SBFolderView, _UILegibilitySettings, SBIcon, SBIconAnimator, SBFolderContext, SBFolder, NSArray, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderController : XXUnknownSuperclass <SBFolderControllerDelegate, SBFolderViewDelegate, SBFolderObserver> {
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 	NSTimer *_closeFolderTimer;
 	BOOL _grabbedIconHasEverEnteredFolderView;
 	NSMapTable *_editingContextsByFolder;
-	SBIconZoomAnimator *_zoomAnimator;
+	SBIconAnimator *_iconAnimator;
 	BOOL _isOpen;
 	BOOL _isEditing;
 	BOOL _isAnimating;
@@ -67,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)_cancelAutoScroll;
 - (void)_cancelCloseFolderTimer;
 - (void)_cancelDragPauseTimer;
-- (void)_clearZoomAnimator;
+- (void)_clearIconAnimator;
 - (void)_closeFolderTimerFired;
 - (void)_compactFolder;
 - (Class)_contentViewClass;
@@ -79,7 +79,7 @@ __attribute__((visibility("hidden")))
 - (unsigned)_indexOfIconListForIcon:(id)icon;
 - (void)_invalidate;
 - (BOOL)_listIndexIsVisible:(unsigned)visible;
-- (id)_newZoomAnimatorForZoomUp:(BOOL)zoomUp;
+- (id)_newAnimatorForZoomUp:(BOOL)zoomUp;
 - (void)_noteFolderListsDidChange;
 - (void)_resetDragPauseTimerForPoint:(CGPoint)point inIconListView:(id)iconListView;
 - (void)_resetIconLists;
@@ -99,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)didAnimate;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (id)dockListView;
+- (BOOL)doesPageContainIconListView:(int)view;
 - (void)fadeContentForMagnificationFraction:(float)magnificationFraction;
 - (void)fadeContentForMinificationFraction:(float)minificationFraction;
 - (void)folder:(id)folder didAddList:(id)list;

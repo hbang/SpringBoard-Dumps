@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImage, SBWallpaperEffectView;
+@class SBWallpaperEffectView, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface _SBDockBackgroundView : XXUnknownSuperclass {

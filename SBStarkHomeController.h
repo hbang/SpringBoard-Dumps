@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIGestureRecognizerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBStarkBackgroundProvidersViewControllerDelegate.h"
 #import "SBStarkControlBarDelegate.h"
 
-@class SBStarkBackgroundViewController, SBStarkControlBarWindow, SBStarkControlBarViewController, SBStarkFakeIconOperationController, SBStarkScreenFocusController, UITapGestureRecognizer, SBStarkBackgroundWindow;
+@class SBStarkScreenFocusController, SBStarkBackgroundWindow, UITapGestureRecognizer, SBStarkControlBarViewController, SBStarkBackgroundViewController, SBStarkControlBarWindow, SBStarkFakeIconOperationController;
 @protocol UIStatusBarStyleDelegate;
 
 __attribute__((visibility("hidden")))

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBDisplayProtocol.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class NSMutableDictionary, SBAlertView, NSMapTable, NSHashTable, SBAlertManager, UIScreen, SBActivationContext;
+@class SBAlertManager, NSMapTable, NSHashTable, SBActivationContext, UIScreen, SBAlertView, NSMutableDictionary;
 @protocol SBAlertDelegate;
 
 __attribute__((visibility("hidden")))

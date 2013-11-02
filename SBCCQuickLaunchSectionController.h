@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBUIControlCenterButtonDelegate.h"
 #import "SBControlCenterSectionViewController.h"
+#import "SBUIControlCenterButtonDelegate.h"
 #import "SpringBoard-Structs.h"
 
 @class NSMutableArray, AVFlashlight, SBControlCenterButton, NSObject;

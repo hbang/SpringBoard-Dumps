@@ -11,7 +11,7 @@
 #import "SBIconIndexNode.h"
 #import "SBIconIndexMutableListObserver.h"
 
-@class SBFolder, NSHashTable, SBIconIndexMutableList;
+@class SBFolder, SBIconIndexMutableList, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface SBIconListModel : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver, NSFastEnumeration> {

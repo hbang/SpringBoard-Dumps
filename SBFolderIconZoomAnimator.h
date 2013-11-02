@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBScaleIconZoomAnimator.h"
 
-@class _SBInnerFolderIconZoomAnimator, SBFolderIconView, SBFolderIcon, SBFloatyFolderView, SBFolderController, SBFolderZoomSettings;
+@class SBFolderIconView, SBFolderController, SBFloatyFolderView, SBFolderZoomSettings, SBFolderIcon, _SBInnerFolderIconZoomAnimator;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderIconZoomAnimator : SBScaleIconZoomAnimator {
@@ -16,15 +16,15 @@ __attribute__((visibility("hidden")))
 	SBFloatyFolderView *_innerFolderView;
 	_SBInnerFolderIconZoomAnimator *_innerZoomAnimator;
 }
+@property(retain, nonatomic) SBFolderZoomSettings *settings;
 @property(readonly, assign, nonatomic) SBFolderIcon *targetIcon;
 @property(readonly, assign, nonatomic) SBFolderIconView *targetIconView;
-@property(retain, nonatomic) SBFolderZoomSettings *zoomSettings;
 - (id)initWithOuterController:(id)outerController innerController:(id)controller folderIcon:(id)icon;
-- (void)_animateToZoomFraction:(float)zoomFraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
-- (void)_cleanupZoom;
+- (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
+- (void)_cleanupAnimation;
 - (unsigned)_numberOfSignificantAnimations;
-- (void)_prepareZoom;
-- (void)_setZoomFraction:(float)fraction;
+- (void)_prepareAnimation;
+- (void)_setAnimationFraction:(float)fraction;
 - (CGRect)_zoomedFrame;
 - (void)dealloc;
 @end

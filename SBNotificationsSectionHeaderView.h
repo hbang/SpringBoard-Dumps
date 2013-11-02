@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, SBNotificationCenterSeparatorView, SBNotificationsClearButton, UILabel;
+@class UIImageView, SBNotificationCenterSeparatorView, UILabel, SBNotificationsClearButton;
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationsSectionHeaderView : XXUnknownSuperclass {

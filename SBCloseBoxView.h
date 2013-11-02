@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;
 - (void)setLegibilityStyle:(int)style;
+- (void)setSuppressesBlurryBackgroundChanges:(BOOL)changes;
 - (void)setWallpaperRelativeCenter:(CGPoint)center;
 - (CGSize)sizeThatFits:(CGSize)fits;
 @end

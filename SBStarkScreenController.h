@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SBAlertManagerDelegate.h"
 #import "SBAlertManagerObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIStatusBarStyleDelegate.h"
 
-@class SBStarkLockOutViewController, SBStarkNotificationWindow, UIScreen, AVExternalDevice, SBAlertManager, UIWindow, SBStarkLockOutWindow, _UIBackdropView, SBStarkFakeIconOperationController, SBStarkScreenFocusController, NSTimer, SBStarkDefaultHostingWindow, SBCarDisplaySettings, SBStarkSiriWindow, SBStarkHomeController;
+@class NSTimer, SBCarDisplaySettings, SBStarkHomeController, SBStarkSiriWindow, UIWindow, SBStarkLockOutViewController, SBStarkNotificationWindow, SBAlertManager, UIScreen, SBStarkFakeIconOperationController, SBStarkLockOutWindow, AVExternalDevice, SBStarkDefaultHostingWindow, SBStarkScreenFocusController, _UIBackdropView;
 @protocol SBStarkScreenControllerDelegate, SBDisplayProtocol;
 
 __attribute__((visibility("hidden")))

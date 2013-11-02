@@ -6,13 +6,13 @@
  */
 
 #import "SBAssertionDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SBVolumePressBandit.h"
 #import "SpringBoard-Structs.h"
 
-@class SBAlertItemsSettings, NSTimer, CPDistributedNotificationCenter, BBObserver, NSMutableSet, NSMutableArray, NSHashTable, SBAlertItem, NSArray;
+@class CPDistributedNotificationCenter, BBObserver, NSMutableSet, NSMutableArray, NSHashTable, SBAlertItem, NSArray, SBAlertItemsSettings, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertItemsController : XXUnknownSuperclass <_UISettingsKeyObserver, SBVolumePressBandit, SBAssertionDelegate, BBObserverDelegate> {

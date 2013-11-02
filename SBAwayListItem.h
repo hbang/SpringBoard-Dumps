@@ -11,7 +11,7 @@
 #import "SBAwayListCellButtonHandler.h"
 #import "NSCopying.h"
 
-@class NSString, SBUnlockActionContext, NSDate;
+@class NSString, NSDate, SBUnlockActionContext;
 
 __attribute__((visibility("hidden")))
 @interface SBAwayListItem : XXUnknownSuperclass <SBAwayListCellButtonHandler, SBUIQuietModePlayability, NSCopying> {

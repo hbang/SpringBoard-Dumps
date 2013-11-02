@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, NSMutableArray, NSArray;
+@class NSMutableArray, UIImageView, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutView : XXUnknownSuperclass {

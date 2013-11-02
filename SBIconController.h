@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "MCProfileConnectionObserver.h"
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationRestrictionObserver.h"
 #import "SBFolderControllerDelegate.h"
 #import "SBSearchGestureObserver.h"
@@ -17,7 +17,7 @@
 #import "SBIconModelApplicationDataSource.h"
 #import "SpringBoard-Structs.h"
 
-@class SBLeafIcon, SBIconContentView, BBObserver, SBIconColorSettings, NSTimer, UITouch, NSIndexPath, NSMutableSet, NSMutableArray, NSSet, _UILegibilitySettings, NSObject, SBRootFolderController, SBIcon, SBIconModel, SBFolder;
+@class SBFolder, SBLeafIcon, SBIconContentView, SBIconColorSettings, BBObserver, NSTimer, UITouch, _UILegibilitySettings, NSIndexPath, NSMutableSet, NSMutableArray, NSSet, SBRootFolderController, SBIconModel, SBIcon, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -68,11 +68,11 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)init;
 - (void)_addToFolderAnimation:(id)folderAnimation didFinish:(id)finish context:(id)context;
-- (void)_animateFolder:(id)folder open:(BOOL)open animated:(BOOL)animated;
+- (void)_animateFolder:(id)folder open:(BOOL)open animated:(BOOL)animated withCompletion:(id)completion;
 - (BOOL)_badgesAreDisabledForSectionInfo:(id)sectionInfo;
 - (void)_cancelFolderSpringloadTimer;
 - (void)_cleanupForClosingFolderAnimated:(BOOL)closingFolderAnimated;
-- (void)_closeFolderController:(id)controller animated:(BOOL)animated;
+- (void)_closeFolderController:(id)controller animated:(BOOL)animated withCompletion:(id)completion;
 - (void)_compactRootListsAfterFolderCloseWithAnimation:(BOOL)animation;
 - (CGRect)_contentViewRelativeFrameForIcon:(id)icon;
 - (id)_currentFolderController;
@@ -129,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canUninstallIcon:(id)icon;
 - (void)clearHighlightedIcon;
 - (void)closeFolderAnimated:(BOOL)animated;
+- (void)closeFolderAnimated:(BOOL)animated withCompletion:(id)completion;
 - (void)compactFolders:(id)folders;
 - (void)compactIconsInIconListsInFolder:(id)folder moveNow:(BOOL)now limitToIconList:(id)iconList;
 - (void)compactRootIconLists;

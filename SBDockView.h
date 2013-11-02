@@ -8,7 +8,7 @@
 #import "SBWallpaperObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, SBDockIconListView, SBHighlightView, _SBDockBackgroundView;
+@class UIImageView, SBHighlightView, SBDockIconListView, _SBDockBackgroundView;
 
 __attribute__((visibility("hidden")))
 @interface SBDockView : XXUnknownSuperclass <SBWallpaperObserver> {

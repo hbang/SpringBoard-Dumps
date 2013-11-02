@@ -7,7 +7,7 @@
 
 #import "SBDismissOnlyAlertItem.h"
 
-@class NSString, UITextView, UIView;
+@class UITextView, UIView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBActivationInfoAlertItem : SBDismissOnlyAlertItem {

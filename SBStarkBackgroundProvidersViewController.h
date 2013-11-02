@@ -10,7 +10,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBStarkBackgroundProviderRemoteViewControllerDelegate.h"
 
-@class _UIAsyncInvocation, SBStarkBackgroundProviderManager, SBStarkBackgroundProvider, SBStarkBackgroundProviderRemoteViewController;
+@class SBStarkBackgroundProviderManager, SBStarkBackgroundProvider, SBStarkBackgroundProviderRemoteViewController, _UIAsyncInvocation;
 @protocol SBStarkBackgroundProvidersViewControllerDelegate;
 
 __attribute__((visibility("hidden")))

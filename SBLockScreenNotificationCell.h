@@ -8,7 +8,7 @@
 #import "SBNotificationCell.h"
 #import "SpringBoard-Structs.h"
 
-@class UILabel, SBLockScreenNotificationScrollView, UIButton, SBUnlockActionContext, UIView;
+@class UILabel, SBLockScreenNotificationScrollView, SBUnlockActionContext, UIButton, UIView;
 @protocol UIScrollViewDelegate, SBAwayListCellButtonHandler;
 
 __attribute__((visibility("hidden")))
@@ -50,7 +50,11 @@ __attribute__((visibility("hidden")))
 - (id)_buttonWithLabel:(id)label;
 - (void)_handleActionButtonPress:(id)press;
 - (void)_notePluginWillDisable:(id)_notePlugin;
+- (int)_separatorBackdropOverlayBlendMode;
+- (id)_separatorColor;
+- (void)_setSeparatorBackdropOverlayBlendMode:(int)mode;
 - (void)_updateUnlockText:(id)text;
+- (id)_vibrantTextColor;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
@@ -58,5 +62,6 @@ __attribute__((visibility("hidden")))
 - (void)scrollToOriginAnimated:(BOOL)originAnimated;
 - (void)setButtonLabel:(id)label handler:(id)handler;
 - (void)setContentAlpha:(float)alpha;
+- (void)setRelevanceDateLabel:(id)label;
 @end
 

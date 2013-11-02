@@ -10,5 +10,7 @@
 @protocol SBFGlintyStringViewDelegate
 - (void)glintyAnimationDidStart;
 - (void)glintyAnimationDidStop;
+- (void)glintyFadeInAnimationDidStop;
+- (void)glintyFadeOutAnimationDidStop;
 @end
 

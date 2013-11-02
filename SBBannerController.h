@@ -5,15 +5,15 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "UIGestureRecognizerDelegate.h"
 #import "SBBulletinBusyClient.h"
-#import "SpringBoard-Structs.h"
 #import "SBUIBannerTarget.h"
 #import "SBAssistantObserver.h"
 #import "SBBulletinWindowClient.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, NSHashTable, SBBannerContextView, UIImage;
+@class NSMutableArray, SBBannerContextView, NSHashTable, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface SBBannerController : XXUnknownSuperclass <SBUIBannerTarget, SBAssistantObserver, SBBulletinWindowClient, SBBulletinBusyClient, UIGestureRecognizerDelegate> {

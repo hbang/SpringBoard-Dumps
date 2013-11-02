@@ -7,9 +7,9 @@
 
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
+#import "SBStarkLauncherViewController.h"
 #import "UIGestureRecognizerDelegate.h"
 #import "SBStarkKnobLauncherCellDelegate.h"
-#import "SBStarkLauncherViewController.h"
 #import "SpringBoard-Structs.h"
 
 @class SBIcon, UITableView, UINavigationBar;

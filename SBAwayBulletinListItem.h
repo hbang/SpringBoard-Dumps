@@ -7,7 +7,7 @@
 
 #import "SBAwayListItem.h"
 
-@class BBBulletin, BBObserver, NSMutableArray, NSString, NSDate, UIImage;
+@class BBBulletin, BBObserver, NSMutableArray, NSDate, UIImage, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBAwayBulletinListItem : SBAwayListItem {

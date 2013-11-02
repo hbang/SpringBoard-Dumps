@@ -5,14 +5,14 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SBAppSliderIconControllerDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBAppSliderScrollingViewDelegate.h"
 #import "SBVolumePressBandit.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBFakeStatusBarViewCache, NSDictionary, SBAppSliderIconController, NSObject, SBAppSwitcherServices, SBAppSliderSettings, SBAppSliderScrollingViewController, UIView, NSMutableDictionary, NSArray, NSMutableSet, NSMutableArray, NSString;
+@class NSMutableDictionary, UIView, NSArray, SBFakeStatusBarViewCache, NSMutableSet, NSMutableArray, SBAppSwitcherServices, SBAppSliderSettings, SBAppSliderIconController, NSDictionary, NSObject, SBAppSliderScrollingViewController, NSString;
 @protocol SBAppSliderControllerDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))

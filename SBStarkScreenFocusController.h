@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, UIScreen;
+@class UIScreen, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkScreenFocusController : XXUnknownSuperclass {

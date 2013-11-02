@@ -10,7 +10,7 @@
 #import "UIStatusBarStyleDelegate.h"
 #import "SBStarkAutoHideControlBarDelegate.h"
 
-@class UIViewController, NSMutableSet, SBStarkFakeIconOperationController, SBStarkScreenFocusController, UIStatusBar;
+@class SBStarkScreenFocusController, NSMutableSet, UIStatusBar, SBStarkFakeIconOperationController, UIViewController;
 @protocol SBStarkLauncher, SBStarkControlBarDelegate;
 
 __attribute__((visibility("hidden")))

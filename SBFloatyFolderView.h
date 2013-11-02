@@ -10,7 +10,7 @@
 #import "_UISettingsKeyObserver.h"
 #import "SpringBoard-Structs.h"
 
-@class UIPinchGestureRecognizer, SBFolderSettings, UILongPressGestureRecognizer, SBFolderBackgroundView, UIView, UITapGestureRecognizer;
+@class UILongPressGestureRecognizer, SBFolderBackgroundView, UIView, SBFolderSettings, UITapGestureRecognizer, UIPinchGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface SBFloatyFolderView : SBFolderView <UIGestureRecognizerDelegate, _UISettingsKeyObserver> {

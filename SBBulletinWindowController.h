@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIActiveOrientationObserver.h"
 
-@class SBBulletinRootViewController, UIViewController, UIWindow, NSMutableSet;
+@class UIViewController, UIWindow, SBBulletinRootViewController, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinWindowController : XXUnknownSuperclass <SBUIActiveOrientationObserver> {

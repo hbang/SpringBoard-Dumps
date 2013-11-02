@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSArray, NSString;
+@class NSString, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface SBWorkspaceEvent : XXUnknownSuperclass {

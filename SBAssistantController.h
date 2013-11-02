@@ -7,7 +7,7 @@
 
 #import "SBUIPluginHost.h"
 
-@class NSString, SBAssistantWindow, SBOperationQueue, UIViewController, NSHashTable, SBPasscodeLockDisableAssertion, NSMutableSet;
+@class NSString, SBAssistantWindow, UIViewController, SBPasscodeLockDisableAssertion, NSHashTable, SBOperationQueue, NSMutableSet;
 @protocol SBUIPluginViewControllerInterface;
 
 __attribute__((visibility("hidden")))

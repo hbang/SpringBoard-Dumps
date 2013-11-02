@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBWallpaperObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBWallpaperObserver.h"
 
 @class NSMutableSet;
 
