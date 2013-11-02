@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UILabel.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBBadgeLabel : UILabel {
+__attribute__((visibility("hidden")))
+@interface SBBadgeLabel : XXUnknownSuperclass {
 }
 - (BOOL)_allowAscentRounding;
 @end

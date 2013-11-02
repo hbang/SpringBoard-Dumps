@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBHUDView, UIView, UIWindow;
+@class UIView, SBHUDView, UIWindow;
 
-@interface SBHUDController : NSObject {
+@interface SBHUDController : XXUnknownSuperclass {
 	UIWindow *_hudWindow;
 	UIView *_hudContentView;
 	SBHUDView *_hudView;

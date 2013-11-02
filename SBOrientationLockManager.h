@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBOrientationLockManager : NSObject {
+@interface SBOrientationLockManager : XXUnknownSuperclass {
 	int _override;
 	int _lockedOrientation;
 	int _overrideOrientation;

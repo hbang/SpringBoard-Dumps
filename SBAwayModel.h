@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
 
 @class NSMutableArray, SBAwayController;
 
-@interface SBAwayModel : NSObject {
+@interface SBAwayModel : XXUnknownSuperclass {
 	SBAwayController *_controller;
 	NSMutableArray *_standardVMs;
 	NSMutableArray *_calls;

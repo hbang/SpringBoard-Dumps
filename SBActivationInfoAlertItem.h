@@ -7,10 +7,14 @@
 
 #import "SBDismissOnlyAlertItem.h"
 
-@class UITextView;
+@class UITextView, NSString;
 
 @interface SBActivationInfoAlertItem : SBDismissOnlyAlertItem {
 	UITextView *_textView;
+	NSString *_meid;
+	NSString *_imei;
+	NSString *_iccid;
+	float _alertHeight;
 }
 + (id)activeItem;
 - (id)init;

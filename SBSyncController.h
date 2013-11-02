@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSTimer;
 
-@interface SBSyncController : NSObject {
+@interface SBSyncController : XXUnknownSuperclass {
 	int _syncState;
 	int _restoreState;
 	int _resetState;

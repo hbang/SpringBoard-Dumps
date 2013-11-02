@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlert.h"
 
-@class NSURL, CNFConferenceController, CNFDisplayController, NSString;
+@class CNFConferenceController, CNFDisplayController, NSURL, NSString;
 
 @interface SBVideoAlert : SBAlert {
 	CNFConferenceController *_conferenceController;

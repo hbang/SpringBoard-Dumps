@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBCFBundle : NSObject {
+@interface SBCFBundle : XXUnknownSuperclass {
 	CFBundleRef _cfBundle;
 }
 - (id)initWithCFBundle:(CFBundleRef)cfbundle;

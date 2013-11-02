@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDate, SBPasscodeComplianceAlertItem, SBPasscodeAlertItem, NSString;
+@class NSDate, NSString, SBPasscodeComplianceAlertItem, SBPasscodeAlertItem;
 
-@interface SBPasscodeController : NSObject {
+@interface SBPasscodeController : XXUnknownSuperclass {
 	SBPasscodeAlertItem *_passcodeAlertItem;
 	int _mode;
 	NSString *_previousPasscode;

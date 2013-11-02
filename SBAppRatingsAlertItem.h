@@ -8,7 +8,7 @@
 #import "SBAlertItem.h"
 #import "UIAlertViewDelegate.h"
 
-@class SBUserInstalledApplicationIcon, UIPushButton;
+@class UIPushButton, SBUserInstalledApplicationIcon;
 
 @interface SBAppRatingsAlertItem : SBAlertItem <UIAlertViewDelegate> {
 	SBUserInstalledApplicationIcon *_icon;

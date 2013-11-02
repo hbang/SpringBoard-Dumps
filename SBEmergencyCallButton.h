@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIPushButton.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBEmergencyCallButton : UIPushButton {
+@interface SBEmergencyCallButton : XXUnknownSuperclass {
 }
 + (id)defaultFont;
 - (void)drawButtonPart:(int)part inRect:(CGRect)rect;

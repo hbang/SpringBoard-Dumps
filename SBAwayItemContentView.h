@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAwayItemContentView : UIView {
+@interface SBAwayItemContentView : XXUnknownSuperclass {
 }
 - (void)drawItems;
 - (void)drawRect:(CGRect)rect;

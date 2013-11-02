@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "CNFSoundPlayerDelegateProtocol.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDate, CNFAudioPlayer, SBVideoAlert, CNFConferenceController;
+@class NSDate, CNFConferenceController, SBVideoAlert, CNFAudioPlayer;
 
-@interface SBConferenceManager : NSObject <CNFSoundPlayerDelegateProtocol> {
+@interface SBConferenceManager : XXUnknownSuperclass <CNFSoundPlayerDelegateProtocol> {
 	CNFConferenceController *_conferenceController;
 	SBVideoAlert *_currentVideoAlert;
 	unsigned _avState;
@@ -25,6 +25,7 @@
 + (id)sharedInstance;
 - (id)init;
 - (void)_conferenceAvailabilityChanged:(id)changed;
+- (void)_conferenceCapabilityChanged:(id)changed;
 - (void)_conferenceStateChanged:(id)changed;
 - (void)_handleInvitation:(id)invitation;
 - (void)_handleMissedInvitation:(id)invitation;

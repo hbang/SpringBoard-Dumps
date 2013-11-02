@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBProcess, NSString, NSLock;
+@class NSString, SBProcess, NSLock;
 
-@interface SBProcessAssertion : NSObject {
+@interface SBProcessAssertion : XXUnknownSuperclass {
 	unsigned _clientPort;
 	unsigned _reason;
 	NSString *_identifier;

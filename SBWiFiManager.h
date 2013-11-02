@@ -6,12 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSRecursiveLock;
 @protocol SBWiFiManagerDelegate;
 
-@interface SBWiFiManager : NSObject {
+@interface SBWiFiManager : XXUnknownSuperclass {
 	NSRecursiveLock *_lock;
 	WiFiManagerClient *_manager;
 	WiFiDeviceClient *_device;
@@ -26,6 +26,9 @@
 	int _signalStrengthRSSI;
 	BOOL _signalStrengthHasBeenSet;
 	BOOL _canPollSignalStrength;
+	SCDynamicStoreRef _SCDynamicStoreNetworkState;
+	WiFiNetwork *_primaryInterface;
+	BOOL _primaryInterfaceHasBeenSet;
 	id<SBWiFiManagerDelegate> _delegate;
 	unsigned _notificationID;
 	double _lastSignalStrengthUpdateTime;
@@ -40,6 +43,7 @@
 - (void)_linkDidChange;
 - (WiFiManagerClient *)_managerLocked;
 - (void)_powerStateDidChange;
+- (void)_primaryInterfaceChanged:(BOOL)changed;
 - (void)_runManagerCallbackThread;
 - (void)_scanComplete:(CFArrayRef)complete;
 - (void)_trustCallbackWithID:(unsigned)anId type:(int)type network:(WiFiNetwork *)network data:(id)data;
@@ -51,6 +55,8 @@
 - (id)currentNetworkName;
 - (void)dismissAlerts;
 - (BOOL)isAssociated;
+- (BOOL)isAssociatedToIOSHotspot;
+- (BOOL)isPrimaryInterface;
 - (void)joinNetwork:(id)network password:(id)password;
 - (BOOL)joining;
 - (id)knownNetworks;

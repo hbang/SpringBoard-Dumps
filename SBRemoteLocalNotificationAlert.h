@@ -7,7 +7,7 @@
 
 #import "SBAlertItem.h"
 
-@class NSTimer, SBApplication, NSString;
+@class SBApplication, NSString, NSTimer;
 @protocol SBRemoteLocalNotificationAlertDelegate;
 
 @interface SBRemoteLocalNotificationAlert : SBAlertItem {

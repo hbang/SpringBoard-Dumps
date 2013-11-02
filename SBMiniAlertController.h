@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIView, SBApplication, UIWindow;
 
-@interface SBMiniAlertController : NSObject {
+@interface SBMiniAlertController : XXUnknownSuperclass {
 	SBApplication *_displayShowingAnAlert;
 	UIWindow *_dimmingWindow;
 	unsigned _miniAlertVisible : 1;
@@ -40,6 +40,7 @@
 - (void)hideApplicationMiniAlerts;
 - (void)hideDimmingWindow;
 - (void)hideDimmingWindowAfterDelay;
+- (BOOL)isHidingAlertWindow;
 - (BOOL)miniAlertVisible;
 - (void)noteFullscreenAlertsDismissed;
 - (void)noteMiniAlertStateChanged;

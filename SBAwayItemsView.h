@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIAlertView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSArray, UIView;
+@class UIView, NSArray;
 
-@interface SBAwayItemsView : UIAlertView {
+@interface SBAwayItemsView : XXUnknownSuperclass {
 	UIView *_itemView;
 	NSArray *_displayedItems;
 	float _widestLabel;

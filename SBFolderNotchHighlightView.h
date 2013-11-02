@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBFolderNotchHighlightView : UIView {
+@interface SBFolderNotchHighlightView : XXUnknownSuperclass {
 	XXStruct_9ihRqB _notchInfo;
 }
 - (id)initWithNotchInfo:(XXStruct_9ihRqB)notchInfo;

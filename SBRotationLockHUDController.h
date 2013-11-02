@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSMutableSet.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface NSMutableSet (SBApplicationAdditions)
-- (void)addObjectsFromDictionary:(id)dictionary forKeys:(id)keys;
+@interface SBRotationLockHUDController : XXUnknownSuperclass {
+}
++ (void)activateWithLocked:(BOOL)locked;
 @end
 

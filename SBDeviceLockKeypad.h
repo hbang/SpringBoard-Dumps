@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <TelephonyUI/TPPhonePad.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIPushButton;
 
-@interface SBDeviceLockKeypad : TPPhonePad {
+@interface SBDeviceLockKeypad : XXUnknownSuperclass {
 	UIPushButton *_deleteButton;
 	UIPushButton *_cancelButton;
 	BOOL _deleteEnabled;

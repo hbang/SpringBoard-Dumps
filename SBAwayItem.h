@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, NSDate;
+@class NSDate, NSString;
 
-@interface SBAwayItem : NSObject {
+@interface SBAwayItem : XXUnknownSuperclass {
 	NSString *_title;
 	NSString *_secondTitle;
 	NSString *_singletonTitle;

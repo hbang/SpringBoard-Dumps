@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIAlertView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAppRatingsAlertSheet : UIAlertView {
+@interface SBAppRatingsAlertSheet : XXUnknownSuperclass {
 }
 - (void)layout;
 @end

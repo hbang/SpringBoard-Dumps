@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class SBAlert, SBAlertWindow;
 
-@interface SBAlertTearDownContext : NSObject {
+@interface SBAlertTearDownContext : XXUnknownSuperclass {
 	SBAlertWindow *_window;
 	SBAlert *_alert;
 }

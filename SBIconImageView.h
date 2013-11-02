@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIImageView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBIconImageView : UIImageView {
+@interface SBIconImageView : XXUnknownSuperclass {
 }
 @end
 

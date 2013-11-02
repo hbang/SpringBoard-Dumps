@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIWindow.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, UIView, SBAlertDisplay, NSMutableDictionary;
+@class UIView, SBAlertDisplay, NSMutableDictionary, NSMutableArray;
 
-@interface SBAlertWindow : UIWindow {
+@interface SBAlertWindow : XXUnknownSuperclass {
 	UIView *_contentLayer;
 	unsigned _isAnimating : 1;
 	unsigned _isInvalid : 1;

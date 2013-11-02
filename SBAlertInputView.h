@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBSlidingAlertDisplay.h"
+#import "SpringBoard-Structs.h"
 #import "UITextFieldDelegate.h"
 
-@class UIScrollView, UIPushButton, UIKeyboard, UINavigationBar, UITextField, SBTextDisplayView;
+@class UIPushButton, UIView, SBTextDisplayView, UIKeyboard, UIScrollView, UINavigationBar, UITextField;
 
 @interface SBAlertInputView : SBSlidingAlertDisplay <UITextFieldDelegate> {
 	UITextField *_inputTextField;

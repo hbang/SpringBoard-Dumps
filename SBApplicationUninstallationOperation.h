@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSOperation.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSString;
 
-@interface SBApplicationUninstallationOperation : NSOperation {
+@interface SBApplicationUninstallationOperation : XXUnknownSuperclass {
 	NSString *_bundleIdentifier;
 }
 - (id)initWithBundleIdentifier:(id)bundleIdentifier;

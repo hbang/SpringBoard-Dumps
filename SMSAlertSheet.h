@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIAlertView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SMSAlertSheet : UIAlertView {
+@interface SMSAlertSheet : XXUnknownSuperclass {
 	BOOL _showingTagline;
 	BOOL _showingImage;
 }

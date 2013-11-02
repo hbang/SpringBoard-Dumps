@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSString, SBApplication;
 
-@interface SBProxyRemoteView : UIView {
+@interface SBProxyRemoteView : XXUnknownSuperclass {
 	id _delegate;
 	SBApplication *_app;
 	NSString *_remoteViewIdentifier;

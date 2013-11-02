@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSMutableArray;
 
-@interface SBAppSwitcherModel : NSObject {
+@interface SBAppSwitcherModel : XXUnknownSuperclass {
 	NSMutableArray *_recentDisplayIdentifiers;
 }
 + (id)sharedInstance;

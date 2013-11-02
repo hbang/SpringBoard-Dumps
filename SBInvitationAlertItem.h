@@ -33,6 +33,7 @@
 - (id)initWithCount:(int)count;
 - (id)initWithTitle:(id)title organizerName:(id)name startDate:(double)date endDate:(double)date4 floats:(BOOL)floats allDay:(BOOL)day eventId:(int)anId status:(int)status;
 - (id)_dateString;
+- (void)_playPresentationSound;
 - (id)_stringForDateTime:(XXStruct_fhKmAA)dateTime timeZone:(CFTimeZoneRef)zone;
 - (id)_stringForTime:(XXStruct_fhKmAA)time;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;

@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBWallpaperClipView;
+@class UIView, SBWallpaperClipView;
 
-@interface SBRoundedCornersView : UIView {
+@interface SBRoundedCornersView : XXUnknownSuperclass {
 	float _cornerRadius;
 	UIView *_contentView;
 	SBWallpaperClipView *_topLeftCorner;

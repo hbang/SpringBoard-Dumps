@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBNoResultsView, SBKeyboard, UITableView, SBRoundedCornersView, UILabel, UISearchBar;
+@class SBKeyboard, SBRoundedCornersView, UILabel, UIView, UITableView, UISearchBar, SBNoResultsView;
 
-@interface SBSearchView : UIView {
+@interface SBSearchView : XXUnknownSuperclass {
 	SBRoundedCornersView *_roundedCornersView;
 	UISearchBar *_searchBar;
 	UITableView *_tableView;

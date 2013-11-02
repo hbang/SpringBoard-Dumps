@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBScreenShotter : NSObject {
+@interface SBScreenShotter : XXUnknownSuperclass {
 	BOOL _writingScreenshot;
 }
 @property(assign) BOOL writingScreenshot;

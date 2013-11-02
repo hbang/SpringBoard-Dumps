@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBDeviceLockTitle, NSString, SBDeviceLockEntryField;
+@class UIView, SBDeviceLockEntryField, NSString, SBDeviceLockTitle;
 
-@interface SBDeviceLockView : UIView {
+@interface SBDeviceLockView : XXUnknownSuperclass {
 	int _style;
 	int _interfaceOrientation;
 	SBDeviceLockTitle *_statusView;

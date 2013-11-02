@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "RadiosPreferencesDelegate.h"
 
-@class NSTimer, RadiosPreferences, NSString;
+@class SBAlertItem, RadiosPreferences, NSString, NSTimer;
 
-@interface SBTelephonyManager : NSObject <RadiosPreferencesDelegate> {
+@interface SBTelephonyManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
 	void *_suspendDormancyAssertion;
 	NSString *_operatorName;
 	unsigned _suspendDormancyEnabled;
@@ -20,7 +20,12 @@
 	unsigned _iTunesNeedsToRecheckActivation : 1;
 	unsigned _pretendingToSearch : 1;
 	unsigned _callForwardingIndicator : 2;
-	unsigned _usingWirelessModem : 1;
+	BOOL _isNetworkTethering;
+	int _numberOfNetworkTetheredDevices;
+	unsigned _hasShownWaitingAlert : 1;
+	SBAlertItem *_activationAlertItem;
+	int _numActivationFailures;
+	unsigned _loggingCallAudio : 1;
 	NSString *_inCallStatusPreamble;
 	NSTimer *_inCallTimer;
 	RadiosPreferences *_radioPrefs;
@@ -37,14 +42,18 @@
 - (void)_delayedAudioResume;
 - (id)_fetchOperatorName;
 - (void)_headphoneChanged:(id)changed;
+- (void)_postDataConnectionTypeChangedNotification;
 - (void)_postStartupNotification;
 - (BOOL)_pretendingToSearch;
+- (void)_provisioningUpdateWithStatus:(int)status;
 - (void)_proximityChanged:(id)changed;
 - (id)_radioPrefs;
 - (void)_reallySetOperatorName:(id)name;
 - (void)_resetCTMMode;
 - (CTServerConnectionRef)_serverConnection;
 - (void)_serverConnectionDidError:(XXStruct_K5nmsA)_serverConnection;
+- (void)_setCurrentActivationAlertItem:(id)item;
+- (void)_setIsLoggingCallAudio:(BOOL)audio;
 - (void)_setRegistrationStatus:(int)status;
 - (void)_startFakeServiceIfNecessary;
 - (void)_stopFakeService;
@@ -63,7 +72,8 @@
 - (BOOL)cellularRadioCapabilityIsActive;
 - (void)checkForRegistrationSoon;
 - (void)configureForTTY:(BOOL)tty;
-- (void)copyICCID:(id *)iccid IMEI:(id *)imei;
+- (id)copyMobileEquipmentInfo;
+- (id)copyTelephonyCapabilities;
 - (int)dataConnectionType;
 - (void)disconnectAllCalls;
 - (void)disconnectCall;
@@ -71,6 +81,7 @@
 - (void)disconnectIncomingCall;
 - (id)displayForOutgoingCallURL:(id)outgoingCallURL;
 - (void)dumpBasebandState:(id)state;
+- (void)exitEmergencyCallbackMode;
 - (long long)getRowIDOfLastCallInsert;
 - (void)handleSIMReady;
 - (BOOL)heldCallExists;
@@ -78,15 +89,19 @@
 - (double)inCallDuration;
 - (BOOL)inCallUsingReceiver;
 - (BOOL)incomingCallExists;
+- (BOOL)isCallAmbiguous;
+- (BOOL)isEmergencyCallActive;
 - (BOOL)isInAirplaneMode;
+- (BOOL)isInEmergencyCallbackMode;
+- (BOOL)isLoggingCallAudio;
 - (BOOL)isNetworkRegistrationEnabled;
+- (BOOL)isNetworkTethering;
 - (BOOL)isTTYEnabled;
 - (BOOL)isUsingSlowDataConnection;
 - (BOOL)isUsingVPNConnection;
-- (BOOL)isUsingWiFiConnection;
-- (BOOL)isUsingWirelessModem;
 - (void)noteSIMUnlockAttempt;
 - (void)noteWirelessModemChanged;
+- (int)numberOfNetworkTetheredDevices;
 - (void)operatorBundleChanged;
 - (id)operatorName;
 - (BOOL)outgoingCallExists;
@@ -95,9 +110,9 @@
 - (void)setCallForwardingIndicator:(int)indicator;
 - (void)setFastDormancySuspended:(BOOL)suspended;
 - (void)setIsInAirplaneMode:(BOOL)airplaneMode;
+- (void)setIsNetworkTethering:(BOOL)tethering withNumberOfDevices:(int)devices;
 - (void)setIsUsingVPNConnection:(BOOL)connection;
 - (void)setIsUsingWiFiConnection:(BOOL)connection;
-- (void)setIsUsingWirelessModem:(BOOL)modem;
 - (void)setLimitTransmitPowerPerBandEnabled:(BOOL)enabled;
 - (void)setNetworkRegistrationEnabled:(BOOL)enabled;
 - (void)setOperatorName:(id)name;

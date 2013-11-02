@@ -6,10 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
+@class UIView;
 
-@interface SBActivationView : UIView {
+@interface SBActivationView : XXUnknownSuperclass {
 	UIView *_backgroundView;
 	int _mode;
 }

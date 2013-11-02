@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSMutableArray;
 
-@interface SBLinenView : UIView {
+@interface SBLinenView : XXUnknownSuperclass {
 	int _type;
 	NSMutableArray *_strips;
 }

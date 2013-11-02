@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
 
 @class NSMutableDictionary;
 
-@interface SBRemoteViewsController : NSObject {
+@interface SBRemoteViewsController : XXUnknownSuperclass {
 	NSMutableDictionary *_registeredRemoteViewInfos;
 	NSMutableDictionary *_unregisteredRemoteViewInfos;
 }

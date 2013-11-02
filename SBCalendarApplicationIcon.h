@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBApplicationIcon.h"
+#import "SpringBoard-Structs.h"
 
 @class SBCalendarIconContentsView;
 

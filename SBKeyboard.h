@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIKeyboard.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBKeyboard : UIKeyboard {
+@interface SBKeyboard : XXUnknownSuperclass {
 }
 - (UIPeripheralAnimationGeometry)geometryForMinimize:(BOOL)minimize;
 @end

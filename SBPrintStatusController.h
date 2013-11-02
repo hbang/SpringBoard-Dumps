@@ -5,15 +5,15 @@
  * Source: (null)
  */
 
+#import "UIStatusBarStyleDelegate.h"
 #import "UINavigationControllerDelegate.h"
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBSwitcherPopoverWindowControllerDelegate.h"
 #import "UIPrintStatusDelegate.h"
-#import "UIStatusBarStyleDelegate.h"
 
-@class UIPrintStatusViewController, UITransitionView, SBAppSwitcherController, UIView, UIStatusBar;
+@class SBAppSwitcherController, UITransitionView, UIView, UIStatusBar, UIPrintStatusViewController;
 
-@interface SBPrintStatusController : NSObject <UIPrintStatusDelegate, UINavigationControllerDelegate, UIStatusBarStyleDelegate, SBSwitcherPopoverWindowControllerDelegate> {
+@interface SBPrintStatusController : XXUnknownSuperclass <UIPrintStatusDelegate, UINavigationControllerDelegate, UIStatusBarStyleDelegate, SBSwitcherPopoverWindowControllerDelegate> {
 	SBAppSwitcherController *_switcherController;
 	UIPrintStatusViewController *_printStatusController;
 	int _numPrintJobs;

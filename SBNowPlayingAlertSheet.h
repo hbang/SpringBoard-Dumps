@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIAlertView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIButton, UISlider, UILabel;
 
-@interface SBNowPlayingAlertSheet : UIAlertView {
+@interface SBNowPlayingAlertSheet : XXUnknownSuperclass {
 	CGRect volumeSliderFrame;
 	BOOL showingSliderOrLabel;
 	UIButton *routeButton;

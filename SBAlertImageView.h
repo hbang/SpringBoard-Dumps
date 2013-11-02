@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIImageView, UILabel;
 
-@interface SBAlertImageView : UIView {
+@interface SBAlertImageView : XXUnknownSuperclass {
 	UIImageView *_imageView;
 	UILabel *_labelView;
 }

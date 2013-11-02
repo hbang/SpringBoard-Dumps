@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SPDaemonQueryDelegate.h"
 
-@class NSArray, NSTimer, CPSearchMatcher, SPDaemonQueryToken, SPSearchResult, NSString, NSMutableArray, NSDate, NSMutableDictionary;
+@class NSArray, NSDate, CPSearchMatcher, NSTimer, SPDaemonQueryToken, SPSearchResult, NSString, NSMutableArray, NSMutableDictionary;
 
-@interface SBSearchModel : NSObject <SPDaemonQueryDelegate> {
+@interface SBSearchModel : XXUnknownSuperclass <SPDaemonQueryDelegate> {
 	NSString *_queryString;
 	NSString *_firstNoResultsQuery;
 	CPSearchMatcher *_queryMatcher;

@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBCallAlertDisplay.h"
 
-@class TPBottomButtonBar, TPCallWaitingButton, TPPushButton;
+@class TPCallWaitingButton, TPPushButton, TPBottomButtonBar;
 
 @interface SBCallWaitingAlertDisplay : SBCallAlertDisplay {
 	TPCallWaitingButton *_ignoreButton;
@@ -33,6 +33,7 @@
 - (void)answerCall:(CTCallRef)call;
 - (void)dealloc;
 - (void)dismiss;
+- (void)endAllCalls:(id)calls;
 - (void)ignore;
 - (void)lockBarUnlocked:(id)unlocked;
 - (void)setMiddleContentAlpha:(float)alpha;

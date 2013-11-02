@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UITextField.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UILabel;
 
-@interface SBPasscodeTextField : UITextField {
+@interface SBPasscodeTextField : XXUnknownSuperclass {
 	float _letterSpacing;
 	BOOL _usesLargeClearButton;
 	UILabel *_hiddenLabel;

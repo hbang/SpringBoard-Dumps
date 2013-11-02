@@ -7,7 +7,7 @@
 
 #import "SBAlertItem.h"
 
-@class CKMessage, NSString;
+@class NSString, CKMessage;
 
 @interface SBSMSAlertItem : SBAlertItem {
 	CKMessage *_message;

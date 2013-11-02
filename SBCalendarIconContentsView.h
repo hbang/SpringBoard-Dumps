@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSDateFormatter, NSString;
 
-@interface SBCalendarIconContentsView : UIView {
+@interface SBCalendarIconContentsView : XXUnknownSuperclass {
 	NSDateFormatter *_dateFormatter;
 	NSString *_dayNumberFormat;
 }

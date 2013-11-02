@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, CALayer, SBApplication;
+@class UIView, CALayer, SBApplication, NSTimer;
 
-@interface SBAppToAppTransitionView : UIView {
+@interface SBAppToAppTransitionView : XXUnknownSuperclass {
 	id _delegate;
 	SBApplication *_fromApplication;
 	SBApplication *_toApplication;

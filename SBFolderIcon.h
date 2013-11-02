@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBIcon.h"
 
-@class SBDownloadingProgressBar, NSMutableSet, UIImageView, SBFolder;
+@class SBFolder, SBDownloadingProgressBar, NSMutableSet, UIImageView;
 
 @interface SBFolderIcon : SBIcon {
 	SBFolder *_folder;
@@ -64,6 +64,7 @@
 - (void)setGhostly:(BOOL)ghostly requester:(int)requester;
 - (void)setIconScrollPosition:(int)position animated:(BOOL)animated;
 - (void)setIsOverlapping:(BOOL)overlapping;
+- (void)setPartialGhostly:(float)ghostly requester:(int)requester;
 - (void)showDropGlow:(BOOL)glow;
 - (CGAffineTransform)transformToMakeIconBorderExpandToSizeOfDropGlow;
 @end

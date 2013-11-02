@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBWaveView.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBPathWaveView : SBWaveView {

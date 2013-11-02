@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBIconContentView : UIView {
+@interface SBIconContentView : XXUnknownSuperclass {
 }
 @end
 

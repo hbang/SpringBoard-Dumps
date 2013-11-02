@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
 
 
-@interface SBIconImageContainerView : UIView {
+@interface SBIconImageContainerView : XXUnknownSuperclass {
 }
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
 - (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;

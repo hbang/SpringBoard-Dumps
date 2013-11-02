@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIAlertView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIImage;
 
-@interface SBUserNotificationAlertSheet : UIAlertView {
+@interface SBUserNotificationAlertSheet : XXUnknownSuperclass {
 	UIImage *_alertImage;
 }
 @property(retain, nonatomic) UIImage *alertImage;

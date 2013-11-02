@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class CPDistributedNotificationCenter, NSTimer, NSMutableArray;
 
-@interface SBAlertItemsController : NSObject {
+@interface SBAlertItemsController : XXUnknownSuperclass {
 	NSMutableArray *_lockedAlertItems;
 	NSMutableArray *_unlockedAlertItems;
 	NSMutableArray *_pendingAlertItems;

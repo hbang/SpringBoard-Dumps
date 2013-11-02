@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSMutableDictionary, NSMutableSet;
 
-@interface SBDisplay : NSObject {
+@interface SBDisplay : XXUnknownSuperclass {
 	NSMutableDictionary *_displayValues;
 	NSMutableDictionary *_activationValues;
 	NSMutableDictionary *_deactivationValues;

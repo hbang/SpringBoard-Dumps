@@ -5,12 +5,13 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSMutableArray;
 
-@interface SBBluetoothController : NSObject {
+@interface SBBluetoothController : XXUnknownSuperclass {
 	NSMutableArray *_devices;
+	BOOL _tetheringSupported;
 }
 + (id)sharedInstance;
 - (void)addDeviceNotification:(id)notification;
@@ -23,9 +24,13 @@
 - (id)firstBTDeviceToReportBatteryLevel;
 - (void)iapDeviceChanged:(id)changed;
 - (void)noteDevicesChanged;
+- (void)powerChangedNotification:(id)notification;
 - (void)removeDeviceNotification:(id)notification;
 - (void)startWatchingForDevices;
 - (void)stopWatchingForDevices;
+- (BOOL)tetheringConnected;
+- (BOOL)tetheringPaired;
+- (BOOL)tetheringSupported;
 - (void)updateBattery;
 @end
 

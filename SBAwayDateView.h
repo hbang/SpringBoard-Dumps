@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, SBAwayMediaControlsView, TPLCDTextView, UILabel, NSString;
+@class SBAwayMediaControlsView, NSString, TPLCDTextView, UILabel, NSTimer;
 @protocol SBAwayDateViewDelegate;
 
-@interface SBAwayDateView : UIView {
+@interface SBAwayDateView : XXUnknownSuperclass {
 	NSTimer *_dateTimer;
 	TPLCDTextView *_timeLabel;
 	TPLCDTextView *_titleLabel;

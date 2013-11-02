@@ -6,10 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBRoundedMaskCornerView : UIView {
+__attribute__((visibility("hidden")))
+@interface SBRoundedMaskCornerView : XXUnknownSuperclass {
 	float _cornerRadius;
 	unsigned _corner;
 }

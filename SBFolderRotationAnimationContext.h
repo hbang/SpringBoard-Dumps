@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSSet;
 
-@interface SBFolderRotationAnimationContext : NSObject {
+@interface SBFolderRotationAnimationContext : XXUnknownSuperclass {
 	NSSet *_icons;
 	XXStruct_9ihRqB _notchInfo;
 	double _duration;

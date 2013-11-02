@@ -6,13 +6,13 @@
  */
 
 #import "SBIconDelegate.h"
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBSwitcherPopoverWindowControllerDelegate.h"
 #import "UIPopoverControllerDelegate.h"
 
-@class UIButton, MPAudioDeviceController, SBNowPlayingBarView, SBApplication, SBSwitcherSlider, SBAirPlayBarView, MPAudioVideoRoutingActionSheet, MPAudioVideoRoutingPopoverController;
+@class SBSwitcherSlider, SBAirPlayBarView, UIButton, MPAudioDeviceController, SBApplication, SBNowPlayingBarView, MPAudioVideoRoutingActionSheet, MPAudioVideoRoutingPopoverController;
 
-@interface SBNowPlayingBar : NSObject <SBIconDelegate, UIPopoverControllerDelegate, SBSwitcherPopoverWindowControllerDelegate> {
+@interface SBNowPlayingBar : XXUnknownSuperclass <SBIconDelegate, UIPopoverControllerDelegate, SBSwitcherPopoverWindowControllerDelegate> {
 	SBNowPlayingBarView *_barView;
 	SBAirPlayBarView *_airPlayView;
 	MPAudioVideoRoutingActionSheet *_airPlayActionSheet;
@@ -30,12 +30,11 @@
 - (void)_brightnessSliderChanged:(id)changed;
 - (void)_iapExtendedModeChanged:(id)changed;
 - (BOOL)_isAirPlayOn;
-- (void)_orientationLockHit:(id)hit;
 - (void)_playButtonHit:(id)hit;
 - (BOOL)_shouldShowAirPlayButton;
-- (void)_showAudioRoutingActionSheet;
 - (void)_showAudioRoutingPopover;
 - (void)_systemVolumeChanged:(id)changed;
+- (void)_toggleButtonHit:(id)hit;
 - (void)_trackButtonCancel:(id)cancel;
 - (void)_trackButtonDown:(id)down;
 - (void)_trackButtonDownSeek:(id)seek;

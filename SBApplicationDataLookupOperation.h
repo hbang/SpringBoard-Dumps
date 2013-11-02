@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSOperation.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBApplicationDataLookupOperation : NSOperation {
+@interface SBApplicationDataLookupOperation : XXUnknownSuperclass {
 }
 - (void)main;
 @end

@@ -7,7 +7,7 @@
 
 #import "SBAlertItem.h"
 
-@class AVController, NSTimer, NSDictionary, UIImage, NSString;
+@class NSDictionary, UIImage, NSString, AVController, NSTimer;
 
 @interface SBUserNotificationAlert : SBAlertItem {
 	unsigned _replyPort;
@@ -37,6 +37,7 @@
 	int _currentTextFieldButtonDisplayIndex;
 	double _creationTime;
 	int _defaultButtonTag;
+	int _unlockActionButtonTag;
 	unsigned _replyFlags;
 	int _defaultButtonIndex;
 	int _alternateButtonIndex;
@@ -68,6 +69,7 @@
 - (void)didDeactivateForReason:(int)reason;
 - (BOOL)dismissOnLock;
 - (void)noteVolumeOrLockPressed;
+- (void)performUnlockAction;
 - (BOOL)shouldShowInLockScreen;
 - (void)stopSound;
 - (int)token;

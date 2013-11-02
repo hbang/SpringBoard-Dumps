@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, SBResetProgressView;
+@class SBResetProgressView, NSTimer;
 
-@interface SBResetView : UIView {
+@interface SBResetView : XXUnknownSuperclass {
 	SBResetProgressView *_progressView;
 	NSTimer *_progressTimer;
 }

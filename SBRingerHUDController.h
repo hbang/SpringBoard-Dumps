@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBRingerHUDController : NSObject {
+@interface SBRingerHUDController : XXUnknownSuperclass {
 }
 + (void)activate:(int)activate;
 @end

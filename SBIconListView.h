@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBIconListModel, NSMutableArray, SBIcon;
+@class UIView, SBIconListModel, SBIcon, NSMutableArray;
 
-@interface SBIconListView : UIView {
+@interface SBIconListView : XXUnknownSuperclass {
 	SBIconListModel *_model;
 	int _orientation;
 	SBIcon *_bouncedIcon;

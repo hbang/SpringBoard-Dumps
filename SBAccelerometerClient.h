@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
 
 
-@interface SBAccelerometerClient : NSObject {
+@interface SBAccelerometerClient : XXUnknownSuperclass {
 	CFMachPortRef _cfMachPort;
 	unsigned _port;
 	double _updateInterval;

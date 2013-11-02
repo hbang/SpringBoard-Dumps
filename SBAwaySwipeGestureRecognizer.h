@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIGestureRecognizer.h>
 
 
-@interface SBAwaySwipeGestureRecognizer : UIGestureRecognizer {
+@interface SBAwaySwipeGestureRecognizer : XXUnknownSuperclass {
 	CGPoint _startLocation;
 	unsigned _startTouchCount;
 	double _startTime;

@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSMutableArray, NSLock;
 
-@interface SBAccelerometerInterface : NSObject {
+@interface SBAccelerometerInterface : XXUnknownSuperclass {
 	NSLock *_lock;
 	double _samplingInterval;
 	double _topDisplayLastUpdateTime;

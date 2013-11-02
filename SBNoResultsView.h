@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UILabel;
 
-@interface SBNoResultsView : UIView {
+@interface SBNoResultsView : XXUnknownSuperclass {
 	UILabel *_noResultsLabel;
 }
 - (id)initWithFrame:(CGRect)frame;

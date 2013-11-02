@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBRootFolder, NSSet, NSMutableSet, NSDictionary, NSMutableDictionary;
+@class NSSet, NSMutableDictionary, NSDictionary, NSMutableSet, SBRootFolder;
 
-@interface SBIconModel : NSObject {
+@interface SBIconModel : XXUnknownSuperclass {
 	NSDictionary *_lastKnownUserGeneratedIconState;
 	NSMutableDictionary *_leafIconsByIdentifier;
 	NSSet *_hiddenIconTags;

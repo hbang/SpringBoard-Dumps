@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIScrollView.h>
 
 
-@interface SBIconScrollView : UIScrollView {
+@interface SBIconScrollView : XXUnknownSuperclass {
 }
 - (BOOL)_scrollsToMakeFirstResponderVisible;
 - (BOOL)cancelTouchTracking;

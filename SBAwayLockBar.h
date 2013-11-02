@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <TelephonyUI/TPBottomLockBar.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSMutableDictionary, UIButton;
 
-@interface SBAwayLockBar : TPBottomLockBar {
+@interface SBAwayLockBar : XXUnknownSuperclass {
 	UIButton *_slideshowButton;
 	NSMutableDictionary *_orientationToButtonImages;
 }

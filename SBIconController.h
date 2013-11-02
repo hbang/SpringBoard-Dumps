@@ -6,15 +6,15 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBIconController.h"
 #import "UIScrollViewDelegate.h"
+#import "SBIconController.h"
 #import "SBIconListPageControlDelegate.h"
 #import "SBIconDelegate.h"
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, SBIconListView, SBIconScrollView, SBSearchView, SBWallpaperNotchView, SBFolderSlidingView, SBDockIconListView, SBSearchController, NSMutableArray, SBFolderView, SBIconModel, SBIconListPageControl, TPLCDTextView, UITouch, SBFolder, UIKeyboard, UIView, SBIcon, SBLeafIcon, SBRootFolder, SBIconIndexPath;
+@class SBIconIndexPath, NSMutableArray, UITouch, TPLCDTextView, UIKeyboard, SBIconListView, UIView, SBDockIconListView, SBIconScrollView, SBSearchView, SBWallpaperNotchView, SBFolderSlidingView, SBSearchController, SBIconModel, SBFolderView, SBIconListPageControl, NSTimer, SBFolder, SBIcon, SBLeafIcon, SBRootFolder;
 
-@interface SBIconController : NSObject <UIScrollViewDelegate, SBIconListPageControlDelegate, SBIconDelegate> {
+@interface SBIconController : XXUnknownSuperclass <UIScrollViewDelegate, SBIconListPageControlDelegate, SBIconDelegate> {
 	SBIconModel *_iconModel;
 	SBRootFolder *_rootFolder;
 	UIView *_contentView;
@@ -287,6 +287,7 @@
 - (void)rotateFolderAndSlidingViewsWithDuration:(double)duration;
 - (void)saveFolderToReopenWhenSwitcherCloses;
 - (void)setCurrentPageIconsGhostly:(BOOL)ghostly forRequester:(int)requester skipIcon:(id)icon;
+- (void)setCurrentPageIconsPartialGhostly:(float)ghostly forRequester:(int)requester skipIcon:(id)icon;
 - (void)setOpenFolder:(id)folder;
 - (void)shiftFolderViewsForKeyboardAppearing:(BOOL)keyboardAppearing keyboardHeight:(float)height;
 @end

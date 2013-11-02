@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UITableViewCell.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface UIAlertTableCell : UITableViewCell {
+@interface UIAlertTableCell : XXUnknownSuperclass {
 	int _cellOutline;
 	BOOL _checked;
 }

@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UITextField.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UITextInteractionAssistant;
 
-@interface SBFolderTextField : UITextField {
+@interface SBFolderTextField : XXUnknownSuperclass {
 }
 @property(readonly, assign, nonatomic) UITextInteractionAssistant *interactionAssistant;
 - (id)initWithFrame:(CGRect)frame;

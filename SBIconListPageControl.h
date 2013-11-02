@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIPageControl.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBIconListPageControlDelegate;
 
-@interface SBIconListPageControl : UIPageControl {
+@interface SBIconListPageControl : XXUnknownSuperclass {
 	id _delegate;
 }
 @property(assign, nonatomic) id<SBIconListPageControlDelegate> delegate;

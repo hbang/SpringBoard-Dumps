@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, TPLCDView, UIImage, NSString;
+@class TPLCDView, UIImage, NSString, NSTimer;
 
-@interface SBAwayInCallController : NSObject {
+@interface SBAwayInCallController : XXUnknownSuperclass {
 	TPLCDView *_lcdView;
 	BOOL _showsInCallInfo;
 	NSTimer *_durationTimer;

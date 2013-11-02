@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIImageView, UIImage;
 
-@interface SBSlidingViewHighlight : UIView {
+@interface SBSlidingViewHighlight : XXUnknownSuperclass {
 	UIImage *_highlightImage;
 	UIImageView *_leftHighlight;
 	UIImageView *_rightHighlight;

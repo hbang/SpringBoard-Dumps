@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UITextField.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface WhiteBorderedTextField : UITextField {
+@interface WhiteBorderedTextField : XXUnknownSuperclass {
 }
 - (void)drawBorder:(CGRect)border;
 - (void)drawRect:(CGRect)rect;

@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIImageView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBLinenNotchView : UIImageView {
+@interface SBLinenNotchView : XXUnknownSuperclass {
 }
 + (id)_imageForNotchInfo:(XXStruct_9ihRqB)notchInfo;
 + (id)_keyForNotchInfo:(XXStruct_9ihRqB)notchInfo;

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSArray, SBFolderIcon;
 
-@interface SBIconsIntoFolderAnimationContext : NSObject {
+@interface SBIconsIntoFolderAnimationContext : XXUnknownSuperclass {
 	SBFolderIcon *_folderIcon;
 	NSArray *_iconSnapshots;
 	NSArray *_miniSnapshots;

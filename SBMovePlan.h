@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBIcon, SBIconListView;
+@class SBIconListView, SBIcon;
 
-@interface SBMovePlan : NSObject {
+@interface SBMovePlan : XXUnknownSuperclass {
 	SBIcon *_icon;
 	SBIconListView *_source;
 	SBIconListView *_destination;

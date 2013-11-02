@@ -6,12 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "UITextFieldDelegate.h"
 
-@class UIImageView, SBFolderTitleLabel, SBFolderTextField, SBLinenView, SBFolderIconListView, SBFolder;
+@class SBFolder, SBLinenView, UIImageView, SBFolderTitleLabel, SBFolderTextField, SBFolderIconListView;
 
-@interface SBFolderView : UIView <UITextFieldDelegate> {
+@interface SBFolderView : XXUnknownSuperclass <UITextFieldDelegate> {
 	SBFolder *_folder;
 	SBFolderTitleLabel *_label;
 	SBFolderTextField *_textField;

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSMutableDictionary, UIWindow;
 
-@interface SBSheetController : NSObject {
+@interface SBSheetController : XXUnknownSuperclass {
 	NSMutableDictionary *_appToSheetMap;
 	UIWindow *_presentationWindow;
 }

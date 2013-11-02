@@ -8,12 +8,12 @@
 #import "SpringBoard-Structs.h"
 #import "SBWiFiManagerDelegate.h"
 #import "UIApplicationDelegate.h"
-#import <UIKit/UIApplication.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard.h"
 
-@class NSDictionary, NSString, NSMutableArray, SBDimmingWindow, SBApplication, NSNumberFormatter, NSDate, NSTimer, SBUIController, NSURL, NSSet;
+@class SBApplication, SBDimmingWindow, NSTimer, NSURL, NSSet, NSDictionary, NSString, NSMutableArray, SBUIController, NSNumberFormatter, NSDate;
 
-@interface SpringBoard : UIApplication <UIApplicationDelegate, SBWiFiManagerDelegate> {
+@interface SpringBoard : XXUnknownSuperclass <UIApplicationDelegate, SBWiFiManagerDelegate> {
 	SBUIController *_uiController;
 	NSTimer *_menuButtonTimer;
 	NSTimer *_lockButtonTimer;
@@ -71,6 +71,7 @@
 - (void *)_accessibilityEventTapCallback;
 - (id)_accessibilityFrontMostApplication;
 - (BOOL)_accessibilityIsSBStealingEvents;
+- (BOOL)_accessibilityIsSystemGestureActive;
 - (BOOL)_accessibilityObjectWithinProximity;
 - (id)_accessibilityRunningApplications;
 - (void)_accessibilitySetEventTapCallback:(void *)callback;
@@ -88,6 +89,7 @@
 - (void)_iapExtendedModeReset;
 - (void)_iapServerConnectionDiedNotification:(id)notification;
 - (void)_imagesMounted;
+- (BOOL)_isSwitcherShowing;
 - (void)_keyboardAvailabilityChanged;
 - (void)_killThermallyActiveApplication;
 - (void)_launchMusicPlayerSuspendedAndStartMusic;
@@ -111,9 +113,11 @@
 - (void)_tearDownNow;
 - (void)_testPhoneAlerts;
 - (void)_updateRegisteredSimpleRemoteApp;
+- (void)_updateRingerStateWithVisuals:(BOOL)visuals;
 - (void)accessoryKeyStateChanged:(GSEventRef)changed;
 - (int)activeInterfaceOrientation;
 - (int)alertOrientation;
+- (BOOL)allowCaseLatchLockAndUnlock;
 - (void)animateBacklightToFactor:(float)factor duration:(double)duration didFinishTarget:(id)target selector:(SEL)selector;
 - (void)animateBacklightToFactor:(float)factor duration:(double)duration keepTouchOn:(BOOL)on didFinishTarget:(id)target selector:(SEL)selector;
 - (void)anotherApplicationFinishedLaunching:(GSEventRef)launching;
@@ -140,6 +144,8 @@
 - (BOOL)canShowNowPlayingHUD;
 - (void)cancelMenuButtonRequests;
 - (void)cancelSetBacklightFactorToZeroAfterDelay;
+- (BOOL)caseIsEnabledAndLatched;
+- (void)caseLatchWantsToAttemptLock;
 - (void)checkPasscodeCompliance;
 - (void)clearIdleTimer;
 - (void)clearLaunchedAfterLanguageRestart;
@@ -171,7 +177,7 @@
 - (BOOL)isMusicPlayerPlaying;
 - (BOOL)isNowPlayingAppPlaying;
 - (BOOL)isPoweringDown;
-- (void)keyboardWantsToAttemptUnlock;
+- (void)keyboardOrCaseLatchWantsToAttemptUnlock:(id)attemptUnlock;
 - (void)languageChanged;
 - (void)launchMusicPlayerSuspended;
 - (BOOL)launchedAfterLanguageRestart;
@@ -189,7 +195,9 @@
 - (void)menuButtonUp:(GSEventRef)up;
 - (double)nextIdleTimeDuration;
 - (double)nextLockTimeDuration;
+- (void)noteCaseHardwarePresent;
 - (void)noteInterfaceOrientationChanged:(int)changed;
+- (void)noteInterfaceOrientationChanged:(int)changed updateMirroredDisplays:(BOOL)displays;
 - (void)noteSubstantialTransitionOccured;
 - (id)nowPlayingApp;
 - (void)pinPolicyChanged;
@@ -222,6 +230,8 @@
 - (void)setHasMiniAlerts:(BOOL)alerts;
 - (void)setNowPlayingInfo:(id)info forApplication:(id)application;
 - (void)setSimpleRemoteRoutingPriority:(unsigned)priority forApplication:(id)application;
+- (void)setSpringBoardStatusBarAlpha:(float)alpha;
+- (void)setSpringBoardStatusBarOpaque:(BOOL)opaque;
 - (void)setSystemVolumeHUDEnabled:(BOOL)enabled forAudioCategory:(id)audioCategory;
 - (void)setZoomTouchEnabled:(BOOL)enabled;
 - (void)setupMidnightTimer;
@@ -249,6 +259,7 @@
 - (void)updateAirPortForDisplay:(id)display;
 - (void)updateCapabilitiesAndIconVisibility;
 - (void)updateMenuDoubleTapSettings;
+- (void)updateMirroredDisplayOrientation;
 - (void)updatePowerlog;
 - (void)updateProximitySettings;
 - (void)updateRejectedInputSettings;

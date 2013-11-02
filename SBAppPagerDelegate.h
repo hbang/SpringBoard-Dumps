@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIScrollView.h>
 
 
-@interface UIScrollView (Centerable)
-- (void)centerToContentView;
+@protocol SBAppPagerDelegate
+- (id)appPager:(id)pager viewForItem:(id)item;
+@optional
+- (void)appPagerFinishedScrolling:(id)scrolling;
 @end
 

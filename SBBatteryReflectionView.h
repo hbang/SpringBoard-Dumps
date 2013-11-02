@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIImage;
 
-@interface SBBatteryReflectionView : UIView {
+@interface SBBatteryReflectionView : XXUnknownSuperclass {
 	UIImage *_image;
 	UIImage *_maskImage;
 	float _bottomMargin;

@@ -9,7 +9,7 @@
 #import "SBAlertDisplay.h"
 #import "UITextFieldDelegate.h"
 
-@class UITransitionView, UIScrollView, UIActivityIndicatorView, UITextField, SBTextDisplayView, TPBottomButtonBar;
+@class SBTextDisplayView, TPBottomButtonBar, UITransitionView, UIScrollView, UIActivityIndicatorView, UITextField, UIView;
 
 @interface SBUSSDAlertDisplay : SBAlertDisplay <UITextFieldDelegate> {
 	TPBottomButtonBar *_responseBar;

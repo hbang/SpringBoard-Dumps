@@ -20,6 +20,7 @@
 + (void)alarmsDidFire:(id)alarms;
 + (void)registerForAlerts;
 - (id)initWithDate:(double)date timeZone:(id)zone title:(id)title location:(id)location eventId:(int)anId isAllDay:(BOOL)day;
+- (void)_playPresentationSound;
 - (void)_updateEventDetails:(id)details;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (id)awayItem;

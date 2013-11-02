@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UISlider.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBSwitcherSlider : UISlider {
+@interface SBSwitcherSlider : XXUnknownSuperclass {
 }
 - (id)initWithFrame:(CGRect)frame;
 - (UIEdgeInsets)_thumbHitEdgeInsets;

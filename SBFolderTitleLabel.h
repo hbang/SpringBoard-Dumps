@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UILabel.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBFolderTitleLabel : UILabel {
+@interface SBFolderTitleLabel : XXUnknownSuperclass {
 }
 - (void)drawRect:(CGRect)rect;
 - (CGSize)sizeThatFits:(CGSize)fits;

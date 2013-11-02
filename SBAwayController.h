@@ -8,7 +8,7 @@
 #import "SBAlert.h"
 #import "SpringBoard-Structs.h"
 
-@class NSDictionary, NSString, SBSlidingAlertDisplay, NSMutableArray, SBApplication, PCPersistentTimer, SBAlertItem, NSDate, SBAwayModel, NSNumber, SBAwayView, NSTimeZone, NSTimer, NSMutableDictionary, SBUIController;
+@class SBSlidingAlertDisplay, SBApplication, SBAlertItem, NSNumber, SBAwayModel, NSTimeZone, NSMutableDictionary, NSTimer, SBAwayView, NSDictionary, NSString, NSMutableArray, SBUIController, NSDate, PCPersistentTimer;
 
 @interface SBAwayController : SBAlert {
 	SBUIController *_uiController;
@@ -34,6 +34,8 @@
 	unsigned _performingAutoUnlock : 1;
 	unsigned _springBoardIdleTimerScheduled : 1;
 	unsigned _validPhotoCountCheck : 1;
+	unsigned _delayUndimForAutoUnlock : 1;
+	int _unlockType;
 	NSDictionary *_nowPlayingInfo;
 	SBApplication *_nowPlayingApp;
 	NSNumber *_iPodNowPlayingPID;
@@ -52,8 +54,9 @@
 	NSMutableDictionary *_awayViewPluginControllers;
 	NSString *_alwaysFullscreenAwayPluginName;
 	NSMutableArray *_lockScreenBundlesToDisableAfterUnlock;
-	PCPersistentTimer *_smsSoundWakeTimers[2];
+	PCPersistentTimer *_smsSoundWakeTimers[10];
 	int _gracePeriodWhenLocked;
+	int _numberOfSMSReminderAlerts;
 }
 @property(assign, nonatomic) BOOL chargingViewHasFadedOut;
 @property(readonly, assign) NSDate *lastLockDate;
@@ -71,9 +74,11 @@
 - (int)_getGracePeriod;
 - (void)_handleFetchediPodNowPlayingInfo:(id)info;
 - (void)_iapExtendedModeChanged:(id)changed;
+- (BOOL)_isAlertCountValid:(int)valid;
 - (void)_markLockTime;
 - (void)_nowPlayingAppChanged:(id)changed;
 - (void)_nowPlayingStateChanged:(id)changed;
+- (void)_numberOfSMSReminderAlertsChanged;
 - (void)_pendAlertItem:(id)item;
 - (void)_photoLibraryChanged;
 - (void)_releaseAwayView;
@@ -82,6 +87,7 @@
 - (void)_smsSoundWakeTimerFired:(id)fired;
 - (void)_undimScreen;
 - (void)_unlockWithSound:(BOOL)sound isAutoUnlock:(BOOL)unlock;
+- (void)_unlockWithSound:(BOOL)sound isAutoUnlock:(BOOL)unlock unlockType:(int)type;
 - (void)_updateDeviceLockedState;
 - (void)activate;
 - (BOOL)activateAlertItem:(id)item;
@@ -96,7 +102,7 @@
 - (void)applicationRequestedDeviceUnlock;
 - (BOOL)attemptDeviceUnlockWithPassword:(id)password alertDisplay:(id)display;
 - (void)attemptUnlock;
-- (void)attemptUnlockWithHardwareKeyPress:(BOOL)hardwareKeyPress;
+- (void)attemptUnlockWithUnlockType:(int)unlockType;
 - (id)awayModel;
 - (BOOL)awayPluginControllerShouldAnimateOthersResumption;
 - (id)awayView;
@@ -108,6 +114,7 @@
 - (id)currentAlertItem;
 - (void)deactivate;
 - (void)deactivateAlertItem:(id)item;
+- (BOOL)delayUndimmingForAutoUnlock;
 - (BOOL)deviceHasPhotos;
 - (void)didAnimateLockKeypadIn;
 - (void)didAnimateLockKeypadOut;
@@ -163,6 +170,7 @@
 - (void)noteResetRestoreStateChanged;
 - (void)noteSpringBoardIdleTimerScheduled:(BOOL)scheduled;
 - (void)noteSyncStateChanged;
+- (int)numberOfSMSReminderAlerts;
 - (void)orderOut;
 - (void)pendOrDeactivateCurrentAlertItem;
 - (id)pendingAlertItems;
@@ -198,8 +206,9 @@
 - (void)unlockAlwaysFullscreenAwayView;
 - (void)unlockWithSound:(BOOL)sound;
 - (void)unlockWithSound:(BOOL)sound alertDisplay:(id)display;
-- (void)unlockWithSound:(BOOL)sound alertDisplay:(id)display isAutoUnlock:(BOOL)unlock;
+- (void)unlockWithSound:(BOOL)sound alertDisplay:(id)display isAutoUnlock:(BOOL)unlock unlockType:(int)type;
 - (void)unlockWithSound:(BOOL)sound isAutoUnlock:(BOOL)unlock;
+- (void)unlockWithSound:(BOOL)sound isAutoUnlock:(BOOL)unlock unlockType:(int)type;
 - (void)updateAwayViewNowPlayingInfo;
 - (void)updateClockFormat;
 - (void)updateInCallUI;

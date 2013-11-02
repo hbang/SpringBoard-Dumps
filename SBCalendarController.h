@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBCalendarController : NSObject {
+@interface SBCalendarController : XXUnknownSuperclass {
 	CFDateFormatterRef _dayFormatter;
 	CFDateFormatterRef _timeFormatter;
 	int _unreadInvitationCount;

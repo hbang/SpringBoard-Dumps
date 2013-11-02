@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIScrollView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBAppSwitcherScrollViewDelegate;
 
-@interface SBAppSwitcherScrollView : UIScrollView {
+@interface SBAppSwitcherScrollView : XXUnknownSuperclass {
 }
 @property(assign, nonatomic) id<SBAppSwitcherScrollViewDelegate> delegate;
 - (BOOL)touchesShouldCancelInContentView:(id)touches;

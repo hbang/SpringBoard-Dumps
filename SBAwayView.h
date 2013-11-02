@@ -9,7 +9,7 @@
 #import "SpringBoard-Structs.h"
 #import "UIKeyInput.h"
 
-@class SBAwayInCallController, NSDictionary, TPBottomButtonBar, SBAlertImageView, SBAwayViewPluginController, SBAwayDateView, UIAlertView, UIPushButton, SBAwayChargingView, SBAwaySwipeGestureRecognizer, SBAwayItemsView, UIView, NSTimer, SBAwayLockBar, SBActivationView;
+@class UIPushButton, SBActivationView, SBAwayInCallController, SBAwayDateView, UIView, SBAlertImageView, SBAwayChargingView, SBAwaySwipeGestureRecognizer, NSTimer, SBAwayItemsView, NSDictionary, TPBottomButtonBar, SBAwayViewPluginController, SBAwayLockBar, UIAlertView;
 
 @interface SBAwayView : SBSlidingAlertDisplay <UIKeyInput> {
 	BOOL _isDimmed;
@@ -67,6 +67,7 @@
 - (void)_hideMediaControls;
 - (void)_initializeLegalTextOverlay;
 - (void)_layoutLegalTextOverlay;
+- (void)_networkTetheringStateChanged:(id)changed;
 - (void)_pluginFadeInAnimationDidStop:(id)_pluginFadeInAnimation finished:(id)finished context:(void *)context;
 - (void)_positionAwayItemsView;
 - (void)_postLockCompletedNotification;
@@ -77,7 +78,6 @@
 - (id)_topBarLCDControlsImage;
 - (void)_updateBlockedStatus;
 - (void)_updateBlockedStatusLabel;
-- (void)_wirelessModemStateChanged:(id)changed;
 - (void)addDateView;
 - (void)addFirewireWarningView;
 - (void)alertDisplayWillBecomeVisible;
