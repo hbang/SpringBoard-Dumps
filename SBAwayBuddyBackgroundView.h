@@ -5,17 +5,18 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIImageView, UIButton;
 
+__attribute__((visibility("hidden")))
 @interface SBAwayBuddyBackgroundView : XXUnknownSuperclass {
-	UIImageView *_linenView;
 	UIImageView *_titleView;
 	UIButton *_infoButton;
 }
 - (id)initWithFrame:(CGRect)frame;
+- (void)dealloc;
 - (void)layoutSubviews;
 - (void)setInfoButtonAlpha:(float)alpha;
 @end

@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import "SBDefaultDateLabel.h"
 #import "SBRelativeDateTimerDelegate.h"
+#import "SBDefaultDateLabel.h"
 
 @class SBRelativeDateTimer;
 
+__attribute__((visibility("hidden")))
 @interface SBRelativeDateLabel : SBDefaultDateLabel <SBRelativeDateTimerDelegate> {
 	SBRelativeDateTimer *_relativeDateTimer;
 	unsigned _value;
@@ -18,6 +19,7 @@
 }
 - (id)constructLabelString;
 - (void)dealloc;
+- (void)prepareForReuse;
 - (void)setTimeZoneRelativeStartDate:(id)date absoluteStartDate:(id)date2;
 - (void)timerFiredWithValue:(unsigned)value forResolution:(int)resolution comparedToNow:(int)now;
 @end

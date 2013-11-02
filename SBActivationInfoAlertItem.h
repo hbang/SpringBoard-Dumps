@@ -9,6 +9,7 @@
 
 @class UITextView, NSString;
 
+__attribute__((visibility("hidden")))
 @interface SBActivationInfoAlertItem : SBDismissOnlyAlertItem {
 	UITextView *_textView;
 	NSString *_meid;

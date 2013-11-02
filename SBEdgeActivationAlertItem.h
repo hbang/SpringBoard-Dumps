@@ -9,6 +9,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SBEdgeActivationAlertItem : XXUnknownSuperclass {
 	int _error;
 	NSString *_reason;

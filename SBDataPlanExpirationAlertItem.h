@@ -9,6 +9,7 @@
 
 @class NSDate;
 
+__attribute__((visibility("hidden")))
 @interface SBDataPlanExpirationAlertItem : SBDataPlanAccountAlertItem {
 	NSDate *_expirationDate;
 }

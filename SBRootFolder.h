@@ -5,31 +5,43 @@
  * Source: (null)
  */
 
+#import "SBIconIndexNodeObserver.h"
 #import "SBFolder.h"
 
 @class SBDockIconListModel;
 
-@interface SBRootFolder : SBFolder {
+__attribute__((visibility("hidden")))
+@interface SBRootFolder : SBFolder <SBIconIndexNodeObserver> {
 	SBDockIconListModel *_dock;
 }
 + (int)maxListCount;
 - (id)init;
+- (void)_notifyIndexChange:(int)change identifiers:(id)identifiers withValidationBlock:(id)validationBlock;
+- (id)containedNodeIdentifiers;
+- (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
 - (id)dockModel;
 - (id)folderType;
 - (id)iconsOfClass:(Class)aClass;
 - (unsigned)indexOfIconList:(id)iconList;
-- (id)indexPathForEntity:(id)entity;
+- (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (BOOL)isIconStateDirty;
+- (void)list:(id)list didAddContainedNodeIdentifiers:(id)identifiers;
+- (void)list:(id)list didRemoveContainedNodeIdentifiers:(id)identifiers;
 - (id)listAtIndex:(unsigned)index;
 - (id)listContainingIcon:(id)icon;
 - (id)listContainingLeafIconWithIdentifier:(id)identifier;
 - (Class)listModelClass;
 - (Class)listViewClass;
 - (void)markIconStateClean;
+- (void)node:(id)node didAddContainedNodeIdentifiers:(id)identifiers;
+- (void)node:(id)node didRemoveContainedNodeIdentifiers:(id)identifiers;
+- (id)nodeDescriptionWithPrefix:(id)prefix;
+- (id)nodeIdentifier;
+- (id)nodesAlongIndexPath:(id)path consumedIndexes:(unsigned)indexes;
 - (void)placeIconsOnFirstPage:(id)page;
 - (void)removeEmptyList:(id)list;
 - (id)representation;
-- (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id)added;
+- (BOOL)resetWithRepresentation:(id)representation model:(id)model leafIdentifiersAdded:(id)added;
 @end
 

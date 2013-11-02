@@ -9,11 +9,12 @@
 
 @class SBApplication;
 
+__attribute__((visibility("hidden")))
 @interface SBRemoteNotificationPermissionAlert : XXUnknownSuperclass {
 	SBApplication *_app;
-	int _types;
+	unsigned _types;
 }
-- (id)initWithApplication:(id)application notificationTypes:(int)types;
+- (id)initWithApplication:(id)application notificationTypes:(unsigned)types;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;

@@ -9,6 +9,7 @@
 #import "SBFolderNotchView.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBWoodNotchView : SBFolderNotchView {
 }
 + (id)_keyComponentForNotchInfoRect:(CGRect)notchInfoRect;

@@ -8,6 +8,7 @@
 #import "SBPhoneAlertItem.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBNetworkReselectionAlertItem : SBPhoneAlertItem {
 }
 - (id)init;

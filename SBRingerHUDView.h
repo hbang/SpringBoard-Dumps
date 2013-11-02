@@ -9,6 +9,7 @@
 #import "SBHUDView.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBRingerHUDView : SBHUDView {
 	BOOL _silent;
 }

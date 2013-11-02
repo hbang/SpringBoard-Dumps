@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface SBSlidingViewHighlight : XXUnknownSuperclass {
 	UIImageView *_leftHighlight;
 	UIImageView *_rightHighlight;

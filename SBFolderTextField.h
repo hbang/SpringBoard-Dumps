@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UITextInteractionAssistant;
 
+__attribute__((visibility("hidden")))
 @interface SBFolderTextField : XXUnknownSuperclass {
 }
 @property(readonly, assign, nonatomic) UITextInteractionAssistant *interactionAssistant;

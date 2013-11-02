@@ -5,15 +5,25 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
+#import "NSCopying.h"
 #import "SBIcon.h"
 
+@class NSString;
 
-@interface SBLeafIcon : SBIcon {
+__attribute__((visibility("hidden")))
+@interface SBLeafIcon : SBIcon <NSCopying> {
+	NSString *_leafIdentifier;
 }
+- (id)initWithLeafIdentifier:(id)leafIdentifier;
+- (id)copyWithZone:(NSZone *)zone;
+- (void)dealloc;
 - (id)description;
 - (unsigned)hash;
 - (BOOL)isEqual:(id)equal;
+- (id)leafIdentifier;
 - (BOOL)matchesRepresentation:(id)representation;
+- (id)nodeIdentifier;
 - (id)representation;
 @end
 

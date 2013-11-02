@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwaySwipeGestureRecognizer : XXUnknownSuperclass {
 	CGPoint _startLocation;
 	unsigned _startTouchCount;

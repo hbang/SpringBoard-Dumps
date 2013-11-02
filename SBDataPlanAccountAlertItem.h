@@ -9,6 +9,7 @@
 
 @class NSURL;
 
+__attribute__((visibility("hidden")))
 @interface SBDataPlanAccountAlertItem : SBDataPlanAlertItem {
 	NSURL *_accountURL;
 }

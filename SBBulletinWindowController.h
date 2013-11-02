@@ -6,35 +6,59 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIActiveOrientationObserver.h"
 
 @class NSMutableSet, UIWindow;
 
-@interface SBBulletinWindowController : XXUnknownSuperclass {
+__attribute__((visibility("hidden")))
+@interface SBBulletinWindowController : XXUnknownSuperclass <SBUIActiveOrientationObserver> {
 	UIWindow *_bulletinWindow;
-	int _bulletinWindowOrientation;
+	int _trueBulletinWindowOrientation;
+	int _overrideBulletinWindowOrientation;
+	BOOL _rotatingKeyboard;
+	BOOL _aboveShowcase;
 	NSMutableSet *_windowClients;
+	NSMutableSet *_keyClients;
 	NSMutableSet *_busyClients;
 	NSMutableSet *_busyReasons;
 }
 @property(readonly, assign, nonatomic) UIWindow *window;
-@property(readonly, assign, nonatomic) int windowOrientation;
+@property(assign, nonatomic, getter=isWindowAboveShowcase) BOOL windowAboveShowcase;
 + (id)sharedInstance;
++ (BOOL)shouldSuppressAlertForBulletin:(id)bulletin;
 - (id)init;
-- (void)_setWindowOrientation:(int)orientation;
+- (BOOL)_allowsShowNotificationsGestureFromBanner:(BOOL)banner;
+- (void)_assignWindowLevel;
+- (void)_becomeKeyWindow;
+- (void)_cleanUpAfterRotatingFromOrientation:(int)orientation;
+- (void)_didBecomeKeyWindow:(id)window;
+- (void)_didResignKeyWindow:(id)window;
+- (void)_doRotationToOrientation:(int)orientation duration:(double)duration forOverride:(BOOL)override;
+- (BOOL)_hasKeyWindowClients;
+- (BOOL)_hasOrientationOverride;
+- (BOOL)_isBusyForReason:(id)reason;
+- (void)_prepareToRotateToOrientation:(int)orientation forOverride:(BOOL)override;
+- (void)_resignAsKeyWindow;
+- (void)_setOverrideWindowOrientation:(int)orientation;
+- (void)_setTrueWindowOrientation:(int)orientation;
+- (void)_updateWindowTransformAndFrameForOrientation;
+- (void)activeInterfaceOrientationDidChangeToOrientation:(int)activeInterfaceOrientation willAnimateWithDuration:(double)duration fromOrientation:(int)orientation;
+- (void)activeInterfaceOrientationWillChangeToOrientation:(int)activeInterfaceOrientation;
 - (void)addBusyClient:(id)client;
 - (void)addWindowClient:(id)client;
 - (BOOL)allowsDismissBannerGesture;
 - (BOOL)allowsHideNotificationsGesture;
 - (BOOL)allowsShowNotificationsGesture;
-- (void)cleanUpAfterRotatingFromOrientation:(int)orientation;
+- (BOOL)allowsShowNotificationsGestureFromBanner;
+- (void)clearOverrideWindowOrientation;
 - (void)dealloc;
 - (BOOL)isBusy;
-- (void)prepareToRotateToOrientation:(int)orientation;
+- (void)overrideWindowOrientation:(int)orientation;
 - (void)removeBusyClient:(id)client;
 - (void)removeWindowClient:(id)client;
-- (void)rotateToOrientation:(int)orientation;
-- (void)setBulletinWindowOrientation:(int)orientation duration:(double)duration;
 - (void)setBusy:(BOOL)busy forReason:(id)reason;
 - (void)updateBulletinWindowOrientation;
+- (int)windowOrientation;
+- (int)windowOrientationWithoutOverrides;
 @end
 

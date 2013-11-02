@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import "SBAwaySystemAlertCell.h"
 #import "SpringBoard-Structs.h"
+#import "SBAwaySystemAlertCell.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwaySystemAlertFloatingCell : SBAwaySystemAlertCell {
 }
 + (id)_alarmButtonBackgroundImage;

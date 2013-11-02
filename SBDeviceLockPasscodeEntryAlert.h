@@ -9,11 +9,11 @@
 #import "SBAlert.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBDeviceLockPasscodeEntryAlert : SBAlert {
 }
 + (id)sharedInstance;
 - (id)alertDisplayViewWithSize:(CGSize)size;
-- (void)deactivate;
 - (int)statusBarStyle;
 @end
 

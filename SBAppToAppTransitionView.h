@@ -5,35 +5,30 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import "SBUIFullscreenAnimationView.h"
 
-@class CATransformLayer, CALayer, UIView, SBApplication;
+@class CATransformLayer, CALayer, SBApplication, UIView;
 
-@interface SBAppToAppTransitionView : XXUnknownSuperclass {
-	id _delegate;
+__attribute__((visibility("hidden")))
+@interface SBAppToAppTransitionView : SBUIFullscreenAnimationView {
 	SBApplication *_toApplication;
 	CATransformLayer *_transformLayer;
 	CALayer *_startLayer;
 	CALayer *_stopLayer;
 	UIView *_fromView;
 	UIView *_toView;
-	BOOL _animating;
-	BOOL _workspaceIsReadyForAnimationCleanup;
 	int _orientation;
 }
-@property(assign, nonatomic) id delegate;
 @property(assign, nonatomic) int orientation;
 @property(retain, nonatomic) SBApplication *toApp;
 - (id)initWithFrame:(CGRect)frame;
 - (float)_rotationRadians;
 - (id)_rotationValueFunction;
-- (void)_transitionBegun:(double)begun;
 - (void)animationDidStop:(id)animation finished:(BOOL)finished;
 - (void)beginTransition;
 - (void)dealloc;
 - (void)endTransition;
-- (void)noteWorkspaceIsReadyForAnimationCleanupWithActivatingApp:(id)activatingApp;
 - (void)setFromView:(id)view;
 - (void)setToView:(id)view;
 @end

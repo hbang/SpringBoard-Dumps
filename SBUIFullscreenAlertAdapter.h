@@ -8,25 +8,31 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlert.h"
 
-@class SBAlertDisplay, SBUIFullscreenAlertController;
+@class SBUIFullscreenAlertController, SBAlertView;
 
+__attribute__((visibility("hidden")))
 @interface SBUIFullscreenAlertAdapter : SBAlert {
 	SBUIFullscreenAlertController *_alertController;
-	SBAlertDisplay *_alertDisplay;
+	SBAlertView *_alertDisplay;
+	BOOL _animatingDeactivation;
 }
 - (id)initWithAlertController:(id)alertController;
 - (void)_pluginViewAnimatedOut:(id)anOut;
+- (void)_updateForTransparentDismiss:(id)transparentDismiss;
 - (id)alertController;
 - (id)alertDisplayViewWithSize:(CGSize)size;
-- (void)alertWindowDidRotateFromInterfaceOrientation:(int)alertWindow;
-- (void)alertWindowResizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame2;
-- (void)alertWindowWillAnimateRotationToInterfaceOrientation:(int)alertWindow duration:(double)duration;
-- (void)alertWindowWillRotateToInterfaceOrientation:(int)alertWindow duration:(double)duration;
+- (void)alertWindow:(id)window didRotateFromInterfaceOrientation:(int)interfaceOrientation;
+- (void)alertWindow:(id)window resizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame3;
+- (void)alertWindow:(id)window willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (void)alertWindow:(id)window willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (BOOL)allowsEventOnlySuspension;
+- (BOOL)allowsStackingOfAlert:(id)alert;
 - (void)animateViewOut;
-- (void)deactivate;
+- (BOOL)currentlyAnimatingDeactivation;
 - (void)dealloc;
 - (id)description;
+- (BOOL)dismissPresentedModalAlertIfNecessary;
+- (void)handleAutoLock;
 - (BOOL)handleHeadsetButtonPressed:(BOOL)pressed;
 - (BOOL)handleLockButtonPressed;
 - (BOOL)handleMenuButtonTap;
@@ -35,6 +41,7 @@
 - (BOOL)hasTranslucentBackground;
 - (void)launchSucceeded:(BOOL)succeeded;
 - (void)prepareViewToAnimateOut;
+- (void)presentAlertModally:(id)modally;
 - (void)setViewShouldAnimateIn:(BOOL)animateIn;
 - (BOOL)viewDisplaysAboveStatusBar;
 - (BOOL)viewIsReadyToBeRemoved;

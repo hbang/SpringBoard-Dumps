@@ -10,6 +10,7 @@
 
 @class SBProxyRemoteView, NSString, SBApplication;
 
+__attribute__((visibility("hidden")))
 @interface SBRemoteViewInfo : XXUnknownSuperclass {
 	NSString *_remoteViewIdentifier;
 	SBProxyRemoteView *_proxyRemoteView;

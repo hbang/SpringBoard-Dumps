@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBPolygon : XXUnknownSuperclass {
 	int m_pointCount;
 	CGPoint m_points[5];

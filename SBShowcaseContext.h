@@ -9,6 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBShowcaseContext : XXUnknownSuperclass {
 	int _appOrientation;
 	int _showcaseOrientation;

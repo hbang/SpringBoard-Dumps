@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SBAlertImageView : XXUnknownSuperclass {
 	UIImageView *_imageView;
 	UILabel *_labelView;

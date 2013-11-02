@@ -6,11 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBFolderIconObserver.h"
 #import "SBIconView.h"
+#import "SBFolderIconObserver.h"
 
-@class SBDownloadingProgressBar, NSMutableSet, SBFolderIcon, UIImageView;
+@class SBFolderIcon, SBDownloadingProgressBar, NSMutableSet, UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface SBFolderIconView : SBIconView <SBFolderIconObserver> {
 	UIImageView *_iconBackgroundView;
 	UIImageView *_iconForegroundView;
@@ -20,24 +21,24 @@
 	BOOL _skippingGridIcons;
 	float _miniIconVisibleOffset;
 }
-@property(readonly, retain) SBFolderIcon *folderIcon;
+@property(readonly, assign) SBFolderIcon *folderIcon;
 - (id)_folderBackgroundImage;
 - (id)_folderForegroundImage;
+- (id)_iconBoundsForAccessory:(CGRect *)accessory;
 - (void)_positionMiniGrid;
 - (void)_updateProgressBar;
 - (BOOL)allowsTapWhileEditing;
-- (void)containedIconImageDidUpdate:(id)containedIconImage;
 - (void)dealloc;
 - (BOOL)delaysUnhighlightWhenTapped;
 - (id)description;
 - (id)folder;
+- (void)folderIcon:(id)icon didUpdateGridImage:(id)image withSkipping:(BOOL)skipping forContainedIconImageUpdate:(id)containedIconImageUpdate;
 - (CGRect)frameForIconOverlay;
 - (double)grabDurationForEvent:(id)event;
 - (void)iconAccessoriesDidUpdate:(id)iconAccessories;
 - (id)iconBackgroundView;
 - (void)iconImageDidUpdate:(id)iconImage;
 - (id)iconImageSnapshot:(id)snapshot;
-- (void)noteIconAdded:(id)added;
 - (void)placeGhostlyImageView;
 - (void)positionCloseBoxOfType:(int)type;
 - (void)positionIconImageView;

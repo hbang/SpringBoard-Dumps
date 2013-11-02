@@ -6,11 +6,12 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 #import "UITextFieldDelegate.h"
+#import "SpringBoard-Structs.h"
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SBPasscodeAlertItem : XXUnknownSuperclass <UITextFieldDelegate> {
 	int _mode;
 	int _unlockScreenType;

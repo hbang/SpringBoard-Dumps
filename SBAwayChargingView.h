@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIImageView, SBBatteryChargingView;
 
+__attribute__((visibility("hidden")))
 @interface SBAwayChargingView : XXUnknownSuperclass {
 	SBBatteryChargingView *_chargingView;
 	SBBatteryChargingView *_headsetChargingView;

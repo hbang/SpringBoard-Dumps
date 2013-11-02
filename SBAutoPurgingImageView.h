@@ -8,11 +8,12 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBAutoPurgingImageView : XXUnknownSuperclass {
 	id _block;
 }
-- (id)initWithBlock:(id)block;
 - (id)initWithImageNamed:(id)imageNamed;
+- (id)_initWithImageBlock:(id)imageBlock andInitialLoadBlock:(id)block;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)setImage:(id)image;

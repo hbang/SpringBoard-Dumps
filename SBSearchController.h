@@ -5,15 +5,17 @@
  * Source: (null)
  */
 
-#import "UITableViewDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "UITableViewDataSource.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
+#import "UITableViewDelegate.h"
+#import "SPSearchAgentDelegate.h"
 #import "UISearchBarDelegate.h"
 
 @class SBSearchView;
 
-@interface SBSearchController : XXUnknownSuperclass <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
+__attribute__((visibility("hidden")))
+@interface SBSearchController : XXUnknownSuperclass <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, SPSearchAgentDelegate> {
 	SBSearchView *_searchView;
 	BOOL _reloadingTableContent;
 	BOOL _resultsUpdated;
@@ -22,19 +24,19 @@
 @property(retain, nonatomic) SBSearchView *searchView;
 - (id)init;
 - (id)_auxiliaryTitleForABRecordID:(int)abrecordID;
-- (void)_clearResultsString:(id)string;
 - (void)_deselect;
-- (BOOL)_hasSearchResults;
-- (void)_populateCell:(id)cell withSearchResult:(id)searchResult;
+- (void)_populateCell:(id)cell withSearchResultAtIndex:(int)index inSection:(id)section;
 - (void)_tableViewDidFadeOut:(id)_tableView finished:(id)finished context:(void *)context;
-- (void)_updateResults:(id)results;
 - (void)_updateTableContents;
+- (void)controllerWasActivated;
 - (void)controllerWasDeactivated;
 - (void)dealloc;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (int)numberOfSectionsInTableView:(id)tableView;
 - (void)scrollViewDidScroll:(id)scrollView;
 - (void)scrollViewIsScrollingHorizontallyInSearchView;
+- (void)searchAgentClearedResults:(id)results;
+- (void)searchAgentUpdatedResults:(id)results;
 - (void)searchBar:(id)bar textDidChange:(id)text;
 - (void)searchBarSearchButtonClicked:(id)clicked;
 - (BOOL)shouldShowKeyboardOnScroll;
@@ -45,6 +47,7 @@
 - (id)tableView:(id)view viewForHeaderInSection:(int)section;
 - (BOOL)tableView:(id)view wantsHeaderForSection:(int)section;
 - (void)tableView:(id)view willDisplayCell:(id)cell forRowAtIndexPath:(id)indexPath;
+- (void)tableView:(id)view willDisplayHeaderView:(id)view2 forSection:(int)section;
 - (void)updateResultsIfNecessary;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;

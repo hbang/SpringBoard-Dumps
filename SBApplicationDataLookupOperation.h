@@ -7,9 +7,15 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
+@class NSSet;
 
+__attribute__((visibility("hidden")))
 @interface SBApplicationDataLookupOperation : XXUnknownSuperclass {
+	NSSet *_registeredBundleIDs;
+	NSSet *_unregisteredBundleIDs;
 }
+- (id)initWithRegisteredBundleIDs:(id)registeredBundleIDs unregisteredBundleIDs:(id)ids;
+- (void)dealloc;
 - (void)main;
 @end
 

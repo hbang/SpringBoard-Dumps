@@ -9,6 +9,7 @@
 
 @class UIImage;
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandTilingImageView : XXUnknownSuperclass {
 	UIImage *_tileImage;
 }

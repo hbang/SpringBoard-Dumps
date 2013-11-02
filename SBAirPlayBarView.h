@@ -5,20 +5,21 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIButton, UISlider, UIView;
+@class UIButton, UIView, SBAppSwitcherVolumeSlider;
 
+__attribute__((visibility("hidden")))
 @interface SBAirPlayBarView : XXUnknownSuperclass {
 	UIView *_speakerIcon;
 	UIButton *_airPlayButton;
-	UISlider *_volumeSlider;
+	SBAppSwitcherVolumeSlider *_volumeSlider;
 	BOOL _airPlayEnabled;
 }
 @property(readonly, assign, nonatomic) UIButton *airPlayButton;
 @property(assign, nonatomic, getter=isAirPlayEnabled) BOOL airPlayEnabled;
-@property(readonly, assign, nonatomic) UISlider *volumeSlider;
+@property(readonly, assign, nonatomic) SBAppSwitcherVolumeSlider *volumeSlider;
 - (id)initWithFrame:(CGRect)frame;
 - (void)layoutSubviews;
 - (void)setAirPlayEnabled:(BOOL)enabled animated:(BOOL)animated;

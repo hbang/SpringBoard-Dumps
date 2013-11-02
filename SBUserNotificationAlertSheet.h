@@ -9,6 +9,7 @@
 
 @class UIImage;
 
+__attribute__((visibility("hidden")))
 @interface SBUserNotificationAlertSheet : XXUnknownSuperclass {
 	UIImage *_alertImage;
 }

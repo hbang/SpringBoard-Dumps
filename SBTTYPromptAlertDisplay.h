@@ -9,10 +9,11 @@
 #import "SBSlidingAlertDisplay.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBTTYPromptAlertDisplay : SBSlidingAlertDisplay {
 }
-+ (id)newBottomBarForInstance:(id)instance;
-+ (id)newTopBarForInstance:(id)instance;
++ (id)bottomBarForInstance:(id)instance;
++ (id)topBarForInstance:(id)instance;
 - (id)initWithSize:(CGSize)size;
 - (void)_chooseTTYMode:(id)mode;
 - (void)_chooseVoiceMode:(id)mode;

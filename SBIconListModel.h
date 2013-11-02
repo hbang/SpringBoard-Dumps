@@ -6,11 +6,15 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconIndexNode.h"
+#import "SBIconIndexMutableListObserver.h"
 
-@class NSMutableArray, SBFolder;
+@class NSHashTable, SBIconIndexMutableList, SBFolder;
 
-@interface SBIconListModel : XXUnknownSuperclass {
-	NSMutableArray *_icons;
+__attribute__((visibility("hidden")))
+@interface SBIconListModel : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver> {
+	SBIconIndexMutableList *_icons;
+	NSHashTable *_nodeObservers;
 	BOOL _iconStateIsDirty;
 	SBFolder *_folder;
 }
@@ -19,10 +23,13 @@
 - (id)initWithFolder:(id)folder;
 - (BOOL)addIcon:(id)icon;
 - (BOOL)addIcon:(id)icon asDirty:(BOOL)dirty;
+- (void)addNodeObserver:(id)observer;
 - (BOOL)allowsAddingIcon:(id)icon;
-- (void)compactIcons;
+- (unsigned)compactIcons;
+- (id)containedNodeIdentifiers;
 - (BOOL)containsIcon:(id)icon;
 - (BOOL)containsLeafIconWithIdentifier:(id)identifier;
+- (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
 - (id)description;
 - (unsigned)firstFreeSlotIndex;
@@ -33,21 +40,25 @@
 - (id)iconsOfClass:(Class)aClass;
 - (unsigned)indexForIcon:(id)icon;
 - (unsigned)indexForLeafIconWithIdentifier:(id)identifier;
-- (id)indexPathForEntity:(id)entity;
-- (id)indexPathForFirstFreeSlot;
+- (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (id)insertIcon:(id)icon atIndex:(unsigned *)index;
 - (BOOL)isEmpty;
 - (BOOL)isFull;
 - (BOOL)isIconStateDirty;
+- (void)list:(id)list didAddContainedNodeIdentifiers:(id)identifiers;
+- (void)list:(id)list didRemoveContainedNodeIdentifiers:(id)identifiers;
 - (void)markIconStateClean;
 - (BOOL)matchesRepresentation:(id)representation;
 - (BOOL)needsCompacting;
-- (void)notifyAdded:(id)added;
+- (id)nodeDescriptionWithPrefix:(id)prefix;
+- (id)nodeIdentifier;
+- (id)nodesAlongIndexPath:(id)path consumedIndexes:(unsigned)indexes;
+- (unsigned)numberOfIcons;
 - (id)placeIcon:(id)icon atIndex:(unsigned *)index;
-- (id)placeIcon:(id)icon atIndex:(unsigned *)index notify:(BOOL)notify;
 - (void)removeIcon:(id)icon;
 - (void)removeIconAtIndex:(unsigned)index;
+- (void)removeNodeObserver:(id)observer;
 - (id)representation;
-- (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id)added;
+- (BOOL)resetWithRepresentation:(id)representation model:(id)model leafIdentifiersAdded:(id)added;
 @end
 

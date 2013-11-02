@@ -8,6 +8,7 @@
 #import "SBIconListModel.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBFolderIconListModel : SBIconListModel {
 }
 + (Class)viewClass;

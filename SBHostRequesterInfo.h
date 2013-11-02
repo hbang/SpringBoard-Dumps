@@ -7,10 +7,11 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDictionary, UIView, NSMutableSet;
+@class NSDictionary, SBHostWrapperView, NSMutableSet;
 
+__attribute__((visibility("hidden")))
 @interface SBHostRequesterInfo : XXUnknownSuperclass {
-	UIView *_wrapperView;
+	SBHostWrapperView *_wrapperView;
 	NSMutableSet *_hiddenContexts;
 	NSDictionary *_realContextHostViewChangedProperties;
 	NSDictionary *_realContextHostViewOriginalProperties;
@@ -18,7 +19,7 @@
 @property(readonly, assign, nonatomic) NSMutableSet *hiddenContexts;
 @property(retain, nonatomic) NSDictionary *realContextHostViewChangedProperties;
 @property(retain, nonatomic) NSDictionary *realContextHostViewOriginalProperties;
-@property(readonly, assign, nonatomic) UIView *wrapperView;
+@property(readonly, assign, nonatomic) SBHostWrapperView *wrapperView;
 - (id)init;
 - (void)dealloc;
 @end

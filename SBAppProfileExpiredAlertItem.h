@@ -10,6 +10,7 @@
 
 @class SBApplicationIcon;
 
+__attribute__((visibility("hidden")))
 @interface SBAppProfileExpiredAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBApplicationIcon *_icon;
 }

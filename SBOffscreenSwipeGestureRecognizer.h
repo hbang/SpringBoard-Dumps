@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBPanGestureRecognizer.h"
+#import "SpringBoard-Structs.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBOffscreenSwipeGestureRecognizer : SBPanGestureRecognizer {
 	int m_offscreenEdge;
 	float m_edgeMargin;

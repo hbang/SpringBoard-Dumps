@@ -8,24 +8,31 @@
 #import "SpringBoard-Structs.h"
 #import "SBBulletinCellContentViewBase.h"
 
+@class UIView;
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinCellContentView : SBBulletinCellContentViewBase {
-	BOOL _italicizeContent;
+	UIView *_blurView;
+	UIView *_contentView;
 	float _shadowBlur;
+	void *_data;
+	unsigned long _dataLength;
 	BOOL _buttonsBelowContent;
 }
-+ (id)_attachmentFont:(BOOL)font;
-+ (id)_dateFont:(BOOL)font;
-+ (id)_messageFont:(BOOL)font;
-+ (id)_subtitleFont:(BOOL)font;
-+ (id)_titleFont:(BOOL)font;
-+ (float)heightForBulletinStyleWithSubtitle:(id)subtitle imageHeight:(float)height italicize:(BOOL)italicize;
-+ (float)heightForBulletinStyleWithSubtitle:(id)subtitle message:(id)message maxLines:(unsigned)lines contentWidth:(float)width italicize:(BOOL)italicize;
++ (id)_attachmentFont;
++ (id)_dateFont;
++ (id)_messageFont;
++ (id)_subtitleFont;
++ (id)_titleFont;
++ (float)heightForBulletinStyleWithSubtitle:(id)subtitle imageHeight:(float)height;
++ (float)heightForBulletinStyleWithSubtitle:(id)subtitle message:(id)message maxLines:(unsigned)lines contentWidth:(float)width;
 + (float)heightForSystemAlertStyleWithTitle:(id)title maxLines:(unsigned)lines message:(id)message maxLines:(unsigned)lines4 contentWidth:(float)width;
 - (id)_attachmentFont;
-- (void)_configureLabel:(id)label withFont:(id)font alignment:(int)alignment;
+- (void)_configureCTMForDrawingLabel:(id)drawingLabel inContext:(CGContextRef)context;
+- (void)_configureLabel:(id)label withFont:(id)font color:(id)color alignment:(int)alignment;
 - (id)_dateFont;
 - (void)_drawLabel:(id)label inContext:(CGContextRef)context;
+- (void)_drawLabel:(id)label withMetrics:(id)metrics inContext:(CGContextRef)context;
 - (id)_initForLayoutStyle:(int)layoutStyle;
 - (float)_layoutAttachmentImageAtX:(float)x y:(float)y;
 - (void)_layoutAttachmentTextAtX:(float)x;
@@ -33,13 +40,20 @@
 - (float)_layoutSubtitleAtX:(float)x y:(float)y;
 - (float)_layoutTitleAtX:(float)x y:(float)y;
 - (id)_messageFont;
-- (BOOL)_shouldVerticallyCenterBulletinStyleTitleAndDate;
+- (BOOL)_shouldVerticallyCenterBulletinStyleDate;
+- (BOOL)_shouldVerticallyCenterBulletinStyleTitle;
 - (id)_subtitleFont;
 - (id)_titleFont;
+- (void)dealloc;
+- (void)displayLayer:(id)layer;
+- (void)drawInColorContext;
+- (void)drawInGrayscaleContexts;
 - (void)drawRect:(CGRect)rect;
+- (BOOL)getSourceData:(vImage_Buffer *)data dstData:(vImage_Buffer *)data2;
 - (void)layoutSubviews;
 - (void)setHasButtonBelow:(BOOL)below;
-- (void)setItalicizesContent:(BOOL)content;
+- (void)setNeedsDisplay;
 - (void)setShadowBlur:(float)blur;
+- (void)setShadowColor:(id)color;
 @end
 

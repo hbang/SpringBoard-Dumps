@@ -5,27 +5,19 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface SBZoomView : XXUnknownSuperclass {
-	BOOL _hasImage;
-	BOOL _hasFullSizedImage;
-	BOOL _usesRoundedCorners;
-	NSMutableArray *_cornerViews;
 }
++ (id)_chromeStatusBarImageForInterfaceOrientation:(int)interfaceOrientation;
++ (int)_degreesForRotationFromInterfaceOrientation:(int)interfaceOrientation toInterfaceOrientation:(int)interfaceOrientation2;
++ (int)_degreesForRotationFromOriginalImageOrientation:(int)originalImageOrientation toInterfaceOrientation:(int)interfaceOrientation;
++ (CGSize)_rotateAndNormalizeSize:(CGSize)size withTransform:(CGAffineTransform)transform;
 - (id)initWithFrame:(CGRect)frame;
-- (id)initWithImage:(id)image;
-- (id)initWithSnapshotFrame:(CGRect)snapshotFrame image:(id)image originalImageOrientation:(int)orientation currentImageOrientation:(int)orientation4 interfaceOrientation:(int)orientation5 doubleHeightStatusBar:(BOOL)bar preventSplit:(BOOL)split chrome:(id)chrome chromeStatusBarHidden:(BOOL)hidden needsZoomFilter:(BOOL)filter asyncDecodeImage:(BOOL)image11;
-- (id)initWithSnapshotFrame:(CGRect)snapshotFrame ioSurface:(void *)surface snapshotTransform:(CGAffineTransform)transform;
-- (id)_chromeStatusBarImageForInterfaceOrientation:(int)interfaceOrientation;
-- (void)_createCornerViewsIfNecessaryWithCornersFrame:(CGRect)cornersFrame;
-- (int)_degreesForRotationFromInterfaceOrientation:(int)interfaceOrientation toInterfaceOrientation:(int)interfaceOrientation2;
-- (int)_degreesForRotationFromOriginalImageOrientation:(int)originalImageOrientation toInterfaceOrientation:(int)interfaceOrientation;
-- (CGSize)_rotateAndNormalizeSize:(CGSize)size withTransform:(CGAffineTransform)transform;
-- (void)dealloc;
-- (void)setUsesRoundedCorners:(BOOL)corners withCornersFrame:(CGRect)cornersFrame;
+- (id)_initWithFrame:(CGRect)frame;
+- (void)setRoundedCorners:(int)corners withCornersFrame:(CGRect)cornersFrame;
 @end
 

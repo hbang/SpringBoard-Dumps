@@ -5,13 +5,15 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBDeviceLockViewOwner.h"
-#import "SBAlertDisplay.h"
+#import "SpringBoard-Structs.h"
+#import "SBAlertView.h"
 
-@class SBEmergencyCallView, SBWallpaperView, SBDeviceLockView, UIView, UIStatusBar, UIImage;
+@class SBDeviceLockView, UIView, UIStatusBar, SBEmergencyCallView, SBWallpaperView, UIImage;
+@protocol SBSlidingAlertDisplayDelegate;
 
-@interface SBSlidingAlertDisplay : SBAlertDisplay <SBDeviceLockViewOwner> {
+__attribute__((visibility("hidden")))
+@interface SBSlidingAlertDisplay : SBAlertView <SBDeviceLockViewOwner> {
 	SBWallpaperView *_backgroundView;
 	UIImage *_defaultDesktopImage;
 	UIView *_topBar;
@@ -31,16 +33,19 @@
 	int _currentOrientation;
 	UIStatusBar *_fakeStatusBarForSlideToDeviceLock;
 	id _lockAnimationCompletionHandler;
+	id<SBSlidingAlertDisplayDelegate> _delegate;
 }
-+ (id)newBottomBarForInstance:(id)instance;
-+ (id)newTopBarForInstance:(id)instance;
+@property(assign, nonatomic) id<SBSlidingAlertDisplayDelegate> delegate;
++ (id)bottomBarForInstance:(id)instance;
 + (void)setDisplayPropertiesForActivationOfAlert:(id)alert;
++ (id)topBarForInstance:(id)instance;
 - (id)initWithFrame:(CGRect)frame;
+- (void)_adjustForDoubleHighStatusBar:(BOOL)doubleHighStatusBar;
 - (void)_animateToHidingOrShowingDeviceLockFinished;
 - (void)_animateView:(id)view direction:(int)direction;
+- (void)_beginDismissAnimationAffectingWorkspace:(BOOL)workspace;
 - (void)_clearUnlockFailedIndicator;
 - (id)_defaultDesktopImage;
-- (void)_enableEntry;
 - (void)_entryFinishedWithPassword:(id)password;
 - (void)_fadeOutCompleted:(id)completed;
 - (void)_fadeOutCompletedWithDisplayDisablingIconUnscatter:(BOOL)displayDisablingIconUnscatter;
@@ -55,10 +60,12 @@
 - (void)_updateOverlayViewFrame;
 - (void)_zoomInDeviceLockViewWithDelay:(double)delay;
 - (void)_zoomOutDeviceLockViewWithDelay:(double)delay;
+- (void)adjustForDoubleHighStatusBarIfNecessary;
 - (void)alertDisplayWillBecomeVisible;
 - (void)alertWindowResizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame2;
 - (void)animateDisplayIn:(float)anIn middleDelay:(float)delay animateStatusBar:(BOOL)bar;
 - (void)animateFromEmergencyCallWithDuration:(float)duration;
+- (void)animateOut;
 - (void)animateToEmergencyCall;
 - (void)animateToHidingDeviceLockFinished;
 - (void)animateToShowingDeviceLock:(BOOL)showingDeviceLock duration:(float)duration;
@@ -83,7 +90,7 @@
 - (void)dismiss;
 - (float)durationForOthersActivation;
 - (void)emergencyCallWasDisplayed;
-- (void)emergencyCallWasRemoved;
+- (void)emergencyCallWasRemoved:(id)removed finished:(id)finished context:(void *)context;
 - (void)finishedAnimatingIn;
 - (void)finishedAnimatingOut;
 - (void)getFrameForTopButton:(CGRect *)topButton bottomButton:(CGRect *)button;
@@ -106,6 +113,7 @@
 - (void)setShowingDeviceLock:(BOOL)lock;
 - (void)setShowingDeviceLock:(BOOL)lock animated:(BOOL)animated;
 - (void)setShowingDeviceLock:(BOOL)lock duration:(float)duration completion:(id)completion;
+- (void)setShowingDeviceLock:(BOOL)lock duration:(float)duration completion:(id)completion outDuration:(float *)duration4;
 - (BOOL)shouldAddClippingViewDuringRotation;
 - (BOOL)shouldAnimateIconsIn;
 - (BOOL)shouldAnimateIconsOut;
@@ -118,6 +126,7 @@
 - (BOOL)showsDesktopImage;
 - (CGAffineTransform)slideBottomBarToVisible:(BOOL)visible;
 - (CGAffineTransform)slideTopBarToVisible:(BOOL)visible;
+- (void)statusBarFrameChanged:(id)changed;
 - (id)topBar;
 - (BOOL)topBarIsVisible;
 - (void)updateDesktopImage:(id)image;

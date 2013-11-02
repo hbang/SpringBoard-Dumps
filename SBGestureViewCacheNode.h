@@ -7,8 +7,9 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, NSString;
+@class NSString, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SBGestureViewCacheNode : XXUnknownSuperclass {
 	UIView *m_view;
 	int m_viewType;

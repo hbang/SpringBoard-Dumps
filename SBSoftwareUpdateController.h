@@ -11,6 +11,7 @@
 
 @class SUManagerClient, SUDownload;
 
+__attribute__((visibility("hidden")))
 @interface SBSoftwareUpdateController : XXUnknownSuperclass <SUManagerClientDelegate, SUNetworkObserver> {
 	SUManagerClient *_client;
 	SUDownload *_updateToInstall;

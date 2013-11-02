@@ -5,19 +5,21 @@
  * Source: (null)
  */
 
-#import "SBSwitcherPopoverWindowControllerDelegate.h"
-#import "UIPopoverControllerDelegate.h"
-#import "SBIconViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconViewDelegate.h"
+#import "SpringBoard-Structs.h"
+#import "UIPopoverControllerDelegate.h"
+#import "SBSwitcherPopoverWindowControllerDelegate.h"
 
-@class SBSwitcherVolumeSlider, MPAudioVideoRoutingActionSheet, UIViewController, MPAudioVideoRoutingPopoverController, SBAirPlayBarView, UIButton, SBApplication, SBNowPlayingBarView, MPAudioDeviceController;
+@class MPAudioVideoRoutingActionSheet, SBNowPlayingBarView, UIViewController, MPAudioVideoRoutingPopoverController, MPAudioDeviceController, SBApplication, SBAppSwitcherVolumeSlider, UIButton, SBAirPlayBarView;
 
+__attribute__((visibility("hidden")))
 @interface SBNowPlayingBar : XXUnknownSuperclass <SBIconViewDelegate, UIPopoverControllerDelegate, SBSwitcherPopoverWindowControllerDelegate> {
 	SBNowPlayingBarView *_barView;
 	SBAirPlayBarView *_airPlayView;
 	MPAudioVideoRoutingActionSheet *_airPlayActionSheet;
 	UIViewController *_airPlayController;
-	SBSwitcherVolumeSlider *_volumeSlider;
+	SBAppSwitcherVolumeSlider *_volumeSlider;
 	UIButton *_airPlayButton;
 	SBApplication *_nowPlayingApp;
 	int _scanDirection;
@@ -25,11 +27,14 @@
 	MPAudioVideoRoutingPopoverController *_audioRoutingPopoverController;
 	BOOL _audioRoutingPopoverVisible;
 	BOOL _showPopoverWhenRotationComplete;
+	BKSDisplayBrightnessTransactionRef _brightnessTransaction;
 }
 - (id)init;
 - (void)_airPlayButtonHit:(id)hit;
 - (void)_brightnessSliderChanged:(id)changed;
+- (void)_brightnessSliderTouchEnded:(id)ended;
 - (void)_dismissAirPlayDetail;
+- (void)_fifteenSecondSkip:(id)skip;
 - (void)_iapExtendedModeChanged:(id)changed;
 - (BOOL)_isAirPlayOn;
 - (void)_nowPlayingInfoChanged;
@@ -56,13 +61,14 @@
 - (void)popoverControllerDidDismissPopover:(id)popoverController;
 - (void)prepareToDisappear;
 - (int)scanDirection;
+- (void)setVisible:(BOOL)visible;
 - (BOOL)shouldScrollCancelInContentForView:(id)view;
 - (void)switcherPopoverController:(id)controller didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)switcherPopoverController:(id)controller willRotateToOrientation:(int)orientation duration:(double)duration;
 - (void)viewAtIndexDidAppear:(int)viewAtIndex;
 - (void)viewAtIndexDidDisappear:(int)viewAtIndex;
 - (void)viewControllerRequestsDismissal:(id)dismissal;
-- (void)viewDidAppear;
 - (id)views;
+- (void)warmup;
 @end
 

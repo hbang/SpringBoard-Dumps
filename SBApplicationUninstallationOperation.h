@@ -9,6 +9,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SBApplicationUninstallationOperation : XXUnknownSuperclass {
 	NSString *_bundleIdentifier;
 }

@@ -6,14 +6,20 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class NSString, NSTimer, AVController, UIImage, NSDictionary;
+@class NSTimer, BKSProcessAssertion, AVController, UIImage, NSDictionary, NSObject, NSString;
+@protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface SBUserNotificationAlert : XXUnknownSuperclass {
 	unsigned _replyPort;
+	NSObject<OS_dispatch_source> *_portWatcher;
+	NSObject<OS_dispatch_source> *_expirationTimer;
+	BOOL _cleanedUp;
 	int _token;
 	int _timeout;
-	unsigned _requestFlags;
+	unsigned long _requestFlags;
 	NSString *_alertHeader;
 	id _alertMessage;
 	NSString *_alertMessageDelimiter;
@@ -42,19 +48,24 @@
 	int _defaultButtonIndex;
 	int _alternateButtonIndex;
 	int _otherButtonIndex;
+	NSString *_defaultResponseLaunchBundleID;
 	unsigned _cancel : 1;
 	unsigned _isActivated : 1;
 	unsigned _aboveLock : 1;
 	unsigned _hideButtonsInAwayView : 1;
 	unsigned _dismissOnLock : 1;
 	unsigned _dontDismissOnUnlock : 1;
+	unsigned _behavesSuperModally : 1;
 	unsigned _allowMenuButtonDismissal : 1;
 	unsigned _oneButtonPerLine : 1;
 	unsigned _groupsTextFields : 1;
+	unsigned _usesUndoStyle : 1;
 	unsigned _configuredLocked : 1;
 	unsigned _configuredNeedsPasscode : 1;
+	unsigned _defaultResponseAppLaunchWaitingForPasscode : 1;
 	UIImage *_alertImage;
 	AVController *_avController;
+	BKSProcessAssertion *_processAssertion;
 }
 @property(retain) NSString *alertHeader;
 @property(retain) UIImage *alertImage;
@@ -66,6 +77,7 @@
 @property(retain) NSDictionary *avControllerAttributes;
 @property(retain) NSDictionary *avItemAttributes;
 @property(retain) NSString *defaultButtonTitle;
+@property(retain) NSString *defaultResponseLaunchBundleID;
 @property(retain) id keyboardTypes;
 @property(retain) NSString *otherButtonTitle;
 @property(retain) NSString *soundPath;
@@ -75,15 +87,18 @@
 @property(retain) id textFieldButtonImagePaths;
 @property(retain) id textFieldTitles;
 @property(retain) id textFieldValues;
-- (id)initWithMessage:(id)message replyPort:(unsigned)port requestFlags:(int)flags;
+- (id)initWithMessage:(id)message replyPort:(unsigned)port requestFlags:(int)flags auditToken:(XXStruct_kUSYWB)token;
+- (void)_cleanup;
 - (BOOL)_needsDismissalWithClickedButtonIndex:(int)clickedButtonIndex;
 - (id)_safeLocalizedValue:(id)value withBundle:(id)bundle;
 - (void)_sendResponse:(int)response;
+- (void)_setActivated:(BOOL)activated;
 - (void)_setSheetDefaultButtonTitle:(id)title;
 - (void)_textFieldButtonPressed:(id)pressed;
 - (Class)alertSheetClass;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowMenuButtonDismissal;
+- (BOOL)behavesSuperModally;
 - (void)cancel;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
@@ -92,11 +107,12 @@
 - (BOOL)dismissOnLock;
 - (void)noteVolumeOrLockPressed;
 - (void)performUnlockAction;
+- (BOOL)reappearsAfterLock;
+- (BOOL)reappearsAfterUnlock;
 - (BOOL)shouldShowInLockScreen;
 - (void)stopSound;
 - (int)token;
 - (void)updateWithMessage:(id)message requestFlags:(int)flags;
-- (void)wakeup;
 - (void)willActivate;
 - (void)willDeactivateForReason:(int)reason;
 @end

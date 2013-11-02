@@ -9,8 +9,10 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface SBBluetoothController : XXUnknownSuperclass {
 	NSMutableArray *_devices;
+	BOOL _tetheringConnected;
 }
 + (id)sharedInstance;
 - (void)addDeviceNotification:(id)notification;
@@ -30,5 +32,6 @@
 - (void)stopWatchingForDevices;
 - (BOOL)tetheringConnected;
 - (void)updateBattery;
+- (void)updateTetheringConnected;
 @end
 

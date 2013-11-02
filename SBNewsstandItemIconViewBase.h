@@ -8,19 +8,22 @@
 #import "SpringBoard-Structs.h"
 #import "SBIconView.h"
 
+@class SBDownloadingProgressBar;
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandItemIconViewBase : SBIconView {
+	SBDownloadingProgressBar *_progressBar;
 }
-+ (float)_badgeLabelFontSize;
-+ (BOOL)_hasBadgeLabel;
-+ (BOOL)allowsRecycling;
-+ (CGPoint)badgeLabelCenterPoint;
-+ (id)createBadgeLabelImageAndGetTextCenterPoint:(CGPoint *)point;
-- (CGRect)_adjustProspectiveBadgeFrame:(CGRect)frame fromView:(id)view toView:(id)view3;
-- (float)_badgeHorizontalPadding;
-- (float)_badgeVerticalPadding;
-- (id)_superviewForBadge;
-- (void)_updateBadgePosition;
++ (Class)_labelImageParametersClassForIcon:(id)icon location:(int)location;
+- (id)initWithFrame:(CGRect)frame;
+- (void)_adjustProgressBarFrame;
+- (id)_iconBoundsForAccessory:(CGRect *)accessory;
+- (void)_removeProgressBar;
+- (void)_updateLabelVisibility;
+- (void)_updateProgressBar;
+- (UIEdgeInsets)_viewInsetsForAccessoryType:(int)accessoryType;
+- (void)downloadingIconStatusDidChange:(id)downloadingIconStatus;
+- (void)iconAccessoriesDidUpdate:(id)iconAccessories;
 - (void)iconImageDidUpdate:(id)iconImage;
 @end
 

@@ -5,17 +5,19 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, NSString, NSMutableArray, SBAppContextHostView;
+@class SBOrderedRequesters, NSMutableDictionary, NSMutableArray, NSString, SBAppContextHostView;
 
+__attribute__((visibility("hidden")))
 @interface SBAppContextHostManager : XXUnknownSuperclass {
 	SBAppContextHostView *_contextHostView;
 	NSString *_appBundleID;
 	NSMutableArray *_contexts;
 	BOOL _hostingEnabled;
-	NSMutableArray *_hostRequesters;
+	BOOL _suspended;
+	SBOrderedRequesters *_hostRequesters;
 	NSMutableDictionary *_hostRequesterInfo;
 }
 @property(copy, nonatomic) NSString *appBundleID;
@@ -24,26 +26,28 @@
 - (id)init;
 - (void)_adjustLayerFrameAndTransform:(id)transform;
 - (void)_applyRequesterInfo:(id)info;
+- (BOOL)_clearContextHosts;
 - (id)_infoForRequester:(id)requester;
 - (void)_notePropertiesSetOnRealContextHostViewWhichIReallyNeedToChangeAndIKnowWhatImDoingISwear:(id)changeAndIKnowWhatImDoingISwear originalProperties:(id)properties forRequester:(id)requester;
 - (id)_realContextHostViewWhichIReallyNeedToAccessAndIKnowWhatImDoingISwear;
 - (void)_removeRequesterInfo:(id)info;
-- (BOOL)_requesterIsFrontmost:(id)frontmost;
 - (void)_setContext:(id)context hidden:(BOOL)hidden;
+- (BOOL)_startContextHosting;
 - (void *)createIOSurfaceForFrame:(CGRect)frame;
 - (void *)createIOSurfaceForFrame:(CGRect)frame excludeContext:(unsigned)context outTransform:(CGAffineTransform *)transform;
-- (void *)createIOSurfaceForFrame:(CGRect)frame excludeContext:(unsigned)context usePurpleGfx:(BOOL)gfx outTransform:(CGAffineTransform *)transform;
 - (void *)createIOSurfaceForFrame:(CGRect)frame outTransform:(CGAffineTransform *)transform;
 - (void)dealloc;
 - (id)description;
 - (void)didOrderOutContextWithId:(unsigned)anId;
 - (void)disableHostingForAllRequesters;
 - (void)disableHostingForRequester:(id)requester;
-- (void)enableHostingForRequester:(id)requester orderFront:(BOOL)front;
+- (void)enableHostingForRequester:(id)requester priority:(int)priority;
 - (id)hostViewForRequester:(id)requester;
 - (void)orderRequesterFront:(id)front;
+- (void)resumeContextHosting;
 - (void)setContextId:(unsigned)anId hidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setOrderOutPending:(BOOL)pending forContextId:(unsigned)contextId;
+- (void)suspendContextHosting;
 - (void)willOrderInContextWithId:(unsigned)anId windowLevel:(float)level windowOutput:(int)output flush:(BOOL)flush;
 @end
 

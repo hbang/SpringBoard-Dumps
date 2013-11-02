@@ -5,27 +5,35 @@
  * Source: (null)
  */
 
-#import "BBObserverDelegate.h"
-#import "SBBulletinWindowClient.h"
-#import "SBBulletinListViewDelegate.h"
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
+#import "BBObserverDelegate.h"
+#import "SBBulletinListViewDelegate.h"
+#import "SBBulletinWindowClient.h"
+#import "SBWeeAppDelegate.h"
 
-@class SBApplication, SBBulletinClearButton, NSTimer, NSMutableDictionary, NSArray, BBObserver, SBBulletinListTabView, SBBulletinListView, NSMutableArray;
+@class SBWeeApp, SBWeeAppPresentationView, NSMutableDictionary, NSArray, NSTimer, BBObserver, SBApplication, NSMutableArray, SBBulletinListView, SBBulletinListTabView, SBBulletinClearButton, UIView;
 
-@interface SBBulletinListController : XXUnknownSuperclass <BBObserverDelegate, SBBulletinListViewDelegate, SBBulletinWindowClient> {
+__attribute__((visibility("hidden")))
+@interface SBBulletinListController : XXUnknownSuperclass <BBObserverDelegate, SBBulletinListViewDelegate, SBBulletinWindowClient, SBWeeAppDelegate> {
 	BBObserver *_observer;
 	NSMutableDictionary *_enabledSectionsByID;
 	NSMutableArray *_visibleSectionIDs;
 	NSArray *_possibleSectionIDs;
 	unsigned _sectionOrderRule;
 	NSMutableArray *_weeApps;
+	NSMutableArray *_visibleWeeApps;
 	NSMutableDictionary *_headerViewsBySectionID;
 	SBBulletinListTabView *_tabView;
 	SBBulletinListView *_listView;
 	BOOL _listViewTableViewHasLoaded;
 	BOOL _listViewIsActive;
+	BOOL _animating;
 	BOOL _weeAppFullViewsHaveBeenLoaded;
+	BOOL _weeAppPresentingFullscreen;
+	SBWeeApp *_presentingWeeApp;
+	SBWeeAppPresentationView *_presentationView;
+	UIView *_presentedFirstResponder;
 	SBApplication *_coveredApplication;
 	SBBulletinClearButton *_clearButtonCurrentlyInClearState;
 	NSMutableArray *_enqueuedUpdates;
@@ -34,6 +42,7 @@
 	BOOL _pullingDownOutsideList;
 	float _showcaseOffset;
 	NSTimer *_weeAppSnapshotTimer;
+	id _keyboardNotificationObserverToken;
 }
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)sharedInstance;
@@ -42,13 +51,13 @@
 - (id)_bulletinAtIndexPath:(id)indexPath;
 - (id)_bulletinCellForSection:(id)section sectionIndex:(unsigned)index row:(unsigned)row tableView:(id)view;
 - (BOOL)_canPerformUpdate;
-- (void)_cleanupAfterHideListView;
+- (void)_cleanupAfterHideListViewKeepingWindow:(BOOL)window;
 - (void)_cleanupAfterShowListView;
 - (void)_clearSection:(id)section;
 - (void)_clearSnapshotTimer;
 - (void)_clearWeeAppSnapshots;
+- (void)_configureBBObserver;
 - (void)_configureForChangedContentAnimated:(BOOL)changedContentAnimated;
-- (id)_dynamicAnimationForShow:(BOOL)show targetValue:(double)value withInitialVelocity:(double)initialVelocity extraPull:(BOOL)pull;
 - (void)_finishShowingListViewAnimated:(BOOL)animated;
 - (void)_fixCellSeparatorAboveRow:(unsigned)row inSection:(id)section sectionIndex:(unsigned)index;
 - (void)_fixLastRowSeparatorsAndWeeAppTopPaddingInAllSections;
@@ -56,9 +65,8 @@
 - (float)_headerHeightForSection:(id)section;
 - (id)_indexPathForBulletin:(id)bulletin;
 - (unsigned)_insertVisibleSectionID:(id)anId;
-- (unsigned)_insertVisibleSectionIDForAutomaticSortOrder:(id)automaticSortOrder;
-- (unsigned)_insertVisibleSectionIDForManualSortOrder:(id)manualSortOrder;
 - (void)_loadSections;
+- (id)_newDynamicAnimationForShow:(BOOL)show targetValue:(double)value withInitialVelocity:(double)initialVelocity extraPull:(BOOL)pull;
 - (void)_performEnqueuedUpdates;
 - (void)_performOrEnqueueUpdate:(id)update;
 - (void)_positionTabViewAtY:(float)y;
@@ -71,14 +79,14 @@
 - (void)_setListViewActive:(BOOL)active;
 - (void)_snapshotTimerFired;
 - (void)_sortVisibleSectionIDs;
-- (void)_sortVisibleSectionIDsForAutomaticSortOrder;
-- (void)_sortVisibleSectionIDsForManualSortOrder;
-- (void)_tearDownListView;
+- (void)_tearDownListViewKeepingWindow:(BOOL)window;
+- (void)_tearDownPresentationView;
 - (void)_tearDownTabView;
 - (void)_updateForTouchBeganOrMovedWithLocation:(CGPoint)location velocity:(CGPoint)velocity;
 - (void)_updateForTouchCanceled;
 - (void)_updateForTouchEndedWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)_updateModelAndTableViewForAddition:(id)addition;
+- (void)_updateModelAndTableViewForEnabledWeeAppSection:(id)enabledWeeAppSection withVisibility:(BOOL)visibility;
 - (void)_updateModelAndTableViewForModification:(id)modification originalIndex:(unsigned)index;
 - (void)_updateModelAndTableViewForNewSectionInfo:(id)newSectionInfo;
 - (void)_updateModelAndTableViewForNewSectionOrder:(id)newSectionOrder;
@@ -89,6 +97,8 @@
 - (id)_weeAppForSectionID:(id)sectionID;
 - (id)_weeAppForSectionID:(id)sectionID bundlePath:(id)path;
 - (void)adjustViewForShowcaseOffset:(float)showcaseOffset;
+- (void)bulletinWindowDidBecomeKey;
+- (void)bulletinWindowDidResignKey;
 - (void)bulletinWindowDidRotateFromOrientation:(int)bulletinWindow;
 - (void)bulletinWindowIsAnimatingRotationToOrientation:(int)orientation;
 - (void)bulletinWindowWillRotateToOrientation:(int)bulletinWindow;
@@ -104,10 +114,15 @@
 - (void)handleShowNotificationsGestureChangedWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
 - (void)handleShowNotificationsGestureEndedWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)handleTap:(id)tap;
+- (void)hideFullScreenWeeApp;
 - (void)hideListViewAnimated:(BOOL)animated;
+- (void)hideListViewAnimated:(BOOL)animated useFade:(BOOL)fade;
+- (void)hideListViewAnimated:(BOOL)animated useFade:(BOOL)fade keepWindow:(BOOL)window;
 - (void)hideListViewWithInitialVelocity:(float)initialVelocity completion:(id)completion;
 - (void)hideListViewWithInitialVelocity:(float)initialVelocity hiddenY:(float)y extraPull:(BOOL)pull additionalValueApplier:(id)applier completion:(id)completion;
 - (void)hideTabViewAnimated:(BOOL)animated;
+- (BOOL)isActive;
+- (BOOL)isAnimating;
 - (BOOL)isShowingTabView;
 - (id)listView;
 - (float)listViewHeight;
@@ -127,6 +142,7 @@
 - (void)positionListViewAtY:(float)y;
 - (void)prepareToHideListViewAnimated:(BOOL)hideListViewAnimated;
 - (void)prepareToShowListViewAnimated:(BOOL)showListViewAnimated aboveBanner:(BOOL)banner;
+- (BOOL)requiresKeyWindow;
 - (void)runScrollTest:(id)test iterations:(int)iterations delta:(int)delta;
 - (void)scrollViewDidEndDecelerating:(id)scrollView;
 - (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;
@@ -138,11 +154,17 @@
 - (void)showListViewWithInitialVelocity:(float)initialVelocity completion:(id)completion;
 - (void)showTabViewAnimated:(BOOL)animated;
 - (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;
+- (void)tableView:(id)view didEndDisplayingCell:(id)cell forRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didSelectRowAtIndexPath:(id)indexPath;
 - (float)tableView:(id)view heightForHeaderInSection:(int)section;
 - (float)tableView:(id)view heightForRowAtIndexPath:(id)indexPath;
 - (int)tableView:(id)view numberOfRowsInSection:(int)section;
 - (id)tableView:(id)view viewForHeaderInSection:(int)section;
+- (void)tableView:(id)view willDisplayCell:(id)cell forRowAtIndexPath:(id)indexPath;
 - (void)tableViewDidFinishReload:(id)tableView;
+- (BOOL)weeApp:(id)app updatePresentationMode:(int)mode duration:(float)duration delay:(float)delay;
+- (BOOL)weeAppIsFullScreen;
+- (BOOL)weeAppWantsNotificationCenterDismissal:(id)dismissal;
+- (void)weeAppWantsSizeUpdate:(id)update;
 @end
 

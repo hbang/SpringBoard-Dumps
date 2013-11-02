@@ -9,6 +9,7 @@
 
 @class CAMutableMeshTransform, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SBStretchTransformer : XXUnknownSuperclass {
 	UIView *m_view;
 	int m_anchorEdge;

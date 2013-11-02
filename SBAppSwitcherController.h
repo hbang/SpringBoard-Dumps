@@ -5,13 +5,15 @@
  * Source: (null)
  */
 
+#import "SBIconViewDelegate.h"
+#import "SBIconViewMapDelegate.h"
 #import "SBShowcaseViewController.h"
 #import "SBAppSwitcherBarViewDelegate.h"
-#import "SBIconViewDelegate.h"
 
-@class SBPrintStatusController, NSString, SBNowPlayingBar, SBAppSwitcherBarView, SBAppSwitcherModel;
+@class SBPrintStatusController, SBAppSwitcherModel, SBAppSwitcherBarView, SBNowPlayingBar, NSString;
 
-@interface SBAppSwitcherController : SBShowcaseViewController <SBIconViewDelegate, SBAppSwitcherBarViewDelegate> {
+__attribute__((visibility("hidden")))
+@interface SBAppSwitcherController : SBShowcaseViewController <SBIconViewDelegate, SBAppSwitcherBarViewDelegate, SBIconViewMapDelegate> {
 	SBAppSwitcherModel *_model;
 	SBNowPlayingBar *_nowPlayingBar;
 	SBAppSwitcherBarView *_bottomBar;
@@ -25,34 +27,28 @@
 + (id)sharedInstance;
 + (id)sharedInstanceIfAvailable;
 - (id)init;
-- (id)_applicationIconsExceptTopApp;
+- (void)_appActivationStateDidChange:(id)_appActivationState;
 - (void)_appsDidChange:(id)_apps;
 - (void)_beginEditing;
+- (id)_bundleIdentifiersForViewDisplay;
 - (id)_currentDownloads;
-- (id)_currentIcons;
-- (id)_iconForApplication:(id)application;
-- (id)_iconForDownload:(id)download;
-- (id)_iconForPrinting;
+- (void)_iconModelChangedSignificantly;
+- (void)_iconModelVisibilityChanged:(id)changed;
 - (BOOL)_inEditMode;
 - (void)_newsstandFolderWasOpened:(id)opened;
 - (void)_reloadIconViewsAndShowFirstPage:(BOOL)page;
 - (void)_removeApplicationFromRecents:(id)recents;
 - (void)_stopEditing;
-- (id)_view;
 - (BOOL)airPlayControlsVisible;
 - (void)appSwitcherBar:(id)bar pageAtIndexDidAppear:(int)pageAtIndex;
 - (void)appSwitcherBar:(id)bar pageAtIndexDidDisappear:(int)pageAtIndex;
 - (BOOL)appSwitcherBar:(id)bar scrollShouldCancelInContentForView:(id)scroll;
 - (void)appSwitcherBarRemovedFromSuperview:(id)superview;
-- (void)applicationDied:(id)died;
-- (void)applicationLaunched:(id)launched;
-- (void)applicationSuspended:(id)suspended;
 - (float)bottomBarHeight;
 - (int)closeBoxTypeForIcon:(id)icon;
 - (void)dealloc;
 - (void)dismissPrintView;
 - (void)downloadChanged:(id)changed;
-- (void)downloadItemUpdatingStatusChanged:(id)changed;
 - (void)downloadRemoved:(id)removed;
 - (BOOL)handleMenuButtonTap;
 - (void)iconCloseBoxTapped:(id)tapped;
@@ -62,9 +58,8 @@
 - (void)iconTouchBegan:(id)began;
 - (BOOL)iconViewDisplaysBadges:(id)badges;
 - (BOOL)isScrolling;
-- (void)noteIconModelDidReload;
 - (BOOL)nowPlayingControlsVisible;
-- (id)printIcon;
+- (id)printIconView;
 - (BOOL)printViewIsShowing;
 - (void)removePrintStatusIconBadge;
 - (void)restoreScrollPositionAfterSuspendGesture;
@@ -73,7 +68,12 @@
 - (void)setupForApp:(id)app orientation:(int)orientation;
 - (id)view;
 - (void)viewDidAppear;
+- (void)viewDidDisappear;
 - (void)viewDidRotateFromInterfaceOrientation:(int)view;
+- (Class)viewMap:(id)map iconViewClassForIcon:(id)icon;
+- (int)viewMap:(id)map locationForIcon:(id)icon;
+- (unsigned)viewMap:(id)map maxRecycledIconViewsOfClass:(Class)aClass;
+- (void)viewWillAnimateRotationToInterfaceOrientation:(int)view;
 - (void)viewWillAppear;
 - (void)viewWillDisappear;
 - (void)viewWillRotateToInterfaceOrientation:(int)view;

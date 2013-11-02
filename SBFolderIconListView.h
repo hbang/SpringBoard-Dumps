@@ -9,6 +9,7 @@
 #import "SBIconListView.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBFolderIconListView : SBIconListView {
 }
 + (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;

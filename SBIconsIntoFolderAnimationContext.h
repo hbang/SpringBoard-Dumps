@@ -9,14 +9,17 @@
 
 @class SBFolderIcon, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface SBIconsIntoFolderAnimationContext : XXUnknownSuperclass {
 	SBFolderIcon *_folderIcon;
 	NSArray *_iconSnapshots;
 	NSArray *_miniSnapshots;
 	NSArray *_addedIcons;
 	BOOL _openFolderOnFinish;
+	id _completeBlock;
 }
 @property(retain, nonatomic) NSArray *addedIcons;
+@property(copy, nonatomic) id completeBlock;
 @property(retain, nonatomic) SBFolderIcon *folderIcon;
 @property(retain, nonatomic) NSArray *iconSnapshots;
 @property(retain, nonatomic) NSArray *miniSnapshots;

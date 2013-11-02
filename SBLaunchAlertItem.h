@@ -7,10 +7,11 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBDisplay, NSString;
+@class SBApplication, NSString;
 
+__attribute__((visibility("hidden")))
 @interface SBLaunchAlertItem : XXUnknownSuperclass {
-	SBDisplay *_associatedDisplay;
+	SBApplication *_associatedDisplay;
 	int _type;
 	NSString *_bundleID;
 	BOOL _isDataAlert;

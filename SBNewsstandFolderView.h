@@ -8,8 +8,9 @@
 #import "SpringBoard-Structs.h"
 #import "SBFolderView.h"
 
-@class NSTimer, UITableView, UIImageView, UIButton, SBNewsstandCardView, SBNewsstandShelfFrameView;
+@class NSTimer, SBNewsstandCardView, UIImageView, SBNewsstandShelfFrameView, UITableView, UIButton;
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandFolderView : SBFolderView {
 	UIButton *_storeButton;
 	UIImageView *_navigationBar;
@@ -59,6 +60,7 @@
 - (void)_setupFolderTitleLabel;
 - (void)_setupNavigationBar;
 - (id)_shadowForPosition:(int)position;
+- (id)_shadowImageForPosition:(int)position;
 - (float)_shelfHeaderHeight;
 - (BOOL)_shouldShowStoreButton;
 - (CGSize)_sizeForCurrentConfiguration;

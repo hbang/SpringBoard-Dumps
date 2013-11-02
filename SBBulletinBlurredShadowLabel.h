@@ -9,6 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinBlurredShadowLabel : XXUnknownSuperclass {
 }
 - (void)drawTextInRect:(CGRect)rect;

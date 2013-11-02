@@ -9,6 +9,7 @@
 
 @class NSMutableSet;
 
+__attribute__((visibility("hidden")))
 @interface SBDownloadMetadataCache : XXUnknownSuperclass {
 	NSMutableSet *_fetchedDownloads;
 }

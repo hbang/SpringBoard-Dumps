@@ -7,35 +7,36 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableSet, NSMutableDictionary, SBRootFolder, SBNewsstandIcon, NSSet, NSDictionary;
+@class SBPrintStatusIcon, SBNewsstandIcon, SBRootFolder, NSMutableDictionary, NSDictionary, NSSet;
+@protocol SBIconModelDelegate, SBIconModelStore;
 
+__attribute__((visibility("hidden")))
 @interface SBIconModel : XXUnknownSuperclass {
-	NSDictionary *_lastKnownUserGeneratedIconState;
-	NSSet *_lastKnownUserGeneratedIconStateFlattened;
+	NSDictionary *_desiredIconState;
+	NSSet *_desiredIconStateFlattened;
 	NSMutableDictionary *_leafIconsByIdentifier;
 	NSSet *_hiddenIconTags;
 	NSSet *_visibleIconTags;
 	BOOL _tagsHaveBeenSet;
-	NSMutableSet *_downloadedIconIDs;
 	SBRootFolder *_rootFolder;
 	SBNewsstandIcon *_newsstandIcon;
-	BOOL _needsRelayout;
-	BOOL _allowReadingCachedStateFromDisk;
+	SBPrintStatusIcon *_printStatusIcon;
+	id<SBIconModelStore> _store;
+	id<SBIconModelDelegate> _delegate;
+	BOOL _allowsSaving;
 }
+@property(assign, nonatomic) BOOL allowsSaving;
+@property(assign, nonatomic) id<SBIconModelDelegate> delegate;
+@property(retain, nonatomic) NSDictionary *leafIconsByIdentifier;
 + (id)_migrateLeafIdentifierIfNecessary:(id)necessary;
 + (id)_modernIconCellForCell:(id)cell;
 + (id)_modernIconListForList:(id)list;
 + (id)_modernIconListsForLists:(id)lists;
 + (id)modernIconStateForState:(id)state;
-+ (id)sharedInstance;
-- (id)init;
+- (id)initWithStore:(id)store;
 - (void)_addNewIconToDesignatedLocation:(id)designatedLocation;
-- (void)_addNodeToRootLists:(id)rootLists node:(id)node createListIfNecessary:(BOOL)necessary;
 - (id)_applicationIcons;
-- (id)_cachedIconStatePath;
 - (void)_createIconLists;
-- (id)_deepCopyIconState:(id)state;
-- (id)_deepCopyListForIconState:(id)iconState;
 - (void)_flattenIconListState:(id)state intoArray:(id)array;
 - (id)_flattenIconState:(id)state;
 - (id)_iTunesDictionaryForDownloadingIcon:(id)downloadingIcon;
@@ -44,18 +45,16 @@
 - (id)_iTunesIconCellForCell:(id)cell preApex:(BOOL)apex forPending:(BOOL)pending;
 - (id)_iTunesIconListForList:(id)list preApex:(BOOL)apex forPending:(BOOL)pending;
 - (id)_iTunesIconListsForLists:(id)lists preApex:(BOOL)apex forPending:(BOOL)pending;
-- (id)_iconState:(BOOL)state;
+- (id)_iconState;
 - (id)_indexPathForFirstFreeNewsstandSlot;
 - (id)_indexPathForIdentifier:(id)identifier inListRepresentation:(id)listRepresentation;
 - (id)_indexPathForIdentifier:(id)identifier inListsRepresentation:(id)listsRepresentation;
+- (id)_modernPlatformState;
 - (id)_newsstandIconIdentifiersFromIconState:(id)iconState;
+- (void)_postIconVisibilityChangedNotificationShowing:(id)showing hiding:(id)hiding;
 - (void)_replaceAppIconsWithDownloadingIcons;
 - (void)_replaceAppIconsWithDownloadingIcons:(id)downloadingIcons;
-- (id)_trimList:(id)list toMaxSize:(int)maxSize;
-- (void)_writeCachedIconState;
-- (void)_writeCurrentIconStateWithNotification:(BOOL)notification;
-- (BOOL)_writeIconState:(id)state toPath:(id)path;
-- (BOOL)_writeIconState:(id)state toPath:(id)path withFormat:(unsigned)format;
+- (void)_saveDesiredIconState;
 - (id)addBookmarkIconForWebClip:(id)webClip;
 - (id)addDownloadingIconForDownload:(id)download;
 - (id)addDownloadingIconForIdentifier:(id)identifier;
@@ -63,45 +62,40 @@
 - (void)addIconForApplication:(id)application;
 - (void)addNewsstandIcon;
 - (id)applicationIconForDisplayIdentifier:(id)displayIdentifier;
-- (void)clearCachedUserGeneratedIconState;
-- (void)clearCachedUserGeneratedIconStateIfPossible;
+- (void)clearDesiredIconState;
+- (void)clearDesiredIconStateIfPossible;
 - (void)dealloc;
 - (void)deleteIconState;
-- (id)downloadedIconIDs;
 - (id)downloadingIconForIdentifier:(id)identifier;
-- (id)exportFlattenedState:(BOOL)state;
-- (id)exportPendingState:(BOOL)state;
+- (id)expectedIconForDisplayIdentifier:(id)displayIdentifier;
+- (id)exportFlattenedState:(BOOL)state includeMissingIcons:(BOOL)icons;
+- (id)exportPendingState:(BOOL)state includeMissingIcons:(BOOL)icons;
 - (id)exportState:(BOOL)state;
 - (id)firstPageLeafIdentifiers;
-- (id)forecastedLayoutForIconState:(id)iconState;
-- (BOOL)hasCachedUserGeneratedIconState;
+- (id)forecastedLayoutForIconState:(id)iconState includeMissingIcons:(BOOL)icons;
+- (BOOL)hasDesiredIconState;
 - (id)iconState;
-- (id)iconStatePath;
 - (BOOL)importState:(id)state;
 - (id)indexPathForIconInPlatformState:(id)platformState;
 - (id)indexPathForNewIcon:(id)newIcon isDesignatedLocation:(BOOL *)location replaceExistingIconAtIndexPath:(id *)indexPath;
 - (BOOL)isIconVisible:(id)visible;
+- (void)layout;
 - (id)leafIconForIdentifier:(id)identifier;
+- (id)leafIconForWebClip:(id)webClip;
+- (id)leafIconForWebClipIdentifier:(id)webClipIdentifier;
 - (id)leafIcons;
 - (void)loadAllIcons;
 - (void)localeChanged;
 - (id)newsstandFolder;
 - (id)newsstandFolderFromIconState:(id)iconState;
 - (id)newsstandIcon;
-- (void)noteDownloadCompletedForIconID:(id)iconID;
-- (void)noteDownloadsEnded;
-- (void)noteFolderStoppedAnimating;
-- (void)noteIconStateChangedExternally;
-- (void)relayout;
+- (id)printStatusIcon;
 - (void)removeApplicationIconForDownloadingIcon:(id)downloadingIcon;
-- (void)removeDownloadedIconID:(id)anId;
 - (void)removeIcon:(id)icon;
 - (void)removeIconForIdentifier:(id)identifier;
 - (id)rootFolder;
 - (void)saveIconState;
 - (void)setVisibilityOfIconsWithVisibleTags:(id)visibleTags hiddenTags:(id)tags;
-- (void)uninstallApplicationIcon:(id)icon;
-- (void)uninstallBookmarkIcon:(id)icon;
 - (id)visibleIconIdentifiers;
 @end
 

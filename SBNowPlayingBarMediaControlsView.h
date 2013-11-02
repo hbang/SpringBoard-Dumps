@@ -5,32 +5,37 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIButton, SBIconLabel, UILabel;
+@class UIButton, SBAppSwitcherLabel;
 
+__attribute__((visibility("hidden")))
 @interface SBNowPlayingBarMediaControlsView : XXUnknownSuperclass {
 	UIButton *_prevButton;
 	UIButton *_playButton;
 	UIButton *_nextButton;
 	UIButton *_airPlayButton;
-	UILabel *_trackLabel;
+	UIButton *_fifteenSecondRewindButton;
+	UIButton *_fifteenSecondFFButton;
+	SBAppSwitcherLabel *_trackLabel;
 	int _toggleType;
-	SBIconLabel *_toggleLabel;
+	SBAppSwitcherLabel *_toggleLabel;
 	BOOL _isAirPlayVisible;
 	BOOL _isPlaying;
+	int _currentTrackSupportsSkip;
 	BOOL _isEnabled;
 	BOOL _showingToggleLabel;
 }
 @property(readonly, assign, nonatomic) UIButton *airPlayButton;
 @property(assign, nonatomic) BOOL airPlayButtonVisible;
+@property(readonly, assign, nonatomic) UIButton *fifteenSecondFFButton;
+@property(readonly, assign, nonatomic) UIButton *fifteenSecondRewindButton;
 @property(assign, nonatomic) BOOL marqueeRunning;
 @property(readonly, assign, nonatomic) UIButton *nextButton;
 @property(readonly, assign, nonatomic) UIButton *playButton;
 @property(readonly, assign, nonatomic) UIButton *prevButton;
 - (id)initWithFrame:(CGRect)frame;
-- (id)_descriptionLabel;
 - (void)_layoutForiPad;
 - (void)_layoutForiPhone;
 - (void)_muteChanged:(id)changed;
@@ -42,6 +47,6 @@
 - (void)layoutSubviews;
 - (void)setLabelWidth:(float)width;
 - (void)setTrackString:(id)string;
-- (void)updateImages:(BOOL)images enabled:(BOOL)enabled;
+- (void)updateImages:(BOOL)images enabled:(BOOL)enabled currentTrackSupportsSkip:(BOOL)skip;
 @end
 

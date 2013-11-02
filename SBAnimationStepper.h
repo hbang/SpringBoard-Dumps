@@ -9,6 +9,7 @@
 
 @class CADisplayLink, NSArray, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SBAnimationStepper : XXUnknownSuperclass {
 	id m_delegate;
 	UIView *m_view;

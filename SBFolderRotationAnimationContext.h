@@ -10,6 +10,7 @@
 
 @class NSSet;
 
+__attribute__((visibility("hidden")))
 @interface SBFolderRotationAnimationContext : XXUnknownSuperclass {
 	NSSet *_icons;
 	XXStruct_9ihRqB _notchInfo;

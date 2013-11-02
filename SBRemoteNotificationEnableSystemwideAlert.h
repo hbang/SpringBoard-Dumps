@@ -9,6 +9,7 @@
 
 @class SBApplication;
 
+__attribute__((visibility("hidden")))
 @interface SBRemoteNotificationEnableSystemwideAlert : XXUnknownSuperclass {
 	SBApplication *_app;
 }

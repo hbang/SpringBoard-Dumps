@@ -7,12 +7,15 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSURL;
+@class SBApplication, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface SBVideoPermissionAlertItem : XXUnknownSuperclass {
 	NSURL *_url;
+	SBApplication *_appHandlingURL;
+	NSString *_sender;
 }
-- (id)initWithURL:(id)url;
+- (id)initWithURL:(id)url applicationHandlingURL:(id)url2 sender:(id)sender;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowMenuButtonDismissal;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

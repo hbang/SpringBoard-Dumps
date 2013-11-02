@@ -10,8 +10,9 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SBCallFailureAlert : SBAlert {
-	int _causeCode;
+	long _causeCode;
 	NSString *_address;
 	int _uid;
 	CTCallRef _call;

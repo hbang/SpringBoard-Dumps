@@ -7,9 +7,20 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
+@class NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinDateLabelFactory : XXUnknownSuperclass {
+	NSMutableDictionary *_recycledLabelsByStyle;
 }
-+ (id)newLabelWithStartDate:(id)startDate endDate:(id)date timeZone:(id)zone allDay:(BOOL)day forStyle:(int)style;
++ (id)sharedInstance;
+- (id)init;
+- (id)_labelWithStartDate:(id)startDate endDate:(id)date timeZone:(id)zone allDay:(BOOL)day forStyle:(int)style forType:(int)type;
+- (void)_purgeRecycledLabels;
+- (int)_styleForLabel:(id)label;
+- (void)dealloc;
+- (id)endLabelWithStartDate:(id)startDate endDate:(id)date timeZone:(id)zone allDay:(BOOL)day forStyle:(int)style;
+- (void)recycleLabel:(id)label;
+- (id)startLabelWithStartDate:(id)startDate endDate:(id)date timeZone:(id)zone allDay:(BOOL)day forStyle:(int)style;
 @end
 

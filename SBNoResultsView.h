@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SBNoResultsView : XXUnknownSuperclass {
 	UILabel *_noResultsLabel;
 }

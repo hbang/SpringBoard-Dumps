@@ -6,22 +6,24 @@
  */
 
 #import "SBLeafIcon.h"
+#import "SpringBoard-Structs.h"
 
 @class UIWebClip;
 
+__attribute__((visibility("hidden")))
 @interface SBBookmarkIcon : SBLeafIcon {
 	UIWebClip *_webClip;
 }
+@property(retain, nonatomic) UIWebClip *webClip;
 - (id)initWithWebClip:(id)webClip;
 - (BOOL)allowsUninstall;
 - (void)completeUninstall;
+- (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
 - (id)displayName;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
 - (id)generateIconImage:(int)image;
 - (void)launch;
-- (id)leafIdentifier;
-- (id)webClip;
 @end
 

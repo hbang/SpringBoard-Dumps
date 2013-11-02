@@ -9,6 +9,7 @@
 #import "SBAlert.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBNetworkReselectionAlert : SBAlert {
 }
 + (void)_serviceAvailabilityChanged:(id)changed;

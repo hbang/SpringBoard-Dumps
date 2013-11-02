@@ -7,16 +7,19 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBProxyRemoteView, SBApplication;
+@class SBFakeStatusBarView, SBApplication, SBProxyRemoteView;
 
+__attribute__((visibility("hidden")))
 @interface SBSheetView : XXUnknownSuperclass {
 	SBProxyRemoteView *_remoteProxyView;
 	SBApplication *_app;
+	SBFakeStatusBarView *_fakeStatusBarView;
 	BOOL _wasPresentedAnimated;
 }
-- (id)initWithRemoteViewIdentifier:(id)remoteViewIdentifier application:(id)application wasPresentedAnimated:(BOOL)animated;
+- (id)initWithRemoteViewIdentifier:(id)remoteViewIdentifier application:(id)application shouldFakeStatusBar:(BOOL)bar wasPresentedAnimated:(BOOL)animated;
 - (id)application;
 - (void)dealloc;
+- (id)fakeStatusBarView;
 - (void)noteSheetDidEnd;
 - (id)remoteViewIdentifier;
 - (BOOL)wasPresentedAnimated;

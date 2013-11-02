@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 @class SBPolygon;
 
+__attribute__((visibility("hidden")))
 @interface SBTouchTemplate : XXUnknownSuperclass {
 	SBPolygon *m_template;
 	SBPolygon *m_candidate;

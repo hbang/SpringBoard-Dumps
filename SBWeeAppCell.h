@@ -5,14 +5,17 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBBulletinLinenBackedCell.h"
 
-@class UIView, SBWeeApp;
+@class SBWeeApp, UITapGestureRecognizer, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SBWeeAppCell : SBBulletinLinenBackedCell {
 	SBWeeApp *_weeApp;
 	UIView *_weeAppView;
 	BOOL _useTopPadding;
+	UITapGestureRecognizer *_tapRecognizer;
 }
 @property(retain, nonatomic) SBWeeApp *weeApp;
 + (float)rowHeightForViewHeight:(float)viewHeight withTopPadding:(BOOL)topPadding;
@@ -21,6 +24,8 @@
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)layoutSubviews;
+- (void)noteDidDisappear;
+- (void)noteWillAppear;
 - (void)prepareForReuse;
 - (void)setUsesTopPadding:(BOOL)padding;
 - (void)willMoveToWindow:(id)window;

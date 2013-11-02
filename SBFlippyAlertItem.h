@@ -9,6 +9,7 @@
 
 @class UIAlertView;
 
+__attribute__((visibility("hidden")))
 @interface SBFlippyAlertItem : XXUnknownSuperclass {
 	UIAlertView *_frontAlertSheet;
 	UIAlertView *_backAlertSheet;

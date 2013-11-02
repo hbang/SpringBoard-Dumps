@@ -7,13 +7,15 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, SBHUDView, UIWindow;
+@class UIWindow, SBHUDView, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SBHUDController : XXUnknownSuperclass {
 	UIWindow *_hudWindow;
 	UIView *_hudContentView;
 	SBHUDView *_hudView;
 	int _orientation;
+	BOOL _hudVisibleOrFading;
 }
 + (id)sharedHUDController;
 - (void)_createUI;
@@ -27,5 +29,6 @@
 - (void)presentHUDView:(id)view autoDismissWithDelay:(double)delay;
 - (void)reorientHUDIfNeeded:(BOOL)needed;
 - (id)visibleHUDView;
+- (id)visibleOrFadingHUDView;
 @end
 

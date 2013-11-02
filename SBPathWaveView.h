@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import "SBWaveView.h"
 #import "SpringBoard-Structs.h"
+#import "SBWaveView.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBPathWaveView : SBWaveView {
 }
 + (Class)layerClass;

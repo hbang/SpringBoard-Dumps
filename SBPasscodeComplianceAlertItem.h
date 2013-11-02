@@ -9,6 +9,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SBPasscodeComplianceAlertItem : XXUnknownSuperclass {
 	NSString *_title;
 	NSString *_message;

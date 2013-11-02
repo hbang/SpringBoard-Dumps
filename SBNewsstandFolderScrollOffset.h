@@ -9,6 +9,7 @@
 #import "SpringBoard-Structs.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandFolderScrollOffset : SBFolderScrollOffset {
 	unsigned _firstVisibleRow;
 }

@@ -9,8 +9,10 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBAppWindow : XXUnknownSuperclass {
 }
 + (CGRect)constrainFrameToScreen:(CGRect)screen;
+- (void)becomeKeyWindow;
 @end
 

@@ -9,6 +9,7 @@
 
 @class NSError;
 
+__attribute__((visibility("hidden")))
 @interface SBSoftwareUpdateUnableToInstallAlertItem : SBBaseSoftwareUpdateAlertItem {
 	NSError *_error;
 }

@@ -8,8 +8,9 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBAwayListCellButtonHandler.h"
 
-@class NSArray, NSString, SBAlertItem, UIImage;
+@class NSArray, UIImage, NSString, SBAlertItem;
 
+__attribute__((visibility("hidden")))
 @interface SBAwaySystemAlertItem : XXUnknownSuperclass <SBAwayListCellButtonHandler> {
 	SBAlertItem *_currentAlert;
 	NSString *_title;

@@ -12,8 +12,9 @@
 @optional
 - (void)connection:(id)connection didChangeConnectedStatus:(BOOL)status;
 - (void)connection:(id)connection didFailToSendOutgoingMessage:(id)sendOutgoingMessage error:(id)error;
-@required
+- (void)connection:(id)connection didReceiveIncomingMessage:(id)message;
 - (void)connection:(id)connection didReceiveMessageForTopic:(id)topic userInfo:(id)info;
+@required
 - (void)connection:(id)connection didReceivePublicToken:(id)token;
 @optional
 - (void)connection:(id)connection didSendOutgoingMessage:(id)message;

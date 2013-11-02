@@ -9,6 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBActivationFailedAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	BOOL _showRetryButton;
 	BOOL _showSupportNumber;
@@ -16,7 +17,6 @@
 - (id)initWithFailureCount:(int)failureCount;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
-- (id)lockLabel;
 - (void)performUnlockAction;
 @end
 

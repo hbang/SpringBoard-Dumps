@@ -9,6 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBNowPlayingPushButton : XXUnknownSuperclass {
 	float _yOffset;
 	float _xOffset;

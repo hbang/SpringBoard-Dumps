@@ -9,6 +9,7 @@
 #import "SBSlidingAlertDisplay.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBDeviceLockPasscodeEntryAlertDisplay : SBSlidingAlertDisplay {
 }
 - (void)alertDisplayWillBecomeVisible;

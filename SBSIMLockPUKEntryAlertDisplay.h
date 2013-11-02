@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBSIMLockEntryAlertDisplay.h"
+#import "SpringBoard-Structs.h"
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SBSIMLockPUKEntryAlertDisplay : SBSIMLockEntryAlertDisplay {
 	int _state;
 	NSString *_enteredPUKCode;

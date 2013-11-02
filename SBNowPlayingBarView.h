@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBNowPlayingBarMediaControlsView, UIImageView, UIButton, UISlider, SBIconView, UIView;
+@class SBIconView, SBNowPlayingBarMediaControlsView, UIImageView, UIButton, UISlider, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SBNowPlayingBarView : XXUnknownSuperclass {
 	int _toggleType;
 	UIView *_toggleButtonContainer;

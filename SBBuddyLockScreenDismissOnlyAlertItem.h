@@ -8,6 +8,7 @@
 #import "SBDismissOnlyAlertItem.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBBuddyLockScreenDismissOnlyAlertItem : SBDismissOnlyAlertItem {
 }
 - (BOOL)allowInSetup;

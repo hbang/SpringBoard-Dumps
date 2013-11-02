@@ -5,21 +5,24 @@
  * Source: (null)
  */
 
+#import "SBDownloadingIconObserver.h"
 #import "SpringBoard-Structs.h"
 #import "SBIconView.h"
 
-@class SBDownloadingProgressBar, SBDownloadingIcon;
+@class SBDownloadingIcon, SBDownloadingProgressBar;
 
-@interface SBDownloadingIconView : SBIconView {
+__attribute__((visibility("hidden")))
+@interface SBDownloadingIconView : SBIconView <SBDownloadingIconObserver> {
 	SBDownloadingProgressBar *_progressView;
 }
-@property(readonly, retain) SBDownloadingIcon *downloadingIcon;
+@property(retain, nonatomic) SBDownloadingIcon *downloadingIcon;
++ (Class)_labelImageParametersClassForIcon:(id)icon location:(int)location;
 - (id)initWithDefaultSize;
 - (void)_updateProgressBar;
 - (void)dealloc;
+- (void)downloadingIconStatusDidChange:(id)downloadingIconStatus;
 - (void)iconAccessoriesDidUpdate:(id)iconAccessories;
 - (void)setDisplayedIconImage:(id)image;
-- (void)setDownloadingIcon:(id)icon;
 - (void)setGhostly:(BOOL)ghostly requester:(int)requester;
 - (void)setIcon:(id)icon;
 @end

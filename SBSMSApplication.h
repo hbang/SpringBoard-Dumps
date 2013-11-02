@@ -9,6 +9,7 @@
 #import "SBApplication.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBSMSApplication : SBApplication {
 }
 - (id)activationValue:(unsigned)value;

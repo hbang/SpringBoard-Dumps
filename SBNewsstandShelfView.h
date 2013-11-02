@@ -7,8 +7,9 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UILabel, UIImageView;
+@class UIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandShelfView : XXUnknownSuperclass {
 	UIImageView *_body;
 	UIImageView *_leftEdge;

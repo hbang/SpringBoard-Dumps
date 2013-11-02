@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class SBAppContextHostManager;
 
+__attribute__((visibility("hidden")))
 @interface SBAppContextHostView : XXUnknownSuperclass {
 	SBAppContextHostManager *_manager;
 }
@@ -18,5 +19,6 @@
 - (id)initWithFrame:(CGRect)frame;
 - (id)description;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
+- (id)window;
 @end
 
