@@ -7,7 +7,6 @@ To navigate on GitHub, go to [the master branch](https://github.com/hbang/Spring
 It’s better to clone this repo to your computer and use `git diff`. See the man pages [git-diff(1)](http://git-scm.com/docs/git-diff) and [git-difftool(1)](http://git-scm.com/docs/git-difftool).
 
 ## Firmwares
-<div style="-moz-column-count: 3; -webkit-column-count: 3; column-count: 3;">
 * [2.0](https://github.com/hbang/SpringBoard-Dumps/tree/2.0)
 * [2.1](https://github.com/hbang/SpringBoard-Dumps/tree/2.1)
 * [3.0](https://github.com/hbang/SpringBoard-Dumps/tree/3.0)
@@ -23,7 +22,6 @@ It’s better to clone this repo to your computer and use `git diff`. See the ma
 * [6.1](https://github.com/hbang/SpringBoard-Dumps/tree/6.1)
 * [7.0](https://github.com/hbang/SpringBoard-Dumps/tree/7.0)
 * [7.0.3](https://github.com/hbang/SpringBoard-Dumps/tree/7.0.3)
-</div>
 
 ## Doing it yourself
 The makefile is designed to support any iOS or OS X binary by only changing a variable or two, however do keep in mind that there’s already [nst/iOS-Runtime-Headers](https://github.com/nst/iOS-Runtime-Headers) for public/private frameworks and libraries.
