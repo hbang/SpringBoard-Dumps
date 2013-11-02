@@ -21,19 +21,17 @@ __attribute__((visibility("hidden")))
 	int _warningResponseToken;
 	NSMutableSet *_warningSuppressionAssertions;
 	BOOL _warningSuppressionPreference;
+	int _level;
+	BOOL _inSunlight;
 }
+@property(readonly, assign, nonatomic, getter=isInSunlight) BOOL inSunlight;
+@property(readonly, assign, nonatomic) int level;
 + (void)logThermalEvent:(id)event;
 + (id)sharedInstance;
 - (id)init;
-- (void)_beginThermalJetsamCPUSampling;
-- (void)_calculateAppsCPUTimesWithCompletion:(id)completion;
 - (void)_didReceiveWarningAction:(int)action;
-- (void)_killThermallyActiveApplication;
-- (void)_killThermallyActiveApplicationGivenCPUTimes:(id)times;
 - (BOOL)captureWarningSuppressionAssertionWithPort:(unsigned)port reason:(id)reason;
 - (void)dealloc;
-- (void)respondToCurrentThermalCondition;
-- (void)showThermalAlertIfNecessary;
 - (void)startListeningForThermalEvents;
 - (void)thermalWarningAlert:(id)alert didTriggerAction:(int)action;
 - (void)thermalWarningAssertionExpired:(id)expired;

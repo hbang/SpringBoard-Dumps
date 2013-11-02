@@ -6,13 +6,14 @@
  */
 
 #import "SBIconIndexNode.h"
-#import "SBIconIndexMutableListObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconIndexMutableListObserver.h"
+#import "SBIconListModelObserver.h"
 
-@class SBIconIndexMutableList, NSHashTable, NSMutableDictionary, NSMutableSet, SBFolderIcon, NSString;
+@class SBFolderIcon, NSMutableDictionary, SBIconIndexMutableList, NSMutableSet, NSHashTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SBFolder : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver> {
+@interface SBFolder : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver, SBIconListModelObserver> {
 	NSString *_displayName;
 	NSString *_defaultDisplayName;
 	BOOL _open;
@@ -22,32 +23,43 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_removedIcons;
 	NSMutableDictionary *_coalesceChangesRequests;
 	NSHashTable *_nodeObservers;
+	NSHashTable *_folderObservers;
 	SBIconIndexMutableList *_lists;
 }
 @property(assign, nonatomic, getter=isCancelable) BOOL cancelable;
 @property(retain, nonatomic) NSString *displayName;
 @property(assign, nonatomic) SBFolderIcon *icon;
 @property(assign, nonatomic) BOOL isOpen;
-+ (int)maxListCount;
++ (unsigned)maxListCount;
 - (id)init;
+- (void)_addList:(id)list;
+- (BOOL)_addListsForRepresentation:(id)representation model:(id)model leafIdentifiersAdded:(id)added;
+- (id)_createNewListWithIcon:(id)icon;
 - (BOOL)_isCoalescingContentChanges;
+- (id)_listsForCompaction;
+- (void)_removeLists:(id)lists;
 - (void)_setDisplayNameFromRepresentation:(id)representation;
 - (id)addEmptyList;
+- (void)addFolderObserver:(id)observer;
 - (id)addIcon:(id)icon;
 - (void)addNodeObserver:(id)observer;
 - (id)allIcons;
 - (BOOL)canAddIcon;
+- (BOOL)canEditDisplayName;
+- (BOOL)canRemoveIcons;
 - (void)compactIconsAndLists;
 - (BOOL)compactLists;
 - (id)containedNodeIdentifiers;
 - (BOOL)containsNodeIdentifier:(id)identifier;
+- (Class)controllerClass;
 - (void)dealloc;
 - (id)folderContainingIndexPath:(id)path relativeIndexPath:(id *)path2;
 - (id)folderIcons;
-- (Class)folderSlidingViewClass;
 - (id)folderType;
-- (Class)folderViewClass;
 - (id)iconAtIndexPath:(id)indexPath;
+- (void)iconList:(id)list didAddIcon:(id)icon;
+- (void)iconList:(id)list didRemoveIcon:(id)icon;
+- (void)iconList:(id)list didReplaceIcon:(id)icon withIcon:(id)icon3;
 - (id)iconsOfClass:(Class)aClass;
 - (unsigned)indexOfList:(id)list;
 - (id)indexPathForFirstFreeSlotAvoidingFirstList:(BOOL)firstFreeSlotAvoidingFirstList;
@@ -76,18 +88,18 @@ __attribute__((visibility("hidden")))
 - (id)nodeDescriptionWithPrefix:(id)prefix;
 - (id)nodeIdentifier;
 - (id)nodesAlongIndexPath:(id)path consumedIndexes:(unsigned)indexes;
-- (void)noteIcon:(id)icon replacedIcon:(id)icon2;
-- (void)noteIconAdded:(id)added;
-- (void)noteIconRemoved:(id)removed;
-- (id)performCascadingIconInsertion:(id)insertion listIndex:(unsigned)index iconIndex:(unsigned)index3 addPageIfNecessary:(BOOL)necessary;
+- (id)performCascadingIconInsertion:(id)insertion indexPath:(id)path;
+- (id)performCascadingIconInsertion:(id)insertion listIndex:(unsigned)index iconIndex:(unsigned)index3;
 - (id)placeIcon:(id)icon atIndexPath:(id *)indexPath;
 - (void)purgeIconImages;
 - (void)purgeLists;
 - (void)removeEmptyList:(id)list;
+- (void)removeFolderObserver:(id)observer;
 - (void)removeIconAtIndexPath:(id)indexPath;
 - (void)removeNodeObserver:(id)observer;
 - (id)representation;
 - (BOOL)resetWithRepresentation:(id)representation model:(id)model leafIdentifiersAdded:(id)added;
+- (BOOL)shouldRemoveWhenEmpty;
 - (void)startCoalescingContentChangesWithRequestID:(id)requestID;
 - (void)stopCoalescingContentChangesForRequestID:(id)requestID;
 - (void)stopCoalescingContentChangesForRequestID:(id)requestID forceReload:(BOOL)reload;

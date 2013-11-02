@@ -14,8 +14,8 @@
 - (void)bulletinWindowDidResignKey;
 @required
 - (void)bulletinWindowDidRotateFromOrientation:(int)bulletinWindow;
-- (void)bulletinWindowIsAnimatingRotationToOrientation:(int)orientation;
-- (void)bulletinWindowWillRotateToOrientation:(int)bulletinWindow;
+- (void)bulletinWindowIsAnimatingRotationToOrientation:(int)orientation duration:(double)duration;
+- (void)bulletinWindowWillRotateToOrientation:(int)bulletinWindow duration:(double)duration;
 @optional
 - (BOOL)requiresKeyWindow;
 @end

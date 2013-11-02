@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAlert.h"
+#import "SpringBoard-Structs.h"
 
 @class NSString;
 
@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
 + (BOOL)dialNumberPromptingIfNecessary:(id)necessary addressBookUID:(int)uid urlAddition:(id)addition;
 + (void)displayForNumber:(id)number addressBookUID:(int)uid;
 - (id)initWithNumber:(id)number addressBookUID:(int)uid;
+- (void)activate;
 - (int)addressBookUID;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)dealloc;
+- (BOOL)hasTranslucentBackground;
 - (id)number;
 @end
 

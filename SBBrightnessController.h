@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)adjustBacklightLevel:(BOOL)level;
 - (void)cancelBrightnessEvent;
 - (void)decreaseBrightnessAndRepeat;
-- (void)handleBrightnessEvent:(GSEventRef)event;
+- (void)handleBrightnessEvent:(IOHIDEventRef)event;
 - (void)increaseBrightnessAndRepeat;
 - (void)setBrightnessLevel:(float)level;
 @end

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBBulletinDateLabel.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBBulletinDateLabel.h"
 
 @class NSDate, NSTimer;
 @protocol SBDateLabelDelegate;
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 	NSDate *_timeZoneRelativeStartDate;
 	NSDate *_timeZoneRelativeEndDate;
 	BOOL _allDay;
+	BOOL _isTimestamp;
 	NSDate *_effectiveAllDayStartDate;
 	NSDate *_effectiveAllDayLastValidDate;
 	NSDate *_effectiveAllDayEndDate;
@@ -28,10 +29,12 @@ __attribute__((visibility("hidden")))
 }
 @property(assign, nonatomic, getter=isAllDay) BOOL allDay;
 @property(assign, nonatomic) id<SBDateLabelDelegate> delegate;
+@property(assign, nonatomic) BOOL isTimestamp;
 @property(assign, nonatomic) int labelType;
 + (id)_currentCalendar;
 - (id)init;
 - (void)_configureTimer;
+- (id)_constructNonAllDayLabelStringWithDate:(id)date startTime:(double)time startIsToday:(BOOL)today sameDayDates:(BOOL)dates eventOngoing:(BOOL)ongoing withCurrentDate:(id)currentDate forStartLabel:(BOOL)startLabel;
 - (void)_forceUpdate;
 - (void)_invalidateTimer;
 - (id)_localDateForDate:(id)date inTimeZone:(id)timeZone;

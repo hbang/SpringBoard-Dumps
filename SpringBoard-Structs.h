@@ -43,16 +43,6 @@ typedef struct {
 	unsigned long _field4[5];
 } XXStruct_kFm5bA;
 
-typedef struct __GSEvent *GSEventRef;
-
-typedef struct __darwin_pthread_handler_rec darwin_pthread_handler_rec;
-
-typedef struct _opaque_pthread_t {
-	long _field1;
-	darwin_pthread_handler_rec *_field2;
-	BOOL _field3[596];
-} opaque_pthread_t;
-
 typedef struct CGAffineTransform {
 	float a;
 	float b;
@@ -62,68 +52,10 @@ typedef struct CGAffineTransform {
 	float ty;
 } CGAffineTransform;
 
-typedef struct _opaque_pthread_mutex_t {
-	long __sig;
-	BOOL __opaque[40];
-} opaque_pthread_mutex_t;
+typedef struct CGColor *CGColorRef;
 
 typedef struct {
-	unsigned _field1[8];
-} XXStruct_kUSYWB;
-
-typedef struct _MISProfile *MISProfileRef;
-
-typedef struct tcp_connection_fallback_watch_s tcp_connection_fallback_watch_s;
-
-typedef struct __CTServerConnection *CTServerConnectionRef;
-
-typedef struct {
-	int _field1;
-	int _field2;
-} XXStruct_K5nmsA;
-
-typedef struct __CFString *CFStringRef;
-
-typedef struct CATransform3D {
-	float _field1;
-	float _field2;
-	float _field3;
-	float _field4;
-	float _field5;
-	float _field6;
-	float _field7;
-	float _field8;
-	float _field9;
-	float _field10;
-	float _field11;
-	float _field12;
-	float _field13;
-	float _field14;
-	float _field15;
-	float _field16;
-} CATransform3D;
-
-typedef struct __CTCall *CTCallRef;
-
-typedef struct __CFDictionary *CFDictionaryRef;
-
-typedef struct __WiFiManagerClient WiFiManagerClient;
-
-typedef struct __WiFiDeviceClient WiFiDeviceClient;
-
-typedef struct __WiFiNetwork WiFiNetwork;
-
-typedef struct __SCDynamicStore *SCDynamicStoreRef;
-
-typedef struct __CFBoolean *CFBooleanRef;
-
-typedef struct {
-	int direction;
-	CGRect rect;
-} XXStruct_9ihRqB;
-
-typedef struct {
-	BOOL itemIsEnabled[24];
+	BOOL itemIsEnabled[25];
 	BOOL timeString[64];
 	int gsmSignalStrengthRaw;
 	int gsmSignalStrengthBars;
@@ -148,79 +80,128 @@ typedef struct {
 	unsigned displayRawGSMSignal : 1;
 	unsigned displayRawWifiSignal : 1;
 	unsigned locationIconType : 1;
-} XXStruct_dUflDB;
+	unsigned quietModeInactive : 1;
+	unsigned tetheringConnectionCount;
+} XXStruct_8iXKhD;
+
+typedef struct __IOHIDEvent *IOHIDEventRef;
+
+typedef struct __darwin_pthread_handler_rec darwin_pthread_handler_rec;
+
+typedef struct _opaque_pthread_t {
+	long _field1;
+	darwin_pthread_handler_rec *_field2;
+	BOOL _field3[596];
+} opaque_pthread_t;
+
+typedef struct __CFBoolean *CFBooleanRef;
+
+typedef struct __GSEvent *GSEventRef;
+
+typedef struct SBIconCoordinate {
+	int row;
+	int col;
+} SBIconCoordinate;
+
+typedef struct _opaque_pthread_mutex_t {
+	long __sig;
+	BOOL __opaque[40];
+} opaque_pthread_mutex_t;
 
 typedef struct {
-	BOOL _field1[24];
-	unsigned _field2 : 1;
-	unsigned _field3 : 1;
-	unsigned _field4 : 1;
-	unsigned _field5 : 1;
-	unsigned _field6 : 2;
-	unsigned _field7 : 1;
-	unsigned _field8 : 1;
-	unsigned _field9 : 1;
-	unsigned _field10 : 1;
-	unsigned _field11 : 1;
-	unsigned _field12 : 1;
-	unsigned _field13 : 1;
-	unsigned _field14 : 1;
-	unsigned _field15 : 1;
-	unsigned _field16 : 1;
-	unsigned _field17 : 1;
-	unsigned _field18 : 1;
-	unsigned _field19 : 1;
-	unsigned _field20 : 1;
-	unsigned _field21 : 1;
-	unsigned _field22 : 1;
-	XXStruct_dUflDB _field23;
-} XXStruct_5beXPD;
+	unsigned _field1[8];
+} XXStruct_kUSYWB;
 
-typedef struct CGImage *CGImageRef;
+typedef struct tcp_connection_fallback_watch_s tcp_connection_fallback_watch_s;
 
-typedef struct CGPath *CGPathRef;
+typedef struct __CTServerConnection *CTServerConnectionRef;
 
-typedef struct __CFMachPort *CFMachPortRef;
+typedef struct __CFString *CFStringRef;
+
+typedef struct UIEdgeInsets {
+	float top;
+	float left;
+	float bottom;
+	float right;
+} UIEdgeInsets;
+
+typedef struct __CFDictionary *CFDictionaryRef;
 
 typedef struct BKSDisplayBrightnessTransaction *BKSDisplayBrightnessTransactionRef;
 
-typedef struct UIEdgeInsets {
-	float _field1;
-	float _field2;
-	float _field3;
-	float _field4;
-} UIEdgeInsets;
-
-typedef struct {
-	int type;
-	unsigned pathIndex;
-	CGPoint location;
-	CGPoint previousLocation;
-	float totalDistanceTraveled;
-	int interfaceOrientation;
-	int previousInterfaceOrientation;
-} XXStruct_DSYOgA;
-
-typedef struct __SBGestureContext *SBGestureContextRef;
-
-typedef struct _CARenderImage *CARenderImageRef;
-
-typedef struct CGContext *CGContextRef;
-
-typedef struct vImage_Buffer {
-	void *_field1;
-	unsigned _field2;
-	unsigned _field3;
-	unsigned _field4;
-} vImage_Buffer;
+typedef struct MGNotificationTokenStruct *MGNotificationTokenStructRef;
 
 typedef struct {
 	int startStyle;
-	int startOrientation;
 	int endStyle;
-	int endOrientation;
-	int transitionType;
-	BOOL zoomOther;
-} XXStruct_UhFvxB;
+	float transitionFraction;
+} XXStruct_S5WqmA;
+
+typedef struct {
+	BOOL valid;
+	XXStruct_S5WqmA styleTransitionState;
+} XXStruct_Dov64B;
+
+typedef struct {
+	int type;
+	int modifier;
+	unsigned pathIndex;
+	unsigned pathIdentity;
+	CGPoint location;
+	CGPoint previousLocation;
+	CGPoint unrotatedLocation;
+	CGPoint previousUnrotatedLocation;
+	float totalDistanceTraveled;
+	int interfaceOrientation;
+	int previousInterfaceOrientation;
+	double timestamp;
+} XXStruct_XgRpiA;
+
+typedef struct __SBGestureContext *SBGestureContextRef;
+
+typedef struct SBBannerDismissGestureState {
+	BOOL _field1;
+	BOOL _field2;
+	CGSize _field3;
+	CGSize _field4;
+	CGRect _field5;
+	int _field6;
+	float _field7;
+	BOOL _field8;
+} SBBannerDismissGestureState;
+
+typedef struct _CARenderImage *CARenderImageRef;
+
+typedef struct {
+	unsigned willActivate : 1;
+	unsigned didActivate : 1;
+	unsigned willDeactivate : 1;
+	unsigned didDeactivate : 1;
+	unsigned didChangeTop : 1;
+	unsigned topBgStyleChange : 1;
+	unsigned willTearDownWindow : 1;
+	unsigned didTearDownWindow : 1;
+	unsigned didRemoveFromWindow : 1;
+} XXStruct_IrbmYC;
+
+typedef struct CGImage *CGImageRef;
+
+typedef struct SBWindowLevelRange_struct {
+	float start;
+	float end;
+} SBWindowLevelRange_struct;
+
+typedef struct __CFArray *CFArrayRef;
+
+typedef struct {
+	id _field1;
+	id _field2;
+	id _field3;
+	id _field4;
+} XXStruct_Xx1ZfA;
+
+typedef struct CGImageSource *CGImageSourceRef;
+
+typedef struct CGContext *CGContextRef;
 
 

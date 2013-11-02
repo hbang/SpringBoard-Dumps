@@ -6,15 +6,17 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "NSCopying.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "NSCopying.h"
 
-@class NSHashTable, NSMapTable;
+@class NSMapTable, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface SBActivationContext : XXUnknownSuperclass <NSCopying> {
+	NSMapTable *_displayValues;
 	NSMapTable *_activationValues;
 	NSMapTable *_deactivationValues;
+	NSHashTable *_displayFlags;
 	NSHashTable *_activationFlags;
 	NSHashTable *_deactivationFlags;
 }
@@ -22,6 +24,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSMapTable *activationValues;
 @property(copy, nonatomic) NSHashTable *deactivationFlags;
 @property(copy, nonatomic) NSMapTable *deactivationValues;
+@property(copy, nonatomic) NSHashTable *displayFlags;
+@property(copy, nonatomic) NSMapTable *displayValues;
 + (id)contextFromDisplay:(id)display;
 + (id)newFlagTable;
 + (id)newValueTable;
@@ -31,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)_descriptionForActivationSetting:(unsigned)activationSetting;
 - (id)_descriptionForDeactivationSetting:(unsigned)deactivationSetting;
 - (id)_descriptionForDisplaySetting:(unsigned)displaySetting;
+- (id)_displaySettingsDescription;
 - (BOOL)activationFlag:(unsigned)flag;
 - (id)activationValue:(unsigned)value;
 - (void)clearActivationSettings;
@@ -40,6 +45,8 @@ __attribute__((visibility("hidden")))
 - (id)deactivationValue:(unsigned)value;
 - (void)dealloc;
 - (id)description;
+- (BOOL)displayFlag:(unsigned)flag;
+- (id)displayValue:(unsigned)value;
 - (BOOL)isEqual:(id)equal;
 - (void)setActivationSetting:(unsigned)setting flag:(BOOL)flag;
 - (void)setActivationSetting:(unsigned)setting value:(id)value;

@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)init;
 - (void)_activationFailed;
-- (void)_developerDeviceStateChanged;
 - (BOOL)_hasEverRegistered;
 - (BOOL)_isRegisteredToNetwork;
 - (void)_postAlertsIfNeeded;
@@ -36,7 +35,5 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)isDeveloperDevice;
 - (int)lockdownState;
-- (id)uniqueDeviceIdentifier;
-- (id)valueForDomain:(id)domain key:(id)key;
 @end
 

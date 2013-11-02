@@ -5,19 +5,22 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBFolderIcon.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBNewsstandIcon : SBFolderIcon {
 }
-+ (Class)_iconGridImageClass;
-+ (unsigned)_maxIconsInGridImage;
+- (id)_generateImageUsingMask:(BOOL)mask;
+- (id)_newsstandIconImageName;
 - (id)displayName;
 - (id)folder;
+- (id)generateIconImage:(int)image;
+- (id)getUnmaskedIconImage:(int)image;
+- (BOOL)hasFolderIconView;
 - (BOOL)isNewsstandIcon;
-- (void)launchFromViewSwitcher;
+- (void)launchFromLocation:(int)location;
 - (id)leafIdentifier;
 @end
 

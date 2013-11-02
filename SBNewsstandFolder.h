@@ -11,17 +11,19 @@
 __attribute__((visibility("hidden")))
 @interface SBNewsstandFolder : SBFolder {
 }
-+ (int)maxListCount;
 - (id)init;
 - (void)_setDisplayNameFromRepresentation:(id)representation;
 - (BOOL)canAddIcon;
+- (BOOL)canEditDisplayName;
+- (BOOL)canRemoveIcons;
+- (Class)controllerClass;
 - (id)folderType;
-- (Class)folderViewClass;
 - (id)icon;
 - (BOOL)isNewsstandFolder;
 - (Class)listModelClass;
 - (Class)listViewClass;
 - (id)nodeIdentifier;
 - (void)setIsOpen:(BOOL)open;
+- (BOOL)shouldRemoveWhenEmpty;
 @end
 

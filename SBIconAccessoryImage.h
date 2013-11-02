@@ -5,26 +5,17 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBCountedMapValue.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSString;
-@protocol NSCopying;
 
 __attribute__((visibility("hidden")))
 @interface SBIconAccessoryImage : XXUnknownSuperclass <SBCountedMapValue> {
-	NSString *_text;
+	NSString *_countedMapKey;
 }
-@property(readonly, assign, nonatomic) id<NSCopying> countedMapKey;
-@property(readonly, assign, nonatomic) NSString *text;
-+ (id)_accessoryImageCountedMap;
-+ (Class)_imageClassForIcon:(id)icon location:(int)location;
-+ (void)checkinAccessoryImage:(id)image;
-+ (id)checkoutAccessoryImageForIcon:(id)icon location:(int)location;
-+ (id)countedMapKeyForText:(id)text;
-+ (id)creationBlockForText:(id)text;
-+ (id)textForCountedMapKey:(id)countedMapKey;
-- (CGRect)accessoryFrameForIconBounds:(CGRect)iconBounds;
+@property(copy, nonatomic) NSString *countedMapKey;
+- (id)initWithImage:(id)image;
+- (void)dealloc;
 @end
 

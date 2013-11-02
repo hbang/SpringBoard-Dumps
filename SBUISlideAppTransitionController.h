@@ -6,12 +6,12 @@
  */
 
 #import "SBUIFullscreenAnimationViewDelegate.h"
-#import "SBUIAnimationController.h"
+#import "SBUIMainScreenAnimationController.h"
 
 @class SBUISlideAppTransitionView;
 
 __attribute__((visibility("hidden")))
-@interface SBUISlideAppTransitionController : SBUIAnimationController <SBUIFullscreenAnimationViewDelegate> {
+@interface SBUISlideAppTransitionController : SBUIMainScreenAnimationController <SBUIFullscreenAnimationViewDelegate> {
 	SBUISlideAppTransitionView *_transitionView;
 	double _animationDelay;
 	double _animationDuration;

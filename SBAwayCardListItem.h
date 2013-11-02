@@ -5,15 +5,21 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBAwayListItem.h"
 
-@class SBSCardItem;
+@class NSString, SBSCardItem, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SBAwayCardListItem : XXUnknownSuperclass {
+@interface SBAwayCardListItem : SBAwayListItem {
 	SBSCardItem *_cardItem;
+	UIImage *_cardThumbnail;
+	UIImage *_iconImage;
 }
+@property(readonly, assign, nonatomic) NSString *body;
 @property(copy, nonatomic) SBSCardItem *cardItem;
+@property(retain, nonatomic) UIImage *cardThumbnail;
+@property(retain, nonatomic) UIImage *iconImage;
+@property(readonly, assign, nonatomic) NSString *title;
 - (void)dealloc;
 - (BOOL)inertWhenLocked;
 - (id)sortDate;

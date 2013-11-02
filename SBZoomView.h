@@ -18,6 +18,6 @@ __attribute__((visibility("hidden")))
 + (CGSize)_rotateAndNormalizeSize:(CGSize)size withTransform:(CGAffineTransform)transform;
 - (id)initWithFrame:(CGRect)frame;
 - (id)_initWithFrame:(CGRect)frame;
-- (void)setRoundedCorners:(int)corners withCornersFrame:(CGRect)cornersFrame;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 @end
 

@@ -7,16 +7,16 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBAlertManager, NSMutableArray, BKSWorkspace, NSDate;
+@class NSMutableArray, NSDate, SBAlertManager, BKSWorkspace;
 @protocol SBWorkspaceTransactionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBWorkspaceTransaction : XXUnknownSuperclass {
+	BOOL _didCommit;
 	id<SBWorkspaceTransactionDelegate> _delegate;
 	int _milestones;
 	BKSWorkspace *_workspace;
 	SBAlertManager *_alertManager;
-	BOOL _didCommit;
 	BOOL _completed;
 	BOOL _interrupted;
 	NSDate *_startTime;
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) SBAlertManager *alertManager;
 @property(assign, nonatomic) id<SBWorkspaceTransactionDelegate> delegate;
+@property(readonly, assign, nonatomic) int milestones;
 @property(readonly, assign, nonatomic) BKSWorkspace *workspace;
 - (id)initWithWorkspace:(id)workspace alertManager:(id)manager;
 - (BOOL)_canBeInterrupted;
@@ -46,9 +47,9 @@ __attribute__((visibility("hidden")))
 - (double)_watchdogInterval;
 - (void)addMilestones:(int)milestones;
 - (BOOL)alertDidActivate:(id)alert overAlerts:(id)alerts;
-- (BOOL)alertDidDeactivate:(id)alert overAlerts:(id)alerts;
+- (BOOL)alertDidDeactivate:(id)alert;
 - (BOOL)alertWillActivate:(id)alert overAlerts:(id)alerts;
-- (BOOL)alertWillDeactivate:(id)alert overAlerts:(id)alerts;
+- (BOOL)alertWillDeactivate:(id)alert;
 - (BOOL)applicationActivated:(id)activated;
 - (BOOL)applicationDidBecomeReceiver:(id)application fromApplication:(id)application2;
 - (BOOL)applicationDidFinishLaunching:(id)application withInfo:(id)info;
@@ -58,18 +59,18 @@ __attribute__((visibility("hidden")))
 - (BOOL)applicationWillBecomeReceiver:(id)application fromApplication:(id)application2;
 - (BOOL)canBeInterrupted;
 - (void)commit;
-- (BOOL)completed;
 - (void)dealloc;
 - (id)description;
+- (BOOL)hasCompleted;
 - (void)interrupt;
 - (void)interruptWithReason:(int)reason;
 - (BOOL)milestonesMet;
 - (void)removeMilestones:(int)milestones;
 - (void)removeMilestonesAndCheckForCompletion:(int)completion;
 - (BOOL)selfAlertDidActivate:(id)selfAlert overAlerts:(id)alerts;
-- (BOOL)selfAlertDidDeactivate:(id)selfAlert overAlerts:(id)alerts;
+- (BOOL)selfAlertDidDeactivate:(id)selfAlert;
 - (BOOL)selfAlertWillActivate:(id)selfAlert overAlerts:(id)alerts;
-- (BOOL)selfAlertWillDeactivate:(id)selfAlert overAlerts:(id)alerts;
+- (BOOL)selfAlertWillDeactivate:(id)selfAlert;
 - (BOOL)selfApplicationActivated:(id)activated;
 - (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
 - (BOOL)selfApplicationDidFinishLaunching:(id)selfApplication withInfo:(id)info;

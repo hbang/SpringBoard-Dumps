@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBDeviceLockDisableAssertion, NSTimer;
+@class NSTimer, SBPasscodeLockDisableAssertion;
 
 __attribute__((visibility("hidden")))
 @interface SBSyncController : XXUnknownSuperclass {
@@ -15,11 +15,12 @@ __attribute__((visibility("hidden")))
 	int _resetState;
 	int _restoreTimerState;
 	NSTimer *_restoreTimer;
+	NSTimer *_progressTimer;
 	BOOL _showingResetUI;
 	BOOL _appsChangedDuringSync;
 	int _restoreStartedNotifyToken;
 	int _restoreEndedNotifyToken;
-	SBDeviceLockDisableAssertion *_disableDeviceLockAssertion;
+	SBPasscodeLockDisableAssertion *_disableDeviceLockAssertion;
 }
 + (id)sharedInstance;
 - (void)_appInstallationNotification;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_restoreTimerFired:(id)fired;
 - (void)_setRestoreState:(int)state;
 - (void)_setupRestoreTimer;
+- (void)_updateProgress;
 - (void)_wirelessSyncEnded:(id)ended;
 - (void)beginResetting:(BOOL)resetting;
 - (void)beginRestoring;
@@ -44,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)didEndRestoring:(int)restoring;
 - (void)finishEndRestoring;
 - (void)finishedTerminatingApplications;
-- (void)frontLockedWhenPossible;
 - (BOOL)isInUse;
 - (BOOL)isResetting;
 - (BOOL)isRestoring;

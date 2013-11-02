@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import "SBWindow.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface SBBulletinWindow : XXUnknownSuperclass {
+@interface SBBulletinWindow : SBWindow {
 }
 - (BOOL)_canBecomeKeyWindow;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;

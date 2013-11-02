@@ -6,11 +6,11 @@
  */
 
 #import "NSFastEnumeration.h"
-#import "SBIconIndexNodeObserver.h"
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
+#import "SBIconIndexNodeObserver.h"
 
-@class NSMutableArray, NSMapTable;
+@class NSMapTable, NSMutableArray;
 @protocol SBIconIndexMutableListObserver;
 
 __attribute__((visibility("hidden")))

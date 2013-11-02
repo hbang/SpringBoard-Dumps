@@ -11,7 +11,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBOrderedRequesters : XXUnknownSuperclass {
-	NSMutableArray *_bands[2];
+	NSMutableArray *_bands[3];
 }
 - (id)init;
 - (void)addRequester:(id)requester toBand:(int)band;

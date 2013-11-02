@@ -5,29 +5,26 @@
  * Source: (null)
  */
 
-#import "SBIconListView.h"
+#import "SBRootIconListView.h"
 #import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBDockIconListView : SBIconListView {
+@interface SBDockIconListView : SBRootIconListView {
 }
-+ (id)backgroundImageForOrientation:(int)orientation;
++ (float)defaultHeight;
 + (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
 + (unsigned)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
-- (id)initForOrientation:(int)orientation viewMap:(id)map;
-- (id)initWithFrame:(CGRect)frame viewMap:(id)map;
+- (id)initWithModel:(id)model orientation:(int)orientation viewMap:(id)map;
 - (float)_additionalSideInsetToCenterIcons;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
-- (void)_updateForOrientation:(int)orientation duration:(double)duration;
 - (unsigned)columnAtPoint:(CGPoint)point;
+- (id)iconAtPoint:(CGPoint)point index:(unsigned *)index proposedOrder:(int *)order grabbedIcon:(id)icon;
+- (int)iconLocation;
 - (unsigned)iconsInRowForSpacingCalculation;
-- (CGPoint)originForIconAtX:(unsigned)x Y:(unsigned)y;
+- (CGPoint)originForIconAtCoordinate:(SBIconCoordinate)coordinate;
 - (unsigned)rowAtPoint:(CGPoint)point;
-- (void)setOrientation:(int)orientation;
-- (void)setOrientation:(int)orientation duration:(double)duration;
 - (float)sideIconInset;
 - (float)topIconInset;
-- (int)visibleIconsInDock;
 @end
 

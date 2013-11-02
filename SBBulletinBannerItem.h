@@ -6,11 +6,12 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBDefaultBannerViewSource.h"
 
-@class NSArray, BBBulletin, UIImage, BBObserver, SBUISound;
+@class NSArray, BBObserver, SBUISound, BBBulletin, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SBBulletinBannerItem : XXUnknownSuperclass {
+@interface SBBulletinBannerItem : XXUnknownSuperclass <SBDefaultBannerViewSource> {
 	BBBulletin *_seedBulletin;
 	BBObserver *_observer;
 	NSArray *_additionalBulletins;
@@ -22,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)_appName;
 - (id)_initWithSeedBulletin:(id)seedBulletin additionalBulletins:(id)bulletins andObserver:(id)observer;
 - (void)_setSound;
-- (int)accessoryStyle;
+- (unsigned)accessoryStyle;
 - (id)action;
 - (id)additionalBulletins;
 - (id)attachmentImage;
@@ -30,10 +31,16 @@ __attribute__((visibility("hidden")))
 - (BOOL)canShowInAssistant;
 - (void)dealloc;
 - (id)iconImage;
+- (BOOL)inertWhenLocked;
+- (BOOL)isCritical;
+- (BOOL)isVIP;
 - (id)message;
+- (BOOL)overridesQuietMode;
+- (id)pullDownNotification;
 - (id)seedBulletin;
 - (id)sortDate;
 - (id)sound;
+- (id)sourceDate;
 - (id)title;
 @end
 

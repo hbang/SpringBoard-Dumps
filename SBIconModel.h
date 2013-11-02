@@ -7,8 +7,8 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, NSDictionary, NSSet, SBPrintStatusIcon, SBNewsstandIcon, SBRootFolder;
-@protocol SBIconModelDelegate, SBIconModelStore;
+@class SBNewsstandIcon, NSSet, NSMutableDictionary, NSDictionary, SBRootFolder;
+@protocol SBIconModelStore, SBIconModelApplicationDataSource, SBIconModelDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBIconModel : XXUnknownSuperclass {
@@ -20,22 +20,27 @@ __attribute__((visibility("hidden")))
 	BOOL _tagsHaveBeenSet;
 	SBRootFolder *_rootFolder;
 	SBNewsstandIcon *_newsstandIcon;
-	SBPrintStatusIcon *_printStatusIcon;
 	id<SBIconModelStore> _store;
+	id<SBIconModelApplicationDataSource> _applicationDataSource;
 	id<SBIconModelDelegate> _delegate;
 	BOOL _allowsSaving;
 }
 @property(assign, nonatomic) BOOL allowsSaving;
+@property(readonly, assign, nonatomic) id<SBIconModelApplicationDataSource> applicationDataSource;
 @property(assign, nonatomic) id<SBIconModelDelegate> delegate;
 @property(retain, nonatomic) NSDictionary *leafIconsByIdentifier;
+@property(readonly, assign, nonatomic) id<SBIconModelStore> store;
 + (id)_migrateLeafIdentifierIfNecessary:(id)necessary;
-+ (id)_modernIconCellForCell:(id)cell;
-+ (id)_modernIconListForList:(id)list;
-+ (id)_modernIconListsForLists:(id)lists;
++ (id)_modernIconCellForCell:(id)cell allowFolders:(BOOL)folders;
++ (id)_modernIconListForList:(id)list allowFolders:(BOOL)folders;
++ (id)_modernIconListsForLists:(id)lists allowFolders:(BOOL)folders;
++ (id)displayIdentifiersInIconState:(id)iconState;
 + (id)modernIconStateForState:(id)state;
-- (id)initWithStore:(id)store;
+- (id)initWithStore:(id)store applicationDataSource:(id)source;
 - (void)_addNewIconToDesignatedLocation:(id)designatedLocation;
+- (void)_addNewsstandIcon;
 - (id)_applicationIcons;
+- (BOOL)_canAddDownloadingIconForBundleID:(id)bundleID;
 - (void)_createIconLists;
 - (void)_flattenIconListState:(id)state intoArray:(id)array;
 - (id)_flattenIconState:(id)state;
@@ -49,21 +54,20 @@ __attribute__((visibility("hidden")))
 - (id)_indexPathForFirstFreeNewsstandSlot;
 - (id)_indexPathForIdentifier:(id)identifier inListRepresentation:(id)listRepresentation;
 - (id)_indexPathForIdentifier:(id)identifier inListsRepresentation:(id)listsRepresentation;
-- (id)_modernPlatformState;
 - (id)_newsstandIconIdentifiersFromIconState:(id)iconState;
 - (void)_postIconVisibilityChangedNotificationShowing:(id)showing hiding:(id)hiding;
 - (void)_replaceAppIconsWithDownloadingIcons;
 - (void)_replaceAppIconsWithDownloadingIcons:(id)downloadingIcons;
 - (void)_saveDesiredIconState;
 - (id)addBookmarkIconForWebClip:(id)webClip;
+- (id)addDownloadingIconForBundleID:(id)bundleID withIdentifier:(id)identifier;
 - (id)addDownloadingIconForDownload:(id)download;
-- (id)addDownloadingIconForIdentifier:(id)identifier;
 - (void)addIcon:(id)icon;
 - (void)addIconForApplication:(id)application;
-- (void)addNewsstandIcon;
 - (id)applicationIconForDisplayIdentifier:(id)displayIdentifier;
 - (void)clearDesiredIconState;
 - (void)clearDesiredIconStateIfPossible;
+- (id)createFolderIconForFolderType:(id)folderType;
 - (void)dealloc;
 - (void)deleteIconState;
 - (id)downloadingIconForIdentifier:(id)identifier;
@@ -71,7 +75,6 @@ __attribute__((visibility("hidden")))
 - (id)exportFlattenedState:(BOOL)state includeMissingIcons:(BOOL)icons;
 - (id)exportPendingState:(BOOL)state includeMissingIcons:(BOOL)icons;
 - (id)exportState:(BOOL)state;
-- (id)firstPageLeafIdentifiers;
 - (id)forecastedLayoutForIconState:(id)iconState includeMissingIcons:(BOOL)icons;
 - (BOOL)hasDesiredIconState;
 - (id)iconState;
@@ -89,7 +92,6 @@ __attribute__((visibility("hidden")))
 - (id)newsstandFolder;
 - (id)newsstandFolderFromIconState:(id)iconState;
 - (id)newsstandIcon;
-- (id)printStatusIcon;
 - (void)removeApplicationIconForDownloadingIcon:(id)downloadingIcon;
 - (void)removeIcon:(id)icon;
 - (void)removeIconForIdentifier:(id)identifier;

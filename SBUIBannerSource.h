@@ -15,9 +15,8 @@
 - (void)bannerViewWillAppear:(id)bannerView;
 - (void)bannerViewWillDismiss:(id)bannerView forReason:(int)reason;
 @required
-- (id)dequeueNextBannerItem;
-- (id)newBannerViewForItem:(id)item;
-- (id)peekNextBannerItem;
-- (void)removeAllBannerItems;
+- (id)dequeueNextBannerItemForTarget:(id)target;
+- (id)newBannerViewForContext:(id)context;
+- (id)peekNextBannerItemForTarget:(id)target;
 @end
 

@@ -7,9 +7,22 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
+@class NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBIconContentView : XXUnknownSuperclass {
+	int _orientation;
+	NSMutableArray *_folderContentViews;
+	float _searchGestureProgress;
 }
+@property(assign, nonatomic) int orientation;
+- (id)initWithOrientation:(int)orientation;
+- (void)clearAllFolderContentViews;
+- (void)dealloc;
+- (void)didAddSubview:(id)subview;
+- (void)layoutSubviews;
+- (void)popFolderContentView:(id)view;
+- (void)pushFolderContentView:(id)view;
+- (void)updateLayoutWithDuration:(double)duration;
 @end
 

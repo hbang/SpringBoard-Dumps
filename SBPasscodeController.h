@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, SBPasscodeAlertItem, NSDate, SBPasscodeComplianceAlertItem;
+@class NSString, NSDate, SBPasscodeAlertItem, SBPasscodeComplianceAlertItem;
 
 __attribute__((visibility("hidden")))
 @interface SBPasscodeController : XXUnknownSuperclass {
@@ -19,12 +19,18 @@ __attribute__((visibility("hidden")))
 	SBPasscodeComplianceAlertItem *_complianceAlertItem;
 	NSDate *_forcedComplianceDate;
 	id _telephonyNotificationObserver;
+	int _restoreCompletedAlertStateChangedToken;
+	BOOL _delayedComplianceAlertUntilAfterRestoreCompletedAlert;
 }
 + (id)sharedInstance;
 - (void)_abort;
+- (void)_activateComplianceAlert;
 - (void)_didEndCall;
+- (BOOL)_isRestoreCompletedAlertActive;
 - (void)_passwordEntered:(id)entered;
+- (void)_startListeningToRestoreCompletedAlertStateChangedNotifications;
 - (void)_startListeningToTelephonyNotifications;
+- (void)_stopListeningToRestoreCompletedAlertStateChangedNotifications;
 - (void)_stopListeningToTelephonyNotifications;
 - (void)_userWantsToComplyNow:(BOOL)complyNow;
 - (void)checkPasscodeCompliance;

@@ -8,7 +8,6 @@
 
 
 @protocol SBAwayListCellButtonHandler
-- (void)buttonPressedAtIndex:(int)index;
-- (int)cancelButtonIndex;
+- (void)buttonPressed;
 @end
 

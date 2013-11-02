@@ -7,7 +7,6 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class ATConnection;
 
 __attribute__((visibility("hidden")))
 @interface SBModelessSyncController : XXUnknownSuperclass {
@@ -18,7 +17,6 @@ __attribute__((visibility("hidden")))
 	BOOL _restoringFromICloud;
 	BOOL _isAutoSyncing;
 	BOOL _isWirelessSyncing;
-	ATConnection *_airTrafficConnection;
 }
 @property(readonly, assign, nonatomic) BOOL isAppSyncing;
 @property(readonly, assign, nonatomic) BOOL isAutoSyncing;
@@ -34,11 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)_setAppSyncState:(BOOL)state;
 - (void)_updateIconsForStateChange;
 - (void)beginMonitoring;
-- (void)connection:(id)connection updatedProgress:(id)progress;
-- (void)connectionWasInterrupted:(id)interrupted;
 - (void)dealloc;
 - (void)endMonitoring;
 - (void)gotLowBatteryWarning;
-- (void)setIsSyncing:(BOOL)syncing;
 @end
 

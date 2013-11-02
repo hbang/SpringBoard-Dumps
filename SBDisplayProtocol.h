@@ -24,6 +24,7 @@
 - (id)deactivationValue:(unsigned)value;
 - (BOOL)displayFlag:(unsigned)flag;
 - (id)displayValue:(unsigned)value;
+- (id)effectiveStatusBarStyleRequest;
 - (BOOL)expectsFaceContact;
 - (BOOL)expectsFaceContactInLandscape;
 - (BOOL)orientationChangedEventsEnabled;
@@ -37,7 +38,11 @@
 - (void)setExpectsFaceContact:(BOOL)contact;
 - (void)setExpectsFaceContact:(BOOL)contact inLandscape:(BOOL)landscape;
 - (void)setOrientationChangedEventsEnabled:(BOOL)enabled;
+- (int)starkStatusBarStyle;
 - (int)statusBarStyle;
-- (BOOL)suppressesNotifications;
+- (id)statusBarStyleRequest;
+- (BOOL)suppressesBanners;
+- (BOOL)suppressesControlCenter;
+- (BOOL)suppressesNotificationCenter;
 @end
 

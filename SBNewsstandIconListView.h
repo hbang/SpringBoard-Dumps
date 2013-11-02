@@ -8,39 +8,24 @@
 #import "SpringBoard-Structs.h"
 #import "SBFolderIconListView.h"
 
-@class NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBNewsstandIconListView : SBFolderIconListView {
-	unsigned _firstVisibleRow;
-	unsigned _lastVisibleRow;
-	unsigned _preRotationFirstVisibleRow;
-	unsigned _postRotationFirstVisibleRow;
-	unsigned _rotationPlacementRow;
-	NSMutableArray *_visibleIcons;
+	float _iconVPaddingPortrait;
+	float _topIconInsetPortrait;
+	float _iconVPaddingLandscape;
+	float _topIconInsetLandscape;
 }
 + (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
-+ (unsigned)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
-+ (unsigned)maxIcons;
 + (unsigned)maxVisibleIconRowsInterfaceOrientation:(int)orientation;
++ (int)rotationAnchor;
 - (id)initWithFrame:(CGRect)frame;
-- (void)_noteNewIconInModel:(id)model;
-- (unsigned)_postRotationFirstVisibleRow;
-- (unsigned)_preRotationFirstVisibleRow;
-- (unsigned)_rotationReferenceRow;
-- (CATransform3D)_transformForIconAtIndex:(unsigned)index inOrientation:(int)orientation;
 - (void)_updateVisibleIconsFromRow:(unsigned)row toRow:(unsigned)row2 includeIcon:(id)icon layoutIfNeeded:(BOOL)needed;
+- (Class)baseIconViewClass;
 - (float)bottomIconInset;
-- (void)cleanupAfterRotation;
 - (void)dealloc;
-- (CGSize)defaultIconSize;
-- (Class)iconRotationContainerClass;
-- (unsigned)iconRowsForCurrentOrientation;
-- (void)setFirstRowToStartRotation:(unsigned)startRotation endRotation:(unsigned)rotation moveIconsRelativeToRow:(unsigned)row;
-- (void)showIconImagesFromRow:(unsigned)row toRow:(unsigned)row2;
 - (float)sideIconInset;
 - (float)topIconInset;
 - (float)verticalIconPadding;
-- (id)visibleIcons;
 @end
 

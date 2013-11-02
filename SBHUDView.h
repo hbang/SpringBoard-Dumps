@@ -5,19 +5,22 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIImageView, UILabel, UIImage, NSString;
+@class UIImageView, UIView, NSString, UIImage, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface SBHUDView : XXUnknownSuperclass {
 	int _level;
-	UILabel *_titleLabel;
-	UILabel *_subtitleLabel;
-	UIImageView *_imageView;
+	NSString *_title;
+	NSString *_subtitle;
+	UIImage *_image;
 	BOOL _showsProgress;
 	float _progress;
+	UIView *_blockView;
+	_UIBackdropView *_backdropView;
+	UIImageView *_backdropMaskImageView;
 }
 @property(retain, nonatomic) UIImage *image;
 @property(assign, nonatomic) int level;
@@ -28,10 +31,14 @@ __attribute__((visibility("hidden")))
 + (int)numberOfProgressIndicatorSteps;
 + (float)progressIndicatorStep;
 - (id)initWithHUDViewLevel:(int)hudviewLevel;
+- (id)_blockColorForValue:(float)value;
+- (void)_updateBackdropMask;
+- (void)_updateBlockView;
+- (void)_updateBlockView:(id)view value:(float)value blockSize:(CGSize)size point:(CGPoint)point;
+- (void)cancelDismissal;
 - (void)dealloc;
+- (void)dismissWithCompletion:(id)completion;
 - (BOOL)displaysLabel;
-- (void)drawBlockForValue:(float)value point:(CGPoint)point;
-- (void)drawRect:(CGRect)rect;
 - (void)layoutSubviews;
 @end
 

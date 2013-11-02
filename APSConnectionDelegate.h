@@ -17,6 +17,7 @@
 @required
 - (void)connection:(id)connection didReceivePublicToken:(id)token;
 @optional
+- (void)connection:(id)connection didReceiveToken:(id)token forTopic:(id)topic identifier:(id)identifier;
 - (void)connection:(id)connection didSendOutgoingMessage:(id)message;
 - (void)connectionDidReconnect:(id)connection;
 @end

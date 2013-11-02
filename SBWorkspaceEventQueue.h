@@ -7,20 +7,21 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBWorkspaceEvent, NSMutableArray;
+@class NSHashTable, SBWorkspaceEvent, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBWorkspaceEventQueue : XXUnknownSuperclass {
-	unsigned _lockCount;
+	NSHashTable *_eventQueueLocks;
 	NSMutableArray *_eventQueue;
 	SBWorkspaceEvent *_executingEvent;
 }
 @property(retain, nonatomic) SBWorkspaceEvent *executingEvent;
 + (id)sharedInstance;
 - (id)init;
-- (void)_bumpLockAssertionCount:(int)count;
+- (void)_addEventQueueLock:(id)lock;
 - (void)_executeOrPendEvents:(id)events position:(int)position;
 - (void)_processNextEvent;
+- (void)_removeEventQueueLock:(id)lock;
 - (void)cancelEventsWithName:(id)name;
 - (void)dealloc;
 - (id)description;

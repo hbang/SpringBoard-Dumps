@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBUIAnimationControllerDelegate.h"
 #import "SBWorkspaceTransaction.h"
+#import "SBUIAnimationControllerDelegate.h"
 
-@class SBUIAnimationController, SBApplication, BKSApplicationActivationAssertion, SBAlert;
+@class BKSApplicationActivationAssertion, SBUIAnimationController, SBAlert, SBApplication;
 
 __attribute__((visibility("hidden")))
 @interface SBAppToAlertWorkspaceTransaction : SBWorkspaceTransaction <SBUIAnimationControllerDelegate> {
@@ -19,12 +19,12 @@ __attribute__((visibility("hidden")))
 	SBUIAnimationController *_animation;
 	id _alertActivationBlock;
 	BOOL _animatedAppDeactivation;
+	BOOL _suspendWorkspace;
 }
 @property(copy, nonatomic) id alertActivationBlock;
 - (id)initWithWorkspace:(id)workspace alertManager:(id)manager alert:(id)alert overTopApplication:(id)application;
 - (void)_commit;
 - (void)_transactionComplete;
-- (void)animationController:(id)controller didCommitAnimation:(BOOL)animation withDuration:(double)duration afterDelay:(double)delay;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;

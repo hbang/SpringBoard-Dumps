@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SBDataPlanAlertItem : XXUnknownSuperclass {
 }
+- (id)init;
 - (void)didDeactivateForReason:(int)reason;
 @end
 

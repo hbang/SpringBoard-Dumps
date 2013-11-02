@@ -5,35 +5,37 @@
  * Source: (null)
  */
 
+#import "NSMutableCopying.h"
 #import "SpringBoard-Structs.h"
-#import "NSCopying.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "NSCopying.h"
 
-@class NSString;
+@class NSString, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface SBIconLabelImageParameters : XXUnknownSuperclass <NSCopying> {
+@interface SBIconLabelImageParameters : XXUnknownSuperclass <NSCopying, NSMutableCopying> {
+	UIFont *_font;
 	NSString *_text;
 	BOOL _containsNonLatinLikeCharacters;
 	BOOL _containsEmoji;
 	BOOL _canEllipsize;
 	CGSize _maxSize;
+	int _style;
 }
-+ (id)parametersWithText:(id)text canEllipsize:(BOOL)ellipsize maxSize:(CGSize)size;
-- (id)initWithText:(id)text canEllipsize:(BOOL)ellipsize maxSize:(CGSize)size;
-- (BOOL)canEllipsize;
+@property(readonly, assign, nonatomic) BOOL canEllipsize;
+@property(readonly, assign, nonatomic) BOOL containsEmoji;
+@property(readonly, assign, nonatomic) BOOL containsNonLatinLikeCharacters;
+@property(readonly, assign, nonatomic) UIFont *font;
+@property(readonly, assign, nonatomic) CGSize maxSize;
+@property(readonly, assign, nonatomic) int style;
+@property(readonly, assign, nonatomic) NSString *text;
+- (id)initWithParameters:(id)parameters;
 - (BOOL)colorspaceIsGrayscale;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
 - (id)description;
-- (id)font;
 - (unsigned)hash;
 - (BOOL)isEqual:(id)equal;
-- (CGSize)maxSize;
-- (float)shadowBlur;
-- (id)shadowColor;
-- (CGSize)shadowOffset;
-- (id)text;
-- (id)textColor;
+- (id)mutableCopyWithZone:(NSZone *)zone;
 @end
 

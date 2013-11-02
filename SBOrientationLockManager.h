@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (BOOL)_effectivelyLocked;
 - (void)_updateLockStateWithChanges:(id)changes;
-- (void)_updateLockStateWithOrientation:(int)orientation changes:(id)changes;
 - (void)_updateLockStateWithOrientation:(int)orientation forceUpdateHID:(BOOL)hid changes:(id)changes;
 - (void)dealloc;
 - (void)enableLockOverrideForReason:(id)reason forceOrientation:(int)orientation;

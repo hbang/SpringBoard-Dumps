@@ -7,7 +7,7 @@
 
 #import "SBPluginManager.h"
 
-@class SBUIPluginHost, NSMutableDictionary;
+@class NSMutableDictionary, SBUIPluginHost;
 
 __attribute__((visibility("hidden")))
 @interface SBUIPluginManager : SBPluginManager {

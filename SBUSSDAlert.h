@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAlert.h"
+#import "SpringBoard-Structs.h"
 
 @class NSTimer;
 
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)deactivate;
 - (void)dealloc;
 - (BOOL)receivedString;
+- (BOOL)sentResponse;
 - (void)setDismissOnActivate:(BOOL)activate;
 @end
 

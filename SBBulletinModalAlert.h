@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBBulletin, NSArray;
+@class NSArray, BBBulletin;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinModalAlert : XXUnknownSuperclass {
