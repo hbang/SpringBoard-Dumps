@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBBulletinLinenBackedCell.h"
+#import "SpringBoard-Structs.h"
 
 @class UIImageView, SBBulletinCellContentView;
 

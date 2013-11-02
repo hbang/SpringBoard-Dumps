@@ -6,12 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBWeeAppControllerHost.h"
 #import "BBWeeAppController.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIViewController, NSString;
-@protocol SBWeeAppDelegate, BBWeeAppPresentationController;
+@protocol BBWeeAppPresentationController, SBWeeAppDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBWeeApp : XXUnknownSuperclass <BBWeeAppController, BBWeeAppControllerHost> {

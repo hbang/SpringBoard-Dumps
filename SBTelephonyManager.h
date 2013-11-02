@@ -5,14 +5,13 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import "RadiosPreferencesDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, RadiosPreferences, NSString, SBAlertItem;
+@class NSString, RadiosPreferences, SBAlertItem, NSTimer;
 
 __attribute__((visibility("hidden")))
-@interface SBTelephonyManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
+@interface SBTelephonyManager : XXUnknownSuperclass {
 	NSString *_cachedCTRegistrationStatus;
 	BOOL _emergencyCallsOnly;
 	int _registrationStatus;
@@ -43,6 +42,8 @@ __attribute__((visibility("hidden")))
 	int _wantsToHideDataIndicators;
 	int _modemDataConnectionType;
 	BOOL _modemDataConnectionTypeIsKnown;
+	BOOL _fallingBackToCellular;
+	tcp_connection_fallback_watch_s *_cellularFallbackWatcher;
 }
 + (id)sharedTelephonyManager;
 + (id)sharedTelephonyManagerCreatingIfNecessary:(BOOL)necessary;
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)_prepareToAnswerCall;
 - (BOOL)_pretendingToSearch;
 - (void)_provisioningUpdateWithStatus:(int)status;
+- (void)_proximityChanged:(id)changed;
 - (void)_reallySetOperatorName:(id)name;
 - (void)_resetCTMMode;
 - (void)_resetModemConnectionType;

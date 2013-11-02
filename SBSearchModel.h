@@ -5,17 +5,17 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SPDaemonQueryDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, NSMutableDictionary, NSObject, NSDate;
+@class NSObject, CPLRUDictionary, NSDate, NSTimer;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchModel : XXUnknownSuperclass <SPDaemonQueryDelegate> {
 	NSTimer *_clearSearchTimer;
 	NSDate *_clearSearchDate;
-	NSMutableDictionary *_cachedImages;
+	CPLRUDictionary *_cachedImages;
 	NSObject<OS_dispatch_semaphore> *_cacheLock;
 }
 + (id)sharedInstance;

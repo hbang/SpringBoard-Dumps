@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBProxyRemoteView, NSString, SBApplication;
+@class SBApplication, NSString, SBProxyRemoteView;
 
 __attribute__((visibility("hidden")))
 @interface SBRemoteViewInfo : XXUnknownSuperclass {

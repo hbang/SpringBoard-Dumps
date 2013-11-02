@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSObject, NSString;
-@protocol OS_dispatch_source, SBThermalWarningSuppressionAssertionDelegate;
+@protocol SBThermalWarningSuppressionAssertionDelegate, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface SBThermalWarningSuppressionAssertion : XXUnknownSuperclass {

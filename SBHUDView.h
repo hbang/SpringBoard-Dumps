@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, UIImage, UILabel, NSString;
+@class UIImageView, UILabel, UIImage, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBHUDView : XXUnknownSuperclass {

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBFakeStatusBarView, SBApplication, SBProxyRemoteView;
+@class SBProxyRemoteView, SBApplication, SBFakeStatusBarView;
 
 __attribute__((visibility("hidden")))
 @interface SBSheetView : XXUnknownSuperclass {

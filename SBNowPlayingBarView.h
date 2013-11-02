@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBIconView, SBNowPlayingBarMediaControlsView, UIImageView, UIButton, UISlider, UIView;
+@class UIImageView, UIButton, SBIconView, SBNowPlayingBarMediaControlsView, UIView, UISlider;
 
 __attribute__((visibility("hidden")))
 @interface SBNowPlayingBarView : XXUnknownSuperclass {

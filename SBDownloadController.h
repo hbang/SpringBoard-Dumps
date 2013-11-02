@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SSDownloadQueueObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, NSMutableSet, NSMutableArray, SSDownloadQueue;
+@class SSDownloadQueue, NSMutableDictionary, NSMutableSet, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBDownloadController : XXUnknownSuperclass <SSDownloadQueueObserver> {

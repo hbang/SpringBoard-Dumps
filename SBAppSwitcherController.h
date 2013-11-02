@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import "SBShowcaseViewController.h"
 #import "SBIconViewDelegate.h"
 #import "SBIconViewMapDelegate.h"
-#import "SBShowcaseViewController.h"
 #import "SBAppSwitcherBarViewDelegate.h"
 
-@class SBPrintStatusController, SBAppSwitcherModel, SBAppSwitcherBarView, SBNowPlayingBar, NSString;
+@class SBNowPlayingBar, NSString, SBPrintStatusController, SBAppSwitcherModel, SBAppSwitcherBarView;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherController : SBShowcaseViewController <SBIconViewDelegate, SBAppSwitcherBarViewDelegate, SBIconViewMapDelegate> {

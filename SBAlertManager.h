@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBAlertWindow, NSMutableArray;
+@class NSMutableArray, SBAlertWindow;
 @protocol SBAlertManagerDelegate;
 
 __attribute__((visibility("hidden")))

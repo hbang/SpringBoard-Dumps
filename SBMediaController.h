@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDictionary, NSTimer;
+@class NSDictionary, MPAudioDeviceController, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBMediaController : XXUnknownSuperclass {
@@ -26,12 +26,15 @@ __attribute__((visibility("hidden")))
 	BOOL _screenSharingSetsStatusBarOverride;
 	NSTimer *_screenSharingStatusBarOverrideTimer;
 	NSTimer *_videoOutStatusBarOverrideTimer;
+	MPAudioDeviceController *_audioDeviceController;
 }
 @property(assign, nonatomic, getter=isRingerMuted) BOOL ringerMuted;
 @property(assign) BOOL suppressHUD;
 + (BOOL)applicationCanBeConsideredNowPlaying:(id)playing;
 + (id)sharedInstance;
 - (id)init;
+- (void)_airPlayPasswordAlertWillAppear;
+- (void)_airPlayPasswordAlertWillDisappear;
 - (float)_calcButtonRepeatDelay;
 - (void)_cancelPendingVolumeChange;
 - (void)_changeVolumeBy:(float)by;
@@ -53,6 +56,8 @@ __attribute__((visibility("hidden")))
 - (void)_systemVolumeChanged:(id)changed;
 - (void)_unregisterForNotifications;
 - (void)_updateAVRoutes;
+- (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
+- (void)audioDeviceControllerMediaServerDied:(id)died;
 - (BOOL)beginSeek:(int)seek;
 - (void)cancelVolumeEvent;
 - (BOOL)changeTrack:(int)track;
@@ -60,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)decreaseVolume;
 - (BOOL)endSeek:(int)seek;
 - (void)handleVolumeEvent:(GSEventRef)event;
+- (BOOL)handsetRouteIsSelected;
 - (BOOL)hasTrack;
 - (void)increaseVolume;
 - (BOOL)isFirstTrack;
@@ -76,18 +82,28 @@ __attribute__((visibility("hidden")))
 - (id)nowPlayingTitle;
 - (BOOL)pause;
 - (BOOL)play;
+- (int)repeatMode;
+- (void)requestAirPlayRouteDiscovery:(BOOL)discovery;
+- (BOOL)routeOtherThanHandsetIsAvailable;
+- (void)setCurrentTrackTime:(float)time;
 - (void)setNowPlayingInfo:(id)info;
 - (BOOL)setPlaybackSpeed:(int)speed;
 - (void)setVolume:(float)volume;
+- (int)shuffleMode;
 - (BOOL)skipFifteenSeconds:(int)seconds;
 - (BOOL)stop;
 - (BOOL)togglePlayPause;
 - (BOOL)toggleRepeat;
 - (BOOL)toggleShuffle;
+- (double)trackDuration;
+- (double)trackElapsedTime;
+- (BOOL)trackIsBeingPlayedByMusicApp;
 - (BOOL)trackSupports15SecondFF;
 - (BOOL)trackSupports15SecondRewind;
+- (unsigned long long)trackUniqueIdentifier;
 - (void)updateScreenSharingStatusBarStyleOverride;
 - (void)updateScreenSharingStatusBarStyleOverrideSuppressionPreference;
 - (float)volume;
+- (BOOL)volumeControlIsAvailable;
 @end
 

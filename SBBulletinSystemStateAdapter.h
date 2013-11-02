@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBSettingsGateway, BBSystemStateProvider;
+@class BBSystemStateProvider, BBSettingsGateway;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinSystemStateAdapter : XXUnknownSuperclass {

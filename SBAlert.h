@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBDisplayProtocol.h"
-#import "SpringBoard-Structs.h"
 
-@class SBActivationContext, NSMapTable, NSHashTable, SBAlertView, NSMutableDictionary;
+@class NSMutableDictionary, SBActivationContext, NSMapTable, SBAlertView, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface SBAlert : XXUnknownSuperclass <SBDisplayProtocol> {

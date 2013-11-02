@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBBulletinLinenSegmentView, UIImageView;
+@class UIImageView, SBBulletinLinenSegmentView;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinLinenFadeView : XXUnknownSuperclass {

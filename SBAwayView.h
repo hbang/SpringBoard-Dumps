@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBSlidingAlertDisplay.h"
 #import "SpringBoard-Structs.h"
+#import "SBSlidingAlertDisplay.h"
 #import "SBAwayDateViewDelegate.h"
 
-@class UIButton, NSMutableDictionary, SBAwayInCallController, SBAwayBuddyBackgroundView, NSTimer, UIWindow, SBAwayBulletinListController, SBAwayChargingView, NSDictionary, SBAwayDateView, SBAwaySwipeGestureRecognizer, TPBottomSingleButtonBar, SBAlertImageView, SBThermalLockoutView, SBAwayLockBar, SBAwayViewPluginController, UIView, UIAlertView;
+@class TPBottomSingleButtonBar, SBThermalLockoutView, SBAwayLockBar, UIView, SBAwayInCallController, UIWindow, SBAwayViewPluginController, UIAlertView, NSMutableDictionary, UIButton, SBAwayBuddyBackgroundView, SBAwayChargingView, NSTimer, SBAwayBulletinListController, SBAwayDateView, SBAwaySwipeGestureRecognizer, NSDictionary, SBAlertImageView;
 @protocol SBAwayHeaderPluginView;
 
 __attribute__((visibility("hidden")))

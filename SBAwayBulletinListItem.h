@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBBulletin, UIImage, BBObserver, NSMutableArray, NSString, NSDate;
+@class BBBulletin, UIImage, BBObserver, NSString, NSMutableArray, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface SBAwayBulletinListItem : XXUnknownSuperclass {

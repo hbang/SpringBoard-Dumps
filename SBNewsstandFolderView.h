@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBFolderView.h"
 
-@class NSTimer, SBNewsstandCardView, UIImageView, SBNewsstandShelfFrameView, UITableView, UIButton;
+@class UIImageView, SBNewsstandShelfFrameView, UITableView, UIButton, SBNewsstandCardView, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBNewsstandFolderView : SBFolderView {

@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIWindowDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIWindow, UIView;
+@class UIView, UIWindow;
 @protocol SBSwitcherPopoverWindowControllerDelegate;
 
 __attribute__((visibility("hidden")))

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, SBBulletinBannerItem, UILabel, UIView;
+@class SBBulletinBannerItem, UIImageView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinBannerView : XXUnknownSuperclass {

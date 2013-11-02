@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBHUDView.h"
 #import "SpringBoard-Structs.h"
+#import "SBHUDView.h"
 
 
 __attribute__((visibility("hidden")))

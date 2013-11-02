@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDictionary, SBHostWrapperView, NSMutableSet;
+@class NSMutableSet, SBHostWrapperView, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBHostRequesterInfo : XXUnknownSuperclass {

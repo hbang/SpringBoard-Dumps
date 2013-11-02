@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, SBAwayMediaControlsView, TPLCDTextView, UILabel, NSString;
+@class TPLCDTextView, UILabel, NSString, SBAwayMediaControlsView, NSTimer;
 @protocol SBAwayDateViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *title;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_createFormattersIfNecessary;
+- (void)_tearDownMediaControlsView;
 - (id)controlsView;
 - (void)dealloc;
 - (void)didMoveToSuperview;

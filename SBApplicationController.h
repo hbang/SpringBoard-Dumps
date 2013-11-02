@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSOperationQueue, NSMutableDictionary, BKSApplicationStateMonitor, NSDictionary, SBDataLookupResults, NSMutableSet, SBApplication, NSLock;
+@class SBApplication, SBDataLookupResults, NSMutableDictionary, NSDictionary, NSOperationQueue, NSMutableSet, BKSApplicationStateMonitor, NSLock;
 
 __attribute__((visibility("hidden")))
 @interface SBApplicationController : XXUnknownSuperclass {

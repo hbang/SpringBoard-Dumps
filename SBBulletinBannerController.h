@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "SBUIBannerSource.h"
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBObserver, NSMutableSet, NSMutableArray;
+@class NSMutableSet, BBObserver, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinBannerController : XXUnknownSuperclass <BBObserverDelegate, SBUIBannerSource> {

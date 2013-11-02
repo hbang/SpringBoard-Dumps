@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "SBBulletinAlertHandler.h"
 #import "SBBulletinBusyClient.h"
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMapTable, NSMutableDictionary, BBObserver, NSMutableArray;
+@class NSMutableDictionary, NSMutableArray, BBObserver, NSMapTable;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinModalController : XXUnknownSuperclass <BBObserverDelegate, SBBulletinAlertHandler, SBBulletinBusyClient> {

@@ -5,14 +5,14 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
 #import "SBBulletinListViewDelegate.h"
 #import "SBBulletinWindowClient.h"
 #import "SBWeeAppDelegate.h"
 
-@class SBWeeApp, SBWeeAppPresentationView, NSMutableDictionary, NSArray, NSTimer, BBObserver, SBApplication, NSMutableArray, SBBulletinListView, SBBulletinListTabView, SBBulletinClearButton, UIView;
+@class SBBulletinClearButton, SBWeeApp, UIView, SBWeeAppPresentationView, NSMutableDictionary, NSArray, NSTimer, SBApplication, SBBulletinListView, SBBulletinListTabView, NSMutableArray, BBObserver;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinListController : XXUnknownSuperclass <BBObserverDelegate, SBBulletinListViewDelegate, SBBulletinWindowClient, SBWeeAppDelegate> {

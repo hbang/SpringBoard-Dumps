@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBUIFullscreenAnimationView.h"
 
-@class CATransformLayer, CALayer, SBApplication, UIView;
+@class SBApplication, CATransformLayer, CALayer, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBAppToAppTransitionView : SBUIFullscreenAnimationView {

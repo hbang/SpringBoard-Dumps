@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, NSArray, CPDistributedNotificationCenter, BBObserver, NSMutableSet, NSMutableArray;
+@class NSArray, NSMutableSet, CPDistributedNotificationCenter, BBObserver, NSMutableArray, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertItemsController : XXUnknownSuperclass <BBObserverDelegate> {

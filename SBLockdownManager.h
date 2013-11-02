@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBDismissOnlyAlertItem, NSString;
+@class NSString, SBDismissOnlyAlertItem;
 
 __attribute__((visibility("hidden")))
 @interface SBLockdownManager : XXUnknownSuperclass {

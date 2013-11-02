@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBFolderNotchView, SBFolderView, SBFolderNotchHighlightView, UIView, UIImageView, SBSlidingViewHighlight, SBWallpaperView;
+@class UIImageView, SBWallpaperView, SBFolderNotchView, SBFolderView, SBFolderNotchHighlightView, UIView, SBSlidingViewHighlight;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderSlidingView : XXUnknownSuperclass {

@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIUserAgent.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class SBBulletinAlertHandlerRegistry;
 
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)activateModalBulletinAlert:(id)alert;
 - (int)activeInterfaceOrientation;
 - (void)addActiveInterfaceOrientationObserver:(id)observer;
+- (BOOL)alertIsActive;
 - (BOOL)applicationInstalledForDisplayID:(id)displayID;
 - (BOOL)canLaunchFromAwayViewPluginWithURL:(id)url bundleID:(id)anId;
 - (BOOL)canLaunchFromBulletinWithURL:(id)url bundleID:(id)anId;

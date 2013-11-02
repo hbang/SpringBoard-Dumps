@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinFadeOverlayOwner.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIViewController, SBWeeApp;
+@class SBWeeApp, UIViewController;
 @protocol BBWeeAppPresentationController;
 
 __attribute__((visibility("hidden")))

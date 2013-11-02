@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "UIGestureRecognizerDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "UIGestureRecognizerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, UIImageView, UITableView;
+@class UIImageView, UITableView, UIView;
 @protocol SBAwayBulletinListViewDelegate;
 
 __attribute__((visibility("hidden")))

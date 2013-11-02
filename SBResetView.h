@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, SBResetProgressView;
+@class SBResetProgressView, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBResetView : XXUnknownSuperclass {

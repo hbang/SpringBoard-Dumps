@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBAppSwitcherScrollViewDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBAppSwitcherScrollViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, NSMutableArray, NSMutableDictionary, SBAppSwitcherScrollView, SBLinenView, NSNumber;
+@class NSNumber, NSMutableArray, NSMutableDictionary, UIView, SBAppSwitcherScrollView, SBLinenView;
 @protocol SBAppSwitcherBarViewDelegate;
 
 __attribute__((visibility("hidden")))

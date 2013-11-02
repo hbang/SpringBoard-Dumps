@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, BKSProcessAssertion, AVController, UIImage, NSDictionary, NSObject, NSString;
+@class BKSProcessAssertion, NSDictionary, AVController, NSObject, UIImage, NSString, NSTimer;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))

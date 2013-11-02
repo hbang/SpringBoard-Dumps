@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, NSDateFormatter, NSString;
+@class NSString, NSDateFormatter, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBStatusBarDataManager : XXUnknownSuperclass {

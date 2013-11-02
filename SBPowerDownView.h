@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlertView.h"
 
-@class NSTimer, TPBottomSingleButtonBar, TPTopLockBar, UIView;
+@class TPBottomSingleButtonBar, TPTopLockBar, UIView, NSTimer;
 @protocol SBPowerDownViewDelegate;
 
 __attribute__((visibility("hidden")))

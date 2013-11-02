@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, SBSlidingViewHighlight, UIWindow, UIControl;
+@class UIControl, UIWindow, UIView, SBSlidingViewHighlight;
 @protocol SBShowcaseViewControllerProtocol, SBShowcaseControllerOwner;
 
 __attribute__((visibility("hidden")))

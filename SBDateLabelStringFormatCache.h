@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSNumberFormatter, NSDateFormatter;
+@class NSDateFormatter, NSNumberFormatter;
 
 __attribute__((visibility("hidden")))
 @interface SBDateLabelStringFormatCache : XXUnknownSuperclass {

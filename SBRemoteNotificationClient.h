@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "NSCoding.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDictionary, NSData, NSString, NSDate;
+@class NSDictionary, NSString, NSDate, NSData;
 
 __attribute__((visibility("hidden")))
 @interface SBRemoteNotificationClient : XXUnknownSuperclass <NSCoding> {

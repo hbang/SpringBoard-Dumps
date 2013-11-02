@@ -9,7 +9,7 @@
 #import "SBAlertView.h"
 #import "UITextFieldDelegate.h"
 
-@class TPBottomSingleButtonBar, UITransitionView, UIView, UIScrollView, SBTextDisplayView, UIActivityIndicatorView, UITextField;
+@class UITransitionView, UIScrollView, SBTextDisplayView, UIActivityIndicatorView, UITextField, UIView, TPBottomSingleButtonBar;
 
 __attribute__((visibility("hidden")))
 @interface SBUSSDAlertDisplay : SBAlertView <UITextFieldDelegate> {

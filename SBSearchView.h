@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBNoResultsView, UILabel, NSMutableArray, UISearchBar, UIView, UITableView;
+@class UITableView, UILabel, NSMutableArray, SBNoResultsView, UIView, UISearchBar;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchView : XXUnknownSuperclass {

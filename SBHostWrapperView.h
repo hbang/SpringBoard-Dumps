@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBHostView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBAppContextHostManager, UIColor;
+@class UIColor, SBAppContextHostManager;
 
 __attribute__((visibility("hidden")))
 @interface SBHostWrapperView : XXUnknownSuperclass <SBHostView> {

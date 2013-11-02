@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexNode.h"
 #import "SBIconIndexMutableListObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSHashTable, SBIconIndexMutableList, SBFolder;
 

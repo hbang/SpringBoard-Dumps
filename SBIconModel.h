@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBPrintStatusIcon, SBNewsstandIcon, SBRootFolder, NSMutableDictionary, NSDictionary, NSSet;
+@class NSMutableDictionary, NSDictionary, NSSet, SBPrintStatusIcon, SBNewsstandIcon, SBRootFolder;
 @protocol SBIconModelDelegate, SBIconModelStore;
 
 __attribute__((visibility("hidden")))

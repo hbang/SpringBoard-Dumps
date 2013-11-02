@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAwayListItemCell.h"
 
-@class SBAwayListActionContext, SBBulletinLockBar;
+@class SBBulletinLockBar, SBAwayListActionContext;
 
 __attribute__((visibility("hidden")))
 @interface SBAwayBulletinCell : SBAwayListItemCell {

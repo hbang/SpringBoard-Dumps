@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBOrderedRequesters, NSMutableDictionary, NSMutableArray, NSString, SBAppContextHostView;
+@class NSMutableDictionary, SBAppContextHostView, NSString, NSMutableArray, SBOrderedRequesters;
 
 __attribute__((visibility("hidden")))
 @interface SBAppContextHostManager : XXUnknownSuperclass {

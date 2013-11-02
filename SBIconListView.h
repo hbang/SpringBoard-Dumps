@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, SBIconListModel, NSMutableSet, NSMutableArray, SBIcon, SBIconViewMap;
+@class SBIcon, NSMutableArray, SBIconViewMap, SBIconListModel, UIView, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBIconListView : XXUnknownSuperclass {

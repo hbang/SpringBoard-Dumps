@@ -11,7 +11,7 @@
 #import "UINavigationControllerDelegate.h"
 #import "UIStatusBarStyleDelegate.h"
 
-@class UIView, UITransitionView, UIStatusBar, UIPrintStatusViewController, SBAppSwitcherController;
+@class UITransitionView, SBAppSwitcherController, UIView, UIPrintStatusViewController, UIStatusBar;
 
 __attribute__((visibility("hidden")))
 @interface SBPrintStatusController : XXUnknownSuperclass <UIPrintStatusDelegate, UINavigationControllerDelegate, UIStatusBarStyleDelegate, SBSwitcherPopoverWindowControllerDelegate> {

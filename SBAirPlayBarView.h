@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIButton, UIView, SBAppSwitcherVolumeSlider;
+@class SBAppSwitcherVolumeSlider, UIButton, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBAirPlayBarView : XXUnknownSuperclass {

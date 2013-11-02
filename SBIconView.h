@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImage, UIImageView, NSTimer, SBIconLabelImageView, SBIconImageView, SBIconImageContainerView, SBIcon, SBIconAccessoryImageView, UIView;
+@class SBIconAccessoryImageView, UIView, UIImage, UIImageView, NSTimer, SBIconLabelImageView, SBIconImageView, SBIconImageContainerView, SBIcon;
 @protocol SBIconViewObserver, SBIconViewDelegate;
 
 __attribute__((visibility("hidden")))

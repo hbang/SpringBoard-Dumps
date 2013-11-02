@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinDateLabel.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, NSDate;
+@class NSDate, NSTimer;
 @protocol SBDateLabelDelegate;
 
 __attribute__((visibility("hidden")))

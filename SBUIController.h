@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "UIWindowDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "UIWindowDelegate.h"
 #import "SBShowcaseControllerOwner.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIStatusBar, UIStatusBarCorners, SBSwitchAppGestureView, NSMutableDictionary, NSArray, SBDismissOnlyAlertItem, SBUIRootView, MPAudioDeviceController, UIWindow, SBAnimationStepper, SBWorkspaceEventQueueLockAssertion, NSMutableArray, SBApplication, SBShowcaseController, SBWallpaperView, UIView, SBWallpaper;
+@class SBWallpaperView, UIView, SBSwitchAppGestureView, SBWallpaper, SBDismissOnlyAlertItem, UIStatusBar, SBUIRootView, UIWindow, UIStatusBarCorners, NSMutableDictionary, NSArray, SBApplication, SBAnimationStepper, SBWorkspaceEventQueueLockAssertion, NSMutableArray, SBShowcaseController;
 
 __attribute__((visibility("hidden")))
 @interface SBUIController : XXUnknownSuperclass <UIWindowDelegate, SBShowcaseControllerOwner> {
@@ -67,7 +67,6 @@ __attribute__((visibility("hidden")))
 	BOOL _keyboardNeedsShowcaseTranslation;
 	BOOL _unprocessedKeyboardOrientationChangeForShowcase;
 	BOOL _showNotificationsGestureIsShowingTab;
-	MPAudioDeviceController *_tempAudioDeviceController;
 }
 @property(retain, nonatomic) SBShowcaseController *showcaseController;
 + (void)_setRoundedCornersOnZoomLayerIfNecessary:(id)necessary forApp:(id)app withCornersFrame:(CGRect)cornersFrame;
@@ -89,7 +88,6 @@ __attribute__((visibility("hidden")))
 - (void)_adjustAlertViewHierarchyForShowcaseContext:(id)showcaseContext;
 - (void)_adjustViewHierarchyForShowcase:(id)showcase withContext:(id)context;
 - (void)_airPlayPasswordAlertWillAppear:(id)_airPlayPasswordAlert;
-- (void)_airPlayPasswordAlertWillDisappear:(id)_airPlayPasswordAlert;
 - (void)_animateStatusBarForSuspendGesture;
 - (float)_appSwitcherRevealAnimationDelay;
 - (void)_applicationActivationStateDidChange:(id)_applicationActivationState;
@@ -101,7 +99,6 @@ __attribute__((visibility("hidden")))
 - (void)_clearInstalledSystemGestureViewForKey:(id)key;
 - (void)_clearPendingAppActivatedByGesture:(BOOL)gesture;
 - (void)_clearSwitchAppList;
-- (void)_clearTempAudioDeviceController;
 - (void)_closeOpenFolderIfNecessary;
 - (float)_contentRotationForOrientation:(int)orientation;
 - (void)_deviceLockStateChanged:(id)changed;

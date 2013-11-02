@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, UIImage, TPLCDView, NSString;
+@class UIImage, NSString, TPLCDView, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBAwayInCallController : XXUnknownSuperclass {

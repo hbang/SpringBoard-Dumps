@@ -9,7 +9,7 @@
 #import "SBShowcaseViewControllerProtocol.h"
 #import "SBUIPluginHost.h"
 
-@class SBShowcaseController, SBHomeCentricPopoverController, SBDeviceLockDisableAssertion, NSString;
+@class SBShowcaseController, SBDeviceLockDisableAssertion, NSString, SBHomeCentricPopoverController;
 
 __attribute__((visibility("hidden")))
 @interface SBAssistantController : SBUIPluginHost <SBHomeCentricPopoverControllerDelegate, SBShowcaseViewControllerProtocol> {
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)dismissAssistantForAlertActivation:(id)alertActivation;
 - (void)dismissAssistantWithFade;
 - (void)dismissAssistantWithFadeOfDuration:(double)duration;
+- (void)dismissPluginForEvent:(int)event;
 - (void)homeCentricPopoverDidDismissView:(id)homeCentricPopover;
 - (void)homeCentricPopoverDidPresentView:(id)homeCentricPopover;
 - (void)homeCentricPopoverWillDismissView:(id)homeCentricPopover animated:(BOOL)animated;

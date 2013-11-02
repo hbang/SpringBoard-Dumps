@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexNode.h"
 #import "SBIconIndexMutableListObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, NSHashTable, SBIconIndexMutableList, NSMutableSet, SBFolderIcon, NSString;
+@class SBIconIndexMutableList, NSHashTable, NSMutableDictionary, NSMutableSet, SBFolderIcon, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBFolder : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver> {
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (unsigned)indexOfList:(id)list;
 - (id)indexPathForFirstFreeSlotAvoidingFirstList:(BOOL)firstFreeSlotAvoidingFirstList;
 - (id)indexPathForIcon:(id)icon;
+- (id)indexPathForIcon:(id)icon includingPlaceholders:(BOOL)placeholders;
 - (id)indexPathForIconWithIdentifier:(id)identifier;
 - (id)indexPathForNodeIdentifier:(id)nodeIdentifier;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;

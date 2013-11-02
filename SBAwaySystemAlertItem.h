@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBAwayListCellButtonHandler.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSArray, UIImage, NSString, SBAlertItem;
 

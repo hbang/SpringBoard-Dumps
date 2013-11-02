@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "NSFastEnumeration.h"
 #import "SBIconIndexNodeObserver.h"
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMapTable, NSMutableArray;
+@class NSMutableArray, NSMapTable;
 @protocol SBIconIndexMutableListObserver;
 
 __attribute__((visibility("hidden")))

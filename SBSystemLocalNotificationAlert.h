@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, NSString, SBApplication;
+@class SBApplication, NSString, NSTimer;
 @protocol SBSystemLocalNotificationAlertDelegate;
 
 __attribute__((visibility("hidden")))

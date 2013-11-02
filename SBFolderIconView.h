@@ -9,7 +9,7 @@
 #import "SBIconView.h"
 #import "SBFolderIconObserver.h"
 
-@class SBFolderIcon, SBDownloadingProgressBar, NSMutableSet, UIImageView;
+@class UIImageView, SBFolderIcon, SBDownloadingProgressBar, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderIconView : SBIconView <SBFolderIconObserver> {

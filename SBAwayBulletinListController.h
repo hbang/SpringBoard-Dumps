@@ -7,12 +7,12 @@
 
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBAwayBulletinListViewDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBAwayBulletinListViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
 
-@class NSArray, BBObserver, NSMutableArray, SBAwayBulletinListView, SBAwayBulletinCell, SBAwayListActionContext, UIView;
+@class SBAwayListActionContext, UIView, NSArray, SBAwayBulletinListView, NSMutableArray, SBAwayBulletinCell, BBObserver;
 
 __attribute__((visibility("hidden")))
 @interface SBAwayBulletinListController : XXUnknownSuperclass <BBObserverDelegate, UITableViewDataSource, UITableViewDelegate, SBAwayBulletinListViewDelegate> {

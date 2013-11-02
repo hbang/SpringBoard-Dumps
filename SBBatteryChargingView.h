@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, UIImage, UILabel, SBBatteryReflectionView;
+@class UIImageView, SBBatteryReflectionView, UILabel, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface SBBatteryChargingView : XXUnknownSuperclass {

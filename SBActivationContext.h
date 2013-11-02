@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "NSCopying.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMapTable, NSHashTable;
+@class NSHashTable, NSMapTable;
 
 __attribute__((visibility("hidden")))
 @interface SBActivationContext : XXUnknownSuperclass <NSCopying> {

@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexNodeObserver.h"
 #import "SBIconObserver.h"
 #import "SBIconViewObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMapTable, SBIconModel;
+@class SBIconModel, NSMapTable;
 @protocol SBIconViewDelegate, SBIconViewMapDelegate;
 
 __attribute__((visibility("hidden")))

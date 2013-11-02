@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBBulletinListTouchEater, SBWeeAppPresentationView, UIView, SBLinenFadeContainer, UIImageView, UIStatusBar, SBBulletinBlurredShadowLabel, SBBulletinTableView;
+@class UIImageView, SBBulletinTableView, SBBulletinListTouchEater, SBWeeAppPresentationView, SBLinenFadeContainer, UIView, SBBulletinBlurredShadowLabel, UIStatusBar;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinListView : XXUnknownSuperclass {

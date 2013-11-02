@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimeZone, PCPersistentTimer, NSMutableSet;
+@class PCPersistentTimer, NSMutableSet, NSTimeZone;
 
 __attribute__((visibility("hidden")))
 @interface SBDeviceLockController : XXUnknownSuperclass {

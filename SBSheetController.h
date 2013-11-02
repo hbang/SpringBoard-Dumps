@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, UIWindow, SBApplication, UIView;
+@class SBApplication, NSMutableDictionary, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface SBSheetController : XXUnknownSuperclass {

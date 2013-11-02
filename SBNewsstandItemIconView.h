@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBNewsstandItemIconViewBase.h"
 
-@class UIView, UILabel;
+@class UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBNewsstandItemIconView : SBNewsstandItemIconViewBase {

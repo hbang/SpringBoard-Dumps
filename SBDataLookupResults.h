@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDictionary, NSMutableSet;
+@class NSMutableSet, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBDataLookupResults : XXUnknownSuperclass {

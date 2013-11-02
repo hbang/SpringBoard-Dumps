@@ -7,8 +7,8 @@
 
 #import "SBIconIndexNodeObserver.h"
 #import "SBIconObserver.h"
-#import "SBIcon.h"
 #import "SpringBoard-Structs.h"
+#import "SBIcon.h"
 
 @class NSHashTable, NSMutableSet, SBFolder;
 

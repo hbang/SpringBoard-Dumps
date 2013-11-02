@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinHeaderViewDelegate.h"
 #import "SBBulletinFadeOverlayOwner.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBBulletinLinenFadeView, NSMutableSet;
+@class NSMutableSet, SBBulletinLinenFadeView;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinTableView : XXUnknownSuperclass <SBBulletinHeaderViewDelegate, SBBulletinFadeOverlayOwner> {

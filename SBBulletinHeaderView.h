@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBBulletinLinenSegmentView.h"
 #import "SBBulletinClearButtonDelegate.h"
-#import "SpringBoard-Structs.h"
 
-@class UIView, SBBulletinBlurredShadowLabel, SBBulletinClearButton, NSString;
+@class SBBulletinClearButton, NSString, UIView, SBBulletinBlurredShadowLabel;
 @protocol SBBulletinHeaderViewDelegate;
 
 __attribute__((visibility("hidden")))

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "UITextFieldDelegate.h"
 
-@class SBFolderIconListView, SBFolder, SBFolderTextField, UIView, UIImageView, UILabel;
+@class UIImageView, UILabel, SBFolderIconListView, SBFolder, SBFolderTextField, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderView : XXUnknownSuperclass <UITextFieldDelegate> {
