@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBShowcaseViewController, UIWindow, UIView, SBSlidingViewHighlight, UIControl;
+@class UIControl, SBShowcaseViewController, UIWindow, UIView, SBSlidingViewHighlight;
 
 @interface SBShowcaseController : XXUnknownSuperclass {
 	UIWindow *_hostWindow;

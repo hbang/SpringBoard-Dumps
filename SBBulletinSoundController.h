@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, AVController, NSMutableArray, BBBulletin, BBObserver;
+@class NSMutableDictionary, NSMutableArray, BBBulletin, AVController, BBObserver;
 
 @interface SBBulletinSoundController : XXUnknownSuperclass {
 	BBObserver *_observer;

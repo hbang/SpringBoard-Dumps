@@ -70,6 +70,8 @@ typedef struct {
 	unsigned _field1[8];
 } XXStruct_kUSYWB;
 
+typedef struct dispatch_queue_s dispatch_queue_s;
+
 typedef struct {
 	int _field1;
 	int _field2;
@@ -113,8 +115,6 @@ typedef struct dispatch_source_s dispatch_source_s;
 typedef struct __CFBoolean *CFBooleanRef;
 
 typedef struct CGImage *CGImageRef;
-
-typedef struct dispatch_queue_s dispatch_queue_s;
 
 typedef struct __CFBundle *CFBundleRef;
 

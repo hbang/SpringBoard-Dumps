@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class NSString, UIImage, NSTimer, TPLCDView;
+@class TPLCDView, NSString, NSTimer, UIImage;
 
 @interface SBAwayInCallController : XXUnknownSuperclass {
 	TPLCDView *_lcdView;

@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class NSString, UIImage, UIImageView, UILabel;
+@class NSString, UIImageView, UIImage, UILabel;
 
 @interface SBHUDView : XXUnknownSuperclass {
 	int _level;

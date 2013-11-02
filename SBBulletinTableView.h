@@ -9,11 +9,12 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class NSMutableSet, UIImageView, SBBulletinLinenSegmentView;
+@class NSMutableSet, UIImageView, SBBulletinLinenSegmentView, UIView;
 
 @interface SBBulletinTableView : XXUnknownSuperclass <SBBulletinHeaderViewDelegate> {
 	NSMutableSet *_visibleSectionHeaders;
-	SBBulletinLinenSegmentView *_fadeOverlay;
+	UIView *_fadeContainer;
+	SBBulletinLinenSegmentView *_fadeSegment;
 	UIImageView *_fadeOverlayMask;
 }
 - (id)initWithFrame:(CGRect)frame linenView:(id)view;

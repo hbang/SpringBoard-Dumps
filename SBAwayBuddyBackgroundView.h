@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class UIButton, UIImageView;
+@class UIImageView, UIButton;
 
 @interface SBAwayBuddyBackgroundView : XXUnknownSuperclass {
 	UIImageView *_linenView;

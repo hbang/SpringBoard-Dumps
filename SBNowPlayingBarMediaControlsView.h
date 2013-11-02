@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class UIButton, UILabel, SBIconLabel;
+@class UIButton, SBIconLabel, UILabel;
 
 @interface SBNowPlayingBarMediaControlsView : XXUnknownSuperclass {
 	UIButton *_prevButton;

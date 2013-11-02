@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class NSString, UIFont;
+@class UIFont, NSString;
 
 @interface SBSearchTableViewCell : XXUnknownSuperclass {
 	UIFont *_titleFont;
@@ -44,7 +44,16 @@
 + (id)alternateBackgroundColor;
 + (id)alternateLineColor;
 + (id)backgroundColor;
++ (void)initialize;
++ (id)inner2xAlternateLineColor;
++ (id)inner2xAlternateShadowColor;
++ (id)inner2xLineColor;
++ (id)inner2xShadowColor;
 + (id)lineColor;
++ (id)outer2xAlternateLineColor;
++ (id)outer2xAlternateShadowColor;
++ (id)outer2xLineColor;
++ (id)outer2xShadowColor;
 + (id)topLineShadowColor;
 - (id)initWithStyle:(int)style reuseIdentifier:(id)identifier;
 - (void)_drawContentInRect:(CGRect)rect selected:(BOOL)selected;

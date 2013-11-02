@@ -8,7 +8,7 @@
 #import "SBSlidingAlertDisplay.h"
 #import "SpringBoard-Structs.h"
 
-@class SBActivationView, SBAwaySwipeGestureRecognizer, SBAwayViewPluginController, UIAlertView, UIButton, SBAwayInCallController, SBAwayBulletinListController, SBAwayDateView, SBAwayLockBar, UIView, SBAwayChargingView, NSTimer, SBAwayBuddyBackgroundView, NSDictionary, SBAlertImageView, TPBottomSingleButtonBar;
+@class SBActivationView, TPBottomSingleButtonBar, SBAwaySwipeGestureRecognizer, SBAwayInCallController, SBAwayViewPluginController, UIAlertView, SBAwayBulletinListController, UIButton, SBAwayDateView, SBAwayLockBar, UIView, SBAwayChargingView, NSTimer, SBAwayBuddyBackgroundView, NSDictionary, SBAlertImageView;
 
 @interface SBAwayView : SBSlidingAlertDisplay {
 	BOOL _isDimmed;

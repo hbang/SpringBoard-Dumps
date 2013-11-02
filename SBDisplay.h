@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableSet, NSMapTable, NSHashTable;
+@class NSHashTable, NSMutableSet, NSMapTable;
 
 @interface SBDisplay : XXUnknownSuperclass {
 	NSMapTable *_displayValues;

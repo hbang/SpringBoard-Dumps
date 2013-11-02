@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "RadiosPreferencesDelegate.h"
 
-@class RadiosPreferences, NSString, SBAlertItem, NSTimer;
+@class NSString, SBAlertItem, RadiosPreferences, NSTimer;
 
 @interface SBTelephonyManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
 	void *_suspendDormancyAssertion;

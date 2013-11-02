@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBLeafIcon.h"
+#import "SpringBoard-Structs.h"
 
-@class NSString, NSMutableArray, SSDownload, SSDownloadStatus, NSOperation;
+@class SSDownload, SSDownloadStatus, NSOperation, NSString, NSMutableArray;
 
 @interface SBDownloadingIcon : SBLeafIcon {
 	NSString *_leafIdentifier;

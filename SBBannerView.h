@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, UILabel, UIView, SBBulletinBannerItem;
+@class UIImageView, UIView, SBBulletinBannerItem, UILabel;
 
 @interface SBBannerView : XXUnknownSuperclass {
 	SBBulletinBannerItem *_item;

@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class UIImage, UIImageView, UILabel;
+@class UIImageView, UIImage, UILabel;
 
 @interface SBBatteryChargingView : XXUnknownSuperclass {
 	int _type;

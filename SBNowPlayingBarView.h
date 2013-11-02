@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBNowPlayingBarMediaControlsView, UIButton, UIImageView, UISlider, SBIconView, UIView;
+@class SBNowPlayingBarMediaControlsView, UIImageView, UIButton, UISlider, SBIconView, UIView;
 
 @interface SBNowPlayingBarView : XXUnknownSuperclass {
 	int _toggleType;

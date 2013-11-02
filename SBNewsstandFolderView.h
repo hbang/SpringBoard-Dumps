@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBFolderView.h"
 
-@class NSTimer, UIImageView, UIButton, SBNewsstandCardView, SBNewsstandShelfFrameView, UITableView;
+@class NSTimer, UITableView, UIImageView, UIButton, SBNewsstandCardView, SBNewsstandShelfFrameView;
 
 @interface SBNewsstandFolderView : SBFolderView {
 	UIButton *_storeButton;

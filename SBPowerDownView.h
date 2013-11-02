@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlertDisplay.h"
 
-@class SBPowerDownController, NSTimer, TPBottomSingleButtonBar, UIView, TPTopLockBar;
+@class SBPowerDownController, TPTopLockBar, NSTimer, UIView, TPBottomSingleButtonBar;
 
 @interface SBPowerDownView : SBAlertDisplay {
 	UIView *_dimView;

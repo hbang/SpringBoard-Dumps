@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBNewsstandItemIconViewBase.h"
 
-@class SBDownloadingProgressBar, UILabel, UIView;
+@class SBDownloadingProgressBar, UIView, UILabel;
 
 @interface SBNewsstandItemIconView : SBNewsstandItemIconViewBase {
 	UIView *_iconTransformView;

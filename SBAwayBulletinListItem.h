@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, NSMutableArray, UIImage, BBBulletin, NSDate;
+@class NSString, NSMutableArray, NSDate, BBBulletin, UIImage;
 
 @interface SBAwayBulletinListItem : XXUnknownSuperclass {
 	NSMutableArray *_bulletins;

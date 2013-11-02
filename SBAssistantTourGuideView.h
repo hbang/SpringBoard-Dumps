@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class AFUIServerUtteranceView, AFUIUtteranceView, UIImageView, UILabel, UIButton, UIView, NSString, UITableView;
+@class UITableView, AFUIServerUtteranceView, AFUIUtteranceView, UIImageView, UILabel, UIView, NSString, UIButton;
 
 @interface SBAssistantTourGuideView : XXUnknownSuperclass {
 	AFUIServerUtteranceView *_utteranceView;

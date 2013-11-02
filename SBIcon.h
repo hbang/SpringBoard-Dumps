@@ -8,7 +8,7 @@
 #import "SBIcon.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImage, NSHashTable;
+@class NSHashTable, UIImage;
 @protocol SBIconDelegate;
 
 @interface SBIcon : XXUnknownSuperclass {
@@ -16,7 +16,7 @@
 	id _badgeNumberOrString;
 	unsigned _isRevealable : 1;
 	unsigned _uninstalled : 1;
-	UIImage *_cachedIconImages[13];
+	UIImage *_cachedIconImages[12];
 	id<SBIconDelegate> _delegate;
 }
 @property(assign, nonatomic) id<SBIconDelegate> delegate;

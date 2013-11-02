@@ -20,9 +20,9 @@
 - (void)_pickableRoutesChanged:(id)changed;
 - (void)_tetherSettingChanged:(id)changed;
 - (void)_updateAVRoutes;
-- (void)addClone:(id)clone stevenoteAllowed:(BOOL)allowed;
+- (void)addClone:(id)clone;
 - (void)dealloc;
-- (void)setIntialTVModeIfNeeded;
+- (void)setInitialTVModeIfNeeded;
 - (void)startListeningForAVSystemControllerNotifications;
 - (void)startListeningForSettingsChanges;
 - (void)stopListeningForAVSystemControllerNotifications;

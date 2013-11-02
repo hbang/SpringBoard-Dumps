@@ -9,7 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "RadiosPreferencesDelegate.h"
 
-@class RadiosPreferences, NSString, SBSIMLockAlertItem, SBSIMLockEntryAlert;
+@class NSString, RadiosPreferences, SBSIMLockAlertItem, SBSIMLockEntryAlert;
 
 @interface SBSIMLockManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
 	BOOL _isInitialUpdate;

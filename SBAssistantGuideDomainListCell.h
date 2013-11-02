@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, UILabel;
+@class UILabel, UIImageView;
 @protocol SBAssistantGuideDomainListCellDelegate;
 
 @interface SBAssistantGuideDomainListCell : XXUnknownSuperclass {

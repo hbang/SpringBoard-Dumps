@@ -8,7 +8,7 @@
 #import "SBBulletinLinenBackedCell.h"
 #import "SpringBoard-Structs.h"
 
-@class NSTimer, UIImageView, NSDate, SBBulletinCellContentView;
+@class NSTimer, NSDate, UIImageView, SBBulletinCellContentView;
 
 @interface SBBulletinListCell : SBBulletinLinenBackedCell {
 	UIImageView *_bulletinAccessoryView;

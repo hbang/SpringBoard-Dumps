@@ -11,7 +11,7 @@
 #import "SBAssistantGuideDomainListCellDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, NSMutableArray, SBAssistantGuideModel, UITableView;
+@class UITableView, UIImageView, NSMutableArray, SBAssistantGuideModel;
 @protocol SBAssistantGuideDomainListDelegate;
 
 @interface SBAssistantGuideDomainListController : XXUnknownSuperclass <UITableViewDelegate, UITableViewDataSource, SBAssistantGuideDomainListCellDelegate> {

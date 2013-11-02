@@ -7,9 +7,8 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, AVController, UIImage, NSTimer, NSDictionary;
+@class NSString, NSTimer, AVController, UIImage, NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface SBUserNotificationAlert : XXUnknownSuperclass {
 	unsigned _replyPort;
 	int _token;

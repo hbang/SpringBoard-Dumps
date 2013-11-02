@@ -12,7 +12,7 @@
 #import "SBBulletinAlertHandler.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBObserver, NSMutableArray, NSMapTable, NSMutableDictionary;
+@class BBObserver, NSMutableArray, NSMutableDictionary, NSMapTable;
 
 @interface SBBulletinModalController : XXUnknownSuperclass <BBObserverDelegate, SBBulletinAlertHandler, SBBulletinBusyClient> {
 	BBObserver *_observer;

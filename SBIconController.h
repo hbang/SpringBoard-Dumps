@@ -13,7 +13,7 @@
 #import "SBIconController.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, SBFolderScrollOffset, SBFolderSlidingView, SBIconListView, BBObserver, SBSearchView, SBFolderView, SBWallpaperNotchView, SBSearchController, TPLCDTextView, NSMutableSet, SBIconListPageControl, SBFolder, UIView, SBIconScrollView, SBLeafIcon, SBRootFolder, SBIcon, SBDockIconListView, SBIconIndexPath, SBIconModel, UITouch, NSTimer;
+@class NSMutableArray, SBFolderScrollOffset, SBFolderSlidingView, SBIconListView, SBSearchView, SBFolderView, SBWallpaperNotchView, BBObserver, SBSearchController, NSMutableSet, SBIconListPageControl, TPLCDTextView, SBFolder, UIView, SBIconScrollView, SBLeafIcon, SBRootFolder, SBIcon, SBDockIconListView, SBIconIndexPath, SBIconModel, NSTimer, UITouch;
 
 @interface SBIconController : XXUnknownSuperclass <UIScrollViewDelegate, SBIconListPageControlDelegate, SBIconViewDelegate, BBObserverDelegate> {
 	SBIconModel *_iconModel;
@@ -87,6 +87,7 @@
 	BOOL _folderKeyboardIsAnimatingRotation;
 	BOOL _isAnimatingDockForIconScatter;
 	BOOL _isAnimatingDockFade;
+	BOOL _isAnimatingFolderCreation;
 }
 @property(readonly, assign, nonatomic) SBSearchController *searchController;
 + (id)sharedInstance;
@@ -268,12 +269,14 @@
 - (void)_moveDroppedIconsIntoFolderIconListView;
 - (void)_moveDroppedIconsIntoRootIconListView;
 - (XXStruct_9ihRqB)_notchInfoForFolderIcon:(id)folderIcon;
+- (void)_noteFolderAnimationStateDidChange;
 - (void)_openCloseFolderAnimationEnded:(id)ended finished:(id)finished context:(void *)context;
 - (void)_outOfFolderAnimation:(id)folderAnimation didFinish:(id)finish context:(id)context;
 - (void)_placeIcon:(id)icon inSlidingViewsWithNotchInfo:(XXStruct_9ihRqB)notchInfo;
 - (void)_positionFolderViewAndSlidingViewsForFolder:(id)folder notchInfo:(XXStruct_9ihRqB)info;
 - (id)_proposedFolderNameForGrabbedIcon:(id)grabbedIcon recipientIcon:(id)icon;
 - (void)_runFolderOpenCloseTest;
+- (void)_setAnimatingFolderCreation:(BOOL)creation;
 - (void)_setFolderToOpenAfterScrolling:(id)openAfterScrolling;
 - (void)_setHasAnimatingFolder:(BOOL)folder;
 - (void)_slideFolderOpen:(BOOL)open animated:(BOOL)animated;

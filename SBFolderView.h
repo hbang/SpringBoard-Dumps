@@ -9,7 +9,7 @@
 #import "UITextFieldDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBFolderIconListView, UIImageView, SBFolder, UILabel, UIView, SBFolderTextField;
+@class SBFolderIconListView, SBFolder, UIImageView, UILabel, UIView, SBFolderTextField;
 
 @interface SBFolderView : XXUnknownSuperclass <UITextFieldDelegate> {
 	SBFolder *_folder;

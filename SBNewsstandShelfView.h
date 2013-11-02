@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, UILabel;
+@class UILabel, UIImageView;
 
 @interface SBNewsstandShelfView : XXUnknownSuperclass {
 	UIImageView *_body;

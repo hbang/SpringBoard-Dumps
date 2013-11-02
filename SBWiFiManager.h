@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, NSRecursiveLock;
+@class NSRecursiveLock, NSString;
 
 @interface SBWiFiManager : XXUnknownSuperclass {
 	NSRecursiveLock *_lock;

@@ -9,7 +9,7 @@
 #import "SBDeviceLockViewOwner.h"
 #import "SBAlertDisplay.h"
 
-@class SBEmergencyCallView, SBWallpaperView, SBDeviceLockView, UIView, UIImage, UIStatusBar;
+@class SBEmergencyCallView, SBWallpaperView, SBDeviceLockView, UIView, UIStatusBar, UIImage;
 
 @interface SBSlidingAlertDisplay : SBAlertDisplay <SBDeviceLockViewOwner> {
 	SBWallpaperView *_backgroundView;

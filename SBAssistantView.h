@@ -11,7 +11,7 @@
 #import "SBAssistantMicButtonProtocol.h"
 #import "UISearchBarDelegate.h"
 
-@class UIControl, UIScrollView, SBDeviceLockView, UISearchBar, UIButton, UITableView, UIView, UIImageView, UIStatusBar, UILabel, SBAssistantUnavailableView, SBAssistantMicButtonView;
+@class UIControl, SBDeviceLockView, UIScrollView, UISearchBar, UITableView, UIButton, UIView, UIImageView, UIStatusBar, SBAssistantUnavailableView, UILabel, SBAssistantMicButtonView;
 @protocol SBAssistantViewDelegate;
 
 @interface SBAssistantView : XXUnknownSuperclass <UISearchBarDelegate, UIScrollViewDelegate, SBAssistantMicButtonProtocol> {
@@ -51,6 +51,7 @@
 + (float)gridHeight;
 - (id)initWithFrame:(CGRect)frame;
 - (CGRect)_defaultTableFrame;
+- (int)_lastCellToAffectMagicPocket;
 - (void)_scrollToPendingCell;
 - (void)_setSpeechEnabled:(BOOL)enabled;
 - (void)_setupForInitialQuery:(BOOL)initialQuery animated:(BOOL)animated;

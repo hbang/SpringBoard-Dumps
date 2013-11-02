@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class UILabel, UISearchBar, SBNoResultsView, UITableView, UIView, SBRoundedCornersView;
+@class SBNoResultsView, UISearchBar, UIView, SBRoundedCornersView, UITableView, UILabel;
 
 @interface SBSearchView : XXUnknownSuperclass {
 	SBRoundedCornersView *_roundedCornersView;
@@ -20,6 +20,7 @@
 	UIView *_contentView;
 	BOOL _isKeyboardAnimatingRotation;
 	BOOL _hidesEmptyTableFooter;
+	BOOL _translatedKbForScatter;
 }
 @property(retain, nonatomic) UIView *contentView;
 @property(retain, nonatomic) UIView *rootView;
@@ -32,7 +33,9 @@
 - (id)_keyboard;
 - (void)_layoutNoResultsView;
 - (void)_resetContentViewTransform;
+- (void)_resetKeyboardTransformForScatter;
 - (void)_setDistantContentViewTransform;
+- (void)cleanupKeyboardForScatterIfNecessary;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;

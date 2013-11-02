@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableSet, NSMutableDictionary, NSOperationQueue, SBProcess, CPDistributedNotificationCenter, NSLock, NSDictionary;
+@class NSMutableSet, NSMutableDictionary, SBProcess, NSOperationQueue, CPDistributedNotificationCenter, NSLock, NSDictionary;
 
 @interface SBApplicationController : XXUnknownSuperclass {
 	NSDictionary *_pendingApplicationDictionaries;
@@ -15,7 +15,7 @@
 	NSMutableDictionary *_applicationsByBundleIdentifer;
 	NSMutableSet *_applicationsPlayingMutedAudioSinceLastLock;
 	SBProcess *_processCurrentlyRecordingAudio;
-	BOOL _isLocationInUse;
+	int _locationStatusBarIconType;
 	NSDictionary *_backgroundDisplayDict;
 	unsigned _ignoreUninstallationEventCount;
 	CPDistributedNotificationCenter *_appStateNotificationCenter;
@@ -61,11 +61,11 @@
 - (id)dataActivation;
 - (void)dealloc;
 - (id)iPod;
-- (BOOL)isLocationInUse;
 - (BOOL)loadApplication:(id)application;
 - (id)loadApplications;
 - (void)loadApplicationsAndIcons:(id)icons reveal:(BOOL)reveal popIn:(BOOL)anIn reloadAllIcons:(BOOL)icons4;
 - (void)loadApplicationsWithBundle:(id)bundle bundlePath:(id)path isSystemApplication:(BOOL)application defaultTags:(id)tags signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated seatbeltEnvironmentVariables:(id)variables;
+- (int)locationStatusBarIconType;
 - (id)newsstandApps;
 - (void)processPendingInstalls;
 - (id)processWithPid:(int)pid;

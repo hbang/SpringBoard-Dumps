@@ -19,7 +19,6 @@
 - (float)_additionalSideInsetToCenterIcons;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_updateForOrientation:(int)orientation duration:(double)duration;
-- (void)_updateForOrientationAnimationStopped;
 - (unsigned)columnAtPoint:(CGPoint)point;
 - (unsigned)iconsInRowForSpacingCalculation;
 - (CGPoint)originForIconAtX:(unsigned)x Y:(unsigned)y;

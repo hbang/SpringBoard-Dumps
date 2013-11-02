@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBAssistantConfirmView, SAUIConfirmationOptions;
+@class SAUIConfirmationOptions, SBAssistantConfirmView;
 
 @interface SBAssistantConfirmController : XXUnknownSuperclass {
 	SBAssistantConfirmView *_view;

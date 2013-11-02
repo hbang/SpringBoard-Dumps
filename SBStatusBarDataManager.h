@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "RadiosPreferencesDelegate.h"
 
-@class RadiosPreferences, NSString, NSDateFormatter, NSTimer;
+@class NSString, RadiosPreferences, NSTimer, NSDateFormatter;
 
 @interface SBStatusBarDataManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
 	struct {
@@ -36,6 +36,7 @@
 		unsigned bluetoothConnected : 1;
 		unsigned displayRawGSMSignal : 1;
 		unsigned displayRawWifiSignal : 1;
+		unsigned locationIconType : 1;
 	} _data;
 	int _actions;
 	BOOL _itemIsEnabled[23];
