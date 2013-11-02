@@ -33,3 +33,6 @@ The makefile is designed to support any iOS or OS X binary by only changing a va
 3. Edit the makefile to change the `BINARYPATH` to where your SpringBoard binaries are stored. The file names must be of the format `SpringBoard70`. You must also have a binary for every version listed in `FIRMWARES`.
 4. `make`.
 5. Be amazed at how long it takes.
+
+## License
+Headers are public domain. The makefile is [Apache 2 licensed](https://www.apache.org/licenses/LICENSE-2.0.html).
