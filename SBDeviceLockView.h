@@ -7,7 +7,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, SBDeviceLockEntryField, SBDeviceLockTitle;
+@class SBDeviceLockTitle, NSString, SBDeviceLockEntryField;
 
 @interface SBDeviceLockView : UIView {
 	int _style;

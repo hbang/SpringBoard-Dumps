@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <UIKit/UIScrollView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIScrollView.h>
 
 
 @interface SBIconScrollView : UIScrollView {

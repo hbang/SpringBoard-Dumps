@@ -13,6 +13,7 @@
 }
 + (BOOL)_shouldIgnoreChangeToBatteryLevel:(unsigned)batteryLevel;
 + (unsigned)_thresholdForLevel:(unsigned)level;
++ (void)initialize;
 + (void)saveLowBatteryLogWithCapacity:(int)capacity voltage:(int)voltage;
 + (void)setBatteryLevel:(unsigned)level;
 + (id)systemVersionDescription;

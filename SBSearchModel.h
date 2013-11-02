@@ -8,7 +8,7 @@
 #import <Foundation/NSObject.h>
 #import "SPDaemonQueryDelegate.h"
 
-@class CPSearchMatcher, NSArray, NSTimer, SPDaemonQueryToken, SPSearchResult, NSString, NSMutableArray, NSDate, NSMutableDictionary;
+@class NSArray, NSTimer, CPSearchMatcher, SPDaemonQueryToken, SPSearchResult, NSString, NSMutableArray, NSDate, NSMutableDictionary;
 
 @interface SBSearchModel : NSObject <SPDaemonQueryDelegate> {
 	NSString *_queryString;

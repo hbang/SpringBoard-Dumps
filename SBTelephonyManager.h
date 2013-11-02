@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
+#import "SpringBoard-Structs.h"
 #import "RadiosPreferencesDelegate.h"
 
-@class NSString, NSTimer, RadiosPreferences;
+@class NSTimer, RadiosPreferences, NSString;
 
 @interface SBTelephonyManager : NSObject <RadiosPreferencesDelegate> {
 	void *_suspendDormancyAssertion;
@@ -60,6 +60,7 @@
 - (int)callForwardingIndicator;
 - (BOOL)callWouldUseReceiver:(BOOL)receiver;
 - (void)carrierBundleChanged;
+- (BOOL)cellularRadioCapabilityIsActive;
 - (void)checkForRegistrationSoon;
 - (void)configureForTTY:(BOOL)tty;
 - (void)copyICCID:(id *)iccid IMEI:(id *)imei;

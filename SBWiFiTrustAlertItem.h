@@ -7,7 +7,7 @@
 
 #import "SBAlertItem.h"
 
-@class NSString, NSArray;
+@class NSArray, NSString;
 
 @interface SBWiFiTrustAlertItem : SBAlertItem {
 	NSString *_displayName;

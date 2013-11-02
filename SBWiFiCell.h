@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIAlertSheetTableCell.h>
+#import <UIKit/_UIAlertTableViewCell.h>
 
 
-@interface SBWiFiCell : UIAlertSheetTableCell {
+@interface SBWiFiCell : _UIAlertTableViewCell {
 	id _userInfo;
 }
 - (id)initWithFrame:(CGRect)frame networkDictionary:(id)dictionary;

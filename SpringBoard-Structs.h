@@ -5,15 +5,6 @@
  * Source: (null)
  */
 
-typedef struct {
-	BOOL _field1;
-	BOOL _field2;
-	BOOL _field3;
-	float _field4;
-	int _field5;
-	float _field6;
-} XXStruct_3B_lsC;
-
 typedef struct CGPoint {
 	float x;
 	float y;
@@ -31,6 +22,15 @@ typedef struct CGRect {
 
 typedef struct _NSZone NSZone;
 
+typedef struct {
+	BOOL _field1;
+	BOOL _field2;
+	BOOL _field3;
+	float _field4;
+	int _field5;
+	float _field6;
+} XXStruct_3B_lsC;
+
 typedef struct _NSRange {
 	unsigned _field1;
 	unsigned _field2;
@@ -47,8 +47,6 @@ typedef struct _opaque_pthread_t {
 	darwin_pthread_handler_rec *_field2;
 	BOOL _field3[596];
 } opaque_pthread_t;
-
-typedef struct __CFData *CFDataRef;
 
 typedef struct CGAffineTransform {
 	float a;
@@ -89,7 +87,11 @@ typedef struct __WiFiManagerClient WiFiManagerClient;
 
 typedef struct __WiFiDeviceClient WiFiDeviceClient;
 
+typedef struct __CFRunLoop *CFRunLoopRef;
+
 typedef struct __WiFiNetwork WiFiNetwork;
+
+typedef struct dispatch_source_s dispatch_source_s;
 
 typedef struct __CFArray *CFArrayRef;
 
@@ -144,8 +146,6 @@ typedef struct CGPath *CGPathRef;
 typedef struct __CFCharacterSet *CFCharacterSetRef;
 
 typedef struct dispatch_queue_s dispatch_queue_s;
-
-typedef struct dispatch_source_s dispatch_source_s;
 
 typedef struct SBProcessTimes {
 	double execTime;

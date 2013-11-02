@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIImageView.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface SBDownloadingProgressBar : UIImageView {

@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
 
-@class NSLock, NSMutableArray;
+@class NSMutableArray, NSLock;
 
 @interface SBAccelerometerInterface : NSObject {
 	NSLock *_lock;

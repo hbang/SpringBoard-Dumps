@@ -8,11 +8,14 @@
 #import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
 
-@class NSTimer;
+@class NSRecursiveLock;
+@protocol SBWiFiManagerDelegate;
 
 @interface SBWiFiManager : NSObject {
+	NSRecursiveLock *_lock;
 	WiFiManagerClient *_manager;
 	WiFiDeviceClient *_device;
+	CFRunLoopRef _callbackRunLoop;
 	WiFiNetwork *_currentNetwork;
 	BOOL _currentNetworkHasBeenSet;
 	BOOL _powered;
@@ -22,34 +25,31 @@
 	int _signalStrengthBars;
 	int _signalStrengthRSSI;
 	BOOL _signalStrengthHasBeenSet;
-	NSTimer *_signalStrengthTimer;
-	int _shouldPollSignalStrength;
 	BOOL _canPollSignalStrength;
-	id _delegate;
+	id<SBWiFiManagerDelegate> _delegate;
 	unsigned _notificationID;
 	double _lastSignalStrengthUpdateTime;
+	dispatch_source_s *_signalStrengthTimerSource;
 }
-+ (BOOL)hasWiFi;
+@property(retain) id<SBWiFiManagerDelegate> delegate;
 + (id)sharedInstance;
 - (id)init;
 - (void)_askToJoinWithID:(unsigned)anId;
 - (BOOL)_cachedIsAssociated;
 - (void)_joinComplete:(int)complete network:(WiFiNetwork *)network;
 - (void)_linkDidChange;
-- (WiFiManagerClient *)_manager;
+- (WiFiManagerClient *)_managerLocked;
 - (void)_powerStateDidChange;
+- (void)_runManagerCallbackThread;
 - (void)_scanComplete:(CFArrayRef)complete;
 - (void)_trustCallbackWithID:(unsigned)anId type:(int)type network:(WiFiNetwork *)network data:(id)data;
 - (void)_updateCurrentNetwork;
 - (void)_updateSignalStrengthTimer;
 - (void)acceptTrust:(id)trust;
-- (void)beginPollingForSignalStrength;
 - (void)cancelPicker:(BOOL)picker;
 - (void)cancelTrust:(BOOL)trust;
 - (id)currentNetworkName;
-- (void)dealloc;
 - (void)dismissAlerts;
-- (void)endPollingForSignalStrength;
 - (BOOL)isAssociated;
 - (void)joinNetwork:(id)network password:(id)password;
 - (BOOL)joining;
@@ -57,7 +57,6 @@
 - (BOOL)powered;
 - (void)resetSettings;
 - (void)scan;
-- (void)setDelegate:(id)delegate;
 - (void)setDevice:(WiFiDeviceClient *)device;
 - (void)setWiFiEnabled:(BOOL)enabled;
 - (int)signalStrengthBars;

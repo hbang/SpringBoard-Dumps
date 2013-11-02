@@ -6,16 +6,17 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "UITextFieldDelegate.h"
 #import <UIKit/UIView.h>
+#import "UITextFieldDelegate.h"
 
-@class SBFolderTitleLabel, SBFolderTextField, SBFolderIconListView, SBFolder, UIImageView;
+@class UIImageView, SBFolderTitleLabel, SBFolderTextField, SBLinenView, SBFolderIconListView, SBFolder;
 
 @interface SBFolderView : UIView <UITextFieldDelegate> {
 	SBFolder *_folder;
 	SBFolderTitleLabel *_label;
 	SBFolderTextField *_textField;
 	SBFolderIconListView *_iconListView;
+	SBLinenView *_backgroundView;
 	BOOL _isEditing;
 	UIImageView *_shadows[10];
 	unsigned _rows;
@@ -25,7 +26,9 @@
 + (CGSize)boundsSizeForRows:(unsigned)rows orientation:(int)orientation;
 + (CGRect)linenNotchRectForRows:(unsigned)rows orientation:(int)orientation notchInfo:(XXStruct_9ihRqB)info;
 + (CGRect)linenRectForRows:(unsigned)rows orientation:(int)orientation;
-- (id)initWithRows:(unsigned)rows notchInfo:(XXStruct_9ihRqB)info orientation:(int)orientation;
+- (id)initWithFrame:(CGRect)frame;
+- (void)_placeIconListView;
+- (void)_placeLabelAndTextField;
 - (void)_placeShadow:(int)shadow;
 - (void)_placeShadows;
 - (id)_shadowForPosition:(int)position;
@@ -40,6 +43,7 @@
 - (void)setFolderName:(id)name;
 - (void)setIconListView:(id)view;
 - (void)setIsEditing:(BOOL)editing animated:(BOOL)animated;
+- (void)setRows:(unsigned)rows notchInfo:(XXStruct_9ihRqB)info orientation:(int)orientation;
 - (BOOL)textField:(id)field shouldChangeCharactersInRange:(NSRange)range replacementString:(id)string;
 - (NSRange)textField:(id)field willChangeSelectionFromCharacterRange:(NSRange)characterRange toCharacterRange:(NSRange)characterRange3;
 - (void)textFieldDidBeginEditing:(id)textField;

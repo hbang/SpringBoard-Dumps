@@ -5,13 +5,12 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBSIMToolkitGetInputDisplay.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBSIMToolkitOneShotGetInputDisplay : SBSIMToolkitGetInputDisplay {
 }
-+ (id)newBottomBarForInstance:(id)instance;
 - (BOOL)textField:(id)field shouldInsertText:(id)text replacingRange:(NSRange)range;
 @end
 

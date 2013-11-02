@@ -5,15 +5,22 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
+#import "SpringBoard-Structs.h"
 
+@class UIImageView, UIImage;
 
 @interface SBSlidingViewHighlight : UIView {
+	UIImage *_highlightImage;
+	UIImageView *_leftHighlight;
+	UIImageView *_rightHighlight;
 	CGRect _notchRect;
 }
++ (float)defaultHeight;
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame notchRect:(CGRect)rect;
-- (void)drawRect:(CGRect)rect;
+- (void)dealloc;
+- (void)layoutSubviews;
+- (void)setNotchRect:(CGRect)rect;
 @end
 

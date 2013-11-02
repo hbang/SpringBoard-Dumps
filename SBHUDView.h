@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
+#import "SpringBoard-Structs.h"
 
-@class UILabel, UIImageView, UIImage, NSString;
+@class UIImageView, UIImage, UILabel, NSString;
 
 @interface SBHUDView : UIView {
 	int _level;

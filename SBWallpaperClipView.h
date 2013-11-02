@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIImageView.h>
 
-@class SBWallpaperView, UIView;
+@class UIView, SBWallpaperView;
 
 @interface SBWallpaperClipView : UIImageView {
 	SBWallpaperView *_wallpaperView;

@@ -12,7 +12,7 @@
 #import "SBIconDelegate.h"
 #import <Foundation/NSObject.h>
 
-@class TPLCDTextView, UIView, SBSearchController, NSTimer, SBIconListPageControl, UITouch, SBIconScrollView, UIKeyboard, SBIconModel, SBWallpaperNotchView, NSMutableArray, SBFolderSlidingView, SBDockIconListView, SBFolder, SBIconListView, SBFolderView, SBLeafIcon, SBRootFolder, SBIconIndexPath, SBIcon, SBSearchView;
+@class NSTimer, SBIconListView, SBIconScrollView, SBSearchView, SBWallpaperNotchView, SBFolderSlidingView, SBDockIconListView, SBSearchController, NSMutableArray, SBFolderView, SBIconModel, SBIconListPageControl, TPLCDTextView, UITouch, SBFolder, UIKeyboard, UIView, SBIcon, SBLeafIcon, SBRootFolder, SBIconIndexPath;
 
 @interface SBIconController : NSObject <UIScrollViewDelegate, SBIconListPageControlDelegate, SBIconDelegate> {
 	SBIconModel *_iconModel;
@@ -69,16 +69,18 @@
 	unsigned _disableUpdatingCurrentIconList : 1;
 	unsigned _onWallpaper : 1;
 	unsigned _animatingFolder : 1;
+	unsigned _folderClosedWhileAnimatingOpen : 1;
 	unsigned _grabbedIconHasEverEnteredFolderView : 1;
 	unsigned _grabbedIconIsDraggedOutOfFolderView : 1;
+	BOOL _allowsUninstall;
 	float _iconAlpha;
 	float _searchViewAlpha;
 	UITouch *_lastTouch;
-	float _iconScale;
 	CGPoint _dragPausePoint;
 	NSTimer *_dragPauseTimer;
 	NSTimer *_folderSpringloadTimer;
 	UIKeyboard *_folderKeyboard;
+	BOOL _folderKeyboardIsAnimatingRotation;
 }
 @property(readonly, assign, nonatomic) SBSearchController *searchController;
 + (id)sharedInstance;
@@ -86,6 +88,7 @@
 - (void)_addEmptyListIfNecessary;
 - (void)_awayControllerLocked:(id)locked;
 - (void)_awayControllerUnlocked:(id)unlocked;
+- (CGRect)_dockContainerViewFrameForCurrentOrientation;
 - (void)_dropIconInDestinationHole:(id)destinationHole;
 - (void)_finishedUnscattering;
 - (BOOL)_iconCanBeGrabbed:(id)grabbed;
@@ -97,8 +100,10 @@
 - (id)addEmptyListViewForFolder:(id)folder;
 - (void)addNewIconToDesignatedLocation:(id)designatedLocation animate:(BOOL)animate scrollToList:(BOOL)list saveIconState:(BOOL)state;
 - (void)adjustIconListAlpha;
+- (BOOL)allowsUninstall;
 - (void)animateToNewState:(float)newState domino:(BOOL)domino;
 - (void)animationDidStop:(id)animation finished:(BOOL)finished;
+- (BOOL)canUninstallIcon:(id)icon;
 - (void)cancelCloseFolderTimer;
 - (void)cancelDragPauseTimer;
 - (void)cancelFolderSpringloadTimer;
@@ -140,8 +145,6 @@
 - (void)iconGrabbed:(id)grabbed;
 - (void)iconHandleLongPress:(id)press;
 - (BOOL)iconPositionIsEditable:(id)editable;
-- (float)iconScale;
-- (float)iconScale:(id)scale;
 - (BOOL)iconShouldAllowGrab:(id)icon;
 - (BOOL)iconShouldAllowTap:(id)icon;
 - (void)iconTapped:(id)tapped;
@@ -196,6 +199,7 @@
 - (void)scrollViewDidEndScrollingAnimation:(id)scrollView;
 - (void)scrollViewDidScroll:(id)scrollView;
 - (void)scrollViewWillBeginDecelerating:(id)scrollView;
+- (void)setAllowsUninstall:(BOOL)uninstall;
 - (void)setCloseFolderTimerIfNecessary;
 - (void)setDestinationIconList:(id)list;
 - (void)setGrabbedIcon:(id)icon;
@@ -208,6 +212,7 @@
 - (void)setPageControlAlpha:(float)alpha;
 - (void)setPageControlVisible:(BOOL)visible;
 - (void)setRecipientIcon:(id)icon duration:(double)duration;
+- (void)setShouldRasterizeFirstIconList:(BOOL)rasterizeFirstIconList;
 - (void)setShowsFolderKeyboard:(BOOL)keyboard;
 - (void)showCarrierDebuggingAlertIfNeeded;
 - (void)showDock:(BOOL)dock startTime:(double)time duration:(double)duration;
@@ -233,21 +238,29 @@
 - (void)_cleanupForClosingFolderAnimated:(BOOL)closingFolderAnimated;
 - (void)_clearFolderViewAndSlidingViews;
 - (void)_compactRootListsAfterFolderClose;
+- (void)_computeUpperTransform:(CGAffineTransform *)transform lowerTransform:(CGAffineTransform *)transform2 notchTransform:(CGAffineTransform *)transform3 forFolderIcon:(id)folderIcon;
+- (CGRect)_contentViewRelativeFrameForIcon:(id)icon;
+- (void)_folderRotationIconFadeAnimationDidStop:(id)_folderRotationIconFadeAnimation finished:(id)finished context:(id)context;
 - (unsigned)_folderRowsForIconCount:(unsigned)iconCount;
+- (id)_ghostedIconListForRequester:(int)requester;
 - (id)_iconsOnGhostedListForRequester:(int)requester;
+- (id)_iconsOnGhostedListForRequester:(int)requester skippingIcon:(id)icon;
 - (void)_insertFolderViewAndSlidingViewsForFolder:(id)folder;
-- (void)_openCloseFolderAnimationEnded:(id)ended finished:(id)finished context:(id)context;
+- (void)_moveDroppedIconsIntoFolderIconListView;
+- (void)_moveDroppedIconsIntoRootIconListView;
+- (XXStruct_9ihRqB)_notchInfoForFolderIcon:(id)folderIcon;
+- (void)_openCloseFolderAnimationEnded:(id)ended finished:(id)finished context:(void *)context;
 - (void)_outOfFolderAnimation:(id)folderAnimation didFinish:(id)finish context:(id)context;
+- (void)_placeIcon:(id)icon inSlidingViewsWithNotchInfo:(XXStruct_9ihRqB)notchInfo;
+- (void)_positionFolderViewAndSlidingViewsForFolder:(id)folder notchInfo:(XXStruct_9ihRqB)info;
 - (id)_proposedFolderNameForGrabbedIcon:(id)grabbedIcon recipientIcon:(id)icon;
 - (void)_runFolderOpenCloseTest;
 - (void)_setHasAnimatingFolder:(BOOL)folder;
 - (void)_slideFolderOpen:(BOOL)open animated:(BOOL)animated;
 - (void)_snapshotFadeDidStop:(id)_snapshotFade finished:(id)finished snapshot:(id)snapshot;
-- (float)_tearLocationForFolderIcon:(id)folderIcon;
-- (void)_wallpaperImageChanged;
-- (id)_wallpaperOrNil;
 - (void)animateIcon:(id)icon intoFolderIcon:(id)icon2;
 - (void)animateIcons:(id)icons intoFolderIcon:(id)icon openFolderOnFinish:(BOOL)finish;
+- (void)cleanUpFolderAndSlidingViewsAfterRotation;
 - (void)cleanUpGhostlyIconsForRequester:(int)requester;
 - (void)clearFolderToReopenWhenSwitcherCloses;
 - (void)closeFolderAnimated:(BOOL)animated;
@@ -265,13 +278,13 @@
 - (BOOL)hasOpenFolder;
 - (id)iconListViewAtIndex:(unsigned)index inFolder:(id)folder createIfNecessary:(BOOL)necessary;
 - (BOOL)isDroppingIconsInOrOutOfFolder;
-- (void)moveDroppedIconsIntoFolderIconListView;
-- (void)moveDroppedIconsIntoRootIconListView;
 - (id)openFolder;
 - (void)openFolder:(id)folder animated:(BOOL)animated;
 - (void)openFolder:(id)folder animated:(BOOL)animated fromSwitcher:(BOOL)switcher;
 - (void)prepareToGhostCurrentPageIconsForRequester:(int)requester skipIcon:(id)icon;
+- (void)prepareToRotateFolderAndSlidingViewsToOrientation:(int)orientation;
 - (void)replaceFolderIcon:(id)icon byContainedIcon:(id)icon2 animated:(BOOL)animated;
+- (void)rotateFolderAndSlidingViewsWithDuration:(double)duration;
 - (void)saveFolderToReopenWhenSwitcherCloses;
 - (void)setCurrentPageIconsGhostly:(BOOL)ghostly forRequester:(int)requester skipIcon:(id)icon;
 - (void)setOpenFolder:(id)folder;

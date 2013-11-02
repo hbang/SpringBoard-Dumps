@@ -8,7 +8,7 @@
 #import <Foundation/NSObject.h>
 #import "NSCoding.h"
 
-@class NSDictionary, NSData, NSString, NSDate;
+@class NSDate, NSData, NSDictionary, NSString;
 
 @interface SBRemoteNotificationClient : NSObject <NSCoding> {
 	NSString *_bundleIdentifier;

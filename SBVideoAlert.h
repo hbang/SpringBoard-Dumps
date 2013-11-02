@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlert.h"
 
-@class NSURL, NSString, CNFConferenceController, CNFDisplayController;
+@class NSURL, CNFConferenceController, CNFDisplayController, NSString;
 
 @interface SBVideoAlert : SBAlert {
 	CNFConferenceController *_conferenceController;
@@ -22,6 +22,7 @@
 - (id)conferenceID;
 - (void)dealloc;
 - (id)displayController;
+- (void)handleLock:(BOOL)lock;
 - (id)inviter;
 - (void)inviterCanceledConference;
 @end

@@ -7,10 +7,9 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSTimer, NSMutableDictionary, CPAggregateDictionary;
+@class NSTimer, NSMutableDictionary;
 
 @interface SBAggregateDCommunicator : NSObject {
-	CPAggregateDictionary *_dictionary;
 	NSTimer *_periodicFlushTimer;
 	NSMutableDictionary *_applicationLastStateTime;
 	double _backlightOnStartTime;
@@ -38,6 +37,7 @@
 - (void)_startVPNConnectionTimer;
 - (void)_stopVPNConnectionTimer;
 - (void)dealloc;
+- (void)reportAddressBookSize;
 - (void)reportAppSwitcherActivated;
 - (void)reportApplicationState:(id)state oldState:(unsigned)state2 newState:(unsigned)state3;
 - (void)reportCallDuration:(double)duration connectionType:(int)type;

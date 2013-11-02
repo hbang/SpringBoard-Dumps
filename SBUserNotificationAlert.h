@@ -7,7 +7,7 @@
 
 #import "SBAlertItem.h"
 
-@class NSDictionary, UIImage, NSString, AVController, NSTimer;
+@class AVController, NSTimer, NSDictionary, UIImage, NSString;
 
 @interface SBUserNotificationAlert : SBAlertItem {
 	unsigned _replyPort;

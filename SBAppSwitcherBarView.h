@@ -9,46 +9,62 @@
 #import <UIKit/UIView.h>
 #import "SBAppSwitcherScrollViewDelegate.h"
 
-@class SBAppSwitcherScrollView, UIImageView, NSMutableArray;
+@class UIImageView, SBLinenView, NSMutableArray, SBAppSwitcherScrollView;
 @protocol SBAppSwitcherBarViewDelegate;
 
 @interface SBAppSwitcherBarView : UIView <SBAppSwitcherScrollViewDelegate> {
 	id<SBAppSwitcherBarViewDelegate> _delegate;
-	int _orientation;
 	NSMutableArray *_appIcons;
 	UIView *_contentView;
-	UIImageView *_backgroundImage;
-	UIView *_auxView;
+	SBLinenView *_backgroundView;
+	NSMutableArray *_auxViews;
 	SBAppSwitcherScrollView *_scrollView;
 	UIImageView *_topShadowView;
 	UIImageView *_bottomShadowView;
+	BOOL _animateContentReflow;
+	BOOL _animatedScrolling;
+	int _lastPageIndex;
+	BOOL _isVisible;
 }
-@property(retain, nonatomic) UIView *auxiliaryView;
 @property(assign, nonatomic) id<SBAppSwitcherBarViewDelegate> delegate;
++ (float)edgePaddingForWidth:(float)width;
 + (unsigned)iconsPerPage:(int)page;
-+ (CGSize)viewSize;
-- (id)initWithOrientation:(int)orientation;
-- (CGPoint)_firstPageOffset;
-- (CGRect)_frameForIndex:(unsigned)index withSize:(CGSize)size;
++ (CGSize)viewSize:(int)size;
+- (id)initWithFrame:(CGRect)frame;
+- (void)_adjustContentOffsetForReflow:(BOOL)reflow;
+- (void)_adjustContentOffsetForResizeFromOldOffset:(CGPoint)oldOffset andOldSize:(CGSize)size toNewSize:(CGSize)newSize;
+- (void)_adjustScrollContentSize;
+- (CGPoint)_firstPageOffset:(CGSize)offset;
+- (unsigned)_iconCountForWidth:(float)width;
+- (CGRect)_iconFrameForIndex:(unsigned)index withSize:(CGSize)size;
 - (void)_iconRemoveDidStop:(id)_iconRemove finished:(id)finished context:(id)context;
 - (unsigned)_pageCount;
+- (int)_pageForIndex:(unsigned)index;
+- (int)_pageForOffset:(CGPoint)offset withSize:(CGSize)size;
 - (void)_positionAtFirstPage:(BOOL)firstPage;
 - (void)_reflowContent:(BOOL)content;
-- (void)_setOrientation:(int)orientation;
+- (void)addAuxiliaryViews:(id)views;
+- (void)addIcon:(id)icon;
+- (BOOL)airPlayControlsVisible;
 - (id)appIcons;
 - (id)applicationIconForDisplayIdentifier:(id)displayIdentifier;
 - (void)dealloc;
 - (void)didMoveToSuperview;
-- (BOOL)isScrollingOrOtherwiseBusy;
+- (BOOL)isScrolling;
 - (void)layoutSubviews;
 - (BOOL)nowPlayingControlsVisible;
 - (void)positionForHidden;
 - (void)positionForRevealed;
-- (void)prepareForDisplay:(id)display orientation:(int)orientation;
+- (void)prepareForDisplay:(id)display;
 - (void)removeIcon:(id)icon;
 - (void)replaceIcons:(id)icons with:(id)with;
 - (BOOL)scrollView:(id)view shouldCancelInContentForView:(id)view2;
+- (void)scrollViewDidEndDecelerating:(id)scrollView;
+- (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidEndScrollingAnimation:(id)scrollView;
+- (void)scrollViewDidScroll:(id)scrollView;
 - (void)setEditing:(BOOL)editing;
+- (void)viewWillAppear;
+- (void)viewWillDisappear;
 @end
 

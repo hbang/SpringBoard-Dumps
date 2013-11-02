@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
+#import "SpringBoard-Structs.h"
 
-@class SBResetProgressView, NSTimer;
+@class NSTimer, SBResetProgressView;
 
 @interface SBResetView : UIView {
 	SBResetProgressView *_progressView;

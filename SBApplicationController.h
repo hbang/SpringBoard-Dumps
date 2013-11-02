@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSMutableSet, NSOperationQueue, NSMutableDictionary, NSTimer, CPDistributedNotificationCenter, SBProcess, NSLock;
+@class NSLock, NSTimer, CPDistributedNotificationCenter, SBProcess, NSOperationQueue, NSMutableSet, NSDictionary, NSMutableDictionary;
 
 @interface SBApplicationController : NSObject {
 	NSDictionary *_pendingApplicationDictionaries;
@@ -35,6 +35,7 @@
 - (BOOL)_hasRequiredCapabilities:(id)capabilities;
 - (BOOL)_locationActiveForAppWithDetails:(id)details;
 - (void)_locationIconTimerFired:(id)fired;
+- (void)_mediaServerConnectionDied:(id)died;
 - (void)_recordingStateChanged:(id)changed;
 - (void)_registerForAudioRecordingNotifications;
 - (void)_registerForAwayControllerDidLockNotification;
@@ -42,6 +43,7 @@
 - (void)_removeLocationIconTimer;
 - (void)_setLocationIconTimer;
 - (void)_setSuspendTypeForApp:(id)app;
+- (void)_unregisterForAudioRecordingNotifications;
 - (void)_updateLocationState;
 - (id)allApplications;
 - (Class)applicationClassForBundleIdentifier:(id)bundleIdentifier;

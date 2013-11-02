@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class SBRootFolder, NSSet, NSDictionary, NSMutableSet, NSMutableDictionary;
+@class SBRootFolder, NSSet, NSMutableSet, NSDictionary, NSMutableDictionary;
 
 @interface SBIconModel : NSObject {
 	NSDictionary *_lastKnownUserGeneratedIconState;

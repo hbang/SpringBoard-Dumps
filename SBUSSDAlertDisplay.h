@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "UITextFieldDelegate.h"
 #import "SBAlertDisplay.h"
+#import "UITextFieldDelegate.h"
 
-@class TPBottomButtonBar, UITransitionView, UIScrollView, UIActivityIndicatorView, SBTextDisplayView, UITextField;
+@class UITransitionView, UIScrollView, UIActivityIndicatorView, UITextField, SBTextDisplayView, TPBottomButtonBar;
 
 @interface SBUSSDAlertDisplay : SBAlertDisplay <UITextFieldDelegate> {
 	TPBottomButtonBar *_responseBar;

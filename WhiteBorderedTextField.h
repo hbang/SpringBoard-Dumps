@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UITextField.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface WhiteBorderedTextField : UITextField {

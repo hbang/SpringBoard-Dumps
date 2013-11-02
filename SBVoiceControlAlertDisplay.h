@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import "SBSlidingAlertDisplay.h"
 #import "SpringBoard-Structs.h"
 #import "VSSpeechSynthesizerDelegate.h"
 #import "VSRecognitionSessionDelegate.h"
-#import "SBSlidingAlertDisplay.h"
 
-@class VSRecognitionSession, NSInvocation, NSMutableIndexSet, NSTimer, AVController, NSDictionary, UITextField, UIKeyboard, NSMutableArray, NSMutableSet;
+@class NSDictionary, NSMutableIndexSet, UITextField, UIKeyboard, NSMutableArray, NSMutableSet, NSTimer, AVController, VSRecognitionSession, NSInvocation;
 
 @interface SBVoiceControlAlertDisplay : SBSlidingAlertDisplay <VSRecognitionSessionDelegate, VSSpeechSynthesizerDelegate> {
 	VSRecognitionSession *_session;
@@ -65,6 +65,7 @@
 - (void)_mediaPlayerDied;
 - (void)_notifyDeviceTermination;
 - (id)_openTelURL:(id)url;
+- (id)_openVideoURL:(id)url;
 - (void)_performConfirmationAction;
 - (void)_performNoMatchFound;
 - (void)_performSoundCompletionAction;

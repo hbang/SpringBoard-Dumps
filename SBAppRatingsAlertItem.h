@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "UIAlertViewDelegate.h"
 #import "SBAlertItem.h"
+#import "UIAlertViewDelegate.h"
 
-@class UIPushButton, SBUserInstalledApplicationIcon;
+@class SBUserInstalledApplicationIcon, UIPushButton;
 
 @interface SBAppRatingsAlertItem : SBAlertItem <UIAlertViewDelegate> {
 	SBUserInstalledApplicationIcon *_icon;

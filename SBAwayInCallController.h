@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
+#import "SpringBoard-Structs.h"
 
-@class UIImage, NSString, NSTimer, TPLCDView;
+@class NSTimer, TPLCDView, UIImage, NSString;
 
 @interface SBAwayInCallController : NSObject {
 	TPLCDView *_lcdView;

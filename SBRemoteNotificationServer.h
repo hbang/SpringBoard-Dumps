@@ -6,8 +6,8 @@
  */
 
 #import <Foundation/NSObject.h>
-#import "SBRemoteLocalNotificationAlertDelegate.h"
 #import "APSConnectionDelegate.h"
+#import "SBRemoteLocalNotificationAlertDelegate.h"
 
 @class NSMutableDictionary, NSString;
 

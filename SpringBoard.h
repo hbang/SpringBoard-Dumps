@@ -5,18 +5,21 @@
  * Source: (null)
  */
 
-#import <UIKit/UIApplication.h>
 #import "SpringBoard-Structs.h"
+#import "SBWiFiManagerDelegate.h"
+#import "UIApplicationDelegate.h"
+#import <UIKit/UIApplication.h>
 #import "SpringBoard.h"
 
-@class NSTimer, SBApplication, SBDimmingWindow, NSURL, NSSet, NSDictionary, NSString, SBUIController, NSMutableArray, NSNumberFormatter, NSDate;
+@class NSDictionary, NSString, NSMutableArray, SBDimmingWindow, SBApplication, NSNumberFormatter, NSDate, NSTimer, SBUIController, NSURL, NSSet;
 
-@interface SpringBoard : UIApplication {
+@interface SpringBoard : UIApplication <UIApplicationDelegate, SBWiFiManagerDelegate> {
 	SBUIController *_uiController;
 	NSTimer *_menuButtonTimer;
 	NSTimer *_lockButtonTimer;
 	NSTimer *_idleTimer;
 	NSTimer *_autoLockTimer;
+	double _lastUndimEventTime;
 	double _lastTimeIdleCausedDim;
 	double _headsetButtonDownTime;
 	GSEventRef _headsetDownEvent;
@@ -33,6 +36,7 @@
 	unsigned _headsetDownDelayedActionPerformed : 1;
 	unsigned _nowPlayingAppIsPlaying : 1;
 	unsigned _isSeekingInMedia : 1;
+	unsigned _forcePortraitStatusBarOrientation : 1;
 	int _mediaSeekDirection;
 	float _currentBacklightLevel;
 	unsigned _springBoardRequestsAccelerometerEvents;
@@ -67,9 +71,12 @@
 - (void *)_accessibilityEventTapCallback;
 - (id)_accessibilityFrontMostApplication;
 - (BOOL)_accessibilityIsSBStealingEvents;
+- (BOOL)_accessibilityObjectWithinProximity;
 - (id)_accessibilityRunningApplications;
 - (void)_accessibilitySetEventTapCallback:(void *)callback;
+- (id)_accessibilityTopDisplay;
 - (void)_adjustMidnightTimerAfterSleep;
+- (BOOL)_alertWindowShouldRotate;
 - (void)_applicationOpenURL:(id)url event:(GSEventRef)event;
 - (void)_beginThermalJetsamCPUSampling;
 - (void)_createLogFile;
@@ -87,6 +94,7 @@
 - (void)_mapsVisibilityChanged;
 - (void)_menuButtonWasHeld;
 - (void)_midnightPassed;
+- (void)_migrateMenuDoubleTapSetting;
 - (id)_newAppsCPUTimesDictionary;
 - (void)_nowPlayingAppDidChangeNotification:(id)_nowPlayingApp;
 - (void)_performDelayedHeadsetAction;
@@ -137,6 +145,7 @@
 - (void)clearLaunchedAfterLanguageRestart;
 - (void)clearMenuButtonTimer;
 - (float)currentBacklightLevel;
+- (int)currentInterfaceOrientation;
 - (void)debuggingAndDemoPrefsWereChanged;
 - (void)didDismissMiniAlert;
 - (void)didIdle;
@@ -193,7 +202,7 @@
 - (void)quitTopApplication:(GSEventRef)application;
 - (void)reboot;
 - (void)relaunchSpringBoard;
-- (void)resetIdleDuration:(double)duration;
+- (void)reportStatusBarOrientationAsPortrait:(BOOL)portrait;
 - (void)resetIdleTimerAndUndim;
 - (void)resetIdleTimerAndUndim:(BOOL)undim;
 - (BOOL)respondImmediatelyToMenuSingleTapAllowingDoubleTap:(BOOL *)menuSingleTapAllowingDoubleTap;
@@ -213,6 +222,7 @@
 - (void)setHasMiniAlerts:(BOOL)alerts;
 - (void)setNowPlayingInfo:(id)info forApplication:(id)application;
 - (void)setSimpleRemoteRoutingPriority:(unsigned)priority forApplication:(id)application;
+- (void)setSystemVolumeHUDEnabled:(BOOL)enabled forAudioCategory:(id)audioCategory;
 - (void)setZoomTouchEnabled:(BOOL)enabled;
 - (void)setupMidnightTimer;
 - (BOOL)shouldDimToBlackInsteadOfLock;
@@ -230,6 +240,7 @@
 - (void)smsPrefsChanged;
 - (id)springBoardPluginsDirectory;
 - (int)statusBar:(id)bar styleForRequestedStyle:(int)requestedStyle overrides:(int)overrides;
+- (int)statusBarOrientation;
 - (void)statusBarReturnActionTap:(GSEventRef)tap;
 - (float)systemBacklightLevel;
 - (void)systemWillSleep;

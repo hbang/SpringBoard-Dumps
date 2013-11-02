@@ -8,11 +8,12 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UITableViewCell.h>
 
-@class UIFont, NSString, NSArray;
+@class NSArray, UIFont, NSString;
 
 @interface SBSearchTableViewCell : UITableViewCell {
 	UIFont *_titleFont;
 	UIFont *_subtitleFont;
+	UIFont *_topHitFont;
 	NSString *_title;
 	NSString *_subtitle;
 	NSArray *_subtitleComponents;

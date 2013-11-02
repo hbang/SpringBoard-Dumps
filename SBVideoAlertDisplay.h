@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "ABPredicateDelegate.h"
 #import "SBSlidingAlertDisplay.h"
+#import "ABPredicateDelegate.h"
 
-@class TPBottomBar, NSString;
+@class NSString, TPBottomBar;
 
 @interface SBVideoAlertDisplay : SBSlidingAlertDisplay <ABPredicateDelegate> {
 	TPBottomBar *newBottomBar;
@@ -28,7 +28,6 @@
 - (void)_acceptAnimationDidStop;
 - (void)_ringIfNecessary;
 - (BOOL)_shouldAutoAnswerConference;
-- (void)_videoAlertAnimationDidStop;
 - (void)accept;
 - (void)alertDisplayBecameVisible;
 - (void)alertDisplayWillBecomeVisible;

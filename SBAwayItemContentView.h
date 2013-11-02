@@ -6,14 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBHUDView.h"
+#import <UIKit/UIView.h>
 
 
-@interface SBRotationLockHUDView : SBHUDView {
-	BOOL _locked;
+@interface SBAwayItemContentView : UIView {
 }
-@property(assign, nonatomic, getter=isLocked) BOOL locked;
-- (id)init;
-- (void)_updateLockedImage;
+- (void)drawItems;
+- (void)drawRect:(CGRect)rect;
 @end
 

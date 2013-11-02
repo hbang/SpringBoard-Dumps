@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableSet, NSMutableDictionary, NSString, SBFolderIcon, NSMutableArray;
+@class NSMutableArray, SBFolderIcon, NSMutableSet, NSMutableDictionary, NSString;
 
 @interface SBFolder : NSObject {
 	NSString *_displayName;

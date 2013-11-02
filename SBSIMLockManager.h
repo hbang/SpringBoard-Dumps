@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
+#import "SpringBoard-Structs.h"
 
-@class NSString, SBSIMLockAlertItem, SBSIMLockEntryAlert;
+@class SBSIMLockAlertItem, SBSIMLockEntryAlert, NSString;
 
 @interface SBSIMLockManager : NSObject {
 	BOOL _isInitialUpdate;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBSlidingAlertDisplay.h"
+#import "SpringBoard-Structs.h"
 
-@class SBTextDisplayView, UIScrollView;
+@class UIScrollView, SBTextDisplayView;
 
 @interface SBSIMToolkitTextAlertDisplay : SBSlidingAlertDisplay {
 	SBTextDisplayView *_contentView;
@@ -25,6 +25,7 @@
 - (void)dismiss;
 - (void)dismiss:(id)dismiss;
 - (void)displayDidTimeout;
+- (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)leftNavigationButtonPressed;
 - (void)rightNavigationButtonPressed;
 - (void)setMiddleContentAlpha:(float)alpha;

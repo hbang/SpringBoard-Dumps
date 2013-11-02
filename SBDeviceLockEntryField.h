@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
 #import "UIKeyInput.h"
+#import <UIKit/UIView.h>
+#import "SpringBoard-Structs.h"
 
-@class NSString, UIPasscodeField, UITextInputTraits;
+@class UIPasscodeField, UITextInputTraits, NSString;
 
 @interface SBDeviceLockEntryField : UIView <UIKeyInput> {
 	int _style;

@@ -5,17 +5,14 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <TelephonyUI/TPBottomLockBar.h>
 
 @class NSMutableDictionary, UIButton;
 
 @interface SBAwayLockBar : TPBottomLockBar {
-	UIButton *_bluetoothButton;
 	UIButton *_slideshowButton;
 	NSMutableDictionary *_orientationToButtonImages;
 }
-- (void)_bluetoothButtonActivated:(id)activated;
 - (id)_newButtonWithAction:(SEL)action tag:(int)tag;
 - (id)_selectedImageForButtonTag:(int)buttonTag interfaceOrientation:(int)orientation;
 - (void)_setImagesForButton:(id)button orientation:(int)orientation;
@@ -23,9 +20,7 @@
 - (void)_slideshowButtonActivated:(id)activated;
 - (id)_unselectedImageForButtonTag:(int)buttonTag interfaceOrientation:(int)orientation;
 - (void)dealloc;
-- (id)hitTest:(CGPoint)test withEvent:(id)event;
 - (void)setOrientation:(int)orientation;
-- (void)setShowsBluetoothButton:(BOOL)button animated:(BOOL)animated;
 - (void)setShowsSlideshowButton:(BOOL)button;
 - (void)setSlideshowButtonSelected:(BOOL)selected;
 @end

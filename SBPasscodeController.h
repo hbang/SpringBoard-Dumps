@@ -7,7 +7,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class SBPasscodeComplianceAlertItem, SBPasscodeAlertItem, NSString, NSDate;
+@class NSDate, SBPasscodeComplianceAlertItem, SBPasscodeAlertItem, NSString;
 
 @interface SBPasscodeController : NSObject {
 	SBPasscodeAlertItem *_passcodeAlertItem;

@@ -5,16 +5,19 @@
  * Source: (null)
  */
 
-#import "SBFlippyAlertItem.h"
 #import "UIAlertViewDelegate.h"
+#import "SBFlippyAlertItem.h"
 
-@class MPAudioDeviceController;
+@class UIButton, MPAudioDeviceController;
 
 @interface SBNowPlayingAlertItem : SBFlippyAlertItem <UIAlertViewDelegate> {
 	unsigned _beganSeeking : 1;
 	unsigned _deferLayout : 1;
 	unsigned _needsLayout : 1;
 	MPAudioDeviceController *_audioDeviceController;
+	UIButton *_prevButton;
+	UIButton *_playButton;
+	UIButton *_nextButton;
 }
 - (id)init;
 - (void)_changeTrackButtonDown:(id)down;

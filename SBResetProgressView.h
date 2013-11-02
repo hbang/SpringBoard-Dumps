@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
+#import "SpringBoard-Structs.h"
 
-@class UIColor, UIBezierPath;
+@class UIBezierPath, UIColor;
 
 @interface SBResetProgressView : UIView {
 	UIColor *_progressColor;

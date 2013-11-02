@@ -7,7 +7,7 @@
 
 #import "SBAlertItem.h"
 
-@class NSString, NSDate;
+@class NSDate, NSString;
 
 @interface SBVoiceMailAlertItem : SBAlertItem {
 	BOOL _isForVisualVoicemail;

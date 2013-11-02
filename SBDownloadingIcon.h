@@ -7,7 +7,7 @@
 
 #import "SBLeafIcon.h"
 
-@class SSDownload, SSDownloadStatus, NSString, SBDownloadingProgressBar;
+@class SSDownload, SSDownloadStatus, SBDownloadingProgressBar, NSString;
 
 @interface SBDownloadingIcon : SBLeafIcon {
 	NSString *_leafIdentifier;

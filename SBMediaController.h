@@ -19,7 +19,9 @@
 	int _numberOfVolumeDecreasesSinceDownButtonDown;
 	int _lastNowPlayingAppPID;
 	BOOL _lastNowPlayingAppIsPlaying;
+	BOOL _suppressHUD;
 }
+@property(assign) BOOL suppressHUD;
 + (BOOL)applicationCanBeConsideredNowPlaying:(id)playing;
 + (id)sharedInstance;
 - (id)init;

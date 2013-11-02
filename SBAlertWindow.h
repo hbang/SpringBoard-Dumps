@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <UIKit/UIWindow.h>
 
-@class NSMutableDictionary, NSMutableArray, SBAlertDisplay, UIView;
+@class NSMutableArray, UIView, SBAlertDisplay, NSMutableDictionary;
 
 @interface SBAlertWindow : UIWindow {
 	UIView *_contentLayer;

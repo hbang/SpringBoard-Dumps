@@ -5,15 +5,18 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAlertItem.h"
+#import "SpringBoard-Structs.h"
+#import "SBWiFiManagerDelegate.h"
+#import "UITableViewDelegate.h"
+#import "UITableViewDataSource.h"
 
-@class NSDictionary, NSString, NSTimer, NSMutableArray, UITable;
+@class NSTimer, NSDictionary, UITableView, NSString, NSMutableArray;
 
-@interface SBWiFiAlertItem : SBAlertItem {
+@interface SBWiFiAlertItem : SBAlertItem <UITableViewDelegate, UITableViewDataSource, SBWiFiManagerDelegate> {
 	NSMutableArray *_networks;
 	NSTimer *_scanTimer;
-	UITable *_table;
+	UITableView *_table;
 	CGSize _size;
 	int _joinRow;
 	NSString *_password;
@@ -47,8 +50,9 @@
 - (void)performUnlockAction;
 - (void)scan;
 - (void)setNetworks:(id)networks;
-- (id)table:(id)table cellForRow:(int)row column:(id)column;
-- (void)tableSelectionDidChange:(id)tableSelection;
+- (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;
+- (void)tableView:(id)view didSelectRowAtIndexPath:(id)indexPath;
+- (int)tableView:(id)view numberOfRowsInSection:(int)section;
 - (void)wifiManager:(id)manager joinCompleted:(int)completed;
 - (void)wifiManager:(id)manager scanCompleted:(id)completed;
 - (void)willActivate;

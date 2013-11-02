@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
-#import "SpringBoard-Structs.h"
 #import "SBIcon.h"
+#import "SpringBoard-Structs.h"
+#import <UIKit/UIView.h>
 
-@class SBIconLabel, SBIconBadge, NSTimer, SBIconImageContainerView, UIImageView, UIImage, SBIconImageView;
+@class SBIconImageContainerView, SBIconImageView, SBIconLabel, UIImageView, SBIconBadge, UIImage, NSTimer;
 @protocol SBIconDelegate;
 
 @interface SBIcon : UIView {
@@ -59,6 +59,7 @@
 + (id)dequeueReusableIconImageView;
 + (void)enqueueReusableIconImageView:(id)view;
 + (id)genericAppIcon:(int)icon;
++ (id)homeScreenIconOverlayImage;
 - (id)initWithDefaultSize;
 - (id)_automationID;
 - (void)_darkenIconImage:(float)image;
@@ -94,6 +95,7 @@
 - (id)dropGlow;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
+- (CGRect)frameForIconOverlay;
 - (id)generateIconImage:(int)image;
 - (id)getIconImage:(int)image;
 - (int)ghostlyRequesters;
@@ -102,8 +104,6 @@
 - (BOOL)hasBadge;
 - (void)hideCloseBoxAnimationDidStop:(id)hideCloseBoxAnimation didFinish:(id)finish closeBox:(id)box;
 - (id)iconImageView;
-- (CGPoint)iconOverlayPosition;
-- (float)iconScale;
 - (id)imageForReflection;
 - (BOOL)isGhostly;
 - (BOOL)isGrabbed;
@@ -228,5 +228,9 @@
 - (BOOL)isLeafIcon;
 - (id)leafIdentifier;
 - (id)webClip;
+@end
+
+@interface SBIcon (SBPrintStatusIcon)
+- (BOOL)isPrintStatusIcon;
 @end
 

@@ -5,23 +5,25 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIAlertView.h>
 
-@class NSArray;
+@class NSArray, UIView;
 
 @interface SBAwayItemsView : UIAlertView {
+	UIView *_itemView;
 	NSArray *_displayedItems;
 	float _widestLabel;
 }
+- (id)init;
+- (id)_displayedItems;
 - (id)_labelForAwayItem:(id)awayItem count:(int)count;
 - (id)_titleForAwayItem:(id)awayItem count:(int)count;
+- (float)_widestLabel;
 - (void)dealloc;
-- (void)drawItems;
-- (void)drawRect:(CGRect)rect;
 - (BOOL)hasAwayItems;
 - (id)itemLabelFont;
 - (id)itemTitleFont;
+- (void)layout;
 - (BOOL)reloadData;
 @end
 

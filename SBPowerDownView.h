@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAlertDisplay.h"
+#import "SpringBoard-Structs.h"
 
-@class SBPowerDownController, NSTimer, TPBottomButtonBar, TPTopLockBar;
+@class NSTimer, TPBottomButtonBar, TPTopLockBar, SBPowerDownController;
 
 @interface SBPowerDownView : SBAlertDisplay {
 	UIView *_dimView;

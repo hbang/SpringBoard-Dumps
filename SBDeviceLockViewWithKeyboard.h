@@ -16,6 +16,7 @@
 	BOOL _wasMinimizedWhenAnimationStarted;
 	BOOL _triedToMinMaxWhileRotating;
 }
+- (void)_acceptOrCancelReturnKeyPress;
 - (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (void)_layoutEntryView;
 - (void)_layoutForCurrentOrientation;

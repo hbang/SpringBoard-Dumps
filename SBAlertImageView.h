@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
+#import "SpringBoard-Structs.h"
 
-@class UILabel, UIImageView;
+@class UIImageView, UILabel;
 
 @interface SBAlertImageView : UIView {
 	UIImageView *_imageView;

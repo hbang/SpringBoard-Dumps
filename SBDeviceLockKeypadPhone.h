@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBDeviceLockKeypad.h"
 
-@class UIPushButton, SBEmergencyCallButton, UIImage;
+@class UIPushButton, UIImage, SBEmergencyCallButton;
 
 @interface SBDeviceLockKeypadPhone : SBDeviceLockKeypad {
 	SBEmergencyCallButton *_emergencyCallButton;

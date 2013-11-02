@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "UIAlertViewDelegate.h"
+#import <Foundation/NSObject.h>
 
 @class UIAlertView;
 
