@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBBulletinObserverSectionHeaderView.h"
 
-@class UIImageView, SBNotificationCenterSeparatorView, UILabel;
+@class UILabel, UIImageView, SBNotificationCenterSeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface SBTodayWidgetAndTomorrowSectionHeaderView : SBBulletinObserverSectionHeaderView {

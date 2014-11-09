@@ -7,7 +7,7 @@
 
 #import "SBBBItemInfo.h"
 
-@class NSString, BBBulletin;
+@class BBBulletin, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBBBBulletinInfo : SBBBItemInfo {

@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBScaleIconZoomAnimator.h"
 
-@class SBFolderIconView, SBFolderController, SBFloatyFolderView, SBFolderZoomSettings, SBFolderIcon, _SBInnerFolderIconZoomAnimator;
+@class SBFolderIcon, _SBInnerFolderIconZoomAnimator, SBFolderController, SBFloatyFolderView, SBFolderZoomSettings, SBFolderIconView;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderIconZoomAnimator : SBScaleIconZoomAnimator {

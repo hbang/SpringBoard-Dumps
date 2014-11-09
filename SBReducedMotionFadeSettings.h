@@ -12,5 +12,6 @@ __attribute__((visibility("hidden")))
 @interface SBReducedMotionFadeSettings : SBIconAnimationSettings {
 }
 + (id)settingsControllerModule;
+- (void)setDefaultValues;
 @end
 

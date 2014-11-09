@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "LSApplicationWorkspaceObserverProtocol.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSSet, LSApplicationWorkspace, NSHashTable, NSMutableSet;
+@class LSApplicationWorkspace, NSSet, NSMutableSet, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface SBLSApplicationWorkspaceObserver : XXUnknownSuperclass <LSApplicationWorkspaceObserverProtocol> {

@@ -6,8 +6,8 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBControlCenterObserver.h"
 #import "SBAlertManagerObserver.h"
+#import "SBControlCenterObserver.h"
 
 @class SBAlertManager;
 
@@ -34,7 +34,8 @@ __attribute__((visibility("hidden")))
 - (void)_noteLocked;
 - (void)_noteMediaControlsDidAppear;
 - (void)_noteMediaControlsDidDisappear;
-- (void)_noteNotificationCenterNotificationsWillAppear;
+- (void)_noteNotificationCenterAllWillAppear;
+- (void)_noteNotificationCenterMissedWillAppear;
 - (void)_noteNotificationCenterTodayWillAppear;
 - (void)_noteNotificationCenterWillDismiss;
 - (void)_noteSearchVisibilityDidChange:(id)_noteSearchVisibility;

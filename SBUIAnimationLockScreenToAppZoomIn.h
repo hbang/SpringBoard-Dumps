@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class SBWindow, UIView, SBDisableAppStatusBarAlphaChangesAssertion, SBAlert;
+@class SBDisableAppStatusBarAlphaChangesAssertion, SBWindow, UIView, SBAlert;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationLockScreenToAppZoomIn : SBUIMainScreenAnimationController {

@@ -11,7 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface SBLockScreenEmergencyCallViewController : XXUnknownSuperclass {
 }
+- (int)_wallpaperStyleFromUIBackgroundStyle:(int)uibackgroundStyle;
 - (void)dismiss;
+- (void)setBackgroundStyle:(int)style;
+- (id)tintColorForBackgroundStyle:(int)backgroundStyle outBlurRadius:(float *)radius;
 - (void)viewServiceDidTerminateWithError:(id)viewService;
 @end
 

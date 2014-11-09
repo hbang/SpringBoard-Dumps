@@ -6,19 +6,17 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBCollectionViewCell.h"
 #import "SBUIBannerView.h"
+#import "SBCollectionViewCell.h"
 
-@class UIView, UIColor, SBBannerContextView;
+@class SBBannerContextView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBannerCell : SBCollectionViewCell <SBUIBannerView> {
 	SBBannerContextView *_contextView;
 	UIView *_darkeningOverlayView;
 }
-@property(copy, nonatomic) UIColor *grabberColor;
 - (id)initWithFrame:(CGRect)frame;
-- (void)_didSetHighlighted:(BOOL)highlighted;
 - (id)bannerContext;
 - (void)dealloc;
 - (void)noteDidAppear;

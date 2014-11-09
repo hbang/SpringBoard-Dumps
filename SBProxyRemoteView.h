@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, SBApplication;
+@class SBApplication, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBProxyRemoteView : XXUnknownSuperclass {

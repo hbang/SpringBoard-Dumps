@@ -5,6 +5,7 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSMutableArray;
@@ -13,10 +14,11 @@ __attribute__((visibility("hidden")))
 @interface SBIconContentView : XXUnknownSuperclass {
 	int _orientation;
 	NSMutableArray *_folderContentViews;
-	float _searchGestureProgress;
 }
 @property(assign, nonatomic) int orientation;
 - (id)initWithOrientation:(int)orientation;
+- (id)_folderViews;
+- (CGRect)_frameForFolderView:(id)folderView;
 - (void)clearAllFolderContentViews;
 - (void)dealloc;
 - (void)didAddSubview:(id)subview;

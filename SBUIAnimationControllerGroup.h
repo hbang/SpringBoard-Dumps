@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBUIAnimationControllerDelegate.h"
 #import "SBUIAnimationController.h"
+#import "SBUIAnimationControllerDelegate.h"
 
-@class NSMutableArray, NSArray;
+@class NSArray, NSMutableArray;
 @protocol SBUIAnimationControllerGroupDelegate;
 
 __attribute__((visibility("hidden")))

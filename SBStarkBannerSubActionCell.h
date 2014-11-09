@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBCollectionViewCell.h"
 
-@class NSString, UILabel;
+@class UILabel, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBannerSubActionCell : SBCollectionViewCell {

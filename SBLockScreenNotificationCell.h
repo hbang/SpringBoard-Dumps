@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBNotificationCell.h"
 #import "SpringBoard-Structs.h"
+#import "SBNotificationCell.h"
 
-@class UILabel, SBLockScreenNotificationScrollView, SBUnlockActionContext, UIButton, UIView;
-@protocol UIScrollViewDelegate, SBAwayListCellButtonHandler;
+@class UIScrollView, UIButton, UIView, SBUnlockActionContext, SBLockScreenNotificationScrollView, UILabel;
+@protocol SBAwayListCellButtonHandler, UIScrollViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenNotificationCell : SBNotificationCell {
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 	float _contentScrollViewWidth;
 }
 @property(retain, nonatomic) UIButton *actionButton;
+@property(readonly, assign, nonatomic) UIScrollView *contentScrollView;
 @property(assign, nonatomic) float contentScrollViewWidth;
 @property(assign, nonatomic) id<UIScrollViewDelegate> delegate;
 @property(assign, nonatomic) BOOL drawsSeparators;

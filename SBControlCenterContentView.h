@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBControlCenterObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBControlCenterObserver.h"
 
-@class SBControlCenterSectionViewController, NSMutableArray, SBCCQuickLaunchSectionController, SBCCSettingsSectionController, SBControlCenterGrabberView, UIViewController;
+@class SBCCSettingsSectionController, SBControlCenterGrabberView, UIViewController, SBControlCenterSectionViewController, SBCCQuickLaunchSectionController, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBControlCenterContentView : XXUnknownSuperclass <SBControlCenterObserver> {

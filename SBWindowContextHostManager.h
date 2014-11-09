@@ -5,24 +5,27 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBWindowContextHostViewDelegate.h"
 
-@class SBWindowContextManager, SBWindowContextHostView, SBOrderedRequesters, UIScreen, UIColor, NSString, NSMutableDictionary;
+@class UIScreen, SBOrderedRequesters, SBWindowContextManager, NSMutableDictionary, SBWindowContextHostView, NSString, UIColor, NSHashTable;
 @protocol SBWindowContextHostManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBWindowContextHostManager : XXUnknownSuperclass {
+@interface SBWindowContextHostManager : XXUnknownSuperclass <SBWindowContextHostViewDelegate> {
 	SBWindowContextManager *_contextManager;
 	UIScreen *_screen;
 	NSString *_identifier;
+	int _jailBehavior;
 	UIColor *_defaultBackgroundColorWhileHosting;
 	UIColor *_defaultBackgroundColorWhileNotHosting;
 	SBWindowContextHostView *_hostView;
 	BOOL _suspended;
+	BOOL _invalidated;
 	SBOrderedRequesters *_hostRequesters;
 	NSMutableDictionary *_hostRequesterInfo;
-	int _jailBehavior;
+	NSHashTable *_observers;
 	id<SBWindowContextHostManagerDelegate> _delegate;
 	struct {
 		unsigned delegateOverrideRequester : 1;
@@ -34,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) UIColor *defaultBackgroundColorWhileNotHosting;
 @property(assign, nonatomic) id<SBWindowContextHostManagerDelegate> delegate;
 @property(copy, nonatomic) NSString *identifier;
+@property(readonly, assign, nonatomic) int jailBehavior;
 @property(readonly, assign, nonatomic) UIScreen *screen;
 - (id)initWithContextManager:(id)contextManager screen:(id)screen;
 - (id)initWithContextManager:(id)contextManager screen:(id)screen jailBehavior:(int)behavior;
@@ -44,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)_overrideRequesterIfNecessary:(id)necessary;
 - (id)_realContextHostViewWhichIReallyNeedToAccessAndIKnowWhatImDoingISwear;
 - (void)_removeRequesterInfo:(id)info;
+- (void)addObserver:(id)observer;
 - (void *)createIOSurfaceForFrame:(CGRect)frame;
 - (void *)createIOSurfaceForFrame:(CGRect)frame excludeContext:(unsigned)context outTransform:(CGAffineTransform *)transform;
 - (void *)createIOSurfaceForFrame:(CGRect)frame outTransform:(CGAffineTransform *)transform;
@@ -56,10 +61,13 @@ __attribute__((visibility("hidden")))
 - (void)hideHostViewOnDefaultWindowForRequester:(id)requester priority:(int)priority;
 - (id)hostViewForRequester:(id)requester;
 - (id)hostViewForRequester:(id)requester enableAndOrderFront:(BOOL)front;
+- (void)invalidate;
 - (void)orderRequesterFront:(id)front;
+- (void)removeObserver:(id)observer;
 - (void)resumeContextHosting;
 - (void)setContextId:(unsigned)anId hidden:(BOOL)hidden forRequester:(id)requester;
 - (void)suspendContextHosting;
 - (void)unhideHostViewOnDefaultWindowForRequester:(id)requester;
+- (void)windowContextHostViewHostedContextsDidChange:(id)windowContextHostViewHostedContexts;
 @end
 

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BKSApplicationActivationAssertion, UIView, SBActivationContext, UIWindow, SBApplication;
+@class SBApplication, SBActivationContext, BKSApplicationActivationAssertion, UIWindow, UIView;
 @protocol SBUIAnimationControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldDismissBanner;
 - (BOOL)_shouldTakeActivationAssertionForDeactivatingApp;
 - (void)_startAnimation;
+- (BOOL)_wantsInitialProgressStateChange;
 - (BOOL)_willAnimate;
 - (BOOL)animating;
 - (void)beginAnimation;

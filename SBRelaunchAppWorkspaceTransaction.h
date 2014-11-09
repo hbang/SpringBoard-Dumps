@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBUIAnimationControllerDelegate.h"
 #import "SBToAppWorkspaceTransaction.h"
+#import "SBUIAnimationControllerDelegate.h"
 
-@class SBStarkScreenController, SBDisableActiveInterfaceOrientationChangeAssertion, SBUIAnimationController;
+@class SBDisableActiveInterfaceOrientationChangeAssertion, SBUIAnimationController, SBStarkScreenController;
 
 __attribute__((visibility("hidden")))
 @interface SBRelaunchAppWorkspaceTransaction : SBToAppWorkspaceTransaction <SBUIAnimationControllerDelegate> {

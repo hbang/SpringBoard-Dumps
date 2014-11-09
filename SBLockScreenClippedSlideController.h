@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, SBDisableAppStatusBarAlphaChangesAssertion, SBFakeStatusBarView, SBLockScreenViewControllerBase;
+@class SBFakeStatusBarView, SBDisableAppStatusBarAlphaChangesAssertion, SBLockScreenViewControllerBase, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenClippedSlideController : XXUnknownSuperclass {

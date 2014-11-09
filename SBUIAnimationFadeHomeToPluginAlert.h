@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class SBAlertManager, SBUIFullscreenAlertAdapter;
+@class SBUIFullscreenAlertAdapter, SBAlertManager;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadeHomeToPluginAlert : SBUIMainScreenAnimationController {

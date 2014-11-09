@@ -7,12 +7,15 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
+@class SBLockScreenView;
 @protocol SBUIPasscodeLockView;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenScrollView : XXUnknownSuperclass {
 	id<SBUIPasscodeLockView> _passcodeView;
+	SBLockScreenView *_lockScreenView;
 }
+@property(assign, nonatomic) SBLockScreenView *lockScreenView;
 @property(assign, nonatomic) id<SBUIPasscodeLockView> passcodeView;
 - (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
 - (BOOL)touchesShouldCancelInContentView:(id)touches;

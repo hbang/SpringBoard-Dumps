@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBIconListLayoutDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBIconZoomAnimator.h"
+#import "SBIconListLayoutDelegate.h"
 
-@class SBFolderIconView, SBFloatyFolderView, SBFolderZoomSettings;
+@class SBFloatyFolderView, SBFolderZoomSettings, SBFolderIconView;
 
 __attribute__((visibility("hidden")))
 @interface _SBInnerFolderIconZoomAnimator : SBIconZoomAnimator <SBIconListLayoutDelegate> {

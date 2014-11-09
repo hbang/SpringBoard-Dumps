@@ -8,23 +8,29 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, UIImageView, NSArray;
+@class UILabel, UIImageView, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutView : XXUnknownSuperclass {
-	NSMutableArray *_titleLabels;
+	UILabel *_titleLabel;
 	float _titleAscender;
 	float _titleDescender;
 	UIImageView *_imageView;
 	CGSize _imageSize;
-	NSMutableArray *_messageLabels;
+	UILabel *_messageLabel;
 	float _messageAscender;
 	float _messageDescender;
 	NSArray *_baselineSeparations;
-	float _verticalOffset;
 }
+@property(readonly, assign, nonatomic) UIImageView *imageView;
+@property(readonly, assign, nonatomic) UILabel *messageLabel;
+@property(readonly, assign, nonatomic) UILabel *titleLabel;
 - (id)initWithFrame:(CGRect)frame;
-- (id)initWithFrame:(CGRect)frame titleLines:(id)lines image:(id)image messageLines:(id)lines4 baselineSeparations:(id)separations verticalOffset:(float)offset;
+- (id)initWithFrame:(CGRect)frame title:(id)title image:(id)image message:(id)message baselineSeparations:(id)separations;
+- (id)_messageFontOfSize:(float)size;
+- (void)_sizeMessageToFitInFrame:(CGRect)frame;
+- (void)_sizeTitleToFitInFrame:(CGRect)frame;
+- (id)_titleFontOfSize:(float)size;
 - (void)dealloc;
 - (void)layoutSubviews;
 @end

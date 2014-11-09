@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBPowerDownViewDelegate.h"
 #import "SBAlert.h"
-#import "SpringBoard-Structs.h"
 
 @class SBAlertView;
 @protocol SBPowerDownControllerDelegate, SBPowerDownViewInterface;

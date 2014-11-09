@@ -7,19 +7,20 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView;
+@class UIView, SBFAnimationFactory;
 
 __attribute__((visibility("hidden")))
 @interface SBZoomableCrossfadeView : XXUnknownSuperclass {
+	SBFAnimationFactory *_animationFactory;
 	UIView *_startView;
 	UIView *_endView;
 	BOOL _translucent;
 	BOOL _crossfaded;
 }
+@property(retain, nonatomic) SBFAnimationFactory *animationFactory;
 + (id)crossfadeViewWithStartView:(id)startView endView:(id)view translucent:(BOOL)translucent;
 - (id)_initWithStartView:(id)startView endView:(id)view translucent:(BOOL)translucent;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
-- (id)animationFactory;
 - (void)crossfadeWithCompletion:(id)completion;
 - (void)dealloc;
 - (void)layoutSubviews;

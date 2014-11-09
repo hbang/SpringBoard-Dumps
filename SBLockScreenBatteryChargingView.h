@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, _UILegibilitySettings, _UILegibilityLabel, SBLockScreenBatteryFillView, _UIBackdropView;
+@class _UIBackdropView, _UILegibilitySettings, SBLockScreenBatteryFillView, UIView, _UILegibilityLabel;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenBatteryChargingView : XXUnknownSuperclass {

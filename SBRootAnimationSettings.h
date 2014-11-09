@@ -7,27 +7,27 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBCenterZoomSettings, SBCenterAppZoomSettings, SBCrossfadeZoomSettings, SBFolderZoomSettings, SBReducedMotionFadeSettings;
+@class SBReducedMotionFadeSettings, SBUnlockSettings, SBCenterAppLaunchSettings, SBCenterAppSuspendSettings, SBCrossfadeAppLaunchSettings, SBCrossfadeAppSuspendSettings, SBFolderOpenSettings, SBFolderCloseSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBRootAnimationSettings : XXUnknownSuperclass {
 	SBReducedMotionFadeSettings *_reducedMotionSettings;
-	SBCenterZoomSettings *_unlockSettings;
-	SBCenterAppZoomSettings *_centerLaunchSettings;
-	SBCenterAppZoomSettings *_centerSuspendSettings;
-	SBCrossfadeZoomSettings *_crossfadeLaunchSettings;
-	SBCrossfadeZoomSettings *_crossfadeSuspendSettings;
-	SBFolderZoomSettings *_folderOpenSettings;
-	SBFolderZoomSettings *_folderCloseSettings;
+	SBUnlockSettings *_unlockSettings;
+	SBCenterAppLaunchSettings *_centerLaunchSettings;
+	SBCenterAppSuspendSettings *_centerSuspendSettings;
+	SBCrossfadeAppLaunchSettings *_crossfadeLaunchSettings;
+	SBCrossfadeAppSuspendSettings *_crossfadeSuspendSettings;
+	SBFolderOpenSettings *_folderOpenSettings;
+	SBFolderCloseSettings *_folderCloseSettings;
 }
-@property(retain) SBCenterAppZoomSettings *centerLaunchSettings;
-@property(retain) SBCenterAppZoomSettings *centerSuspendSettings;
-@property(retain) SBCrossfadeZoomSettings *crossfadeLaunchSettings;
-@property(retain) SBCrossfadeZoomSettings *crossfadeSuspendSettings;
-@property(retain) SBFolderZoomSettings *folderCloseSettings;
-@property(retain) SBFolderZoomSettings *folderOpenSettings;
+@property(retain) SBCenterAppLaunchSettings *centerLaunchSettings;
+@property(retain) SBCenterAppSuspendSettings *centerSuspendSettings;
+@property(retain) SBCrossfadeAppLaunchSettings *crossfadeLaunchSettings;
+@property(retain) SBCrossfadeAppSuspendSettings *crossfadeSuspendSettings;
+@property(retain) SBFolderCloseSettings *folderCloseSettings;
+@property(retain) SBFolderOpenSettings *folderOpenSettings;
 @property(retain) SBReducedMotionFadeSettings *reducedMotionSettings;
-@property(retain) SBCenterZoomSettings *unlockSettings;
+@property(retain) SBUnlockSettings *unlockSettings;
 + (id)settingsControllerModule;
 - (void)setDefaultValues;
 @end

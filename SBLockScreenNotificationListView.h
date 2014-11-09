@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "UITableViewDataSource.h"
-#import "UITableViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "UITableViewDelegate.h"
+#import "UITableViewDataSource.h"
 
-@class SBLockScreenNotificationTableView, CADisplayLink, UIView, NSMutableDictionary, NSTimer;
+@class NSMutableDictionary, UIView, NSTimer, SBLockScreenNotificationTableView, CADisplayLink;
 @protocol SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel;
 
 __attribute__((visibility("hidden")))
@@ -69,6 +69,8 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidScroll:(id)scrollView;
 - (void)scrollViewWillBeginDragging:(id)scrollView;
+- (CGRect)scrollableRegion;
+- (id)scrollingGesture;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
 - (BOOL)tableView:(id)view canEditRowAtIndexPath:(id)indexPath;
 - (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;
@@ -80,5 +82,6 @@ __attribute__((visibility("hidden")))
 - (void)updateForModificationOfItemWithOldIndex:(unsigned)oldIndex andNewIndex:(unsigned)index;
 - (void)updateForRemovalOfItemAtIndex:(unsigned)index removedItem:(id)item;
 - (void)updateForRemovalOfItems;
+- (id)visibleNotificationCells;
 @end
 

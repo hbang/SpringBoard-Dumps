@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SBWallpaperObserver.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "_SBFakeBlurObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBWallpaperObserver.h"
 
-@class UIColor, UIView, UIImage, UIImageView;
+@class UIImage, UIImageView, UIView, UIColor;
 @protocol _SBFakeBlur;
 
 __attribute__((visibility("hidden")))

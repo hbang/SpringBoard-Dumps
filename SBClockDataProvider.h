@@ -8,7 +8,7 @@
 #import "BBRemoteDataProvider.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBBulletinRequest, UILocalNotification, NSDate, BBDataProviderProxy, NSTimer;
+@class BBBulletinRequest, BBDataProviderProxy, UILocalNotification, NSDate, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBClockDataProvider : XXUnknownSuperclass <BBRemoteDataProvider> {
@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)_calculateNextTomorrowAlarmAndBulletinWithScheduledNotifications:(id)scheduledNotifications;
 - (void)_handleAlarmSnoozedNotification:(id)notification;
 - (void)_handleClockNotificationUpdate:(id)update;
-- (void)_handlePossibleAlarmNotificationUpdate:(id)update;
 - (id)_nextAlarmForFeed:(unsigned)feed withNotifications:(id)notifications;
 - (void)_publishAlarmsWithScheduledNotifications:(id)scheduledNotifications;
 - (void)_publishTimerInScheduledNotifications:(id)scheduledNotifications;

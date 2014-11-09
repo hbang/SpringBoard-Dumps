@@ -5,18 +5,13 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBStatusBarChangeAssertion.h"
 
-@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SBDisableAppStatusBarAlphaChangesAssertion : XXUnknownSuperclass {
-	NSString *_reason;
+@interface SBDisableAppStatusBarAlphaChangesAssertion : SBStatusBarChangeAssertion {
 }
-@property(readonly, assign, nonatomic) NSString *reason;
-+ (id)assertionWithReason:(id)reason;
 - (id)initWithReason:(id)reason;
 - (void)dealloc;
-- (id)description;
 @end
 

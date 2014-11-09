@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationTerminationAssertion.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBApplicationTerminationAssertionManager, NSString;
+@class NSString, SBApplicationTerminationAssertionManager;
 
 __attribute__((visibility("hidden")))
 @interface SBApplicationTerminationAssertionImpl : XXUnknownSuperclass <SBApplicationTerminationAssertion> {

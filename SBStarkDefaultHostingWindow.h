@@ -5,11 +5,13 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBWindow.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBStarkDefaultHostingWindow : SBWindow {
 }
+- (id)hitTest:(CGPoint)test withEvent:(id)event;
 @end
 

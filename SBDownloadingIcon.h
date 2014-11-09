@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 	BOOL _isNewsstandDownload;
 	SBApplicationPlaceholder *_appPlaceholder;
 }
-+ (id)leafIdentifierForApplicationPlaceholder:(id)applicationPlaceholder;
 + (id)leafIdentifierForApplicationPlaceholderBundleID:(id)applicationPlaceholderBundleID;
 - (id)initWithApplicationPlaceholder:(id)applicationPlaceholder;
 - (id)_darkenedIconImageForImage:(id)image;
@@ -30,13 +29,10 @@ __attribute__((visibility("hidden")))
 - (id)gridCellImage;
 - (id)homescreenIconImage;
 - (BOOL)iconAppearsInNewsstand;
-- (id)identifierForCorrespondingApplicationIcon;
+- (BOOL)isDownloadingIcon;
 - (BOOL)isNewsstandDownload;
-- (BOOL)matchesApplicationIcon:(id)icon;
-- (BOOL)matchesRepresentation:(id)representation;
 - (id)realDisplayName;
 - (void)reloadForStatusChange;
-- (id)representation;
 - (void)setApplicationPlaceholder:(id)placeholder;
 - (void)setNewsstandDownload:(BOOL)download;
 - (void)setUninstalledByUser:(BOOL)user;

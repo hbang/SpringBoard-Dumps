@@ -15,5 +15,8 @@
 - (void)respondToBecomingInvisibleIfNecessary;
 @required
 - (void)setOrientation:(int)orientation;
+@optional
+- (void)simplifyForMotion;
+- (void)unsimplifyAfterMotion;
 @end
 

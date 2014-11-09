@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBControlCenterSectionViewController.h"
 #import "SBUIControlCenterButtonDelegate.h"
-#import "SpringBoard-Structs.h"
 
-@class NSMutableArray, AVFlashlight, SBControlCenterButton, NSObject;
+@class NSObject, SBControlCenterButton, NSMutableArray, AVFlashlight;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))

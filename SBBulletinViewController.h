@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class NSMutableArray, NSMutableDictionary;
 @protocol SBBulletinViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
 	id<SBBulletinViewControllerDelegate> _delegate;
 	NSMutableArray *_orderedSections;
 	NSMutableDictionary *_sectionIDsToBulletins;
-	NSMutableSet *_pendingReusableViewIDs;
+	NSMutableDictionary *_reusableViewIDsToUnregisteredCellClassNames;
+	NSMutableDictionary *_reusableViewIDsToUnregisteredHeaderClassNames;
 	BOOL _tableViewNeedsReload;
 	id _owedWillAppearBlock;
 	struct {
@@ -41,9 +42,12 @@ __attribute__((visibility("hidden")))
 - (void)_performMoveOperation:(id)operation;
 - (void)_performRemovalOperation:(id)operation;
 - (void)_performReplacementOperation:(id)operation;
-- (void)_registerOrQueueNewReusableViewIdentifierForInfo:(id)info;
+- (void)_registerOrQueueCellClassForInfo:(id)info;
+- (void)_registerOrQueueHeaderClassForInfo:(id)info;
+- (void)_registerOrQueueReusableClass:(Class)aClass forIdentifier:(id)identifier registerBlock:(id)block queueBlock:(id)block4;
+- (void)_registerOrQueueReusableViewClassForInfo:(id)info;
 - (void)_reloadOrInvalidateTableViewData;
-- (void)_reloadTableViewDataIfNecessary;
+- (void)_reloadTableViewData;
 - (BOOL)_removeBulletin:(id)bulletin fromSection:(id)section;
 - (void)_removeChildWidgetBulletinIfPossible:(id)possible;
 - (BOOL)_removeSection:(id)section;
@@ -53,6 +57,8 @@ __attribute__((visibility("hidden")))
 - (id)_viewIfLoaded;
 - (void)addBulletin:(id)bulletin inSection:(id)section;
 - (void)dealloc;
+- (BOOL)hasContent;
+- (unsigned)indexOfSection:(id)section;
 - (id)indexPathForBulletin:(id)bulletin inSection:(id)section;
 - (void)insertBulletin:(id)bulletin beforeBulletin:(id)bulletin2 inSection:(id)section;
 - (void)insertSection:(id)section beforeSection:(id)section2;
@@ -63,10 +69,12 @@ __attribute__((visibility("hidden")))
 - (int)numberOfSectionsInTableView:(id)tableView;
 - (void)reloadBulletins:(id)bulletins inSection:(id)section;
 - (void)reloadSections:(id)sections;
+- (void)reloadTableViewDataIfNecessary;
 - (void)removeBulletin:(id)bulletin inSection:(id)section;
 - (void)removeSection:(id)section;
 - (void)replaceWithBulletin:(id)bulletin bulletin:(id)bulletin2 inSection:(id)section;
 - (void)replaceWithSection:(id)section section:(id)section2;
+- (id)sectionAtIndex:(unsigned)index;
 - (void)setTableViewNeedsReload;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;

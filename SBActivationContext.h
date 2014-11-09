@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "NSCopying.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "NSCopying.h"
 
 @class NSMapTable, NSHashTable;
 
@@ -26,18 +26,17 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSMapTable *deactivationValues;
 @property(copy, nonatomic) NSHashTable *displayFlags;
 @property(copy, nonatomic) NSMapTable *displayValues;
++ (id)_descriptionForFlags:(id)flags values:(id)values withNameForSettingFunction:(/*function-pointer*/ void *)settingFunction;
 + (id)contextFromDisplay:(id)display;
++ (id)descriptionForActivationFlags:(id)activationFlags values:(id)values;
++ (id)descriptionForDeactivationFlags:(id)deactivationFlags values:(id)values;
++ (id)descriptionForDisplayFlags:(id)displayFlags values:(id)values;
 + (id)newFlagTable;
 + (id)newValueTable;
 - (id)initWithDisplay:(id)display;
-- (id)_activationSettingsDescription;
-- (id)_deactivationSettingsDescription;
-- (id)_descriptionForActivationSetting:(unsigned)activationSetting;
-- (id)_descriptionForDeactivationSetting:(unsigned)deactivationSetting;
-- (id)_descriptionForDisplaySetting:(unsigned)displaySetting;
-- (id)_displaySettingsDescription;
 - (BOOL)activationFlag:(unsigned)flag;
 - (id)activationValue:(unsigned)value;
+- (void)applyActivationSettingsToDisplay:(id)display;
 - (void)clearActivationSettings;
 - (void)clearDeactivationSettings;
 - (id)copyWithZone:(NSZone *)zone;

@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, UIImageView, SBIconColorSettings, SBIconBlurryBackgroundView;
+@class SBIconBlurryBackgroundView, UIImageView, SBIconColorSettings, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBCloseBoxView : XXUnknownSuperclass {

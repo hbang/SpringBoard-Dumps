@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "_UIScreenEdgePanRecognizerDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "SBPanGestureRecognizer.h"
 
-@class _UIScreenEdgePanRecognizer, _UIScreenEdgePanRecognizerSettings;
+@class _UIScreenEdgePanRecognizerSettings, _UIScreenEdgePanRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface SBOffscreenSwipeGestureRecognizer : SBPanGestureRecognizer <_UIScreenEdgePanRecognizerDelegate> {
@@ -33,15 +33,15 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) BOOL shouldUseUIKitHeuristics;
 + (void)reloadDefaults;
 - (id)initForOffscreenEdge:(unsigned)offscreenEdge;
-- (BOOL)_firstTouchInRange:(const XXStruct_XgRpiA *)range;
+- (BOOL)_firstTouchInRange:(const XXStruct_pqIg_A *)range;
 - (void)_updateAnimationDistanceAndEdgeCenter;
 - (CGRect)activeScreenBounds;
 - (void)dealloc;
-- (BOOL)firstTouchQualifies:(const XXStruct_XgRpiA *)qualifies;
+- (BOOL)firstTouchQualifies:(const XXStruct_pqIg_A *)qualifies;
 - (BOOL)isHandlingLongPress;
 - (void)reset;
 - (void)screenEdgePanRecognizerStateDidChange:(id)screenEdgePanRecognizerState;
-- (BOOL)secondTouchQualifies:(const XXStruct_XgRpiA *)qualifies;
+- (BOOL)secondTouchQualifies:(const XXStruct_pqIg_A *)qualifies;
 - (void)setState:(int)state;
 - (void)updateForBeganOrMovedTouches:(SBGestureContextRef)beganOrMovedTouches;
 @end

@@ -9,22 +9,27 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBControlCenterObserver.h"
 
-@class SBControlCenterContentContainerView, UIView, SBChevronView;
+@class SBControlCenterContentContainerView, SBChevronView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBControlCenterContainerView : XXUnknownSuperclass <SBControlCenterObserver> {
 	UIView *_darkeningView;
 	float _revealPercentage;
 	SBChevronView *_chevronToTrack;
+	BOOL _animatingDynamically;
+	UIView *_dynamicsContainerView;
 	SBControlCenterContentContainerView *_contentContainerView;
 }
+@property(assign, nonatomic) BOOL animatingDynamically;
 @property(readonly, assign, nonatomic) SBControlCenterContentContainerView *contentContainerView;
+@property(readonly, assign, nonatomic) UIView *dynamicsContainerView;
 @property(assign, nonatomic) float revealPercentage;
 - (id)initWithFrame:(CGRect)frame;
 - (id)_contentChevronView;
 - (id)_currentBGColor;
 - (void)_updateContentFrame;
 - (void)_updateDarkeningFrame;
+- (void)abortAnimatedTransition;
 - (void)controlCenterDidDismiss;
 - (void)controlCenterDidFinishTransition;
 - (void)controlCenterWillBeginTransition;
@@ -32,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)controlCenterWillPresent;
 - (void)dealloc;
 - (void)layoutSubviews;
+- (void)setContentHeight:(float)height;
 - (void)trackChevronView:(id)view;
 - (void)updateBackgroundSettings:(id)settings;
 @end

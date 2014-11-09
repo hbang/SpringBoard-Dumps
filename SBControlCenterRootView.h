@@ -7,9 +7,14 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
+@class UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBControlCenterRootView : XXUnknownSuperclass {
+	UIView *_backgroundView;
 }
+@property(retain, nonatomic) UIView *backgroundView;
+- (void)dealloc;
+- (void)layoutSubviews;
 @end
 

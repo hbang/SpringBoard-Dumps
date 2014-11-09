@@ -8,7 +8,7 @@
 #import "NSCoding.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMapTable, NSString, NSData, NSDate, NSDictionary;
+@class NSData, NSMapTable, NSString, NSDate, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBRemoteNotificationClient : XXUnknownSuperclass <NSCoding> {
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 	unsigned _settingsPresentedTypes;
 	NSData *_lastKnownDeviceToken;
 	NSDate *_missingDate;
+	BOOL _backgroundDeliveryDisabled;
 	int _dayOfLastNewsstandPush;
 	unsigned _dailyCountOfNewsstandPushes;
 	BOOL _hasShownSystemwideEnableAlert;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 	NSMapTable *_tokenToUserInfos;
 }
 @property(assign, nonatomic) unsigned appEnabledTypes;
+@property(assign, nonatomic) BOOL backgroundDeliveryDisabled;
 @property(readonly, assign, nonatomic) NSString *bundleIdentifier;
 @property(assign, nonatomic) unsigned dailyCountOfNewsstandPushes;
 @property(assign, nonatomic) int dayOfLastNewsstandPush;

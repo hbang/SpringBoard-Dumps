@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import "NSCopying.h"
 #import "NSMutableCopying.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "NSCopying.h"
 
-@class NSString, UIFont;
+@class UIColor, UIFont, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBIconLabelImageParameters : XXUnknownSuperclass <NSCopying, NSMutableCopying> {
@@ -19,17 +19,35 @@ __attribute__((visibility("hidden")))
 	BOOL _containsNonLatinLikeCharacters;
 	BOOL _containsEmoji;
 	BOOL _canEllipsize;
+	float _scale;
 	CGSize _maxSize;
 	int _style;
+	UIColor *_textColor;
+	BOOL _recalculateHash;
+	BOOL _canUseMemoryPool;
+	BOOL _accessibilityIncreaseContrastEnabled;
+	UIColor *_focusHighlightColor;
+	UIEdgeInsets _textInsets;
+	int _iconLocation;
+	unsigned _hash;
 }
+@property(readonly, assign, nonatomic) BOOL accessibilityIncreaseContrastEnabled;
 @property(readonly, assign, nonatomic) BOOL canEllipsize;
+@property(readonly, assign, nonatomic) BOOL canUseMemoryPool;
 @property(readonly, assign, nonatomic) BOOL containsEmoji;
 @property(readonly, assign, nonatomic) BOOL containsNonLatinLikeCharacters;
+@property(readonly, assign, nonatomic) UIColor *focusHighlightColor;
 @property(readonly, assign, nonatomic) UIFont *font;
+@property(readonly, assign, nonatomic) int iconLocation;
 @property(readonly, assign, nonatomic) CGSize maxSize;
+@property(readonly, assign, nonatomic) float scale;
 @property(readonly, assign, nonatomic) int style;
 @property(readonly, assign, nonatomic) NSString *text;
+@property(readonly, assign, nonatomic) UIColor *textColor;
+@property(readonly, assign, nonatomic) UIEdgeInsets textInsets;
+- (id)init;
 - (id)initWithParameters:(id)parameters;
+- (void)_noteNeedsHashRecalculation;
 - (BOOL)colorspaceIsGrayscale;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;

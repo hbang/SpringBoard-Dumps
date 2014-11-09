@@ -7,7 +7,7 @@
 
 #import "SBStarkBannerItem.h"
 
-@class NSString, SBAlertItem, SBUISound;
+@class NSString, SBAlertItem, NSDate, SBUISound;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkAlertItemBannerItem : SBStarkBannerItem {
@@ -15,18 +15,21 @@ __attribute__((visibility("hidden")))
 	NSString *_title;
 	NSString *_message;
 	SBUISound *_sound;
+	NSDate *_originDate;
 }
 - (id)initWithAlertItem:(id)alertItem;
 - (id)action;
-- (int)actionType;
 - (id)category;
 - (id)categoryImage;
 - (void)dealloc;
+- (int)defaultActionType;
+- (id)ignoreAction;
 - (BOOL)isSticky;
 - (BOOL)matchesContext:(id)context;
 - (unsigned)priority;
 - (void)reloadDisplayProperties;
 - (id)sound;
+- (id)sourceDate;
 - (id)subActionLabels;
 - (id)subActionWithIndex:(unsigned)index;
 - (id)title;

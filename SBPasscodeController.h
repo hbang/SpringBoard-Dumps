@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, NSDate, SBPasscodeAlertItem, SBPasscodeComplianceAlertItem;
+@class SBPasscodeAlertItem, SBPasscodeComplianceAlertItem, NSString, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface SBPasscodeController : XXUnknownSuperclass {
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 	BOOL _delayedComplianceAlertUntilAfterRestoreCompletedAlert;
 }
 + (id)sharedInstance;
+- (id)init;
 - (void)_abort;
 - (void)_activateComplianceAlert;
 - (void)_didEndCall;

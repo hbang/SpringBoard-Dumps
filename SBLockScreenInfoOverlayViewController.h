@@ -8,7 +8,7 @@
 #import "SBLockOverlayViewController.h"
 #import "SBLockOverlayViewDelegate.h"
 
-@class NSString, SBLockScreenInfoOverlayView;
+@class SBLockScreenInfoOverlayView, NSString;
 @protocol SBLockScreenInfoOverlayDelegate;
 
 __attribute__((visibility("hidden")))

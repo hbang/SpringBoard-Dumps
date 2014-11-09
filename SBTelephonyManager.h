@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 	int _inEmergencyCallbackMode;
 	unsigned _loggingCallAudio : 1;
 	NSString *_inCallStatusPreamble;
+	NSString *_inCallDurationString;
 	NSTimer *_inCallTimer;
 	RadiosPreferences *_radioPrefs;
 	int _needsUserIdentificationModule;
@@ -129,10 +130,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)heldCallExists;
 - (BOOL)inCall;
 - (double)inCallDuration;
+- (id)inCallDurationString;
 - (BOOL)inCallUsingReceiverForcingRoutingToReceiver:(BOOL)receiver;
 - (BOOL)inCallUsingSpeakerOrReceiver;
 - (BOOL)incomingCallExists;
-- (BOOL)isCallAmbiguous;
 - (BOOL)isEmergencyCallActive;
 - (BOOL)isEmergencyCallScheme:(id)scheme;
 - (BOOL)isInAirplaneMode;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBFLockScreenDateFormatter.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSNumberFormatter, NSDate, NSDateFormatter;
+@class NSDateFormatter, NSNumberFormatter, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface SBDateLabelStringFormatCache : XXUnknownSuperclass <SBFLockScreenDateFormatter> {

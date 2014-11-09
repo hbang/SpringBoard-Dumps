@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSArray, UICollectionViewLayoutAttributes;
+@class UICollectionViewLayoutAttributes, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkNotificationLayout : XXUnknownSuperclass {

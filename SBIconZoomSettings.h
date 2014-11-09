@@ -10,7 +10,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBIconZoomSettings : SBIconAnimationSettings {
+	BOOL _labelAlphaWithZoom;
 }
+@property(assign) BOOL labelAlphaWithZoom;
 + (id)settingsControllerModule;
+- (void)setDefaultValues;
 @end
 

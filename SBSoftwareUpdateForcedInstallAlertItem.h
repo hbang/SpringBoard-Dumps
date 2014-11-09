@@ -15,7 +15,9 @@ __attribute__((visibility("hidden")))
 	unsigned _timeLeftUntilInstall;
 	BOOL _delayOnDismissForNonUserAction;
 	BOOL _delayAfterNextUnlock;
+	BOOL _countdown;
 }
+@property(assign, nonatomic) BOOL countdown;
 @property(assign, nonatomic) BOOL delayAfterNextUnlock;
 @property(assign, nonatomic) BOOL delayOnDismissForNonUserAction;
 - (id)initWithDescriptor:(id)descriptor;

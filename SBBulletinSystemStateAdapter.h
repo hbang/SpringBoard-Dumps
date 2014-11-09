@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationRestrictionObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @class BBSystemStateProvider;
 

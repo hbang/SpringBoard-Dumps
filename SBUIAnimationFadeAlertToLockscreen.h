@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class UIView, SBAlertManager, SBAlert, SBLockScreenViewController;
+@class SBLockScreenViewController, UIView, SBAlertManager, SBAlert;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadeAlertToLockscreen : SBUIMainScreenAnimationController {

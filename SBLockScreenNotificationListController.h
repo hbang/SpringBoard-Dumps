@@ -5,22 +5,24 @@
  * Source: (null)
  */
 
+#import "SBCoordinatedPresenting.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBUnlockActionHandler.h"
+#import "SBPresentingDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBVolumePressBandit.h"
+#import "SBUnlockActionHandler.h"
+#import "BBObserverDelegate.h"
 #import "SBLockScreenNotificationViewDelegate.h"
 #import "SBLockScreenNotificationModel.h"
 #import "SBUIBannerSource.h"
-#import "SBVolumePressBandit.h"
 #import "SBUIBannerTargetManagerObserver.h"
 #import "SBLockScreenNotificationBannerItemDelegate.h"
-#import "BBObserverDelegate.h"
 
-@class NSMutableArray, SBUnlockActionContext, SBLockScreenNotificationListView, BBObserver;
-@protocol SBLockScreenNotificationListDelegate, SBUIBannerTarget;
+@class SBLockScreenBounceAnimator, SBLockScreenNotificationCell, BBObserver, SBLockScreenNotificationListView, NSSet, SBUnlockActionContext, NSMutableArray;
+@protocol SBUIBannerTarget, SBLockScreenNotificationListDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenNotificationListController : XXUnknownSuperclass <SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel, BBObserverDelegate, SBVolumePressBandit, SBUIBannerSource, SBUIBannerTargetManagerObserver, SBUnlockActionHandler, SBLockScreenNotificationBannerItemDelegate> {
+@interface SBLockScreenNotificationListController : XXUnknownSuperclass <SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel, BBObserverDelegate, SBVolumePressBandit, SBUIBannerSource, SBUIBannerTargetManagerObserver, SBUnlockActionHandler, SBLockScreenNotificationBannerItemDelegate, SBPresentingDelegate, SBCoordinatedPresenting> {
 	SBLockScreenNotificationListView *_notificationView;
 	id<SBLockScreenNotificationListDelegate> _delegate;
 	BBObserver *_observer;
@@ -35,17 +37,29 @@ __attribute__((visibility("hidden")))
 	BOOL _isOnscreen;
 	BOOL _hasMissedUnreadNotifications;
 	int _messagePrivacyRevealState;
+	id<SBPresentingDelegate> _presentingDelegate;
+	SBLockScreenBounceAnimator *_bounceAnimator;
+	SBLockScreenNotificationCell *_hintingCell;
+	CGPoint _hintingCellOriginalOffset;
 	BOOL _hasAnyContent;
 }
 @property(assign, nonatomic, getter=isBannersEnabled) BOOL bannersEnabled;
+@property(readonly, assign, nonatomic) NSSet *conflictingGestures;
+@property(readonly, assign, nonatomic) int coordinatedPresentingControllerIdentifier;
 @property(assign, nonatomic) id<SBLockScreenNotificationListDelegate> delegate;
+@property(readonly, assign, nonatomic) NSSet *gestures;
 @property(assign, nonatomic) BOOL hasAnyContent;
+@property(readonly, assign, nonatomic) float hintDisplacement;
+@property(readonly, assign, nonatomic) unsigned hintEdge;
 @property(assign, nonatomic) BOOL isHibernating;
+@property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
 @property(readonly, assign, nonatomic) BOOL quietModeEnabled;
+@property(readonly, assign, nonatomic) NSSet *tapExcludedViews;
 @property(retain, nonatomic) SBUnlockActionContext *unlockActionContext;
 + (id)underlayPropertiesFactory;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (void)_activateOrUpdateCardItem:(id)item animated:(BOOL)animated;
+- (void)_addBounceAnimator;
 - (void)_hardwareButtonPressed:(id)pressed;
 - (void)_killRealerts:(id)realerts;
 - (id)_listItemContainingBulletinID:(id)anId;
@@ -64,11 +78,15 @@ __attribute__((visibility("hidden")))
 - (void)_updateModelAndViewForRemovalOfItem:(id)item;
 - (void)_updateModelAndViewForReplacingItem:(id)replacingItem withNewItem:(id)newItem;
 - (void)_updateModelForRemovalOfItem:(id)item updateView:(BOOL)view;
+- (void)abortAnimatedTransition;
 - (BOOL)activateAlertItem:(id)item;
 - (void)activateCardItem:(id)item animated:(BOOL)animated;
 - (void)bannerItemWasTapped:(id)tapped;
 - (void)bannerTargetManager:(id)manager didAddTarget:(id)target;
 - (void)bannerTargetManager:(id)manager didRemoveTarget:(id)target;
+- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
+- (void)cancelGestureRecognizer:(id)recognizer;
+- (id)cellAtTouchLocation:(CGPoint)touchLocation;
 - (void)clearItemsForNotificationCenter;
 - (void)concealForChangeInMessagePrivacy;
 - (unsigned)count;
@@ -77,10 +95,16 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)dequeueNextBannerItemForTarget:(id)target;
 - (BOOL)dismissReadNotifications;
+- (void)endTransitionWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)handleVolumeDecrease;
 - (void)handleVolumeIncrease;
 - (BOOL)hasMissedUnreadNotifications;
+- (BOOL)isPresentingControllerTransitioning;
 - (id)listItemAtIndexPath:(id)indexPath;
+- (void)listView:(id)view cellDidBeginScrolling:(id)cell;
+- (void)listView:(id)view cellDidEndScrolling:(id)cell;
+- (void)listViewDidBeginScrolling:(id)listView;
+- (void)listViewDidEndScrolling:(id)listView;
 - (void)loadView;
 - (id)lockScreenScrollView;
 - (void)lockScreenViewDidEndScrollingOnPage:(int)lockScreenView;
@@ -99,6 +123,11 @@ __attribute__((visibility("hidden")))
 - (id)pendOrDeactivateAlertItems;
 - (void)performSystemAlertUnlockActions;
 - (void)prepareForTeardown;
+- (BOOL)presentingController:(id)controller gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
+- (BOOL)presentingController:(id)controller gestureRecognizerShouldBegin:(id)gestureRecognizer;
+- (void)presentingController:(id)controller willHandleGesture:(id)gesture;
+- (void)presentingControllerDidFinishPresentation:(id)presentingController;
+- (void)reenableGestureRecognizer:(id)recognizer;
 - (void)revealForChangeInMessagePrivacy;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
 - (void)setIsOnscreen:(BOOL)onscreen;
@@ -107,5 +136,6 @@ __attribute__((visibility("hidden")))
 - (void)turnOnScreenIfNecessaryForItem:(id)item;
 - (void)unlockUIWithActionContext:(id)actionContext;
 - (void)updateCardItem:(id)item;
+- (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
 @end
 

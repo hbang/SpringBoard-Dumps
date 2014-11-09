@@ -9,7 +9,7 @@
 #import "SpringBoard-Structs.h"
 #import "MCProfileConnectionObserver.h"
 
-@class NSSet, NSMutableDictionary, NSHashTable, NSMutableSet;
+@class NSMutableDictionary, NSSet, NSMutableSet, NSHashTable;
 @protocol SBApplicationRestrictionDataSource;
 
 __attribute__((visibility("hidden")))

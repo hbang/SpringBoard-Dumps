@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBAlertManagerObserver.h"
 
-@class NSMapTable, SBAlertManager, NSMutableSet;
+@class NSMapTable, NSMutableSet, SBAlertManager;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertWallpaperTunnelManager : XXUnknownSuperclass <SBAlertManagerObserver> {

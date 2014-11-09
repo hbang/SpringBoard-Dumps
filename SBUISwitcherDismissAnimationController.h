@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class UIView, SBAppSwitcherPageView, SBAppSliderController;
+@class SBAppSliderController, SBAppSwitcherPageView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBUISwitcherDismissAnimationController : SBUIMainScreenAnimationController {
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_crossfadeApp;
+- (void)_evaluateDependenciesForCrossfadeStart;
 - (void)_noteCrossfadeDidFinish;
 - (void)_noteSwitcherAnimationFinished;
 - (void)_prepareAnimation;

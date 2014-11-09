@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SPDaemonQueryDelegate.h"
 
-@class NSOperation, NSOperationQueue, NSDate, CPLRUDictionary, NSTimer, NSObject;
+@class NSObject, NSOperationQueue, NSOperation, NSDate, CPLRUDictionary, NSTimer;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))

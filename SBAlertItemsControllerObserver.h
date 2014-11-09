@@ -11,5 +11,6 @@
 @protocol SBAlertItemsControllerObserver <NSObject>
 - (void)alertItemsController:(id)controller didActivateAlertItem:(id)item;
 - (void)alertItemsController:(id)controller didDeactivateAlertItem:(id)item forReason:(int)reason;
+- (void)alertItemsController:(id)controller willActivateAlertItem:(id)item;
 @end
 

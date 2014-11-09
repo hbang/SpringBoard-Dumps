@@ -5,17 +5,20 @@
  * Source: (null)
  */
 
-#import "SBNotificationCenterViewControllerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "_UISettingsKeyObserver.h"
-#import "SpringBoard-Structs.h"
-#import "SBBulletinWindowClient.h"
 #import "SBWidgetViewControllerHostDelegate.h"
+#import "SBNotificationCenterViewControllerDelegate.h"
+#import "SBBulletinWindowClient.h"
+#import "UIGestureRecognizerDelegate.h"
+#import "_UISettingsKeyObserver.h"
+#import "SBCoordinatedPresenting.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIView, NSArray, SBNotificationCenterSettings, SBUnlockActionContext, SBChevronView, SBWindow, SBApplication, SBNotificationCenterViewController;
+@class NSSet, SBWindow, SBNotificationCenterSettings, SBNotificationCenterViewController, UIView, SBUnlockActionContext, UILongPressGestureRecognizer, SBApplication, SBChevronView;
+@protocol SBPresentingDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBNotificationCenterController : XXUnknownSuperclass <SBBulletinWindowClient, SBNotificationCenterViewControllerDelegate, SBWidgetViewControllerHostDelegate, _UISettingsKeyObserver> {
+@interface SBNotificationCenterController : XXUnknownSuperclass <SBBulletinWindowClient, SBNotificationCenterViewControllerDelegate, SBWidgetViewControllerHostDelegate, _UISettingsKeyObserver, UIGestureRecognizerDelegate, SBCoordinatedPresenting> {
 	SBNotificationCenterViewController *_viewController;
 	UIView *_coveredContentSnapshot;
 	SBApplication *_coveredApplication;
@@ -23,24 +26,31 @@ __attribute__((visibility("hidden")))
 	id _borrowedGrabberWillPresentBlock;
 	id _borrowedGrabberHideBlock;
 	id _borrowedGrabberCompletionBlock;
-	NSArray *_dataProviders;
+	UILongPressGestureRecognizer *_grabberPressGesture;
 	id _keyboardNotificationObserverToken;
 	SBUnlockActionContext *_unlockActionContext;
-	int _presentationState;
+	int _transitionState;
+	int _presentedState;
 	SBNotificationCenterSettings *_settings;
-	struct {
-		unsigned delegateOverrideRequester : 1;
-		unsigned delegateShouldEnableContextHostingForRequester : 1;
-	} _notificationCenterControllerFlags;
+	BOOL _grabberEnabled;
 }
 @property(readonly, assign, nonatomic, getter=isAvailableWhileLocked) BOOL availableWhileLocked;
 @property(assign, nonatomic) BOOL blursBackground;
+@property(readonly, assign, nonatomic) NSSet *conflictingGestures;
+@property(readonly, assign, nonatomic) int coordinatedPresentingControllerIdentifier;
+@property(readonly, assign, nonatomic) NSSet *gestures;
 @property(assign, nonatomic, getter=isGrabberEnabled) BOOL grabberEnabled;
 @property(readonly, assign, nonatomic, getter=isGrabberVisible) BOOL grabberVisible;
+@property(readonly, assign, nonatomic) float hintDisplacement;
+@property(readonly, assign, nonatomic) unsigned hintEdge;
+@property(readonly, assign, nonatomic) int layoutMode;
 @property(readonly, assign, nonatomic, getter=isNotificationsViewAvailableWhileLocked) BOOL notificationsViewAvailableWhileLocked;
+@property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
 @property(readonly, assign, nonatomic, getter=isPresentingWidgetContent) BOOL presentingWidgetContent;
 @property(readonly, assign, nonatomic) SBNotificationCenterSettings *settings;
+@property(readonly, assign, nonatomic) NSSet *tapExcludedViews;
 @property(readonly, assign, nonatomic, getter=isTodayViewAvailableWhileLocked) BOOL todayViewAvailableWhileLocked;
+@property(readonly, assign, nonatomic, getter=isTransitioning) BOOL transitioning;
 @property(readonly, assign, nonatomic) SBUnlockActionContext *unlockActionContext;
 @property(readonly, assign, nonatomic) SBNotificationCenterViewController *viewController;
 @property(readonly, assign, nonatomic, getter=isVisible) BOOL visible;
@@ -51,8 +61,9 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstanceIfExists;
 + (double)transitionAnimationDuration;
 - (id)init;
+- (void)_beginPresentationWithTouchLocation:(CGPoint)touchLocation setupPrelude:(id)prelude setupPostlude:(id)postlude animationPrelude:(id)prelude4;
 - (void)_cleanupAfterTransition:(BOOL)transition;
-- (id)_copyDefaultEnabledWidgetIDs;
+- (void)_endTransitionWithVelocity:(CGPoint)velocity additionalValueApplier:(id)applier animationPostlude:(id)postlude completion:(id)completion;
 - (BOOL)_handleActionOrRequestWithDefaultAction:(id)defaultAction lockedAction:(id)action;
 - (void)_insertCoveredContentSnapshotIfNecessary:(id)necessary;
 - (void)_invalidateCoveredContentSnapshot;
@@ -60,21 +71,20 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isNotificationCenterViewWithFeatureKeyAvailableWhileLocked:(id)featureKeyAvailableWhileLocked isLockedDownByRestrictions:(BOOL *)restrictions;
 - (void)_present:(BOOL)present stepper:(id)stepper;
 - (void)_present:(BOOL)present withStandardAnimation:(BOOL)standardAnimation stepper:(id)stepper completion:(id)completion fromCurrentState:(BOOL)currentState;
+- (void)_presentAnimated:(BOOL)animated setupPrelude:(id)prelude setupPostlude:(id)postlude animationPrelude:(id)prelude4 animationPostlude:(id)postlude5 completion:(id)completion;
 - (void)_removeCoveredContentSnapshot;
-- (id)_sectionForWidgetBundle:(id)widgetBundle forCategory:(int)category;
-- (id)_sectionWithIdentifier:(id)identifier forCategory:(int)category;
 - (void)_setGrabberEnabled:(BOOL)enabled;
-- (void)_setupForDismissalWithTouchLocation:(CGPoint)touchLocation;
+- (void)_setViewUserInteractionEnabled:(BOOL)enabled;
+- (void)_setupForDismissal;
 - (void)_setupForPresentationWithTouchLocation:(CGPoint)touchLocation;
 - (void)_setupForViewPresentation;
 - (BOOL)_shouldSelectViewControllerAtTouchLocation;
 - (void)_updateCoveredContentSnapshot;
 - (void)_updateForChangeInMessagePrivacy;
-- (id)_widgetSections;
+- (void)abortAnimatedTransition;
 - (void)beginDismissalWithTouchLocation:(CGPoint)touchLocation;
 - (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
 - (void)biometricEventMonitorDidAuthenticate:(id)biometricEventMonitor;
-- (void)buddyCompleted:(id)completed;
 - (void)bulletinWindowDidRotateFromOrientation:(int)bulletinWindow;
 - (void)bulletinWindowIsAnimatingRotationToOrientation:(int)orientation duration:(double)duration;
 - (void)bulletinWindowWillRotateToOrientation:(int)bulletinWindow duration:(double)duration;
@@ -89,14 +99,16 @@ __attribute__((visibility("hidden")))
 - (void)endTransitionWithVelocity:(CGPoint)velocity additionalValueApplier:(id)applier completion:(id)completion;
 - (void)endTransitionWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)finishedScrollTest;
+- (BOOL)gestureRecognizerShouldBegin:(id)gestureRecognizer;
 - (BOOL)handleActionForBulletin:(id)bulletin;
+- (void)handleGrabberPress:(id)press;
 - (BOOL)handleMenuButtonTap;
 - (void)hideGrabberAnimated:(BOOL)animated completion:(id)completion;
 - (void)invalidateUnlockActionContext;
+- (BOOL)isPresentingControllerTransitioning;
 - (void)prepareLayoutForPresentationFromBanner;
 - (void)presentAnimated:(BOOL)animated;
 - (void)presentAnimated:(BOOL)animated completion:(id)completion;
-- (void)publishSectionInfoIfNecessary;
 - (void)registerSharedGrabberView:(id)view withWillPresentBlock:(id)with hideBlock:(id)block andCompletion:(id)completion;
 - (void)reloadAllWidgets;
 - (void)runScrollTest:(id)test iterations:(int)iterations delta:(int)delta;

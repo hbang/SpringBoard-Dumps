@@ -5,16 +5,17 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBFolderIconObserver.h"
 #import "SBIconBlurryBackgroundViewObserver.h"
 #import "SBIconImageView.h"
-#import "SpringBoard-Structs.h"
 
-@class SBFolderIconBackgroundView, _SBIconGridWrapperView, NSMutableArray, UIView, SBFloatyFolderView;
+@class SBFloatyFolderView, _SBIconGridWrapperView, UIView, SBFolderIconBackgroundView, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderIconImageView : SBIconImageView <SBFolderIconObserver, SBIconBlurryBackgroundViewObserver> {
 	SBFolderIconBackgroundView *_backgroundView;
+	UIView *_accessibilityBackgroundView;
 	UIView *_pageGridContainer;
 	_SBIconGridWrapperView *_leftWrapperView;
 	_SBIconGridWrapperView *_rightWrapperView;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupGridViewsInDefaultConfiguration;
 - (void)_showLeftMinigrid;
 - (void)_showRightMinigrid;
+- (void)_updateAccessibilityBackgroundContrast;
 - (void)_updateRasterization;
 - (id)backgroundView;
 - (void)blurryBackgroundViewDidChangeWhetherBlurring:(id)blurryBackgroundView;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)setBackgroundAndIconGridImageAlpha:(float)alpha;
 - (void)setBackgroundScale:(float)scale;
 - (void)setFloatyFolderCrossfadeFraction:(float)fraction;
+- (void)setIcon:(id)icon location:(int)location animated:(BOOL)animated;
 - (void)setIconGridImageAlpha:(float)alpha;
 - (void)setSuppressesBlurryBackgroundChanges:(BOOL)changes;
 - (void)setWallpaperRelativeCenter:(CGPoint)center;

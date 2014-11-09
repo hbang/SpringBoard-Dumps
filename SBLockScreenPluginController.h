@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
-#import "SpringBoard-Structs.h"
 
-@class SBLockScreenPluginTransitionFactory, SBLockScreenPluginLoader, SBLockScreenTestPluginSettings, SBLockScreenViewController, UIWindow, SBLockScreenPlugin, NSMutableDictionary;
+@class SBLockScreenPlugin, SBLockScreenViewController, NSMutableDictionary, SBLockScreenPluginTransitionFactory, UIWindow, SBLockScreenTestPluginSettings, SBLockScreenPluginLoader;
 @protocol SBLockScreenPluginControllerDelegate;
 
 __attribute__((visibility("hidden")))

@@ -8,20 +8,19 @@
 #import "SpringBoard-Structs.h"
 #import "SBBBBulletinInfo.h"
 
-@class UIImage;
+@class UIImage, SBItemInfoLayoutCache;
 
 __attribute__((visibility("hidden")))
 @interface SBSnippetBulletinInfo : SBBBBulletinInfo {
-	float _viewHeight;
 	CGRect _textRect;
-	CGSize _referenceSize;
 	UIImage *_icon;
+	SBItemInfoLayoutCache *_layoutCache;
 }
 @property(retain, nonatomic) UIImage *icon;
-- (BOOL)_isLayoutValidWithReferenceSize:(CGSize)referenceSize;
++ (float)topBaselineToCellTopInLayoutMode:(int)layoutMode;
 - (id)_representedBulletin;
 - (void)dealloc;
-- (float)heightForReusableViewInTableView:(id)tableView;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
 - (id)identifier;
 - (void)invalidateCachedLayoutData;
 - (void)populateReusableView:(id)view;

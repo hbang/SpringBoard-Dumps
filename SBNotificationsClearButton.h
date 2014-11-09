@@ -10,8 +10,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationsClearButton : XXUnknownSuperclass {
+	int _graphicsQuality;
 }
-- (id)initWithImage:(id)image;
+@property(readonly, assign, nonatomic) int graphicsQuality;
+- (id)initWithImage:(id)image graphicsQuality:(int)quality;
 - (BOOL)gestureRecognizerShouldBegin:(id)gestureRecognizer;
 @end
 

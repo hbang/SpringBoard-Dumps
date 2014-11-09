@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, UIAlertView;
+@class UIAlertView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenModalAlertView : XXUnknownSuperclass {

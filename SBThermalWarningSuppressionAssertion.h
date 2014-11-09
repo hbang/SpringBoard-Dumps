@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, NSObject;
+@class NSObject, NSString;
 @protocol OS_dispatch_source, SBThermalWarningSuppressionAssertionDelegate;
 
 __attribute__((visibility("hidden")))

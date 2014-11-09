@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, SBWorkspaceEventQueue;
+@class SBWorkspaceEventQueue, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBWorkspaceEventQueueLockAssertion : XXUnknownSuperclass {

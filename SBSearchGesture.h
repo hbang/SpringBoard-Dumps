@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "UIScrollViewDelegate.h"
-#import "SpringBoard-Structs.h"
 
-@class UIView, SBSearchScrollView, NSHashTable;
+@class UIView, NSHashTable, SBSearchScrollView;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchGesture : XXUnknownSuperclass <UIScrollViewDelegate> {

@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 @interface SBTodayTableDateHeaderFactory : XXUnknownSuperclass {
 }
 + (id)languagesSupportingDateOrdinals;
-- (id)dateFormatForLocale:(id)locale;
-- (id)dateHeaderWithDate:(id)date locale:(id)locale;
+- (id)dateFormatForLocale:(id)locale singleLine:(BOOL)line;
+- (id)dateHeaderWithDate:(id)date locale:(id)locale singleLine:(BOOL)line;
 - (BOOL)isDateOrdinalSupportedForLocale:(id)locale;
 @end
 

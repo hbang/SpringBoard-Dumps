@@ -7,17 +7,19 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class _UIScreenEdgePanRecognizerSettings, SBFAnimationSettings;
+@class SBFAnimationSettings, _UIScreenEdgePanRecognizerSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSliderSettings : XXUnknownSuperclass {
 	int _simplicityOptions;
+	SBFAnimationSettings *_transitionAnimationSettings;
 	SBFAnimationSettings *_dosidoAnimationSettings;
 	_UIScreenEdgePanRecognizerSettings *_gestureSettings;
 }
 @property(retain) SBFAnimationSettings *dosidoAnimationSettings;
 @property(retain) _UIScreenEdgePanRecognizerSettings *gestureSettings;
 @property(assign) int simplicityOptions;
+@property(retain) SBFAnimationSettings *transitionAnimationSettings;
 + (id)settingsControllerModule;
 - (void)setDefaultValues;
 - (BOOL)shouldSimplifyForOptions:(int)options;

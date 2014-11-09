@@ -7,7 +7,7 @@
 
 #import "SBUIStarkScreenAnimationController.h"
 
-@class UIView, SBApplication;
+@class SBApplication, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBUIStarkStaticAnimationController : SBUIStarkScreenAnimationController {

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconIndexNodeObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconIndexNodeObserver.h"
 
 @class SBFMappedImageCache;
 
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (void)_backlightFadeFinished;
 - (id)_homeScreenSnapshotProvider;
 - (id)_lockScreenSnapshotProvider;
+- (void)_modelDidLayout;
+- (void)_modelWillLayout;
 - (void)dealloc;
 - (id)homeScreenSnapshot;
 - (void)invalidateSnapshotsForLocations:(int)locations;

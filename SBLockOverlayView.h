@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBInteractionPassThroughView.h"
 #import "SpringBoard-Structs.h"
+#import "SBInteractionPassThroughView.h"
 
-@class UIResizableView, UILabel, _UILegibilitySettings, UIButton, SBLockOverlayStylePropertiesFactory;
+@class UIButton, SBLockOverlayStylePropertiesFactory, _UILegibilitySettings, UIResizableView, UILabel;
 @protocol SBLockOverlayViewDelegate;
 
 __attribute__((visibility("hidden")))

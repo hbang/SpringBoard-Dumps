@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBPasscodeLockDisableAssertion, NSTimer;
+@class NSTimer, SBPasscodeLockDisableAssertion;
 
 __attribute__((visibility("hidden")))
 @interface SBSyncController : XXUnknownSuperclass {

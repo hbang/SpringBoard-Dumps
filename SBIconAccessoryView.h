@@ -5,17 +5,16 @@
  * Source: (null)
  */
 
+#import "SBReusableView.h"
 #import "SpringBoard-Structs.h"
-#import "NSObject.h"
 
 
-@protocol SBIconAccessoryView <NSObject>
+@protocol SBIconAccessoryView <SBReusableView>
 + (id)checkoutAccessoryImagesForIcon:(id)icon location:(int)location;
 - (CGPoint)accessoryOriginForIconBounds:(CGRect)iconBounds;
 - (void)configureAnimatedForIcon:(id)icon location:(int)location highlighted:(BOOL)highlighted withPreparation:(id)preparation animation:(id)animation completion:(id)completion;
 - (void)configureForIcon:(id)icon location:(int)location highlighted:(BOOL)highlighted;
 - (BOOL)displayingAccessory;
-- (void)prepareForReuse;
 - (void)setAccessoryBrightness:(float)brightness;
 @end
 

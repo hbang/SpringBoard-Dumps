@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBThermalWarningSuppressionAssertionDelegate.h"
 #import "SBThermalWarningAlertItemDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @class NSDictionary, NSMutableSet;
 

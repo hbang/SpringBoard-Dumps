@@ -14,5 +14,6 @@
 - (void)folderViewShouldBeginEditing:(id)folderView;
 - (void)folderViewShouldClose:(id)folderView;
 - (void)folderViewWillBeginScrolling:(id)folderView;
+- (Class)iconListViewClassForFolderView:(id)folderView;
 @end
 

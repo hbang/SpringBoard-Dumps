@@ -8,7 +8,7 @@
 #import "BBRemoteDataProvider.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBDataProviderConnection, BBDataProviderProxy;
+@class BBDataProviderProxy, BBDataProviderConnection;
 
 __attribute__((visibility("hidden")))
 @interface SBTestDataProvider2 : XXUnknownSuperclass <BBRemoteDataProvider> {

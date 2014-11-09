@@ -8,7 +8,7 @@
 #import "SBAlertManagerObserver.h"
 #import "SBWorkspaceTransaction.h"
 
-@class SBAlertManager, SBStarkScreenController;
+@class SBStarkScreenController, SBAlertManager;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkWorkspaceTransaction : SBWorkspaceTransaction <SBAlertManagerObserver> {
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) SBAlertManager *starkScreenAlertManager;
 @property(readonly, assign, nonatomic) SBStarkScreenController *starkScreenController;
 - (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller;
+- (void)_transactionComplete;
 - (void)alertManager:(id)manager didActivateAlert:(id)alert overAlerts:(id)alerts;
 - (void)alertManager:(id)manager didDeactivateAlert:(id)alert top:(BOOL)top;
 - (void)alertManager:(id)manager willActivateAlert:(id)alert overAlerts:(id)alerts;

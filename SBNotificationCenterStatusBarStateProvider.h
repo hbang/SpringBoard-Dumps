@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBStatusBarStateProvider.h"
 #import "SpringBoard-Structs.h"
+#import "SBStatusBarStateProvider.h"
 
 
 __attribute__((visibility("hidden")))

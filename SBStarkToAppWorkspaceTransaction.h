@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) SBApplication *toApp;
 - (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller to:(id)to;
+- (void)_commit;
+- (BOOL)_shouldDisallowSuspension;
 - (void)_transactionComplete;
 - (void)dealloc;
 @end

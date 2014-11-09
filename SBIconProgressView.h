@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class _SBIconProgressStateTransition, _SBIconProgressPausedTransition, _SBIconProgressFractionTransition, CADisplayLink, UIImage;
+@class _SBIconProgressPausedTransition, _SBIconProgressFractionTransition, UIImage, _SBIconProgressStateTransition, CADisplayLink;
 @protocol SBIconProgressViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -44,6 +44,8 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) float foregroundAlpha;
 @property(retain, nonatomic) UIImage *overlayImage;
 @property(assign, nonatomic) float pauseRadiusFraction;
++ (id)_pieImageAtFraction:(float)fraction;
++ (id)_pieImagesMemoryPool;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_clearDisplayLink;
 - (void)_clearTransitionIfComplete:(id *)complete;

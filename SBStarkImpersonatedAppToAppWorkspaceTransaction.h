@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleFailureToLaunch;
 - (id)_newAnimationFromAppToApp;
 - (id)_newAnimationFromAppToLauncher;
-- (id)_newAnimationFromLauncherToApp;
+- (id)_newAnimationFromAppToNowPlaying;
 - (int)_setupMilestonesFrom:(id)from to:(id)to;
 - (void)_transactionComplete;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;

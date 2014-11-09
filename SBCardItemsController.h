@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "XPCProxyTarget.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBCardItemsControllerRemoteInterface.h"
+#import "XPCProxyTarget.h"
 
 @class NSMutableArray, NSMutableDictionary;
 

@@ -5,17 +5,17 @@
  * Source: (null)
  */
 
-#import <StoreServices/_kSSNotificationApplicationInstalled.h>
 #import "SpringBoard-Structs.h"
 #import "SBPowerDownControllerDelegate.h"
 #import "MCProfileConnectionObserver.h"
 #import "UIApplicationDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, NSMutableSet, NSMutableArray, NSSet, SBUIController, NSNumberFormatter, UIWindow, NSDate, SBCardItemsController, NSObject, BBDataProviderConnection, SBApplication, NSHashTable;
+@class SBCardItemsController, NSObject, NSSet, BBDataProviderConnection, SBUIController, UIWindow, NSHashTable, NSMutableSet, NSTimer, SBApplication, NSMutableArray, NSNumberFormatter, NSDate;
 @protocol OS_dispatch_source, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SpringBoard : _kSSNotificationApplicationInstalled <SBPowerDownControllerDelegate, MCProfileConnectionObserver, UIApplicationDelegate> {
+@interface SpringBoard : XXUnknownSuperclass <SBPowerDownControllerDelegate, MCProfileConnectionObserver, UIApplicationDelegate> {
 	SBUIController *_uiController;
 	NSTimer *_menuButtonTimer;
 	NSTimer *_lockButtonTimer;
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 	unsigned _headsetButtonClickCount : 8;
 	unsigned _menuButtonClickCount : 8;
 	unsigned _screenWasDimOnMenuDown : 1;
-	unsigned _waitingForMenuDoubleTapAfterActingOnSingleTap : 1;
 	unsigned _screenshotWasTaken : 1;
 	unsigned _dontLockOnNextLockUp : 1;
 	unsigned _poweringDown : 1;
@@ -49,6 +48,7 @@ __attribute__((visibility("hidden")))
 	BOOL _menuButtonDown;
 	NSSet *_restrictionDisabledApplications;
 	SBApplication *_nowPlayingApp;
+	SBApplication *_nowRecordingApp;
 	SBApplication *_menuButtonInterceptApp;
 	BOOL _menuButtonInterceptAppEnabledForever;
 	NSMutableArray *_disableNowPlayingHUDAssertionBundleIds;
@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 	NSHashTable *_volumePressBandits;
 	unsigned long long _menuButtonHoldStartTime;
 	double _menuButtonHoldAbsoluteStartTime;
+	unsigned long long _menuButtonDownEventTimeStamp;
 	NSMutableArray *_menuButtonUpBlocks;
 	BOOL _didPlayLockSound;
 	NSHashTable *_disableActiveOrientationChangeAssertions;
@@ -101,15 +102,15 @@ __attribute__((visibility("hidden")))
 - (void)_alertSheetStackChanged;
 - (BOOL)_alertWindowShouldRotate;
 - (void)_applicationOpenURL:(id)url event:(GSEventRef)event;
-- (void)_applicationOpenURL:(id)url withApplication:(id)application sender:(id)sender publicURLsOnly:(BOOL)only animating:(BOOL)animating additionalActivationFlags:(id)flags activationHandler:(id)handler;
+- (void)_applicationOpenURL:(id)url withApplication:(id)application sender:(id)sender publicURLsOnly:(BOOL)only animating:(BOOL)animating activationContext:(id)context activationHandler:(id)handler;
 - (void)_cameraPreviewStarted;
 - (void)_caseLatchWantsToAttemptLock;
+- (void)_cleanUpLaunchTestState;
 - (void)_clearPreheatedLockAudio;
 - (int)_currentNonFlatDeviceOrientation;
 - (void)_effectiveSettingsDidChange;
 - (void)_enqueueWorkspaceEvent:(id)event withName:(id)name ifSatisfiesCondition:(id)condition cancelingEventsWithNames:(id)names;
 - (int)_frontMostAppOrientation;
-- (void)_giveUpOnMenuDoubleTap;
 - (void)_handleHIDEvent:(IOHIDEventRef)event;
 - (void)_handleMenuButtonEvent;
 - (BOOL)_handlePhysicalButtonEvent:(id)event;
@@ -130,13 +131,14 @@ __attribute__((visibility("hidden")))
 - (void)_lockdownActivationChanged:(id)changed;
 - (void)_logMenuButtonHoldTime;
 - (void)_logReliabilityInfoForEvent:(IOHIDEventRef)event;
+- (void)_mediaServerConnectionDied:(id)died;
 - (void)_menuButtonDown:(IOHIDEventRef)down;
 - (void)_menuButtonUp:(IOHIDEventRef)up;
 - (void)_menuButtonWasHeld;
 - (double)_menuHoldTime;
 - (void)_midnightPassed;
 - (void)_nowPlayingAppDidChangeNotification:(id)_nowPlayingApp;
-- (void)_openURLCore:(id)core display:(id)display animating:(BOOL)animating sender:(id)sender additionalActivationFlags:(id)flags activationHandler:(id)handler;
+- (void)_openURLCore:(id)core display:(id)display animating:(BOOL)animating sender:(id)sender activationContext:(id)context activationHandler:(id)handler;
 - (void)_overrideDefaultInterfaceOrientationWithOrientation:(int)orientation;
 - (void)_performDeferredLaunchWork;
 - (void)_performDelayedHeadsetClickTimeout;
@@ -144,6 +146,8 @@ __attribute__((visibility("hidden")))
 - (void)_powerDownNow;
 - (void)_proximityChanged:(id)changed;
 - (void)_rebootNow;
+- (void)_recordingStateChanged:(id)changed;
+- (void)_registerForAVSystemControllerNotifications;
 - (void)_relaunchSpringBoardNow;
 - (void)_reloadDemoAndDebuggingDefaultsAndCapabilities;
 - (void)_removeDefaultInterfaceOrientatationOverride;
@@ -172,6 +176,7 @@ __attribute__((visibility("hidden")))
 - (void)_setMenuButtonTimer:(id)timer;
 - (void)_setStatusBarShowsProgress:(BOOL)progress;
 - (id)_settingLanguageStringForNewLanguage;
+- (BOOL)_shouldPendAlertsForTest:(id)test;
 - (BOOL)_shouldSwallowGSEvent:(GSEventRef)event;
 - (BOOL)_shouldSwallowHIDEvent:(IOHIDEventRef)event;
 - (void)_significantTimeChange;
@@ -182,6 +187,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_statusBarOrientationFollowsWindow:(id)window;
 - (void)_tearDownNow;
 - (void)_testPhoneAlerts;
+- (void)_unregisterForAVSystemControllerNotifications;
 - (void)_unscatterWillBegin:(id)_unscatter;
 - (void)_updateRejectedInputSettingsForInCallState:(BOOL)callState isOutgoing:(BOOL)outgoing triggeredbyRouteWillChangeToReceiverNotification:(BOOL)triggeredbyRoute;
 - (void)_updateRingerState:(int)state withVisuals:(BOOL)visuals updatePreferenceRegister:(BOOL)aRegister;
@@ -204,7 +210,7 @@ __attribute__((visibility("hidden")))
 - (void)applicationExited:(GSEventRef)exited;
 - (void)applicationOpenURL:(id)url;
 - (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only;
-- (void)applicationOpenURL:(id)url withApplication:(id)application sender:(id)sender publicURLsOnly:(BOOL)only animating:(BOOL)animating needsPermission:(BOOL)permission additionalActivationFlags:(id)flags activationHandler:(id)handler;
+- (void)applicationOpenURL:(id)url withApplication:(id)application sender:(id)sender publicURLsOnly:(BOOL)only animating:(BOOL)animating needsPermission:(BOOL)permission activationContext:(id)context activationHandler:(id)handler;
 - (void)applicationSuspend:(GSEventRef)suspend;
 - (void)applicationSuspended:(GSEventRef)suspended;
 - (void)applicationSuspendedSettingsUpdated:(GSEventRef)updated;
@@ -229,7 +235,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)expectsFaceContact;
 - (BOOL)expectsFaceContactInLandscape;
 - (void)extendButtonTimersForWake;
-- (void)finishedTest:(id)test extraResults:(id)results;
+- (void)failedTest:(id)test withResults:(id)results;
+- (void)finishedTest:(id)test extraResults:(id)results waitForNotification:(id)notification withTeardownBlock:(id)teardownBlock;
 - (id)formattedDecimalStringForNumber:(id)number;
 - (id)formattedPercentStringForNumber:(id)number;
 - (void)frontDisplayDidChange:(id)frontDisplay;
@@ -284,6 +291,7 @@ __attribute__((visibility("hidden")))
 - (void)noteKeybagRefetchTransactionIsActive:(BOOL)active;
 - (void)noteSubstantialTransitionOccured;
 - (id)nowPlayingApp;
+- (id)nowRecordingApp;
 - (BOOL)openURL:(id)url;
 - (void)performWhenMenuButtonIsUpUsingBlock:(id)block;
 - (void)pinPolicyChanged;
@@ -335,6 +343,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)smartCoverIsClosed;
 - (void)startLaunchTestNamed:(id)named options:(id)options;
 - (void)startResumeTestNamed:(id)named options:(id)options;
+- (void)startedTest:(id)test;
 - (int)statusBar:(id)bar styleForRequestedStyle:(int)requestedStyle overrides:(int)overrides;
 - (int)statusBarOrientation;
 - (void)tearDown;

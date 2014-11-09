@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBInteractionPassThroughView.h"
 #import "SpringBoard-Structs.h"
+#import "SBInteractionPassThroughView.h"
 
-@class UIView, SBIconImageView, _SBAnimatableCorneredView;
+@class _SBAnimatableCorneredView, UIView, SBIconImageView;
 
 __attribute__((visibility("hidden")))
 @interface SBIconImageCrossfadeView : SBInteractionPassThroughView {
@@ -32,6 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)prepareGeometry;
 - (void)setFadeFraction:(float)fraction;
-- (void)setMorphFraction:(float)fraction;
+- (void)setMorphFraction:(float)fraction totalScale:(float)scale;
 @end
 

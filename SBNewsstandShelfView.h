@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBGradientView.h"
 #import "SpringBoard-Structs.h"
+#import "SBGradientView.h"
 
-@class SBHighlightView, UIView, UIColor;
+@class UIColor, SBHighlightView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBNewsstandShelfView : SBGradientView {

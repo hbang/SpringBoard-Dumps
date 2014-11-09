@@ -5,15 +5,14 @@
  * Source: (null)
  */
 
-#import "UICollisionBehaviorDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UICollisionBehavior, UIGravityBehavior, UIAttachmentBehavior, UIDynamicItemBehavior;
-@protocol SBBounceBehaviorDelegate, UIDynamicItem;
+@class UIGravityBehavior, UIAttachmentBehavior, UIDynamicItemBehavior, UICollisionBehavior;
+@protocol UIDynamicItem;
 
 __attribute__((visibility("hidden")))
-@interface SBBounceBehavior : XXUnknownSuperclass <UICollisionBehaviorDelegate> {
+@interface SBBounceBehavior : XXUnknownSuperclass {
 	float _midwayPosition;
 	float _completionThreshold;
 	CGRect _targetFrame;
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
 	UIGravityBehavior *_gravityBehavior;
 	UIDynamicItemBehavior *_pushBehavior;
 	UIAttachmentBehavior *_draggingBehavior;
-	id<SBBounceBehaviorDelegate> _delegate;
 	float _gravity;
 	float _velocity;
 	float _elasticity;
@@ -35,7 +33,6 @@ __attribute__((visibility("hidden")))
 	UIEdgeInsets _boundaryInsets;
 }
 @property(assign, nonatomic) UIEdgeInsets boundaryInsets;
-@property(assign, nonatomic) id<SBBounceBehaviorDelegate> delegate;
 @property(assign, nonatomic) float elasticity;
 @property(assign, nonatomic) float friction;
 @property(assign, nonatomic) float gravity;
@@ -64,11 +61,10 @@ __attribute__((visibility("hidden")))
 - (float)_velocityAssistance;
 - (BOOL)allowsAnimatorToStop;
 - (void)bounce;
-- (void)collisionBehavior:(id)behavior beganContactForItem:(id)item withBoundaryIdentifier:(id)boundaryIdentifier atPoint:(CGPoint)point;
 - (void)dealloc;
 - (void)finishInteraction;
 - (void)finishInteractionWithVelocity:(CGPoint)velocity;
-- (void)finishInteractionWithVelocity:(CGPoint)velocity abortIfNotPastMidway:(BOOL)midway;
+- (void)finishInteractionWithVelocity:(CGPoint)velocity removingGravityAtMidway:(BOOL)midway;
 - (void)initiateInteractionFromPoint:(CGPoint)point;
 - (BOOL)isActive;
 - (void)updateInteractionWithPoint:(CGPoint)point;

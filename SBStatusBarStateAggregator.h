@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, NSArray, NSDateFormatter, NSTimer, NSHashTable;
+@class NSDateFormatter, NSArray, NSString, NSHashTable, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBStatusBarStateAggregator : XXUnknownSuperclass {

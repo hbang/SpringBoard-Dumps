@@ -5,18 +5,19 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBBulletinBusyClient.h"
-#import "BBObserverDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBBulletinBusyClient.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "BBObserverDelegate.h"
 
-@class NSMutableArray, BBObserver, NSMutableDictionary;
+@class BBObserver, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinSoundController : XXUnknownSuperclass <BBObserverDelegate, SBBulletinBusyClient> {
 	BBObserver *_observer;
 	NSMutableArray *_blockQueue;
 	NSMutableDictionary *_playingSounds;
+	NSMutableSet *_internalBulletinsWePlayedSoundsFor;
 	BOOL _deviceIsLocked;
 	BOOL _quietModeEnabled;
 	unsigned _quietModeState;
@@ -27,7 +28,9 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_enqueueBlock:(id)block forBulletin:(id)bulletin;
 - (void)_hardwareButtonPressed:(id)pressed;
+- (BOOL)_playSoundForBulletin:(id)bulletin playedInternally:(BOOL)internally;
 - (BOOL)_shouldHonorPlaySoundRequestForBulletin:(id)bulletin;
+- (void)_stopSoundWithID:(id)anId internalOnly:(BOOL)only;
 - (void)bulletinWindowStoppedBeingBusy;
 - (void)dealloc;
 - (void)killSoundForBulletin:(id)bulletin;

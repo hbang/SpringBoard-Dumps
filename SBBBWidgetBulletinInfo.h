@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBBBBulletinInfo.h"
 #import "SpringBoard-Structs.h"
+#import "SBBBBulletinInfo.h"
 
-@class NSString, SBWidgetViewControllerHost;
+@class SBWidgetViewControllerHost, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBBBWidgetBulletinInfo : SBBBBulletinInfo {
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) CGSize preferredViewSize;
 @property(readonly, assign, nonatomic) SBWidgetViewControllerHost *representedWidget;
 - (void)dealloc;
-- (float)heightForReusableViewInTableView:(id)tableView;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
 - (id)identifier;
 - (id)originalSectionIdentifier;
 - (void)populateReusableView:(id)view;

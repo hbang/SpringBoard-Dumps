@@ -9,7 +9,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBLockOverlayViewController.h"
 
-@class NSMutableArray, NSDictionary, SBActivationInfoViewController, SBLockScreenViewController, NSString, NSArray, NSTimer;
+@class SBActivationInfoViewController, NSDictionary, NSArray, SBLockScreenViewController, NSTimer, NSString, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenBuddyViewController : SBLockOverlayViewController <SBLockScreenBuddyViewDelegate> {

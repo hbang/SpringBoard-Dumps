@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlertView.h"
 
-@class UIView, _UIBackdropView;
+@class _UIBackdropView, UIView;
 @protocol SBPasscodeEntryAlertViewDelegate, SBUIPasscodeLockView;
 
 __attribute__((visibility("hidden")))

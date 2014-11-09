@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SBNewsstandFolderController : SBFolderController {
 }
++ (Class)listViewClass;
 - (Class)_contentViewClass;
 - (unsigned)_depth;
 - (id)_statusBarColor;

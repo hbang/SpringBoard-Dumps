@@ -14,5 +14,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller exitedApp:(id)app;
 - (id)_setupAnimationFrom:(id)from to:(id)to;
 - (int)_setupMilestonesFrom:(id)from to:(id)to;
+- (BOOL)_shouldDisallowSuspension;
 @end
 

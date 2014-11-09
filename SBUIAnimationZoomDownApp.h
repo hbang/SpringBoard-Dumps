@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class UIView, SBAppStatusBarTransitionInfo;
+@class SBAppStatusBarTransitionInfo, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomDownApp : SBUIMainScreenAnimationController {

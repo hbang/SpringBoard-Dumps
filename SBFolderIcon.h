@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SBIcon.h"
-#import "SBFolderObserver.h"
 #import "SBIconObserver.h"
 #import "SBIconIndexNodeObserver.h"
+#import "SBIcon.h"
+#import "SBFolderObserver.h"
 
-@class SBFolder, NSMutableArray, NSHashTable, NSMutableSet;
+@class SBFolder, NSMutableArray, NSMutableSet, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderIcon : SBIcon <SBFolderObserver, SBIconObserver, SBIconIndexNodeObserver> {
@@ -47,13 +47,11 @@ __attribute__((visibility("hidden")))
 - (void)iconAccessoriesDidUpdate:(id)iconAccessories;
 - (void)iconImageDidUpdate:(id)iconImage;
 - (Class)iconImageViewClassForLocation:(int)location;
-- (Class)iconViewClassForLocation:(int)location;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (BOOL)isFolderIcon;
 - (void)launchFromLocation:(int)location;
 - (unsigned)listIndexForContainedIcon:(id)containedIcon;
 - (void)localeChanged;
-- (BOOL)matchesRepresentation:(id)representation;
 - (id)miniGridCellImageForIcon:(id)icon;
 - (void)node:(id)node didAddContainedNodeIdentifiers:(id)identifiers;
 - (void)node:(id)node didRemoveContainedNodeIdentifiers:(id)identifiers;
@@ -67,7 +65,7 @@ __attribute__((visibility("hidden")))
 - (int)progressState;
 - (void)purgeCachedImages;
 - (void)removeNodeObserver:(id)observer;
-- (id)representation;
+- (BOOL)shouldAnimateProgress;
 - (void)updateLabel;
 @end
 

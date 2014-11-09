@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBDateLabelDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
-@class UILabel, UIButton, UIColor, UIView, NSString, UIImage, UIImageView;
+@class UIButton, UIImage, UIImageView, UIView, NSString, UIColor, UILabel;
 @protocol SBBulletinDateLabel;
 
 __attribute__((visibility("hidden")))

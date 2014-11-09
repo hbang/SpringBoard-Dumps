@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
-#import "SpringBoard-Structs.h"
 
 @class BBObserver, NSDate, BBBulletin, NSTimer;
 @protocol SBLockScreenTimerViewControllerDelegate;

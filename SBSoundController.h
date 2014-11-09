@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, AVController, NSMutableDictionary, NSTimer, SBUISound, NSHashTable;
+@class NSMutableArray, NSMutableDictionary, SBUISound, AVController, NSHashTable, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBSoundController : XXUnknownSuperclass {

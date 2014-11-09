@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableSet, NSMutableArray, SBIcon, SBIconViewMap, UIView, NSArray, SBIconListModel;
+@class SBIconViewMap, SBIconListModel, NSArray, NSMutableSet, UIView, SBIcon, NSMutableArray;
 @protocol SBIconListLayoutDelegate;
 
 __attribute__((visibility("hidden")))
@@ -112,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (void)showAllIcons;
 - (void)showIconImagesFromColumn:(int)column toColumn:(int)column2 totalColumns:(int)columns allowAnimations:(BOOL)animations;
 - (float)sideIconInset;
+- (id)tintColor;
 - (float)topIconInset;
 - (void)updateEditingStateAnimated:(BOOL)animated;
 - (float)verticalIconPadding;

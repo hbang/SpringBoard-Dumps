@@ -6,11 +6,11 @@
  */
 
 #import "BBObserverDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBVolumePressBandit.h"
 #import "SpringBoard-Structs.h"
 #import "SBUIBannerSource.h"
 #import "SBUIBannerTargetManagerObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBVolumePressBandit.h"
 
 @class NSMutableSet, BBObserver, NSMutableArray;
 @protocol SBUIBannerTarget;

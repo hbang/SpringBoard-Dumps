@@ -7,7 +7,7 @@
 
 #import "SBBBItemInfo.h"
 
-@class NSString, SBBulletinListSection;
+@class SBBulletinListSection, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBBBSectionInfo : SBBBItemInfo {

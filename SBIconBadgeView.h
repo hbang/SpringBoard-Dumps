@@ -8,12 +8,11 @@
 #import "SpringBoard-Structs.h"
 #import "SBIconAccessoryView.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBDarkeningImageViewDelegate.h"
 
 @class NSString, SBIconAccessoryImage, SBDarkeningImageView;
 
 __attribute__((visibility("hidden")))
-@interface SBIconBadgeView : XXUnknownSuperclass <SBDarkeningImageViewDelegate, SBIconAccessoryView> {
+@interface SBIconBadgeView : XXUnknownSuperclass <SBIconAccessoryView> {
 	NSString *_text;
 	SBDarkeningImageView *_incomingTextView;
 	BOOL _animating;
@@ -27,6 +26,11 @@ __attribute__((visibility("hidden")))
 + (id)_checkoutBackgroundImage;
 + (id)_checkoutImageForText:(id)text highlighted:(BOOL)highlighted;
 + (id)_createImageForText:(id)text highlighted:(BOOL)highlighted;
++ (float)_maxTextWidth;
++ (CGPoint)_overhang;
++ (id)_textFont;
++ (CGPoint)_textOffset;
++ (float)_textPadding;
 + (id)checkoutAccessoryImagesForIcon:(id)icon location:(int)location;
 - (id)init;
 - (void)_clearText;
@@ -38,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (CGPoint)accessoryOriginForIconBounds:(CGRect)iconBounds;
 - (void)configureAnimatedForIcon:(id)icon location:(int)location highlighted:(BOOL)highlighted withPreparation:(id)preparation animation:(id)animation completion:(id)completion;
 - (void)configureForIcon:(id)icon location:(int)location highlighted:(BOOL)highlighted;
-- (id)darkeningImageView:(id)view settableImageForImage:(id)image;
 - (void)dealloc;
 - (BOOL)displayingAccessory;
 - (void)layoutSubviews;

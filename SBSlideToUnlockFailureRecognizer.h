@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "_UISettingsKeyObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
-@class UIView, SBSlideToUnlockTriangleView;
+@class SBSlideToUnlockTriangleView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBSlideToUnlockFailureRecognizer : XXUnknownSuperclass <_UISettingsKeyObserver> {

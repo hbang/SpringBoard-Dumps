@@ -9,7 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIControlCenterButtonDelegate.h"
 
-@class UIView, SBUIControlCenterButton, SBUIControlCenterLabel, UIFont;
+@class UIFont, SBUIControlCenterButton, SBUIControlCenterLabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBCCButtonLikeSectionView : XXUnknownSuperclass <SBUIControlCenterButtonDelegate> {

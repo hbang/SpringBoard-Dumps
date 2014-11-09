@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBFolderView.h"
 #import "SBIconIndexNodeObserver.h"
+#import "SBFolderView.h"
 
 @class UIButton, SBNewsstandBackgroundView;
 
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 	UIButton *_emptyImageButton;
 	SBNewsstandBackgroundView *_backgroundView;
 }
-- (id)initWithFolder:(id)folder orientation:(int)orientation;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
 - (void)_layoutSubviews;
 - (void)_newsstandStoreAvailabilityDidChangeNotification:(id)_newsstandStoreAvailability;
 - (BOOL)_showsTitle;

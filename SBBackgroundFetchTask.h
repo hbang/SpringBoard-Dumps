@@ -11,6 +11,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBBackgroundFetchTask : XXUnknownSuperclass {
+	BOOL _finished;
 	BKSProcessAssertion *_assertion;
 	id _completionHandler;
 	NSString *_bundleID;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) BKSProcessAssertion *assertion;
 @property(readonly, assign, nonatomic) NSString *bundleID;
 @property(copy, nonatomic) id completionHandler;
+@property(readonly, assign) BOOL finished;
 @property(readonly, assign) int sequenceNumber;
 @property(readonly, assign) unsigned trigger;
 - (id)initForApplication:(id)application trigger:(unsigned)trigger sequenceNumber:(int)number withCompletion:(id)completion;

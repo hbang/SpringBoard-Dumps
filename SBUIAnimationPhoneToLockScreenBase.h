@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class SBWindow, UIView, SBLockScreenViewControllerBase;
+@class SBWindow, SBLockScreenViewControllerBase, UIView;
 @protocol SBWindowContextAppearance;
 
 __attribute__((visibility("hidden")))

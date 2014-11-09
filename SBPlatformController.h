@@ -7,15 +7,15 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, NSSet, NSArray, NSDictionary, NSLock;
+@class NSOrderedSet, NSLock, NSString, NSDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface SBPlatformController : XXUnknownSuperclass {
 	NSString *_currentConfigurationName;
 	long _defaultIconInfoOnce;
-	NSArray *_defaultStarkIconState;
+	NSDictionary *_defaultStarkIconState;
 	NSDictionary *_defaultIconState;
-	NSSet *_defaultIconStateDisplayIdentifiers;
+	NSOrderedSet *_defaultIconStateDisplayIdentifiers;
 	NSLock *_iconStateDisplayIdentifiersLock;
 	NSSet *_iconStateDisplayIdentifiers;
 	NSString *_localizedDeviceName;

@@ -7,7 +7,7 @@
 
 #import "SBWidgetViewControllerHost.h"
 
-@class _SBWidgetViewControllerHost_Proxy, NSMutableArray;
+@class NSMutableArray, _SBWidgetViewControllerHost_Proxy;
 
 __attribute__((visibility("hidden")))
 @interface _SBWidgetViewControllerHostOutOfProcess : SBWidgetViewControllerHost {

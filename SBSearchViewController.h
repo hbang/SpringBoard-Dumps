@@ -5,16 +5,16 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBSearchGestureObserver.h"
-#import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
-#import "SpringBoard-Structs.h"
+#import "UITableViewDataSource.h"
 #import "SPSearchAgentDelegate.h"
 #import "UISearchBarDelegate.h"
+#import "SBSearchGestureObserver.h"
 #import "SBSearchHeaderDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class SBSearchHeader, UIView, SBSearchResultsBackdropView, UITableView, UILabel, UITapGestureRecognizer, UIPanGestureRecognizer, UIImage;
+@class SBSearchResultsBackdropView, SBSearchHeader, UITableView, UITapGestureRecognizer, UIPanGestureRecognizer, UIImage, UIView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchViewController : XXUnknownSuperclass <UITableViewDelegate, UITableViewDataSource, SPSearchAgentDelegate, SBSearchGestureObserver, UISearchBarDelegate, SBSearchHeaderDelegate> {

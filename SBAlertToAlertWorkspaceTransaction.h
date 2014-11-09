@@ -8,7 +8,7 @@
 #import "SBUIAnimationControllerDelegate.h"
 #import "SBWorkspaceTransaction.h"
 
-@class SBAlert, SBUIAnimationController;
+@class SBUIAnimationController, SBAlert;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertToAlertWorkspaceTransaction : SBWorkspaceTransaction <SBUIAnimationControllerDelegate> {

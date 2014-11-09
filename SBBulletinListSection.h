@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, NSString, NSSet, NSArray, NSDate, BBSectionInfo, UIImage, NSMutableSet;
+@class NSArray, NSString, NSMutableArray, NSDate, UIImage, BBSectionInfo, NSSet, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinListSection : XXUnknownSuperclass {
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSectionInfo:(id)sectionInfo;
 - (unsigned)_indexForNewBulletin:(id)newBulletin;
 - (unsigned)_removeBulletin:(id)bulletin;
+- (id)_sortDateForBulletin:(id)bulletin;
 - (id)_subsectionWithIDCreatingIfNecessary:(id)idcreatingIfNecessary;
 - (void)_updateWithSectionInfo:(id)sectionInfo;
 - (unsigned)addBulletin:(id)bulletin;

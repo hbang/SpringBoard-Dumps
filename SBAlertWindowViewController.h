@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, UIScreen, UIViewController, SBAlert, NSMutableSet;
+@class UIViewController, UIScreen, NSMutableSet, UIView, SBAlert;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertWindowViewController : XXUnknownSuperclass {

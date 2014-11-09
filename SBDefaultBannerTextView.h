@@ -8,7 +8,8 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, NSAttributedString, UIImage;
+@class UILabel, NSString, UIImage, NSAttributedString;
+@protocol SBBulletinDateLabel;
 
 __attribute__((visibility("hidden")))
 @interface SBDefaultBannerTextView : XXUnknownSuperclass {
@@ -17,17 +18,22 @@ __attribute__((visibility("hidden")))
 	UIImage *_primaryTextAccessoryImageComponent;
 	NSAttributedString *_secondaryTextAttributedString;
 	BOOL _secondaryTextItalicized;
-	NSAttributedString *_relevanceDateAttributedString;
+	UILabel<SBBulletinDateLabel> *_relevanceDateLabel;
 }
 @property(copy, nonatomic) NSString *primaryText;
 @property(retain, nonatomic) UIImage *primaryTextAccessoryImage;
-@property(copy, nonatomic) NSString *relevanceDateText;
+@property(readonly, assign, nonatomic) UILabel *relevanceDateLabel;
 @property(copy, nonatomic) NSString *secondaryText;
++ (id)_defaultRelevanceDateFont;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_invalidatePrimaryTextAttributedString;
 - (id)_primaryTextAttributedString;
+- (CGSize)_primaryTextSizeForBounds:(CGRect)bounds;
+- (CGSize)_relevanceDateSize;
 - (void)dealloc;
 - (void)drawRect:(CGRect)rect;
+- (void)layoutSubviews;
+- (void)setRelevanceDate:(id)date;
 - (void)setSecondaryText:(id)text italicized:(BOOL)italicized;
 - (BOOL)textWillWrapForWidth:(float)text;
 @end

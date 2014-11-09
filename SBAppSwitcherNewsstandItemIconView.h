@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (float)_labelHeight;
 - (id)initWithFrame:(CGRect)frame;
 - (CGRect)_frameForLabel;
+- (CGRect)_frameForUpdatedMarkWithLabelFrame:(CGRect)labelFrame;
 - (float)_labelVerticalOffset;
 @end
 

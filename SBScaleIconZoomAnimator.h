@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBIconZoomAnimator.h"
 
-@class SBIcon, UIView, SBScaleZoomSettings, SBIconView;
+@class SBScaleZoomSettings, SBIconView, SBIcon, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBScaleIconZoomAnimator : SBIconZoomAnimator {

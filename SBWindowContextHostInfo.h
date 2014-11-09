@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWindowContextManagerObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIScreen, NSDictionary, SBWindowContextHostWrapperView, SBWindowContextManager, NSMutableSet;
+@class UIScreen, SBWindowContextManager, NSDictionary, NSMutableSet, SBWindowContextHostWrapperView;
 
 __attribute__((visibility("hidden")))
 @interface SBWindowContextHostInfo : XXUnknownSuperclass <SBWindowContextManagerObserver> {
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *realContextHostViewChangedProperties;
 @property(retain, nonatomic) NSDictionary *realContextHostViewOriginalProperties;
 @property(readonly, assign, nonatomic) SBWindowContextHostWrapperView *wrapperView;
-- (id)initWithContextManager:(id)contextManager hostManager:(id)manager screen:(id)screen jailBehavior:(int)behavior;
+- (id)initWithContextManager:(id)contextManager hostManager:(id)manager screen:(id)screen;
 - (void)dealloc;
 - (void)windowContextManager:(id)manager didRepositionContext:(id)context from:(unsigned)from to:(unsigned)to forScreen:(id)screen;
 @end

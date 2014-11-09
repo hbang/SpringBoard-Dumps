@@ -8,7 +8,7 @@
 #import "SBWorkspaceTransactionDelegate.h"
 #import "SBWorkspaceTransaction.h"
 
-@class NSMutableArray, NSArray;
+@class NSArray, NSMutableArray;
 @protocol SBWorkspaceTransactionGroupDelegate;
 
 __attribute__((visibility("hidden")))

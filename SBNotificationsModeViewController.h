@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBBulletinObserverViewController.h"
 
-@class NSMutableArray, NSArray, NSMutableDictionary;
+@class NSArray, NSMutableDictionary, NSMutableArray;
 @protocol SBBulletinActionHandler;
 
 __attribute__((visibility("hidden")))
@@ -53,6 +53,5 @@ __attribute__((visibility("hidden")))
 - (void)updateForChangeInMessagePrivacy;
 - (void)updateSection:(id)section withInfo:(id)info;
 - (void)updateSection:(id)section withParameters:(id)parameters;
-- (void)viewWillAppear:(BOOL)view;
 @end
 

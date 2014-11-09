@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, SBOperationQueue;
+@class SBOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBOperationQueueLock : XXUnknownSuperclass {

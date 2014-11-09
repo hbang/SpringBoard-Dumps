@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBWindow.h"
 #import "SpringBoard-Structs.h"
+#import "SBWindow.h"
 
-@class NSMapTable, SBAlertWindowViewController;
+@class SBAlertWindowViewController, NSMapTable;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertWindow : SBWindow {

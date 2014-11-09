@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBIcon, SBIconViewMap, SBIconView;
+@class SBIconView, SBIcon, SBIconViewMap;
 
 __attribute__((visibility("hidden")))
 @interface SBIconRotationContainer : XXUnknownSuperclass {

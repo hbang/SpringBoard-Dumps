@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBNotificationsModeViewController.h"
+#import "SpringBoard-Structs.h"
 
 @class NSMutableSet;
 
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)commitRemovalOfSection:(id)section;
 - (void)commitReplacementWithBulletin:(id)bulletin ofBulletin:(id)bulletin2 inSection:(id)section;
 - (void)commitReplacementWithSection:(id)section ofSection:(id)section2;
+- (id)contentUnavailableText;
 - (void)dealloc;
 - (void)didAssociateBulletin:(id)bulletin withSection:(id)section forFeed:(unsigned)feed;
 - (id)infoForBulletin:(id)bulletin inSection:(id)section;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBSIMLockEntryAlertView.h"
 #import "SpringBoard-Structs.h"
+#import "SBSIMLockEntryAlertView.h"
 
 @class NSString;
 

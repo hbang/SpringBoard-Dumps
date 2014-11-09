@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBWorkspaceEvent, NSHashTable, NSMutableArray;
+@class NSMutableArray, SBWorkspaceEvent, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface SBWorkspaceEventQueue : XXUnknownSuperclass {

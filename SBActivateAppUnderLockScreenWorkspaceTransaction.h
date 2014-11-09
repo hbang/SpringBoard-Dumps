@@ -7,7 +7,7 @@
 
 #import "SBToAppWorkspaceTransaction.h"
 
-@class SBDisableActiveInterfaceOrientationChangeAssertion, SBLockScreenViewControllerBase;
+@class SBLockScreenViewControllerBase, SBDisableActiveInterfaceOrientationChangeAssertion;
 
 __attribute__((visibility("hidden")))
 @interface SBActivateAppUnderLockScreenWorkspaceTransaction : SBToAppWorkspaceTransaction {
@@ -20,13 +20,11 @@ __attribute__((visibility("hidden")))
 - (void)_commit;
 - (void)_handleAppActivationFailure;
 - (void)_setupAndActivate;
-- (BOOL)_shouldWorkspaceBeSuspended;
 - (void)_suspendWorkspaceIfNecessary;
 - (void)_transactionComplete;
 - (void)dealloc;
 - (BOOL)selfAlertDidActivate:(id)selfAlert overAlerts:(id)alerts;
 - (BOOL)selfApplicationActivated:(id)activated;
-- (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
 - (BOOL)selfApplicationExited:(id)exited;
 - (BOOL)selfApplicationLaunchDidFail:(id)selfApplicationLaunch;
 - (BOOL)selfWorkspaceDidResume;

@@ -7,7 +7,7 @@
 
 #import "SBLockOverlayViewController.h"
 
-@class NSString, NSTimer;
+@class NSTimer, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenDeviceBlockViewController : SBLockOverlayViewController {

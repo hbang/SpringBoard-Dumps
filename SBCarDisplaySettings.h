@@ -10,10 +10,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBCarDisplaySettings : XXUnknownSuperclass {
+	BOOL _animateLockOutModeChanges;
 	int _lockOutMode;
-	int _lockOutAnimationType;
 }
-@property(assign) int lockOutAnimationType;
+@property(assign) BOOL animateLockOutModeChanges;
 @property(assign) int lockOutMode;
 + (id)settingsControllerModule;
 - (void)setDefaultValues;

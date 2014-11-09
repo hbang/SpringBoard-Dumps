@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIActiveOrientationObserver.h"
 
-@class UIWindow, UIViewController, SBAppSliderWindow, NSMutableSet;
+@class SBWindow, UIViewController, NSMutableSet, SBAppSliderWindow;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSliderWindowController : XXUnknownSuperclass <SBUIActiveOrientationObserver> {
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_rotationPreventionReasons;
 }
 @property(retain, nonatomic) UIViewController *rootViewController;
-@property(readonly, assign, nonatomic) UIWindow *window;
+@property(readonly, assign, nonatomic) SBWindow *window;
 - (id)initWithRootViewController:(id)rootViewController;
 - (BOOL)_hasOrientationOverride;
 - (void)_rotateIfNecessaryTo:(int)to withDuration:(double)duration forOverride:(BOOL)override;

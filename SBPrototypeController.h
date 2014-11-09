@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SBVolumePressBandit.h"
-#import "SpringBoard-Structs.h"
 
-@class UIWindow, NSArray, SBRootSettings, PTSettingsController;
+@class PTSettingsController, NSArray, UIWindow, SBRootSettings;
 @protocol SBTestRecipe;
 
 __attribute__((visibility("hidden")))

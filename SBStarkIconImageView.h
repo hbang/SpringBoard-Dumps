@@ -6,30 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconImageView.h"
 
-@class UIView, UIImageView, NSArray, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SBStarkIconImageView : XXUnknownSuperclass {
-	UIImageView *_imageView;
-	UIImage *_image;
-	float _brightness;
-	unsigned _outerStripes;
-	unsigned _innerStripes;
-	BOOL _needsStripeUpdating;
-	NSArray *_outerStripesViews;
-	NSArray *_innerStripesViews;
-	UIView *_brightnessView;
+@interface SBStarkIconImageView : SBIconImageView {
 }
-@property(assign, nonatomic) float brightness;
-@property(retain, nonatomic) UIImage *image;
-@property(assign, nonatomic) unsigned innerStripes;
-@property(assign, nonatomic) unsigned outerStripes;
-- (id)initWithFrame:(CGRect)frame;
-- (void)_updateStripesIfNeeded;
-- (id)_viewsForEdges:(unsigned)edges ofWidth:(float)width inFrame:(CGRect)frame withBGColor:(id)bgcolor outRect:(CGRect *)rect;
-- (void)dealloc;
-- (void)layoutSubviews;
++ (float)cornerRadius;
 @end
 

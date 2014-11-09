@@ -5,21 +5,19 @@
  * Source: (null)
  */
 
-#import "SBVolumePressBandit.h"
-#import "SBStarkBannerSource.h"
-#import "BBObserverDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBVolumePressBandit.h"
+#import "BBObserverDelegate.h"
+#import "SBStarkBannerSource.h"
 
-@class NSSet, BBObserver;
+@class BBObserver;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBulletinBannerSource : SBStarkBannerSource <BBObserverDelegate, SBVolumePressBandit> {
 	BBObserver *_bbObserver;
-	NSSet *_whitelistedSectionIDs;
 }
-- (id)initWithAllowedTarget:(id)allowedTarget;
+- (id)initWithAllowedTargetIdentifier:(void *)allowedTargetIdentifier;
 - (void)_reloadVolumePressBanditPreference;
-- (BOOL)_shouldShowBulletin:(id)bulletin;
 - (void)_showTestBanner:(id)banner;
 - (void)dealloc;
 - (void)handleVolumeDecrease;

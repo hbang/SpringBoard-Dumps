@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, UIImageView, UILabel;
+@class UILabel, UIImageView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBTodayBulletinCell : XXUnknownSuperclass {

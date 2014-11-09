@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIActiveOrientationObserver.h"
 
-@class UIViewController, UIWindow, SBBulletinRootViewController, NSMutableSet;
+@class UIViewController, SBBulletinRootViewController, NSMutableSet, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinWindowController : XXUnknownSuperclass <SBUIActiveOrientationObserver> {
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)shouldSuppressAlertForBulletin:(id)bulletin;
 - (id)init;
 - (BOOL)_allowsShowNotificationsGestureFromBanner:(BOOL)banner;
+- (BOOL)_allowsShowNotificationsSystemGestureFromBanner:(BOOL)banner;
 - (void)_becomeKeyWindow;
 - (void)_cleanUpAfterRotatingFromOrientation:(int)orientation;
 - (void)_didBecomeKeyWindow:(id)window;
@@ -52,7 +53,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowsDismissBannerGesture;
 - (BOOL)allowsHideNotificationsGesture;
 - (BOOL)allowsShowNotificationsGesture;
-- (BOOL)allowsShowNotificationsGestureFromBanner;
+- (BOOL)allowsShowNotificationsSystemGesture;
+- (BOOL)allowsShowNotificationsSystemGestureFromBanner;
 - (void)clearOverrideWindowOrientation;
 - (void)dealloc;
 - (BOOL)isBusy;

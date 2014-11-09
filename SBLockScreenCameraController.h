@@ -7,8 +7,8 @@
 
 #import "SBLockScreenSlideUpController.h"
 
-@class UIView, UIImageView, NSDate, SBPasscodeLockDisableAssertion, DeferredPUApplicationCameraViewController, NSObject;
-@protocol OS_dispatch_queue, SBLockScreenCameraControllerDelegate;
+@class NSObject, UIImageView, SBPasscodeLockDisableAssertion, NSDate, UIWindow, DeferredPUApplicationCameraViewController, UIView;
+@protocol SBLockScreenCameraControllerDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenCameraController : SBLockScreenSlideUpController {
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 	BOOL _disableGracePeriodForCamera;
 	SBPasscodeLockDisableAssertion *_disableGracePeriodForCameraAssertion;
 	NSObject<OS_dispatch_queue> *_prewarmQueue;
+	UIWindow *_lockScreenWindow;
 	id _savedWindowDelegate;
 	BOOL _prewarming;
 	id<SBLockScreenCameraControllerDelegate> _delegate;
@@ -49,13 +50,13 @@ __attribute__((visibility("hidden")))
 - (void)_disableRotationForCamera;
 - (void)_dismissCameraAnimated:(BOOL)animated;
 - (void)_enableRotationForCamera;
-- (void)_hideLockScreenView;
 - (void)_prewarmCamera;
 - (void)_removeCameraPreviewViews;
 - (void)_removeLockScreenViewFakeStatusBar;
 - (void)_setCameraSessionID:(id)anId;
 - (void)_setupCameraSlideDownAnimation;
 - (void)_tearDownCameraPreview;
+- (void)abortAnimatedTransition;
 - (void)abortDynamicAnimationForScreenOff;
 - (void)activate;
 - (void)activateCamera;

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, UIWindow;
+@class UIWindow, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkScreenFocusAssertion : XXUnknownSuperclass {
@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
 	int _type;
 	float _priority;
 	UIWindow *_window;
+	NSString *_bundleID;
 }
+@property(readonly, assign, nonatomic) NSString *bundleID;
 @property(readonly, assign, nonatomic) NSString *name;
 @property(readonly, assign, nonatomic) float priority;
 @property(readonly, assign, nonatomic) int type;
 @property(readonly, assign, nonatomic) UIWindow *window;
-- (id)initWithName:(id)name type:(int)type priority:(float)priority window:(id)window;
+- (id)initWithName:(id)name type:(int)type priority:(float)priority window:(id)window application:(id)application;
 - (void)dealloc;
 - (id)description;
 @end

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBDeviceLockViewOwner.h"
 #import "SBAlertView.h"
-#import "SpringBoard-Structs.h"
 
-@class SBDeviceLockView, UIView, UIStatusBar, UIImage, UIImageView, SBEmergencyCallView;
+@class UIStatusBar, SBEmergencyCallView, UIImage, UIImageView, SBDeviceLockView, UIView;
 @protocol SBSlidingAlertDisplayDelegate;
 
 __attribute__((visibility("hidden")))

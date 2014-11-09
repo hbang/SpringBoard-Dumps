@@ -7,12 +7,14 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBHUDView, UIView, UIWindow;
+@class UIView, UIWindow, SBHUDView;
 
 __attribute__((visibility("hidden")))
 @interface SBHUDController : XXUnknownSuperclass {
 	UIWindow *_hudWindow;
 	UIView *_hudContentView;
+	UIView *_hudParallaxCorrectionView;
+	UIView *_hudParallaxView;
 	SBHUDView *_hudView;
 	int _orientation;
 	BOOL _hudVisibleOrFading;

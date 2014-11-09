@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBUIAnimationControllerDelegate.h"
 #import "SBToAppWorkspaceTransaction.h"
+#import "SBUIAnimationControllerDelegate.h"
 
-@class SBPasscodeLockDisableAssertion, SBAlert, SBUIAnimationController;
+@class SBUIAnimationController, SBPasscodeLockDisableAssertion, SBAlert;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertToAppWorkspaceTransaction : SBToAppWorkspaceTransaction <SBUIAnimationControllerDelegate> {

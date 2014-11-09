@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBLeafIconDataSource.h"
 
-@class NSString, LSApplicationProxy, NSProgress, NSMutableDictionary, NSMutableSet;
+@class NSString, NSMutableDictionary, NSMutableSet, LSApplicationProxy, NSProgress;
 
 __attribute__((visibility("hidden")))
 @interface SBApplicationPlaceholder : XXUnknownSuperclass <SBLeafIconDataSource> {

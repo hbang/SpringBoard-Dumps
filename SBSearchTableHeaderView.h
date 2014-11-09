@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, NSString, UILabel;
+@class UIView, UILabel, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchTableHeaderView : XXUnknownSuperclass {
@@ -17,9 +17,8 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) NSString *reuseIdentifier;
 @property(retain, nonatomic) NSString *title;
-+ (float)heightForContentSizeCategory:(id)contentSizeCategory;
++ (float)heightForActiveContentSizeCategory;
 + (id)lineColor;
-+ (float)titleBaselineFromBottomForContentSizeCategory:(id)contentSizeCategory;
 - (id)initWithReuseIdentifier:(id)reuseIdentifier;
 - (void)dealloc;
 - (BOOL)isUserInteractionEnabled;

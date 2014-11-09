@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "NSCopying.h"
 #import "SBIcon.h"
 #import "SpringBoard-Structs.h"
-#import "NSCopying.h"
 
 @class NSString, NSMutableSet;
 @protocol SBLeafIconDataSource;
@@ -50,14 +50,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)launchEnabled;
 - (void)launchFromLocation:(int)location;
 - (id)leafIdentifier;
-- (BOOL)matchesRepresentation:(id)representation;
 - (id)nodeIdentifier;
 - (BOOL)progressIsPaused;
 - (float)progressPercent;
 - (int)progressState;
 - (void)removeIconDataSource:(id)source;
 - (void)removeIconDataSourcesOfClass:(Class)aClass;
-- (id)representation;
 - (void)setUninstalled;
 @end
 

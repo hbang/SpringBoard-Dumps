@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, SBWallpaperEffectView, _UIBackdropView;
+@class _UIBackdropView, SBWallpaperEffectView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchResultsBackdropView : XXUnknownSuperclass {

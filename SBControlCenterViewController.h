@@ -6,13 +6,13 @@
  */
 
 #import "UIGestureRecognizerDelegate.h"
-#import "SBControlCenterSectionViewControllerDelegate.h"
-#import "_UIBackdropViewObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBControlCenterObserver.h"
+#import "SBControlCenterSectionViewControllerDelegate.h"
 #import "_UISettingsKeyObserver.h"
+#import "_UIBackdropViewObserver.h"
+#import "SBControlCenterObserver.h"
 
-@class UIPanGestureRecognizer, NSMutableArray, SBControlCenterContentView, SBControlCenterSettings, UITapGestureRecognizer, SBControlCenterContainerView;
+@class SBControlCenterContentView, SBControlCenterSettings, UITapGestureRecognizer, UIPanGestureRecognizer, SBControlCenterContainerView, NSMutableArray;
 @protocol SBControlCenterViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_handlePan:(id)pan;
 - (void)_handleTap:(id)tap;
-- (void)_updateContentFrame;
+- (void)abortAnimatedTransition;
 - (void)backdropViewDidChange:(id)backdropView;
 - (id)chevronView;
 - (float)contentHeightForOrientation:(int)orientation;
@@ -47,11 +47,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
 - (void)loadView;
 - (void)noteSectionEnabledStateDidChange:(id)noteSectionEnabledState;
-- (void)section:(id)section updateStatusText:(id)text reason:(id)reason;
+- (void)section:(id)section publishStatusUpdate:(id)update;
 - (void)sectionWantsControlCenterDismissal:(id)dismissal;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)trackChevronView:(id)view;
-- (void)viewDidAppear:(BOOL)view;
+- (id)view;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)view;
 @end
 

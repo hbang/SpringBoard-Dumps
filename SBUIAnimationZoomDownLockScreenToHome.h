@@ -7,7 +7,7 @@
 
 #import "SBUIAnimationZoomDownAppToHome.h"
 
-@class SBIconAnimator, SBLockToAppStatusBarAnimator, SBLockScreenViewController;
+@class SBIconAnimator, SBLockScreenViewController, SBLockToAppStatusBarAnimator;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomDownLockScreenToHome : SBUIAnimationZoomDownAppToHome {

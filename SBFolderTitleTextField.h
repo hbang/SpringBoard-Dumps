@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class _UILegibilityView, _UILegibilitySettings;
+@class _UILegibilitySettings, _UILegibilityView;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderTitleTextField : XXUnknownSuperclass {
@@ -20,9 +20,13 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) BOOL allowsEditing;
 @property(assign, nonatomic) float fontSize;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
++ (id)_clearButtonImage;
++ (id)_editBackgroundImage;
++ (void)warmupIfNecessary;
 - (id)initWithFrame:(CGRect)frame;
 - (id)_backgroundImage;
 - (id)_clearButtonImage;
+- (float)_legibilityStrength;
 - (CGRect)_textRectForBounds:(CGRect)bounds;
 - (void)_updateLegibility;
 - (void)_updateLegibilityView;

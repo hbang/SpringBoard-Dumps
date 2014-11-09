@@ -10,6 +10,9 @@
 
 
 @protocol UIStatusBarStateObserver <NSObject>
+@optional
+- (void)statusBarStateProvider:(id)provider didChangeDoubleHeightStatusStringForStyle:(int)style;
+@required
 - (void)statusBarStateProvider:(id)provider didPostStatusBarData:(const XXStruct_8iXKhD *)data withActions:(int)actions;
 @end
 

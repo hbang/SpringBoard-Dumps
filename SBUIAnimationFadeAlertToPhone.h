@@ -7,7 +7,7 @@
 
 #import "SBUIAnimationAlertToPhoneBase.h"
 
-@class UIView, SBDisableAppStatusBarAlphaChangesAssertion;
+@class SBDisableAppStatusBarAlphaChangesAssertion, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadeAlertToPhone : SBUIAnimationAlertToPhoneBase {
