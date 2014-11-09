@@ -10,7 +10,7 @@
 #import "SBVibrantBannerView.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBBannerViewCallbackManager, SBUIBannerContext, UIView, SBNotificationSeparatorView, NSString, _UIBackdropView, UIImage, UIImageView;
+@class SBBannerViewCallbackManager, UIView, SBNotificationSeparatorView, SBUIBannerContext, NSString, _UIBackdropView, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface SBBannerContextView : XXUnknownSuperclass <SBUIBannerView, SBVibrantBannerView> {

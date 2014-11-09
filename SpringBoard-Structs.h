@@ -27,9 +27,10 @@ typedef struct {
 	BOOL _field2;
 	BOOL _field3;
 	BOOL _field4;
-	float _field5;
-	int _field6;
-} XXStruct_3uUjXA;
+	BOOL _field5;
+	float _field6;
+	int _field7;
+} XXStruct_ykCi7C;
 
 typedef struct _NSRange {
 	unsigned location;
@@ -133,6 +134,14 @@ typedef struct NSString {
 	Class _field1;
 } NSString;
 
+typedef struct __CFArray *CFArrayRef;
+
+typedef struct {
+	float _field1;
+	CFArrayRef _field2;
+	float _field3;
+} XXStruct_qXnNTD;
+
 typedef struct BKSDisplayBrightnessTransaction *BKSDisplayBrightnessTransactionRef;
 
 typedef struct MGNotificationTokenStruct *MGNotificationTokenStructRef;
@@ -194,8 +203,6 @@ typedef struct SBWindowLevelRange_struct {
 	float start;
 	float end;
 } SBWindowLevelRange_struct;
-
-typedef struct __CFArray *CFArrayRef;
 
 typedef struct CGImageSource *CGImageSourceRef;
 

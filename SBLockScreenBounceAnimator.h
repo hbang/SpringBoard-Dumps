@@ -10,7 +10,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 
-@class NSSet, NSMutableSet, UIDynamicAnimator, UIView, SBBounceBehavior, UIGestureRecognizer, NSString, SBBouncingSystem, SBBouncingItem, SBBounceSettings;
+@class NSSet, NSMutableSet, UIView, SBBounceBehavior, UIGestureRecognizer, UIDynamicAnimator, NSString, SBBouncingSystem, SBBouncingItem, SBBounceSettings;
 @protocol SBPresentingDelegate;
 
 __attribute__((visibility("hidden")))

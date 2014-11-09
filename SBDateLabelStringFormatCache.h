@@ -8,7 +8,7 @@
 #import "SBFLockScreenDateFormatter.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDateFormatter, NSNumberFormatter, NSDate, NSString;
+@class NSNumberFormatter, NSDateFormatter, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBDateLabelStringFormatCache : XXUnknownSuperclass <SBFLockScreenDateFormatter> {

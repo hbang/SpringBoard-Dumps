@@ -16,7 +16,7 @@
 #import "FBWindowContextManagerDelegate.h"
 #import "SBAlertObserver.h"
 
-@class UIWindow, SBStarkNowPlayingWindow, SBStarkFakeIconOperationController, SBStarkScreenFocusController, NSMutableOrderedSet, SBCarDisplaySettings, SBAssistantWindow, AVExternalDevice, SBStarkIconController, SBStarkStatusBarViewController, NSHashTable, SBStarkLockOutWindow, FBScene, SBStarkNotificationViewController, SBAlertManager, SBStarkAnimationWindow, SBStarkNowPlayingController, FBSDisplay, SBStarkStatusBarWindow, SBStarkLockOutViewController, SBStarkNotificationWindow, NSMapTable, SBStarkIconWindow, NSString, UIScreen, SBWindow;
+@class UIWindow, SBStarkNowPlayingWindow, SBStarkFakeIconOperationController, SBStarkScreenFocusController, NSMutableOrderedSet, SBCarDisplaySettings, SBAssistantWindow, SBStarkIconController, AVExternalDevice, SBStarkStatusBarViewController, NSHashTable, SBStarkLockOutWindow, FBScene, SBStarkNotificationViewController, SBAlertManager, SBStarkAnimationWindow, SBStarkNowPlayingController, FBSDisplay, SBStarkStatusBarWindow, SBStarkLockOutViewController, SBStarkNotificationWindow, NSMapTable, SBStarkIconWindow, NSString, UIScreen, SBWindow;
 @protocol SBStarkScreenControllerDelegate, SBDisplayProtocol;
 
 __attribute__((visibility("hidden")))

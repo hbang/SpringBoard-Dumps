@@ -13,7 +13,7 @@
 #import "SBStarkBannerTargetObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBStarkBulletinBannerSource, NSString, SBCarBannerNotificationView, NSArray, SBStarkAlertItemBannerSource, UITapGestureRecognizer, SBStarkBannerTarget, SBUIBannerContext, SBStarkBannerCell, SBStarkNotificationLayout;
+@class SBStarkBulletinBannerSource, NSString, SBCarBannerNotificationView, NSArray, SBStarkAlertItemBannerSource, SBStarkBannerTarget, UITapGestureRecognizer, SBStarkBannerCell, SBStarkNotificationLayout, SBUIBannerContext;
 @protocol SBStarkNotificationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))

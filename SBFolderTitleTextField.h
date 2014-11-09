@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class _UILegibilityView, _UILegibilitySettings;
+@class _UILegibilitySettings, _UILegibilityView;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderTitleTextField : XXUnknownSuperclass {

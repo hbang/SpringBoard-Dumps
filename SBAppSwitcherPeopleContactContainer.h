@@ -10,7 +10,7 @@
 #import "UIActionSheetDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBAppSwitcherPeopleViewController, UIView, _UILegibilitySettings, SBScrollViewItemWrapper, NSString, SBAppSwitcherPeopleContactView, UIScrollView, SBMaskEndGradientClippingView;
+@class SBAppSwitcherPeopleViewController, UIScrollView, UIView, _UILegibilitySettings, SBScrollViewItemWrapper, NSString, SBAppSwitcherPeopleContactView, SBMaskEndGradientClippingView;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherPeopleContactContainer : XXUnknownSuperclass <UIActionSheetDelegate, SBPeopleScrollViewItemView> {

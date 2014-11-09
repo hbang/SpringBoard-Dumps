@@ -13,7 +13,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "FBSceneManagerDelegate.h"
 
-@class NSMutableDictionary, FBSceneManager, UIApplicationSceneClientSettingsDiffInspector, NSString;
+@class NSMutableDictionary, FBSceneManager, NSString, UIApplicationSceneClientSettingsDiffInspector;
 
 __attribute__((visibility("hidden")))
 @interface SBSceneManagerController : XXUnknownSuperclass <FBSceneManagerDelegate, FBSceneManagerObserver, FBProcessManagerObserver, FBWorkspaceDelegate, FBDisplayManagerObserver, SBSceneManagerDelegate> {

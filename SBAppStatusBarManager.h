@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSHashTable, NSMutableOrderedSet, NSMutableDictionary;
+@class NSMutableOrderedSet, NSHashTable, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBAppStatusBarManager : XXUnknownSuperclass {

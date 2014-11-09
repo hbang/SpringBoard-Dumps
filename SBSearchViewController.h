@@ -19,7 +19,7 @@
 #import "SBSearchHeaderDelegate.h"
 #import "SBReachabilityObserver.h"
 
-@class NSString, UIWindow, SBSearchHeader, UIGestureRecognizer, UITapGestureRecognizer, UILabel, SBSearchResultsActionManager, UIPanGestureRecognizer, UINavigationController, UITableView, UIViewController, SBSearchFirstTimeViewController, SBSearchResultsBackdropView;
+@class NSString, UIWindow, SBSearchHeader, UIGestureRecognizer, UILabel, UITapGestureRecognizer, SBSearchResultsActionManager, UIPanGestureRecognizer, UINavigationController, UITableView, UIViewController, SBSearchFirstTimeViewController, SBSearchResultsBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchViewController : XXUnknownSuperclass <UITableViewDelegate, UITableViewDataSource, SPSearchAgentDelegate, SBSearchGestureObserver, UISearchBarDelegate, SBSearchResultsActionManagerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, SBUIActiveOrientationObserver, SBReachabilityObserver, SBSearchHeaderDelegate> {
@@ -93,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (UIEdgeInsets)actionManagerDetailsViewEdgeInsets:(id)insets;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(int)activeInterfaceOrientation willAnimateWithDuration:(double)duration fromOrientation:(int)orientation;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(int)activeInterfaceOrientation;
+- (void)attributionButtonTapped:(id)tapped;
 - (void)cancelButtonPressed;
 - (void)dealloc;
 - (void)dismiss;

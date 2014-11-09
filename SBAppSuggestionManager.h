@@ -8,7 +8,7 @@
 #import "LSBestAppSuggestionManagerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class LSBestAppSuggestion, LSBestAppSuggestionManager, NSString;
+@class LSBestAppSuggestion, NSString, LSBestAppSuggestionManager;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSuggestionManager : XXUnknownSuperclass <LSBestAppSuggestionManagerDelegate> {

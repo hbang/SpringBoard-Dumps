@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 	int _customStatusBarStyle;
 	int _desiredStatusBarStyleOverrides;
 	BOOL _wantsToShowStatusBar;
+	BOOL _suppressesSiri;
 	BOOL _dismissOnUILock;
 	int _desiredLaunchingInterfaceOrientation;
 	BOOL _dontCancelStatusBarStyleOverrides;
@@ -62,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)_setImpersonatedApplicationBundleID:(id)anId;
 - (void)_setLaunchingInterfaceOrientation:(int)orientation;
 - (void)_setShouldDisableFadeInAnimation:(BOOL)_set;
+- (void)_setSuppressesSiri:(BOOL)siri;
 - (void)_setWantsWallpaperTunnel:(BOOL)tunnel immediately:(BOOL)immediately;
 - (void)activate;
 - (BOOL)allowsStackingOfAlert:(id)alert;
@@ -106,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (int)statusBarStyleOverridesToCancel;
 - (BOOL)suppressesControlCenter;
 - (BOOL)suppressesNotificationCenter;
+- (BOOL)suppressesSiri;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

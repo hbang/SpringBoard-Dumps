@@ -20,7 +20,7 @@
 #import "SBVolumePressBandit.h"
 
 @class NSSet, NSString, BBObserver, NSMutableArray, SBLockScreenNotificationListView, SBAwayViewPluginController, SBLockScreenActionContext, SBLockScreenNotificationCell, BSSerializedRequestQueue, SBLockScreenBounceAnimator;
-@protocol SBUIBannerTarget, SBLockScreenNotificationListDelegate;
+@protocol SBLockScreenNotificationListDelegate, SBUIBannerTarget;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenNotificationListController : XXUnknownSuperclass <SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel, BBObserverDelegate, SBVolumePressBandit, SBUIBannerSource, SBUIBannerTargetManagerObserver, SBLockScreenActionHandler, SBLockScreenNotificationBannerItemDelegate, SBPresentingDelegate, SBCoordinatedPresenting, SBMotionGestureObserver> {

@@ -9,7 +9,7 @@
 #import "UIScrollViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, SBAppSwitcherScrollView, NSString, NSMutableArray, SBStopScrollingGestureRecognizer, UITapGestureRecognizer, NSArray;
+@class NSMutableDictionary, UITapGestureRecognizer, SBAppSwitcherScrollView, NSString, NSMutableArray, SBStopScrollingGestureRecognizer, NSArray;
 @protocol SBAppSwitcherScrollingViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -86,7 +86,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAutorotate;
 - (unsigned)supportedInterfaceOrientations;
 - (void)switcherWasDismissed:(BOOL)dismissed;
-- (void)viewDidDisappear:(BOOL)view;
 - (NSRange)visibleItems;
 @end
 

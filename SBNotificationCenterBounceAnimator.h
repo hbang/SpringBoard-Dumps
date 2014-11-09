@@ -9,7 +9,7 @@
 #import "UIDynamicAnimatorDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIDynamicAnimator, SBBounceBehavior, _SBNotificationCenterBouncingItem, NSString, SBBouncingSystem, SBBounceSettings;
+@class SBBounceBehavior, _SBNotificationCenterBouncingItem, UIDynamicAnimator, NSString, SBBouncingSystem, SBBounceSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationCenterBounceAnimator : XXUnknownSuperclass <UIDynamicAnimatorDelegate> {

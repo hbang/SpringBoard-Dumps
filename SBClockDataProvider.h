@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "BBRemoteDataProvider.h"
 
-@class NSMutableDictionary, BBBulletinRequest, NSTimer, BBDataProviderProxy, NSString, NSDate, UILocalNotification;
+@class NSMutableDictionary, NSTimer, UILocalNotification, BBBulletinRequest, BBDataProviderProxy, NSString, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface SBClockDataProvider : XXUnknownSuperclass <BBRemoteDataProvider> {

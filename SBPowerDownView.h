@@ -10,7 +10,7 @@
 #import "SBPowerDownViewInterface.h"
 #import "SBAlertView.h"
 
-@class SBShapeView, UIView, NSTimer, NSString, UIButton, _UIActionSlider, UILabel;
+@class SBShapeView, UIView, NSTimer, NSString, UIButton, UILabel, _UIActionSlider;
 @protocol SBPowerDownViewDelegate;
 
 __attribute__((visibility("hidden")))

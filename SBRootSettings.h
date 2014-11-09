@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBFAnimationFactorySettings, SBAppParallaxSettings, NSString, SBHomeButtonSettings, SBAppSwitcherSettings, SBFolderSettings, SBRootAnimationSettings, SBCarDisplaySettings, SBLockScreenTestPluginSettings, SBReachabilitySettings, SBLegibilitySettings, SBLockScreenSlideUpAppSettings, SBFWallpaperSettings, SBLockScreenSettings, SBControlCenterSettings, SBNotificationCenterSettings, SBAlertItemsSettings, SBIconColorSettings, SBFadeAnimationSettings;
+@class SBFAnimationFactorySettings, SBAppParallaxSettings, NSString, SBHomeButtonSettings, SBAppSwitcherSettings, SBFolderSettings, SBRootAnimationSettings, SBCarDisplaySettings, SBLockScreenTestPluginSettings, SBReachabilitySettings, SBLegibilitySettings, SBLockScreenSlideUpAppSettings, SBLockScreenSettings, SBControlCenterSettings, SBNotificationCenterSettings, SBFWallpaperSettings, SBAlertItemsSettings, SBIconColorSettings, SBFadeAnimationSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBRootSettings : XXUnknownSuperclass {

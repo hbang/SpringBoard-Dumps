@@ -10,7 +10,7 @@
 #import "FBUIApplicationServiceDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, NSMutableSet, SBApplicationRestrictionController, SBReverseCountedSemaphore, NSString, SBApplicationLibraryObserver, FBApplicationInfo, NSLock, BKSApplicationStateMonitor, FBApplicationLibrary, NSDictionary;
+@class NSMutableDictionary, NSMutableSet, BKSApplicationStateMonitor, FBApplicationLibrary, SBApplicationRestrictionController, SBReverseCountedSemaphore, NSString, SBApplicationLibraryObserver, FBApplicationInfo, NSLock, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBApplicationController : XXUnknownSuperclass <SBApplicationRestrictionDataSource, SBApplicationLifecycleObserver, FBUIApplicationServiceDelegate> {

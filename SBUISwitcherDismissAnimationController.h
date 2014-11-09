@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class SBAppSwitcherPageView, FBWindowContextHostManager, UIView, SBAppSwitcherController, SBDisplayLayout;
+@class SBAppSwitcherPageView, UIView, SBAppSwitcherController, FBWindowContextHostManager, SBDisplayLayout;
 
 __attribute__((visibility("hidden")))
 @interface SBUISwitcherDismissAnimationController : SBUIMainScreenAnimationController {

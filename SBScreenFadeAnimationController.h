@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, SBFLockScreenDateView, SBLockScreenView, UIWindow, SBFadeAnimationSettings;
+@class UIView, SBLockScreenView, UIWindow, SBFLockScreenDateView, SBFadeAnimationSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBScreenFadeAnimationController : XXUnknownSuperclass {

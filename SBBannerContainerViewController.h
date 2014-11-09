@@ -15,7 +15,7 @@
 #import "SBMotionGestureObserver.h"
 #import "UIViewControllerTransitioningDelegate.h"
 
-@class FBUIApplicationResignActiveAssertion, UIView, NSString, UIImage, NCInteractiveNotificationHostViewController, NCBannerAccessoryHostViewController, NCContentHostViewController, SBBannerButtonViewController, SBUIBannerContext, SBBannerContextView, SBBannerContainerView;
+@class FBUIApplicationResignActiveAssertion, UIView, NSString, UIImage, SBBannerButtonViewController, NCInteractiveNotificationHostViewController, NCBannerAccessoryHostViewController, NCContentHostViewController, SBUIBannerContext, SBBannerContextView, SBBannerContainerView;
 @protocol SBBannerContextViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -104,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didReceiveRaiseGesture;
 - (void)hostViewController:(id)controller didRequestDismissalWithContext:(id)context;
+- (void)hostViewController:(id)controller didRequestSticky:(BOOL)sticky;
 - (void)hostViewControllerDidChangePreferredContentSize:(id)hostViewController;
 - (void)hostViewControllerDidRequestDismissal:(id)hostViewController;
 - (void)hostViewControllerDidRequestSticky:(id)hostViewController;

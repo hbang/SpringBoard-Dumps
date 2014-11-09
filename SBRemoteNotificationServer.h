@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)lastNotificationReceivedBundleIdentifier;
 - (unsigned)legacyRegisteredTypesForApp:(id)app;
 - (void)registerApplication:(id)application forEnvironment:(id)environment appWantsPush:(BOOL)push;
+- (void)registerApplicationWithBundleIdentifier:(id)bundleIdentifier forEnvironment:(id)environment appWantsPush:(BOOL)push;
 - (void)requestTokenForClient:(id)client;
 - (void)run;
 - (void)setBackgroundAppRefreshAllowed:(BOOL)allowed forBundleIdentifier:(id)bundleIdentifier;

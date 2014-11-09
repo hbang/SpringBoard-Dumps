@@ -14,7 +14,7 @@
 #import "SBIconViewMapDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSSet, SBIcon, NSString, _UILegibilitySettings, SBIconViewMap, NSIndexPath, SBStarkFolderController, SBStarkFakeIconOperationController, SBIconModel, SBStarkIconLayoutOverrideStrategy, AVExternalDevice;
+@class NSSet, SBIcon, NSString, _UILegibilitySettings, AVExternalDevice, SBIconViewMap, NSIndexPath, SBStarkFolderController, SBStarkFakeIconOperationController, SBIconModel, SBStarkIconLayoutOverrideStrategy;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkIconController : XXUnknownSuperclass <SBIconModelDelegate, SBApplicationRestrictionObserver, SBFolderControllerDelegate, SBIconViewMapDelegate, SBIconViewDelegate, SBLeafIconDataSource> {

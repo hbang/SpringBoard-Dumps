@@ -9,7 +9,7 @@
 #import "MPUSystemMediaControlsDelegate.h"
 #import "SpringBoard-Structs.h"
 
-@class NSString, MPUSystemMediaControlsViewController;
+@class MPUSystemMediaControlsViewController, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBCCMediaControlsSectionController : SBControlCenterSectionViewController <MPUSystemMediaControlsDelegate> {

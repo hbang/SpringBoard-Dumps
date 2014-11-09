@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIMutableApplicationSceneSettings, UIApplicationSceneTransitionContext, FBSDisplay, SBApplication, FBSSceneClientSettings, SBDisplayLayout, NSString;
+@class FBSSceneClientSettings, FBSDisplay, SBApplication, SBDisplayLayout, UIMutableApplicationSceneSettings, UIApplicationSceneTransitionContext, NSString;
 @protocol UIApplicationSceneClientSettings;
 
 __attribute__((visibility("hidden")))

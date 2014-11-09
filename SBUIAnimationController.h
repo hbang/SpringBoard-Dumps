@@ -8,7 +8,7 @@
 #import "BSTransactionObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBApplication, UIView, NSString, NSMutableArray, NSHashTable, BSTransaction, SBDisplaySettings, UIWindow;
+@class SBApplication, UIView, NSString, NSMutableArray, NSHashTable, SBDisplaySettings, BSTransaction, UIWindow;
 @protocol BSLogging;
 
 __attribute__((visibility("hidden")))

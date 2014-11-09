@@ -216,7 +216,7 @@ __attribute__((visibility("hidden")))
 - (void)finishLaunching;
 - (void)forceIconInterfaceOrientation:(int)orientation duration:(double)duration;
 - (void)getRidOfAppSwitcher;
-- (void)getRotationContentSettings:(XXStruct_3uUjXA *)settings forWindow:(id)window;
+- (void)getRotationContentSettings:(XXStruct_ykCi7C *)settings forWindow:(id)window;
 - (void)handleDismissBannerSystemGesture:(id)gesture;
 - (void)handleFluidHorizontalSystemGesture:(id)gesture;
 - (void)handleFluidScaleSystemGesture:(id)gesture;

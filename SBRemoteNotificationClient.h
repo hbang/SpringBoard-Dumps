@@ -40,8 +40,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)coder;
 - (BOOL)allowsUserNotifications;
 - (id)application;
+- (BOOL)backgroundAppRefreshAllowedForBundleIdentifier:(id)bundleIdentifier;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)coder;
 - (BOOL)isNewsstandPushEnabled;
+- (BOOL)wantsPushWithCoder:(id)coder;
 @end
 

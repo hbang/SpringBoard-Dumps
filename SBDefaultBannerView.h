@@ -10,7 +10,7 @@
 #import "SBVibrantBannerView.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBUIBannerContext, UIView, SBDefaultBannerTextView, NSString, UIImageView;
+@class UIView, SBDefaultBannerTextView, SBUIBannerContext, NSString, UIImageView;
 @protocol SBDefaultBannerViewSource;
 
 __attribute__((visibility("hidden")))

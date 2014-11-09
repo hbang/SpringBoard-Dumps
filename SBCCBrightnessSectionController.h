@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBControlCenterSectionViewController.h"
 #import "SpringBoard-Structs.h"
+#import "SBControlCenterSectionViewController.h"
 
 @class UIView, SBUIControlCenterSlider, UIVisualEffectView;
 

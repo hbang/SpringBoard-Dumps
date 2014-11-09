@@ -10,7 +10,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 
-@class SBUIControlCenterLabel, UIView, NSString, UIFont, UIVisualEffect, UIVisualEffectView, SBUIControlCenterButton;
+@class UIVisualEffect, UIView, UIVisualEffectView, SBUIControlCenterButton, SBUIControlCenterLabel, NSString, UIFont;
 
 __attribute__((visibility("hidden")))
 @interface SBCCButtonLikeSectionView : XXUnknownSuperclass <SBUIControlCenterButtonDelegate, _UISettingsKeyObserver> {

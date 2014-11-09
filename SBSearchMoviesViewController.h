@@ -9,7 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBSearchResultDetailsViewController.h"
 
-@class UIColor, NSString, NSURLSessionDataTask, NSArray, SPSearchResult, SPSearchResultSection;
+@class NSURLSessionDataTask, UIColor, NSString, NSArray, SPSearchResult, SPSearchResultSection;
 @protocol SBSearchResultDetailsViewControllerDelegate;
 
 __attribute__((visibility("hidden")))

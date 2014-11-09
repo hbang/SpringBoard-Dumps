@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (id)sortedBulletins;
 - (id)subtitle;
 - (id)title;
+- (BOOL)wantsFullscreenPresentation;
 - (BOOL)wantsHighlightOnInsert;
 @end
 

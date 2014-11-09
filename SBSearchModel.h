@@ -9,7 +9,7 @@
 #import "PRSImageSource.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSObject, CPLRUDictionary, NSOperationQueue, NSTimer, NSOperation, NSString, NSDate;
+@class NSObject, NSTimer, CPLRUDictionary, NSOperationQueue, NSString, NSOperation, NSDate;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))

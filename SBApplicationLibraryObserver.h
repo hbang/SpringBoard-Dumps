@@ -8,7 +8,7 @@
 #import "FBApplicationLibraryObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSHashTable, FBApplicationLibrary, NSArray, NSString, NSMutableDictionary;
+@class FBApplicationLibrary, NSHashTable, NSArray, NSString, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBApplicationLibraryObserver : XXUnknownSuperclass <FBApplicationLibraryObserver> {

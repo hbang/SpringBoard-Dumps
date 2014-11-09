@@ -9,7 +9,7 @@
 #import "SpringBoard-Structs.h"
 
 @class UIView, SBUIPasscodeViewWithLockScreenStyle;
-@protocol SBPasscodeEntryAlertViewDelegate, SBUIPasscodeLockView;
+@protocol SBUIPasscodeLockView, SBPasscodeEntryAlertViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBPasscodeEntryAlertView : SBAlertView {

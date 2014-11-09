@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) BOOL suppressesBanners;
 @property(readonly, assign, nonatomic) BOOL suppressesControlCenter;
 @property(readonly, assign, nonatomic) BOOL suppressesNotificationCenter;
+@property(readonly, assign, nonatomic) BOOL suppressesSiri;
 @property(readonly, assign, nonatomic) UIViewController *viewControllerForSupportedInterfaceOrientations;
 @property(readonly, assign, nonatomic) BOOL wantsSupportedInterfaceOrientationsIgnoredDuringDeactivation;
 + (void)registerForAlerts;

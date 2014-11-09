@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIDynamicItemBehavior, UICollisionBehavior, UIGravityBehavior, UIAttachmentBehavior;
+@class UICollisionBehavior, UIGravityBehavior, UIAttachmentBehavior, UIDynamicItemBehavior;
 @protocol UIDynamicItem;
 
 __attribute__((visibility("hidden")))

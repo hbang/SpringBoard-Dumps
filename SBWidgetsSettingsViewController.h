@@ -10,7 +10,7 @@
 #import "UITableViewDataSource.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBSectionInfo, NSString, NSMutableArray, BBSettingsGateway, SBWidgetsSettingsTableViewController;
+@class BBSectionInfo, NSString, NSMutableArray, SBWidgetsSettingsTableViewController, BBSettingsGateway;
 
 __attribute__((visibility("hidden")))
 @interface SBWidgetsSettingsViewController : XXUnknownSuperclass <UITableViewDelegate, UITableViewDataSource> {

@@ -8,7 +8,7 @@
 #import "SBStarkNowPlayingServiceDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBStarkNowPlayingService, _UIAsyncInvocation, SBSUICarDisplayNowPlayingStateContext, NSMutableArray, NSString;
+@class SBStarkNowPlayingService, NSMutableArray, _UIAsyncInvocation, SBSUICarDisplayNowPlayingStateContext, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkNowPlayingController : XXUnknownSuperclass <SBStarkNowPlayingServiceDelegate> {

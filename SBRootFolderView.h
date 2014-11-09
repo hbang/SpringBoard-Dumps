@@ -11,7 +11,7 @@
 #import "SBFolderView.h"
 #import "_UISettingsKeyObserver.h"
 
-@class SBDockIconListView, SBFParallaxSettings, SBDockView, NSString, SBRootFolder, SBSearchViewController, TPLegacyLCDTextView;
+@class TPLegacyLCDTextView, SBDockIconListView, SBFParallaxSettings, SBDockView, NSString, SBRootFolder, SBSearchViewController;
 
 __attribute__((visibility("hidden")))
 @interface SBRootFolderView : SBFolderView <_UISettingsKeyObserver, SBSearchGestureObserver, UIGestureRecognizerDelegate> {

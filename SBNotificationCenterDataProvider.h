@@ -8,7 +8,7 @@
 #import "BBRemoteDataProvider.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBSectionInfo, NSExtension, BBSectionIcon, NSString;
+@class NSExtension, BBSectionIcon, BBSectionInfo, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationCenterDataProvider : XXUnknownSuperclass <BBRemoteDataProvider> {

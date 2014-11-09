@@ -10,7 +10,7 @@
 #import "SBControlCenterViewControllerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSSet, FBUIApplicationResignActiveAssertion, SBWindow, NSMutableSet, SBChevronView, UIView, NSString, _UIDynamicValueAnimation, _UIBackdropView, SBControlCenterViewController, UIDynamicAnimator, SBControlCenterRootView, NSHashTable, UIImageView;
+@class NSSet, FBUIApplicationResignActiveAssertion, SBWindow, NSMutableSet, SBChevronView, UIView, NSString, _UIBackdropView, _UIDynamicValueAnimation, SBControlCenterViewController, SBControlCenterRootView, UIDynamicAnimator, NSHashTable, UIImageView;
 @protocol SBPresentingDelegate;
 
 __attribute__((visibility("hidden")))

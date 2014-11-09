@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, _UILegibilityLabel, _UILegibilitySettings, SBFakeStatusBarView, SBFLockScreenDateView, SBFLockScreenSimpleDateFormatter, SBLegibilityView, UILabel;
+@class UIView, _UILegibilitySettings, SBFakeStatusBarView, SBFLockScreenDateView, _UILegibilityLabel, SBFLockScreenSimpleDateFormatter, SBLegibilityView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenPreviewView : XXUnknownSuperclass {

@@ -10,7 +10,9 @@
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenPluginOverlayContext : SBLockOverlayContext {
+	BOOL _disabledMesaMatching;
 }
+@property(assign, nonatomic) BOOL disabledMesaMatching;
 - (id)initWithPluginName:(id)pluginName pluginController:(id)controller lockScreenViewController:(id)controller3;
 - (BOOL)_pluginNeedsOverlay:(id)overlay;
 @end

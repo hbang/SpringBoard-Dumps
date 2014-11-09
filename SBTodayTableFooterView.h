@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class SBAttributionWrapperViewController, SBNotificationSeparatorView, SBNewWidgetsLabel, SBNotificationVibrantButton, UIControl;
+@class UIControl, SBAttributionWrapperViewController, SBNotificationSeparatorView, SBNewWidgetsLabel, SBNotificationVibrantButton;
 
 __attribute__((visibility("hidden")))
 @interface SBTodayTableFooterView : XXUnknownSuperclass {

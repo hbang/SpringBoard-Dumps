@@ -11,7 +11,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBStarkBannerItemObserver.h"
 
-@class SBUIBannerContext, SBStarkBannerItem, SBStarkBannerViewButton, NSString, UILabel, UIImageView;
+@class SBStarkBannerItem, SBStarkBannerViewButton, SBUIBannerContext, NSString, UILabel, UIImageView;
 @protocol SBBulletinDateLabel;
 
 __attribute__((visibility("hidden")))

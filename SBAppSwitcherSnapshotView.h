@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAppSwitcherPageContentView.h"
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIView, NSString, UIImage, SBAppSwitcherSettings, SBSnapshotImageInfo, SBAppSwitcherStatusBarViewCache, SBApplication, NSObject, SBDisplayItem, SBWallpaperEffectView, UIImageView, SBZoomableCrossfadeView;

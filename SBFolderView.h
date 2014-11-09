@@ -12,7 +12,7 @@
 #import "UITextFieldDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBIconListPageControl, NSMutableSet, UIView, NSString, NSArray, _UILegibilitySettings, SBIconViewMap, UITapGestureRecognizer, NSMutableArray, SBFolder, SBIconScrollView, SBIconListView, SBFolderTitleTextField, SBFakeStatusBarView, UISwipeGestureRecognizer;
+@class SBIconListPageControl, NSMutableSet, UIView, NSString, NSArray, _UILegibilitySettings, SBIconViewMap, NSMutableArray, SBFolder, UITapGestureRecognizer, SBIconScrollView, SBIconListView, SBFolderTitleTextField, SBFakeStatusBarView, UISwipeGestureRecognizer;
 @protocol SBFolderViewDelegate;
 
 __attribute__((visibility("hidden")))

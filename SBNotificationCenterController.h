@@ -16,7 +16,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWidgetViewControllerDelegate.h"
 
-@class NSSet, SBWindow, FBUIApplicationResignActiveAssertion, SBChevronView, UILongPressGestureRecognizer, UIView, NSString, NSTimer, SBNotificationCenterViewController, SBLockScreenActionContext, SBNotificationCenterSettings;
+@class NSSet, SBWindow, FBUIApplicationResignActiveAssertion, SBChevronView, UIView, NSString, NSTimer, UILongPressGestureRecognizer, SBNotificationCenterViewController, SBLockScreenActionContext, SBNotificationCenterSettings;
 @protocol SBPresentingDelegate;
 
 __attribute__((visibility("hidden")))

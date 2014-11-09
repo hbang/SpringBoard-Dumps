@@ -10,7 +10,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 
-@class PTSettingsController, NSString, SBRootSettings, UIWindow, NSArray;
+@class NSString, SBRootSettings, PTSettingsController, UIWindow, NSArray;
 @protocol SBTestRecipe;
 
 __attribute__((visibility("hidden")))

@@ -8,8 +8,8 @@
 #import "SBAppSwitcherPeopleDataSource.h"
 #import "SBAppSwitcherPeopleAbstractDataSource.h"
 
-@class NSMutableDictionary, NSObject, SGSuggestionsService, NSString, SBAppSwitcherSettings, NSArray;
-@protocol OS_dispatch_queue, SBAppSwitcherPeopleDataSourceConsumer, OS_dispatch_group;
+@class NSMutableDictionary, NSObject, NSString, SGSuggestionsService, SBAppSwitcherSettings, NSArray;
+@protocol OS_dispatch_group, OS_dispatch_queue, SBAppSwitcherPeopleDataSourceConsumer;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherPeopleRecentsPlusFavoritesDataSource : SBAppSwitcherPeopleAbstractDataSource <SBAppSwitcherPeopleDataSource> {

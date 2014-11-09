@@ -10,7 +10,7 @@
 #import "SBFolderView.h"
 #import "_UISettingsKeyObserver.h"
 
-@class NSString, NSMutableArray, NSMapTable, UITapGestureRecognizer, SBFolderSettings, UILongPressGestureRecognizer, UIPinchGestureRecognizer, SBFloatyFolderBackgroundClipView;
+@class UITapGestureRecognizer, UILongPressGestureRecognizer, UIPinchGestureRecognizer, NSString, NSMutableArray, NSMapTable, SBFolderSettings, SBFloatyFolderBackgroundClipView;
 
 __attribute__((visibility("hidden")))
 @interface SBFloatyFolderView : SBFolderView <UIGestureRecognizerDelegate, _UISettingsKeyObserver> {

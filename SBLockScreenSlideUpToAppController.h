@@ -11,7 +11,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIPasscodeLockViewDelegate.h"
 
-@class NSSet, UIView, NSString, BBObserver, UIImage, SBLockScreenView, _UIDynamicValueAnimation, SBDisableAppStatusBarAlphaChangesAssertion, LSBestAppSuggestion, NSMutableArray, SBApplication, NSURL, SBUIPasscodeViewWithLockScreenStyle, SBWallpaperEffectView, SBBounceSettings, SBPasscodeLockDisableAssertion, SBLockScreenBounceAnimator;
+@class NSSet, UIView, NSString, BBObserver, UIImage, SBLockScreenView, SBDisableAppStatusBarAlphaChangesAssertion, NSMutableArray, _UIDynamicValueAnimation, SBApplication, LSBestAppSuggestion, NSURL, SBUIPasscodeViewWithLockScreenStyle, SBWallpaperEffectView, SBBounceSettings, SBPasscodeLockDisableAssertion, SBLockScreenBounceAnimator;
 @protocol SBLockScreenSlideUpToAppControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -96,7 +96,6 @@ __attribute__((visibility("hidden")))
 - (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
 - (id)bounceAnimator;
 - (void)cancelGestureRecognizer:(id)recognizer;
-- (void)cleanupFromGesture;
 - (id)customSlideToUnlockText;
 - (void)deactivate;
 - (void)dealloc;
@@ -112,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (void)passcodeLockViewPasscodeDidChange:(id)passcodeLockViewPasscode;
 - (void)passcodeLockViewPasscodeEntered:(id)entered;
 - (void)passcodeLockViewPasscodeEnteredViaMesa:(id)mesa;
+- (void)performGeneralCleanupForUserAction:(BOOL)userAction;
 - (void)prepareForSlideUpAnimation;
 - (void)presentTargetAppAnimated:(BOOL)animated;
 - (BOOL)presentingController:(id)controller gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;

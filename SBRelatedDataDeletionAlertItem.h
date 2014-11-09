@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "UIAlertViewDelegate.h"
 
-@class NSMutableIndexSet, SBUserInstalledApplicationIcon, NSString;
+@class SBUserInstalledApplicationIcon, NSMutableIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBRelatedDataDeletionAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {

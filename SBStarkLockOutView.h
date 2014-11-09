@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
-@class UIButton, UITapGestureRecognizer, UILabel, NSArray, UIImageView;
+@class UIButton, UILabel, NSArray, UIImageView, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutView : XXUnknownSuperclass {

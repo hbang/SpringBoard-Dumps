@@ -13,8 +13,8 @@
 #import "SBCoordinatedPresenting.h"
 #import "SBPresentingDelegate.h"
 
-@class SBFLockScreenDateView, SBLockScreenBounceAnimator, _UIGlintyStringView, SBWallpaperEffectView, NSMutableSet, UIView, UIScrollView, NSMutableArray, SBDisableAppStatusBarAlphaChangesAssertion, SBLockScreenScrollView, NSSet, _UILegibilitySettings, SBSlideToUnlockFailureRecognizer, SBChevronView, SBLockScreenBatteryChargingView, SBLockScreenTimerView, SBSlideUpAppGrabberView, _UIBackdropView, UIColor, NSCountedSet, NSString, SBFakeStatusBarView, SBLockOverlayStylePropertiesFactory;
-@protocol SBLegibility, _SBFVibrantView, SBLockScreenViewDelegate, SBUIPasscodeLockView;
+@class SBLockScreenBounceAnimator, SBWallpaperEffectView, SBLockOverlayStylePropertiesFactory, NSMutableSet, SBFLockScreenDateView, UIView, _UIGlintyStringView, NSMutableArray, SBDisableAppStatusBarAlphaChangesAssertion, UIScrollView, SBLockScreenScrollView, NSSet, _UILegibilitySettings, SBSlideToUnlockFailureRecognizer, SBChevronView, SBLockScreenBatteryChargingView, SBLockScreenTimerView, SBSlideUpAppGrabberView, _UIBackdropView, UIColor, NSCountedSet, NSString, SBFakeStatusBarView;
+@protocol _SBFVibrantView, SBUIPasscodeLockView, SBLegibility, SBLockScreenViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenView : SBAlertView <UIScrollViewDelegate, _UIGlintyStringViewDelegate, _UISettingsKeyObserver, SBCoordinatedPresenting, SBPresentingDelegate> {

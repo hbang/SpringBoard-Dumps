@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBNotificationCell.h"
 
-@class SBLockScreenNotificationScrollView, UIButton, SBLockScreenActionContext, UIScrollView, UILabel;
+@class UIScrollView, SBLockScreenNotificationScrollView, UIButton, SBLockScreenActionContext, UILabel;
 @protocol UIScrollViewDelegate, SBAwayListCellButtonHandler;
 
 __attribute__((visibility("hidden")))

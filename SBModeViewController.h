@@ -10,7 +10,7 @@
 #import "SBUISizeObservingViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, NSString, NSArray, SBNotificationSeparatorView, SBModeControlManager, UIViewController, UIScrollView, SBBulletinObserverViewController, UISwipeGestureRecognizer;
+@class UIView, NSString, NSArray, SBNotificationSeparatorView, SBModeControlManager, UIViewController, SBBulletinObserverViewController, UIScrollView, UISwipeGestureRecognizer;
 @protocol SBBulletinActionHandler, SBModeViewControllerContentProviding;
 
 __attribute__((visibility("hidden")))

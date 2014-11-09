@@ -12,7 +12,7 @@
 #import "_UIBackdropViewObserver.h"
 #import "_UISettingsKeyObserver.h"
 
-@class SBControlCenterSettings, NSString, NSMutableArray, SBControlCenterContentView, UITapGestureRecognizer, SBControlCenterContainerView, UIPanGestureRecognizer;
+@class SBControlCenterSettings, UITapGestureRecognizer, NSString, NSMutableArray, SBControlCenterContentView, SBControlCenterContainerView, UIPanGestureRecognizer;
 @protocol SBControlCenterViewControllerDelegate;
 
 __attribute__((visibility("hidden")))

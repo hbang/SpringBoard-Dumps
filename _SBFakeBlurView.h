@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_SBFakeBlur.h"
 
-@class SBFWallpaperView, UIImageView, NSString;
+@class UIImageView, NSString, SBFWallpaperView;
 @protocol _SBFakeBlurObserver;
 
 __attribute__((visibility("hidden")))

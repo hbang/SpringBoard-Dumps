@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBBBBulletinInfo.h"
 #import "SpringBoard-Structs.h"
+#import "SBBBBulletinInfo.h"
 
 @class UIColor, SBItemInfoLayoutCache, UIViewController, SBNotificationCenterSectionInfo, UIImage;
 

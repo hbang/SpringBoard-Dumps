@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSSet, NSObject, BSAction;
+@class BSAction, NSSet, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
