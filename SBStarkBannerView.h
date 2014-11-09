@@ -11,7 +11,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBStarkBannerItemObserver.h"
 
-@class SBStarkBannerItem, UIImageView, SBUIBannerContext, SBStarkBannerViewButton, UILabel;
+@class SBUIBannerContext, SBStarkBannerItem, SBStarkBannerViewButton, NSString, UILabel, UIImageView;
 @protocol SBBulletinDateLabel;
 
 __attribute__((visibility("hidden")))
@@ -29,6 +29,10 @@ __attribute__((visibility("hidden")))
 	UILabel<SBBulletinDateLabel> *_relevanceDateLabel;
 	unsigned _interactionAffordances;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithContext:(id)context;
 - (id)initWithFrame:(CGRect)frame;
 - (UIEdgeInsets)_categoryImageInsets;
@@ -47,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)layoutSubviews;
+- (BOOL)shouldBorrowScreen;
 - (void)starkBannerItemDidReloadDisplayProperties:(id)starkBannerItem;
 @end
 

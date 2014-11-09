@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UILabel, NSDate, SBLockScreenTimerDialView, _UILegibilityLabel;
+@class _UILegibilityLabel, SBLockScreenTimerDialView, UILabel, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenTimerView : XXUnknownSuperclass {

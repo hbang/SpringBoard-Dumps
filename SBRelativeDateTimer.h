@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSCalendar, NSDate, NSTimer;
+@class NSTimer, NSCalendar, NSDate;
 @protocol SBRelativeDateTimerDelegate;
 
 __attribute__((visibility("hidden")))

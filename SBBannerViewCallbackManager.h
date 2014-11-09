@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 @class UIView;
-@protocol SBUIBannerSource, SBUIBannerView;
+@protocol SBUIBannerView, SBUIBannerSource;
 
 __attribute__((visibility("hidden")))
 @interface SBBannerViewCallbackManager : XXUnknownSuperclass {

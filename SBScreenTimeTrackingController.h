@@ -6,10 +6,10 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBAlertManagerObserver.h"
 #import "SBControlCenterObserver.h"
+#import "SBAlertManagerObserver.h"
 
-@class SBAlertManager;
+@class SBAlertManager, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBScreenTimeTrackingController : XXUnknownSuperclass <SBControlCenterObserver, SBAlertManagerObserver> {
@@ -18,24 +18,32 @@ __attribute__((visibility("hidden")))
 	int _activeCategory;
 	int _previousCategory;
 	SBAlertManager *_alertManager;
+	BOOL _lastCameraActivationWasForBottomCorner;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithAlertManager:(id)alertManager;
 - (int)_activeContext;
 - (BOOL)_isLockScreenNavigationActive;
 - (id)_nameForCurrentContext;
-- (void)_noteAppBecameFrontmost:(id)frontmost;
-- (void)_noteAppSliderDidAppear;
+- (void)_noteAppDidBecomeFrontmost:(id)_noteApp;
+- (void)_noteAppSwitcherDidAppear;
+- (void)_noteAppWillBecomeFrontmost:(id)_noteApp;
 - (void)_noteBacklightDidTurnOn:(id)_noteBacklight;
 - (void)_noteControlCenterControlDidActivate:(id)_noteControlCenterControl;
 - (void)_noteControlCenterControlDidDeactivate:(id)_noteControlCenterControl;
+- (void)_noteHomeScreen;
 - (void)_noteLockScreenCameraDidAppear;
 - (void)_noteLockScreenCameraDidDisappear;
+- (void)_noteLockScreenPasscodeDidAppear;
+- (void)_noteLockScreenPasscodeDidDisappear;
 - (void)_noteLockScreenUndimmed;
 - (void)_noteLocked;
 - (void)_noteMediaControlsDidAppear;
 - (void)_noteMediaControlsDidDisappear;
 - (void)_noteNotificationCenterAllWillAppear;
-- (void)_noteNotificationCenterMissedWillAppear;
 - (void)_noteNotificationCenterTodayWillAppear;
 - (void)_noteNotificationCenterWillDismiss;
 - (void)_noteSearchVisibilityDidChange:(id)_noteSearchVisibility;

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, NSArray, CADisplayLink;
+@class CADisplayLink, NSArray, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBAnimationStepper : XXUnknownSuperclass {
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *view;
 - (id)init;
 - (void)dealloc;
+- (void)didFinishBackwardToStart;
 - (void)finishBackwardToStart;
 - (void)finishForwardToEnd;
 - (void)stepAnimationsInView:(id)view animatingSubviews:(id)subviews duration:(double)duration;

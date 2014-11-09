@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBGestureRecognizer.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -61,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (void)touchesCancelled:(SBGestureContextRef)cancelled;
 - (void)touchesEnded:(SBGestureContextRef)ended;
 - (void)touchesMoved:(SBGestureContextRef)moved;
-- (void)updateActiveTouches:(SBGestureContextRef)touches;
 - (void)updateForBeganOrMovedTouches:(SBGestureContextRef)beganOrMovedTouches;
 - (void)updateForEndedOrCancelledTouches:(SBGestureContextRef)endedOrCancelledTouches;
 @end

@@ -13,22 +13,19 @@ __attribute__((visibility("hidden")))
 @interface SBActivateAppUnderLockScreenWorkspaceTransaction : SBToAppWorkspaceTransaction {
 	SBLockScreenViewControllerBase *_lockScreenController;
 	SBDisableActiveInterfaceOrientationChangeAssertion *_disableActiveOrientationChangeAssertion;
+	BOOL _waitingForSceneDestruction;
 }
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager application:(id)application lockScreenController:(id)controller;
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager application:(id)application lockScreenController:(id)controller activationHandler:(id)handler;
+- (id)initWithAlertManager:(id)alertManager application:(id)application lockScreenController:(id)controller;
+- (id)initWithAlertManager:(id)alertManager application:(id)application lockScreenController:(id)controller forRelaunch:(BOOL)relaunch withResult:(id)result;
 - (void)_alertDidActivate;
-- (void)_commit;
-- (void)_handleAppActivationFailure;
+- (void)_begin;
+- (void)_childTransactionDidComplete:(id)_childTransaction;
+- (void)_didComplete;
+- (void)_kickoffAlertActivation;
 - (void)_setupAndActivate;
-- (void)_suspendWorkspaceIfNecessary;
-- (void)_transactionComplete;
 - (void)dealloc;
-- (BOOL)selfAlertDidActivate:(id)selfAlert overAlerts:(id)alerts;
-- (BOOL)selfApplicationActivated:(id)activated;
-- (BOOL)selfApplicationExited:(id)exited;
-- (BOOL)selfApplicationLaunchDidFail:(id)selfApplicationLaunch;
-- (BOOL)selfWorkspaceDidResume;
 - (BOOL)shouldPerformToAppStateCleanupOnCompletion;
+- (BOOL)shouldPlaceOutgoingScenesUnderLockOnCompletion;
 - (BOOL)shouldToggleSpringBoardStatusBarOnCleanup;
 @end
 

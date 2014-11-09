@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIScreen, UIViewController, UIView;
+@class UIView, UIScreen, UIViewController;
 @protocol SBUIPluginViewControllerInterface;
 
 __attribute__((visibility("hidden")))

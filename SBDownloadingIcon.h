@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 + (id)leafIdentifierForApplicationPlaceholderBundleID:(id)applicationPlaceholderBundleID;
 - (id)initWithApplicationPlaceholder:(id)applicationPlaceholder;
 - (id)_darkenedIconImageForImage:(id)image;
-- (void)_showAlertForError:(id)error;
 - (id)appPlaceholder;
 - (void)cancelDownload;
 - (void)completeUninstall;

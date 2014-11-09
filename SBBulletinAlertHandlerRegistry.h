@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SBBulletinAlertHandlerRegistry.h"
 #import "_UISettingsKeyObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBBulletinAlertHandlerRegistry.h"
 
-@class NSMutableDictionary, SBAlertItemsSettings;
+@class SBAlertItemsSettings, NSString, NSMutableDictionary;
 
 @protocol SBBulletinAlertHandlerRegistry
 - (void)addAlertHandler:(id)handler forSection:(id)section;
@@ -21,6 +21,10 @@ __attribute__((visibility("hidden")))
 	SBAlertItemsSettings *_settings;
 	BOOL _disabled;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (void)addAlertHandler:(id)handler forSection:(id)section;
 - (id)alertHandlersForSection:(id)section;

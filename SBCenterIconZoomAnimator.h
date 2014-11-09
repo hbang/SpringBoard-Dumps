@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBIconListLayoutDelegate.h"
 #import "SBIconZoomAnimator.h"
+#import "SBIconListLayoutDelegate.h"
+#import "SpringBoard-Structs.h"
 
-@class SBCenterZoomSettings, UIView;
+@class SBCenterZoomSettings, UIView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBCenterIconZoomAnimator : SBIconZoomAnimator <SBIconListLayoutDelegate> {
@@ -20,8 +20,12 @@ __attribute__((visibility("hidden")))
 	CGPoint _cameraPosition;
 }
 @property(readonly, assign, nonatomic) CGPoint cameraPosition;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) SBCenterZoomSettings *settings;
-@property(readonly, assign, nonatomic) UIView *zoomView;
+@property(readonly, assign) Class superclass;
+@property(readonly, retain, nonatomic) UIView *zoomView;
 - (id)initWithFolderController:(id)folderController;
 - (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (id)_animationFactoryForDock;

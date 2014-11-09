@@ -5,14 +5,19 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIControlCenterControl.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBControlCenterKnockoutView : XXUnknownSuperclass <SBUIControlCenterControl> {
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)controlAppearanceDidChangeForState:(int)controlAppearance;

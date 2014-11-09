@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBUIBannerTargetManagerObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerSource.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIBannerTargetManagerObserver.h"
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 @protocol SBUIBannerTarget;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,10 @@ __attribute__((visibility("hidden")))
 	id<SBUIBannerTarget> _target;
 	NSMutableArray *_enqueuedItems;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (id)initWithAllowedTargetIdentifier:(void *)allowedTargetIdentifier;
 - (void)bannerTargetManager:(id)manager didAddTarget:(id)target;

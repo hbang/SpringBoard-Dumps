@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBRootAnimationSettings, NSString, SBFolderSettings, SBControlCenterSettings, SBFadeAnimationSettings, SBLegibilitySettings, SBNotificationCenterSettings, SBAppParallaxSettings, SBLockScreenSettings, SBAppSliderSettings, SBIconColorSettings, SBFWallpaperSettings, SBLockScreenTestPluginSettings, SBCarDisplaySettings, SBFAnimationFactorySettings, SBAlertItemsSettings, SBHomeButtonSettings;
+@class SBFAnimationFactorySettings, SBAppParallaxSettings, NSString, SBHomeButtonSettings, SBAppSwitcherSettings, SBFolderSettings, SBRootAnimationSettings, SBCarDisplaySettings, SBLockScreenTestPluginSettings, SBReachabilitySettings, SBLegibilitySettings, SBLockScreenSlideUpAppSettings, SBFWallpaperSettings, SBLockScreenSettings, SBControlCenterSettings, SBNotificationCenterSettings, SBAlertItemsSettings, SBIconColorSettings, SBFadeAnimationSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBRootSettings : XXUnknownSuperclass {
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 	SBFolderSettings *_folderSettings;
 	SBRootAnimationSettings *_rootAnimationSettings;
 	SBControlCenterSettings *_controlCenterSettings;
-	SBAppSliderSettings *_appSliderSettings;
+	SBAppSwitcherSettings *_appSwitcherSettings;
 	SBLockScreenSettings *_lockScreenSettings;
 	SBCarDisplaySettings *_carDisplaySettings;
 	SBLockScreenTestPluginSettings *_lockScreenTestPluginSettings;
@@ -28,11 +28,13 @@ __attribute__((visibility("hidden")))
 	SBFWallpaperSettings *_wallpaperSettings;
 	SBFAnimationFactorySettings *_animationSettings;
 	SBHomeButtonSettings *_homeButtonSettings;
+	SBLockScreenSlideUpAppSettings *_lockScreenSlideUpAppSettings;
+	SBReachabilitySettings *_reachabilitySettings;
 	NSString *_testRecipeClassName;
 }
 @property(retain) SBAlertItemsSettings *alertItemsSettings;
 @property(retain) SBFAnimationFactorySettings *animationSettings;
-@property(retain) SBAppSliderSettings *appSliderSettings;
+@property(retain) SBAppSwitcherSettings *appSwitcherSettings;
 @property(retain) SBCarDisplaySettings *carDisplaySettings;
 @property(retain) SBControlCenterSettings *controlCenterSettings;
 @property(retain) SBFadeAnimationSettings *fadeAnimationSettings;
@@ -41,10 +43,12 @@ __attribute__((visibility("hidden")))
 @property(retain) SBIconColorSettings *iconColorSettings;
 @property(retain) SBLegibilitySettings *legibilitySettings;
 @property(retain) SBLockScreenSettings *lockScreenSettings;
+@property(retain) SBLockScreenSlideUpAppSettings *lockScreenSlideUpAppSettings;
 @property(retain) SBLockScreenTestPluginSettings *lockScreenTestPluginSettings;
 @property(retain) SBNotificationCenterSettings *notificationCenterSettings;
 @property(retain) SBAppParallaxSettings *parallaxSettings;
 @property(assign) BOOL preventLockover;
+@property(retain) SBReachabilitySettings *reachabilitySettings;
 @property(retain) SBRootAnimationSettings *rootAnimationSettings;
 @property(retain) NSString *testRecipeClassName;
 @property(retain) SBFWallpaperSettings *wallpaperSettings;

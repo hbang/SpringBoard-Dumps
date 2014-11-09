@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBIconIndexNode.h"
-#import "NSFastEnumeration.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "NSFastEnumeration.h"
+#import "SpringBoard-Structs.h"
 
-@class SBFolder, SBIconIndexMutableList, NSHashTable;
+@class NSHashTable, SBFolder, NSString, SBIconIndexMutableList;
 
 __attribute__((visibility("hidden")))
 @interface SBIconListModel : XXUnknownSuperclass <SBIconIndexNode, NSFastEnumeration> {
@@ -21,6 +21,10 @@ __attribute__((visibility("hidden")))
 	BOOL _iconStateIsDirty;
 	SBFolder *_folder;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (id)initWithFolder:(id)folder maxIconCount:(unsigned)count;
 - (void)_notifyListObservers:(id)observers;
@@ -36,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsNodeIdentifier:(id)identifier;
 - (unsigned)countByEnumeratingWithState:(XXStruct_kFm5bA *)state objects:(id *)objects count:(unsigned)count;
 - (void)dealloc;
-- (id)description;
 - (unsigned)firstFreeSlotIndex;
 - (unsigned)firstFreeSlotIndexForType:(int)type;
 - (id)folder;

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSCountedSet, NSMutableDictionary;
+@class NSMutableDictionary, NSCountedSet;
 
 __attribute__((visibility("hidden")))
 @interface SBCountedMap : XXUnknownSuperclass {

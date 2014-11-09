@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBLockScreenViewController, SBLockOverlayContext;
+@class SBLockOverlayContext, SBLockScreenViewController;
 
 __attribute__((visibility("hidden")))
 @interface SBLockOverlayTransition : XXUnknownSuperclass {
@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
 	SBLockOverlayContext *_to;
 	SBLockScreenViewController *_lockScreenVC;
 }
++ (id)underlayRequesterNameForContext:(id)context;
 - (id)initFromOverlay:(id)overlay toOverlay:(id)overlay2 inside:(id)inside;
 - (void)_hideLockContent;
-- (id)_requestForContext:(id)context;
 - (void)dealloc;
 - (void)performTransitionAnimated:(BOOL)animated completion:(id)completion;
 @end

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_noteInstalledAppsDidChange:(id)_noteInstalledApps;
 - (void)_notePushStoreAppsDidChange:(id)_notePushStoreApps;
+- (void)_noteRemotePushAppsDidChange:(id)_noteRemotePushApps;
 - (void)_reloadDataProviders:(id)providers;
 - (id)createDataProviderWithSectionID:(id)sectionID;
 - (void)dealloc;

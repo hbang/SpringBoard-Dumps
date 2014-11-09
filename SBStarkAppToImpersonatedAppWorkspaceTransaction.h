@@ -16,20 +16,19 @@ __attribute__((visibility("hidden")))
 	SBApplication *_mainScreenAppThatWillBeActivated;
 	id _mainScreenAppThatWillBeActivatedObserver;
 }
-- (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller from:(id)from to:(id)to;
+- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
 - (void)_doCommit;
 - (void)_finishCommit;
 - (id)_newAnimationFromAppToApp;
 - (id)_newAnimationFromAppToNowPlaying;
 - (id)_newAnimationFromLauncherToApp;
+- (id)_newAnimationFromNowPlayingToApp;
 - (void)_noteWillActivateApplicationOnMainScreen:(id)_note underLock:(BOOL)lock;
-- (int)_setupMilestonesFrom:(id)from to:(id)to;
+- (void)_setupMilestonesFrom:(id)from to:(id)to;
 - (BOOL)_shouldDisallowSuspension;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
-- (BOOL)selfStarkAlertDidActivate:(id)selfStarkAlert overAlerts:(id)alerts;
-- (BOOL)selfStarkAlertWillActivate:(id)selfStarkAlert overAlerts:(id)alerts;
 - (id)swizzledToDisplayIfNecessary;
 @end
 

@@ -7,7 +7,7 @@
 
 #import "SBUIStarkStartupAnimation.h"
 
-@class UIStatusBar, SBIconAnimator;
+@class SBIconAnimator, UIStatusBar;
 
 __attribute__((visibility("hidden")))
 @interface SBUIStarkStartupToHomeAnimation : SBUIStarkStartupAnimation {

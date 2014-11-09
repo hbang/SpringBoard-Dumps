@@ -9,7 +9,7 @@
 #import "SUNetworkObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SUManagerClient, SUDownload;
+@class SUManagerClient, SUDownload, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBSoftwareUpdateController : XXUnknownSuperclass <SUManagerClientDelegate, SUNetworkObserver> {
@@ -23,6 +23,10 @@ __attribute__((visibility("hidden")))
 	BOOL _settingsResetPrefsBadgedFlag;
 	BOOL _downloadWasQueuedRemotely;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 + (id)stringFromReasons:(int)reasons;
 - (id)init;

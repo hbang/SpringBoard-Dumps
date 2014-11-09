@@ -5,70 +5,18 @@
  * Source: (null)
  */
 
+#import "SBCCButtonSectionController.h"
 #import "SpringBoard-Structs.h"
-#import "SBControlCenterSectionViewController.h"
-#import "SBUIControlCenterButtonDelegate.h"
-#import "RadiosPreferencesDelegate.h"
 
-@class BBSettingsGateway, BBBehaviorOverride, BluetoothManager, RadiosPreferences, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface SBCCSettingsSectionController : SBControlCenterSectionViewController <SBUIControlCenterButtonDelegate, RadiosPreferencesDelegate> {
-	NSMutableDictionary *_buttonsByID;
-	BOOL _settingSupported[6];
-	RadiosPreferences *_airplaneModeController;
-	BBSettingsGateway *_settingsGateway;
-	BOOL _dndEnabled;
-	int _dndStatus;
-	BBBehaviorOverride *_activeOverride;
-	BluetoothManager *_btManager;
+@interface SBCCSettingsSectionController : SBCCButtonSectionController {
 }
-+ (Class)viewClass;
++ (Class)buttonControllerClass;
 - (id)init;
-- (void)_addButtonForSetting:(int)setting;
-- (void)_bluetoothButtonTapped:(id)tapped;
-- (id)_buttonForSetting:(int)setting;
-- (BOOL)_getAirplaneMode;
-- (BOOL)_getBluetooth;
-- (BOOL)_getDND;
-- (BOOL)_getMuted;
-- (BOOL)_getOrientationLocked;
-- (BOOL)_getWifi;
-- (id)_identifierForSetting:(int)setting;
-- (void)_initAirplaneMode;
-- (void)_initBluetooth;
-- (void)_initDND;
-- (void)_initMute;
-- (void)_initOrientationLock;
-- (void)_initWifi;
-- (void)_refreshWiFiState;
-- (void)_setAirplaneModeEnabled:(BOOL)enabled;
-- (void)_setDNDEnabled:(BOOL)enabled updateServer:(BOOL)server;
-- (void)_setDNDStatus:(int)status;
-- (void)_setMuted:(BOOL)muted;
-- (void)_setOrientationLocked:(BOOL)locked;
-- (void)_tearDownAirplaneMode;
-- (void)_tearDownBluetooth;
-- (void)_tearDownDND;
-- (void)_tearDownMute;
-- (void)_tearDownOrientationLock;
-- (void)_tearDownWifi;
-- (void)_updateActiveOverrides:(id)overrides;
-- (void)_updateBluetoothButtonState;
-- (void)_updateMuteButtonState;
-- (void)_updateOrientationLockButtonState;
-- (void)_updateWifiButtonState;
-- (void)_updateWifiNotification:(id)notification;
-- (void)_wifiButtonTapped:(id)tapped;
-- (void)airplaneModeChanged;
-- (void)buttonTapped:(id)tapped;
 - (CGSize)contentSizeForOrientation:(int)orientation;
-- (void)dealloc;
-- (void)noteSettingsDidUpdate:(id)noteSettings;
 - (id)sectionIdentifier;
-- (id)view;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)view;
 - (void)viewWillLayoutSubviews;
 @end
 

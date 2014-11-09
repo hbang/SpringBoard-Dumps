@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBFolderView.h"
 
-@class SBStarkIconLayoutOverrideStrategy, UIButton;
+@class UIButton, SBStarkIconLayoutOverrideStrategy;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkFolderView : SBFolderView {

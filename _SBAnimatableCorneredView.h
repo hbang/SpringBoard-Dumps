@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBInteractionPassThroughView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface _SBAnimatableCorneredView : SBInteractionPassThroughView {
+@interface _SBAnimatableCorneredView : XXUnknownSuperclass {
 }
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 @end

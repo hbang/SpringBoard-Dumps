@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBStarkScreenController, SBStarkLockOutView, SBUIStarkStartupAnimation;
+@class SBUIStarkStartupAnimation, SBStarkLockOutView, SBStarkScreenController;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutViewController : XXUnknownSuperclass {
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 	SBUIStarkStartupAnimation *_startupAnimation;
 }
 @property(assign, nonatomic) int lockOutMode;
-@property(readonly, assign, nonatomic) SBStarkLockOutView *lockoutView;
+@property(readonly, retain, nonatomic) SBStarkLockOutView *lockoutView;
 @property(retain, nonatomic) SBStarkScreenController *screenController;
 - (id)_newModeViewForMode:(int)mode;
 - (void)_updateLockOutModeIfPending;

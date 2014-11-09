@@ -7,24 +7,26 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, NSTimer;
+@class NSTimer, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherModel : XXUnknownSuperclass {
-	NSMutableArray *_recentDisplayIdentifiers;
+	NSMutableArray *_recentDisplayLayouts;
 	NSTimer *_saveTimer;
 }
 + (id)sharedInstance;
 - (id)init;
 - (void)_invalidateSaveTimer;
+- (id)_recentsFromLegacyPrefs;
 - (id)_recentsFromPrefs;
 - (void)_saveRecents;
 - (void)_saveRecentsDelayed;
+- (void)_verifyAppList;
 - (void)addToFront:(id)front;
-- (void)appsRemoved:(id)removed added:(id)added;
 - (void)dealloc;
-- (id)identifiers;
 - (void)remove:(id)remove;
+- (void)removeDisplayItem:(id)item;
 - (id)snapshot;
+- (id)snapshotOfFlattenedArrayOfAppIdentifiersWhichIsOnlyTemporary;
 @end
 

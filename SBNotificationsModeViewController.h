@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBBulletinObserverViewController.h"
 
-@class NSArray, NSMutableDictionary, NSMutableArray;
+@class NSArray, NSMutableArray, NSMutableDictionary;
 @protocol SBBulletinActionHandler;
 
 __attribute__((visibility("hidden")))
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)commitReplacementWithBulletin:(id)bulletin ofBulletin:(id)bulletin2 inSection:(id)section;
 - (void)commitReplacementWithSection:(id)section ofSection:(id)section2;
 - (void)dealloc;
-- (BOOL)handleActionForBulletin:(id)bulletin;
+- (BOOL)handleAction:(id)action forBulletin:(id)bulletin withCompletion:(id)completion;
 - (void)hostWillPresent;
 - (id)infoForBulletinInfo:(id)bulletinInfo inSection:(id)section;
 - (void)populateBulletinInfo:(id)info inSection:(id)section;

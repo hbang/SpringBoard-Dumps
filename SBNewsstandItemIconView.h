@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBIconView.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(CGRect)frame;
 - (CGRect)_baseFrameForImageView;
 - (CGRect)_baseFrameForLabel;
-- (CGRect)_baseFrameForUpdatedMarkWithLabelFrame:(CGRect)labelFrame;
+- (CGRect)_baseFrameForLabelAccessoryViewWithLabelFrame:(CGRect)labelFrame;
 - (CGRect)_frameForImageView;
 - (CGRect)_frameForLabel;
-- (CGRect)_frameForUpdatedMarkWithLabelFrame:(CGRect)labelFrame;
+- (CGRect)_frameForLabelAccessoryViewWithLabelFrame:(CGRect)labelFrame;
 - (BOOL)_showsShadow;
 @end
 

@@ -6,14 +6,14 @@
  */
 
 #import "UIGestureRecognizerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "UICollectionViewDataSource.h"
 #import "UICollectionViewDelegate.h"
 #import "SBCollectionViewCellDelegate.h"
 #import "SBStarkBannerTargetObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBStarkBannerCell, SBStarkBulletinBannerSource, SBStarkNotificationLayout, SBStarkAlertItemBannerSource, SBStarkBannerTarget, UITapGestureRecognizer, NSArray, SBCarBannerNotificationView, SBUIBannerContext;
+@class SBStarkBulletinBannerSource, NSString, SBCarBannerNotificationView, NSArray, SBStarkAlertItemBannerSource, UITapGestureRecognizer, SBStarkBannerTarget, SBUIBannerContext, SBStarkBannerCell, SBStarkNotificationLayout;
 @protocol SBStarkNotificationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -32,12 +32,17 @@ __attribute__((visibility("hidden")))
 	SBStarkNotificationLayout *_notificationsLayout;
 	SBCarBannerNotificationView *_notificationsView;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBStarkNotificationViewControllerDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) int state;
+@property(readonly, assign) Class superclass;
 - (id)initWithInteractionAffordances:(unsigned)interactionAffordances;
 - (void)_performBackGesture:(id)gesture;
 - (void)_performSelectGesture:(id)gesture;
 - (void)_setState:(int)state;
+- (void)_showTestNotificationWithTitle:(id)title;
 - (id)collectionView:(id)view cellForItemAtIndexPath:(id)indexPath;
 - (void)collectionView:(id)view didEndDisplayingCell:(id)cell forItemAtIndexPath:(id)indexPath;
 - (void)collectionView:(id)view didSelectItemAtIndexPath:(id)indexPath;
@@ -45,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)collectionView:(id)view shouldDeselectItemAtIndexPath:(id)indexPath;
 - (BOOL)collectionView:(id)view shouldHighlightItemAtIndexPath:(id)indexPath;
 - (BOOL)collectionView:(id)view shouldSelectItemAtIndexPath:(id)indexPath;
+- (void)collectionView:(id)view willDisplayCell:(id)cell forItemAtIndexPath:(id)indexPath;
 - (void)dealloc;
 - (void)dismissCurrent;
 - (BOOL)isSuspended;

@@ -7,12 +7,12 @@
 
 #import "UIGestureRecognizerDelegate.h"
 #import "SBUIBiometricEventObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBPresentingDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBControlCenterObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMapTable, SBLockScreenView, NSMutableSet, SBLockScreenHintLongPressGestureRecognizer, SBLockScreenHintPanGestureRecognizer, SBLockScreenHintTapGestureRecognizer, NSDate;
+@class SBLockScreenHintLongPressGestureRecognizer, NSMutableSet, SBLockScreenHintPanGestureRecognizer, SBLockScreenHintTapGestureRecognizer, NSString, SBLockScreenView, NSDate, NSMapTable;
 @protocol SBCoordinatedPresenting;
 
 __attribute__((visibility("hidden")))
@@ -38,22 +38,27 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) unsigned activeHintEdge;
 @property(retain, nonatomic) NSMapTable *controllersToConflictingGuestGestures;
 @property(retain, nonatomic) NSMapTable *controllersToGuestGestures;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(assign, nonatomic) BOOL didEvaluatePressDelay;
 @property(assign, nonatomic, getter=isFingerOnMesa) BOOL fingerOnMesa;
 @property(assign, nonatomic, getter=isGestureHandlingEnabled) BOOL gestureHandlingEnabled;
 @property(assign, nonatomic) int gestureState;
 @property(retain, nonatomic) NSMutableSet *gestures;
 @property(assign, nonatomic, getter=isGuestGestureActive) BOOL guestGestureActive;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) CGPoint initialPanLocationInViewSpace;
 @property(retain, nonatomic) NSDate *initialTouchTimeStamp;
 @property(retain, nonatomic) SBLockScreenView *lockScreenView;
 @property(retain, nonatomic) SBLockScreenHintLongPressGestureRecognizer *longPressGesture;
 @property(retain, nonatomic) SBLockScreenHintPanGestureRecognizer *panGesture;
+@property(readonly, assign) Class superclass;
 @property(retain, nonatomic) SBLockScreenHintTapGestureRecognizer *tapGesture;
 - (id)init;
 - (void)_abortCurrentAnimationForController:(id)controller;
 - (void)_beginControllerPresentationForPan;
 - (CGRect)_bottomGrabberZone;
+- (CGRect)_bottomLeftGrabberZone;
 - (CGRect)_cameraGrabberZone;
 - (BOOL)_canControllerWithIdentifier:(int)identifier becomeActiveWithTouchAtLocation:(CGPoint)location;
 - (void)_cancelGuestGesturesExcludingController:(id)controller;
@@ -64,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)_dismissControllerForPress:(BOOL)press;
 - (BOOL)_doesController:(id)controller manageGestureLikeGesture:(id)gesture;
 - (double)_elapsedTapPeriod;
-- (void)_endControllerPresentationForPan;
+- (void)_endControllerPresentationForPanInState:(int)state;
 - (void)_handlePan:(id)pan;
 - (void)_handlePress:(id)press;
 - (void)_handleTap:(id)tap;
@@ -74,9 +79,9 @@ __attribute__((visibility("hidden")))
 - (void)_initializeInitialTouchTimeStamp;
 - (void)_installLocalGestures;
 - (BOOL)_isBounceEnabledForController:(id)controller locationInWindow:(CGPoint)window;
-- (BOOL)_isCameraVisible;
 - (BOOL)_isController:(id)controller excludingViewsUnderGesture:(id)gesture;
 - (BOOL)_isPresentationEnabledForController:(id)controller locationInWindow:(CGPoint)window;
+- (id)_lockScreenBottomLeftController;
 - (id)_lockScreenCameraController;
 - (id)_lockScreenNotificationListController;
 - (id)_lockScreenNotificationListView;
@@ -94,7 +99,6 @@ __attribute__((visibility("hidden")))
 - (id)_tapGestureForActiveController;
 - (void)_tapPeriodElapsed;
 - (CGRect)_topGrabberZone;
-- (id)_topPresentedViewControllerFromViewController:(id)viewController;
 - (void)_updateControllerPresentationForPan;
 - (void)_updateControllerPresentationForPress:(BOOL)press;
 - (void)_updateControllerPresentationForTap;
@@ -103,8 +107,6 @@ __attribute__((visibility("hidden")))
 - (id)_viewForGestures;
 - (void)addCoordinatedPresentingController:(id)controller;
 - (void)biometricEventMonitor:(id)monitor handleBiometricEvent:(unsigned)event;
-- (void)cameraDidHide:(id)camera;
-- (void)cameraDidShow:(id)camera;
 - (void)controlCenterDidDismiss;
 - (void)controlCenterDidFinishTransition;
 - (void)controlCenterWillBeginTransition;

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, CAMutableMeshTransform;
+@class CAMutableMeshTransform, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBStretchTransformer : XXUnknownSuperclass {

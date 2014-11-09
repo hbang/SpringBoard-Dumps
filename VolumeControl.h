@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, NSMutableSet;
+@class NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VolumeControl : XXUnknownSuperclass {
@@ -17,9 +17,13 @@ __attribute__((visibility("hidden")))
 	int _mode;
 	NSMutableSet *_alwaysHiddenCategories;
 	NSString *_lastDisplayedCategory;
+@private
 	NSString *_lastEventCategory;
+@protected
 	BOOL _hudHandledLastVolumeChange;
+@private
 	BOOL _euDevice;
+@protected
 	float _euVolumeLimit;
 	BOOL _euVolumeLimitEnforced;
 	BOOL _lastVolumeChangedWasBlocked;

@@ -8,11 +8,10 @@
 #import "SpringBoard-Structs.h"
 #import "SBControlCenterSectionView.h"
 
-@class SBCCButtonLikeSectionView, SBControlCenterSeparatorView;
+@class SBCCButtonLikeSectionView;
 
 __attribute__((visibility("hidden")))
 @interface SBCCButtonLikeSectionSplitView : SBControlCenterSectionView {
-	SBControlCenterSeparatorView *_separatorView;
 	float _separatorWidth;
 	BOOL _leftHidden;
 	BOOL _rightHidden;
@@ -23,10 +22,10 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) SBCCButtonLikeSectionView *rightSection;
 - (id)initWithFrame:(CGRect)frame;
 - (CGRect)_frameForSectionSlot:(int)sectionSlot;
+- (UIEdgeInsets)_landscapeInsetsForSection;
 - (void)_relayoutAnimated:(BOOL)animated;
-- (CGRect)_separatorFrame;
+- (void)_updateButtonsCorners;
 - (void)_updateLabelParameters;
-- (void)_updateSeparatorVisibility;
 - (BOOL)_useLandscapeBehavior;
 - (id)_viewForSectionSlot:(int)sectionSlot;
 - (void)dealloc;

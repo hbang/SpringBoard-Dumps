@@ -8,7 +8,7 @@
 #import "UIStatusBarStyleDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIStatusBar, NSMutableSet, UIView;
+@class NSMutableSet, UIView, UIStatusBar, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkStatusBarViewController : XXUnknownSuperclass <UIStatusBarStyleDelegate> {
@@ -22,9 +22,13 @@ __attribute__((visibility("hidden")))
 	UIView *_separatorView;
 	BOOL _separatorHidden;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) int layoutJustification;
 @property(assign, nonatomic, getter=isSeparatorHidden) BOOL separatorHidden;
 @property(assign, nonatomic) id<UIStatusBarStyleDelegate> statusBarStyleDelegate;
+@property(readonly, assign) Class superclass;
 - (BOOL)_isStatusBarHidden;
 - (void)_layoutStatusBar:(id)bar;
 - (void)dealloc;

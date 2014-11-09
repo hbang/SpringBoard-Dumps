@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIColor, CALayer, UIImage;
+@class UIImage, UIColor, CALayer;
 
 __attribute__((visibility("hidden")))
 @interface SBTintedImageProvider : XXUnknownSuperclass {

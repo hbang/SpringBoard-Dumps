@@ -7,7 +7,7 @@
 
 #import "SBUIStarkScreenAnimationController.h"
 
-@class SBApplication, UIView;
+@class UIView, SBApplication;
 
 __attribute__((visibility("hidden")))
 @interface SBUIStarkStaticAnimationController : SBUIStarkScreenAnimationController {
@@ -15,12 +15,16 @@ __attribute__((visibility("hidden")))
 	BOOL _awaitingKeybagRefetch;
 	BOOL _appWasActivating;
 	UIView *_staticAppView;
+	UIView *_hostView;
 }
-@property(readonly, assign, nonatomic) SBApplication *app;
+@property(readonly, retain, nonatomic) SBApplication *app;
 - (id)initWithApp:(id)app starkScreenController:(id)controller;
-- (BOOL)_animationShouldStart;
+- (id)_animationProgressDependency;
+- (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
+- (void)_hideAppHostView;
 - (void)_prepareAnimation;
+- (void)_setupStartDependencies;
 - (BOOL)_shouldDismissBanner;
 - (void)_startAnimation;
 - (BOOL)_willAnimate;

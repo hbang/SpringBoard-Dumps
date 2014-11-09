@@ -5,23 +5,27 @@
  * Source: (null)
  */
 
-#import "NSCopying.h"
 #import "SpringBoard-Structs.h"
+#import "NSCopying.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBAwayListCellButtonHandler.h"
 #import "SBUIQuietModePlayability.h"
+#import "SBAwayListCellButtonHandler.h"
 
-@class NSString, NSDate, SBUnlockActionContext;
+@class SBLockScreenActionContext, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBAwayListItem : XXUnknownSuperclass <SBAwayListCellButtonHandler, SBUIQuietModePlayability, NSCopying> {
 	NSDate *_timestamp;
 	BOOL _isNewItem;
-	SBUnlockActionContext *_unlockActionContext;
+	SBLockScreenActionContext *_lockScreenActionContext;
 	NSString *_buttonLabel;
 }
 @property(copy, nonatomic) NSString *buttonLabel;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) BOOL isNewItem;
+@property(readonly, assign) Class superclass;
 @property(retain, nonatomic) NSDate *timestamp;
 - (void)buttonPressed;
 - (BOOL)canBeClearedByNotificationCenter;
@@ -30,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)inertWhenLocked;
 - (BOOL)isCritical;
 - (BOOL)overridesQuietMode;
+- (void)prepareWithCompletion:(id)completion;
 - (BOOL)wantsHighlightOnInsert;
 @end
 

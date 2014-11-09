@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, UIWindow, NSMutableSet, UIView;
+@class NSMutableSet, UIView, UIWindow, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherStatusBarViewCache : XXUnknownSuperclass {

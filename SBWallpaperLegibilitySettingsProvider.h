@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBFLegibilitySettingsProvider.h"
 #import "SBWallpaperObserver.h"
+#import "SBFLegibilitySettingsProvider.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class _UILegibilitySettings;
+@class _UILegibilitySettings, NSString;
 @protocol SBFLegibilitySettingsProviderDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,8 +17,12 @@ __attribute__((visibility("hidden")))
 	id<SBFLegibilitySettingsProviderDelegate> _delegate;
 	int _variant;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBFLegibilitySettingsProviderDelegate> delegate;
-@property(readonly, assign, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, assign) Class superclass;
 - (id)initWithVariant:(int)variant;
 - (void)dealloc;
 - (void)wallpaperDidChangeForVariant:(int)wallpaper;

@@ -8,11 +8,11 @@
 #import "SBAssertionDelegate.h"
 #import "BBObserverDelegate.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBVolumePressBandit.h"
 
-@class SBAlertItem, NSArray, SBAlertItemsSettings, CPDistributedNotificationCenter, BBObserver, NSMutableSet, NSTimer, NSHashTable, NSMutableArray;
+@class NSMutableSet, CPDistributedNotificationCenter, NSString, NSArray, NSTimer, BBObserver, NSMutableArray, SBAlertItem, SBAlertItemsSettings, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertItemsController : XXUnknownSuperclass <_UISettingsKeyObserver, SBVolumePressBandit, SBAssertionDelegate, BBObserverDelegate> {
@@ -32,7 +32,11 @@ __attribute__((visibility("hidden")))
 	SBAlertItem *_testItem;
 	NSMutableSet *_suppressionAssertions;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) NSArray *lockedAlertItems;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
 - (void)_activateSuperModalAlertsIfNecessary;
@@ -43,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_notifyObservers:(id)observers;
 - (void)_postAlertPresentedNotificationForType:(int)type sender:(id)sender date:(id)date;
 - (void)activateAlertItem:(id)item;
+- (void)activateAlertItem:(id)item animated:(BOOL)animated;
 - (void)activatePendedAlertsIfNecessary;
 - (void)addObserver:(id)observer;
 - (id)alertItemsOfClass:(Class)aClass;
@@ -56,11 +61,10 @@ __attribute__((visibility("hidden")))
 - (void)deactivateAlertItem:(id)item reason:(int)reason;
 - (void)deactivateAlertItem:(id)item reason:(int)reason animated:(BOOL)animated;
 - (void)deactivateAlertItemsForFullscreenAlertActivationAndPendMiniAlerts:(BOOL)fullscreenAlertActivationAndPendMiniAlerts;
-- (void)deactivateAlertItemsOfClass:(Class)aClass;
-- (void)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason;
-- (void)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason animated:(BOOL)animated;
+- (BOOL)deactivateAlertItemsOfClass:(Class)aClass;
+- (BOOL)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason;
+- (BOOL)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason animated:(BOOL)animated;
 - (void)dealloc;
-- (id)description;
 - (BOOL)dontLockOverAlertItems;
 - (void)handleVolumeDecrease;
 - (void)handleVolumeIncrease;

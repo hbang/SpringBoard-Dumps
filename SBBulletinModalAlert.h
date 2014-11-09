@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class BBBulletin, NSArray;
+@class NSArray, BBBulletin;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinModalAlert : XXUnknownSuperclass {
@@ -16,11 +16,28 @@ __attribute__((visibility("hidden")))
 	NSArray *_bulletinButtonIndices;
 	BOOL _playedSound;
 	SBBulletinModalAlert *_superseded;
+	NSArray *_actions;
 }
+@property(retain, nonatomic) NSArray *actions;
 @property(retain, nonatomic) NSArray *bulletinButtonIndices;
 @property(retain, nonatomic) NSArray *buttons;
 - (id)initWithBulletin:(id)bulletin;
 - (id)initWithBulletin:(id)bulletin supersededAlert:(id)alert;
+- (id)_actionForAlertViewButtonIndex:(int)alertViewButtonIndex;
+- (id)_actionsFromBulletin;
+- (id)_actionsWithOptions;
+- (void)_configureSheetWithBulletinActions;
+- (void)_configureSheetWithBulletinButtons;
+- (id)_defaultAction;
+- (id)_defaultActions;
+- (id)_defaultAppearance;
+- (id)_dismissAction;
+- (id)_dismissAppearance;
+- (void)_handleAction:(id)action atIndex:(int)index;
+- (void)_handleActionGroup:(id)group;
+- (id)_optionsAppearance;
+- (id)_snoozeAction;
+- (id)_snoozeAppearance;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowMenuButtonDismissal;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

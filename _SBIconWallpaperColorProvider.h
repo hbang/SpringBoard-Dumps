@@ -10,7 +10,7 @@
 #import "_UISettingsKeyObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBIconColorSettings, NSHashTable;
+@class NSHashTable, SBIconColorSettings, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _SBIconWallpaperColorProvider : XXUnknownSuperclass <_UISettingsKeyObserver, SBWallpaperObserver> {
@@ -19,6 +19,10 @@ __attribute__((visibility("hidden")))
 	CGColorRef _blurColor;
 	CGColorRef _solidColor;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
 - (void)_updateAllClients;

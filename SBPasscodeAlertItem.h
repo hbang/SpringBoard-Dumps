@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "UITextFieldDelegate.h"
 
 @class NSString;
@@ -18,6 +18,10 @@ __attribute__((visibility("hidden")))
 	NSString *_errorString;
 	BOOL _hasEmergencyCall;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithPasscodeMode:(int)passcodeMode unlockScreenType:(int)type;
 - (void)_setErrorString:(id)string;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;

@@ -14,10 +14,11 @@ __attribute__((visibility("hidden")))
 	NSNumber *_activated;
 }
 - (id)initWithActivatingApp:(id)activatingApp alertImpersonator:(id)impersonator starkScreenController:(id)controller;
-- (BOOL)_animationShouldStart;
 - (void)_cleanupAnimation;
+- (void)_setupStartDependencies;
 - (void)_startAnimation;
 - (id)_viewToAnimate;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
 - (void)dealloc;
 @end
 

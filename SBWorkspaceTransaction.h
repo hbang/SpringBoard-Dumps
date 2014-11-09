@@ -7,85 +7,20 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, NSDate, BKSWorkspace, SBAlertManager;
-@protocol SBWorkspaceTransactionDelegate;
+@class SBAlertManager;
 
 __attribute__((visibility("hidden")))
 @interface SBWorkspaceTransaction : XXUnknownSuperclass {
-	BOOL _didCommit;
-	id<SBWorkspaceTransactionDelegate> _delegate;
-	int _milestones;
-	BKSWorkspace *_workspace;
 	SBAlertManager *_alertManager;
-	BOOL _completed;
-	BOOL _interrupted;
-	NSDate *_startTime;
-	NSMutableArray *_keepAliveReasons;
+	BOOL _clearsCompletionAsynchronously;
 }
 @property(readonly, assign, nonatomic) SBAlertManager *alertManager;
-@property(assign, nonatomic) id<SBWorkspaceTransactionDelegate> delegate;
-@property(readonly, assign, nonatomic) int milestones;
-@property(readonly, assign, nonatomic) BKSWorkspace *workspace;
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager;
+@property(assign, nonatomic) BOOL clearsCompletionAsynchronously;
+- (id)initWithAlertManager:(id)alertManager;
 - (BOOL)_canBeInterrupted;
-- (BOOL)_checkAndRemoveMilestone:(int)milestone;
-- (void)_checkAndReportIfMilestonesMet;
-- (void)_commit;
-- (BOOL)_enableWatchdog;
-- (void)_endKeepAliveForReason:(id)reason;
-- (void)_enumerateMilestones:(int)milestones usingBlock:(id)block;
-- (BOOL)_hasKeepAliveReason:(id)reason;
-- (void)_interruptWithReason:(int)reason;
-- (void)_keepAliveForReason:(id)reason;
-- (void)_keepalive_async:(id)async;
-- (void)_notifyDelegateOfCompletion:(BOOL)completion;
-- (BOOL)_shouldBeWatchdogged:(id *)watchdogged;
-- (id)_stringForInterruptReason:(int)interruptReason;
-- (id)_stringForMilestone:(int)milestone;
-- (id)_stringForMilestones:(int)milestones;
-- (void)_transactionComplete;
-- (double)_watchdogInterval;
-- (void)addMilestones:(int)milestones;
-- (BOOL)alertDidActivate:(id)alert overAlerts:(id)alerts;
-- (BOOL)alertDidDeactivate:(id)alert;
-- (BOOL)alertWillActivate:(id)alert overAlerts:(id)alerts;
-- (BOOL)alertWillDeactivate:(id)alert;
-- (BOOL)applicationActivated:(id)activated;
-- (BOOL)applicationDidBecomeReceiver:(id)application fromApplication:(id)application2;
-- (BOOL)applicationDidFinishLaunching:(id)application withInfo:(id)info;
-- (BOOL)applicationDidStartLaunching:(id)application withInfo:(id)info;
-- (BOOL)applicationExited:(id)exited;
-- (BOOL)applicationLaunchDidFail:(id)applicationLaunch;
-- (BOOL)applicationWillBecomeReceiver:(id)application fromApplication:(id)application2;
-- (BOOL)canBeInterrupted;
-- (void)commit;
+- (void)_didComplete;
+- (void)_performDeviceCoherencyCheck;
 - (void)dealloc;
-- (id)description;
-- (BOOL)hasCompleted;
-- (void)interrupt;
-- (void)interruptWithReason:(int)reason;
-- (BOOL)milestonesMet;
-- (void)removeMilestones:(int)milestones;
-- (void)removeMilestonesAndCheckForCompletion:(int)completion;
-- (BOOL)selfAlertDidActivate:(id)selfAlert overAlerts:(id)alerts;
-- (BOOL)selfAlertDidDeactivate:(id)selfAlert;
-- (BOOL)selfAlertWillActivate:(id)selfAlert overAlerts:(id)alerts;
-- (BOOL)selfAlertWillDeactivate:(id)selfAlert;
-- (BOOL)selfApplicationActivated:(id)activated;
-- (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
-- (BOOL)selfApplicationDidFinishLaunching:(id)selfApplication withInfo:(id)info;
-- (BOOL)selfApplicationDidStartLaunching:(id)selfApplication withInfo:(id)info;
-- (BOOL)selfApplicationExited:(id)exited;
-- (BOOL)selfApplicationLaunchDidFail:(id)selfApplicationLaunch;
-- (BOOL)selfApplicationWillBecomeReceiver:(id)selfApplication fromApplication:(id)application;
-- (BOOL)selfWorkspaceDidResume;
-- (BOOL)selfWorkspaceDidSuspend;
-- (BOOL)selfWorkspaceWillResume;
-- (BOOL)selfWorkspaceWillSuspend;
-- (BOOL)waitingForMilestone:(int)milestone;
-- (BOOL)workspaceDidResume;
-- (BOOL)workspaceDidSuspend;
-- (BOOL)workspaceWillResume;
-- (BOOL)workspaceWillSuspend;
+- (void)keepAliveForAsyncBlock:(id)asyncBlock;
 @end
 

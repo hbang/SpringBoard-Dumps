@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)_installUpdate;
 - (void)_timerFired;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (BOOL)allowLockScreenDismissal;
 - (BOOL)allowMenuButtonDismissal;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;

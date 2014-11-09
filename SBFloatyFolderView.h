@@ -7,41 +7,83 @@
 
 #import "SpringBoard-Structs.h"
 #import "UIGestureRecognizerDelegate.h"
-#import "_UISettingsKeyObserver.h"
 #import "SBFolderView.h"
+#import "_UISettingsKeyObserver.h"
 
-@class SBFolderBackgroundView, UIView, UITapGestureRecognizer, SBFolderSettings, UIPinchGestureRecognizer, UILongPressGestureRecognizer;
+@class NSString, NSMutableArray, NSMapTable, UITapGestureRecognizer, SBFolderSettings, UILongPressGestureRecognizer, UIPinchGestureRecognizer, SBFloatyFolderBackgroundClipView;
 
 __attribute__((visibility("hidden")))
 @interface SBFloatyFolderView : SBFolderView <UIGestureRecognizerDelegate, _UISettingsKeyObserver> {
-	UIView *_scrollClipView;
-	SBFolderBackgroundView *_backgroundView;
+	SBFloatyFolderBackgroundClipView *_scrollClipView;
+	NSMutableArray *_pageBackgroundViews;
+	NSMapTable *_pageBackgroundViewsForIconListViews;
+	unsigned _scalingViewPageIndex;
 	UITapGestureRecognizer *_tapGesture;
 	UIPinchGestureRecognizer *_pinchGesture;
 	UILongPressGestureRecognizer *_longPressGesture;
 	SBFolderSettings *_folderSettings;
+	CGPoint _preReachabilityTitleOrigin;
+	CGPoint _reachabilityTitleOrigin;
+	CGPoint _preReachabilityScaleOrigin;
+	CGPoint _reachabilityScaleOrigin;
+	float _reachabilityYOffset;
+	BOOL _layingOutForReachability;
+	BOOL _displayingMultipleIconLists;
+	BOOL _animatingRotation;
 }
+@property(assign, nonatomic, getter=isAnimatingRotation) BOOL animatingRotation;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(assign, nonatomic, getter=isDisplayingMultipleIconLists) BOOL displayingMultipleIconLists;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
++ (unsigned)_countOfAdditionalPagesToKeepVisibleInOneDirection;
++ (Class)_scrollViewClass;
 - (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
+- (void)_addIconListView:(id)view;
 - (void)_configureGestures;
+- (void)_convertToMultipleIconListsAnimated:(BOOL)multipleIconListsAnimated;
+- (void)_convertToSingleIconListAnimated:(BOOL)singleIconListAnimated;
+- (unsigned)_countOfAdditionalPagesToKeepAnimatingInOneDirection;
+- (void)_currentPageIndexDidChange;
 - (CGRect)_frameForScalingView;
 - (void)_handleLongPressGesture:(id)gesture;
 - (void)_handleOutsideTap:(id)tap;
 - (void)_handlePinchGesture:(id)gesture;
+- (void)_handleReachabilityActivatedAnimate:(BOOL)animate completion:(id)completion;
+- (void)_handleReachabilityDectivatedAnimate:(BOOL)animate completion:(id)completion;
+- (CGRect)_iconListFrameForPageRect:(CGRect)pageRect atIndex:(unsigned)index;
 - (void)_layoutSubviews;
+- (id)_newPageBackgroundView;
+- (float)_offsetToCenterPageControlInSpaceForPageControl;
+- (void)_orientationDidChange:(int)_orientation;
+- (CGRect)_pageBackgroundFrameForPageRect:(CGRect)pageRect;
+- (void)_removeIconListView:(id)view;
+- (BOOL)_shouldConvertToMultipleIconListsInLandscapeOrientation;
 - (BOOL)_showsTitle;
 - (BOOL)_tapToCloseGestureRecognizer:(id)closeGestureRecognizer shouldReceiveTouch:(id)touch;
 - (float)_titleFontSize;
+- (float)_titleVerticalOffsetForOrientation:(int)orientation;
+- (void)_updateIconListContainment:(id)containment atIndex:(unsigned)index;
+- (void)_updateScalingViewLocation;
+- (id)borrowScalingView;
 - (void)dealloc;
 - (void)didAnimate;
+- (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)fadeContentForMagnificationFraction:(float)magnificationFraction;
 - (void)fadeContentForMinificationFraction:(float)minificationFraction;
 - (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
 - (BOOL)gestureRecognizer:(id)recognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)gestureRecognizer;
+- (void)handleReachabilityActivated:(BOOL)activated animated:(BOOL)animated completion:(id)completion;
+- (id)iconListViewAtPoint:(CGPoint)point;
 - (BOOL)locationCountsAsInsideFolder:(CGPoint)folder;
+- (float)reachabilityYOffset;
+- (void)returnScalingView;
 - (void)setBackgroundAlpha:(float)alpha;
 - (void)setLegibilitySettings:(id)settings;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (CGPoint)visibleFolderRelativeImageCenterForIcon:(id)icon;
 - (void)willAnimate;
+- (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

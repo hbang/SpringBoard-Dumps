@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBLockOverlayContext, SBLockScreenViewController, SBAwayViewPluginController;
+@class SBAwayViewPluginController, SBLockOverlayContext, SBLockScreenViewController;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenPluginTransition : XXUnknownSuperclass {
@@ -17,11 +17,11 @@ __attribute__((visibility("hidden")))
 	SBLockOverlayContext *_fromOverlay;
 	SBLockOverlayContext *_toOverlay;
 }
-@property(readonly, assign) SBAwayViewPluginController *fromController;
-@property(readonly, assign) SBLockOverlayContext *fromOverlay;
-@property(readonly, assign) SBLockScreenViewController *lockScreenViewController;
-@property(readonly, assign) SBAwayViewPluginController *toController;
-@property(readonly, assign) SBLockOverlayContext *toOverlay;
+@property(readonly, retain) SBAwayViewPluginController *fromController;
+@property(readonly, retain) SBLockOverlayContext *fromOverlay;
+@property(readonly, retain) SBLockScreenViewController *lockScreenViewController;
+@property(readonly, retain) SBAwayViewPluginController *toController;
+@property(readonly, retain) SBLockOverlayContext *toOverlay;
 - (id)initWithContext:(id)context;
 - (void)_addToView;
 - (void)_removeFromView;

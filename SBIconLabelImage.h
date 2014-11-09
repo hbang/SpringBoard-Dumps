@@ -9,15 +9,19 @@
 #import "SBCountedMapValue.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBIconLabelImageParameters;
+@class SBIconLabelImageParameters, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBIconLabelImage : XXUnknownSuperclass <SBCountedMapValue> {
 	SBIconLabelImageParameters *_parameters;
 	CGPoint _maxSizeOffset;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) CGPoint maxSizeOffset;
-@property(readonly, assign, nonatomic) SBIconLabelImageParameters *parameters;
+@property(readonly, copy, nonatomic) SBIconLabelImageParameters *parameters;
+@property(readonly, assign) Class superclass;
 + (id)_drawLabelImageForParameters:(id)parameters;
 + (id)_labelImageCountedMap;
 + (id)_parametersWithDefaultStyle:(id)defaultStyle;
@@ -31,6 +35,5 @@ __attribute__((visibility("hidden")))
 - (id)_initWithCGImage:(CGImageRef)cgimage scale:(float)scale orientation:(int)orientation parameters:(id)parameters maxSizeOffset:(CGPoint)offset;
 - (id)countedMapKey;
 - (void)dealloc;
-- (id)description;
 @end
 

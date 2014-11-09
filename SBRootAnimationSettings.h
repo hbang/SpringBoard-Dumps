@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBReducedMotionFadeSettings, SBUnlockSettings, SBCenterAppLaunchSettings, SBCenterAppSuspendSettings, SBCrossfadeAppLaunchSettings, SBCrossfadeAppSuspendSettings, SBFolderOpenSettings, SBFolderCloseSettings;
+@class SBCrossfadeAppSuspendSettings, SBFolderOpenSettings, SBFolderCloseSettings, SBReducedMotionFadeSettings, SBUnlockSettings, SBCenterAppLaunchSettings, SBCenterAppSuspendSettings, SBCrossfadeAppLaunchSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBRootAnimationSettings : XXUnknownSuperclass {

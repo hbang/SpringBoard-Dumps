@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBStretchTransformer, UIView, SBApplication;
+@class SBStretchTransformer, UIView, SBApplication, SBAnimationStepper;
 
 __attribute__((visibility("hidden")))
 @interface SBSwitchAppGestureView : XXUnknownSuperclass {
@@ -30,6 +30,10 @@ __attribute__((visibility("hidden")))
 	BOOL m_underflowing;
 	BOOL m_overflowing;
 	id m_completion;
+	SBAnimationStepper *_wallpaperAnimationStepper;
+	int _startingWallpaperStyle;
+	int _leftwardWallpaperStyle;
+	int _rightwardWallpaperStyle;
 }
 @property(copy, nonatomic) id completion;
 @property(assign, nonatomic) float contentOffset;
@@ -37,23 +41,28 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) SBApplication *leftwardApp;
 @property(retain, nonatomic) UIView *leftwardView;
 @property(assign, nonatomic) int leftwardViewOrientation;
+@property(assign, nonatomic) int leftwardWallpaperStyle;
 @property(assign, nonatomic) int orientation;
-@property(assign, nonatomic) BOOL overflowing;
+@property(assign, nonatomic, getter=isOverflowing) BOOL overflowing;
 @property(assign, nonatomic) float pageWidth;
-@property(readonly, assign, nonatomic) BOOL pagingLeftward;
-@property(readonly, assign, nonatomic) BOOL pagingRightward;
+@property(readonly, assign, nonatomic, getter=isPagingLeftward) BOOL pagingLeftward;
+@property(readonly, assign, nonatomic, getter=isPagingRightward) BOOL pagingRightward;
 @property(assign, nonatomic) float percentage;
 @property(retain, nonatomic) SBApplication *rightwardApp;
 @property(retain, nonatomic) UIView *rightwardView;
 @property(assign, nonatomic) int rightwardViewOrientation;
+@property(assign, nonatomic) int rightwardWallpaperStyle;
 @property(retain, nonatomic) SBApplication *startingApp;
 @property(retain, nonatomic) UIView *startingView;
 @property(assign, nonatomic) int startingViewOrientation;
+@property(assign, nonatomic) int startingWallpaperStyle;
 @property(retain, nonatomic) SBStretchTransformer *stretchTransformer;
-@property(assign, nonatomic) BOOL underflowing;
+@property(assign, nonatomic, getter=isUnderflowing) BOOL underflowing;
+@property(retain, nonatomic) SBAnimationStepper *wallpaperAnimationStepper;
 - (id)initWithInterfaceOrientation:(int)interfaceOrientation startingApp:(id)app leftwardApp:(id)app3 rightwardApp:(id)app4;
 - (void)animationDidStop:(id)animation finished:(BOOL)finished;
 - (void)beginPaging;
+- (void)cleanUpWallpaperAnimation;
 - (float)contentOffsetForApp:(id)app;
 - (void)dealloc;
 - (void)finishBackwardToStartWithCompletion:(id)completion;

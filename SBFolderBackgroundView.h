@@ -10,7 +10,7 @@
 #import "SBWallpaperObserver.h"
 #import "_UISettingsKeyObserver.h"
 
-@class UIImageView, _UILegibilitySettings, UIView, SBFolderSettings, SBWallpaperEffectView;
+@class UIView, _UILegibilitySettings, SBWallpaperEffectView, NSString, SBFolderSettings, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderBackgroundView : XXUnknownSuperclass <_UISettingsKeyObserver, SBWallpaperObserver> {
@@ -20,7 +20,11 @@ __attribute__((visibility("hidden")))
 	SBFolderSettings *_folderSettings;
 	_UILegibilitySettings *_legibilitySettings;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, assign) Class superclass;
 + (float)cornerRadiusToInsetContent;
 + (CGSize)folderBackgroundSize;
 + (void)warmupIfNecessary;

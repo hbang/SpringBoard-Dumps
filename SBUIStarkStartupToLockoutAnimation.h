@@ -7,7 +7,7 @@
 
 #import "SBUIStarkStartupAnimation.h"
 
-@class NSMutableArray, SBStarkLockOutView;
+@class SBStarkLockOutView, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SBUIStarkStartupToLockoutAnimation : SBUIStarkStartupAnimation {
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)_finishViewForSlideUp:(id)slideUp;
 - (void)_noteSignificantAnimationFinished;
 - (void)_prepareAnimation;
-- (void)_slideUpViewsWithSlideSettings:(id)slideSettings fadeSettings:(id)settings delayIncrement:(double)increment;
+- (void)_slideUpViewsWithSlideFactory:(id)slideFactory fadeFactory:(id)factory delayIncrement:(double)increment;
 - (void)_startAnimation;
 - (void)dealloc;
 @end

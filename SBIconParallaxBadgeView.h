@@ -6,15 +6,19 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "_UISettingsKeyObserver.h"
 #import "SBIconBadgeView.h"
+#import "_UISettingsKeyObserver.h"
 
-@class SBFParallaxSettings;
+@class SBFParallaxSettings, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBIconParallaxBadgeView : SBIconBadgeView <_UISettingsKeyObserver> {
 	SBFParallaxSettings *_parallaxSettings;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (void)_applyParallaxSettings;
 - (void)dealloc;

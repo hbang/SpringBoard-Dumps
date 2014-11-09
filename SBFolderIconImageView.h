@@ -10,7 +10,7 @@
 #import "SBIconBlurryBackgroundViewObserver.h"
 #import "SBIconImageView.h"
 
-@class SBFloatyFolderView, _SBIconGridWrapperView, UIView, SBFolderIconBackgroundView, NSMutableArray;
+@class UIView, NSString, NSMutableArray, _SBIconGridWrapperView, SBFolderIconBackgroundView, SBFloatyFolderView;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderIconImageView : SBIconImageView <SBFolderIconObserver, SBIconBlurryBackgroundViewObserver> {
@@ -25,6 +25,10 @@ __attribute__((visibility("hidden")))
 	UIView *_crossfadeScalingView;
 	BOOL _animating;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (id)_currentPageElement;
 - (id)_folderIcon;

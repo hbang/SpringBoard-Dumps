@@ -6,13 +6,18 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBSearchText.h"
 #import "SBUIQuietModePlayability.h"
 #import "SBAppSwitcherCacheVended.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString;
+@class NSAttributedString, NSString;
 
 @interface XXUnknownSuperclass (AppSwitcherCacheVendedCompliance) <SBAppSwitcherCacheVended>
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 @end
 
 @interface XXUnknownSuperclass (SBApplicationAdditions)
@@ -24,10 +29,6 @@
 - (id)popObject:(id)object;
 - (void)push:(id)push;
 - (id)top;
-@end
-
-@interface XXUnknownSuperclass (Centerable)
-- (void)centerToContentView;
 @end
 
 @interface XXUnknownSuperclass (CTHelpers)
@@ -64,34 +65,52 @@
 - (id)prefsNotificationsAlertString;
 @end
 
+@interface XXUnknownSuperclass (SpringBoard)
+- (void)_sb_safeAddObject:(id)object;
+@end
+
+@interface XXUnknownSuperclass (SBQueueAdditions)
+- (id)_sb_dequeue;
+- (void)_sb_enqueue:(id)enqueue;
+- (id)_sb_peek;
+@end
+
 @interface XXUnknownSuperclass (AlertItemsAdditions)
 - (void)addUniqueObjectsOfClass:(Class)aClass toArray:(id)array;
 - (id)objectOfClass:(Class)aClass;
 @end
 
-@interface XXUnknownSuperclass (SBOptimizedCombination)
-- (id)dictionaryByAddingEntriesFromDictionary:(id)dictionary;
+@interface XXUnknownSuperclass (SpringBoard)
++ (id)sbf_preferredFontForTextStyle:(id)textStyle symbolicTraits:(unsigned)traits options:(unsigned)options;
 @end
 
-@interface XXUnknownSuperclass (SpringBoardContextHosting)
-- (BOOL)sbs_hasBeenOverridenAlready;
-- (void)sbs_setHasBeenOverriddenAlready:(BOOL)already;
+@interface XXUnknownSuperclass (SpringBoard)
+- (void)sbf_updateDictionaryForKey:(id)key withChanges:(id)changes;
+- (void)sbf_updateTextAttributesForKey:(id)key;
 @end
 
-@interface XXUnknownSuperclass (AccessibilityCategory)
-+ (id)preferredFontIgnoringAccessibilitySizeWithTextStyle:(id)textStyle;
-+ (id)preferredFontIgnoringAccessibilitySizeWithTextStyle:(id)textStyle traits:(unsigned)traits;
+@interface XXUnknownSuperclass (SBSearchText) <SBSearchText>
+@property(copy, nonatomic) NSAttributedString *attributedText;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(assign) unsigned numberOfLines;
+@property(readonly, assign) Class superclass;
+@property(copy, nonatomic) NSString *text;
 @end
 
-@interface XXUnknownSuperclass (SBUtilities)
-- (void)sb_setBoundsAndPositionFromFrame:(CGRect)frame;
+@interface XXUnknownSuperclass (UIViewController_SpringBoard)
+- (BOOL)sb_childViewController:(id)controller beginAppearanceTransitionIfNecessary:(BOOL)necessary animated:(BOOL)animated;
+- (BOOL)sb_childViewControllerEndAppearanceTransitionIfNecessary:(id)necessary;
+@end
+
+@interface XXUnknownSuperclass (SpringBoardAdditions)
+@property(assign, nonatomic, setter=sb_setShowsDebugLabel:) BOOL sb_showsDebugLabel;
+- (id)sb_debugLabel;
 @end
 
 @interface XXUnknownSuperclass (SBAdditions)
 - (void)logStateOperationCountGreaterThan:(int)than;
-@end
-
-@interface XXUnknownSuperclass (SpringBoard)
 @end
 
 @interface XXUnknownSuperclass (SBGraphics)
@@ -104,17 +123,10 @@
 - (CGImageRef)_newThumbnailWithJPEG:(id)jpeg forMaxPixelDimension:(float)maxPixelDimension;
 - (id)_thumbnailFitToSize:(CGSize)size;
 - (BOOL)isAnimated;
-- (id)sbg_cropImageWithRect:(CGRect)rect outputSize:(CGSize)size;
 - (id)sbg_memoryMappedImageWithPool:(id)pool;
-- (id)sbg_resizeImageToSize:(CGSize)size;
-- (id)sbg_resizeImageToSize:(CGSize)size preservingAspectRatio:(BOOL)ratio;
 - (id)sbg_squareImage;
 - (id)sbg_thumbnailFitToSize:(CGSize)size;
 - (BOOL)sbs_hasAlpha;
-@end
-
-@interface XXUnknownSuperclass (SBSystemLocalNotificationAlert)
-- (BOOL)isSystemLocalNotificationAlert;
 @end
 
 @interface XXUnknownSuperclass (SBBulletinBanner)
@@ -123,7 +135,9 @@
 @end
 
 @interface XXUnknownSuperclass (SpringBoard)
+- (float)sb_yPositionForLabelWithContainerBounds:(CGRect)containerBounds baselineOffset:(float)offset font:(id)font;
 - (float)sb_yPositionForLabelWithContainerBounds:(CGRect)containerBounds lineHeight:(float)height baselineOffset:(float)offset font:(id)font;
+- (float)sb_yPositionForLayoutAfterLabel:(id)layoutAfterLabel baselineOffset:(float)offset;
 @end
 
 @interface XXUnknownSuperclass (SBIconIndex)
@@ -137,6 +151,10 @@
 - (id)subpathFromPosition:(unsigned)position;
 @end
 
+@interface XXUnknownSuperclass (WidgetsSettings)
+- (id)sb_iconImage;
+@end
+
 @interface XXUnknownSuperclass (SBUtilities)
 + (id)soundWithBBSound:(id)bbsound;
 @end
@@ -147,9 +165,17 @@
 @end
 
 @interface XXUnknownSuperclass (SBUtilities) <SBUIQuietModePlayability>
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (BOOL)isCritical;
 - (BOOL)overridesQuietMode;
 - (id)sectionIconImageWithFormat:(int)format;
+@end
+
+@interface XXUnknownSuperclass (SBUtilities)
+- (id)preferredImageForContentSizeCategory:(id)contentSizeCategory tintColor:(id)color;
 @end
 
 @interface XXUnknownSuperclass (SBBulletinBannerControllerTest)
@@ -159,6 +185,19 @@
 @interface XXUnknownSuperclass (SBAdditions)
 - (BOOL)sb_containsEmoji;
 - (BOOL)sb_containsNonLatinLikeCharacters;
+@end
+
+@interface XXUnknownSuperclass (SpringBoardSupport)
+- (id)sb_description;
+- (BOOL)sb_hasExplicitUserElectionState;
+@end
+
+@interface XXUnknownSuperclass (SBWidgetSectionComparisonSupport)
+- (int)sb_compareWidget:(id)widget;
+- (int)sb_compareWidgetConsideringIsNew:(id)aNew;
+- (int)sb_compareWidgetConsideringShowsInNotificationCenter:(id)notificationCenter;
+- (BOOL)sb_isNewWidget;
+- (id)sb_localizedDisplayName;
 @end
 
 @interface XXUnknownSuperclass (SBStringDrawing)
@@ -179,10 +218,6 @@
 - (BOOL)isStarkBannerItem;
 @end
 
-@interface XXUnknownSuperclass (SBWidgetAdditions)
-- (id)sb_supportedWidgetIdioms;
-@end
-
 @interface XXUnknownSuperclass (UIGestureRecognizer_SpringBoard)
 - (id)sb_briefDescription;
 @end
@@ -194,13 +229,13 @@
 @interface XXUnknownSuperclass (SpringBoard)
 - (void)sbf_each:(id)each;
 - (id)sbf_filter:(id)filter;
+- (id)sbf_first:(unsigned)first;
+- (id)sbf_firstObjectOfClass:(Class)aClass;
+- (id)sbf_firstObjectOfClassNamed:(id)classNamed;
 - (id)sbf_firstObjectPassingTest:(id)test;
+- (id)sbf_foldWithInitialValue:(id)initialValue block:(id)block;
 - (id)sbf_map:(id)map;
-@end
-
-@interface XXUnknownSuperclass (SBMutableArrayQueueAdditions)
-- (id)_sb_dequeue;
-- (void)_sb_enqueue:(id)enqueue;
-- (id)_sb_peek;
+- (id)sbf_mapNoNulls:(id)nulls;
+- (id)sbf_reverse;
 @end
 

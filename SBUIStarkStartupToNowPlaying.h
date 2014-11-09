@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
 	NSNumber *_activated;
 }
 - (id)initWithActivatingApp:(id)activatingApp fromLockoutView:(id)lockoutView starkScreenController:(id)controller;
-- (BOOL)_animationShouldStart;
 - (void)_cleanupAnimation;
 - (id)_createViewToAnimate;
-- (id)_getTransitionWindow;
+- (void)_prepareAnimation;
+- (void)_setupStartDependencies;
 - (void)_startAnimation;
 - (void)dealloc;
 @end

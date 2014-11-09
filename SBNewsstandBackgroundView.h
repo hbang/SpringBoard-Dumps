@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIImageView, NSMutableArray, UIView;
+@class UIView, NSMutableArray, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface SBNewsstandBackgroundView : XXUnknownSuperclass {
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 	UIView *_bottomView;
 }
 + (float)baselineForShelfAtIndex:(unsigned)index withOrientation:(int)orientation;
++ (float)dockHeightForOrientation:(int)orientation;
 + (float)shelfHeightForOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
 - (void)dealloc;

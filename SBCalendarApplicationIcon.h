@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBApplicationIcon.h"
 #import "SpringBoard-Structs.h"
+#import "SBApplicationIcon.h"
 
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 + (id)countriesRequiringBlackDayOfWeek;
 - (id)initWithApplication:(id)application;
 - (void)_drawIconIntoCurrentContextWithImageSize:(CGSize)imageSize iconBase:(id)base;
-- (BOOL)canGenerateImageInBackgroundForFormat:(int)format;
 - (id)colorForDayOfWeek;
 - (void)dealloc;
 - (id)generateIconImage:(int)image;

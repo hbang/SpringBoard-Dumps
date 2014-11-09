@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UILabel, UIColor, UIImageView, UIImage, UIView;
+@class UIView, UIColor, UILabel, UIImageView, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBannerViewButton : XXUnknownSuperclass {

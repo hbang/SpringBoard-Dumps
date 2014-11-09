@@ -8,7 +8,7 @@
 #import "SBFLockScreenDateFormatter.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDateFormatter, NSNumberFormatter, NSDate;
+@class NSDateFormatter, NSNumberFormatter, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBDateLabelStringFormatCache : XXUnknownSuperclass <SBFLockScreenDateFormatter> {
@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 	NSDateFormatter *_relativeDateFormatter;
 	NSDateFormatter *_dayOfWeekMonthDayFormatter;
 	NSDateFormatter *_timeNoAMPMFormatter;
+	NSDateFormatter *_longYMDHMSZFormatter;
+	NSDateFormatter *_longYMDHMSNoSpaceFormatter;
 	NSNumberFormatter *_decimalFormatter;
 	NSNumberFormatter *_timerNumberFormatter;
 	NSDateFormatter *_abbreviatedTimerFormatter;
@@ -31,9 +33,14 @@ __attribute__((visibility("hidden")))
 	NSDate *_timerReferenceDate;
 	NSDate *_alarmReferenceDate;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (void)load;
 + (id)sharedInstance;
 - (id)init;
+- (void)_resetFormatters;
 - (BOOL)_shouldShowHoursForTimerDuration:(double)timerDuration;
 - (void)dealloc;
 - (id)formatAbbreviatedTimerDuration:(double)duration;
@@ -44,6 +51,8 @@ __attribute__((visibility("hidden")))
 - (id)formatDateAsDayMonthYearStyle:(id)style;
 - (id)formatDateAsDayOfWeek:(id)week;
 - (id)formatDateAsDayOfWeekMonthDayStyle:(id)weekMonthDayStyle;
+- (id)formatDateAsLongYMDHMSNoSpacesWithDate:(id)date;
+- (id)formatDateAsLongYMDHMSZWithDate:(id)date;
 - (id)formatDateAsRelativeDateAndTimeStyle:(id)style;
 - (id)formatDateAsRelativeDateStyle:(id)style;
 - (id)formatDateAsShortDayMonthWithTimeStyle:(id)timeStyle;

@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SBStatusBarStateAggregatorPosting.h"
 #import "SpringBoard-Structs.h"
-#import "UIStatusBarStateProvider.h"
+#import "SBStatusBarStateAggregatorPosting.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "UIStatusBarStateProvider.h"
 
-@class SBStatusBarStateAggregator, NSHashTable;
+@class NSHashTable, SBStatusBarStateAggregator, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStatusBarStateProvider : XXUnknownSuperclass <SBStatusBarStateAggregatorPosting, UIStatusBarStateProvider> {
@@ -26,6 +26,10 @@ __attribute__((visibility("hidden")))
 	BOOL _posting;
 	NSHashTable *_stylesWithDetailUpdates;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (void)_composePostActionsFromAggregatorActions:(int *)aggregatorActions;
 - (void)_composePostDataFromAggregatorData:(XXStruct_8iXKhD *)aggregatorData;

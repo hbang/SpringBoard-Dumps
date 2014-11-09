@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSObject, NSString, NSRecursiveLock;
+@class NSRecursiveLock, NSObject, NSString;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
 	BOOL _primaryInterfaceHasBeenSet;
 	BOOL _isPrimaryInterface;
 	BOOL _isPrimaryInterfaceChanging;
+	int linkToken;
+	int powerToken;
 }
 + (id)sharedInstance;
 - (id)init;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void *)_manager;
 - (void)_powerStateDidChange;
 - (void)_primaryInterfaceChanged:(BOOL)changed;
+- (void)_setPrimaryInterfaceHasBeenSet;
 - (void)_setWiFiDevice:(void *)device;
 - (void)_updateCurrentNetwork;
 - (void)_updateWiFiDevice:(id)device;

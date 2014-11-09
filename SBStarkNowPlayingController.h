@@ -8,7 +8,7 @@
 #import "SBStarkNowPlayingServiceDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class _UIAsyncInvocation, SBSUICarDisplayNowPlayingStateContext, NSMutableArray, SBStarkNowPlayingService;
+@class SBStarkNowPlayingService, _UIAsyncInvocation, SBSUICarDisplayNowPlayingStateContext, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkNowPlayingController : XXUnknownSuperclass <SBStarkNowPlayingServiceDelegate> {
@@ -19,6 +19,10 @@ __attribute__((visibility("hidden")))
 	NSMutableArray *_notifyBlocks;
 	SBSUICarDisplayNowPlayingStateContext *_context;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (void)_noteServiceFailure;
 - (void)_notifyActive:(BOOL)active;

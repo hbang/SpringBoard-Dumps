@@ -5,43 +5,12 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBInteractionPassThroughView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIButton, SBLockOverlayStylePropertiesFactory, _UILegibilitySettings, UIResizableView, UILabel;
-@protocol SBLockOverlayViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBLockOverlayView : SBInteractionPassThroughView {
-	id<SBLockOverlayViewDelegate> _delegate;
-	UIResizableView *_textContainerView;
-	UILabel *_titleLabel;
-	UILabel *_subtitleLabel;
-	UIButton *_actionButton;
-	BOOL _hidesLockContent;
-	SBLockOverlayStylePropertiesFactory *_underlayPropertiesFactory;
-	unsigned _style;
-	_UILegibilitySettings *_legibilitySettings;
+@interface SBLockOverlayView : XXUnknownSuperclass {
 }
-@property(readonly, assign, nonatomic) UIButton *actionButton;
-@property(assign, nonatomic) id<SBLockOverlayViewDelegate> delegate;
-@property(readonly, assign, nonatomic) BOOL hidesLockContent;
-@property(readonly, assign, nonatomic) _UILegibilitySettings *legibilitySettings;
-@property(readonly, assign, nonatomic) unsigned style;
-@property(readonly, assign, nonatomic) UILabel *subtitleLabel;
-@property(readonly, assign, nonatomic) UILabel *titleLabel;
-@property(readonly, assign, nonatomic) SBLockOverlayStylePropertiesFactory *underlayPropertiesFactory;
-- (id)initWithFrame:(CGRect)frame;
-- (id)initWithFrame:(CGRect)frame style:(unsigned)style;
-- (id)_actionFont;
-- (void)_buttonPressed;
 - (id)_legibilitySettingsForStyle:(unsigned)style;
-- (float)_maxLabelWidth;
-- (unsigned)_numberOfLinesForText:(id)text font:(id)font size:(CGSize)size;
-- (void)_sizeView:(id)view forFixedWith:(BOOL)with;
-- (id)_subtitleFont;
-- (id)_titleFont;
-- (void)dealloc;
-- (void)layoutSubviews;
 @end
 

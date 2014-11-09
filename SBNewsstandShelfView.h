@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBGradientView.h"
 
-@class UIColor, SBHighlightView, UIView;
+@class UIColor, UIView, SBHighlightView;
 
 __attribute__((visibility("hidden")))
 @interface SBNewsstandShelfView : SBGradientView {

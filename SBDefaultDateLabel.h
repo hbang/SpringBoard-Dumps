@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBBulletinDateLabel.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBBulletinDateLabel.h"
 
-@class NSDate, NSTimer;
+@class NSTimer, NSDate, NSString;
 @protocol SBDateLabelDelegate;
 
 __attribute__((visibility("hidden")))
@@ -28,9 +28,13 @@ __attribute__((visibility("hidden")))
 	int _labelType;
 }
 @property(assign, nonatomic, getter=isAllDay) BOOL allDay;
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBDateLabelDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) BOOL isTimestamp;
 @property(assign, nonatomic) int labelType;
+@property(readonly, assign) Class superclass;
 + (id)_currentCalendar;
 - (id)init;
 - (void)_configureTimer;

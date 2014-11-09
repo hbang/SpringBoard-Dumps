@@ -7,7 +7,7 @@
 
 #import "SBBBItemInfo.h"
 
-@class BBBulletin, NSString;
+@class NSString, BBBulletin;
 
 __attribute__((visibility("hidden")))
 @interface SBBBBulletinInfo : SBBBItemInfo {
@@ -15,5 +15,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) NSString *originalSectionIdentifier;
 @property(readonly, assign, nonatomic) BBBulletin *representedBulletin;
 - (id)identifier;
+- (void)prepareWithCompletion:(id)completion;
 @end
 

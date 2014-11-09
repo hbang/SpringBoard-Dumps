@@ -10,7 +10,7 @@
 #import "SBVibrantBannerView.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBDefaultBannerTextView, UIImageView, SBUIBannerContext, UIView;
+@class SBUIBannerContext, UIView, SBDefaultBannerTextView, NSString, UIImageView;
 @protocol SBDefaultBannerViewSource;
 
 __attribute__((visibility("hidden")))
@@ -20,22 +20,36 @@ __attribute__((visibility("hidden")))
 	UIImageView *_iconImageView;
 	SBDefaultBannerTextView *_textView;
 	UIImageView *_attachmentImageView;
-	CGSize _grabberSize;
-	UIView *_grabberView;
+	UIView *_secondaryContentView;
 }
-+ (id)_defaultGrabberColor;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)_defaultRelevanceDateColor;
 + (id)defaultColorForElement:(int)element;
 - (id)initWithContext:(id)context;
 - (id)initWithFrame:(CGRect)frame;
-- (id)_grabberColor;
+- (CGRect)_attachmentImageViewFrame;
+- (CGRect)_contentFrame;
+- (CGRect)_contentFrameForBounds:(CGRect)bounds;
+- (CGRect)_iconImageViewFrame;
+- (float)_iconInsetY;
 - (id)_relevanceDateColor;
-- (void)_setGrabberColor:(id)color;
+- (CGRect)_secondaryContentFrame;
+- (CGRect)_secondaryContentFrameForBounds:(CGRect)bounds;
+- (float)_secondaryContentInsetY;
 - (void)_setRelevanceDateColor:(id)color;
+- (float)_textInsetX;
+- (CGRect)_textViewFrame;
+- (CGRect)_textViewFrameForBounds:(CGRect)bounds;
 - (id)bannerContext;
 - (id)colorForElement:(int)element;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)setColor:(id)color forElement:(int)element;
+- (void)setPercentPulledDown:(float)down;
+- (void)setSecondaryContentView:(id)view;
+- (CGSize)sizeThatFits:(CGSize)fits;
 @end
 

@@ -10,6 +10,9 @@
 
 
 @protocol _UIDynamicReferenceSystem <NSObject>
+@optional
+- (CGRect)_dynamicReferenceBounds;
+@required
 - (CGRect)bounds;
 @optional
 - (CGPoint)convertPoint:(CGPoint)point fromView:(id)view;

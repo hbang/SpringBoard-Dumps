@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSDateFormatter, NSArray, NSString, NSHashTable, NSTimer;
+@class NSTimer, NSHashTable, NSDateFormatter, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStatusBarStateAggregator : XXUnknownSuperclass {
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 	int _actions;
 	NSHashTable *_postObservers;
 	BOOL _notifyingPostObservers;
+	int _showsRecordingOverrides;
 	NSDateFormatter *_timeItemDateFormatter;
 	NSTimer *_timeItemTimer;
 	NSString *_timeItemTimeString;
@@ -27,6 +28,8 @@ __attribute__((visibility("hidden")))
 	NSString *_serviceString;
 	NSString *_serviceCrossfadeString;
 	NSArray *_countryCodesShowingEmergencyOnlyStatus;
+	unsigned _airplaneTransitionToken;
+	BOOL _suppressCellServiceForAirplaneModeTransition;
 	BOOL _showsActivityIndicatorOnHomeScreen;
 	int _activityIndicatorEverywhereCount;
 	BOOL _showsActivityIndicatorForNewsstand;
@@ -36,10 +39,12 @@ __attribute__((visibility("hidden")))
 	NSString *_batteryDetailString;
 	BOOL _alarmEnabled;
 	BOOL _applyingAssistantStyle;
+	int _locationStatusBarIconType;
 }
 + (int)_thermalColorForLevel:(int)level;
 + (id)sharedInstance;
 - (id)init;
+- (void)_buildLocationState;
 - (id)_displayStringForRegistrationStatus:(int)registrationStatus;
 - (id)_displayStringForSIMStatus:(id)simstatus;
 - (void)_noteAirplaneModeChanged;
@@ -58,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldShowNotChargingItem;
 - (BOOL)_simStatusMeansLocked:(id)locked;
 - (void)_stopTimeItemTimer;
+- (void)_tickRefCount:(int *)count up:(BOOL)up withTransitionBlock:(id)transitionBlock;
 - (void)_updateActivityItem;
 - (void)_updateAirplaneMode;
 - (void)_updateAirplayItem;
@@ -69,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateCallForwardingItem;
 - (void)_updateDataNetworkItem;
 - (void)_updateLocationItem;
+- (void)_updateLocationState;
 - (void)_updateQuietModeItem;
 - (void)_updateRotationLockItem;
 - (void)_updateServiceItem;
@@ -89,6 +96,7 @@ __attribute__((visibility("hidden")))
 - (void)setShowsActivityIndicatorEverywhere:(BOOL)everywhere;
 - (void)setShowsActivityIndicatorForNewsstand:(BOOL)newsstand;
 - (void)setShowsActivityIndicatorOnHomeScreen:(BOOL)screen;
+- (void)setShowsOverridesForRecording:(BOOL)recording;
 - (void)setShowsSyncActivityIndicator:(BOOL)indicator;
 - (void)updateStatusBarItem:(int)item;
 @end

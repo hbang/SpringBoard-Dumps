@@ -7,57 +7,23 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, PCPersistentTimer, SBPasscodeLockDisableAssertion, SBPasscodeLockAssertionManager, SecureBackup;
+@class SecureBackup;
 
 __attribute__((visibility("hidden")))
 @interface SBDeviceLockController : XXUnknownSuperclass {
-	int _lockState;
-	double _lastLockDate;
-	BOOL _isPermanentlyBlocked;
-	BOOL _isBlockedForThermalCondition;
-	double _deviceLockUnblockTime;
-	PCPersistentTimer *_deviceLockUnblockTimer;
-	BOOL _cachedPasscodeLockedOrBlocked;
-	SBPasscodeLockAssertionManager *_assertionManager;
-	SBPasscodeLockDisableAssertion *_transientPasscodeCheckingAssertion;
-	BOOL _okToSendNotifications;
 	SecureBackup *_secureBackupHelper;
-	NSString *_lastIncorrectPasscodeAttempt;
 }
 + (id)_sharedControllerCreateIfNecessary:(BOOL)necessary;
-+ (id)_sharedControllerIfExists;
 + (id)sharedController;
 - (id)init;
-- (void)_addDeviceLockDisableAssertion:(id)assertion;
 - (void)_cachePassword:(id)password;
-- (void)_clearBlockedState;
-- (void)_clearUnblockTimer;
-- (void)_enablePasscodeLockImmediately:(BOOL)immediately;
-- (void)_noteBlockedReasonsMayHaveChanged;
-- (void)_notePasscodeLockedOrBlockedStateMayHaveChanged:(BOOL)changed;
-- (void)_notifyOfFirstUnlock;
-- (void)_removeDeviceLockDisableAssertion:(id)assertion;
-- (void)_scheduleUnblockTimer;
-- (void)_sendBlockStateChangeNotification;
-- (void)_setDeviceLockUnblockTime:(double)time;
-- (void)_setLockState:(int)state;
+- (void)_lockStateChangedFrom:(int)from to:(int)to;
 - (BOOL)_shouldLockDeviceNow;
-- (BOOL)_temporarilyBlocked;
-- (void)_unblockTimerFired;
+- (BOOL)_shouldSuppressLockOnInit;
 - (void)_uncachePasscodeIfNecessary;
-- (void)_updateDeviceLockedState;
+- (void)_wipeDevice;
 - (BOOL)attemptDeviceUnlockWithPassword:(id)password appRequested:(BOOL)requested;
 - (void)dealloc;
-- (id)description;
-- (BOOL)deviceHasPasscodeSet;
-- (void)enablePasscodeLockImmediately;
-- (BOOL)isBlocked;
-- (BOOL)isBlockedForThermalCondition;
-- (BOOL)isPasscodeLocked;
-- (BOOL)isPasscodeLockedCached;
-- (BOOL)isPasscodeLockedOrBlocked;
-- (BOOL)isPermanentlyBlocked:(double *)blocked;
-- (id)lastLockDate;
 - (void)setBlockedForThermalCondition:(BOOL)thermalCondition;
 - (BOOL)shouldAllowUnlockToApplication:(id)application;
 @end

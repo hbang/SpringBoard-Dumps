@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBOffscreenSwipeGestureRecognizer.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))

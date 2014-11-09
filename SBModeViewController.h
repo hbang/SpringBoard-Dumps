@@ -6,15 +6,15 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBSizeObservingViewDelegate.h"
 #import "_UISettingsKeyPathObserver.h"
+#import "SBUISizeObservingViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBModeControlManager, UIScrollView, UISwipeGestureRecognizer, NSArray, UIViewController, SBNotificationCenterSeparatorView, UIView, SBBulletinObserverViewController;
-@protocol SBBulletinActionHandler;
+@class UIView, NSString, NSArray, SBNotificationSeparatorView, SBModeControlManager, UIViewController, UIScrollView, SBBulletinObserverViewController, UISwipeGestureRecognizer;
+@protocol SBBulletinActionHandler, SBModeViewControllerContentProviding;
 
 __attribute__((visibility("hidden")))
-@interface SBModeViewController : XXUnknownSuperclass <SBSizeObservingViewDelegate, _UISettingsKeyPathObserver> {
+@interface SBModeViewController : XXUnknownSuperclass <SBUISizeObservingViewDelegate, _UISettingsKeyPathObserver> {
 	id<SBBulletinActionHandler> _delegate;
 	SBBulletinObserverViewController *_selectedViewController;
 	SBBulletinObserverViewController *_deselectedViewController;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 	SBModeControlManager *_modeControl;
 	UISwipeGestureRecognizer *_leftSwipeGestureRecognizer;
 	UISwipeGestureRecognizer *_rightSwipeGestureRecognizer;
-	SBNotificationCenterSeparatorView *_separator;
+	SBNotificationSeparatorView *_separator;
 	struct {
 		unsigned isContentLayoutValid : 1;
 		unsigned isSegmentLayoutValid : 1;
@@ -31,10 +31,14 @@ __attribute__((visibility("hidden")))
 		unsigned shouldLoadAllChildViews : 1;
 	} _modeViewControllerFlags;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBBulletinActionHandler> delegate;
+@property(readonly, copy) NSString *description;
 @property(retain, nonatomic) SBBulletinObserverViewController *deselectedViewController;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic, getter=isRequestHandlingEnabled) BOOL requestHandlingEnabled;
-@property(assign, nonatomic) UIViewController *selectedViewController;
+@property(assign, nonatomic) UIViewController<SBModeViewControllerContentProviding> *selectedViewController;
+@property(readonly, assign) Class superclass;
 @property(retain, nonatomic) NSArray *viewControllers;
 + (id)_buttonTitleFont;
 - (BOOL)_addBulletinObserverViewController:(id)controller;
@@ -58,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)_viewIfLoaded;
 - (void)addViewController:(id)controller;
 - (void)dealloc;
-- (BOOL)handleActionForBulletin:(id)bulletin;
+- (BOOL)handleAction:(id)action forBulletin:(id)bulletin withCompletion:(id)completion;
 - (void)handleModeChange:(id)change;
 - (void)hostDidDismiss;
 - (void)hostDidPresent;

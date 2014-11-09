@@ -7,7 +7,7 @@
 
 #import "SBAwayListItem.h"
 
-@class NSString, SBSCardItem, UIImage;
+@class SBSCardItem, NSString, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface SBAwayCardListItem : SBAwayListItem {

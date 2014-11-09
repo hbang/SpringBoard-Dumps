@@ -5,75 +5,79 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBBulletinViewControllerDelegate.h"
-#import "SBNotificationCenterWidgetHost.h"
-#import "SBWidgetViewControllerHostDelegate.h"
-#import "SBSizeObservingViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
+#import "SpringBoard-Structs.h"
+#import "SBUISizeObservingViewDelegate.h"
+#import "SBBulletinViewControllerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBWidgetViewControllerDelegate.h"
+#import "SBNotificationCenterWidgetHost.h"
+#import "SBModeViewControllerContentProviding.h"
 
-@class BBObserver, _UIContentUnavailableView, NSMutableDictionary, NSArray, SBBulletinViewController, NSMutableArray;
-@protocol SBBulletinActionHandler;
+@class UIView, NSString, NSArray, BBObserver, NSMutableArray, SBBulletinViewController, NSObject, BSSerializedRequestQueue, _UIContentUnavailableView, NSMutableDictionary;
+@protocol OS_dispatch_queue, SBBulletinActionHandler;
 
 __attribute__((visibility("hidden")))
-@interface SBBulletinObserverViewController : XXUnknownSuperclass <SBSizeObservingViewDelegate, BBObserverDelegate, SBBulletinViewControllerDelegate, SBWidgetViewControllerHostDelegate, SBNotificationCenterWidgetHost> {
+@interface SBBulletinObserverViewController : XXUnknownSuperclass <SBUISizeObservingViewDelegate, BBObserverDelegate, SBBulletinViewControllerDelegate, SBWidgetViewControllerDelegate, SBNotificationCenterWidgetHost, SBModeViewControllerContentProviding> {
 	BBObserver *_observer;
+	unsigned _feed;
 	id _delegate;
-	id<SBWidgetViewControllerHostDelegate> _widgetDelegate;
-	NSMutableArray *_requestQueue;
+	id<SBWidgetViewControllerDelegate> _widgetDelegate;
+	BSSerializedRequestQueue *_sectionRequestQueue;
+	BSSerializedRequestQueue *_bulletinRequestQueue;
 	NSMutableDictionary *_enabledSectionInfosByID;
 	NSMutableArray *_visibleSectionIDs;
 	NSMutableDictionary *_bulletinIDsByFeed;
+	UIView *_contentProvidingView;
 	SBBulletinViewController *_bulletinViewController;
 	_UIContentUnavailableView *_contentUnavailableView;
 	int _sectionOrderRule;
 	int _supportedCategory;
 	NSArray *_sectionOrder;
 	NSMutableArray *_makeshiftSectionOrder;
-	int _requestHandlingDisabledCount;
+	NSObject<OS_dispatch_queue> *_handlingControlQueue;
+	int _bulletinHandlingDisabledCount;
+	int _sectionHandlingDisabledCount;
 	struct {
-		unsigned suppliesInsertionAnimation : 1;
-		unsigned suppliesRemovalAnimation : 1;
-		unsigned suppliesReplacementAnimation : 1;
-		unsigned decidesHighlight : 1;
-		unsigned interestedInSelection : 1;
+		unsigned isRePushingUpdates : 1;
+		unsigned scrollsToTop : 1;
+		unsigned isLayoutValid : 1;
 	} _bulletinObserverViewControllerFlags;
 }
 @property(readonly, assign, nonatomic) SBBulletinViewController *bulletinViewController;
+@property(readonly, assign, nonatomic) CGSize contentSize;
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBBulletinActionHandler> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic, getter=isRequestHandlingEnabled) BOOL requestHandlingEnabled;
 @property(assign, nonatomic) BOOL scrollsToTop;
+@property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic) int supportedCategory;
-@property(assign, nonatomic) id<SBWidgetViewControllerHostDelegate> widgetDelegate;
+@property(assign, nonatomic) id<SBWidgetViewControllerDelegate> widgetDelegate;
 + (unsigned)_contentUnavailableVibrantOptionsForCurrentState;
 + (id)allCategories;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (id)initWithObserverFeed:(unsigned)observerFeed;
+- (id)initWithObserverFeed:(unsigned)observerFeed bulletinViewControllerClass:(Class)aClass;
 - (void)_addBulletinID:(id)anId toSetForFeed:(unsigned)feed;
 - (void)_addBulletinID:(id)anId toSetForFeeds:(unsigned)feeds;
 - (void)_addSection:(id)section toCategory:(int)category widget:(id)widget;
 - (void)_associateBulletin:(id)bulletin withSection:(id)section forFeed:(unsigned)feed;
 - (id)_bulletinAfterBulletin:(id)bulletin inSection:(id)section;
 - (id)_bulletinWithIdentifier:(id)identifier inSection:(id)section;
-- (BOOL)_canEnqueueRequestsInQueue:(id)queue;
-- (BOOL)_canProcessRequestsInQueue:(id)queue;
-- (void)_clearQueues;
-- (void)_dequeueAndProcessItemsInQueues;
-- (BOOL)_dequeueAndProcessNextItemInQueue:(id)queue;
-- (BOOL)_dequeueAndProcessNextItemInQueues;
 - (void)_disassociateBulletin:(id)bulletin fromSection:(id)section;
 - (id)_enabledSectionWithIdentifier:(id)identifier;
-- (void)_enqueueInQueue:(id)queue orProcessRequest:(id)request;
+- (void)_enqueueBulletinRequest:(id)request forBulletinInfo:(id)bulletinInfo;
 - (unsigned)_feedsForBulletinID:(id)bulletinID;
 - (CGRect)_frameforViewWithContentForMode:(int)mode;
+- (void)_handlingQueue_setBulletinHandlingEnabled:(BOOL)enabled;
+- (void)_handlingQueue_setSectionHandlingEnabled:(BOOL)enabled;
 - (void)_insertContentUnavailableView;
 - (void)_insertSectionIfNecessary:(id)necessary commit:(BOOL)commit;
-- (void)_invokeBlockWithAllWidgets:(id)allWidgets;
 - (BOOL)_isBulletin:(id)bulletin associatedWithSection:(id)section;
 - (BOOL)_isBulletin:(id)bulletin associatedWithSection:(id)section forFeed:(unsigned)feed;
 - (BOOL)_isSectionVisible:(id)visible;
-- (BOOL)_isServerConnected;
 - (id)_lazyContentUnavailableView;
 - (void)_loadSection:(id)section;
 - (unsigned)_numberOfBulletinsInSection:(id)section;
@@ -85,21 +89,25 @@ __attribute__((visibility("hidden")))
 - (void)_setSection:(id)section visible:(BOOL)visible;
 - (void)_setSectionOrder:(id)order forCategory:(int)category;
 - (void)_setSectionOrderRule:(int)rule;
+- (void)_setupQueue:(id *)queue withLabel:(const char *)label;
+- (void)_setupRequestQueues;
 - (void)_sortAndCommitReloadOfSectionsInCategory:(int)category;
+- (void)_teardownRequestQueue:(id *)queue;
+- (void)_teardownRequestQueues;
 - (void)_transitionToBulletinViewControllerView:(BOOL)bulletinViewControllerView animated:(BOOL)animated;
 - (void)_transitionToBulletinViewControllerViewIfNecessary;
-- (void)_transitionToContentUnavailableViewIfNecessary;
 - (void)_updateMakeshiftSectionOrderIfNecessary:(id)necessary;
-- (void)_updateSection:(id)section forCategory:(int)category;
-- (id)_widgetForSection:(id)section inCategory:(int)category;
+- (void)_updateSection:(id)section forCategory:(int)category completion:(id)completion;
 - (void)addBulletin:(id)bulletin toSection:(id)section forFeed:(unsigned)feed;
 - (id)bulletinAtIndex:(unsigned)index inSection:(id)section;
+- (BOOL)bulletinViewController:(id)controller didSelectAction:(id)action forBulletin:(id)bulletin inSection:(id)section;
 - (BOOL)bulletinViewController:(id)controller didSelectBulletin:(id)bulletin inSection:(id)section;
 - (int)bulletinViewController:(id)controller insertionAnimationForBulletin:(id)bulletin inSection:(id)section;
 - (int)bulletinViewController:(id)controller removalAnimationForBulletin:(id)bulletin inSection:(id)section;
 - (int)bulletinViewController:(id)controller replacementAnimationForBulletin:(id)bulletin inSection:(id)section;
 - (BOOL)bulletinViewController:(id)controller shouldHighlightBulletin:(id)bulletin inSection:(id)section;
 - (UIEdgeInsets)bulletinViewControllerContentInsetsForMode:(int)mode;
+- (BOOL)canRemoveViewOnDismissal:(id)dismissal;
 - (void)clearSection:(id)section;
 - (void)commitInsertionOfBulletin:(id)bulletin beforeBulletin:(id)bulletin2 inSection:(id)section forFeed:(unsigned)feed;
 - (void)commitInsertionOfSection:(id)section beforeSection:(id)section2;
@@ -120,7 +128,7 @@ __attribute__((visibility("hidden")))
 - (void)hostWillPresent;
 - (unsigned)indexOfBulletin:(id)bulletin inSection:(id)section;
 - (unsigned)indexOfSectionWithIdentifier:(id)identifier;
-- (id)infoForBulletin:(id)bulletin inSection:(id)section;
+- (id)infoForBulletin:(id)bulletin inSection:(id)section forFeed:(unsigned)feed;
 - (id)infoForBulletinSection:(id)bulletinSection;
 - (id)infoForSection:(id)section;
 - (id)infoForWidget:(id)widget inSection:(id)section;
@@ -128,7 +136,10 @@ __attribute__((visibility("hidden")))
 - (void)insertAppropriateViewWithContent;
 - (void)insertBulletinViewControllerView;
 - (void)invalidateContentLayout;
+- (void)invokeBlockWithAllWidgets:(id)allWidgets;
+- (BOOL)isBulletinHandlingEnabled;
 - (BOOL)isRePushingUpdates;
+- (BOOL)isSectionHandlingEnabled;
 - (int)layoutMode;
 - (int)layoutModeForBulletinViewController:(id)bulletinViewController;
 - (void)loadView;
@@ -149,6 +160,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)observerShouldFetchAttachmentSizeBeforeBulletinDelivery:(id)observer;
 - (void)pushUpdatesAgainForFeeds:(unsigned)feeds;
 - (void)pushUpdatesAgainForSectionWithIdentifier:(id)identifier feeds:(unsigned)feeds;
+- (void)remoteViewControllerDidConnectForWidget:(id)remoteViewController;
 - (void)removeAndDisableSection:(id)section;
 - (void)removeBulletin:(id)bulletin fromSection:(id)section;
 - (void)removeSection:(id)section;
@@ -157,16 +169,19 @@ __attribute__((visibility("hidden")))
 - (id)sectionIdentifierAtIndex:(unsigned)index;
 - (int)sectionOrderRule;
 - (id)sectionWithIdentifier:(id)identifier;
+- (void)setBulletinHandlingEnabled:(BOOL)enabled;
+- (void)setSectionHandlingEnabled:(BOOL)enabled;
 - (void)sizeObservingView:(id)view didChangeSize:(CGSize)size;
 - (void)sortVisibleSectionsForCategory:(int)category;
+- (void)transitionToContentUnavailableViewIfNecessary;
 - (void)updateSection:(id)section withInfo:(id)info;
 - (void)updateSection:(id)section withParameters:(id)parameters;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
-- (void)widget:(id)widget didUpdatePreferredSize:(CGSize)size;
+- (id)widget:(id)widget didUpdatePreferredHeight:(float)height completion:(id)completion;
 - (void)widget:(id)widget requestsLaunchOfURL:(id)url;
 - (void)widget:(id)widget requestsPresentationOfViewController:(id)viewController presentationStyle:(int)style context:(id)context completion:(id)completion;
-- (int)widgetIdiomForCategory:(int)category;
+- (id)widgetForSection:(id)section;
 - (void)willAssociateBulletin:(id)bulletin withSection:(id)section forFeed:(unsigned)feed;
 - (void)willDisassociateBulletin:(id)bulletin fromSection:(id)section;
 @end

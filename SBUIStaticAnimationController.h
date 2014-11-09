@@ -7,20 +7,21 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class UIView, SBApplication;
+@class SBApplication, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SBUIStaticAnimationController : SBUIMainScreenAnimationController {
-	BOOL _relaunchExpected;
-	BOOL _awaitingKeybagRefetch;
-	BOOL _appWasActivating;
 	UIView *_staticAppView;
+	UIView *_hostView;
 }
-@property(readonly, assign, nonatomic) SBApplication *app;
+@property(readonly, retain, nonatomic) SBApplication *app;
 - (id)initWithApp:(id)app;
-- (BOOL)_animationShouldStart;
+- (id)_animationProgressDependency;
+- (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
+- (void)_hideAppHostView;
 - (void)_prepareAnimation;
+- (void)_setupStartDependencies;
 - (BOOL)_shouldDismissBanner;
 - (void)_startAnimation;
 - (BOOL)_willAnimate;

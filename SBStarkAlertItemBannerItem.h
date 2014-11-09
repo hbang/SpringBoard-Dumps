@@ -7,7 +7,7 @@
 
 #import "SBStarkBannerItem.h"
 
-@class NSString, SBAlertItem, NSDate, SBUISound;
+@class SBAlertItem, SBUISound, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkAlertItemBannerItem : SBStarkBannerItem {
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)sound;
 - (id)sourceDate;
 - (id)subActionLabels;
-- (id)subActionWithIndex:(unsigned)index;
+- (id)subActions;
 - (id)title;
 @end
 

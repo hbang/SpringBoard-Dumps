@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 	SBApplication *_app;
 	NSString *_remoteViewIdentifier;
 	BOOL _remoteViewOpaque;
+	NSString *_hostRequester;
 }
 @property(assign, nonatomic) id delegate;
 @property(retain, nonatomic) NSString *remoteViewIdentifier;

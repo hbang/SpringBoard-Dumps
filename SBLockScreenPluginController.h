@@ -9,7 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 
-@class SBLockScreenPlugin, SBLockScreenViewController, NSMutableDictionary, SBLockScreenPluginTransitionFactory, UIWindow, SBLockScreenTestPluginSettings, SBLockScreenPluginLoader;
+@class NSMutableDictionary, SBLockScreenViewController, NSString, SBLockScreenTestPluginSettings, SBLockScreenPlugin, SBLockScreenPluginTransitionFactory, UIWindow, SBLockScreenPluginLoader;
 @protocol SBLockScreenPluginControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,36 +24,43 @@ __attribute__((visibility("hidden")))
 	BOOL _pluginControllerReceivedViewWillDisappear;
 	BOOL _pluginControllerReceivedViewDidDisappear;
 	UIWindow *_previousWindow;
+	BOOL _removedDisplayedPluginTemporarily;
 	SBLockScreenTestPluginSettings *_testSettings;
 	BOOL _lockScreenHasNotifications;
 	BOOL _allowDisplayOfPlugins;
 	float _fadeDuration;
 }
 @property(assign, nonatomic) BOOL allowDisplayOfPlugins;
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBLockScreenPluginControllerDelegate> delegate;
+@property(readonly, copy) NSString *description;
 @property(assign) float fadeDuration;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) BOOL lockScreenHasNotifications;
 @property(assign, nonatomic) SBLockScreenViewController *lockScreenViewController;
 @property(retain, nonatomic) SBLockScreenPluginLoader *pluginLoader;
+@property(readonly, assign) Class superclass;
 - (id)initWithLockScreenViewController:(id)lockScreenViewController;
 - (void)_addObservers;
 - (void)_disablePluginsPassingTest:(id)test withReason:(id)reason;
 - (void)_handleApplicationExit:(id)exit;
 - (void)_handlePluginDisable:(id)disable;
 - (void)_handleUIRelock;
+- (void)_handleUpdatePluginLegibilitySettings:(id)settings;
 - (id)_highestPriorityPluginIgnoringViewDisplay:(BOOL)display;
-- (void)_loadLockScreenPluginWithName:(id)name activationContext:(id)context;
+- (BOOL)_loadLockScreenPluginWithName:(id)name activationContext:(id)context;
 - (void)_lockScreenDidMoveToWindow;
 - (id)_lockScreenView;
 - (void)_lockScreenWillMoveToWindow;
 - (void)_notifyDisplayedPluginAddedToWindow;
 - (void)_notifyDisplayedPluginRemovedFromWindow;
+- (void)_passcodeLockedStateChanged:(id)changed;
 - (id)_pluginForName:(id)name controller:(id)controller;
 - (BOOL)_pluginHidesNotificationList:(id)list;
 - (id)_pluginView;
 - (void)_refreshLockScreenPlugin;
 - (void)_removeActivePlugin;
-- (void)_removeDisplayedPlugin;
+- (void)_removeDisplayedPluginPermanently:(BOOL)permanently;
 - (void)_setActivePlugin:(id)plugin;
 - (void)_setDisplayedPlugin:(id)plugin;
 - (void)_setEffectivePresentationStyleForDisplayedPluginIfNecessary;
@@ -67,11 +74,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)activePluginHidesNotificationList;
 - (void)dealloc;
 - (CGRect)defaultContentRegionForPluginController:(id)pluginController withOrientation:(int)orientation;
-- (void)disableLockScreenBundleWithName:(id)name deactivationContext:(id)context;
+- (BOOL)disableLockScreenBundleWithName:(id)name deactivationContext:(id)context;
 - (id)displayedPlugin;
-- (void)enableLockScreenBundleWithName:(id)name activationContext:(id)context;
+- (BOOL)enableLockScreenBundleWithName:(id)name activationContext:(id)context;
 - (BOOL)handleHeadsetButtonPressed:(BOOL)pressed;
 - (BOOL)handleLockButtonPressed;
+- (void)handleLockScreenTemporarilyDismissed;
 - (BOOL)handleMenuButtonDoubleTap;
 - (BOOL)handleMenuButtonHeld;
 - (BOOL)handleMenuButtonTap;

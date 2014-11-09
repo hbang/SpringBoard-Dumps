@@ -10,7 +10,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWallpaperObserver.h"
 
-@class UIImage, UIImageView, UIView, UIColor;
+@class UIView, UIColor, NSString, UIImage, UIImageView;
 @protocol _SBFakeBlur;
 
 __attribute__((visibility("hidden")))
@@ -34,6 +34,10 @@ __attribute__((visibility("hidden")))
 	BOOL _shouldMaskTint;
 	BOOL _accessibilityIncreaseContrastEnabled;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)imageInRect:(CGRect)rect forVariant:(int)variant withStyle:(int)style zoomFactor:(float)factor mask:(id)mask masksBlur:(BOOL)blur masksTint:(BOOL)tint;
 - (id)initWithWallpaperVariant:(int)wallpaperVariant;
 - (void)_accessibilityEnhanceBackgroundContrastChanged:(id)changed;
@@ -42,18 +46,26 @@ __attribute__((visibility("hidden")))
 - (void)_configureFromScratch;
 - (void)_configureGrayscaleTintView:(id *)view colorTintView:(id *)view2 forStyle:(int)style;
 - (void)_configureViews;
+- (void)_setFrame:(CGRect)frame forceUpdateBackgroundImage:(BOOL)image;
+- (void)_setIsContainedInPopover:(BOOL)popover;
 - (void)_setTransitionFraction:(float)fraction;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_updateWallpaperAverageColor:(id)color;
+- (id)appearanceStorage;
 - (BOOL)currentTransitionStateIsOpaque;
 - (void)dealloc;
-- (id)description;
 - (void)fakeBlurView:(id)view didChangeStyle:(int)style;
 - (void)layoutSubviews;
 - (BOOL)prepareToAnimateToTransitionState:(inout XXStruct_S5WqmA *)transitionState;
+- (void)setAppearanceStorage:(id)storage;
+- (void)setBarStyle:(int)style;
+- (void)setBarTintColor:(id)color;
+- (void)setBarWantsAdaptiveBackdrop:(BOOL)backdrop;
 - (void)setMaskImage:(id)image masksBlur:(BOOL)blur masksTint:(BOOL)tint;
 - (void)setStyle:(int)style;
 - (void)setTransitionState:(XXStruct_S5WqmA)state;
+- (void)setTranslucent:(BOOL)translucent;
+- (void)updateBackgroundImage;
 - (void)wallpaperDidChangeForVariant:(int)wallpaper;
 - (void)wallpaperLegibilitySettingsDidChange:(id)wallpaperLegibilitySettings forVariant:(int)variant;
 @end

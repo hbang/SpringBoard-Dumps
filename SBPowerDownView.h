@@ -10,7 +10,7 @@
 #import "SBPowerDownViewInterface.h"
 #import "SBAlertView.h"
 
-@class _UIActionSlider, SBShapeView, UIButton, UIView, NSTimer, UILabel;
+@class SBShapeView, UIView, NSTimer, NSString, UIButton, _UIActionSlider, UILabel;
 @protocol SBPowerDownViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,7 +27,11 @@ __attribute__((visibility("hidden")))
 	BOOL _canAlterScreenBrightness;
 }
 @property(assign, nonatomic) BOOL canAlterScreenBrightness;
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBPowerDownViewDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_animatePowerDown;
 - (void)_cancelAutoDismissTimer;
@@ -46,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (void)animateOut;
 - (void)dealloc;
 - (void)dismiss;
-- (BOOL)isSupportedInterfaceOrientation:(int)orientation;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 @end
 

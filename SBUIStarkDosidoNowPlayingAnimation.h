@@ -19,9 +19,10 @@ __attribute__((visibility("hidden")))
 - (id)initFromNowPlayingToAlertImpersonator:(id)alertImpersonator starkScreenController:(id)controller;
 - (id)initFromNowPlayingToApp:(id)app starkScreenController:(id)controller;
 - (id)initFromNowPlayingToNowPlayingWithStarkScreenController:(id)starkScreenController;
-- (BOOL)_animationShouldStart;
 - (void)_cleanupAnimation;
 - (void)_commonInitWaitForNowPlaying:(BOOL)nowPlaying fromView:(id)view toView:(id)view3 alert:(id)alert toDisplay:(id)display;
+- (void)_setupStartDependencies;
 - (void)_startAnimation;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
 @end
 

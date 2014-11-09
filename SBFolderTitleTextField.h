@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class _UILegibilitySettings, _UILegibilityView;
+@class _UILegibilityView, _UILegibilitySettings;
 
 __attribute__((visibility("hidden")))
 @interface SBFolderTitleTextField : XXUnknownSuperclass {

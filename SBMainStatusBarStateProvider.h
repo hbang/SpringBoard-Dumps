@@ -6,9 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBStatusBarStateProvider.h"
 #import "UIStatusBarStateObserver.h"
+#import "SBStatusBarStateProvider.h"
 
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBMainStatusBarStateProvider : SBStatusBarStateProvider <UIStatusBarStateObserver> {
@@ -22,6 +23,10 @@ __attribute__((visibility("hidden")))
 	BOOL _allButBatteryCloaked;
 	BOOL _telephonyAndBluetoothCloaked;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
 - (void)_composePostDataFromAggregatorData:(XXStruct_8iXKhD *)aggregatorData;

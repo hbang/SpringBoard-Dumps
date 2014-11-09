@@ -6,14 +6,15 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBModalLayoutCaching.h"
 #import "SBDateLabelDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIButton, UIImage, UIImageView, UIView, NSString, UIColor, UILabel;
+@class UIView, UIColor, NSString, UIButton, UIViewController, UILabel, UIImage, UIImageView;
 @protocol SBBulletinDateLabel;
 
 __attribute__((visibility("hidden")))
-@interface SBNotificationCell : XXUnknownSuperclass <SBDateLabelDelegate> {
+@interface SBNotificationCell : XXUnknownSuperclass <SBDateLabelDelegate, SBModalLayoutCaching> {
 	UIView *_realContentView;
 	UIImageView *_iconImageView;
 	UILabel *_primaryLabel;
@@ -24,6 +25,8 @@ __attribute__((visibility("hidden")))
 	UIButton *_actionButton;
 	UIImageView *_attachmentView;
 	CGSize _attachmentSize;
+	int _layoutMode;
+	UIViewController *_secondaryContentViewController;
 	BOOL _secondaryTextNumberOfLinesIsUpperBound;
 	unsigned _secondaryTextNumberOfLines;
 	float _secondaryTextHeight;
@@ -33,12 +36,16 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) float attachmentAlpha;
 @property(readonly, assign, nonatomic) UIView *attachmentView;
 @property(readonly, assign, nonatomic) CGRect contentBounds;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(assign, nonatomic) float eventDateAlpha;
 @property(retain, nonatomic) UIColor *eventDateColor;
 @property(retain, nonatomic) UILabel<SBBulletinDateLabel> *eventDateLabel;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) UIImage *icon;
 @property(assign, nonatomic) float iconAlpha;
 @property(readonly, assign, nonatomic) UIView *iconView;
+@property(assign, nonatomic) int layoutMode;
 @property(readonly, assign, nonatomic) UILabel *primaryLabel;
 @property(copy, nonatomic) NSString *primaryText;
 @property(assign, nonatomic) float primaryTextAlpha;
@@ -47,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) float relevanceDateAlpha;
 @property(retain, nonatomic) UIColor *relevanceDateColor;
 @property(retain, nonatomic) UILabel<SBBulletinDateLabel> *relevanceDateLabel;
+@property(retain, nonatomic) UIViewController *secondaryContentViewController;
 @property(readonly, assign, nonatomic) UILabel *secondaryLabel;
 @property(copy, nonatomic) NSString *secondaryText;
 @property(assign, nonatomic) float secondaryTextAlpha;
@@ -54,12 +62,14 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) float secondaryTextHeight;
 @property(readonly, assign, nonatomic) unsigned secondaryTextNumberOfLines;
 @property(readonly, assign, nonatomic) BOOL secondaryTextNumberOfLinesIsUpperBound;
+@property(readonly, assign, nonatomic) BOOL shouldVerticallyCenterContent;
 @property(readonly, assign, nonatomic) UILabel *subtitleLabel;
 @property(copy, nonatomic) NSString *subtitleText;
 @property(assign, nonatomic) float subtitleTextAlpha;
 @property(retain, nonatomic) UIColor *subtitleTextColor;
+@property(readonly, assign) Class superclass;
 + (float)actionButtonPaddingLeft;
-+ (float)contentWidthWithRowWidth:(float)rowWidth andAttachmentSize:(CGSize)size;
++ (float)contentWidthWithRowWidth:(float)rowWidth andAttachmentSize:(CGSize)size forLayoutMode:(int)layoutMode;
 + (id)defaultColorForEventDate;
 + (id)defaultColorForPrimaryText;
 + (id)defaultColorForRelevanceDate;
@@ -70,14 +80,16 @@ __attribute__((visibility("hidden")))
 + (id)defaultFontForRelevanceDate;
 + (id)defaultFontForSecondaryText;
 + (id)defaultFontForSubtitleText;
-+ (float)iconPaddingLeft;
++ (float)firstLineBaselineOffsetFromTop;
++ (float)firstLineBaselineOffsetFromTopNoIcon;
 + (float)paddingBetweenTitleAndRelevanceDate;
-+ (float)primaryPaddingLeft;
-+ (float)primaryPaddingRight;
++ (id)preferredFontForTextStyle:(id)textStyle symbolicTraits:(unsigned)traits;
++ (float)secondLineBaselineOffsetFromFirstLine;
 + (void)setupEventDateLabel:(id)label;
 + (void)setupRelevanceDateLabel:(id)label;
-+ (float)xInsetForOrientation:(int)orientation;
 - (id)initWithStyle:(int)style reuseIdentifier:(id)identifier;
+- (void)_setShouldHaveFullLengthBottomSeparator:(BOOL)_set;
+- (void)_setShouldHaveFullLengthTopSeparator:(BOOL)_set;
 - (void)dateLabelDidChange:(id)dateLabel;
 - (void)dealloc;
 - (void)layoutSubviews;

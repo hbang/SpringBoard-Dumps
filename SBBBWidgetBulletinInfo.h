@@ -5,29 +5,29 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBBBBulletinInfo.h"
 
-@class SBWidgetViewControllerHost, NSString;
+@class SBWidgetViewController, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBBBWidgetBulletinInfo : SBBBBulletinInfo {
 	NSString *_identifier;
-	CGSize _preferredViewSize;
+	float _preferredViewHeight;
 	BOOL _visible;
 	struct {
-		unsigned _didFetchDisplayName : 1;
+		unsigned isPreferredViewHeightValid : 1;
 	} _widgetBulletinInfoFlags;
 }
-@property(assign, nonatomic) CGSize preferredViewSize;
-@property(readonly, assign, nonatomic) SBWidgetViewControllerHost *representedWidget;
+@property(assign, nonatomic) float preferredViewHeight;
+@property(readonly, assign, nonatomic) SBWidgetViewController *representedWidget;
 - (void)dealloc;
-- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode bulletinLocation:(int)location;
 - (id)identifier;
 - (id)originalSectionIdentifier;
 - (void)populateReusableView:(id)view;
 - (id)representedBulletin;
 - (Class)reusableViewClass;
+- (id)reusableViewIdentifier;
 - (id)widgetIdentifier;
 @end
 

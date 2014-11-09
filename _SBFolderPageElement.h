@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBFolderIcon, SBIconGridImage;
+@class SBIconGridImage, SBFolderIcon;
 
 __attribute__((visibility("hidden")))
 @interface _SBFolderPageElement : XXUnknownSuperclass {

@@ -6,11 +6,10 @@
  */
 
 #import "SBBulletinActionHandler.h"
-#import "SBWidgetViewControllerHostDelegate.h"
-#import "SpringBoard-Structs.h"
+#import "SBWidgetViewControllerDelegate.h"
 
 
-@protocol SBNotificationCenterViewControllerDelegate <SBWidgetViewControllerHostDelegate, SBBulletinActionHandler>
+@protocol SBNotificationCenterViewControllerDelegate <SBWidgetViewControllerDelegate, SBBulletinActionHandler>
 @optional
 - (id)widgetViewControllerHostDelegate:(id)delegate;
 @end

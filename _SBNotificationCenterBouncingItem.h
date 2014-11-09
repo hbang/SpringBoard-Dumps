@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
+#import "UIDynamicItem.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "UIDynamicItem.h"
 
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface _SBNotificationCenterBouncingItem : XXUnknownSuperclass <UIDynamicItem> {
@@ -18,7 +19,11 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) CGRect bounds;
 @property(assign, nonatomic) CGPoint center;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(assign, nonatomic) CGRect frame;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 @property(assign, nonatomic) CGAffineTransform transform;
 - (id)initWithFrame:(CGRect)frame stepper:(id)stepper;
 - (void)dealloc;

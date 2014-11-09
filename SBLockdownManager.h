@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString, SBDismissOnlyAlertItem;
+@class SBDismissOnlyAlertItem, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBLockdownManager : XXUnknownSuperclass {
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldShowTelephonyAlerts;
 - (BOOL)brickedDevice;
 - (void)dealloc;
+- (id)developerBuildExpirationDate;
 - (BOOL)isDeveloperDevice;
 - (int)lockdownState;
 @end

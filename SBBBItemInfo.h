@@ -20,10 +20,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (unsigned)hash;
-- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode bulletinLocation:(int)location;
 - (void)invalidateCachedLayoutData;
 - (BOOL)isEqual:(id)equal;
 - (void)populateReusableView:(id)view;
 - (Class)reusableViewClass;
+- (id)reusableViewIdentifier;
 @end
 

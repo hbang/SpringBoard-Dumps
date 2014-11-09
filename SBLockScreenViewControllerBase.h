@@ -8,45 +8,42 @@
 #import "SpringBoard-Structs.h"
 #import "SBAlert.h"
 
-@class SBUnlockActionContext;
+@class SBLockScreenActionContext;
 @protocol SBLockScreenViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenViewControllerBase : SBAlert {
 	id<SBLockScreenViewControllerDelegate> _delegate;
-	SBUnlockActionContext *_customUnlockActionContext;
+	SBLockScreenActionContext *_customLockScreenActionContext;
 }
 @property(assign, nonatomic) id<SBLockScreenViewControllerDelegate> delegate;
-- (id)_customUnlockActionContext;
+- (id)_customLockScreenActionContext;
 - (BOOL)_isLockAlert;
 - (void)_transitionWallpaperFromLock;
 - (void)_transitionWallpaperFromLockWithOptionalOutTimingFunction:(id)optionalOutTimingFunction adjustWindowLevel:(BOOL)level;
 - (BOOL)_wantsToAnimateFromPasscodeLockOnFailedPasscodeAttemptAndBlocked;
 - (void)activate;
-- (BOOL)activateAlertItem:(id)item;
+- (BOOL)activateAlertItem:(id)item animated:(BOOL)animated;
 - (void)activateCamera;
 - (void)activateCameraAnimated:(BOOL)animated;
 - (void)activateCardItem:(id)item animated:(BOOL)animated;
-- (id)activationBlockAnimated:(BOOL)animated;
 - (id)activeLockScreenPluginController;
+- (void)adjustLockScreenContentByOffset:(float)offset forPluginController:(id)pluginController withAnimationDuration:(double)animationDuration;
 - (id)allPendingAlertItems;
+- (BOOL)allowAnimatedDismissalForLockScreenPlugin;
 - (BOOL)allowSystemGestureAtLocation:(CGPoint)location;
 - (void)attemptToUnlockUIFromNotification;
 - (void)biometricEventMonitor:(id)monitor handleBiometricEvent:(unsigned)event;
-- (BOOL)cameraIsActive;
-- (BOOL)cameraIsVisible;
 - (BOOL)canBeDeactivatedForUIUnlockFromSource:(int)source;
 - (BOOL)canRelockForAutoDimTimer;
-- (void)cancelReturnToCameraAfterCall;
 - (id)currentAlertItem;
-- (id)currentUnlockActionContext;
+- (id)currentLockScreenActionContext;
 - (void)deactivate;
-- (void)deactivateAlertItem:(id)item;
+- (void)deactivateAlertItem:(id)item animated:(BOOL)animated;
 - (void)deactivateCardItem:(id)item;
 - (CGRect)defaultContentRegionForPluginController:(id)pluginController withOrientation:(int)orientation;
 - (id)dequeueAllPendingSuperModalAlertItems;
 - (void)disableLockScreenBundleWithName:(id)name deactivationContext:(id)context;
-- (void)dismissCameraImmediately;
 - (void)emergencyDialerExitedWithError:(id)error;
 - (void)enableLockScreenBundleWithName:(id)name activationContext:(id)context;
 - (void)exitEmergencyDialerAnimated:(BOOL)animated;
@@ -70,33 +67,35 @@ __attribute__((visibility("hidden")))
 - (BOOL)lockScreenIsShowingBulletins;
 - (void)noteDeviceBlockedStatusUpdated;
 - (void)noteExitingLostMode;
+- (void)noteNextUnlockShouldReturnToCallIfPossible:(BOOL)noteNextUnlock;
 - (void)noteResetRestoreStateUpdated;
 - (void)noteStartingPhoneCallWhileUILocked;
 - (void)prepareForExternalUIUnlock;
 - (void)prepareForMesaUnlockWithCompletion:(id)completion;
 - (void)prepareForUIUnlock;
 - (void)prepareToEnterLostMode;
-- (void)prepareToReturnToCameraFromCall;
-- (void)setCustomUnlockActionContext:(id)context;
+- (void)setCustomLockScreenActionContext:(id)context;
 - (void)setForcesPasscodeViewDuringCall:(BOOL)call;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
+- (void)setInScreenOffMode:(BOOL)screenOffMode forAutoUnlock:(BOOL)autoUnlock;
 - (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated;
 - (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated completion:(id)completion;
 - (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated withUnlockSource:(int)unlockSource andOptions:(id)options;
 - (void)setShowingMediaControls:(BOOL)controls;
 - (void)shakeSlideToUnlockTextWithCustomText:(id)customText;
-- (BOOL)shouldReturnToCameraAfterCall;
 - (BOOL)shouldShowLockStatusBarTime;
 - (BOOL)shouldShowSlideshowButton;
 - (void)startLockScreenFadeInAnimationForSource:(int)source;
 - (void)updateCardItem:(id)item;
+- (void)updateCustomSubtitleTextForAwayViewPlugin:(id)awayViewPlugin;
 - (void)updateInterfaceIfNecessary;
+- (void)updateLegibility;
 - (void)updateOrientationForUndim;
+- (void)viewDidDisappear:(BOOL)view;
 - (void)viewWillAppear:(BOOL)view;
-- (void)viewWillDisappear:(BOOL)view;
 - (BOOL)wantsPasscodeLockForUIUnlockFromSource:(int)source withOptions:(id)options;
 - (BOOL)wantsScreenToAutoDim;
 - (BOOL)wantsToHandleAlert:(id)handleAlert;
-- (void)willBeginDeactivationForTransitionToApp:(id)app animated:(BOOL)animated;
+- (void)willBeginDeactivationForTransitionToApps:(id)apps animated:(BOOL)animated;
 @end
 

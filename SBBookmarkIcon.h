@@ -8,18 +8,24 @@
 #import "SpringBoard-Structs.h"
 #import "SBLeafIcon.h"
 
-@class SBBookmark;
+@class SBBookmark, UIWebClip, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface SBBookmarkIcon : SBLeafIcon {
 	SBBookmark *_bookmark;
 }
-@property(retain, nonatomic) SBBookmark *bookmark;
+@property(readonly, retain, nonatomic) NSURL *launchURL;
+@property(readonly, retain, nonatomic) UIWebClip *webClip;
 - (id)initWithBookmark:(id)bookmark;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
-- (id)webClip;
+- (BOOL)isBookmarkIcon;
+- (id)matchedWebApplication;
+- (id)uninstallAlertBody;
+- (id)uninstallAlertCancelTitle;
+- (id)uninstallAlertConfirmTitle;
+- (id)uninstallAlertTitle;
 @end
 

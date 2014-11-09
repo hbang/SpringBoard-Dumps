@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSObject, NSArray, NSMutableArray, NSMutableDictionary;
+@class NSObject, NSMutableArray, NSArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))

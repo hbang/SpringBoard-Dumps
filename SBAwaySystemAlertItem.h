@@ -7,7 +7,7 @@
 
 #import "SBAwayListItem.h"
 
-@class NSString, SBAlertItem, UIImage;
+@class SBAlertItem, UIImage, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBAwaySystemAlertItem : SBAwayListItem {

@@ -5,19 +5,23 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class _UIBackdropView, SBWallpaperEffectView, UIView;
+@class UIView, _SBSearchBackdropView, SBWallpaperEffectView;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchResultsBackdropView : XXUnknownSuperclass {
-	_UIBackdropView *_backdropView;
+	_SBSearchBackdropView *_backdropView;
 	SBWallpaperEffectView *_effectView;
 	UIView *_tintView;
 }
 - (id)initWithFrame:(CGRect)frame;
 - (void)dealloc;
 - (void)layoutSubviews;
+- (void)prepareForTransition;
+- (void)setTransitionProgress:(float)progress;
+- (void)transitionCompleted;
+- (BOOL)useHighQualityGraphics;
 @end
 

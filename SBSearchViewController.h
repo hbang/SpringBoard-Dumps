@@ -5,79 +5,124 @@
  * Source: (null)
  */
 
+#import "SBSearchGestureObserver.h"
+#import "SBUIActiveOrientationObserver.h"
 #import "UITableViewDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "UITableViewDataSource.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SPSearchAgentDelegate.h"
 #import "UISearchBarDelegate.h"
-#import "SBSearchGestureObserver.h"
+#import "UIGestureRecognizerDelegate.h"
+#import "SBSearchResultsActionManagerDelegate.h"
+#import "UINavigationControllerDelegate.h"
 #import "SBSearchHeaderDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
+#import "SBReachabilityObserver.h"
 
-@class SBSearchResultsBackdropView, SBSearchHeader, UITableView, UITapGestureRecognizer, UIPanGestureRecognizer, UIImage, UIView, UILabel;
+@class NSString, UIWindow, SBSearchHeader, UIGestureRecognizer, UITapGestureRecognizer, UILabel, SBSearchResultsActionManager, UIPanGestureRecognizer, UINavigationController, UITableView, UIViewController, SBSearchFirstTimeViewController, SBSearchResultsBackdropView;
 
 __attribute__((visibility("hidden")))
-@interface SBSearchViewController : XXUnknownSuperclass <UITableViewDelegate, UITableViewDataSource, SPSearchAgentDelegate, SBSearchGestureObserver, UISearchBarDelegate, SBSearchHeaderDelegate> {
+@interface SBSearchViewController : XXUnknownSuperclass <UITableViewDelegate, UITableViewDataSource, SPSearchAgentDelegate, SBSearchGestureObserver, UISearchBarDelegate, SBSearchResultsActionManagerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, SBUIActiveOrientationObserver, SBReachabilityObserver, SBSearchHeaderDelegate> {
+	UINavigationController *_navigationController;
+	UIViewController *_mainViewController;
+	SBSearchFirstTimeViewController *_firstTimeViewController;
+	UITableView *_tableView;
 	SBSearchHeader *_searchHeader;
 	SBSearchResultsBackdropView *_tableBackdrop;
-	UITableView *_tableView;
+	SBSearchResultsActionManager *_actionManager;
+	UIWindow *_presentingWindow;
+	int _presentingWindowOrientation;
 	UILabel *_noResultsLabel;
-	UIView *_touchStealingView;
 	UITapGestureRecognizer *_tapRecognizer;
 	UIPanGestureRecognizer *_panRecognizer;
 	void *_addressBook;
-	UIImage *_placeHolderImages[15];
 	float _lastContentOffsetY;
 	BOOL _scrollDown;
+	int _visibility;
+	float _headerHeight;
 	BOOL _hasShownBackgroundSinceLastClear;
+	int _firstTimeViewShowCount;
+	BOOL _canShowFirstTimeView;
+	double _triggerTimestamp;
+	CGPoint _preReachabilityTableViewOrigin;
+	CGPoint _reachabilityTableViewOrigin;
+	BOOL _showingForReachability;
+	UIGestureRecognizer *_cancelRecognizer;
 	id _fadeOutCompletionBlock;
-	BOOL _fadingOut;
-	BOOL _visible;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, assign, nonatomic, getter=isFadingOut) BOOL fadingOut;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic, getter=isVisible) BOOL visible;
 + (id)sharedInstance;
 - (id)init;
-- (id)_auxiliaryTitleForABRecordID:(int)abrecordID;
+- (id)_actionManager;
+- (void)_animateForReachabilityActivatedWithHandler:(id)handler;
+- (void)_animateForReachabilityDeactivatedWithHandler:(id)handler;
+- (void)_contentSizeCategoryDidChange:(id)_contentSizeCategory;
 - (void)_deselectTableViewCell;
 - (void)_fadeForLaunchWithDuration:(double)duration completion:(id)completion;
-- (void)_fadeOutAndHideKeyboardIfNecessary:(id)necessary;
+- (void)_fadeOutAndHideKeyboardAnimated:(BOOL)animated completionBlock:(id)block;
 - (void)_handleDismissGesture;
 - (void)_handlePanRecognizer:(id)recognizer;
 - (void)_handleTapRecognizer:(id)recognizer;
+- (BOOL)_hasNoQuery;
 - (BOOL)_hasNoResultsForQuery;
 - (BOOL)_hasResults;
 - (void)_keyboardWillChangeFrame:(id)_keyboard;
-- (id)_placeHolderImageForDomain:(unsigned)domain;
-- (void)_populateCell:(id)cell atIndexPath:(id)indexPath inTableView:(id)tableView;
-- (void)_resizeTableViewForPreferredContentSizeChange:(id)preferredContentSizeChange;
+- (void)_lockScreenUIWillLock:(id)_lockScreenUI;
+- (void)_performReachabilityTransactionForActivate:(BOOL)activate immediately:(BOOL)immediately;
+- (void)_rotatePresentingWindowIfNecessaryTo:(int)to withDuration:(double)duration;
 - (void)_searchFieldEditingChanged;
 - (void)_searchFieldReturnPressed;
+- (void)_sendAbandonmentFeedback;
+- (void)_sendFeedback:(id)feedback;
+- (void)_setFirstTimeViewVisible:(BOOL)visible;
 - (void)_setShowingKeyboard:(BOOL)keyboard;
-- (BOOL)_shouldDisplayImagesForDomain:(unsigned)domain;
+- (BOOL)_showFirstTimeView;
 - (BOOL)_showingKeyboard;
-- (void)_startDownloadingAppForStoreIdentifier:(unsigned long long)storeIdentifier bundleIdentifier:(id)identifier;
+- (void)_updateCellClipping:(id)clipping;
+- (void)_updateClipping;
+- (void)_updateHeaderHeightIfNeeded;
 - (void)_updateTableContents;
+- (void)actionManager:(id)manager dismissAnimated:(BOOL)animated completionBlock:(id)block;
+- (void)actionManager:(id)manager dismissViewController:(id)controller completion:(id)completion animated:(BOOL)animated;
+- (void)actionManager:(id)manager presentViewController:(id)controller completion:(id)completion modally:(BOOL)modally;
+- (UIEdgeInsets)actionManagerDetailsViewEdgeInsets:(id)insets;
+- (void)activeInterfaceOrientationDidChangeToOrientation:(int)activeInterfaceOrientation willAnimateWithDuration:(double)duration fromOrientation:(int)orientation;
+- (void)activeInterfaceOrientationWillChangeToOrientation:(int)activeInterfaceOrientation;
 - (void)cancelButtonPressed;
 - (void)dealloc;
 - (void)dismiss;
+- (void)dismissAnimated:(BOOL)animated completionBlock:(id)block;
+- (BOOL)gestureRecognizerShouldBegin:(id)gestureRecognizer;
+- (void)handleCancelReachabilityGesture:(id)gesture;
+- (void)handleReachabilityModeActivated;
+- (void)handleReachabilityModeDeactivated;
 - (void)loadView;
+- (void)navigationController:(id)controller didShowViewController:(id)controller2 animated:(BOOL)animated;
 - (int)numberOfSectionsInTableView:(id)tableView;
 - (void)scrollViewDidScroll:(id)scrollView;
 - (void)scrollViewWillBeginDragging:(id)scrollView;
 - (void)searchAgentClearedResults:(id)results;
 - (void)searchAgentUpdatedResults:(id)results;
+- (UIEdgeInsets)searchBorderMarginsForSearchField:(BOOL)searchField cancelMargins:(UIEdgeInsets *)margins;
 - (void)searchGesture:(id)gesture changedPercentComplete:(float)complete;
 - (void)searchGesture:(id)gesture completedShowing:(BOOL)showing;
 - (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didHighlightRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didSelectRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didUnhighlightRowAtIndexPath:(id)indexPath;
-- (float)tableView:(id)view heightForRowAtIndexPath:(id)indexPath;
+- (float)tableView:(id)view estimatedHeightForHeaderInSection:(int)section;
+- (float)tableView:(id)view heightForFooterInSection:(int)section;
 - (int)tableView:(id)view numberOfRowsInSection:(int)section;
+- (id)tableView:(id)view viewForFooterInSection:(int)section;
 - (id)tableView:(id)view viewForHeaderInSection:(int)section;
-- (BOOL)tableView:(id)view wantsHeaderForSection:(int)section;
 - (void)tableView:(id)view willDisplayCell:(id)cell forRowAtIndexPath:(id)indexPath;
+- (void)traitCollectionDidChange:(id)traitCollection;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillAppear:(BOOL)view;
 @end
 

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBLockOverlayContext, NSString, SBAwayViewPluginController;
+@class SBAwayViewPluginController, NSString, SBLockOverlayContext;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenPlugin : XXUnknownSuperclass {

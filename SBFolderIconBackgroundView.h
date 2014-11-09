@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconBlurryBackgroundView.h"
 #import "SpringBoard-Structs.h"
+#import "SBIconBlurryBackgroundView.h"
 
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,5 @@ __attribute__((visibility("hidden")))
 }
 - (id)initWithDefaultSize;
 - (id)_contentsImageForColor:(CGColorRef)color;
-- (void)setWallpaperColor:(CGColorRef)color phase:(CGSize)phase;
 @end
 

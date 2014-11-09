@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 @class SBIconPageIndicatorImageSetResult, SBIconPageIndicatorImageSetCache;
 @protocol SBIconListPageControlDelegate;
@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
 	id<SBIconListPageControlDelegate> _delegate;
 	BOOL _hasSetLegibility;
 	SBIconPageIndicatorImageSetResult *_pageIndicatorImageSets;
+	BOOL _legibilityEnabled;
 	SBIconPageIndicatorImageSetCache *_imageSetCache;
 }
 @property(assign, nonatomic) id<SBIconListPageControlDelegate> delegate;
 @property(retain, nonatomic) SBIconPageIndicatorImageSetCache *imageSetCache;
+@property(assign, nonatomic) BOOL legibilityEnabled;
 - (id)initWithFrame:(CGRect)frame;
 - (id)_iconListIndicatorImage:(BOOL)image;
 - (id)_indicatorViewEnabled:(BOOL)enabled index:(int)index;

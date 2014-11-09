@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface SBLockScreenSettings : XXUnknownSuperclass {
 	BOOL _alwaysPutPluginsBelowScrollView;
+	BOOL _killsInsecureDrawingApps;
 	SBBounceSettings *_verticalBounceSettings;
 	SBBounceSettings *_horizontalBounceSettings;
 	SBLockScreenPasscodeSettings *_passcodeSettings;
@@ -26,10 +27,13 @@ __attribute__((visibility("hidden")))
 	float _unlockSlideForIdleTimerDisabledPercentageIPad;
 	float _notificationScrollForIdleTimerDisabledOffset;
 	float _notificationScrollForIdleTimerDisabledOffsetIPad;
+	float _appGrabberSlideUpVelocityThreshold;
 	float _unlockSwipeWallpaperAlpha;
 }
 @property(assign) BOOL alwaysPutPluginsBelowScrollView;
+@property(assign) float appGrabberSlideUpVelocityThreshold;
 @property(retain) SBBounceSettings *horizontalBounceSettings;
+@property(assign) BOOL killsInsecureDrawingApps;
 @property(assign) float lockToUnlockSlideCompletionPercentage;
 @property(assign) float lockToUnlockSlideCompletionPercentageIPad;
 @property(assign) float notificationScrollForIdleTimerDisabledOffset;

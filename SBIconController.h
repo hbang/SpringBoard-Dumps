@@ -5,22 +5,23 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "MCProfileConnectionObserver.h"
-#import "BBObserverDelegate.h"
-#import "SBApplicationRestrictionObserver.h"
-#import "SBFolderControllerDelegate.h"
 #import "SBSearchGestureObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconViewDelegate.h"
 #import "SBIconModelDelegate.h"
 #import "SBIconViewMapDelegate.h"
 #import "SBIconModelApplicationDataSource.h"
+#import "MCProfileConnectionObserver.h"
+#import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBReachabilityObserver.h"
+#import "BBObserverDelegate.h"
+#import "SBApplicationRestrictionObserver.h"
+#import "SBFolderControllerDelegate.h"
 
-@class SBIconModel, NSSet, BBObserver, SBIconContentView, SBIcon, SBIconColorSettings, SBFolder, _UILegibilitySettings, NSMutableSet, SBLeafIcon, NSTimer, SBRootFolderController, UITouch, NSIndexPath, NSMutableArray;
+@class UITouch, NSIndexPath, SBRootFolderController, NSString, SBIconContentView, SBIconColorSettings, NSMutableSet, NSTimer, NSMutableArray, BBObserver, SBFolder, SBIcon, NSSet, SBIconModel, SBLeafIcon, _UILegibilitySettings;
 
 __attribute__((visibility("hidden")))
-@interface SBIconController : XXUnknownSuperclass <BBObserverDelegate, MCProfileConnectionObserver, SBApplicationRestrictionObserver, SBFolderControllerDelegate, SBSearchGestureObserver, SBIconViewDelegate, SBIconModelDelegate, SBIconViewMapDelegate, SBIconModelApplicationDataSource> {
+@interface SBIconController : XXUnknownSuperclass <BBObserverDelegate, MCProfileConnectionObserver, SBApplicationRestrictionObserver, SBFolderControllerDelegate, SBSearchGestureObserver, SBIconViewDelegate, SBIconModelDelegate, SBIconViewMapDelegate, SBIconModelApplicationDataSource, SBReachabilityObserver> {
 	NSSet *_visibleTags;
 	NSSet *_hiddenTags;
 	SBIconModel *_iconModel;
@@ -59,11 +60,16 @@ __attribute__((visibility("hidden")))
 	unsigned _maxIconViewsInHierarchy;
 	unsigned _maxNewsstandItemViewsInHierarchy;
 	SBIconColorSettings *_iconColorSettings;
+	BOOL _reachabilityModeActive;
 	BOOL _showingSearch;
 	_UILegibilitySettings *_legibilitySettings;
 	NSIndexPath *_indexPathToResetTo;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
 - (void)_addToFolderAnimation:(id)folderAnimation didFinish:(id)finish context:(id)context;
@@ -77,9 +83,11 @@ __attribute__((visibility("hidden")))
 - (Class)_controllerClassForFolderClass:(Class)folderClass;
 - (id)_currentFolderController;
 - (id)_debugStringForIconOrder:(int)iconOrder;
+- (void)_disableReachabilityImmediately:(BOOL)immediately;
 - (void)_dropIcon:(id)icon withInsertionPath:(id)insertionPath;
 - (void)_dropIconIntoOpenFolder:(id)folder withInsertionPath:(id)insertionPath;
 - (void)_dropIconOutOfClosingFolder:(id)closingFolder withInsertionPath:(id)insertionPath;
+- (void)_folderControllerDidReceiveCancelReachabilityAction:(id)_folderController;
 - (void)_folderDidFinishOpenClose:(BOOL)_folder animated:(BOOL)animated;
 - (unsigned)_folderRowsForFolder:(id)folder;
 - (unsigned)_folderRowsForFolder:(id)folder inOrientation:(int)orientation;
@@ -101,7 +109,9 @@ __attribute__((visibility("hidden")))
 - (void)_noteFolderAnimationStateDidChange;
 - (void)_noteUserIsInteractingWithIcons;
 - (id)_openFolderController;
+- (void)_performReachabilityTransactionForActivate:(BOOL)activate immediately:(BOOL)immediately;
 - (void)_prepareToResetRootIconLists;
+- (void)_presentNotificationCenterForReachability;
 - (id)_proposedFolderNameForGrabbedIcon:(id)grabbedIcon recipientIcon:(id)icon;
 - (void)_resetFolderSpringloadTimer;
 - (void)_resetRootIconLists;
@@ -114,6 +124,7 @@ __attribute__((visibility("hidden")))
 - (void)_setFolderToOpenAfterScrolling:(id)openAfterScrolling;
 - (void)_setHasAnimatingFolder:(BOOL)folder;
 - (BOOL)_shouldLockItemsInStoreDemoMode;
+- (BOOL)_shouldRespondToReachability;
 - (void)_snapshotFadeDidStop:(id)_snapshotFade finished:(id)finished snapshot:(id)snapshot;
 - (void)_updateDisabledBadgesSetWithSections:(id)sections;
 - (void)addIcons:(id)icons intoFolderIcon:(id)icon animated:(BOOL)animated openFolderOnFinish:(BOOL)finish complete:(id)complete;
@@ -148,6 +159,8 @@ __attribute__((visibility("hidden")))
 - (void)didSaveIconState:(id)state;
 - (BOOL)dismissSpotlightIfNecessary;
 - (id)dockListView;
+- (id)dropDestinationIconList;
+- (int)dropDestinationIconListIndex;
 - (void)finishInstallingIconAnimated:(BOOL)animated;
 - (id)firstPageLeafIdentifiers;
 - (void)fixupBouncedIconsInFolder:(id)folder startingWithIndex:(int)index;
@@ -156,6 +169,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)folderController:(id)controller draggedIconMightDropFromListView:(id)listView;
 - (void)folderController:(id)controller draggedIconShouldDropFromListView:(id)draggedIcon;
 - (void)folderControllerDidEndScrolling:(id)folderController;
+- (void)folderControllerDidReceiveCancelReachabilityAction:(id)folderController;
 - (void)folderControllerShouldBeginEditing:(id)folderController;
 - (void)folderControllerShouldClose:(id)folderController;
 - (id)folderIconListAtIndex:(unsigned)index;
@@ -163,6 +177,8 @@ __attribute__((visibility("hidden")))
 - (void)getListView:(id *)view folder:(id *)folder relativePath:(id *)path forIndexPath:(id)indexPath createIfNecessary:(BOOL)necessary;
 - (id)grabbedIcon;
 - (void)handleHomeButtonTap;
+- (void)handleReachabilityModeActivated;
+- (void)handleReachabilityModeDeactivated;
 - (BOOL)hasAnimatingFolder;
 - (BOOL)hasOpenFolder;
 - (BOOL)icon:(id)icon canReceiveGrabbedIcon:(id)icon2;
@@ -239,6 +255,7 @@ __attribute__((visibility("hidden")))
 - (void)setRecipientIcon:(id)icon duration:(double)duration;
 - (void)shiftFolderViewsForKeyboardAppearing:(BOOL)keyboardAppearing keyboardHeight:(float)height;
 - (void)showCarrierDebuggingAlertIfNeeded;
+- (void)showDeveloperBuildExpirationAlertIfNecessary;
 - (void)showInfoAlertIfNeeded:(BOOL)needed;
 - (void)showSpotlightAlertIfNecessary;
 - (BOOL)supportsDock;

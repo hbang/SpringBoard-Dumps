@@ -8,7 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerTargetImplementation.h"
 
-@class SBUIBannerContext, NSMutableArray, SBUISound, NSMutableSet, NSHashTable;
+@class NSMutableSet, SBUIBannerContext, NSString, NSMutableArray, NSHashTable, SBUISound;
 @protocol SBStarkBannerTargetObserver;
 
 __attribute__((visibility("hidden")))
@@ -24,9 +24,13 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) void *bannerTargetIdentifier;
 @property(readonly, assign, nonatomic) int bannerTargetIdiom;
-@property(readonly, assign, nonatomic) SBUIBannerContext *currentContext;
+@property(readonly, retain, nonatomic) SBUIBannerContext *currentContext;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) id<SBStarkBannerTargetObserver> observer;
 @property(assign, nonatomic, getter=isPausedForUserInteraction) BOOL pausedForUserInteraction;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (BOOL)_canDequeueWithOptions:(int)options;
 - (BOOL)_canDismissWithOptions:(int)options;
@@ -36,16 +40,20 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isSuspendedForAssistant;
 - (void)_killIntervalElapsed:(id)elapsed;
 - (void)_replaceIntervalElapsed:(id)elapsed;
+- (void)cacheBannerForContext:(id)context withCompletion:(id)completion;
 - (id)currentBannerContextForSource:(id)source;
 - (void)dealloc;
 - (void)dismissCurrentBannerContextForSource:(id)source;
 - (void)invalidate;
+- (BOOL)isShowingModalBanner;
 - (BOOL)isSuspended;
 - (BOOL)isSuspendedForReason:(id)reason;
+- (void)modallyPresentBannerWithContext:(id)context;
 - (void)noteContext:(id)context subActionSelected:(unsigned)selected;
 - (void)noteContextCanceled:(id)canceled;
 - (void)noteContextSelected:(id)selected;
 - (void)registerSource:(id)source;
+- (void)removeCachedBannerForContext:(id)context;
 - (void)setSuspended:(BOOL)suspended cancellingCurrent:(BOOL)current forReason:(id)reason;
 - (void)signalSource:(id)source;
 - (void)unregisterSource:(id)source;

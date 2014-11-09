@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class UIView, SBAlert, SBAlertManager;
+@class SBAlert, UIView, SBAlertManager;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadePluginAlertToHome : SBUIMainScreenAnimationController {

@@ -5,28 +5,29 @@
  * Source: (null)
  */
 
-#import "SBUIAnimationControllerDelegate.h"
+#import "SBUIAnimationControllerObserver.h"
 #import "SBActivateAppUnderLockScreenWorkspaceTransaction.h"
 
-@class SBApplication, SBUIAnimationController;
+@class SBApplication, NSString, SBUIAnimationController;
 
 __attribute__((visibility("hidden")))
-@interface SBReturnToLockscreenWorkspaceTransaction : SBActivateAppUnderLockScreenWorkspaceTransaction <SBUIAnimationControllerDelegate> {
+@interface SBReturnToLockscreenWorkspaceTransaction : SBActivateAppUnderLockScreenWorkspaceTransaction <SBUIAnimationControllerObserver> {
 	SBApplication *_fromApp;
 	BOOL _workspaceAlreadyResumed;
 	BOOL _animatedAppDeactivation;
 	SBUIAnimationController *_animation;
 	BOOL _suspendWorkspace;
 }
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager fromApplication:(id)application toLockScreenController:(id)lockScreenController andApp:(id)app;
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager fromApplication:(id)application toLockScreenController:(id)lockScreenController andApp:(id)app activationHandler:(id)handler;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
+- (id)initWithAlertManager:(id)alertManager fromApplication:(id)application toLockScreenController:(id)lockScreenController andApp:(id)app withResult:(id)result;
 - (void)_alertDidActivate;
-- (void)_commit;
-- (void)_transactionComplete;
+- (void)_begin;
+- (void)_didComplete;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
-- (id)debugDescription;
-- (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
 @end
 

@@ -7,12 +7,12 @@
 
 #import "SBUIPluginHost.h"
 
-@class NSString, SBPasscodeLockDisableAssertion, UIViewController, SBOperationQueue, NSMutableSet, SBAssistantWindow, NSHashTable;
+@class NSMutableSet, BSEventQueue, NSHashTable, SBPasscodeLockDisableAssertion, UIViewController, FBUIApplicationResignActiveAssertion, NSString, SBAssistantWindow;
 @protocol SBUIPluginViewControllerInterface;
 
 __attribute__((visibility("hidden")))
 @interface SBAssistantController : SBUIPluginHost {
-	SBOperationQueue *_operationQueue;
+	BSEventQueue *_operationQueue;
 	NSString *_appDisplayIDBeingHosted;
 	SBAssistantWindow *_assistantWindow;
 	BOOL _unlockedDevice;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_dismissingReasons;
 	int _pendingDismissViewType;
 	NSHashTable *_observers;
+	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
 	UIViewController<SBUIPluginViewControllerInterface> *_mainScreenViewController;
 }
 @property(assign, nonatomic) BOOL unlockedDevice;
@@ -35,9 +36,8 @@ __attribute__((visibility("hidden")))
 + (BOOL)supportedAndEnabled;
 - (id)init;
 - (void)_activateSiriForPPT;
-- (id)_activationContextWithDismissalDisallowed:(BOOL)dismissalDisallowed;
+- (id)_activationSettingsWithDismissalDisallowed:(BOOL)dismissalDisallowed;
 - (void)_bioAuthenticated:(id)authenticated;
-- (void)_cleanupContextHosting;
 - (double)_defaultAnimatedDismissDurationForMainScreen;
 - (void)_dismissForMainScreenWithFactory:(id)factory completion:(id)completion;
 - (void)_dismissUIPlugin:(id)plugin animated:(BOOL)animated;
@@ -62,11 +62,13 @@ __attribute__((visibility("hidden")))
 - (void)_viewController:(id)controller willAnimateAppearanceWithContext:(id)context;
 - (void)_viewController:(id)controller willAnimateDisappearanceWithContext:(id)context;
 - (void)_viewDidAppearOnMainScreen:(BOOL)_view;
+- (void)_viewDidAppearWithType:(int)_view;
 - (void)_viewDidDisappearOnMainScreen:(BOOL)_view;
+- (void)_viewDidDisappearWithType:(int)_view;
 - (void)_viewWillAppearOnMainScreen:(BOOL)_view;
 - (void)_viewWillDisappearOnMainScreen:(BOOL)_view;
 - (BOOL)activateIgnoringTouches;
-- (id)activationContext;
+- (id)activationSettings;
 - (void)addObserver:(id)observer;
 - (void)dealloc;
 - (void)dismissAssistantView:(int)view forAlertActivation:(id)alertActivation;
@@ -95,5 +97,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)uiPluginAttemptDeviceUnlock:(id)unlock withPassword:(id)password lockViewOwner:(id)owner;
 - (void)uiPluginUserEventOccurred:(id)occurred;
 - (BOOL)uiPluginWantsActivation:(id)activation forEvent:(int)event completion:(id)completion;
+- (id)window;
 @end
 

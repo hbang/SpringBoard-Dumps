@@ -7,20 +7,21 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSArray, NSString, NSDate, UIImage, NSMutableSet, NSHashTable;
+@class NSMutableSet, NSHashTable, NSArray, NSDate, UIImage, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBannerItem : XXUnknownSuperclass {
 	NSHashTable *_observers;
 	NSMutableSet *_displayReasons;
 }
-@property(readonly, assign, nonatomic) UIImage *categoryImage;
+@property(readonly, retain, nonatomic) UIImage *categoryImage;
 @property(readonly, assign, nonatomic) int defaultActionType;
 @property(readonly, assign, nonatomic) int effectiveDefaultActionType;
-@property(readonly, assign, nonatomic) NSDate *sourceDate;
-@property(readonly, assign, nonatomic) NSArray *subActionLabels;
-@property(readonly, assign, nonatomic) NSString *subTitle;
-@property(readonly, assign, nonatomic) NSString *title;
+@property(readonly, copy, nonatomic) NSString *message;
+@property(readonly, retain, nonatomic) NSDate *sourceDate;
+@property(readonly, copy, nonatomic) NSArray *subActionLabels;
+@property(readonly, copy, nonatomic) NSString *subTitle;
+@property(readonly, copy, nonatomic) NSString *title;
 - (id)init;
 - (void)_callOrFaceTimeStateChanged;
 - (BOOL)_inCallOrFaceTime;

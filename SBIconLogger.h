@@ -5,17 +5,17 @@
  * Source: (null)
  */
 
-#import "SBSimplePreferenceFileLogger.h"
+#import "SBFileLogger.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconLogger : SBSimplePreferenceFileLogger {
+@interface SBIconLogger : SBFileLogger {
 }
-+ (BOOL)isIconLoggingEnabled;
-- (id)consoleFormat:(id)format withArguments:(char *)arguments;
+- (void)_setEnabled:(BOOL)enabled;
+- (BOOL)isEnabled;
 - (id)logPreferenceName;
+- (id)logPrefixForCategory:(id)category destination:(unsigned)destination;
 - (int)maxLogCount;
 - (id)name;
-- (void)reloadFromDefaults;
 @end
 

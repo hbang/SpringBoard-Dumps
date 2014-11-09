@@ -8,13 +8,17 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "UIAlertViewDelegate.h"
 
-@class SBApplicationIcon;
+@class SBApplicationIcon, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBAppProfileNotTrustedAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBApplicationIcon *_icon;
 	BOOL _launchApp;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithIcon:(id)icon;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

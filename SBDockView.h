@@ -8,7 +8,7 @@
 #import "SBWallpaperObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIImageView, SBDockIconListView, _UILegibilitySettings, SBWallpaperEffectView, UIView, SBHighlightView;
+@class UIView, SBDockIconListView, _UILegibilitySettings, UIImageView, SBHighlightView, NSString, SBWallpaperEffectView;
 
 __attribute__((visibility("hidden")))
 @interface SBDockView : XXUnknownSuperclass <SBWallpaperObserver> {
@@ -18,15 +18,20 @@ __attribute__((visibility("hidden")))
 	UIImageView *_backgroundImageView;
 	UIView *_accessibilityBackgroundView;
 	_UILegibilitySettings *_legibilitySettings;
+	unsigned _dockEdge;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(assign, nonatomic) unsigned dockEdge;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, assign) Class superclass;
 + (float)defaultHeight;
 - (id)initWithDockListView:(id)dockListView forSnapshot:(BOOL)snapshot;
 - (void)_backgroundContrastDidChange:(id)_backgroundContrast;
 - (id)_newBackgroundImage;
 - (void)dealloc;
 - (id)dockListView;
-- (float)heightForOrientation:(int)orientation;
 - (void)layoutSubviews;
 - (void)setBackgroundAlpha:(float)alpha;
 - (void)setVerticalBackgroundStretch:(float)stretch;

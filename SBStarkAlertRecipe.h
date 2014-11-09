@@ -8,12 +8,16 @@
 #import "SBTestRecipe.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBTestStarkAlert;
+@class SBTestStarkAlert, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkAlertRecipe : XXUnknownSuperclass <SBTestRecipe> {
 	SBTestStarkAlert *_alert;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)title;
 - (void)handleVolumeDecrease;
 - (void)handleVolumeIncrease;

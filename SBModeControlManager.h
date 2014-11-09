@@ -5,22 +5,20 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class NSArray;
+@class NSMutableArray, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface SBModeControlManager : XXUnknownSuperclass {
-	NSArray *_views;
+	NSMutableArray *_views;
 }
 @property(readonly, assign, nonatomic) unsigned numberOfSegments;
 @property(assign, nonatomic) int selectedSegmentIndex;
 @property(readonly, assign, nonatomic) NSArray *views;
-+ (void)_configureSegmentedControl:(id)control forGraphicsQuaility:(int)graphicsQuaility;
-+ (void)_configureSegmentedControlForButtonUse:(id)buttonUse;
-+ (void)_configureSegmentedControlForLabelUse:(id)labelUse;
-+ (id)_segmentedControlForUse:(int)use graphicsQuaility:(int)quaility;
++ (void)_configureSegmentedControl:(id)control withColorSettings:(id)colorSettings;
++ (id)_segmentedControlForUse:(int)use colorSettings:(id)settings;
 - (id)initWithGraphicsQuality:(int)graphicsQuality;
 - (id)_segmentedControlForUse:(int)use;
 - (void)addTarget:(id)target action:(SEL)action;

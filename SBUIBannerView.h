@@ -10,5 +10,9 @@
 
 @protocol SBUIBannerView <NSObject>
 - (id)bannerContext;
+@optional
+- (void)setPercentPulledDown:(float)down;
+- (void)setSecondaryContentView:(id)view;
+- (BOOL)shouldBorrowScreen;
 @end
 

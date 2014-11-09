@@ -9,7 +9,7 @@
 #import "UIDynamicAnimatorDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class _SBNotificationCenterBouncingItem, SBBounceBehavior, SBBounceSettings, SBBouncingSystem, UIDynamicAnimator;
+@class UIDynamicAnimator, SBBounceBehavior, _SBNotificationCenterBouncingItem, NSString, SBBouncingSystem, SBBounceSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationCenterBounceAnimator : XXUnknownSuperclass <UIDynamicAnimatorDelegate> {
@@ -24,6 +24,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic, getter=_animator) UIDynamicAnimator *animator;
 @property(retain, nonatomic, getter=_behavior, setter=_setBehavior:) SBBounceBehavior *behavior;
 @property(copy, nonatomic, getter=_completion, setter=_setCompletion:) id completion;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithReferenceBounds:(CGRect)referenceBounds settings:(id)settings;
 - (void)_updateSettings;
 - (void)beginBounceWithInitialFrame:(CGRect)initialFrame targetFrame:(CGRect)frame velocity:(CGPoint)velocity removingGravityAtMidway:(BOOL)midway stepper:(id)stepper completion:(id)completion;

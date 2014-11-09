@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "NSCopying.h"
-#import "NSMutableCopying.h"
 #import "SpringBoard-Structs.h"
+#import "NSCopying.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "NSMutableCopying.h"
 
 @class UIColor, UIFont, NSString;
 
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 	BOOL _containsNonLatinLikeCharacters;
 	BOOL _containsEmoji;
 	BOOL _canEllipsize;
+	BOOL _canTighten;
 	float _scale;
 	CGSize _maxSize;
 	int _style;
@@ -28,22 +29,25 @@ __attribute__((visibility("hidden")))
 	BOOL _accessibilityIncreaseContrastEnabled;
 	UIColor *_focusHighlightColor;
 	UIEdgeInsets _textInsets;
+	UIEdgeInsets _fontLanguageInsets;
 	int _iconLocation;
 	unsigned _hash;
 }
 @property(readonly, assign, nonatomic) BOOL accessibilityIncreaseContrastEnabled;
 @property(readonly, assign, nonatomic) BOOL canEllipsize;
+@property(readonly, assign, nonatomic) BOOL canTighten;
 @property(readonly, assign, nonatomic) BOOL canUseMemoryPool;
 @property(readonly, assign, nonatomic) BOOL containsEmoji;
 @property(readonly, assign, nonatomic) BOOL containsNonLatinLikeCharacters;
-@property(readonly, assign, nonatomic) UIColor *focusHighlightColor;
-@property(readonly, assign, nonatomic) UIFont *font;
+@property(readonly, retain, nonatomic) UIColor *focusHighlightColor;
+@property(readonly, retain, nonatomic) UIFont *font;
+@property(readonly, assign, nonatomic) UIEdgeInsets fontLanguageInsets;
 @property(readonly, assign, nonatomic) int iconLocation;
 @property(readonly, assign, nonatomic) CGSize maxSize;
 @property(readonly, assign, nonatomic) float scale;
 @property(readonly, assign, nonatomic) int style;
-@property(readonly, assign, nonatomic) NSString *text;
-@property(readonly, assign, nonatomic) UIColor *textColor;
+@property(readonly, copy, nonatomic) NSString *text;
+@property(readonly, retain, nonatomic) UIColor *textColor;
 @property(readonly, assign, nonatomic) UIEdgeInsets textInsets;
 - (id)init;
 - (id)initWithParameters:(id)parameters;

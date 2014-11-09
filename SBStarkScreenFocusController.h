@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray, UIScreen, NSString;
+@class NSString, NSMutableArray, UIScreen;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkScreenFocusController : XXUnknownSuperclass {
@@ -23,6 +23,6 @@ __attribute__((visibility("hidden")))
 - (void)dropReason:(id)reason;
 - (id)focusWindow;
 - (void)invalidate;
-- (void)takeWithPriority:(float)priority reason:(id)reason forWindow:(id)window bundleIdentifier:(id)identifier;
+- (void)takeWithPriority:(float)priority reason:(id)reason forWindow:(id)window bundleIdentifier:(id)identifier pid:(int)pid;
 @end
 

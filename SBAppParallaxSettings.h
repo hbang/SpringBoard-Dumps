@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBFParallaxSettings, SBFLockScreenWallpaperParallaxSettings, SBFHomeScreenWallpaperParallaxSettings;
+@class SBFLockScreenWallpaperParallaxSettings, SBFHomeScreenWallpaperParallaxSettings, SBFParallaxSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBAppParallaxSettings : XXUnknownSuperclass {

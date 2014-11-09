@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBIconAnimator.h"
 #import "SBIconIndexNodeObserver.h"
+#import "SBIconAnimator.h"
 
-@class NSMapTable, SBIconListView, SBIconZoomSettings, SBIconListModel, NSSet;
+@class SBIconZoomSettings, NSMapTable, SBIconListModel, NSSet, NSString, SBIconListView;
 
 __attribute__((visibility("hidden")))
 @interface SBIconZoomAnimator : SBIconAnimator <SBIconIndexNodeObserver> {
@@ -20,9 +20,13 @@ __attribute__((visibility("hidden")))
 	SBIconListView *_dockListView;
 }
 @property(retain, nonatomic) NSSet *criticalIconNodeIdentifiers;
-@property(readonly, assign, nonatomic) SBIconListView *dockListView;
-@property(readonly, assign, nonatomic) SBIconListView *iconListView;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, retain, nonatomic) SBIconListView *dockListView;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) SBIconListView *iconListView;
 @property(retain, nonatomic) SBIconZoomSettings *settings;
+@property(readonly, assign) Class superclass;
 - (id)initWithFolderController:(id)folderController;
 - (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (void)_applyLabelAlphaFraction:(float)fraction;

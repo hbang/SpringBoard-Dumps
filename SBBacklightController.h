@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSTimer, NSMutableSet;
+@class NSMutableSet, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SBBacklightController : XXUnknownSuperclass {
@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 	double _lastTimeIdleCausedDim;
 	double _nextLockDurationAfterDim;
 	unsigned _disableAutoDimming : 1;
-	unsigned _lockScreenCameraWantsIdleTimerDisabled : 1;
 	NSMutableSet *_idleTimerDisabledReasons;
 	NSMutableSet *_spuriousScreenUndimmingAssertions;
 	BOOL _isPendingScreenUnblankAfterCACommit;
@@ -30,6 +29,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
+- (void)_animateBacklightToFactor:(float)factor duration:(double)duration source:(int)source silently:(BOOL)silently completion:(id)completion;
 - (void)_autoLockTimerFired:(id)fired;
 - (void)_cancelSetBacklightFactorToZeroAfterDelay;
 - (void)_clearAutoLockTimer;
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_lockScreenWantsUserEventNotifications;
 - (double)_nextIdleTimeDuration;
 - (double)_nextLockTimeDuration;
+- (void)_performDeferredBacklightRampWorkWithInfo:(id)info;
 - (void)_requestedUserEventNotificationOccurred;
 - (void)_resetIdleTimerAndUndim:(BOOL)undim source:(int)source;
 - (void)_resetLockScreenIdleTimerWithDuration:(double)duration mode:(int)mode;
@@ -70,7 +71,6 @@ __attribute__((visibility("hidden")))
 - (void)setBacklightFactor:(float)factor source:(int)source;
 - (void)setBacklightFactorPending:(float)pending;
 - (void)setBacklightFactorToZeroForProx;
-- (void)setIdleTimerDisabled:(BOOL)disabled;
 - (void)setIdleTimerDisabled:(BOOL)disabled forReason:(id)reason;
 - (BOOL)shouldTurnOnScreenForBacklightSource:(int)backlightSource;
 - (void)turnOnScreenFullyWithBacklightSource:(int)backlightSource;

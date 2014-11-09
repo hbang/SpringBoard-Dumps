@@ -5,17 +5,17 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class _UIBackdropView, UIView;
+@class UIView, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface SBBackdropContainerView : XXUnknownSuperclass {
 	_UIBackdropView *_backdropView;
 }
 @property(retain, nonatomic) _UIBackdropView *backdropView;
-@property(readonly, assign, nonatomic) UIView *contentView;
+@property(readonly, retain, nonatomic) UIView *contentView;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_reallyInsertSubview:(id)subview atIndex:(int)index;
 - (void)addSubview:(id)subview;

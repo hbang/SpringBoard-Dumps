@@ -7,16 +7,10 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBPasscodeLockDisableAssertion : XXUnknownSuperclass {
-	NSString *_identifier;
-	int _type;
 }
 - (id)initWithIdentifier:(id)identifier type:(int)type;
-- (void)dealloc;
-- (id)description;
-- (int)type;
 @end
 

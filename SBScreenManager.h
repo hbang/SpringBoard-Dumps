@@ -7,15 +7,13 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSHashTable, NSMapTable;
+@class NSMapTable, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface SBScreenManager : XXUnknownSuperclass {
 	NSHashTable *_handlers;
 	NSMapTable *_screenIDToHandlerMap;
 	NSMapTable *_screenIDToObserversMap;
-	NSMapTable *_screenIDToSuppressionReasonsMap;
-	NSMapTable *_screenIDToMainWindowMap;
 	NSMapTable *_screenIDToScreenMap;
 	NSHashTable *_connectedScreenIDs;
 }
@@ -26,15 +24,9 @@ __attribute__((visibility("hidden")))
 - (void)_updateHandlerForConnectionToScreen:(id)screen;
 - (void)addConnectionHandler:(id)handler;
 - (void)addScreenObserver:(id)observer forScreen:(id)screen;
-- (void)addSuppressionReason:(id)reason forScreen:(id)screen;
 - (void)dealloc;
 - (BOOL)isScreenConnected:(id)connected;
-- (BOOL)isScreenSuppressed:(id)suppressed;
-- (id)mainWindowForScreen:(id)screen;
 - (void)removeScreenObserver:(id)observer forScreen:(id)screen;
-- (void)removeSuppressionReason:(id)reason forScreen:(id)screen;
-- (void)requestScreenWithId:(unsigned)anId minimumSeed:(unsigned)seed completion:(id)completion;
 - (id)screenWithID:(unsigned)anId;
-- (void)setMainWindow:(id)window forScreen:(id)screen;
 @end
 

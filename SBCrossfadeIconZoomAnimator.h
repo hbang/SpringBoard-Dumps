@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBScaleIconZoomAnimator.h"
 
-@class SBCrossfadeZoomSettings, UIView;
+@class UIView, SBCrossfadeZoomSettings;
 
 __attribute__((visibility("hidden")))
 @interface SBCrossfadeIconZoomAnimator : SBScaleIconZoomAnimator {

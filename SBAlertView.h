@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 @class SBAlert;
 
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)dismiss;
 - (BOOL)isAnimatingOut;
 - (BOOL)isReadyToBeRemovedFromView;
-- (BOOL)isSupportedInterfaceOrientation:(int)orientation;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)setAlert:(id)alert;
 - (void)setShouldAnimateIn:(BOOL)animateIn;

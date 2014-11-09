@@ -5,21 +5,24 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBBulletinWindowController, SBBulletinRootView;
+@class SBBulletinWindowController, SBBulletinRootView, _SBBulletinRootViewControllerTransitionContext;
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinRootViewController : XXUnknownSuperclass {
 	SBBulletinRootView *_rootView;
 	SBBulletinWindowController *_windowController;
+	_SBBulletinRootViewControllerTransitionContext *_activeTransitionContext;
 }
 - (id)initWithBulletinWindowController:(id)bulletinWindowController;
+- (void)_getRotationContentSettings:(XXStruct_3uUjXA *)settings;
+- (void)bulletinWindowControllerDismissViewControllerAnimated:(BOOL)animated completion:(id)completion;
+- (void)bulletinWindowControllerPresentViewController:(id)controller animated:(BOOL)animated completion:(id)completion;
 - (void)dealloc;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
-- (void)dismissViewController:(id)controller onView:(id)view;
 - (void)loadView;
-- (void)presentViewController:(id)controller onView:(id)view;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;

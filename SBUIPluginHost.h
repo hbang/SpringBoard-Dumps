@@ -8,7 +8,7 @@
 #import "SBUIPluginControllerHost.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBUIPluginController;
+@class SBUIPluginController, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBUIPluginHost : XXUnknownSuperclass <SBUIPluginControllerHost> {
@@ -16,9 +16,13 @@ __attribute__((visibility("hidden")))
 	BOOL _expectsFaceContact;
 	BOOL _isPluginRunning;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign) BOOL isPluginRunning;
 @property(readonly, assign) BOOL isPluginVisible;
 @property(retain) SBUIPluginController *pluginController;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (void)_deviceBlocked:(id)blocked;
 - (void)_dismissUIPlugin:(id)plugin animated:(BOOL)animated;

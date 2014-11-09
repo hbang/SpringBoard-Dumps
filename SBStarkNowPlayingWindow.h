@@ -6,21 +6,11 @@
  */
 
 #import "SBWindow.h"
-#import "SBWindowContextManagerDelegate.h"
-#import "SBWindowContextHostManagerDelegate.h"
 
-@class SBWindowContextHostManager, SBWindowContextManager;
 
 __attribute__((visibility("hidden")))
-@interface SBStarkNowPlayingWindow : SBWindow <SBWindowContextManagerDelegate, SBWindowContextHostManagerDelegate> {
-	SBWindowContextManager *_contextManager;
-	SBWindowContextHostManager *_contextHostManager;
+@interface SBStarkNowPlayingWindow : SBWindow {
 }
-- (id)initWithScreen:(id)screen jailBehavior:(int)behavior;
 - (id)contextHostManager;
-- (void)dealloc;
-- (void)windowContextManager:(id)manager didStopTrackingContextsForScreen:(id)screen;
-- (BOOL)windowContextManager:(id)manager shouldAddContext:(id)context;
-- (void)windowContextManager:(id)manager willStartTrackingContextsForScreen:(id)screen;
 @end
 

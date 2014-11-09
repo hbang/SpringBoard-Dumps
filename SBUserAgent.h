@@ -5,16 +5,20 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIUserAgent.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class SBBulletinAlertHandlerRegistry;
+@class SBBulletinAlertHandlerRegistry, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBUserAgent : XXUnknownSuperclass <SBUIUserAgent> {
 	SBBulletinAlertHandlerRegistry *_modalAlertRegistry;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedUserAgent;
 - (id)init;
 - (void)_cleanupFromBannerLaunch;
@@ -23,8 +27,10 @@ __attribute__((visibility("hidden")))
 - (id)_safeValue:(id)value forKey:(id)key ofType:(Class)type;
 - (void)activateModalBulletinAlert:(id)alert;
 - (void)activateRemoteAlertService:(id)service options:(id)options;
+- (void)activateRemoteAlertService:(id)service options:(id)options activationHandler:(id)handler deactivationHandler:(id)handler4;
 - (int)activeInterfaceOrientation;
 - (void)addActiveInterfaceOrientationObserver:(id)observer;
+- (void)adjustLockScreenContentByOffset:(float)offset forAwayViewPlugin:(id)awayViewPlugin withAnimationDuration:(double)animationDuration;
 - (BOOL)alertIsActive;
 - (BOOL)applicationInstalledForDisplayID:(id)displayID;
 - (BOOL)canLaunchFromAwayViewPluginWithURL:(id)url bundleID:(id)anId;
@@ -43,15 +49,16 @@ __attribute__((visibility("hidden")))
 - (void)enableLockScreenBundleNamed:(id)named activationContext:(id)context;
 - (id)foregroundApplicationDisplayID;
 - (id)foregroundDisplayID;
+- (BOOL)isApplicationForegroundObscured:(id)obscured;
 - (BOOL)isIdleTimerDisabledForReason:(id)reason;
 - (BOOL)isSBUILoggingEnabled;
-- (BOOL)isUsingLegacyStyle;
+- (BOOL)isScreenOn;
 - (BOOL)launchApplicationFromSource:(int)source withDisplayID:(id)displayID options:(id)options;
 - (BOOL)launchApplicationFromSource:(int)source withURL:(id)url options:(id)options;
 - (BOOL)launchDisplayWithURL:(id)url forCall:(BOOL)call sender:(id)sender;
 - (BOOL)launchFromAwayViewPluginWithURL:(id)url bundleID:(id)anId allowUnlock:(BOOL)unlock animate:(BOOL)animate;
 - (BOOL)launchFromBulletinWithURL:(id)url bundleID:(id)anId allowUnlock:(BOOL)unlock animate:(BOOL)animate launchOrigin:(int)origin;
-- (BOOL)launchFromPushOrLocalBulletin:(id)pushOrLocalBulletin origin:(int)origin;
+- (BOOL)launchFromPushOrLocalBulletin:(id)pushOrLocalBulletin actionIdentifier:(id)identifier origin:(int)origin;
 - (BOOL)launchFromSource:(int)source withURL:(id)url bundleID:(id)anId allowUnlock:(BOOL)unlock;
 - (id)localizedDisplayNameForDisplayID:(id)displayID;
 - (void)lockAndDimDevice;
@@ -63,20 +70,17 @@ __attribute__((visibility("hidden")))
 - (void)notifyOnNextUserEvent;
 - (BOOL)openURL:(id)url allowUnlock:(BOOL)unlock animated:(BOOL)animated;
 - (void)openURL:(id)url animateIn:(BOOL)anIn scale:(float)scale start:(double)start duration:(float)duration animateOut:(BOOL)anOut;
-- (void)playRingtoneAtPath:(id)path;
-- (void)playRingtoneAtPath:(id)path vibrationPattern:(id)pattern;
 - (void)prepareToAnswerCall;
 - (void)removeActiveInterfaceOrientationObserver:(id)observer;
 - (void)setBadgeNumberOrString:(id)string forApplicationWithID:(id)anId;
-- (void)setFlipBackAttributeForSEODisplayWithIdentifier:(id)identifier;
 - (void)setIdleText:(id)text;
 - (void)setIdleTimerDisabled:(BOOL)disabled forReason:(id)reason;
 - (void)setMinimumBacklightLevel:(float)level animated:(BOOL)animated;
 - (void)setWallpaperTunnelActive:(BOOL)active forFullscreenAlertController:(id)fullscreenAlertController;
 - (BOOL)springBoardIsActive;
-- (void)stopRinging;
 - (id)topSuspendedEventsOnlyDisplayID;
 - (void)undimScreen;
+- (void)updateCustomSubtitleTextForAwayViewPlugin:(id)awayViewPlugin;
 - (void)updateInterfaceOrientationIfNecessary;
 - (void)updateLockScreenInterfaceIfNecessary;
 @end

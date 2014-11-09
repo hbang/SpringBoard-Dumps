@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) SBLockScreenView *lockScreenView;
 @property(assign, nonatomic) id<SBUIPasscodeLockView> passcodeView;
 - (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
+- (void)setUserInteractionEnabled:(BOOL)enabled;
 - (BOOL)touchesShouldCancelInContentView:(id)touches;
 @end
 

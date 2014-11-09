@@ -15,6 +15,10 @@ __attribute__((visibility("hidden")))
 	NSString *_countedMapKey;
 }
 @property(copy, nonatomic) NSString *countedMapKey;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithImage:(id)image;
 - (void)dealloc;
 @end

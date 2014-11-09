@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface SBTodaySectionInfo : SBBBSectionInfo {
 }
-- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
 - (id)identifier;
 - (Class)reusableViewClass;
 @end

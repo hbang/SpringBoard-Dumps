@@ -9,18 +9,24 @@
 #import "SBWindow.h"
 #import "SBStarkNotificationViewControllerDelegate.h"
 
-@class SBStarkNotificationViewController, SBStarkScreenFocusController;
+@class SBStarkNotificationViewController, SBStarkScreenFocusController, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkNotificationWindow : SBWindow <SBStarkNotificationViewControllerDelegate> {
 	SBStarkScreenFocusController *_focusController;
+	BOOL _assertingFocus;
 	id _borrowScreenToken;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(retain, nonatomic) SBStarkScreenFocusController *focusController;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) SBStarkNotificationViewController *rootViewController;
-- (id)initWithScreen:(id)screen jailBehavior:(int)behavior;
+@property(readonly, assign) Class superclass;
+- (id)initWithScreen:(id)screen layoutStrategy:(id)strategy debugName:(id)name scene:(id)scene;
 - (void)dealloc;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
 - (void)notificationViewController:(id)controller stateDidChangeFrom:(int)state;
+- (void)notificationViewController:(id)controller willDisplayBannerView:(id)view;
 @end
 

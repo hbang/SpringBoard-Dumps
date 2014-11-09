@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconModelStore.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSURL;
+@class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface SBIconModelPropertyListFileStore : XXUnknownSuperclass <SBIconModelStore> {
@@ -16,7 +16,11 @@ __attribute__((visibility("hidden")))
 	NSURL *_desiredIconStateURL;
 }
 @property(retain, nonatomic) NSURL *currentIconStateURL;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSURL *desiredIconStateURL;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (BOOL)_delete:(id)aDelete error:(id *)error;
 - (id)_load:(id)load error:(id *)error;
 - (BOOL)_save:(id)save url:(id)url error:(id *)error;

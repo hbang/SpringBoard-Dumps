@@ -11,5 +11,6 @@
 - (void)searchDaemonQuery:(id)query addedResults:(id)results;
 - (void)searchDaemonQuery:(id)query encounteredError:(id)error;
 - (void)searchDaemonQueryCompleted:(id)completed;
+- (void)searchDaemonQueryReset:(id)reset;
 @end
 

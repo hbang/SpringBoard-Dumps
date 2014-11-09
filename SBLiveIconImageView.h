@@ -9,11 +9,17 @@
 #import "SBControlCenterObserver.h"
 #import "SBIconImageView.h"
 
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBLiveIconImageView : SBIconImageView <SBControlCenterObserver> {
 	unsigned _pauseCauses;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
++ (void)_applicationDidExit:(id)_application;
 + (void)_displayDidDeactivate:(id)_display;
 + (void)_displayWillActivate:(id)_display;
 + (void)initialize;
@@ -32,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)controlCenterWillBeginTransition;
 - (void)controlCenterWillPresent;
 - (void)dealloc;
-- (id)description;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (BOOL)isAnimationAllowed;

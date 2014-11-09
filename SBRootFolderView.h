@@ -7,41 +7,65 @@
 
 #import "SpringBoard-Structs.h"
 #import "SBSearchGestureObserver.h"
-#import "_UISettingsKeyObserver.h"
+#import "UIGestureRecognizerDelegate.h"
 #import "SBFolderView.h"
+#import "_UISettingsKeyObserver.h"
 
-@class SBRootFolder, SBFParallaxSettings, SBSearchViewController, SBDockView, SBDockIconListView, TPLegacyLCDTextView;
+@class SBDockIconListView, SBFParallaxSettings, SBDockView, NSString, SBRootFolder, SBSearchViewController, TPLegacyLCDTextView;
 
 __attribute__((visibility("hidden")))
-@interface SBRootFolderView : SBFolderView <_UISettingsKeyObserver, SBSearchGestureObserver> {
+@interface SBRootFolderView : SBFolderView <_UISettingsKeyObserver, SBSearchGestureObserver, UIGestureRecognizerDelegate> {
 	SBDockView *_dockView;
 	SBDockIconListView *_dockListView;
+	BOOL _dockViewBorrowed;
 	TPLegacyLCDTextView *_idleTextView;
 	SBFParallaxSettings *_parallaxSettings;
 	float _searchGestureProgress;
+	float _reachabilityYOffset;
+	BOOL _layingOutForReachability;
 	SBSearchViewController *_searchViewController;
+	unsigned _dockEdge;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(assign, nonatomic) unsigned dockEdge;
+@property(assign, nonatomic, getter=isDockViewBorrowed) BOOL dockViewBorrowed;
 @property(retain, nonatomic) SBRootFolder *folder;
-@property(readonly, assign, nonatomic) SBSearchViewController *searchViewController;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) SBSearchViewController *searchViewController;
+@property(readonly, assign) Class superclass;
 - (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
 - (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map forSnapshot:(BOOL)snapshot;
 - (void)_configureParallax;
 - (void)_disableUserInteractionBeforeSignificantAnimation;
 - (void)_enableUserInteractionAfterSignificantAnimation;
+- (void)_handleReachabilityActivatedAnimate:(BOOL)animate completion:(id)completion;
+- (void)_handleReachabilityDectivatedAnimate:(BOOL)animate completion:(id)completion;
 - (void)_layoutSubviews;
 - (void)_updateEditingStateAnimated:(BOOL)animated;
+- (BOOL)_updatesWallpaperRelativeCenter;
+- (void)borrowDockView;
+- (void)cleanUpAfterZoomAnimation;
 - (void)dealloc;
 - (void)didAnimate;
 - (id)dockView;
+- (CGRect)effectiveDockFrame;
+- (CGRect)effectivePageControlFrame;
 - (float)effectiveStatusBarHeight;
 - (void)fadeContentForMagnificationFraction:(float)magnificationFraction;
 - (void)fadeContentForMinificationFraction:(float)minificationFraction;
+- (void)handleCancelReachabilityGesture:(id)gesture;
+- (void)handleReachabilityActivated:(BOOL)activated animated:(BOOL)animated completion:(id)completion;
 - (id)iconListViewAtIndex:(unsigned)index;
 - (id)iconListViewAtPoint:(CGPoint)point;
+- (void)layoutDockView;
 - (void)layoutIconLists:(double)lists domino:(BOOL)domino forceRelayout:(BOOL)relayout;
 - (void)layoutViewsForSearch;
 - (void)lcdTextViewCompletedScroll:(id)scroll;
+- (void)prepareForZoomAnimation;
+- (float)reachabilityYOffset;
 - (void)resetIconListViews;
+- (void)returnDockView;
 - (void)returnScalingView;
 - (void)searchGesture:(id)gesture changedPercentComplete:(float)complete;
 - (void)setDockOffscreenFraction:(float)fraction;
@@ -52,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)setOrientation:(int)orientation;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)tearDownListViews;
+- (void)updateDockViewOrientation;
 - (void)willAnimate;
 @end
 

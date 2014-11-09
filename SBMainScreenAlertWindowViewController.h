@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface SBMainScreenAlertWindowViewController : SBAlertWindowViewController {
 }
+- (void)_getRotationContentSettings:(XXStruct_3uUjXA *)settings;
 - (BOOL)alertWindow:(id)window canAnimateInAlert:(id)alert;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)noteAlertWindow:(id)window didDisplayAlert:(id)alert;

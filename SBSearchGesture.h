@@ -5,23 +5,30 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIScrollViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UIView, NSHashTable, SBSearchScrollView;
+@class UIView, NSHashTable, UIPanGestureRecognizer, SBSearchScrollView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBSearchGesture : XXUnknownSuperclass <UIScrollViewDelegate> {
 	NSHashTable *_observers;
 	SBSearchScrollView *_scrollView;
 	BOOL _suppressObserverCallbacks;
+	UIPanGestureRecognizer *_panGestureRecognizer;
+	BOOL _isActivated;
 	BOOL _animatingResetOrReveal;
 	BOOL _enabled;
 	UIView *_targetView;
 }
+@property(readonly, assign, nonatomic, getter=isActivated) BOOL activated;
 @property(readonly, assign, nonatomic, getter=isAnimatingResetOrReveal) BOOL animatingResetOrReveal;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(assign, nonatomic) BOOL enabled;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 @property(retain, nonatomic) UIView *targetView;
 + (id)sharedInstance;
 - (id)init;
@@ -35,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)addObserver:(id)observer;
 - (void)dealloc;
 - (void)removeObserver:(id)observer;
+- (void)requireGestureRecognizerToFail:(id)fail;
 - (void)resetAnimated:(BOOL)animated;
 - (void)revealAnimated:(BOOL)animated;
 - (void)scrollViewDidEndDecelerating:(id)scrollView;

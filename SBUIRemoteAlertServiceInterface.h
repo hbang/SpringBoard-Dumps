@@ -8,5 +8,13 @@
 
 
 @protocol SBUIRemoteAlertServiceInterface
+@optional
+- (void)handleDoubleHeightStatusBarTap;
+- (void)handleHeadsetButtonPressed:(BOOL)pressed;
+- (void)handleHomeButtonPressed;
+- (void)handleLockButtonPressed;
+- (void)handleVolumeDownButtonPressed;
+- (void)handleVolumeUpButtonPressed;
+- (void)noteActivatedForCustomReason:(id)customReason;
 @end
 

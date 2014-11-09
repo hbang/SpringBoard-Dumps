@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 }
 - (id)_systemListItem;
 - (id)iconImage;
+- (id)lockScreenActionContext;
 - (id)message;
 - (id)title;
-- (id)unlockActionContext;
 @end
 

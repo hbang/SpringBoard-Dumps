@@ -14,11 +14,15 @@ __attribute__((visibility("hidden")))
 	NSString *_meid;
 	NSString *_imei;
 	NSString *_iccid;
+	NSString *_csn;
+	BOOL _isOnBootstrap;
 	float _alertHeight;
 }
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
+- (id)_formattedCSN;
 - (id)_formattedICCID;
 - (id)_formattedIMEI;
+- (id)_formattedString:(id)string withSpaceAfterDigits:(unsigned)spaceAfterDigits;
 - (void)_simStatusChanged:(id)changed;
 - (void)_updateTextView;
 - (void)dealloc;

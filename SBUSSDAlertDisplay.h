@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBAlertView.h"
 #import "UITextFieldDelegate.h"
+#import "SBAlertView.h"
 
-@class UIView, TPButton, UITextView, UIActivityIndicatorView, UITextField;
+@class UIActivityIndicatorView, UITextField, UIView, NSString, TPButton, UITextView;
 
 __attribute__((visibility("hidden")))
 @interface SBUSSDAlertDisplay : SBAlertView <UITextFieldDelegate> {
@@ -24,6 +24,10 @@ __attribute__((visibility("hidden")))
 	UITextView *_responseMessageView;
 	BOOL _allowsResponse;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_cancelClicked;
 - (void)_centerTextView:(id)view inRect:(CGRect)rect;

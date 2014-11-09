@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "MCProfileConnectionObserver.h"
 
-@class NSMutableDictionary, NSSet, NSMutableSet, NSHashTable;
+@class NSMutableSet, NSHashTable, NSSet, NSString, NSMutableDictionary;
 @protocol SBApplicationRestrictionDataSource;
 
 __attribute__((visibility("hidden")))
@@ -17,25 +17,30 @@ __attribute__((visibility("hidden")))
 	id<SBApplicationRestrictionDataSource> _dataSource;
 	NSHashTable *_observers;
 	NSMutableDictionary *_tagValidityMap;
-	NSMutableDictionary *_validTagsByDisplayIdentifier;
+	NSMutableDictionary *_validTagsByIdentifier;
 	MGNotificationTokenStructRef _tagsNotificationToken;
 	NSMutableSet *_enabledTags;
-	NSMutableDictionary *_ratingRanksByDisplayIdentifier;
+	NSMutableDictionary *_ratingRanksByIdentifier;
 	BOOL _hasSMSCapability;
-	NSSet *_restrictedDisplayIdentifiers;
+	NSSet *_restrictedIdentifiers;
 	BOOL _showInternalApps;
 	BOOL _hasHideNonDefaultSystemAppsCapability;
 	BOOL _showAllSystemApps;
 	BOOL _canPostRestrictionState;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (id)initWithDataSource:(id)dataSource;
 - (void)_postRestrictionState;
 - (void)_postRestrictionStateToObservers:(id)observers;
+- (void)_updateRestrictionsAndForcePost:(BOOL)post;
 - (void)addObserver:(id)observer;
 - (void)beginPostingChanges;
 - (void)dealloc;
-- (BOOL)isDisplayIdentifierRestricted:(id)restricted;
+- (BOOL)isApplicationIdentifierRestricted:(id)restricted;
 - (void)noteApplicationIdentifiersDidChangeWithAdded:(id)noteApplicationIdentifiers modified:(id)modified removed:(id)removed;
 - (void)noteVisibilityStateDidChange;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)profileConnection userInfo:(id)info;

@@ -8,7 +8,7 @@
 #import "SBIconIndexNodeObserver.h"
 #import "SBFolderView.h"
 
-@class UIButton, SBNewsstandBackgroundView;
+@class UIButton, SBNewsstandBackgroundView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBNewsstandFolderView : SBFolderView <SBIconIndexNodeObserver> {
@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
 	UIButton *_emptyImageButton;
 	SBNewsstandBackgroundView *_backgroundView;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
 - (void)_layoutSubviews;
 - (void)_newsstandStoreAvailabilityDidChangeNotification:(id)_newsstandStoreAvailability;
@@ -24,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (float)_titleFontSize;
 - (void)_updateEmptyState;
 - (void)dealloc;
+- (void)handleReachabilityActivated:(BOOL)activated animated:(BOOL)animated completion:(id)completion;
 - (void)node:(id)node didAddContainedNodeIdentifiers:(id)identifiers;
 - (void)node:(id)node didRemoveContainedNodeIdentifiers:(id)identifiers;
 - (void)setFolder:(id)folder;

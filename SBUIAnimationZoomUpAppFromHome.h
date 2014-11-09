@@ -5,15 +5,19 @@
  * Source: (null)
  */
 
-#import "SBIconAnimatorDelegate.h"
 #import "SBUIAnimationZoomUpApp.h"
+#import "SBIconAnimatorDelegate.h"
 
-@class SBIconAnimator;
+@class NSString, SBIconAnimator;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomUpAppFromHome : SBUIAnimationZoomUpApp <SBIconAnimatorDelegate> {
 	SBIconAnimator *_iconAnimator;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (void)animateZoomWithCompletion:(id)completion;
 - (void)cleanupZoom;
 - (void)dealloc;

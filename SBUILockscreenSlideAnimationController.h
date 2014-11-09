@@ -7,7 +7,7 @@
 
 #import "SBUIMainScreenAnimationController.h"
 
-@class SBLockScreenClippedSlideController, UIView, SBLockScreenViewControllerBase;
+@class UIView, SBLockScreenClippedSlideController, SBLockScreenViewControllerBase;
 
 __attribute__((visibility("hidden")))
 @interface SBUILockscreenSlideAnimationController : SBUIMainScreenAnimationController {
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithActivatingApp:(id)activatingApp deactivatingLockscreen:(id)lockscreen;
 - (id)initWithActivatingLockscreen:(id)activatingLockscreen deactivatingApp:(id)app;
 - (id)_animationProgressDependency;
-- (BOOL)_animationShouldStart;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_finishedSliding;
@@ -36,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)_prepareAnimation;
 - (void)_setup:(id)setup transitionStyle:(int)style;
 - (void)_startAnimation;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
 - (void)dealloc;
+- (id)description;
 @end
 

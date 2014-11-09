@@ -5,9 +5,10 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableOrderedSet, NSHashTable, NSMutableDictionary;
+@class NSHashTable, NSMutableOrderedSet, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface SBAppStatusBarManager : XXUnknownSuperclass {
@@ -16,12 +17,17 @@ __attribute__((visibility("hidden")))
 	NSMutableOrderedSet *_windowLevelOverrideReasons;
 	NSMutableDictionary *_windowLevelOverrideMap;
 	float _defaultWindowLevel;
+	NSMutableDictionary *_edgeInsetsDictionary;
+	unsigned _activeLayoutLayer;
 }
+@property(assign, nonatomic) unsigned activeLayoutLayer;
+@property(readonly, assign, nonatomic) UIEdgeInsets statusBarEdgeInsets;
 + (id)sharedInstance;
 - (id)init;
 - (void)_addAssertion:(id)assertion toAssertions:(id)assertions;
 - (void)_addDisableAppStatusBarAlphaChangesAssertion:(id)assertion;
 - (void)_addDisableAppStatusBarUserInteractionChangesAssertion:(id)assertion;
+- (void)_applyEdgeInsetsToStatusBar;
 - (id)_descriptionForPropertyWithAssertions:(id)assertions;
 - (void)_removeAssertion:(id)assertion fromAssertions:(id)assertions;
 - (void)_removeDisableAppStatusBarAlphaChangesAssertion:(id)assertion;
@@ -35,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)removeWindowLevelOverrideReason:(id)reason;
 - (void)setDefaultWindowLevel:(float)level;
 - (void)setStatusBarAlpha:(float)alpha;
+- (void)setStatusBarEdgeInsets:(UIEdgeInsets)insets forLayoutLayer:(unsigned)layoutLayer;
 - (void)setStatusBarUserInteractionEnabled:(BOOL)enabled;
 - (void)setWindowLevel:(float)level forOverrideReason:(id)overrideReason;
 - (void)showStatusBar;

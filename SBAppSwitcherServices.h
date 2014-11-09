@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "NSCopying.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "NSCopying.h"
 
 @class NSMutableArray;
 
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(NSZone *)zone;
 - (unsigned)count;
 - (void)dealloc;
+- (id)displayItems;
 - (void)removeService:(id)service;
 - (id)serviceAtIndex:(unsigned)index;
 - (id)serviceBundleIdentifiers;

@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBApplication, NSURL, NSString;
+@class SBApplication, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface SBVideoPermissionAlertItem : XXUnknownSuperclass {

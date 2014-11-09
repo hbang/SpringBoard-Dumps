@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@class UILabel, UIImageView, NSArray;
+@class UIButton, UITapGestureRecognizer, UILabel, NSArray, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutView : XXUnknownSuperclass {
@@ -20,13 +20,17 @@ __attribute__((visibility("hidden")))
 	UILabel *_messageLabel;
 	float _messageAscender;
 	float _messageDescender;
+	UIButton *_backToOEMButton;
+	UITapGestureRecognizer *_backToOEMGestureRecognizer;
 	NSArray *_baselineSeparations;
 }
-@property(readonly, assign, nonatomic) UIImageView *imageView;
-@property(readonly, assign, nonatomic) UILabel *messageLabel;
-@property(readonly, assign, nonatomic) UILabel *titleLabel;
+@property(readonly, retain, nonatomic) UIButton *backToOEMButton;
+@property(readonly, retain, nonatomic) UIImageView *imageView;
+@property(readonly, retain, nonatomic) UILabel *messageLabel;
+@property(readonly, retain, nonatomic) UILabel *titleLabel;
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame title:(id)title image:(id)image message:(id)message baselineSeparations:(id)separations;
+- (void)_backToOEM;
 - (id)_messageFontOfSize:(float)size;
 - (void)_sizeMessageToFitInFrame:(CGRect)frame;
 - (void)_sizeTitleToFitInFrame:(CGRect)frame;

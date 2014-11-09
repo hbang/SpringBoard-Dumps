@@ -6,22 +6,61 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "BBObserverDelegate.h"
+#import "SpringBoard-Structs.h"
 
-@class NSArray;
+@class NSMutableSet, BBObserver, NSArray, NSString, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface SBNotificationCenterDataProviderController : XXUnknownSuperclass {
-	NSArray *_dataProviders;
+@interface SBNotificationCenterDataProviderController : XXUnknownSuperclass <BBObserverDelegate> {
+	NSMutableDictionary *_identifiersToDataProviders;
+	NSMutableDictionary *_identifiersToDataProviderProxies;
+	NSMutableDictionary *_identifiersToWidgetExtensions;
+	NSArray *_defaultEnabledWeeAppIDs;
+	NSArray *_updatedAvailableExtensions;
+	BOOL _isCoalescingAvailableExtensions;
+	BOOL _isCoalescingForSectionSort;
+	NSMutableSet *_serviceIDsOnProbation;
+	id _plugInDiscoveryToken;
+	BBObserver *_bbObserver;
+	BOOL _isPublishing;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(retain, nonatomic, getter=_plugInDiscoveryToken, setter=_setPlugInDiscoveryToken:) id plugInDiscoveryToken;
+@property(readonly, assign) Class superclass;
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)sharedInstance;
 - (id)init;
+- (void)_beginContinuousPlugInDiscovery;
+- (void)_coalesceAndSortChronologicalSections;
 - (id)_copyDefaultEnabledWidgetIDs;
-- (id)_sectionForWidgetBundle:(id)widgetBundle forCategory:(int)category;
+- (void)_endContinuousPlugInDiscovery;
+- (id)_lazyDefaultEnabledWeeAppIDs;
+- (id)_lazyIdentifiersToWidgetExtensions;
+- (void)_noteAvailableWidgetExtensions:(id)extensions;
+- (void)_postNotificationForNewWidgets:(int)newWidgets;
+- (BOOL)_publishSectionInfo:(id)info withExtension:(id)extension;
+- (BOOL)_publishWidgetSection:(id)section withExtension:(id)extension defaultEnabledWeeAppIDs:(id)ids;
+- (void)_removeDataProviderForServiceWithIdentifier:(id)identifier completion:(id)completion;
+- (id)_sectionForWidgetExtension:(id)widgetExtension withSectionID:(id)sectionID forCategory:(int)category;
 - (id)_sectionWithIdentifier:(id)identifier forCategory:(int)category;
-- (id)_widgetSections;
+- (void)_setShowsInNotificationCenter:(BOOL)notificationCenter andUpdateExtensionOptInState:(BOOL)state forDataProviderWithIdentifier:(id)identifier completion:(id)completion;
+- (void)_setupBBObserverIfNecessary;
+- (BOOL)_shouldPublishWidgetExtension:(id)extension;
+- (id)_widgetExtensionsDiscoveryAttributes;
+- (void)beginPublishingIfNecessary;
 - (void)buddyCompleted:(id)completed;
 - (void)dealloc;
-- (void)publishSectionInfoIfNecessary;
+- (id)extensionForSectionIdentifier:(id)sectionIdentifier;
+- (void)noteServiceWithIdentifierDidCloseViewServiceConnection:(id)noteServiceWithIdentifier;
+- (void)noteServiceWithIdentifierDidOpenViewServiceConnection:(id)noteServiceWithIdentifier;
+- (void)observer:(id)observer updateSectionInfo:(id)info inCategory:(int)category;
+- (id)publishedExtensionIdentifiers;
+- (void)setShowsInNotificationCenter:(BOOL)notificationCenter forDataProviderWithIdentifier:(id)identifier completion:(id)completion;
+- (BOOL)shouldWidgetsPurgeArchivedSnapshots;
+- (void)sortChronologicalSectionsWithCompletion:(id)completion;
+- (void)updatePublishedWidgetExtensions;
 @end
 

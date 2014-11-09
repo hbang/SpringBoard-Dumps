@@ -7,7 +7,7 @@
 
 #import "SBLockOverlayViewController.h"
 
-@class NSString, SBLockScreenTemperatureWarningView;
+@class SBLockScreenTemperatureWarningView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenTemperatureWarningViewController : SBLockOverlayViewController {

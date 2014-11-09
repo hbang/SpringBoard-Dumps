@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import "SBIconZoomAnimator.h"
 
-@class SBScaleZoomSettings, SBIconView, SBIcon, UIView;
+@class SBIconView, UIView, SBScaleZoomSettings, SBIcon;
 
 __attribute__((visibility("hidden")))
 @interface SBScaleIconZoomAnimator : SBIconZoomAnimator {
@@ -19,22 +19,25 @@ __attribute__((visibility("hidden")))
 	float _naturalVisualAltitude;
 	UIView *_scalingView;
 	SBIcon *_targetIcon;
-	float _zoomScale;
+	CGPoint _zoomScaleDimension;
 }
 @property(retain, nonatomic) SBScaleZoomSettings *settings;
-@property(readonly, assign, nonatomic) SBIcon *targetIcon;
-@property(readonly, assign, nonatomic) SBIconView *targetIconView;
+@property(readonly, retain, nonatomic) SBIcon *targetIcon;
+@property(readonly, retain, nonatomic) SBIconView *targetIconView;
 @property(readonly, assign, nonatomic) float zoomScale;
+@property(readonly, assign, nonatomic) CGPoint zoomScaleDimension;
 - (id)initWithFolderController:(id)folderController targetIcon:(id)icon;
 - (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (void)_applyOuterFadeFraction:(float)fraction;
 - (void)_applyZoomFraction:(float)fraction;
 - (void)_calculateIconScootch;
 - (void)_cleanupAnimation;
+- (BOOL)_forceSquareZoomDimension;
 - (unsigned)_numberOfSignificantAnimations;
 - (void)_prepareAnimation;
 - (CGPoint)_scootchForIcon:(id)icon inDock:(BOOL)dock;
 - (void)_setAnimationFraction:(float)fraction;
+- (void)_setZoomScale:(CGPoint)scale;
 - (CGRect)_zoomedFrame;
 - (CGPoint)_zoomedIconCenter;
 - (float)_zoomedVisualAltitude;

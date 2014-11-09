@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface SBUIStarkStartupAnimation : SBUIStarkScreenAnimationController {
 	UIView *_fromLockoutView;
 }
-@property(readonly, assign, nonatomic) UIView *fromLockoutView;
+@property(readonly, retain, nonatomic) UIView *fromLockoutView;
 - (id)initFromLockoutView:(id)lockoutView starkScreenController:(id)controller;
 - (id)initWithActivatingApp:(id)activatingApp fromLockoutView:(id)lockoutView starkScreenController:(id)controller;
 - (void)_cancelAnimation;

@@ -5,40 +5,74 @@
  * Source: (null)
  */
 
-#import "BBRemoteDataProvider.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "BBRemoteDataProvider.h"
 
-@class BBBulletinRequest, BBDataProviderProxy, UILocalNotification, NSDate, NSTimer;
+@class NSMutableDictionary, BBBulletinRequest, NSTimer, BBDataProviderProxy, NSString, NSDate, UILocalNotification;
 
 __attribute__((visibility("hidden")))
 @interface SBClockDataProvider : XXUnknownSuperclass <BBRemoteDataProvider> {
 	NSTimer *_alarmUpdateTimer;
 	BBDataProviderProxy *_dataProviderProxy;
+	NSMutableDictionary *_localNotificationsByPublisherBulletinID;
 	UILocalNotification *_nextAlarmForToday;
 	BBBulletinRequest *_nextTodayAlarmBulletin;
 	UILocalNotification *_firstAlarmForTomorrow;
 	NSDate *_nextTomorrowFireDate;
 	BBBulletinRequest *_nextTomorrowAlarmBulletin;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
+- (id)_actionWithIdentifier:(id)identifier title:(id)title;
+- (id)_alarmIDFromNotification:(id)notification;
 - (id)_alarmMessageForNotification:(id)notification withSingleAlarmFormat:(BOOL)singleAlarmFormat;
+- (id)_alternateActionFromAlarmNotification:(id)alarmNotification;
+- (id)_bulletinForNotification:(id)notification;
 - (id)_bulletinRequestForSnoozedAlarm:(id)snoozedAlarm;
 - (id)_bulletinRequestForTimerNotification:(id)timerNotification;
 - (void)_calculateNextTodayAlarmAndBulletinWithScheduledNotifications:(id)scheduledNotifications;
 - (void)_calculateNextTomorrowAlarmAndBulletinWithScheduledNotifications:(id)scheduledNotifications;
+- (id)_defaultSound;
+- (id)_dismissActionFromAlarmNotification:(id)alarmNotification;
+- (id)_dismissActionFromSnoozeNotification:(id)snoozeNotification;
 - (void)_handleAlarmSnoozedNotification:(id)notification;
+- (void)_handleBulletinAlarmDismissResponse:(id)response;
+- (void)_handleBulletinAlarmSnoozeResponse:(id)response;
+- (void)_handleBulletinSnoozeDismissResponse:(id)response;
 - (void)_handleClockNotificationUpdate:(id)update;
+- (void)_handleLocalNotificationDidFire:(id)_handleLocalNotification;
+- (void)_interruptAudioAndLockDeviceForLocalNotification:(id)localNotification;
+- (BOOL)_isAlarmNotification:(id)notification;
+- (BOOL)_isTimerNotification:(id)notification;
+- (void)_migrateSectionInfo;
 - (id)_nextAlarmForFeed:(unsigned)feed withNotifications:(id)notifications;
 - (void)_publishAlarmsWithScheduledNotifications:(id)scheduledNotifications;
+- (void)_publishBulletinForLocalNotification:(id)localNotification;
 - (void)_publishTimerInScheduledNotifications:(id)scheduledNotifications;
+- (id)_publisherBulletinIDFromNotification:(id)notification;
+- (void)_removeBulletinWithPublisherBulletinID:(id)publisherBulletinID;
+- (id)_ringtoneSoundFromSoundName:(id)soundName;
 - (id)_scheduledNotifications;
+- (int)_sectionSubtypeFromNotification:(id)notification;
+- (id)_snoozeActionFromAlarmNotification:(id)alarmNotification;
 - (void)_snoozedAlarmRefired:(id)refired;
+- (id)_songSoundFromSoundName:(id)soundName;
+- (id)_soundFromNotification:(id)notification;
+- (id)_supplementaryActionsFromAlarmNotification:(id)alarmNotification;
+- (id)_timerIDFromNotification:(id)notification;
+- (id)_titleFromNotification:(id)notification;
 - (id)bulletinsFilteredBy:(unsigned)by count:(unsigned)count lastCleared:(id)cleared;
 - (id)bulletinsWithRequestParameters:(id)requestParameters lastCleared:(id)cleared;
+- (void)dataProviderDidLoad;
 - (void)dealloc;
 - (id)defaultSectionInfo;
+- (void)handleBulletinActionResponse:(id)response;
 - (id)sectionIdentifier;
+- (id)sectionParameters;
 - (id)sortDescriptors;
 @end
 

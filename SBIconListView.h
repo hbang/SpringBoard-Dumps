@@ -8,7 +8,7 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBIconViewMap, SBIconListModel, NSArray, NSMutableSet, UIView, SBIcon, NSMutableArray;
+@class SBIconListModel, NSMutableSet, UIView, SBIconViewMap, NSMutableArray, NSArray, SBIcon;
 @protocol SBIconListLayoutDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,11 +26,13 @@ __attribute__((visibility("hidden")))
 	BOOL _purged;
 	NSMutableSet *_notShownIconViews;
 	BOOL _isEditing;
+	BOOL _layoutReversed;
 	id<SBIconListLayoutDelegate> _layoutDelegate;
 	CGRect _wallpaperRelativeFrame;
 }
 @property(assign, nonatomic, getter=isEditing) BOOL editing;
 @property(assign, nonatomic) id<SBIconListLayoutDelegate> layoutDelegate;
+@property(assign, nonatomic, getter=isLayoutReversed) BOOL layoutReversed;
 @property(assign, nonatomic) int orientation;
 @property(assign, nonatomic) BOOL purged;
 @property(assign, nonatomic) float statusBarHeight;

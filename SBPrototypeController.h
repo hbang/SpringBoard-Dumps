@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBVolumePressBandit.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
-#import "SBVolumePressBandit.h"
 
-@class PTSettingsController, NSArray, UIWindow, SBRootSettings;
+@class PTSettingsController, NSString, SBRootSettings, UIWindow, NSArray;
 @protocol SBTestRecipe;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,10 @@ __attribute__((visibility("hidden")))
 	BOOL _hasPreviousSettings;
 }
 @property(retain, nonatomic) id<SBTestRecipe> activeTestRecipe;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (void)migrateSettings;
 + (void)reloadDefaults;
 + (id)sharedInstance;

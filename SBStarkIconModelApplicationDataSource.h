@@ -5,13 +5,18 @@
  * Source: (null)
  */
 
-#import "SBIconModelApplicationDataSource.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconModelApplicationDataSource.h"
 
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkIconModelApplicationDataSource : XXUnknownSuperclass <SBIconModelApplicationDataSource> {
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)allApplications;
 - (int)appVisibilityOverrideForBundleIdentifier:(id)bundleIdentifier;
 - (id)defaultIconState;

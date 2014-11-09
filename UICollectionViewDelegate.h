@@ -24,5 +24,7 @@
 - (BOOL)collectionView:(id)view shouldSelectItemAtIndexPath:(id)indexPath;
 - (BOOL)collectionView:(id)view shouldShowMenuForItemAtIndexPath:(id)indexPath;
 - (id)collectionView:(id)view transitionLayoutForOldLayout:(id)oldLayout newLayout:(id)layout;
+- (void)collectionView:(id)view willDisplayCell:(id)cell forItemAtIndexPath:(id)indexPath;
+- (void)collectionView:(id)view willDisplaySupplementaryView:(id)view2 forElementKind:(id)elementKind atIndexPath:(id)indexPath;
 @end
 
