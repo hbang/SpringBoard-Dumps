@@ -25,6 +25,8 @@ It’s better to clone this repo to your computer and use `git diff`. See the ma
 * [7.1](https://github.com/hbang/SpringBoard-Dumps/tree/7.1)
 * [8.0](https://github.com/hbang/SpringBoard-Dumps/tree/8.0)
 * [8.1](https://github.com/hbang/SpringBoard-Dumps/tree/8.1)
+* [8.2](https://github.com/hbang/SpringBoard-Dumps/tree/8.2)
+* [8.3](https://github.com/hbang/SpringBoard-Dumps/tree/8.3)
 
 ## Doing it yourself
 The makefile is designed to support any iOS or OS X binary by only changing a variable or two, however do keep in mind that there’s already [nst/iOS-Runtime-Headers](https://github.com/nst/iOS-Runtime-Headers) for public/private frameworks and libraries.
@@ -36,4 +38,4 @@ The makefile is designed to support any iOS or OS X binary by only changing a va
 5. Be amazed at how long it takes.
 
 ## License
-Headers are public domain. The makefile is [Apache 2 licensed](https://www.apache.org/licenses/LICENSE-2.0.html).
+Headers are public domain. The makefile is licensed under the [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
