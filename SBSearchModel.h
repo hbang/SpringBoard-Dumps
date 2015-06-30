@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface SBSearchModel : XXUnknownSuperclass <SPDaemonQueryDelegate> {
 	NSTimer *_clearSearchTimer;
 	NSDate *_clearSearchDate;
-	NSMutableDictionary *_cachedImages;
+	CPLRUDictionary *_cachedImages;
 	NSObject<OS_dispatch_semaphore> *_cacheLock;
 }
 + (id)sharedInstance;

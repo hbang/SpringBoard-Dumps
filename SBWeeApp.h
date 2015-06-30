@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBWeeAppDelegate, BBWeeAppPresentationController;
+@protocol BBWeeAppPresentationController, SBWeeAppDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBWeeApp : XXUnknownSuperclass <BBWeeAppController, BBWeeAppControllerHost> {

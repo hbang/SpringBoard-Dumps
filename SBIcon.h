@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 	UIImage *_cachedIconImages[12];
 }
 @property(readonly, assign, nonatomic) BOOL shouldWarmUp;
-+ (id)_memoryMappedIconImageOfSize:(CGSize)size scale:(float)scale withDrawing:(id)drawing fallbackImage:(id)image;
++ (id)_iconImageOfSize:(CGSize)size scale:(float)scale failGracefully:(BOOL)gracefully drawing:(id)drawing;
 + (id)memoryMappedIconImageForIconImage:(id)iconImage;
 + (id)memoryMappedIconImageOfSize:(CGSize)size scale:(float)scale withDrawing:(id)drawing;
 - (id)init;

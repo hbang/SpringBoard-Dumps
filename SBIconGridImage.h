@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) unsigned numberOfColumns;
 @property(readonly, assign, nonatomic) unsigned numberOfRows;
 + (id)_gridImageForNumberOfCells:(unsigned)cells withPreviousGridImage:(id)previousGridImage cellImageProviderBlock:(id)block;
-+ (id)_gridImageMemoryPool;
 + (CGSize)cellSize;
 + (CGSize)cellSpacing;
 + (id)gridImageForNumberOfCells:(unsigned)cells withCellImageProviderBlock:(id)cellImageProviderBlock;

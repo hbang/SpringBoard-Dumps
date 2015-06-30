@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEmptyPlaceholder;
 - (BOOL)isGrabbedIconPlaceholder;
 - (BOOL)isPlaceholder;
+- (BOOL)isPlaceholderForIcon:(id)icon;
 - (BOOL)matchesRepresentation:(id)representation;
 - (id)nodeIdentifier;
 - (id)representation;

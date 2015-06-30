@@ -77,6 +77,8 @@ __attribute__((visibility("hidden")))
 - (double)_accessibilityDeactivationAnimationStartDelay;
 - (void)_accessibilityDeactivationAnimationWillBegin;
 - (id)_accessibilityFrontMostApplication;
+- (BOOL)_accessibilityIsSystemGestureActive;
+- (BOOL)_accessibilityObjectWithinProximity;
 - (id)_accessibilityRunningApplications;
 - (void)_accessibilitySetSystemGesturesDisabledByAccessibility:(BOOL)accessibility;
 - (BOOL)_accessibilityShouldAllowAppLaunch;
@@ -91,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_awayControllerWantsUserEventNotifications;
 - (void)_caseLatchWantsToAttemptLock;
 - (void)_clearAutoLockTimer;
+- (void)_createLogFile;
 - (int)_currentNonFlatDeviceOrientation;
 - (void)_effectiveSettingsDidChange;
 - (int)_frontMostAppOrientation;
@@ -172,7 +175,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)canShowAlerts;
 - (BOOL)canShowLockScreenCameraGrabber;
 - (BOOL)canShowLockScreenHUDControls;
-- (BOOL)canShowNowPlayingControls;
 - (void)cancelMenuButtonRequests;
 - (void)cancelSetBacklightFactorToZeroAfterDelay;
 - (BOOL)caseIsEnabledAndLatched;
@@ -238,7 +240,6 @@ __attribute__((visibility("hidden")))
 - (void)menuButtonUp:(GSEventRef)up;
 - (id)metaHostView;
 - (id)metaHostWindow;
-- (void)monitorForPurpleServerTermination;
 - (double)nextIdleTimeDuration;
 - (double)nextLockTimeDuration;
 - (void)noteAlertView:(id)view willChangeInterfaceOrientation:(int)orientation duration:(double)duration;
@@ -280,6 +281,7 @@ __attribute__((visibility("hidden")))
 - (void)setBacklightFactorToZeroAfterDelay;
 - (void)setExpectsFaceContact:(BOOL)contact;
 - (void)setExpectsFaceContact:(BOOL)contact inLandscape:(BOOL)landscape;
+- (void)setHardwareKeyboardLayoutName:(id)name;
 - (void)setHasMiniAlerts:(BOOL)alerts;
 - (void)setIdleTimerDisabled:(BOOL)disabled;
 - (void)setIdleTimerDisabled:(BOOL)disabled forReason:(id)reason;
@@ -326,5 +328,6 @@ __attribute__((visibility("hidden")))
 - (void)willDisplayMiniAlert;
 - (double)windowRotationDuration;
 - (void)wipeDeviceNow;
+- (void)writeLogFile;
 @end
 
