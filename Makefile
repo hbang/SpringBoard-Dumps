@@ -18,15 +18,14 @@ all:
 
 dump:
 	$(info Dumping SpringBoard for $(FIRMWARE))
-	git rm *.h || true
+	-git tag -d $(FIRMWARE)
+	-git rm *.h
 	$(CLASSDUMP) $(CDFLAGS) $(BINARYPATH)/$(CURRENTBINARY)
 	$(info Cleaning up output)
 	rm $(CURRENTBINARY).h
 	mv $(CURRENTBINARY)-Structs.h $(BINARYNAME)-Structs.h
 	for i in *.h; do \
-		# echo $$i; \
-		sed s/$(CURRENTBINARY)/$(BINARYNAME)/g $$i > tmp && \
-		grep -v '@class' tmp > $$i && \
+		sed s/$(CURRENTBINARY)/$(BINARYNAME)/g $$i | grep -v '@class' - > tmp && \
 		mv tmp $$i; \
 	done
 	$(info Committing and tagging)
