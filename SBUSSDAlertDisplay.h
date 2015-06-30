@@ -12,32 +12,37 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUSSDAlertDisplay : SBAlertView <UITextFieldDelegate> {
-	TPBottomSingleButtonBar *_responseBar;
+	TPButton *_dismissButton;
+	TPButton *_replyButton;
 	UIView *_notifyView;
 	UIView *_replyView;
 	UITransitionView *_transitionView;
-	UIScrollView *_scroller;
-	SBTextDisplayView *_contentView;
-	SBTextDisplayView *_charsRemainingView;
+	UITextView *_charsRemainingView;
 	UIActivityIndicatorView *_progressIndicator;
 	UITextField *_responseField;
+	UITextView *_textView;
+	UITextView *_responseMessageView;
 	BOOL _allowsResponse;
 }
 - (id)initWithFrame:(CGRect)frame;
 - (void)_cancelClicked;
+- (id)_charsRemainingView;
 - (id)_notifyView;
 - (void)_okayClicked;
 - (void)_replyClicked;
 - (id)_replyView;
+- (id)_responseMessageView;
 - (void)_setupResponseBar;
 - (void)_textChanged:(id)changed;
+- (id)_textView;
 - (void)_updateCharsRemaining;
 - (void)alertDisplayBecameVisible;
 - (void)alertDisplayWillBecomeVisible;
 - (void)alertStringAvailable:(id)available;
 - (BOOL)allowsResponse;
 - (void)dealloc;
-- (void)displayString:(id)string centerVertically:(BOOL)vertically;
+- (void)displayString:(id)string;
+- (void)layoutSubviews;
 - (void)setAllowsResponse:(BOOL)response;
 - (BOOL)textField:(id)field shouldInsertText:(id)text replacingRange:(NSRange)range;
 @end

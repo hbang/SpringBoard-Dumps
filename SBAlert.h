@@ -5,41 +5,48 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBDisplayProtocol.h"
+#import "SpringBoard-Structs.h"
 
+@protocol SBAlertDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBAlert : XXUnknownSuperclass <SBDisplayProtocol> {
+	id<SBAlertDelegate> _alertDelegate;
 	SBAlertView *_display;
 	NSMutableDictionary *_dictionary;
-	BOOL _SEO;
 	SBActivationContext *_activationContext;
+	BOOL _isWallpaperTunnelActive;
+	BOOL _backgroundStyleIsSet;
+	int _backgroundStyle;
 	NSMapTable *_displayValues;
 	NSHashTable *_displayFlags;
 	BOOL _orientationChangedEventsEnabled;
 	float _accelerometerSampleInterval;
-	BOOL _expectsFaceContact;
-	BOOL _expectsFaceContactInLandscape;
+	BOOL _requestedDismissal;
+	UIScreen *_targetScreen;
+	SBAlertManager *_alertManager;
 }
-@property(assign, nonatomic) BOOL SEO;
 @property(copy, nonatomic) SBActivationContext *activationContext;
-+ (id)_adapterForController:(id)controller;
-+ (void)activateAlertForController:(id)controller animated:(BOOL)animated animateCurrentDisplayOut:(BOOL)anOut withDelay:(BOOL)delay isSlidingDisplay:(BOOL)display;
-+ (void)alertAdapterDisplayDidDisappear:(id)alertAdapterDisplay;
-+ (id)alertWindow;
-+ (void)deactivateAlertForController:(id)controller animated:(BOOL)animated animateOldDisplayInWithStyle:(int)style isSlidingDisplay:(BOOL)display;
+@property(retain, nonatomic) SBAlertManager *alertManager;
+@property(assign, nonatomic, getter=_requestedDismissal, setter=_setRequestedDismissal:) BOOL requestedDismissal;
 + (void)registerForAlerts;
 + (void)test;
 - (id)init;
+- (id)_impersonatesApplicationWithBundleID;
+- (BOOL)_isLockAlert;
+- (void)_removeFromImpersonatedAppIfNecessary;
+- (id)_screen;
+- (void)_setTargetScreen:(id)screen;
+- (BOOL)_shouldDismissSwitcherOnActivation;
 - (double)accelerometerSampleInterval;
 - (void)activate;
 - (BOOL)activationFlag:(unsigned)flag;
 - (id)activationValue:(unsigned)value;
+- (id)alertDelegate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
-- (Class)alertWindowClass;
-- (CGRect)alertWindowRect;
+- (void)alertViewIsReadyToDismiss:(id)dismiss;
 - (BOOL)allowsEventOnlySuspension;
 - (BOOL)allowsStackingOfAlert:(id)alert;
 - (void)animateDeactivation;
@@ -50,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)clearDisplay;
 - (void)clearDisplaySettings;
 - (BOOL)currentlyAnimatingDeactivation;
+- (int)customBackgroundStyle;
 - (void)deactivate;
 - (BOOL)deactivationFlag:(unsigned)flag;
 - (id)deactivationValue:(unsigned)value;
@@ -59,28 +67,46 @@ __attribute__((visibility("hidden")))
 - (void)didAnimateLockKeypadOut;
 - (void)didFinishAnimatingIn;
 - (void)didFinishAnimatingOut;
+- (void)didMoveToParentViewController:(id)parentViewController;
+- (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
+- (void)dismissAlert;
 - (id)display;
+- (void)displayDidDisappear;
 - (BOOL)displayFlag:(unsigned)flag;
 - (id)displayValue:(unsigned)value;
 - (int)effectiveStatusBarStyle;
+- (id)effectiveStatusBarStyleRequest;
+- (id)effectiveViewController;
 - (BOOL)expectsFaceContact;
 - (BOOL)expectsFaceContactInLandscape;
 - (float)finalAlpha;
 - (void)handleAutoLock;
 - (BOOL)handleHeadsetButtonPressed:(BOOL)pressed;
 - (BOOL)handleLockButtonPressed;
+- (BOOL)handleMenuButtonDoubleTap;
+- (BOOL)handleMenuButtonHeld;
 - (BOOL)handleMenuButtonTap;
+- (void)handleSlideshowHardwareButton;
 - (BOOL)handleVolumeDownButtonPressed;
 - (BOOL)handleVolumeUpButtonPressed;
 - (BOOL)hasTranslucentBackground;
 - (int)interfaceOrientationForActivation;
+- (BOOL)isRemote;
+- (BOOL)isWallpaperTunnelActive;
+- (id)legibilitySettings;
+- (void)loadView;
+- (BOOL)managesOwnStatusBarAtActivation;
+- (BOOL)matchesRemoteAlertService:(id)service options:(id)options;
 - (id)objectForKey:(id)key;
 - (BOOL)orientationChangedEventsEnabled;
+- (void)removeBackgroundStyleWithAnimationFactory:(id)animationFactory;
 - (void)removeFromView;
 - (void)removeObjectForKey:(id)key;
 - (void)setAccelerometerSampleInterval:(double)interval;
 - (void)setActivationSetting:(unsigned)setting flag:(BOOL)flag;
 - (void)setActivationSetting:(unsigned)setting value:(id)value;
+- (void)setAlertDelegate:(id)delegate;
+- (void)setBackgroundStyle:(int)style withAnimationFactory:(id)animationFactory;
 - (void)setDeactivationSetting:(unsigned)setting flag:(BOOL)flag;
 - (void)setDeactivationSetting:(unsigned)setting value:(id)value;
 - (void)setDisplay:(id)display;
@@ -90,12 +116,25 @@ __attribute__((visibility("hidden")))
 - (void)setExpectsFaceContact:(BOOL)contact inLandscape:(BOOL)landscape;
 - (void)setObject:(id)object forKey:(id)key;
 - (void)setOrientationChangedEventsEnabled:(BOOL)enabled;
-- (BOOL)shouldDeactivateAlertItemsOnActivation;
+- (void)setWallpaperTunnelActive:(BOOL)active;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (BOOL)shouldPendAlertItemsWhileActive;
 - (BOOL)showsSpringBoardStatusBar;
+- (int)starkStatusBarStyle;
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
-- (BOOL)suppressesNotifications;
+- (id)statusBarStyleRequest;
+- (BOOL)suppressesBanners;
+- (BOOL)suppressesControlCenter;
+- (BOOL)suppressesNotificationCenter;
 - (BOOL)undimsDisplay;
+- (void)viewDidAppear:(BOOL)view;
+- (void)viewDidDisappear:(BOOL)view;
+- (void)viewWillAppear:(BOOL)view;
+- (void)viewWillDisappear:(BOOL)view;
+- (BOOL)wantsCustomBackgroundStyle;
+- (BOOL)wantsFullScreenLayout;
+- (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

@@ -13,11 +13,20 @@
 __attribute__((visibility("hidden")))
 @interface SBIconListPageControl : XXUnknownSuperclass {
 	id _delegate;
+	_UILegibilityImageSet *_pageIndicatorImageSet;
+	_UILegibilityImageSet *_enabledPageIndicatorImageSet;
 }
 @property(assign, nonatomic) id<SBIconListPageControlDelegate> delegate;
-- (id)_pageIndicatorCurrentImageForPage:(int)page;
-- (id)_pageIndicatorImageForPage:(int)page;
+@property(assign, nonatomic) _UILegibilityImageSet *enabledPageIndicatorImageSet;
+@property(assign, nonatomic) _UILegibilityImageSet *pageIndicatorImageSet;
+- (id)initWithFrame:(CGRect)frame;
+- (id)_indicatorViewEnabled:(BOOL)enabled index:(int)index;
+- (void)_setIndicatorImage:(id)image toEnabled:(BOOL)enabled;
+- (void)_transitionIndicator:(id)indicator toEnabled:(BOOL)enabled index:(int)index;
+- (void)dealloc;
+- (float)defaultHeight;
 - (void)setFrame:(CGRect)frame;
+- (void)setLegibilitySettings:(id)settings;
 - (void)touchesBegan:(id)began withEvent:(id)event;
 - (void)touchesEnded:(id)ended withEvent:(id)event;
 - (void)touchesMoved:(id)moved withEvent:(id)event;

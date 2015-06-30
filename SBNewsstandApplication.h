@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBApplication.h"
 #import "SpringBoard-Structs.h"
+#import "SBApplication.h"
 
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) BOOL iconIsBoundOnRight;
 @property(readonly, assign, nonatomic) BOOL isMagazineApp;
-- (id)initWithBundleIdentifier:(id)bundleIdentifier webClip:(id)clip path:(id)path bundle:(id)bundle infoDictionary:(id)dictionary isSystemApplication:(BOOL)application signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated;
+- (id)initWithBundleIdentifier:(id)bundleIdentifier webClip:(id)clip path:(id)path bundle:(id)bundle infoDictionary:(id)dictionary isSystemApplication:(BOOL)application signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated entitlements:(id)entitlements;
 - (void)activate;
 - (Class)iconClass;
 - (BOOL)isFakeApp;

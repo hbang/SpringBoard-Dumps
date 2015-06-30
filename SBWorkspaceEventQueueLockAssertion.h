@@ -11,8 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface SBWorkspaceEventQueueLockAssertion : XXUnknownSuperclass {
 	SBWorkspaceEventQueue *_eventQueue;
+	NSString *_reason;
 }
-- (id)initWithWorkspaceEventQueue:(id)workspaceEventQueue;
+- (id)initWithWorkspaceEventQueue:(id)workspaceEventQueue reason:(id)reason;
 - (void)dealloc;
+- (id)description;
+- (id)reason;
 @end
 

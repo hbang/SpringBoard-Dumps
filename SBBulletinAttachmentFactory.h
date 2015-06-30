@@ -28,5 +28,7 @@ __attribute__((visibility("hidden")))
 + (id)listThumbnailConstraintsForAttachmentType:(int)attachmentType;
 + (id)lockScreenFloatingImageForAttachmentType:(int)attachmentType thumbnailData:(id)data;
 + (id)lockScreenFloatingThumbnailContraintsForAttachmentType:(int)attachmentType;
++ (id)modalImageForAttachmentType:(int)attachmentType thumbnailData:(id)data;
++ (id)modalThumbnailConstraintsForAttachmentType:(int)attachmentType;
 @end
 

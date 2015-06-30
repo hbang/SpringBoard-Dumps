@@ -6,13 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBWindow.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppWindow : XXUnknownSuperclass {
+@interface SBAppWindow : SBWindow {
 }
 + (CGRect)constrainFrameToScreen:(CGRect)screen;
-- (void)becomeKeyWindow;
 @end
 

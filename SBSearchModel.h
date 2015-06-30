@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SPDaemonQueryDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SPDaemonQueryDelegate.h"
 
 @protocol OS_dispatch_semaphore;
 
@@ -14,20 +14,31 @@ __attribute__((visibility("hidden")))
 @interface SBSearchModel : XXUnknownSuperclass <SPDaemonQueryDelegate> {
 	NSTimer *_clearSearchTimer;
 	NSDate *_clearSearchDate;
-	CPLRUDictionary *_cachedImages;
-	NSObject<OS_dispatch_semaphore> *_cacheLock;
+	CPLRUDictionary *_cachedResultImages;
+	NSObject<OS_dispatch_semaphore> *_cacheResultLock;
+	NSOperationQueue *_prefetchOperationQueue;
+	NSOperationQueue *_loadOperationQueue;
+	NSOperation *_waitOperation;
+	void *_addressBook;
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_cacheImage:(id)image forKey:(id)key withCompletionBlock:(id)completionBlock;
 - (void)_clearSearchTimerFired;
 - (id)_customImageForPath:(id)path;
-- (id)_imageForDomain:(unsigned)domain andDisplayID:(id)anId;
+- (id)_imageForResult:(id)result inSection:(id)section withCompletionBlock:(id)completionBlock;
+- (id)_uniqueKeyForResult:(id)result withSearchDomain:(unsigned)searchDomain;
 - (void)_updateClearSearchTimerFireDate;
+- (id)cachedImageForResult:(id)result inSection:(id)section;
+- (void)cancelPrefetchingAndStartNewBatch;
+- (id)currentToken;
 - (void)dealloc;
+- (void)fetchImageForResult:(id)result inSection:(id)section withCompletionBlock:(id)completionBlock;
 - (void)handleOptionsForNewSections:(id)newSections;
-- (id)imageForDisplayIdentifier:(id)displayIdentifier spotlightKey:(id)key;
-- (id)imageViewForDomain:(unsigned)domain andDisplayID:(id)anId;
+- (void)invalidate;
 - (id)launchingURLForResult:(id)result withDisplayIdentifier:(id)displayIdentifier andSection:(id)section;
+- (id)operationFetchingImageForResult:(id)result inSection:(id)section withCompletionBlock:(id)completionBlock;
+- (BOOL)prefetchImageForResult:(id)result inSection:(id)section;
 - (void)resetClearSearchTimer;
 - (void)startClearSearchTimer;
 @end

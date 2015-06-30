@@ -5,19 +5,37 @@
  * Source: (null)
  */
 
-#import "SBSlidingAlertDisplay.h"
+#import "TPSuperBottomBarDelegateProtocol.h"
+#import "SBAlertView.h"
 #import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBTTYPromptAlertDisplay : SBSlidingAlertDisplay {
+@interface SBTTYPromptAlertDisplay : SBAlertView <TPSuperBottomBarDelegateProtocol> {
+	UIView *_containerView;
+	UIImageView *_backgroundView;
+	UIView *_voiceAndTTYWrapperView;
+	TPSuperBottomBar *_cancelBar;
+	TPLCDView *_promptView;
+	BOOL _didAnimateIn;
+	UIImage *_calleeImage;
+	BOOL _isFullscreenImage;
+	BOOL _imageSetupDone;
 }
-+ (id)bottomBarForInstance:(id)instance;
-+ (id)topBarForInstance:(id)instance;
-- (id)initWithSize:(CGSize)size;
 - (void)_chooseTTYMode:(id)mode;
 - (void)_chooseVoiceMode:(id)mode;
 - (void)_ignore:(id)ignore;
+- (float)_lcdYOffset;
 - (void)_makeCall;
+- (id)backgroundImage;
+- (void)bottomBarActionPerformed:(int)performed fromBar:(id)bar;
+- (void)computeImageInformation;
+- (id)customizedTitleForItemInBar:(id)bar withActionType:(int)actionType;
+- (void)dealloc;
+- (void)dismiss;
+- (BOOL)isSupportedInterfaceOrientation:(int)orientation;
+- (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
+- (void)startAnimatingIn;
+- (id)thumbnailImage;
 @end
 

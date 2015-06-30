@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinBusyClient.h"
 #import "BBObserverDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
 	NSMutableDictionary *_playingSounds;
 	BOOL _deviceIsLocked;
 	BOOL _quietModeEnabled;
+	unsigned _quietModeState;
 }
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
-- (void)_configureBBObserver;
-- (void)_enqueueBlock:(id)block;
+- (void)_enqueueBlock:(id)block forBulletin:(id)bulletin;
 - (void)_hardwareButtonPressed:(id)pressed;
 - (BOOL)_shouldHonorPlaySoundRequestForBulletin:(id)bulletin;
 - (void)bulletinWindowStoppedBeingBusy;
@@ -32,8 +32,13 @@ __attribute__((visibility("hidden")))
 - (void)killSoundForBulletin:(id)bulletin;
 - (void)killSounds;
 - (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
+- (void)observer:(id)observer noteAlertBehaviorOverrideStateChanged:(unsigned)changed;
 - (void)observer:(id)observer noteAlertBehaviorOverridesChanged:(unsigned)changed;
+- (void)observer:(id)observer noteInvalidatedBulletinIDs:(id)ids;
+- (void)observer:(id)observer noteServerConnectionStateChanged:(BOOL)changed;
 - (void)observer:(id)observer removeBulletin:(id)bulletin;
 - (BOOL)playSoundForBulletin:(id)bulletin;
+- (BOOL)quietModeEnabled;
+- (unsigned)quietModeState;
 @end
 

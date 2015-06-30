@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic, getter=isRingerMuted) BOOL ringerMuted;
 @property(assign) BOOL suppressHUD;
 + (BOOL)applicationCanBeConsideredNowPlaying:(id)playing;
++ (void)interrupt;
++ (void)sendResetPlaybackTimeoutCommand;
 + (id)sharedInstance;
 - (id)init;
 - (void)_airPlayPasswordAlertWillAppear;
@@ -55,26 +57,35 @@ __attribute__((visibility("hidden")))
 - (void)_systemVolumeChanged:(id)changed;
 - (void)_unregisterForNotifications;
 - (void)_updateAVRoutes;
+- (BOOL)addTrackToWishList;
+- (id)artwork;
 - (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
 - (void)audioDeviceControllerMediaServerDied:(id)died;
+- (BOOL)banTrack;
 - (BOOL)beginSeek:(int)seek;
 - (void)cancelVolumeEvent;
 - (BOOL)changeTrack:(int)track;
 - (void)dealloc;
 - (void)decreaseVolume;
 - (BOOL)endSeek:(int)seek;
-- (void)handleVolumeEvent:(GSEventRef)event;
+- (void)handleVolumeEvent:(IOHIDEventRef)event;
 - (BOOL)handsetRouteIsSelected;
 - (BOOL)hasTrack;
 - (void)increaseVolume;
+- (BOOL)isAdvertisement;
 - (BOOL)isFirstTrack;
 - (BOOL)isLastTrack;
 - (BOOL)isMovie;
+- (BOOL)isPaused;
 - (BOOL)isPlaying;
+- (BOOL)isRadioTrack;
+- (BOOL)isScreenSharing;
 - (BOOL)isTVOut;
 - (BOOL)lastSavedRingerMutedState;
+- (BOOL)likeTrack;
 - (id)mediaControlsDestinationApp;
 - (BOOL)muted;
+- (id)nameOfPickedRoute;
 - (id)nowPlayingAlbum;
 - (id)nowPlayingApplication;
 - (id)nowPlayingArtist;
@@ -96,9 +107,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)toggleShuffle;
 - (double)trackDuration;
 - (double)trackElapsedTime;
+- (BOOL)trackIsBanned;
 - (BOOL)trackIsBeingPlayedByMusicApp;
+- (BOOL)trackIsLiked;
+- (BOOL)trackIsOnWishList;
+- (BOOL)trackProhibitsSkip;
 - (BOOL)trackSupports15SecondFF;
 - (BOOL)trackSupports15SecondRewind;
+- (BOOL)trackSupportsIsBanned;
+- (BOOL)trackSupportsIsLiked;
 - (unsigned long long)trackUniqueIdentifier;
 - (void)updateScreenSharingStatusBarStyleOverride;
 - (void)updateScreenSharingStatusBarStyleOverrideSuppressionPreference;

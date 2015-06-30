@@ -11,8 +11,12 @@
 
 __attribute__((visibility("hidden")))
 @interface SBTelephonyManager : XXUnknownSuperclass {
+	BOOL _containsCellularRadio;
+	BOOL _hasCellularTelephony;
+	BOOL _hasCellularData;
+	BOOL _hasAppleTelephony;
+	BOOL _hasAnyTelephony;
 	NSString *_cachedCTRegistrationStatus;
-	BOOL _emergencyCallsOnly;
 	int _registrationStatus;
 	void *_suspendDormancyAssertion;
 	BOOL _signalStrengthHasBeenSet;
@@ -39,11 +43,20 @@ __attribute__((visibility("hidden")))
 	int _needsUserIdentificationModule;
 	NSString *_simStatus;
 	int _wantsToHideDataIndicators;
+	int _lteConnectionShows4G;
 	int _modemDataConnectionType;
 	BOOL _modemDataConnectionTypeIsKnown;
 	BOOL _fallingBackToCellular;
 	tcp_connection_fallback_watch_s *_cellularFallbackWatcher;
+	TUCall *_incomingCall;
+	TUCall *_activeCall;
+	TUCall *_heldCall;
+	TUCall *_outgoingCall;
 }
+@property(retain, nonatomic) TUCall *activeCall;
+@property(retain, nonatomic) TUCall *heldCall;
+@property(retain, nonatomic) TUCall *incomingCall;
+@property(retain, nonatomic) TUCall *outgoingCall;
 + (id)sharedTelephonyManager;
 + (id)sharedTelephonyManagerCreatingIfNecessary:(BOOL)necessary;
 - (id)init;
@@ -53,10 +66,12 @@ __attribute__((visibility("hidden")))
 - (id)SIMStatus;
 - (void)_avSystemControllerDidError:(id)_avSystemController;
 - (CFStringRef)_cachedCTRegistrationStatus;
+- (unsigned)_callCountForService:(int)service;
 - (void)_cancelFakeService;
 - (void)_delayedAudioResume;
 - (void)_fetchOperatorNameWithCompletion:(id)completion;
 - (void)_headphoneChanged:(id)changed;
+- (BOOL)_lteConnectionShows4G;
 - (void)_performQueryInBackground:(id)background withMainQueueResultHandler:(id)mainQueueResultHandler;
 - (void)_phoneActivationStateChanged:(id)changed;
 - (id)_phoneApp;
@@ -65,38 +80,36 @@ __attribute__((visibility("hidden")))
 - (void)_prepareToAnswerCall;
 - (BOOL)_pretendingToSearch;
 - (void)_provisioningUpdateWithStatus:(int)status;
-- (void)_proximityChanged:(id)changed;
 - (void)_reallySetOperatorName:(id)name;
 - (void)_resetCTMMode;
 - (void)_resetModemConnectionType;
 - (CTServerConnectionRef)_serverConnection;
-- (void)_serverConnectionDidError:(XXStruct_K5nmsA)_serverConnection;
+- (void)_serverConnectionDidError:(SBIconCoordinate)_serverConnection;
 - (void)_setCachedCTRegistrationStatus:(CFStringRef)status;
 - (void)_setCurrentActivationAlertItem:(id)item;
 - (void)_setIsInEmergencyCallbackMode:(unsigned char)emergencyCallbackMode;
 - (void)_setIsLoggingCallAudio:(BOOL)audio;
+- (void)_setIsUsingWiFiConnection:(BOOL)connection;
 - (void)_setRegistrationStatus:(int)status;
 - (void)_setSIMStatus:(id)status;
 - (void)_setSignalStrength:(long)strength andBars:(long)bars;
 - (void)_setWantsToHideDataIndicators:(int)hideDataIndicators;
 - (void)_startFakeServiceIfNecessary;
 - (void)_stopFakeService;
-- (void)_updateCanOnlyMakeEmergencyCalls;
 - (void)_updateLastKnownNetworkCountryCode;
 - (int)_updateModemDataConnectionTypeWithCTInfo:(id)ctinfo;
 - (void)_updateRegistrationNow;
 - (void)_updateState;
-- (void)_wokeFromSleep:(id)sleep;
 - (BOOL)activeCallExists;
 - (void)airplaneModeChanged;
-- (id)allMissedCallsAfterRowID:(long long)anId;
 - (int)callCount;
+- (void)callEventHandler:(id)handler;
 - (int)callForwardingIndicator;
 - (BOOL)callWouldUseReceiver:(BOOL)receiver;
-- (BOOL)canOnlyMakeEmergencyCalls;
 - (void)carrierBundleChanged;
 - (BOOL)cellularRadioCapabilityIsActive;
 - (void)configureForTTY:(BOOL)tty;
+- (BOOL)containsCellularRadio;
 - (id)copyMobileEquipmentInfo;
 - (id)copyTelephonyCapabilities;
 - (int)dataConnectionType;
@@ -104,9 +117,14 @@ __attribute__((visibility("hidden")))
 - (void)disconnectCall;
 - (void)disconnectCallAndActivateHeld;
 - (void)disconnectIncomingCall;
+- (id)displayedCall;
 - (void)dumpBasebandState:(id)state;
 - (void)exitEmergencyCallbackMode;
-- (long long)getRowIDOfLastCallInsert;
+- (unsigned)faceTimeAudioCallCount;
+- (void)handleCallControlFailure:(id)failure;
+- (BOOL)hasAnyTelephony;
+- (BOOL)hasCellularData;
+- (BOOL)hasCellularTelephony;
 - (BOOL)heldCallExists;
 - (BOOL)inCall;
 - (double)inCallDuration;
@@ -115,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)incomingCallExists;
 - (BOOL)isCallAmbiguous;
 - (BOOL)isEmergencyCallActive;
+- (BOOL)isEmergencyCallScheme:(id)scheme;
 - (BOOL)isInAirplaneMode;
 - (BOOL)isInEmergencyCallbackMode;
 - (BOOL)isLoggingCallAudio;
@@ -141,7 +160,6 @@ __attribute__((visibility("hidden")))
 - (void)setIsInAirplaneMode:(BOOL)airplaneMode;
 - (void)setIsNetworkTethering:(BOOL)tethering withNumberOfDevices:(int)devices;
 - (void)setIsUsingVPNConnection:(BOOL)connection;
-- (void)setIsUsingWiFiConnection:(BOOL)connection;
 - (void)setLimitTransmitPowerPerBandEnabled:(BOOL)enabled;
 - (void)setNetworkRegistrationEnabled:(BOOL)enabled;
 - (void)setOperatorName:(id)name;
@@ -150,6 +168,7 @@ __attribute__((visibility("hidden")))
 - (long)signalStrength;
 - (long)signalStrengthBars;
 - (void)swapCalls;
+- (unsigned)telephonyCallCount;
 - (id)ttyTitle;
 - (void)unmute;
 - (void)updateAirplaneMode;
@@ -162,6 +181,6 @@ __attribute__((visibility("hidden")))
 - (void)updateStatusBarCallDuration;
 - (void)updateStatusBarCallState:(BOOL)state;
 - (void)updateTTYIndicator;
-- (id)urlWithScheme:(id)scheme fromDialingNumber:(id)dialingNumber abUID:(int)uid urlPathAddition:(id)addition forceAssist:(BOOL)assist suppressAssist:(BOOL)assist6 wasAlreadyAssisted:(BOOL)assisted;
+- (id)urlWithScheme:(id)scheme fromDialingNumber:(id)dialingNumber abUID:(int)uid urlPathAddition:(id)addition service:(int)service forceAssist:(BOOL)assist suppressAssist:(BOOL)assist7 wasAlreadyAssisted:(BOOL)assisted;
 @end
 

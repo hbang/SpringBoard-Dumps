@@ -11,21 +11,16 @@
 
 __attribute__((visibility("hidden")))
 @interface SBIconRotationContainer : XXUnknownSuperclass {
-	UIView *_startSnapshot;
-	UIView *_endSnapshot;
-	SBIcon *_icon;
-	BOOL _shouldCrossfade;
-	int _toOrientation;
-	int _fromOrientation;
-	unsigned _startIndex;
-	unsigned _endIndex;
+	SBIconCoordinate _coordinate;
+	SBIconViewMap *_viewMap;
+	SBIconView *_startView;
+	SBIconView *_endView;
 }
-@property(retain, nonatomic) SBIcon *icon;
-- (void)crossfadeWithDuration:(double)duration inIconList:(id)iconList;
+@property(readonly, assign, nonatomic) SBIconCoordinate coordinate;
+@property(readonly, assign, nonatomic) SBIcon *endIcon;
+- (id)initWithFrame:(CGRect)frame startIcon:(id)icon endIcon:(id)icon3 viewMap:(id)map coordinate:(SBIconCoordinate)coordinate;
+- (void)crossfadeWithDuration:(double)duration;
 - (void)dealloc;
-- (id)newSnapshot:(id)snapshot includingShadows:(BOOL)shadows;
 - (void)prepareToCrossfade;
-- (void)setOrigin:(CGPoint)origin;
-- (void)setStartIcon:(id)icon endIcon:(id)icon2 inIconList:(id)iconList fromOrientation:(int)orientation toOrientation:(int)orientation5;
 @end
 

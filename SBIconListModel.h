@@ -5,23 +5,28 @@
  * Source: (null)
  */
 
+#import "NSFastEnumeration.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "SBIconIndexNode.h"
 #import "SBIconIndexMutableListObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconListModel : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver> {
+@interface SBIconListModel : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver, NSFastEnumeration> {
 	SBIconIndexMutableList *_icons;
 	NSHashTable *_nodeObservers;
+	NSHashTable *_listObservers;
 	BOOL _iconStateIsDirty;
 	SBFolder *_folder;
 }
 + (unsigned)maxIcons;
 + (Class)viewClass;
 - (id)initWithFolder:(id)folder;
+- (void)_notifyListObservers:(id)observers;
 - (BOOL)addIcon:(id)icon;
 - (BOOL)addIcon:(id)icon asDirty:(BOOL)dirty;
+- (void)addListObserver:(id)observer;
 - (void)addNodeObserver:(id)observer;
 - (BOOL)allowsAddingIcon:(id)icon;
 - (unsigned)compactIcons;
@@ -29,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsIcon:(id)icon;
 - (BOOL)containsLeafIconWithIdentifier:(id)identifier;
 - (BOOL)containsNodeIdentifier:(id)identifier;
+- (unsigned)countByEnumeratingWithState:(XXStruct_kFm5bA *)state objects:(id *)objects count:(unsigned)count;
 - (void)dealloc;
 - (id)description;
 - (unsigned)firstFreeSlotIndex;
@@ -56,8 +62,10 @@ __attribute__((visibility("hidden")))
 - (id)placeIcon:(id)icon atIndex:(unsigned *)index;
 - (void)removeIcon:(id)icon;
 - (void)removeIconAtIndex:(unsigned)index;
+- (void)removeListObserver:(id)observer;
 - (void)removeNodeObserver:(id)observer;
 - (id)representation;
-- (BOOL)resetWithRepresentation:(id)representation model:(id)model leafIdentifiersAdded:(id)added;
+- (BOOL)resetWithRepresentation:(id)representation model:(id)model overflowNodes:(id)nodes leafIdentifiersAdded:(id)added;
+- (void)warmUpIconImages;
 @end
 

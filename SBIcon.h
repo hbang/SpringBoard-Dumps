@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBIconIndexNode.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconIndexNode.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -15,33 +15,36 @@ __attribute__((visibility("hidden")))
 	NSHashTable *_observers;
 	id _badgeNumberOrString;
 	unsigned _uninstalled : 1;
-	UIImage *_cachedIconImages[12];
+	UIImage *_cachedIconImages[14];
 }
 @property(readonly, assign, nonatomic) BOOL shouldWarmUp;
 + (id)_iconImageOfSize:(CGSize)size scale:(float)scale failGracefully:(BOOL)gracefully drawing:(id)drawing;
++ (id)_iconImagesMemoryPool;
 + (id)memoryMappedIconImageForIconImage:(id)iconImage;
 + (id)memoryMappedIconImageOfSize:(CGSize)size scale:(float)scale withDrawing:(id)drawing;
 - (id)init;
 - (void)_notifyAccessoriesDidUpdate;
 - (void)_notifyImageDidUpdate;
 - (void)_notifyLaunchEnabledDidChange;
+- (id)accessoryTextForLocation:(int)location;
 - (int)accessoryTypeForLocation:(int)location;
 - (void)addNodeObserver:(id)observer;
 - (void)addObserver:(id)observer;
 - (BOOL)allowsUninstall;
+- (id)appPlaceholder;
 - (id)application;
 - (id)applicationBundleID;
 - (id)automationID;
 - (id)badgeNumberOrString;
-- (id)badgeTextForLocation:(int)location;
 - (int)badgeValue;
 - (BOOL)canEllipsizeLabel;
+- (BOOL)canReceiveGrabbedIcon;
 - (void)completeUninstall;
 - (id)containedNodeIdentifiers;
 - (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
+- (id)description;
 - (id)displayName;
-- (id)download;
 - (id)folder;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
@@ -49,12 +52,15 @@ __attribute__((visibility("hidden")))
 - (id)getGenericIconImage:(int)image;
 - (id)getIconImage:(int)image;
 - (id)getStandardIconImageForLocation:(int)location;
+- (id)getUnmaskedIconImage:(int)image;
 - (id)gridCellImage;
 - (BOOL)hasCachedImageForLocation:(int)location;
+- (BOOL)hasFolderIconView;
 - (BOOL)hasObserver:(id)observer;
 - (BOOL)iconAppearsInNewsstand;
 - (int)iconFormatForLocation:(int)location;
-- (id)iconOverlayImageForLocation:(int)location;
+- (Class)iconImageViewClassForLocation:(int)location;
+- (Class)iconViewClassForLocation:(int)location;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (BOOL)isApplicationIcon;
 - (BOOL)isBookmarkIcon;
@@ -66,13 +72,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)isNewsstandApplicationIcon;
 - (BOOL)isNewsstandIcon;
 - (BOOL)isPlaceholder;
-- (BOOL)isPrintStatusIcon;
+- (BOOL)isRecentlyUpdated;
 - (BOOL)isUninstalled;
 - (BOOL)isUserInstalledApplicationIcon;
 - (BOOL)isWebApplicationIcon;
-- (void)launch;
 - (BOOL)launchEnabled;
-- (void)launchFromViewSwitcher;
+- (void)launchFromLocation:(int)location;
 - (id)leafIdentifier;
 - (void)localeChanged;
 - (int)localizedCompareDisplayNames:(id)names;
@@ -82,6 +87,9 @@ __attribute__((visibility("hidden")))
 - (id)nodeIdentifier;
 - (id)nodesAlongIndexPath:(id)path consumedIndexes:(unsigned)indexes;
 - (void)noteBadgeDidChange;
+- (BOOL)progressIsPaused;
+- (float)progressPercent;
+- (int)progressState;
 - (void)purgeCachedImages;
 - (void)reloadIconImage;
 - (void)reloadIconImagePurgingImageCache:(BOOL)cache;

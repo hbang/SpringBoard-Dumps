@@ -5,18 +5,19 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAlert.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBSIMLockEntryAlert : SBAlert {
 	int _status;
 }
-- (id)init;
 - (void)activate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)deactivate;
+- (BOOL)hasTranslucentBackground;
+- (id)lockEntryView;
 - (int)status;
 @end
 

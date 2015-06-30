@@ -15,6 +15,7 @@
 - (id)rotatingContentViewForWindow:(id)window;
 - (id)rotatingFooterViewForWindow:(id)window;
 - (id)rotatingHeaderViewForWindow:(id)window;
+- (id)rotatingSnapshotViewForWindow:(id)window;
 - (BOOL)shouldWindowUseOnePartInterfaceRotationAnimation:(id)animation;
 - (void)window:(id)window didAnimateFirstHalfOfRotationToInterfaceOrientation:(int)interfaceOrientation;
 - (void)window:(id)window didRotateFromInterfaceOrientation:(int)interfaceOrientation;

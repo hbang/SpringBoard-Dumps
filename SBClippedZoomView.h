@@ -16,6 +16,5 @@ __attribute__((visibility("hidden")))
 }
 - (id)initWithClippingFrame:(CGRect)clippingFrame fullscreenZoomView:(id)view;
 - (void)dealloc;
-- (void)setRoundedCorners:(int)corners withCornersFrame:(CGRect)cornersFrame;
 @end
 

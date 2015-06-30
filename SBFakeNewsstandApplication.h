@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBNewsstandApplication.h"
 #import "SpringBoard-Structs.h"
+#import "SBNewsstandApplication.h"
 
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 + (id)fakeApplication;
 - (id)init;
+- (id)icon:(id)icon imageWithFormat:(int)format;
 - (BOOL)isFakeApp;
 @end
 

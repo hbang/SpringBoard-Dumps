@@ -6,13 +6,11 @@
  */
 
 #import "SBUIPluginControllerHost.h"
-#import "SBUIPluginViewController.h"
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIPluginHost : XXUnknownSuperclass <SBUIPluginControllerHost, SBUIPluginViewController> {
+@interface SBUIPluginHost : XXUnknownSuperclass <SBUIPluginControllerHost> {
 	SBUIPluginController *_plugin;
 	BOOL _expectsFaceContact;
 	BOOL _isPluginRunning;
@@ -39,8 +37,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)dismissPluginForEvent:(int)event;
 - (BOOL)expectsFaceContact;
-- (void)observeValueForKeyPath:(id)keyPath ofObject:(id)object change:(id)change context:(void *)context;
-- (CGSize)pluginDesiredSizeForRevealMode:(int)revealMode;
 - (BOOL)pluginHandledMenuButtonDownEvent;
 - (BOOL)pluginHandledMenuButtonTap;
 - (BOOL)pluginHandledPasscodeUnlockWithCompletion:(id)completion;
@@ -52,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)pluginWantsScreenDimInterval:(double *)interval;
 - (void)preparePluginForActivationEvent:(int)activationEvent afterInterval:(double)interval;
 - (void)uiPlugin:(id)plugin forceUpdateToInterfaceOrientation:(int)interfaceOrientation animated:(BOOL)animated;
-- (void)uiPlugin:(id)plugin ignoresKeyboardAvoidance:(BOOL)avoidance;
 - (void)uiPlugin:(id)plugin isNowRunning:(BOOL)running;
 - (BOOL)uiPlugin:(id)plugin launchApplicationWithBundleID:(id)bundleID openURL:(id)url;
 - (BOOL)uiPlugin:(id)plugin openURL:(id)url;
@@ -60,16 +55,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)uiPluginAttemptDeviceUnlock:(id)unlock withPassword:(id)password lockViewOwner:(id)owner;
 - (BOOL)uiPluginExpectsFaceContact:(id)contact;
 - (void)uiPluginUserEventOccurred:(id)occurred;
-- (BOOL)uiPluginWantsActivation:(id)activation forEvent:(int)event revealMode:(int)mode completion:(id)completion;
+- (BOOL)uiPluginWantsActivation:(id)activation forEvent:(int)event completion:(id)completion;
 - (void)uiPluginWantsDismissal:(id)dismissal withAnimation:(BOOL)animation;
-- (void)uiPluginWantsSizeUpdate:(id)update revealMode:(int)mode withBlock:(id)block;
-- (id)view;
-- (void)viewDidAppear;
-- (void)viewDidDisappear;
-- (void)viewDidRotateFromInterfaceOrientation:(int)view;
-- (void)viewWillAnimateRotationToInterfaceOrientation:(int)view;
-- (void)viewWillAppear;
-- (void)viewWillDisappear;
-- (void)viewWillRotateToInterfaceOrientation:(int)view;
 @end
 

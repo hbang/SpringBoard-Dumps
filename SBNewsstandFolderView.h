@@ -5,92 +5,27 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBFolderView.h"
+#import "SBIconIndexNodeObserver.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBNewsstandFolderView : SBFolderView {
+@interface SBNewsstandFolderView : SBFolderView <SBIconIndexNodeObserver> {
 	UIButton *_storeButton;
-	UIImageView *_navigationBar;
-	UIImageView *_bottomBar;
-	UITableView *_shelvesView;
-	SBNewsstandShelfFrameView *_shelfFrameView;
-	unsigned _minVisibleRow;
-	unsigned _maxVisibleRow;
-	int _lastConfiguredOrientation;
-	BOOL _didMakeHeaderVisible;
-	float _targetContentOffset;
-	BOOL _orientationShenanigans;
-	NSTimer *_autoscrollTimer;
-	double _autoscrollStartTime;
-	int _autoscrollDirection;
-	float _autoscrollIntensity;
-	SBNewsstandCardView *_cardView;
-	BOOL _showingCardView;
+	UIButton *_emptyImageButton;
+	SBNewsstandBackgroundView *_backgroundView;
 }
-+ (id)_bottombarImageForOrientation:(int)orientation;
-+ (id)_navbarImageForOrientation:(int)orientation;
-+ (id)woodImageForNotchDirection:(int)notchDirection inOrientation:(int)orientation;
-- (id)initWithFrame:(CGRect)frame;
-- (void)_autoscrollTimerFired:(id)fired;
-- (int)_autoscrollableDirections;
-- (void)_cancelAutoscroll;
-- (void)_configureBars;
-- (float)_contentHeightForCurrentConfiguration;
-- (float)_contentHeightForRows:(unsigned)rows;
-- (CGSize)_contentSizeForRows:(unsigned)rows inOrientation:(int)orientation;
-- (void)_createInitialIconViews;
-- (float)_extraRowPeekage;
-- (CGPoint)_getOriginForCardOnShelf;
-- (float)_heightPerRow;
-- (float)_labelHorizontalInset;
-- (float)_labelVerticalInset;
-- (float)_maxHeightForOrientation:(int)orientation;
-- (float)_maxVelocityInDirection:(int)direction;
-- (void)_placeBackgroundView;
-- (void)_placeBars;
-- (void)_placeIconListView;
-- (void)_placeShadow:(int)shadow;
-- (void)_placeShadows;
-- (void)_prepareToSetOrientation:(int)setOrientation dryRun:(BOOL)run;
-- (unsigned)_rowForScrollOffset:(float)scrollOffset;
-- (void)_setupBackgroundView;
-- (void)_setupFolderTitleLabel;
-- (void)_setupNavigationBar;
-- (id)_shadowForPosition:(int)position;
-- (id)_shadowImageForPosition:(int)position;
-- (float)_shelfHeaderHeight;
-- (BOOL)_shouldShowStoreButton;
-- (CGSize)_sizeForCurrentConfiguration;
-- (void)_storeAvailabilityDidChange:(id)_storeAvailability;
-- (void)_updateRotationDebugging;
-- (void)_updateVisibleRows;
-- (BOOL)canEditTitle;
-- (id)cardView;
-- (void)cleanUpAfterOrientationChange;
+- (id)initWithFolder:(id)folder orientation:(int)orientation;
+- (void)_layoutSubviews;
+- (void)_newsstandStoreAvailabilityDidChangeNotification:(id)_newsstandStoreAvailability;
+- (BOOL)_showsTitle;
+- (void)_storeButtonTapped:(id)tapped;
+- (float)_titleFontSize;
+- (void)_updateEmptyState;
 - (void)dealloc;
-- (void)didDropIconView;
-- (id)editTitleField;
-- (id)iconListView;
-- (BOOL)isScrolling;
-- (BOOL)isShowingCard;
-- (Class)notchViewClass;
-- (void)noteGrabbedIconLocation:(CGPoint)location;
-- (void)noteHasGrabbedIcon:(id)icon;
-- (int)numberOfSectionsInTableView:(id)tableView;
-- (void)prepareToDropIconView:(id)dropIconView targetFolderBounds:(CGRect *)bounds;
-- (void)prepareToSetOrientation:(int)setOrientation;
-- (CGRect)rectForNotchLinen;
-- (id)scrollOffset;
-- (void)scrollViewDidScroll:(id)scrollView;
-- (void)setFrame:(CGRect)frame;
-- (void)setRows:(unsigned)rows notchInfo:(XXStruct_9ihRqB)info orientation:(int)orientation;
-- (void)setScrollOffset:(id)offset;
-- (void)showStoreCard:(BOOL)card animate:(BOOL)animate;
-- (void)storeButtonClicked;
-- (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;
-- (float)tableView:(id)view heightForRowAtIndexPath:(id)indexPath;
-- (int)tableView:(id)view numberOfRowsInSection:(int)section;
+- (void)node:(id)node didAddContainedNodeIdentifiers:(id)identifiers;
+- (void)node:(id)node didRemoveContainedNodeIdentifiers:(id)identifiers;
+- (void)setFolder:(id)folder;
+- (void)setLegibilitySettings:(id)settings;
 @end
 

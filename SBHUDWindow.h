@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBWindow.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBHUDWindow : XXUnknownSuperclass {
+@interface SBHUDWindow : SBWindow {
 }
 - (BOOL)_ignoresHitTest;
 @end

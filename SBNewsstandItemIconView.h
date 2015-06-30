@@ -6,30 +6,20 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBNewsstandItemIconViewBase.h"
+#import "SBIconView.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBNewsstandItemIconView : SBNewsstandItemIconViewBase {
-	UIView *_iconTransformView;
-	UILabel *_indexLabel;
-	unsigned _newsstandIndex;
+@interface SBNewsstandItemIconView : SBIconView {
 }
-+ (CGSize)_maxLabelSize;
++ (int)_defaultIconFormat;
 + (CGSize)defaultIconSize;
-- (id)initWithDefaultSize;
 - (id)initWithFrame:(CGRect)frame;
-- (CGRect)_frameForAccessoryView;
-- (void)applyIconImageTransform:(CATransform3D)transform duration:(float)duration delay:(float)delay;
-- (id)createShadowImageView;
-- (void)dealloc;
-- (CGRect)defaultFrameForProgressBar;
-- (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;
-- (void)positionCloseBoxOfType:(int)type;
-- (void)positionIconImageView;
-- (void)positionLabel;
-- (void)prepareForRecycling;
-- (void)setIsGrabbed:(BOOL)grabbed;
-- (void)setNewsstandIndex:(unsigned)index;
+- (CGRect)_baseFrameForImageView;
+- (CGRect)_baseFrameForLabel;
+- (CGRect)_frameForImageView;
+- (CGRect)_frameForLabel;
+- (CGRect)_frameForUpdatedMarkWithLabelFrame:(CGRect)labelFrame;
+- (BOOL)_showsShadow;
 @end
 

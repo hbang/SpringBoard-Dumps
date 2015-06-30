@@ -11,9 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface SBSoundController : XXUnknownSuperclass {
 	NSMutableDictionary *_soundsBySystemSoundIDs;
-	AVController *_ringtoneController;
-	id _ringtoneObserver;
-	SBUISound *_ringtoneSound;
+	AVController *_avController;
+	SBUISound *_avControllerSound;
+	NSTimer *_avControllerMaxDurationTimer;
+	id _avControllerObserver;
+	NSMutableDictionary *_soundsByToneIdentifiers;
+	NSMutableDictionary *_toneAlertsByToneIdentifiers;
 	NSHashTable *_observers;
 	unsigned _pendingCallbacks;
 	NSMutableArray *_pendedCallbacks;
@@ -24,22 +27,23 @@ __attribute__((visibility("hidden")))
 - (void)_cleanupSystemSound:(unsigned long)sound andKill:(BOOL)kill;
 - (void)_endPendingCallbacksBlock;
 - (void)_enqueueCallback:(id)callback;
-- (void)_killRingtone;
+- (void)_killAVController;
+- (BOOL)_playAVItem:(id)item forSound:(id)sound;
 - (BOOL)_playRingtone:(id)ringtone;
 - (BOOL)_playSystemSound:(id)sound;
+- (BOOL)_playToneAlert:(id)alert;
 - (void)_ringerStateChanged:(id)changed;
 - (void)_soundDidFinishPlaying:(id)_sound;
 - (void)_soundDidStartPlaying:(id)_sound;
-- (BOOL)_stopAllSounds;
+- (void)_stopToneAlertForSound:(id)sound;
 - (void)addObserver:(id)observer;
 - (void)dealloc;
 - (BOOL)handleVolumeButtonDownEvent;
 - (BOOL)isPlaying:(id)playing;
 - (BOOL)isPlayingAnySound;
-- (BOOL)playSound:(id)sound;
-- (BOOL)playSound:(id)sound completion:(id)completion;
+- (BOOL)playSound:(id)sound environments:(int)environments completion:(id)completion;
 - (void)removeObserver:(id)observer;
-- (void)stopAllSounds;
-- (void)stopSound:(id)sound;
+- (BOOL)stopAllSounds;
+- (BOOL)stopSound:(id)sound;
 @end
 

@@ -5,30 +5,47 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBUIAnimationController.h"
+#import "SBUIMainScreenAnimationController.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIAnimationZoomUpApp : SBUIAnimationController {
-	UIView *_viewToAnimate;
+@interface SBUIAnimationZoomUpApp : SBUIMainScreenAnimationController {
 	UIView *_contextHostView;
-	BOOL _requiresHostView;
-	BOOL _activateBeforeHosting;
-	BOOL _animateBanner;
-	BOOL _doFadeInsteadOfZoom;
-	XXStruct_UhFvxB _fakeStatusBarInfo;
-	BOOL _fadeOrScatterSpringBoardIfNecessary;
+	BOOL _zoomHostView;
+	SBAppStatusBarTransitionInfo *_appStatusBarTransitionInfo;
+	int _animationTransition;
+	BOOL _finishedZooming;
+	BOOL _finishedActivating;
+	BOOL _finishedCrossfadingToHostView;
+	BOOL _animationFinished;
+	BOOL _fromSwitcher;
+	BOOL _fromNC;
+	BOOL _fromCC;
+	BOOL _fromAssistant;
+	UIView *_viewToAnimate;
 }
-@property(assign, nonatomic) BOOL fadeOrScatterSpringBoardIfNecessary;
+@property(assign, nonatomic) int animationTransition;
 - (id)initWithActivatingApp:(id)activatingApp;
 - (id)_animationProgressDependency;
 - (BOOL)_animationShouldStart;
+- (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
+- (void)_maybeReportAnimationFinished;
+- (void)_maybeStartCrossfade;
+- (void)_noteContextHostCrossfadeDidFinish;
+- (void)_noteZoomDidFinish;
 - (void)_prepareAnimation;
+- (BOOL)_shouldWaitForSiriDismissBeforeZooming;
 - (void)_startAnimation;
-- (void)animationDidStop:(id)animation finished:(id)finished context:(void *)context;
+- (void)animateFakeStatusBarWithParameters:(id)parameters;
+- (void)animateZoomWithCompletion:(id)completion;
+- (double)animationDelay;
+- (double)animationDuration;
+- (id)appStatusBarTransitionInfoWithStartStyleRequest:(id)startStyleRequest startOrientation:(int)orientation;
+- (void)cleanupZoom;
 - (void)dealloc;
-- (XXStruct_UhFvxB)fakeStatusBarInfoWithStartStyle:(int)startStyle startOrientation:(int)orientation;
+- (BOOL)isReasonableMomentToInterrupt;
+- (void)noteDependencyDidInvalidate;
+- (void)prepareZoom;
 @end
 

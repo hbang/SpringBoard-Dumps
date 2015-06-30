@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBUIAnimationControllerDelegate.h"
 #import "SBToAppWorkspaceTransaction.h"
+#import "SBUIAnimationControllerDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -15,14 +15,17 @@ __attribute__((visibility("hidden")))
 	BOOL _relaunchSuspended;
 	BOOL _keepWorkspaceSuspended;
 	BOOL _waitForReceiverChange;
+	SBDisableActiveInterfaceOrientationChangeAssertion *_disableActiveOrientationChangeAssertion;
+	SBStarkScreenController *_starkScreenController;
 }
+@property(retain, nonatomic) SBStarkScreenController *starkScreenController;
 - (id)initWithWorkspace:(id)workspace alertManager:(id)manager application:(id)application;
+- (id)_animationForApp:(id)app;
 - (void)_commit;
 - (void)_endAnimation;
 - (void)_handleAppRelaunch:(id)relaunch;
 - (id)_setupAnimationForApp:(id)app;
 - (void)_transactionComplete;
-- (void)animationController:(id)controller didCommitAnimation:(BOOL)animation withDuration:(double)duration afterDelay:(double)delay;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;

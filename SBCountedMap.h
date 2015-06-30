@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 - (id)init;
 - (void)checkinValue:(id)value;
+- (void)checkinValues:(id)values;
 - (id)checkoutValueForKey:(id)key creationBlock:(id)block;
 - (void)dealloc;
 @end

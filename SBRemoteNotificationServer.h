@@ -5,37 +5,49 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "APSConnectionDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
 @interface SBRemoteNotificationServer : XXUnknownSuperclass <APSConnectionDelegate> {
 	NSMutableDictionary *_bundleIdentifiersToClients;
 	NSMutableDictionary *_environmentsToConnections;
+	NSMutableSet *_bundleIdentifiersNeedingToken;
 	NSString *_lastNotificationReceivedBundleIdentifier;
+	NSMutableDictionary *_appImportanceTracker;
 }
 + (id)sharedInstance;
 - (id)init;
 - (id)_allPushRegisteredThirdPartyBundleIDs;
+- (id)_allTopicsForApplication:(id)application;
+- (void)_appDebugStateDidChange:(id)_appDebugState;
+- (void)_appImportanceDecreased:(id)decreased;
+- (void)_appImportanceIncreased:(id)increased;
+- (void)_appStateDidChange:(id)_appState;
+- (id)_cloudDatabaseTopicsForApplication:(id)application;
+- (void)_moveTopicsForApp:(id)app fromList:(unsigned)list toList:(unsigned)list3;
 - (id)allAppEnabledTypeValues;
 - (id)allSettingsEnabledTypeValues;
 - (unsigned)appEnabledTypesForBundleIdentifier:(id)bundleIdentifier;
 - (void)calculateTopics;
+- (void)clearMessageUserInfoForToken:(int)token forBundleIdentifier:(id)bundleIdentifier;
 - (void)connection:(id)connection didReceiveIncomingMessage:(id)message;
 - (void)connection:(id)connection didReceivePublicToken:(id)token;
+- (void)connection:(id)connection didReceiveToken:(id)token forTopic:(id)topic identifier:(id)identifier;
 - (void)dealloc;
 - (unsigned)getEffectiveEnabledTypesForApplication:(id)application;
 - (id)getMessageUserInfoForBundleIdentifier:(id)bundleIdentifier;
+- (id)getMessageUserInfoForToken:(int)token forBundleIdentifier:(id)bundleIdentifier;
 - (BOOL)hasRegisteredBundleIdentifiers;
 - (BOOL)isSystemwideEnabled;
 - (id)lastNotificationReceivedBundleIdentifier;
-- (void)noteApplicationFinishedLaunching:(id)launching;
 - (void)notePermissionAlertAcceptedTypes:(unsigned)types forBundleIdentifier:(id)bundleIdentifier;
 - (void)postSettingsChangedNotificationForBundleIdentifier:(id)bundleIdentifier;
 - (void)registerApplication:(id)application forEnvironment:(id)environment withTypes:(unsigned)types;
 - (void)run;
 - (void)setMessageUserInfo:(id)info forBundleIdentifier:(id)bundleIdentifier;
+- (void)setMessageUserInfo:(id)info forToken:(int)token forBundleIdentifier:(id)bundleIdentifier;
 - (void)setSettingsTypes:(unsigned)types forBundleIdentifier:(id)bundleIdentifier;
 - (void)setSystemwideEnabled:(BOOL)enabled;
 - (unsigned)settingsEnabledTypesForBundleIdentifier:(id)bundleIdentifier;

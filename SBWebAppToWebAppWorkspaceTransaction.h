@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SBWebAppToWebAppWorkspaceTransaction : SBAppToAppWorkspaceTransaction {
 }
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager from:(id)from to:(id)to;
+- (id)initWithWorkspace:(id)workspace alertManager:(id)manager from:(id)from to:(id)to activationHandler:(id)handler;
 - (int)_setupMilestonesFrom:(id)from to:(id)to;
 - (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
 @end

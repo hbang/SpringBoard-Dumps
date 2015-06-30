@@ -18,15 +18,16 @@ __attribute__((visibility("hidden")))
 	unsigned _settingsPresentedTypes;
 	NSData *_lastKnownDeviceToken;
 	NSDate *_missingDate;
-	int _dayOfLastContentPush;
-	unsigned _dailyCountOfContentPushes;
+	int _dayOfLastNewsstandPush;
+	unsigned _dailyCountOfNewsstandPushes;
 	BOOL _hasShownSystemwideEnableAlert;
 	NSDictionary *_lastUserInfo;
+	NSMapTable *_tokenToUserInfos;
 }
 @property(assign, nonatomic) unsigned appEnabledTypes;
 @property(readonly, assign, nonatomic) NSString *bundleIdentifier;
-@property(assign, nonatomic) unsigned dailyCountOfContentPushes;
-@property(assign, nonatomic) int dayOfLastContentPush;
+@property(assign, nonatomic) unsigned dailyCountOfNewsstandPushes;
+@property(assign, nonatomic) int dayOfLastNewsstandPush;
 @property(retain, nonatomic) NSString *environment;
 @property(assign, nonatomic) BOOL hasShownSystemwideEnableAlert;
 @property(retain, nonatomic) NSData *lastKnownDeviceToken;
@@ -34,10 +35,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *missingDate;
 @property(assign, nonatomic) unsigned settingsEnabledTypes;
 @property(assign, nonatomic) unsigned settingsPresentedTypes;
+@property(readonly, assign, nonatomic) NSMapTable *tokenToUserInfos;
 - (id)initWithBundleIdentifier:(id)bundleIdentifier;
 - (id)initWithCoder:(id)coder;
 - (void)dealloc;
 - (unsigned)effectivelyEnabledTypes;
 - (void)encodeWithCoder:(id)coder;
+- (id)getUserInfoForToken:(int)token;
+- (void)setUserInfo:(id)info forToken:(int)token;
 @end
 

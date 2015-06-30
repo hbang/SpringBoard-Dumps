@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface SBDiskSpaceAlertItem : XXUnknownSuperclass {
 	int _usageButtonIndex;
 }
+- (id)init;
 - (void)_showUsagePrefs;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

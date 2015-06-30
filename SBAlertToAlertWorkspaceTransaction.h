@@ -6,23 +6,33 @@
  */
 
 #import "SBWorkspaceTransaction.h"
+#import "SBUIAnimationControllerDelegate.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBAlertToAlertWorkspaceTransaction : SBWorkspaceTransaction {
+@interface SBAlertToAlertWorkspaceTransaction : SBWorkspaceTransaction <SBUIAnimationControllerDelegate> {
 	SBAlert *_activatingAlert;
 	SBAlert *_deactivatingAlert;
 	BOOL _activation;
+	SBUIAnimationController *_animation;
+	BOOL _animatingAlertDeactivation;
 }
 - (id)initActivationWithWorkspace:(id)workspace alertManager:(id)manager from:(id)from to:(id)to;
 - (id)initDeactivationWithWorkspace:(id)workspace alertManager:(id)manager from:(id)from to:(id)to;
+- (void)_alertAnimationComplete:(id)complete;
 - (void)_commit;
+- (void)_deactivateAlertIfNecessary;
+- (void)_endAnimation;
+- (void)_handleFailure;
 - (id)_initWithWorkspace:(id)workspace alertManager:(id)manager activatingAlert:(id)alert deactivatingAlert:(id)alert4 activation:(BOOL)activation;
-- (BOOL)alertDidDeactivate:(id)alert overAlerts:(id)alerts;
+- (void)_transactionComplete;
+- (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
+- (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
 - (id)debugDescription;
 - (BOOL)selfAlertDidActivate:(id)selfAlert overAlerts:(id)alerts;
+- (BOOL)selfAlertDidDeactivate:(id)selfAlert;
 - (BOOL)selfAlertWillActivate:(id)selfAlert overAlerts:(id)alerts;
-- (BOOL)selfAlertWillDeactivate:(id)selfAlert overAlerts:(id)alerts;
+- (BOOL)selfAlertWillDeactivate:(id)selfAlert;
 @end
 

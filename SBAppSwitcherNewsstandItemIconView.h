@@ -6,19 +6,16 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBNewsstandItemIconViewBase.h"
+#import "SBNewsstandItemIconView.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppSwitcherNewsstandItemIconView : SBNewsstandItemIconViewBase {
+@interface SBAppSwitcherNewsstandItemIconView : SBNewsstandItemIconView {
 }
-+ (Class)_labelImageParametersClassForIcon:(id)icon location:(int)location;
++ (int)_defaultIconFormat;
++ (float)_labelHeight;
 - (id)initWithFrame:(CGRect)frame;
-- (id)_superviewForAccessoryView;
-- (void)_updateLabelVisibility;
-- (CGRect)defaultFrameForProgressBar;
-- (void)positionCloseBoxOfType:(int)type;
-- (void)positionIconImageView;
-- (void)setShadowsHidden:(BOOL)hidden;
+- (CGRect)_frameForLabel;
+- (float)_labelVerticalOffset;
 @end
 

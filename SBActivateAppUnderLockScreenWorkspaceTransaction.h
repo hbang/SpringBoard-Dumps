@@ -10,13 +10,21 @@
 
 __attribute__((visibility("hidden")))
 @interface SBActivateAppUnderLockScreenWorkspaceTransaction : SBToAppWorkspaceTransaction {
-	SBAwayController *_awayController;
+	SBLockScreenViewControllerBase *_lockScreenController;
+	SBDisableActiveInterfaceOrientationChangeAssertion *_disableActiveOrientationChangeAssertion;
 }
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager application:(id)application awayController:(id)controller;
+- (id)initWithWorkspace:(id)workspace alertManager:(id)manager application:(id)application lockScreenController:(id)controller;
+- (id)initWithWorkspace:(id)workspace alertManager:(id)manager application:(id)application lockScreenController:(id)controller activationHandler:(id)handler;
+- (void)_alertDidActivate;
 - (void)_commit;
 - (void)_handleAppActivationFailure;
+- (void)_setupAndActivate;
+- (BOOL)_shouldWorkspaceBeSuspended;
+- (void)_suspendWorkspaceIfNecessary;
+- (void)_transactionComplete;
 - (void)dealloc;
 - (BOOL)selfAlertDidActivate:(id)selfAlert overAlerts:(id)alerts;
+- (BOOL)selfApplicationActivated:(id)activated;
 - (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
 - (BOOL)selfApplicationExited:(id)exited;
 - (BOOL)selfApplicationLaunchDidFail:(id)selfApplicationLaunch;

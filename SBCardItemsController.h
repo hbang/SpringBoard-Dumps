@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBCardItemsControllerRemoteInterface.h"
 #import "XPCProxyTarget.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBCardItemsControllerRemoteInterface.h"
 
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_activateAllCardItems;
 - (void)_addControllerWithConnection:(id)connection;
+- (void)_updateThumbnailForCardItem:(id)cardItem withSnapshotter:(id)snapshotter completion:(id)completion;
 - (void)addCardItems:(id)items forControllerWithIdentifier:(id)identifier;
 - (void)cardItemsDidChange:(id)cardItems forControllerWithIdentifier:(id)identifier;
 - (void)clearCardItemsForControllerWithIdentifier:(id)identifier;

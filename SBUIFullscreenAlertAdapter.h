@@ -5,32 +5,36 @@
  * Source: (null)
  */
 
+#import "SBAlertAdapter.h"
 #import "SpringBoard-Structs.h"
-#import "SBAlert.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIFullscreenAlertAdapter : SBAlert {
-	SBUIFullscreenAlertController *_alertController;
-	SBAlertView *_alertDisplay;
+@interface SBUIFullscreenAlertAdapter : SBAlertAdapter {
 	BOOL _animatingDeactivation;
+	BOOL _animatingActivation;
 }
++ (id)_adapterForController:(id)controller;
++ (void)activateAlertForController:(id)controller animated:(BOOL)animated animateCurrentDisplayOut:(BOOL)anOut withDelay:(BOOL)delay isSlidingDisplay:(BOOL)display;
++ (void)alertAdapterDisplayDidDisappear:(id)alertAdapterDisplay;
++ (void)deactivateAlertForController:(id)controller animated:(BOOL)animated animateOldDisplayInWithStyle:(int)style isSlidingDisplay:(BOOL)display;
 - (id)initWithAlertController:(id)alertController;
 - (void)_pluginViewAnimatedOut:(id)anOut;
+- (void)_pluginViewDidAnimatedIn:(id)_pluginView;
+- (BOOL)_shouldDismissSwitcherOnActivation;
 - (void)_updateForTransparentDismiss:(id)transparentDismiss;
-- (id)alertController;
+- (void)activate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
-- (void)alertWindow:(id)window didRotateFromInterfaceOrientation:(int)interfaceOrientation;
-- (void)alertWindow:(id)window resizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame3;
-- (void)alertWindow:(id)window willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
-- (void)alertWindow:(id)window willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (BOOL)allowsEventOnlySuspension;
 - (BOOL)allowsStackingOfAlert:(id)alert;
+- (void)animateViewIn;
 - (void)animateViewOut;
 - (BOOL)currentlyAnimatingDeactivation;
+- (void)deactivate;
 - (void)dealloc;
-- (id)description;
-- (BOOL)dismissPresentedModalAlertIfNecessary;
+- (id)display;
+- (void)displayDidDisappear;
+- (id)effectiveViewController;
 - (void)handleAutoLock;
 - (BOOL)handleHeadsetButtonPressed:(BOOL)pressed;
 - (BOOL)handleLockButtonPressed;
@@ -38,11 +42,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)handleVolumeDownButtonPressed;
 - (BOOL)handleVolumeUpButtonPressed;
 - (BOOL)hasTranslucentBackground;
-- (void)launchSucceeded:(BOOL)succeeded;
+- (BOOL)isCurrentlyAnimatingActivation;
+- (void)prepareViewToAnimateIn;
 - (void)prepareViewToAnimateOut;
-- (void)presentAlertModally:(id)modally;
+- (void)setDisplay:(id)display;
+- (void)setDisplaySetting:(unsigned)setting flag:(BOOL)flag;
 - (void)setViewShouldAnimateIn:(BOOL)animateIn;
-- (BOOL)viewDisplaysAboveStatusBar;
 - (BOOL)viewIsReadyToBeRemoved;
+- (void)viewWillAppear:(BOOL)view;
 @end
 

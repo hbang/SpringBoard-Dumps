@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBWindow.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIAnimationWindow : XXUnknownSuperclass {
+@interface SBUIAnimationWindow : SBWindow {
 }
 - (id)initWithFrame:(CGRect)frame;
 @end

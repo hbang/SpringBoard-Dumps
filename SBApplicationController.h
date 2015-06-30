@@ -6,19 +6,18 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBApplicationRestrictionDataSource.h"
+#import "SBLSApplicationLifecycleObserver.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBApplicationController : XXUnknownSuperclass {
-	SBDataLookupResults *_pendingDataLookupResults;
-	NSLock *_pendingDataLookupResultsLock;
+@interface SBApplicationController : XXUnknownSuperclass <SBApplicationRestrictionDataSource, SBLSApplicationLifecycleObserver> {
 	NSMutableDictionary *_applications;
 	NSMutableDictionary *_applicationsByBundleIdentifer;
 	NSMutableSet *_applicationsPlayingMutedAudioSinceLastLock;
 	SBApplication *_applicationCurrentlyRecordingAudio;
 	int _locationStatusBarIconType;
 	NSDictionary *_backgroundDisplayDict;
-	unsigned _ignoreUninstallationEventCount;
 	NSOperationQueue *_backgroundOperationQueue;
 	NSLock *_applicationsLock;
 	NSMutableDictionary *_systemAppsVisibilityOverrides;
@@ -26,34 +25,30 @@ __attribute__((visibility("hidden")))
 	BKSApplicationStateMonitor *_appStateMonitor;
 	BOOL _booting;
 	NSMutableSet *_appsToAutoLaunchAfterBoot;
+	SBApplicationRestrictionController *_restrictionController;
+	SBLSApplicationWorkspaceObserver *_lsWorkspaceObserver;
+	NSCountedSet *_pendingRequestedUninstallsBundleID;
 }
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
-- (BOOL)_applicationHasBeenModified:(id)modified applicationDictionary:(id)dictionary;
-- (void)_applicationRegistrationChangedCallback:(id)callback info:(id)info;
-- (void)_applicationsRegistered:(id)registered;
-- (void)_applicationsRegistered:(id)registered unregistered:(id)unregistered;
-- (void)_applicationsUnregistered:(id)unregistered;
-- (void)_calculateApplicationDiff:(id *)diff removed:(id *)removed applicationDictionaries:(id)dictionaries;
-- (void)_decrementUninstallationEventCount;
-- (void)_handleDataLookupResultsIfReceived;
-- (BOOL)_hasRequiredCapabilities:(id)capabilities;
-- (void)_loadApplication:(id)application dictionary:(id)dictionary;
-- (void)_loadApplication:(id)application dictionary:(id)dictionary allowDemoOnly:(BOOL)only;
-- (id)_loadApplications:(BOOL)applications applicationDictionaries:(id)dictionaries;
-- (id)_loadApplications:(id)applications removed:(id)removed applicationDictionaries:(id)dictionaries updateRestrictions:(BOOL)restrictions;
-- (void)_loadApplicationsAndIcons:(id)icons removed:(id)removed applicationDictionaries:(id)dictionaries reveal:(BOOL)reveal popIn:(BOOL)anIn reloadAllIcons:(BOOL)icons6;
+- (BOOL)_applicationHasBeenModified:(id)modified applicationProxy:(id)proxy;
+- (void)_calculateApplicationDiff:(id *)diff removed:(id *)removed applicationProxies:(id)proxies;
+- (void)_deviceFirstUnlocked;
+- (id)_getLSApplicationProxies;
+- (void)_loadApplication:(id)application proxy:(id)proxy;
+- (id)_loadApplications:(id)applications removed:(id)removed applicationProxies:(id)proxies;
+- (void)_loadApplicationsAndIcons:(id)icons removed:(id)removed applicationProxies:(id)proxies reveal:(BOOL)reveal popIn:(BOOL)anIn reloadAllIcons:(BOOL)icons6;
 - (void)_lockStateChanged:(id)changed;
 - (void)_mediaServerConnectionDied:(id)died;
 - (void)_memoryWarningReceived;
-- (id)_modifiedApplications:(id)applications applicationDictionaries:(id)dictionaries;
-- (void)_postLoadApplications:(id)applications removed:(id)removed modified:(id)modified updateRestrictions:(BOOL)restrictions;
+- (id)_modifiedApplications:(id)applications applicationProxies:(id)proxies;
 - (void)_preLoadApplications;
 - (void)_recordingStateChanged:(id)changed;
 - (void)_registerForAVSystemControllerNotifications;
 - (void)_reloadBackgroundIDsDict;
+- (void)_removePendingRequestedUninstalledBundleID:(id)anId;
 - (void)_sendInstalledAppsDidChangeNotification:(id)_sendInstalledApps removed:(id)removed modified:(id)modified;
 - (void)_setVisibilityOverridesAreDirty:(BOOL)dirty;
 - (void)_unregisterForAVSystemControllerNotifications;
@@ -67,26 +62,27 @@ __attribute__((visibility("hidden")))
 - (id)applicationCurrentlyRecordingAudio;
 - (id)applicationWithDisplayIdentifier:(id)displayIdentifier;
 - (id)applicationWithPid:(int)pid;
+- (void)applicationsInstalled:(id)installed;
+- (void)applicationsUninstalled:(id)uninstalled;
 - (id)applicationsWithBundleIdentifier:(id)bundleIdentifier;
 - (id)applicationsWithPid:(int)pid;
 - (void)autoLaunchAppsIfNecessaryAfterBoot;
 - (void)buildLocationState;
+- (id)clockApplication;
 - (id)dataActivation;
 - (void)dealloc;
-- (id)dequeuePendingDataLookupResults;
-- (BOOL)hasPendingDataLookupResults;
+- (id)faceTimeApp;
 - (id)iPod;
 - (BOOL)loadApplication:(id)application;
 - (id)loadApplications;
 - (void)loadApplicationsAndIcons:(id)icons reveal:(BOOL)reveal popIn:(BOOL)anIn;
-- (void)loadApplicationsWithBundle:(id)bundle bundlePath:(id)path isSystemApplication:(BOOL)application defaultTags:(id)tags signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated seatbeltEnvironmentVariables:(id)variables;
+- (void)loadApplicationsWithBundle:(id)bundle bundlePath:(id)path isSystemApplication:(BOOL)application defaultTags:(id)tags signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated seatbeltEnvironmentVariables:(id)variables entitlements:(id)entitlements;
 - (void)loadWebclipAndIcon:(id)icon;
 - (int)locationStatusBarIconType;
 - (id)mobilePhone;
 - (id)newsstandApps;
-- (void)processPendingInstalls;
-- (void)queuePendingDataLookupResults:(id)results;
 - (void)removeApplicationsFromModelWithBundleIdentifier:(id)bundleIdentifier;
+- (id)restrictionController;
 - (id)setupApplication;
 - (void)uninstallApplication:(id)application;
 - (BOOL)updateAppIconVisibilityOverridesShowing:(id *)showing hiding:(id *)hiding;

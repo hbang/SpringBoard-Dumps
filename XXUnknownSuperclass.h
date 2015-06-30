@@ -5,8 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
+#import "SBUIQuietModePlayability.h"
 
 
 @interface XXUnknownSuperclass (SBApplicationAdditions)
@@ -59,62 +60,58 @@
 @end
 
 @interface XXUnknownSuperclass (AlertItemsAdditions)
-- (void)addObjectsOfClass:(Class)aClass toArray:(id)array;
+- (void)addUniqueObjectsOfClass:(Class)aClass toArray:(id)array;
 - (id)objectOfClass:(Class)aClass;
-@end
-
-@interface XXUnknownSuperclass (Formatting)
-- (id)ICCID;
-- (id)IMEI;
-@end
-
-@interface XXUnknownSuperclass (SBIconListNumberOffset)
-- (void)setCurrentPageWithIconListNumber:(int)iconListNumber;
-- (void)setNumberOfPagesWithIconListCount:(int)iconListCount;
-@end
-
-@interface XXUnknownSuperclass (SpringBoardMetadata)
-- (id)cachedApplicationIdentifier;
-- (BOOL)cachedArtworkIsPrerendered;
-- (id)cachedBundleIdentifier;
-- (id)cachedSoftwareType;
-- (id)cachedTitle;
 @end
 
 @interface XXUnknownSuperclass (SBOptimizedCombination)
 - (id)dictionaryByAddingEntriesFromDictionary:(id)dictionary;
 @end
 
-@interface XXUnknownSuperclass (SBTimeUtilities)
-- (BOOL)isAfterDate:(id)date;
-- (BOOL)isBeforeDate:(id)date;
+@interface XXUnknownSuperclass (SpringBoardContextHosting)
+- (BOOL)sbs_hasBeenOverridenAlready;
+- (void)sbs_setHasBeenOverriddenAlready:(BOOL)already;
 @end
 
-@interface XXUnknownSuperclass (SBTimeUtilities)
-- (BOOL)isSameDayAsComponents:(id)components;
-- (BOOL)isSameMonthAsComponents:(id)components;
-- (BOOL)isSameYearAsComponents:(id)components;
+@interface XXUnknownSuperclass (AccessibilityCategory)
++ (id)preferredFontIgnoringAccessibilitySizeWithTextStyle:(id)textStyle;
++ (id)preferredFontIgnoringAccessibilitySizeWithTextStyle:(id)textStyle traits:(unsigned)traits;
 @end
 
-@interface XXUnknownSuperclass (SBTimeUtilities)
-- (id)_dateOnlyComponentsForDate:(id)date;
-- (id)_timeOnlyComponentsForDate:(id)date;
-- (BOOL)date:(id)date isSameDayAsDate:(id)date2;
-- (BOOL)date:(id)date isSameYearAsDate:(id)date2;
+@interface XXUnknownSuperclass (SBUtilities)
+- (void)sb_setBoundsAndPositionFromFrame:(CGRect)frame;
 @end
 
-@interface XXUnknownSuperclass (SBSearchView)
-- (void)printPinningResponderInfoIfNecessary;
+@interface XXUnknownSuperclass (SBAdditions)
+- (void)logStateOperationCountGreaterThan:(int)than;
 @end
 
-@interface XXUnknownSuperclass (SBTypeSafety)
-- (id)objectForKey:(id)key ofClass:(Class)aClass;
+@interface XXUnknownSuperclass (SpringBoard)
 @end
 
 @interface XXUnknownSuperclass (SBGraphics)
+@property(readonly, assign, nonatomic) CGSize pixelSize;
 + (unsigned long)sbg_bytesNeededForSize:(CGSize)size scale:(float)scale withContextType:(int)contextType;
 + (id)sbg_imageFromContextWithSize:(CGSize)size scale:(float)scale type:(int)type pool:(id)pool drawing:(id)drawing;
 + (id)sbg_imageFromContextWithSize:(CGSize)size scale:(float)scale type:(int)type pool:(id)pool drawing:(id)drawing encapsulation:(id)encapsulation;
+- (CGImageSourceRef)_newSource;
+- (CGImageRef)_newThumbnailWithImageSource:(CGImageSourceRef)imageSource forMaxPixelDimension:(float)maxPixelDimension;
+- (CGImageRef)_newThumbnailWithJPEG:(id)jpeg forMaxPixelDimension:(float)maxPixelDimension;
+- (id)_thumbnailFitToSize:(CGSize)size;
+- (BOOL)isAnimated;
+- (id)sbg_memoryMappedImageWithPool:(id)pool;
+- (id)sbg_resizeImageToSize:(CGSize)size;
+- (id)sbg_resizeImageToSize:(CGSize)size preservingAspectRatio:(BOOL)ratio;
+- (id)sbg_squareImage;
+- (id)sbg_thumbnailFitToSize:(CGSize)size;
+@end
+
+@interface XXUnknownSuperclass (SBIconScales)
++ (float)scaleForApplicationIconFormat:(int)applicationIconFormat;
+@end
+
+@interface XXUnknownSuperclass (SBSystemLocalNotificationAlert)
+- (BOOL)isSystemLocalNotificationAlert;
 @end
 
 @interface XXUnknownSuperclass (SBBulletinBanner)
@@ -122,9 +119,8 @@
 - (void)_setReceivedTime:(id)time;
 @end
 
-@interface XXUnknownSuperclass (CompletionSupport)
-- (id)_completionBlock;
-- (void)_setCompletionBlock:(id)block;
+@interface XXUnknownSuperclass (SpringBoard)
+- (float)sb_yPositionForLabelWithContainerBounds:(CGRect)containerBounds lineHeight:(float)height baselineOffset:(float)offset font:(id)font;
 @end
 
 @interface XXUnknownSuperclass (SBIconIndex)
@@ -133,18 +129,23 @@
 - (id)_subpathWithRange:(NSRange)range;
 - (id)indexPathWithPrefixPath:(id)prefixPath;
 - (BOOL)isPrefixedByPath:(id)path;
+- (unsigned)sbIconIndex;
+- (unsigned)sbListIndex;
 - (id)subpathFromPosition:(unsigned)position;
 @end
 
 @interface XXUnknownSuperclass (SBUtilities)
-- (id)initWithBBSound:(id)bbsound;
++ (id)soundWithBBSound:(id)bbsound;
 @end
 
 @interface XXUnknownSuperclass (SBUtilities)
 - (id)iconImageWithFormat:(int)format;
+- (id)iconImageWithFormat:(int)format overridingBundleID:(id)anId;
 @end
 
-@interface XXUnknownSuperclass (SBUtilities)
+@interface XXUnknownSuperclass (SBUtilities) <SBUIQuietModePlayability>
+- (BOOL)isCritical;
+- (BOOL)overridesQuietMode;
 - (id)sectionIconImageWithFormat:(int)format;
 @end
 
@@ -163,6 +164,34 @@
 @end
 
 @interface XXUnknownSuperclass (SpringBoardAdditions)
+- (void)_printLayer:(id)layer level:(int)level;
 - (BOOL)hasActiveKeyboardOnScreen;
+- (id)sb_snapshotImage;
+- (void)sbs_printLayerHierarchy;
+@end
+
+@interface XXUnknownSuperclass (SBStarkBannerItem)
+- (BOOL)isStarkBannerItem;
+@end
+
+@interface XXUnknownSuperclass (SBWidgetAdditions)
+- (id)sb_supportedWidgetIdioms;
+@end
+
+@interface XXUnknownSuperclass (SBSnapshotExtensions)
+- (id)sb_snapshotViewImmediatelyFramedForPortrait;
+@end
+
+@interface XXUnknownSuperclass (SpringBoard)
+- (void)sb_each:(id)each;
+- (id)sb_filter:(id)filter;
+- (id)sb_firstObjectPassingTest:(id)test;
+- (id)sb_map:(id)map;
+@end
+
+@interface XXUnknownSuperclass (SBMutableArrayQueueAdditions)
+- (id)_sb_dequeue;
+- (void)_sb_enqueue:(id)enqueue;
+- (id)_sb_peek;
 @end
 

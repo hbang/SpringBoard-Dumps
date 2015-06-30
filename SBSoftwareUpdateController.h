@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SUNetworkObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SUManagerClientDelegate.h"
+#import "SUNetworkObserver.h"
 
 
 __attribute__((visibility("hidden")))
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_isUpdateInstallable:(id)installable;
 - (void)_lockStateChanged:(id)changed;
 - (void)_migrateForNewOSVersionIfNecessary;
+- (void)_postDownloadStateChangeNotification:(BOOL)notification;
 - (void)_prepareMigrationForSettingsReset;
 - (void)_registerForInstallRelatedNotifications;
 - (void)_resetAndCancelExistingScheduledForcedInstallAlerts;

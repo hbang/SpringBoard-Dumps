@@ -5,24 +5,21 @@
  * Source: (null)
  */
 
-#import "SBAwayListCellButtonHandler.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBAwayListItem.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBAwaySystemAlertItem : XXUnknownSuperclass <SBAwayListCellButtonHandler> {
+@interface SBAwaySystemAlertItem : SBAwayListItem {
 	SBAlertItem *_currentAlert;
 	NSString *_title;
-	NSArray *_buttonLabels;
 	UIImage *_appImage;
 	NSString *_message;
-	int _cancelButtonIdx;
+	int _displayedButtonIndex;
 	BOOL _isAlarm;
 }
+- (id)init;
 - (id)initWithSystemAlert:(id)systemAlert;
-- (id)buttonLabels;
-- (void)buttonPressedAtIndex:(int)index;
-- (int)cancelButtonIndex;
+- (void)buttonPressed;
 - (id)currentAlert;
 - (void)dealloc;
 - (id)iconImage;

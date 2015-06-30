@@ -19,9 +19,12 @@
 - (BOOL)application:(id)application didFinishLaunchingWithOptions:(id)options;
 - (void)application:(id)application didReceiveLocalNotification:(id)notification;
 - (void)application:(id)application didReceiveRemoteNotification:(id)notification;
+- (void)application:(id)application didReceiveRemoteNotification:(id)notification fetchCompletionHandler:(id)handler;
 - (void)application:(id)application didRegisterForRemoteNotificationsWithDeviceToken:(id)deviceToken;
+- (void)application:(id)application handleEventsForBackgroundURLSession:(id)backgroundURLSession completionHandler:(id)handler;
 - (BOOL)application:(id)application handleOpenURL:(id)url;
 - (BOOL)application:(id)application openURL:(id)url sourceApplication:(id)application3 annotation:(id)annotation;
+- (void)application:(id)application performFetchWithCompletionHandler:(id)completionHandler;
 - (BOOL)application:(id)application shouldRestoreApplicationState:(id)state;
 - (BOOL)application:(id)application shouldSaveApplicationState:(id)state;
 - (unsigned)application:(id)application supportedInterfaceOrientationsForWindow:(id)window;

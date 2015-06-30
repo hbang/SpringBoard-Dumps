@@ -11,36 +11,30 @@
 
 __attribute__((visibility("hidden")))
 @interface SBSystemLocalNotificationAlert : XXUnknownSuperclass {
-	id<SBSystemLocalNotificationAlertDelegate> _delegate;
-	SBApplication *_app;
-	NSString *_body;
+	SBApplication<SBSystemLocalNotificationAlertDelegate> *_app;
+	UILocalNotification *_localNotification;
+	NSString *_bodyText;
 	NSString *_actionLabel;
 	NSString *_customLockLabel;
-	NSString *_alertLaunchImage;
-	BOOL _showActionButton;
-	BOOL _hideTitle;
-	BOOL _allowSnooze;
-	NSTimer *_toneAutoMuteTimer;
 	unsigned _launchButtonIndex;
 	unsigned _snoozeButtonIndex;
-	id _context;
+	SBUISound *_sound;
+	NSTimer *_autoMuteTimer;
 }
-@property(retain, nonatomic) NSString *alertLaunchImage;
-@property(assign, nonatomic) BOOL allowSnooze;
 @property(readonly, assign, nonatomic) SBApplication *application;
-@property(retain, nonatomic) id context;
-@property(retain, nonatomic) NSString *customLockLabel;
-@property(assign, nonatomic) id<SBSystemLocalNotificationAlertDelegate> delegate;
-@property(assign, nonatomic) BOOL hideTitle;
-+ (id)alertMatchingContext:(id)context;
-+ (BOOL)isPlayingTone;
+@property(readonly, assign, nonatomic) NSString *bodyText;
+@property(readonly, assign, nonatomic) UILocalNotification *localNotification;
++ (BOOL)_isAlertPlayingAnAVItem:(id)item;
++ (id)alertMatchingLocalNotification:(id)notification;
++ (id)alerts;
++ (void)dismissAlertsPlayingAnAVItem;
++ (BOOL)isAnyAlertPlayingAnAVItem;
 + (id)localizedStringFromKey:(id)key defaultValue:(id)value inBundle:(id)bundle arguments:(id)arguments;
 + (id)pathForSoundName:(id)soundName inApp:(id)app;
-+ (void)playSoundWithName:(id)name type:(int)type inApp:(id)app forAlert:(BOOL)alert;
-+ (id)presentWithLocalNotification:(id)localNotification application:(id)application;
-+ (void)stopPlayingAlertSoundOrTone;
-- (id)initWithApplication:(id)application body:(id)body showActionButton:(BOOL)button actionLabel:(id)label;
-- (void)_toneAutoMuteTimerFired;
++ (void)snoozeAlertsAndDismiss:(BOOL)dismiss;
+- (id)initWithLocalNotification:(id)localNotification forApplication:(id)application;
+- (void)_autoMuteTimerFired;
+- (void)_playPresentationSound;
 - (id)alertItemNotificationSender;
 - (int)alertItemNotificationType;
 - (int)alertPriority;
@@ -50,14 +44,14 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)dismiss:(int)dismiss;
 - (BOOL)isCriticalAlert;
+- (BOOL)isSnoozable;
+- (BOOL)isSystemLocalNotificationAlert;
 - (id)lockLabel;
-- (float)lockLabelFontSize;
 - (void)performUnlockAction;
 - (BOOL)shouldShowInEmergencyCall;
-- (void)snoozeIfPossible;
-- (void)snoozeOrDismiss;
-- (void)startToneAutoMuteTimer;
-- (void)stopToneAutoMuteTimer;
+- (id)sound;
+- (int)unlockSource;
+- (void)willActivate;
 - (void)willDeactivateForReason:(int)reason;
 @end
 

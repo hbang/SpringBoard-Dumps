@@ -13,15 +13,14 @@ __attribute__((visibility("hidden")))
 @interface SBFullscreenZoomView : SBZoomView {
 	BOOL _hasImage;
 	BOOL _hasFullSizedImage;
-	int _corners;
-	NSMutableArray *_cornerViews;
+	id _surface;
 }
-- (id)initWithImage:(id)image;
-- (id)initWithSnapshotFrame:(CGRect)snapshotFrame image:(id)image originalImageOrientation:(int)orientation currentImageOrientation:(int)orientation4 interfaceOrientation:(int)orientation5 doubleHeightStatusBar:(BOOL)bar preventSplit:(BOOL)split chrome:(id)chrome chromeStatusBarHidden:(BOOL)hidden needsZoomFilter:(BOOL)filter asyncDecodeImage:(BOOL)image11;
-- (id)initWithSnapshotFrame:(CGRect)snapshotFrame ioSurface:(void *)surface snapshotTransform:(CGAffineTransform)transform;
-- (id)initWithView:(id)view;
+- (id)initWithImage:(id)image screen:(id)screen;
+- (id)initWithSnapshotFrame:(CGRect)snapshotFrame screen:(id)screen image:(id)image originalImageOrientation:(int)orientation currentImageOrientation:(int)orientation5 interfaceOrientation:(int)orientation6 doubleHeightStatusBar:(BOOL)bar preventSplit:(BOOL)split needsZoomFilter:(BOOL)filter asyncDecodeImage:(BOOL)image10 blackMatForJail:(BOOL)jail;
+- (id)initWithSnapshotFrame:(CGRect)snapshotFrame screen:(id)screen ioSurface:(void *)surface opaque:(BOOL)opaque snapshotTransform:(CGAffineTransform)transform;
+- (id)initWithView:(id)view screen:(id)screen;
 - (id)_initWithFrame:(CGRect)frame;
 - (void)dealloc;
-- (void)setRoundedCorners:(int)corners withCornersFrame:(CGRect)cornersFrame;
+- (id)surface;
 @end
 

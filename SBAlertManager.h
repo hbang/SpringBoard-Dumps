@@ -5,31 +5,43 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBAlertManagerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertManager : XXUnknownSuperclass {
+	UIScreen *_screen;
 	SBAlertWindow *_alertWindow;
 	SBAlertWindow *_deferredAlertWindow;
+	SBAlertWindow *_lockAlertWindow;
 	NSMutableArray *_alerts;
+	NSMapTable *_observers;
 	BOOL _deactivatingAllAlerts;
 	id<SBAlertManagerDelegate> _delegate;
+	struct {
+		unsigned delegateOverrideRequester : 1;
+		unsigned delegateShouldEnableContextHostingForRequester : 1;
+	} _delegateFlags;
 }
 @property(assign, nonatomic) id<SBAlertManagerDelegate> delegate;
 - (id)init;
+- (id)initWithScreen:(id)screen;
 - (void)_activate:(id)activate;
-- (CGRect)_alertWindowRect;
 - (void)_deactivate:(id)deactivate;
-- (void)_deactivateAfterNextLaunch:(id)launch;
-- (void)_tearDownAlertWindow:(id)window;
-- (void)_updateSEOStatus;
-- (void)_updateStatusBarTimeItemEnabled;
+- (void)_makeAlertWindowOpaque:(BOOL)opaque;
+- (void)_removeFromView:(id)view;
+- (void)_resetAlertWindowOpacity;
 - (void)activate:(id)activate;
 - (id)activeAlert;
+- (id)activeAlertWindow;
+- (void)addObserver:(id)observer;
+- (void)alert:(id)alert requestsBackgroundStyleChangeWithAnimationFactory:(id)animationFactory;
+- (void)alertIsReadyToBeDeactivated:(id)beDeactivated;
+- (void)alertIsReadyToBeRemovedFromView:(id)view;
 - (id)allAlerts;
+- (void)applicationFinishedAnimatingBeneathAlert;
+- (void)applicationWillAnimateActivation;
 - (BOOL)containsAlert:(id)alert;
 - (void)deactivate:(id)deactivate;
 - (void)deactivateAlertsAfterLaunch;
@@ -38,12 +50,12 @@ __attribute__((visibility("hidden")))
 - (id)debugDescription;
 - (id)description;
 - (BOOL)hasStackedAlerts;
-- (void)noteOrientationChanged:(int)changed;
-- (int)orientation;
-- (void)removeFromView:(id)view;
+- (void)removeObserver:(id)observer;
+- (id)screen;
 - (void)setAlertsShouldDeactivateAfterLaunch;
-- (id)window;
-- (void)workspaceDidAnimateSuspendingApp;
-- (void)workspaceWillAnimateActivatingApp;
+- (id)stackedAlertsIncludingActiveAlert:(BOOL)alert;
+- (id)topMostWindow;
+- (id)windowForAlert:(id)alert;
+- (id)windows;
 @end
 

@@ -5,39 +5,41 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBPowerDownViewDelegate.h"
 #import "SBAlert.h"
+#import "SpringBoard-Structs.h"
 
+@protocol SBPowerDownControllerDelegate, SBPowerDownViewInterface;
 
 __attribute__((visibility("hidden")))
 @interface SBPowerDownController : SBAlert <SBPowerDownViewDelegate> {
-	int _count;
 	id _delegate;
-	SBPowerDownView *_powerDownView;
 	BOOL _isFront;
+	SBAlertView<SBPowerDownViewInterface> *_powerDownView;
 	id _orderOutCompletion;
 }
+@property(assign, nonatomic) id<SBPowerDownControllerDelegate> delegate;
 @property(copy, nonatomic) id orderOutCompletion;
 + (id)sharedInstance;
 - (id)init;
+- (void)_lockedOnTop;
 - (void)_restoreIconListIfNecessary;
 - (void)activate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
-- (void)alertDisplayWillBecomeVisible;
 - (double)autoLockTime;
 - (void)cancel;
 - (void)deactivate;
 - (void)dealloc;
+- (BOOL)hasTranslucentBackground;
 - (BOOL)isOrderedFront;
-- (void)lockedOnTop;
+- (BOOL)managesOwnStatusBarAtActivation;
 - (void)orderFront;
 - (void)orderOutWithCompletion:(id)completion;
 - (void)powerDown;
 - (void)powerDownViewAnimateOutCompleted:(id)completed;
 - (void)powerDownViewRequestCancel:(id)cancel;
 - (void)powerDownViewRequestPowerDown:(id)down;
-- (id)powerDownViewWithSize:(CGSize)size;
-- (void)setDelegate:(id)delegate;
+- (BOOL)powerDownViewShouldHideStatusBar:(id)powerDownView;
+- (BOOL)showsSpringBoardStatusBar;
 @end
 
