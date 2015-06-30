@@ -25,7 +25,7 @@ dump:
 	rm $(CURRENTBINARY).h
 	mv $(CURRENTBINARY)-Structs.h $(BINARYNAME)-Structs.h
 	for i in *.h; do \
-		sed s/$(CURRENTBINARY)/$(BINARYNAME)/g $$i | grep -v '@class' - | grep -v '#import' - > tmp && \
+		sed s/$(CURRENTBINARY)/$(BINARYNAME)/g $$i | grep -vE '^(@class|@protocol .*;$|#import)' - > tmp && \
 		mv tmp $$i; \
 	done
 	$(info Committing and tagging)
