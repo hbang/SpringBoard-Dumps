@@ -10,7 +10,6 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUserInstalledApplicationIcon : SBApplicationIcon {
-	BOOL _shouldHaveSash;
 }
 - (id)ratingsAlertBody;
 - (id)ratingsAlertRateButtonTitle;

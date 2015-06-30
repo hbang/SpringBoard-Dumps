@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (unsigned)hash;
-- (float)heightForReusableViewInTableView:(id)tableView;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
 - (void)invalidateCachedLayoutData;
 - (BOOL)isEqual:(id)equal;
 - (void)populateReusableView:(id)view;

@@ -9,5 +9,6 @@
 
 @protocol SBUIRemoteAlertHostInterface
 - (void)dismiss;
+- (void)setAllowsBanners:(BOOL)banners;
 @end
 

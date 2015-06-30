@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBFWallpaperViewLegibilityObserver.h"
 #import "SBFWallpaperViewInternalObserver.h"
 #import "SBUIActiveOrientationObserver.h"
-#import "UIWindowDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "UIWindowDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -60,7 +60,6 @@ __attribute__((visibility("hidden")))
 - (void)_accessibilityEnhanceBackgroundContrastChanged:(id)changed;
 - (void)_beginDisallowRasterizationBlock;
 - (void)_beginSuspendingMotionEffectsForBlurIfNeeded;
-- (id)_blurImageObservableForBlurView:(id)blurView sourceView:(id)view;
 - (id)_blurViewsForVariant:(int)variant;
 - (void)_clearHomescreenLightForegroundBlurColor;
 - (void)_clearWallpaperEffectView:(id *)view;
@@ -77,7 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)_motionEffectsChanged;
 - (id)_newFakeBlurViewForVariant:(int)variant;
 - (id)_newWallpaperEffectViewForVariant:(int)variant transitionState:(XXStruct_S5WqmA)state;
-- (id)_newWallpaperViewForProcedural:(id)procedural orImage:(id)image;
+- (id)_newWallpaperViewForProcedural:(id)procedural orImage:(id)image forVariant:(int)variant;
 - (id)_observersForVariant:(int)variant;
 - (void)_reconfigureBlurViewsForVariant:(int)variant;
 - (void)_registerFakeBlurView:(id)view;
@@ -98,7 +97,9 @@ __attribute__((visibility("hidden")))
 - (void)_updateSharedWallpaper;
 - (void)_updateWallpaperForLocations:(int)locations withCompletion:(id)completion;
 - (void)_updateWallpaperHidden;
+- (void)_updateWallpaperParallax;
 - (id)_wallpaperViewForVariant:(int)variant;
+- (id)_window;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(int)activeInterfaceOrientation willAnimateWithDuration:(double)duration fromOrientation:(int)orientation;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(int)activeInterfaceOrientation;
 - (void)addObserver:(id)observer forVariant:(int)variant;
@@ -106,6 +107,7 @@ __attribute__((visibility("hidden")))
 - (id)averageColorInRect:(CGRect)rect forVariant:(int)variant;
 - (id)averageColorInRect:(CGRect)rect forVariant:(int)variant withSmudgeRadius:(float)smudgeRadius;
 - (void)beginRequiringWithReason:(id)reason;
+- (float)contrastInRect:(CGRect)rect contrastWithinBoxes:(float *)boxes contrastBetweenBoxes:(float *)boxes3 forVariant:(int)variant;
 - (XXStruct_S5WqmA)currentHomescreenStyleTransitionState;
 - (void)dealloc;
 - (void)endRequiringWithReason:(id)reason;

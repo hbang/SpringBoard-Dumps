@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBBulletinObserverViewController.h"
 #import "SpringBoard-Structs.h"
+#import "SBBulletinObserverViewController.h"
 
 
 __attribute__((visibility("hidden")))
@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
 	SBBBSectionInfo *_todaySectionInfo;
 	SBBBSectionInfo *_tomorrowSectionInfo;
 }
++ (float)_todayWidgetAndTomorrowSectionHeaderViewHeightForLayoutMode:(int)layoutMode;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (id)_bulletinOrderStringForBulletinInfo:(id)bulletinInfo;
 - (void)_sortBulletinsForSectionWithIdentifier:(id)identifier referencingOrder:(id)order;
 - (id)_todaySnippetBulletinOrder;
 - (id)_tomorrowSnippetBulletinOrder;
+- (void)_updateTableHeader:(BOOL)header;
 - (int)bulletinViewController:(id)controller insertionAnimationForBulletin:(id)bulletin inSection:(id)section;
 - (UIEdgeInsets)bulletinViewControllerContentInsetsForMode:(int)mode;
 - (void)commitInsertionOfBulletin:(id)bulletin beforeBulletin:(id)bulletin2 inSection:(id)section forFeed:(unsigned)feed;
@@ -31,11 +33,13 @@ __attribute__((visibility("hidden")))
 - (void)commitRemovalOfSection:(id)section;
 - (void)commitReplacementWithBulletin:(id)bulletin ofBulletin:(id)bulletin2 inSection:(id)section;
 - (void)dealloc;
+- (void)forceUpdateTableHeader;
 - (id)infoForBulletin:(id)bulletin inSection:(id)section;
 - (id)infoForBulletinSection:(id)bulletinSection;
 - (id)infoForWidgetSection:(id)widgetSection;
+- (void)insertAppropriateViewWithContent;
 - (id)todayTableHeaderView;
-- (void)updateTableHeader;
+- (void)updateTableHeaderIfNecessary;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)view;
 - (void)viewWillLayoutSubviews;

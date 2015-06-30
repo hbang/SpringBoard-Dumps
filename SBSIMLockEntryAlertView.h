@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBSIMLockEntryViewInterface.h"
 #import "SBPasscodeEntryAlertView.h"
 #import "SBUIPasscodeLockViewDelegate.h"
+#import "SBSIMLockEntryViewInterface.h"
 
 
 __attribute__((visibility("hidden")))

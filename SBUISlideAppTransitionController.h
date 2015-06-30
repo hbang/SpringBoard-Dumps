@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBUIFullscreenAnimationViewDelegate.h"
 #import "SBUIMainScreenAnimationController.h"
+#import "SBUIFullscreenAnimationViewDelegate.h"
 
 
 __attribute__((visibility("hidden")))

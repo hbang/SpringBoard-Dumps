@@ -10,18 +10,25 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutViewController : XXUnknownSuperclass {
-	UIStatusBar *_statusBarView;
+	SBStarkScreenController *_screenController;
 	int _mode;
-	UIView *_modeView;
-	BOOL _animating;
+	SBStarkLockOutView *_modeView;
+	SBStarkLockOutView *_previousModeView;
+	BOOL _inDealloc;
+	BOOL _pendingAnimated;
 	int _pendingMode;
-	SBStarkLockOutAnimation *_pendingAnimation;
+	SBUIStarkStartupAnimation *_startupAnimation;
 }
 @property(assign, nonatomic) int lockOutMode;
+@property(readonly, assign, nonatomic) SBStarkLockOutView *lockoutView;
+@property(retain, nonatomic) SBStarkScreenController *screenController;
 - (id)_newModeViewForMode:(int)mode;
 - (void)_updateLockOutModeIfPending;
+- (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
+- (void)animationControllerDidFinishAnimation:(id)animationController;
+- (void)dealloc;
 - (void)loadView;
-- (void)setLockOutMode:(int)mode withAnimation:(id)animation;
+- (void)setLockOutMode:(int)mode animated:(BOOL)animated;
 - (void)viewDidAppear:(BOOL)view;
 - (void)viewWillLayoutSubviews;
 @end

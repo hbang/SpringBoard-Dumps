@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import "BBObserverDelegate.h"
-#import "SBSizeObservingViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBBulletinViewControllerDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBBulletinViewControllerDelegate.h"
 #import "SBNotificationCenterWidgetHost.h"
 #import "SBWidgetViewControllerHostDelegate.h"
+#import "SBSizeObservingViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "BBObserverDelegate.h"
 
 @protocol SBBulletinActionHandler;
 
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 	NSMutableArray *_visibleSectionIDs;
 	NSMutableDictionary *_bulletinIDsByFeed;
 	SBBulletinViewController *_bulletinViewController;
+	_UIContentUnavailableView *_contentUnavailableView;
 	int _sectionOrderRule;
 	int _supportedCategory;
 	NSArray *_sectionOrder;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) BOOL scrollsToTop;
 @property(readonly, assign, nonatomic) int supportedCategory;
 @property(assign, nonatomic) id<SBWidgetViewControllerHostDelegate> widgetDelegate;
++ (unsigned)_contentUnavailableVibrantOptionsForCurrentState;
 + (id)allCategories;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (id)initWithObserverFeed:(unsigned)observerFeed;
@@ -63,23 +65,29 @@ __attribute__((visibility("hidden")))
 - (id)_enabledSectionWithIdentifier:(id)identifier;
 - (void)_enqueueInQueue:(id)queue orProcessRequest:(id)request;
 - (unsigned)_feedsForBulletinID:(id)bulletinID;
-- (void)_insertBulletinViewControllerView;
+- (CGRect)_frameforViewWithContentForMode:(int)mode;
+- (void)_insertContentUnavailableView;
 - (void)_insertSectionIfNecessary:(id)necessary commit:(BOOL)commit;
 - (void)_invokeBlockWithAllWidgets:(id)allWidgets;
 - (BOOL)_isBulletin:(id)bulletin associatedWithSection:(id)section;
 - (BOOL)_isBulletin:(id)bulletin associatedWithSection:(id)section forFeed:(unsigned)feed;
 - (BOOL)_isSectionVisible:(id)visible;
 - (BOOL)_isServerConnected;
+- (id)_lazyContentUnavailableView;
 - (void)_loadSection:(id)section;
 - (unsigned)_numberOfBulletinsInSection:(id)section;
 - (unsigned)_numberOfVisibleSections;
 - (id)_reassociateBulletin:(id)bulletin withSection:(id)section;
 - (void)_removeBulletinIDFromAllFeeds:(id)allFeeds;
+- (void)_removeBulletinViewControllerView;
 - (void)_setSection:(id)section enabled:(BOOL)enabled;
 - (void)_setSection:(id)section visible:(BOOL)visible;
 - (void)_setSectionOrder:(id)order forCategory:(int)category;
 - (void)_setSectionOrderRule:(int)rule;
 - (void)_sortAndCommitReloadOfSectionsInCategory:(int)category;
+- (void)_transitionToBulletinViewControllerView:(BOOL)bulletinViewControllerView animated:(BOOL)animated;
+- (void)_transitionToBulletinViewControllerViewIfNecessary;
+- (void)_transitionToContentUnavailableViewIfNecessary;
 - (void)_updateMakeshiftSectionOrderIfNecessary:(id)necessary;
 - (void)_updateSection:(id)section forCategory:(int)category;
 - (id)_widgetForSection:(id)section inCategory:(int)category;
@@ -101,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (void)commitRemovalOfSection:(id)section;
 - (void)commitReplacementWithBulletin:(id)bulletin ofBulletin:(id)bulletin2 inSection:(id)section;
 - (void)commitReplacementWithSection:(id)section ofSection:(id)section2;
+- (id)contentUnavailableText;
 - (void)dealloc;
 - (void)didAssociateBulletin:(id)bulletin withSection:(id)section forFeed:(unsigned)feed;
 - (id)firstSection;
@@ -115,9 +124,12 @@ __attribute__((visibility("hidden")))
 - (id)infoForSection:(id)section;
 - (id)infoForWidget:(id)widget inSection:(id)section;
 - (id)infoForWidgetSection:(id)widgetSection;
+- (void)insertAppropriateViewWithContent;
+- (void)insertBulletinViewControllerView;
 - (void)invalidateContentLayout;
 - (BOOL)isRePushingUpdates;
 - (int)layoutMode;
+- (int)layoutModeForBulletinViewController:(id)bulletinViewController;
 - (void)loadView;
 - (id)observer;
 - (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;

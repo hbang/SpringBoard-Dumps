@@ -6,14 +6,24 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBFolderViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface SBHomeScreenPreviewView : XXUnknownSuperclass {
+@interface SBHomeScreenPreviewView : XXUnknownSuperclass <SBFolderViewDelegate> {
+	SBIconViewMap *_viewMap;
+	SBFolderView *_folderContent;
 }
 + (void)cleanupPreview;
 + (id)preview;
 - (id)initWithFrame:(CGRect)frame iconController:(id)controller;
+- (void)dealloc;
+- (void)folderView:(id)view currentPageIndexDidChange:(int)currentPageIndex;
+- (void)folderViewDidEndScrolling:(id)folderView;
+- (void)folderViewShouldBeginEditing:(id)folderView;
+- (void)folderViewShouldClose:(id)folderView;
+- (void)folderViewWillBeginScrolling:(id)folderView;
+- (Class)iconListViewClassForFolderView:(id)folderView;
 @end
 

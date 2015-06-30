@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "RadiosPreferencesDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "SBControlCenterSectionViewController.h"
 #import "SBUIControlCenterButtonDelegate.h"
-#import "SpringBoard-Structs.h"
+#import "RadiosPreferencesDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
 	BBSettingsGateway *_settingsGateway;
 	BOOL _dndEnabled;
 	int _dndStatus;
+	BBBehaviorOverride *_activeOverride;
 	BluetoothManager *_btManager;
 }
 + (Class)viewClass;
 - (id)init;
 - (void)_addButtonForSetting:(int)setting;
+- (void)_bluetoothButtonTapped:(id)tapped;
 - (id)_buttonForSetting:(int)setting;
 - (BOOL)_getAirplaneMode;
 - (BOOL)_getBluetooth;
@@ -38,23 +40,25 @@ __attribute__((visibility("hidden")))
 - (void)_initMute;
 - (void)_initOrientationLock;
 - (void)_initWifi;
+- (void)_refreshWiFiState;
 - (void)_setAirplaneModeEnabled:(BOOL)enabled;
-- (void)_setBluetoothEnabled:(BOOL)enabled;
 - (void)_setDNDEnabled:(BOOL)enabled updateServer:(BOOL)server;
 - (void)_setDNDStatus:(int)status;
 - (void)_setMuted:(BOOL)muted;
 - (void)_setOrientationLocked:(BOOL)locked;
-- (void)_setWifiEnabled:(BOOL)enabled;
 - (void)_tearDownAirplaneMode;
 - (void)_tearDownBluetooth;
 - (void)_tearDownDND;
 - (void)_tearDownMute;
 - (void)_tearDownOrientationLock;
 - (void)_tearDownWifi;
-- (void)_updateBluetoothState;
+- (void)_updateActiveOverrides:(id)overrides;
+- (void)_updateBluetoothButtonState;
 - (void)_updateMuteButtonState;
 - (void)_updateOrientationLockButtonState;
 - (void)_updateWifiButtonState;
+- (void)_updateWifiNotification:(id)notification;
+- (void)_wifiButtonTapped:(id)tapped;
 - (void)airplaneModeChanged;
 - (void)buttonTapped:(id)tapped;
 - (CGSize)contentSizeForOrientation:(int)orientation;

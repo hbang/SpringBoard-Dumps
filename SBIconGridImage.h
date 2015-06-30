@@ -25,5 +25,6 @@ __attribute__((visibility("hidden")))
 + (CGRect)rectAtIndex:(unsigned)index maxCount:(unsigned)count;
 + (CGSize)sizeForNumberOfRows:(unsigned)rows;
 - (id)gridImageByPatchingWithCellImageProviderBlock:(id)cellImageProviderBlock;
+- (id)iconImageAtIndex:(unsigned)index;
 @end
 

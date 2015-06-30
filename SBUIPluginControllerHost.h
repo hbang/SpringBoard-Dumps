@@ -12,6 +12,7 @@
 - (void)uiPlugin:(id)plugin forceUpdateToInterfaceOrientation:(int)interfaceOrientation animated:(BOOL)animated;
 - (void)uiPlugin:(id)plugin isNowRunning:(BOOL)running;
 - (BOOL)uiPlugin:(id)plugin launchApplicationWithBundleID:(id)bundleID openURL:(id)url;
+- (BOOL)uiPlugin:(id)plugin launchApplicationWithBundleID:(id)bundleID openURL:(id)url allowDismissal:(BOOL)dismissal;
 - (BOOL)uiPlugin:(id)plugin openURL:(id)url;
 - (void)uiPlugin:(id)plugin setExpectsFaceContact:(BOOL)contact;
 - (BOOL)uiPluginAttemptDeviceUnlock:(id)unlock withPassword:(id)password lockViewOwner:(id)owner;

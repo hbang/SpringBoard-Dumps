@@ -5,19 +5,18 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "MCProfileConnectionObserver.h"
 #import "BBObserverDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationRestrictionObserver.h"
 #import "SBFolderControllerDelegate.h"
 #import "SBSearchGestureObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconViewDelegate.h"
 #import "SBIconModelDelegate.h"
 #import "SBIconViewMapDelegate.h"
 #import "SBIconModelApplicationDataSource.h"
-#import "SpringBoard-Structs.h"
 
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface SBIconController : XXUnknownSuperclass <BBObserverDelegate, MCProfileConnectionObserver, SBApplicationRestrictionObserver, SBFolderControllerDelegate, SBSearchGestureObserver, SBIconViewDelegate, SBIconModelDelegate, SBIconViewMapDelegate, SBIconModelApplicationDataSource> {
@@ -55,7 +54,7 @@ __attribute__((visibility("hidden")))
 	BOOL _keyboardIsRotating;
 	BOOL _isAnimatingFolderCreation;
 	BOOL _isAnimatingForUnscatter;
-	NSObject<OS_dispatch_queue> *_folderIconLoadingBackgroundQueue;
+	BOOL _isAnimatingSignficantly;
 	unsigned _maxIconViewsInHierarchy;
 	unsigned _maxNewsstandItemViewsInHierarchy;
 	SBIconColorSettings *_iconColorSettings;
@@ -74,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)_closeFolderController:(id)controller animated:(BOOL)animated withCompletion:(id)completion;
 - (void)_compactRootListsAfterFolderCloseWithAnimation:(BOOL)animation;
 - (CGRect)_contentViewRelativeFrameForIcon:(id)icon;
+- (Class)_controllerClassForFolderClass:(Class)folderClass;
 - (id)_currentFolderController;
 - (id)_debugStringForIconOrder:(int)iconOrder;
 - (void)_dropIcon:(id)icon withInsertionPath:(id)insertionPath;
@@ -100,7 +100,6 @@ __attribute__((visibility("hidden")))
 - (void)_noteFolderAnimationStateDidChange;
 - (void)_noteUserIsInteractingWithIcons;
 - (id)_openFolderController;
-- (void)_precacheFolderImages:(id)images location:(int)location;
 - (void)_prepareToResetRootIconLists;
 - (id)_proposedFolderNameForGrabbedIcon:(id)grabbedIcon recipientIcon:(id)icon;
 - (void)_resetFolderSpringloadTimer;
@@ -116,14 +115,16 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldLockItemsInStoreDemoMode;
 - (void)_snapshotFadeDidStop:(id)_snapshotFade finished:(id)finished snapshot:(id)snapshot;
 - (void)_updateDisabledBadgesSetWithSections:(id)sections;
+- (void)addIcons:(id)icons intoFolderIcon:(id)icon animated:(BOOL)animated openFolderOnFinish:(BOOL)finish complete:(id)complete;
 - (void)addNewIconToDesignatedLocation:(id)designatedLocation animate:(BOOL)animate scrollToList:(BOOL)list saveIconState:(BOOL)state;
 - (void)addNewIconsToDesignatedLocations:(id)designatedLocations saveIconState:(BOOL)state;
 - (id)allApplications;
 - (BOOL)allowsUninstall;
-- (void)animateIcons:(id)icons intoFolderIcon:(id)icon openFolderOnFinish:(BOOL)finish complete:(id)complete;
 - (void)animationDidStop:(id)animation finished:(BOOL)finished;
 - (int)appVisibilityOverrideForBundleIdentifier:(id)bundleIdentifier;
 - (void)applicationRestrictionController:(id)controller didUpdateVisibleTags:(id)tags hiddenTags:(id)tags3;
+- (BOOL)canAddDownloadingIconForApplication:(id)application;
+- (BOOL)canAddWebClip:(id)clip;
 - (BOOL)canSaveIconState:(id)state;
 - (BOOL)canUninstallIcon:(id)icon;
 - (void)clearHighlightedIcon;
@@ -133,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (void)compactIconsInIconListsInFolder:(id)folder moveNow:(BOOL)now limitToIconList:(id)iconList;
 - (void)compactRootIconLists;
 - (id)contentView;
+- (Class)controllerClassForFolder:(id)folder;
 - (id)createNewFolderFromRecipientIcon:(id)recipientIcon grabbedIcon:(id)icon;
 - (id)currentFolderIconList;
 - (int)currentFolderIconListIndex;
@@ -173,6 +175,7 @@ __attribute__((visibility("hidden")))
 - (void)iconTapped:(id)tapped;
 - (id)iconToReveal;
 - (void)iconTouchBegan:(id)began;
+- (Class)iconViewClassForIcon:(id)icon location:(int)location;
 - (BOOL)iconViewDisplaysBadges:(id)badges;
 - (BOOL)iconViewDisplaysCloseBox:(id)box;
 - (void)iconWasTapped:(id)tapped;
@@ -189,9 +192,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)isIconVisiblyRepresented:(id)represented;
 - (BOOL)isNewsstandEnabled;
 - (BOOL)isNewsstandOpen;
+- (BOOL)isNewsstandSupported;
 - (BOOL)isScrolling;
 - (id)lastTouchedIcon;
 - (void)layoutIconLists:(float)lists domino:(BOOL)domino forceRelayout:(BOOL)relayout;
+- (unsigned)maxColCountForListInRootFolderWithInterfaceOrientation:(int)interfaceOrientation;
+- (unsigned)maxIconCountForDock;
+- (unsigned)maxIconCountForListInFolderClass:(Class)folderClass;
+- (unsigned)maxListCountForFolders;
+- (unsigned)maxRowCountForListInRootFolderWithInterfaceOrientation:(int)interfaceOrientation;
 - (id)model;
 - (void)moveIconFromWindow:(id)window toIconList:(id)iconList;
 - (void)noteGrabbedIconLocationChangedWithTouch:(id)touch;
@@ -231,6 +240,7 @@ __attribute__((visibility("hidden")))
 - (void)showCarrierDebuggingAlertIfNeeded;
 - (void)showInfoAlertIfNeeded:(BOOL)needed;
 - (void)showSpotlightAlertIfNecessary;
+- (BOOL)supportsDock;
 - (void)uninstallIcon:(id)icon;
 - (void)uninstallIcon:(id)icon animate:(BOOL)animate;
 - (void)uninstallIconAnimationCompletedForIcon:(id)icon;
@@ -240,10 +250,11 @@ __attribute__((visibility("hidden")))
 - (void)updateCurrentIconListIndexAndVisibility:(BOOL)visibility;
 - (void)updateNumberOfRowsWithDuration:(double)duration;
 - (int)viewMap:(id)map locationForIcon:(id)icon;
-- (unsigned)viewMap:(id)map maxRecycledIconViewsOfClass:(Class)aClass;
+- (unsigned)viewMap:(id)map maxRecycledViewsOfClass:(Class)aClass;
 - (unsigned)viewMap:(id)map numberOfViewsToPrepareOfClass:(Class)aClass;
 - (id)viewMapShouldPrepareViewsOfClasses:(id)viewMap;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (id)windowForRecycledViewsInViewMap:(id)viewMap;
 @end
 

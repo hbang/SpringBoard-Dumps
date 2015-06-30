@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "_UISettingsKeyObserver.h"
 #import "SBIconView.h"
+#import "_UISettingsKeyObserver.h"
 
 
 __attribute__((visibility("hidden")))
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)setFloatyFolderCrossfadeFraction:(float)fraction;
 - (void)setIcon:(id)icon;
 - (void)setIconGridImageAlpha:(float)alpha;
+- (void)setShouldRasterizeImageView:(BOOL)rasterizeImageView;
 - (void)setSuppressesBlurryBackgroundChanges:(BOOL)changes;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)showDropGlow:(BOOL)glow;

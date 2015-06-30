@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSectionInfo:(id)sectionInfo;
 - (unsigned)_indexForNewBulletin:(id)newBulletin;
 - (unsigned)_removeBulletin:(id)bulletin;
+- (id)_sortDateForBulletin:(id)bulletin;
 - (id)_subsectionWithIDCreatingIfNecessary:(id)idcreatingIfNecessary;
 - (void)_updateWithSectionInfo:(id)sectionInfo;
 - (unsigned)addBulletin:(id)bulletin;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 	BOOL _delayedComplianceAlertUntilAfterRestoreCompletedAlert;
 }
 + (id)sharedInstance;
+- (id)init;
 - (void)_abort;
 - (void)_activateComplianceAlert;
 - (void)_didEndCall;

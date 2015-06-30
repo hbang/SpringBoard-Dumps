@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(copy) NSString *reason;
 @property(assign) SBWindowLevelRange_struct windowLevelRange;
 + (id)hideRequestWithWindowLevelRange:(SBWindowLevelRange_struct)windowLevelRange reason:(id)reason;
+- (void)dealloc;
 - (id)description;
 @end
 

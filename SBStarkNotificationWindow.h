@@ -5,19 +5,21 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBWindow.h"
 #import "SBStarkNotificationViewControllerDelegate.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBStarkNotificationWindow : SBWindow <SBStarkNotificationViewControllerDelegate> {
-	id _starkScreenBorrowingToken;
 	SBStarkScreenFocusController *_focusController;
+	id _borrowScreenToken;
 }
 @property(retain, nonatomic) SBStarkScreenFocusController *focusController;
 @property(retain, nonatomic) SBStarkNotificationViewController *rootViewController;
 - (id)initWithScreen:(id)screen jailBehavior:(int)behavior;
 - (void)dealloc;
+- (id)hitTest:(CGPoint)test withEvent:(id)event;
 - (void)notificationViewController:(id)controller stateDidChangeFrom:(int)state;
 @end
 

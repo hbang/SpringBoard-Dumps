@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBFluidSlideGestureRecognizer.h"
 #import "SpringBoard-Structs.h"
+#import "SBFluidSlideGestureRecognizer.h"
 
 
 __attribute__((visibility("hidden")))

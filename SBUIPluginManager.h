@@ -18,17 +18,18 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)_loadedUIPluginHostsVisible:(BOOL)visible;
 - (void)cancelPendingActivationEvent:(int)event;
-- (BOOL)handleActivationEvent:(int)event;
-- (BOOL)handleMenuButtonDownEvent;
-- (BOOL)handleMenuButtonTap;
+- (BOOL)handleActivationEvent:(int)event eventSource:(int)source withContext:(id)context;
+- (BOOL)handleButtonDownEventFromSource:(int)source;
+- (BOOL)handleButtonTapFromSource:(int)source;
+- (BOOL)handleButtonUpEventFromSource:(int)source;
 - (id)loadUIPluginNamed:(id)named withHost:(id)host;
 - (id)loadedUIPluginHosts;
 - (id)loadedUIPlugins;
 - (BOOL)overrideInterfaceOrientation:(int *)orientation;
 - (BOOL)overrideScreenDimInterval:(double *)interval;
-- (void)prepareForActivationEvent:(int)activationEvent afterInterval:(double)interval;
+- (void)prepareForActivationEvent:(int)activationEvent eventSource:(int)source afterInterval:(double)interval;
 - (BOOL)suppressingNotifications;
 - (BOOL)unloadUIPlugin:(id)plugin forHost:(id)host;
-- (BOOL)wantsActivationEvent:(int)event interval:(double *)interval;
+- (BOOL)wantsActivationEvent:(int)event eventSource:(int)source interval:(double *)interval;
 @end
 

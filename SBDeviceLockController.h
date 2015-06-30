@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 	BOOL _isBlockedForThermalCondition;
 	double _deviceLockUnblockTime;
 	PCPersistentTimer *_deviceLockUnblockTimer;
+	BOOL _cachedPasscodeLockedOrBlocked;
 	SBPasscodeLockAssertionManager *_assertionManager;
 	SBPasscodeLockDisableAssertion *_transientPasscodeCheckingAssertion;
 	BOOL _okToSendNotifications;
@@ -31,6 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)_clearBlockedState;
 - (void)_clearUnblockTimer;
 - (void)_enablePasscodeLockImmediately:(BOOL)immediately;
+- (void)_noteBlockedReasonsMayHaveChanged;
+- (void)_notePasscodeLockedOrBlockedStateMayHaveChanged:(BOOL)changed;
 - (void)_notifyOfFirstUnlock;
 - (void)_removeDeviceLockDisableAssertion:(id)assertion;
 - (void)_scheduleUnblockTimer;

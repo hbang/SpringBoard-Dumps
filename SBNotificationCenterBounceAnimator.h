@@ -5,14 +5,13 @@
  * Source: (null)
  */
 
-#import "SBBounceBehaviorDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "UIDynamicAnimatorDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBNotificationCenterBounceAnimator : XXUnknownSuperclass <UIDynamicAnimatorDelegate, SBBounceBehaviorDelegate> {
+@interface SBNotificationCenterBounceAnimator : XXUnknownSuperclass <UIDynamicAnimatorDelegate> {
 	UIDynamicAnimator *_animator;
 	SBBouncingSystem *_system;
 	SBBounceBehavior *_behavior;
@@ -20,15 +19,13 @@ __attribute__((visibility("hidden")))
 	id _completion;
 	SBBounceSettings *_settings;
 	CGRect _targetFrame;
-	BOOL _didBounce;
 }
 @property(readonly, assign, nonatomic, getter=_animator) UIDynamicAnimator *animator;
 @property(retain, nonatomic, getter=_behavior, setter=_setBehavior:) SBBounceBehavior *behavior;
 @property(copy, nonatomic, getter=_completion, setter=_setCompletion:) id completion;
 - (id)initWithReferenceBounds:(CGRect)referenceBounds settings:(id)settings;
 - (void)_updateSettings;
-- (void)beginBounceWithInitialFrame:(CGRect)initialFrame targetFrame:(CGRect)frame velocity:(CGPoint)velocity stepper:(id)stepper completion:(id)completion;
-- (void)bounceBehaviorDidBounce:(id)bounceBehavior;
+- (void)beginBounceWithInitialFrame:(CGRect)initialFrame targetFrame:(CGRect)frame velocity:(CGPoint)velocity removingGravityAtMidway:(BOOL)midway stepper:(id)stepper completion:(id)completion;
 - (void)dealloc;
 - (void)dynamicAnimatorDidPause:(id)dynamicAnimator;
 @end

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWorkStoreObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol OS_dispatch_queue;
 
@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (int)nextSequenceNumber;
 - (void)queue_appFinishedBackgroundUpdating:(id)updating userInfo:(id)info;
 - (void)queue_backgroundTaskFinished:(id)finished forApplication:(id)application;
-- (void)queue_bearTrap_AppWasSuspended:(id)suspended;
 - (void)queue_fireWatchdoggableCompletionForBackgroundFetchTaskValue:(id)backgroundFetchTaskValue;
 - (void)queue_invalidateBackgroundTasksForApplication:(id)application;
 - (void)queue_startBackgroundFetchTaskForApplication:(id)application trigger:(unsigned)trigger sequenceNumber:(int)number withWatchdoggableCompletion:(id)watchdoggableCompletion;

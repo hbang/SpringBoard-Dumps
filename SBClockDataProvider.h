@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)_calculateNextTomorrowAlarmAndBulletinWithScheduledNotifications:(id)scheduledNotifications;
 - (void)_handleAlarmSnoozedNotification:(id)notification;
 - (void)_handleClockNotificationUpdate:(id)update;
-- (void)_handlePossibleAlarmNotificationUpdate:(id)update;
 - (id)_nextAlarmForFeed:(unsigned)feed withNotifications:(id)notifications;
 - (void)_publishAlarmsWithScheduledNotifications:(id)scheduledNotifications;
 - (void)_publishTimerInScheduledNotifications:(id)scheduledNotifications;

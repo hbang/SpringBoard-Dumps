@@ -5,20 +5,20 @@
  * Source: (null)
  */
 
-#import "SBUIBannerSource.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerTargetManagerObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIBannerSource.h"
 
 @protocol SBUIBannerTarget;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBannerSource : XXUnknownSuperclass <SBUIBannerSource, SBUIBannerTargetManagerObserver> {
-	id<SBUIBannerTarget> _allowedTarget;
+	id _allowedTargetIdentifier;
 	id<SBUIBannerTarget> _target;
 	NSMutableArray *_enqueuedItems;
 }
 - (id)init;
-- (id)initWithAllowedTarget:(id)allowedTarget;
+- (id)initWithAllowedTargetIdentifier:(void *)allowedTargetIdentifier;
 - (void)bannerTargetManager:(id)manager didAddTarget:(id)target;
 - (void)bannerTargetManager:(id)manager didRemoveTarget:(id)target;
 - (id)currentItemFromTarget;

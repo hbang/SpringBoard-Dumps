@@ -11,11 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationDosidoTransitionController : SBUIMainScreenAnimationController {
 	SBUIAnimationWindow *_transitionWindow;
-	UIView *_transformContainerParent;
-	UIView *_transformContainer;
 	UIView *_fromAppContextHostView;
 	UIView *_fromView;
 	UIView *_toView;
+	SBDosidoAnimator *_dosidoAnimator;
 	int _fromOrientation;
 	BOOL _fromNC;
 	BOOL _fromCC;
@@ -28,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (void)_cleanupAnimation;
 - (id)_getTransitionWindow;
 - (void)_kickOffAnimation;
+- (void)_performDosido;
 - (void)_prepareAnimation;
-- (void)_rotateViewIfNecessary:(id)necessary inverted:(BOOL)inverted;
 - (void)_setFromView:(id)view;
 - (void)_setHidden:(BOOL)hidden;
 - (void)_startAnimation;

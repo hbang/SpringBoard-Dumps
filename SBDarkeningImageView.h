@@ -8,20 +8,16 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol SBDarkeningImageViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBDarkeningImageView : XXUnknownSuperclass {
 	UIImage *_baseImage;
 	float _brightness;
-	id<SBDarkeningImageViewDelegate> _delegate;
 }
 @property(assign, nonatomic) float brightness;
-@property(assign, nonatomic) id<SBDarkeningImageViewDelegate> delegate;
 - (id)initWithFrame:(CGRect)frame;
 - (void)dealloc;
 - (id)description;
-- (id)image;
 - (void)setImage:(id)image;
 - (void)setImage:(id)image brightness:(float)brightness;
 @end

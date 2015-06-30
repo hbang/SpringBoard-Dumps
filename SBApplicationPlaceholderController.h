@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBIconObserver.h"
 #import "SBLSApplicationPlaceholderLifecycleObserver.h"
+#import "SBIconObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_pendingAdded;
 	NSMutableSet *_pendingInstalled;
 	NSMutableSet *_pendingCancelled;
+	NSMutableSet *_removingProxies;
 	BOOL _hasDownloadedFromStore;
 	BOOL _usingNetwork;
 }
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)_processPendingProxies;
 - (void)_removeDownloadingIcons:(id)icons saveState:(BOOL)state;
 - (void)_removePlaceholders:(id)placeholders forInstall:(BOOL)install;
-- (void)_swapDownloadingIcon:(id)icon forApplicationIcon:(id)applicationIcon;
+- (void)_swapDownloadingIcon:(id)icon forApplicationIcon:(id)applicationIcon proxy:(id)proxy;
 - (void)applicationPlaceholdersAdded:(id)added;
 - (void)applicationPlaceholdersCancelled:(id)cancelled;
 - (void)applicationPlaceholdersIconUpdated:(id)updated;

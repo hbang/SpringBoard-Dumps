@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_setRelevantLockScreenViewsHidden:(BOOL)hidden;
 - (void)_startFadeAnimationsForFadeIn:(BOOL)anIn;
 - (void)_startFadeInIfNecessary;
+- (void)abortAnimatedDateFrameChange;
 - (void)dealloc;
 - (double)fadeInAnimationDuration;
 - (double)fadeOutAnimationDuration;

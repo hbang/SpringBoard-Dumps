@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBGradientView.h"
 #import "SpringBoard-Structs.h"
+#import "SBGradientView.h"
 
 
 __attribute__((visibility("hidden")))

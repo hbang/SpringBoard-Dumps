@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
-#import "SpringBoard-Structs.h"
 
 @protocol SBLockScreenPluginControllerDelegate;
 

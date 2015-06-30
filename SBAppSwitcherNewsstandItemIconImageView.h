@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBNewsstandItemIconImageView.h"
 #import "SpringBoard-Structs.h"
+#import "SBNewsstandItemIconImageView.h"
 
 
 __attribute__((visibility("hidden")))

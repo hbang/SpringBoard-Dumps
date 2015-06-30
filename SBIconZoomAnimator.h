@@ -23,12 +23,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) SBIconListView *iconListView;
 @property(retain, nonatomic) SBIconZoomSettings *settings;
 - (id)initWithFolderController:(id)folderController;
+- (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
+- (void)_applyLabelAlphaFraction:(float)fraction;
 - (void)_cleanupAnimation;
 - (void)_clearObservers;
 - (void)_iconModelDidRelayout;
 - (void)_iconModelDidReload;
 - (void)_invalidateAnimationForSignificantIconModelChangesForReason:(id)reason;
+- (unsigned)_numberOfSignificantAnimations;
 - (void)_prepareAnimation;
+- (void)_setAnimationFraction:(float)fraction;
 - (void)_setDockListView:(id)view;
 - (void)_setIconListView:(id)view;
 - (void)dealloc;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIcon.h"
 #import "SpringBoard-Structs.h"
+#import "SBIcon.h"
 
 
 __attribute__((visibility("hidden")))
@@ -26,10 +26,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEmptyPlaceholder;
 - (BOOL)isGrabbedIconPlaceholder;
 - (BOOL)isPlaceholder;
-- (BOOL)isPlaceholderForIcon:(id)icon;
-- (BOOL)matchesRepresentation:(id)representation;
 - (id)nodeIdentifier;
-- (id)representation;
+- (id)referencedIcon;
 - (BOOL)shouldCacheImageForFormat:(int)format;
 @end
 

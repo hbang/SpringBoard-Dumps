@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBStatusBarStateAggregatorPosting.h"
-#import "UIStatusBarStateProvider.h"
 #import "SpringBoard-Structs.h"
+#import "UIStatusBarStateProvider.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -23,10 +23,12 @@ __attribute__((visibility("hidden")))
 	BOOL _anyItemNeedsPost;
 	BOOL _nonItemDataNeedsPost;
 	BOOL _posting;
+	NSHashTable *_stylesWithDetailUpdates;
 }
 - (id)init;
 - (void)_composePostActionsFromAggregatorActions:(int *)aggregatorActions;
 - (void)_composePostDataFromAggregatorData:(XXStruct_8iXKhD *)aggregatorData;
+- (void)_didChangeDoubleHeightStatusStringForStyle:(int)style;
 - (BOOL)_shouldPostForUpdatesToNonItemData:(const XXStruct_8iXKhD *)nonItemData;
 - (BOOL)_shouldPostForVisitedItem:(int)visitedItem withUpdates:(BOOL)updates toAggregatorData:(const XXStruct_8iXKhD *)aggregatorData;
 - (void)addStatusBarStateObserver:(id)observer;

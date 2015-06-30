@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBUIAnimationControllerDelegate.h"
 #import "SBUIAnimationController.h"
+#import "SBUIAnimationControllerDelegate.h"
 
 @protocol SBUIAnimationControllerGroupDelegate;
 

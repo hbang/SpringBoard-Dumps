@@ -11,21 +11,30 @@
 __attribute__((visibility("hidden")))
 @interface SBAppStatusBarManager : XXUnknownSuperclass {
 	NSHashTable *_disableAlphaChangeAssertions;
+	NSHashTable *_disableUserInteractionChangeAssertions;
 	NSMutableOrderedSet *_windowLevelOverrideReasons;
 	NSMutableDictionary *_windowLevelOverrideMap;
 	float _defaultWindowLevel;
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_addAssertion:(id)assertion toAssertions:(id)assertions;
 - (void)_addDisableAppStatusBarAlphaChangesAssertion:(id)assertion;
+- (void)_addDisableAppStatusBarUserInteractionChangesAssertion:(id)assertion;
+- (id)_descriptionForPropertyWithAssertions:(id)assertions;
+- (void)_removeAssertion:(id)assertion fromAssertions:(id)assertions;
 - (void)_removeDisableAppStatusBarAlphaChangesAssertion:(id)assertion;
+- (void)_removeDisableAppStatusBarUserInteractionChangesAssertion:(id)assertion;
+- (void)_setStatusBarValueForPropertyWithAssertions:(id)assertions setter:(id)setter;
 - (void)_updateWindowLevel;
 - (void)dealloc;
 - (void)hideStatusBar;
 - (BOOL)isStatusBarHidden;
+- (BOOL)isStatusBarUserInteractionEnabled;
 - (void)removeWindowLevelOverrideReason:(id)reason;
 - (void)setDefaultWindowLevel:(float)level;
 - (void)setStatusBarAlpha:(float)alpha;
+- (void)setStatusBarUserInteractionEnabled:(BOOL)enabled;
 - (void)setWindowLevel:(float)level forOverrideReason:(id)overrideReason;
 - (void)showStatusBar;
 @end

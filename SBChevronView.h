@@ -17,11 +17,11 @@ __attribute__((visibility("hidden")))
 	double _animationDuration;
 	int _state;
 	UIColor *_color;
+	float _alphaComponent;
 	_SBFVibrantSettings *_vibrantSettings;
-	UIView *_colorCompositingView;
-	UIView *_darkTintView;
-	UIView *_lightTintView;
+	UIView *_tintView;
 	UIView *_backgroundView;
+	BOOL _unified;
 	UIView *_alphaContainerView;
 }
 @property(assign, nonatomic) double animationDuration;
@@ -30,9 +30,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _SBFVibrantSettings *vibrantSettings;
 - (id)initWithColor:(id)color;
 - (id)initWithFrame:(CGRect)frame;
-- (CGRect)_frameForGrabberView:(id)grabberView forState:(int)state;
+- (CGRect)_frameForGrabberView:(id)grabberView forState:(int)state unified:(BOOL)unified;
 - (void)_layoutGrabberView:(id)view forState:(int)state;
 - (BOOL)_setState:(int)state;
+- (BOOL)_setUnified:(BOOL)unified;
 - (CGAffineTransform)_transformForGrabberView:(id)grabberView forState:(int)state;
 - (void)dealloc;
 - (id)description;

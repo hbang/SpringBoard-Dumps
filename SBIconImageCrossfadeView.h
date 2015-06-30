@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBInteractionPassThroughView.h"
 #import "SpringBoard-Structs.h"
+#import "SBInteractionPassThroughView.h"
 
 
 __attribute__((visibility("hidden")))
@@ -31,6 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)prepareGeometry;
 - (void)setFadeFraction:(float)fraction;
-- (void)setMorphFraction:(float)fraction;
+- (void)setMorphFraction:(float)fraction totalScale:(float)scale;
 @end
 

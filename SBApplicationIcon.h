@@ -12,14 +12,17 @@
 __attribute__((visibility("hidden")))
 @interface SBApplicationIcon : SBLeafIcon {
 	NSString *_displayIdentifier;
+	UIImage *_cachedSquareHomeScreenContentsImage;
 }
++ (id)_squareHomeScreenIconImagesMemoryPool;
 - (id)initWithApplication:(id)application;
 - (id)__loadIconImageForDataSource:(id)dataSource format:(int)format;
+- (id)__loadUnmaskedIconImageForFormat:(int)format;
 - (id)_blockForGeneratingIconImageInBackgroundWithFormat:(int)format complete:(id)complete;
 - (id)application;
 - (id)applicationBundleID;
+- (id)applicationDisplayID;
 - (id)automationID;
-- (id)blockForGeneratingIconImageInBackgroundWithFormat:(int)format;
 - (BOOL)canGenerateImageInBackgroundForFormat:(int)format;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;

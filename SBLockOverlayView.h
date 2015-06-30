@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBInteractionPassThroughView.h"
 #import "SpringBoard-Structs.h"
+#import "SBInteractionPassThroughView.h"
 
 @protocol SBLockOverlayViewDelegate;
 

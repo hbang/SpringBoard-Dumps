@@ -103,6 +103,13 @@ typedef struct SBIconCoordinate {
 	int col;
 } SBIconCoordinate;
 
+typedef struct UIEdgeInsets {
+	float top;
+	float left;
+	float bottom;
+	float right;
+} UIEdgeInsets;
+
 typedef struct _opaque_pthread_mutex_t {
 	long __sig;
 	BOOL __opaque[40];
@@ -118,14 +125,9 @@ typedef struct __CTServerConnection *CTServerConnectionRef;
 
 typedef struct __CFString *CFStringRef;
 
-typedef struct UIEdgeInsets {
-	float top;
-	float left;
-	float bottom;
-	float right;
-} UIEdgeInsets;
-
 typedef struct __CFDictionary *CFDictionaryRef;
+
+typedef struct __SCDynamicStore *SCDynamicStoreRef;
 
 typedef struct BKSDisplayBrightnessTransaction *BKSDisplayBrightnessTransactionRef;
 
@@ -155,7 +157,8 @@ typedef struct {
 	int interfaceOrientation;
 	int previousInterfaceOrientation;
 	double timestamp;
-} XXStruct_XgRpiA;
+	BOOL isValid;
+} XXStruct_pqIg_A;
 
 typedef struct __SBGestureContext *SBGestureContextRef;
 
@@ -179,10 +182,11 @@ typedef struct {
 	unsigned didDeactivate : 1;
 	unsigned didChangeTop : 1;
 	unsigned topBgStyleChange : 1;
+	unsigned didCreateWindow : 1;
 	unsigned willTearDownWindow : 1;
 	unsigned didTearDownWindow : 1;
 	unsigned didRemoveFromWindow : 1;
-} XXStruct_IrbmYC;
+} XXStruct_scX9uA;
 
 typedef struct CGImage *CGImageRef;
 

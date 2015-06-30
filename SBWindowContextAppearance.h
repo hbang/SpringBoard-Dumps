@@ -5,11 +5,15 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "NSObject.h"
 
 
 @protocol SBWindowContextAppearance <NSObject>
 @property(retain, nonatomic) UIColor *backgroundColorWhileHosting;
 @property(retain, nonatomic) UIColor *backgroundColorWhileNotHosting;
+@property(readonly, assign, nonatomic) CGRect contentFrame;
+@property(readonly, assign, nonatomic, getter=isContextHosted) BOOL contextHosted;
+@property(readonly, assign, nonatomic, getter=isJailed) BOOL jailed;
 @end
 

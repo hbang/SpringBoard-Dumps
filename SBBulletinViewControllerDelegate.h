@@ -15,5 +15,6 @@
 - (int)bulletinViewController:(id)controller removalAnimationForBulletin:(id)bulletin inSection:(id)section;
 - (int)bulletinViewController:(id)controller replacementAnimationForBulletin:(id)bulletin inSection:(id)section;
 - (BOOL)bulletinViewController:(id)controller shouldHighlightBulletin:(id)bulletin inSection:(id)section;
+- (int)layoutModeForBulletinViewController:(id)bulletinViewController;
 @end
 

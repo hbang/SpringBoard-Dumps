@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBAppSwitcherPageContentView.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBAppSwitcherPageContentView.h"
 
 @protocol SBWindowContextAppearance;
 

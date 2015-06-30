@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBCountedMapValue.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)_labelImageCountedMap;
 + (id)_parametersWithDefaultStyle:(id)defaultStyle;
 + (CGRect)_rectWithDrawing:(BOOL)drawing inRect:(CGRect)rect fromParameters:(id)parameters;
++ (void)applyKerning:(float)kerning whitespaceKerning:(float)kerning2 toAttributedString:(id)attributedString;
 + (void)checkinLabelImage:(id)image;
 + (id)checkoutLabelImageForParameters:(id)parameters;
 + (void)drawImageInRect:(CGRect)rect fromParameters:(id)parameters;

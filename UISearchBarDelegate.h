@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "UIBarPositioningDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "UIBarPositioningDelegate.h"
 
 
 @protocol UISearchBarDelegate <UIBarPositioningDelegate>

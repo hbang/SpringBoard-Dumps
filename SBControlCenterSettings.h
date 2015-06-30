@@ -11,20 +11,38 @@
 __attribute__((visibility("hidden")))
 @interface SBControlCenterSettings : XXUnknownSuperclass {
 	BOOL _highlightUsesPlusL;
-	BOOL _backgroundDarkensCC;
+	BOOL _useNewBounce;
 	float _controlAlpha;
 	float _controlAlpha1x;
+	float _minControlAlpha;
+	float _maxControlAlpha;
 	float _disabledAlpha;
 	float _disabledAlpha1x;
 	float _highlightAlpha;
 	float _glowAlpha;
 	UIColor *_highlightColor;
-	float _bounceFriction;
-	float _backgroundColorAlpha;
+	float _oldBounceFriction;
+	float _bounceDensityFactor;
+	float _bounceResistance;
+	float _minVelocity;
+	float _maxVelocity;
+	float _attachmentThreshold;
+	float _attachmentFrequencyAbove;
+	float _attachmentFrequencyBelow;
+	float _attachmentVelocityDamping;
+	float _attachmentMinDamping;
+	float _attachmentMaxDamping;
+	float _backgroundAlphaFactor;
 }
-@property(assign) float backgroundColorAlpha;
-@property(assign) BOOL backgroundDarkensCC;
-@property(assign) float bounceFriction;
+@property(assign) float attachmentFrequencyAbove;
+@property(assign) float attachmentFrequencyBelow;
+@property(assign) float attachmentMaxDamping;
+@property(assign) float attachmentMinDamping;
+@property(assign) float attachmentThreshold;
+@property(assign) float attachmentVelocityDamping;
+@property(assign) float backgroundAlphaFactor;
+@property(assign) float bounceDensityFactor;
+@property(assign) float bounceResistance;
 @property(assign) float controlAlpha;
 @property(assign) float controlAlpha1x;
 @property(assign) float disabledAlpha;
@@ -33,6 +51,12 @@ __attribute__((visibility("hidden")))
 @property(assign) float highlightAlpha;
 @property(retain) UIColor *highlightColor;
 @property(assign) BOOL highlightUsesPlusL;
+@property(assign) float maxControlAlpha;
+@property(assign) float maxVelocity;
+@property(assign) float minControlAlpha;
+@property(assign) float minVelocity;
+@property(assign) float oldBounceFriction;
+@property(assign) BOOL useNewBounce;
 + (id)settingsControllerModule;
 - (float)resolvedControlAlpha;
 - (float)resolvedDisabledAlpha;

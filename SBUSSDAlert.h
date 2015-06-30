@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlert.h"
 
 
 __attribute__((visibility("hidden")))
@@ -31,5 +31,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)receivedString;
 - (BOOL)sentResponse;
 - (void)setDismissOnActivate:(BOOL)activate;
+- (int)statusBarStyle;
 @end
 

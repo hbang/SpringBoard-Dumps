@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBLiveIconImageView.h"
 #import "SpringBoard-Structs.h"
+#import "SBLiveIconImageView.h"
 
 
 __attribute__((visibility("hidden")))
@@ -25,11 +25,11 @@ __attribute__((visibility("hidden")))
 - (id)_generateSquareContentsImage;
 - (void)_setAnimating:(BOOL)animating;
 - (void)_timerFiredWithComponents:(id)components flags:(unsigned)flags;
-- (void)_updateUnanimated;
 - (void)_updateUnanimatedWithComponents:(id)components;
 - (id)contentsImage;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)updateAnimatingState;
+- (void)updateUnanimated;
 @end
 

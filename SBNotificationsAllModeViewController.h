@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBNotificationsModeViewController.h"
 #import "UIGestureRecognizerDelegatePrivate.h"
+#import "SBNotificationsModeViewController.h"
 
 
 __attribute__((visibility("hidden")))
@@ -22,11 +22,13 @@ __attribute__((visibility("hidden")))
 - (void)_setHeaderViewCurrentlyInClearState:(id)clearState;
 - (UIEdgeInsets)bulletinViewControllerContentInsetsForMode:(int)mode;
 - (void)commitReloadOfSections:(id)sections;
+- (id)contentUnavailableText;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
 - (id)infoForBulletin:(id)bulletin inSection:(id)section;
 - (id)infoForBulletinSection:(id)bulletinSection;
 - (void)viewDidAppear:(BOOL)view;
+- (void)viewWillAppear:(BOOL)view;
 - (void)viewWillDisappear:(BOOL)view;
 - (int)widgetIdiomForCategory:(int)category;
 @end

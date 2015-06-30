@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBCollectionViewCell.h"
 #import "SBUIBannerView.h"
+#import "SBCollectionViewCell.h"
 
 
 __attribute__((visibility("hidden")))
@@ -15,9 +15,7 @@ __attribute__((visibility("hidden")))
 	SBBannerContextView *_contextView;
 	UIView *_darkeningOverlayView;
 }
-@property(copy, nonatomic) UIColor *grabberColor;
 - (id)initWithFrame:(CGRect)frame;
-- (void)_didSetHighlighted:(BOOL)highlighted;
 - (id)bannerContext;
 - (void)dealloc;
 - (void)noteDidAppear;

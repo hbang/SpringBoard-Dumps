@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SBVolumePressBandit.h"
-#import "SpringBoard-Structs.h"
 
 @protocol SBTestRecipe;
 

@@ -5,32 +5,29 @@
  * Source: (null)
  */
 
-#import "TPSuperBottomBarDelegateProtocol.h"
-#import "SBAlertView.h"
 #import "SpringBoard-Structs.h"
+#import "UIActionSheetDelegatePrivate.h"
+#import "SBAlertView.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBTTYPromptAlertDisplay : SBAlertView <TPSuperBottomBarDelegateProtocol> {
+@interface SBTTYPromptAlertDisplay : SBAlertView <UIActionSheetDelegatePrivate> {
 	UIView *_containerView;
-	UIImageView *_backgroundView;
-	UIView *_voiceAndTTYWrapperView;
-	TPSuperBottomBar *_cancelBar;
+	UIActionSheet *_voiceAndTTYSheet;
 	TPLCDView *_promptView;
 	BOOL _didAnimateIn;
 	UIImage *_calleeImage;
-	BOOL _isFullscreenImage;
 	BOOL _imageSetupDone;
 }
-- (void)_chooseTTYMode:(id)mode;
-- (void)_chooseVoiceMode:(id)mode;
-- (void)_ignore:(id)ignore;
+- (id)initWithFrame:(CGRect)frame;
+- (BOOL)_actionSheet:(id)sheet shouldDismissForButtonAtIndex:(int)index;
+- (void)_chooseTTYMode;
+- (void)_chooseVoiceMode;
+- (void)_ignore;
 - (float)_lcdYOffset;
 - (void)_makeCall;
-- (id)backgroundImage;
-- (void)bottomBarActionPerformed:(int)performed fromBar:(id)bar;
+- (void)actionSheet:(id)sheet clickedButtonAtIndex:(int)index;
 - (void)computeImageInformation;
-- (id)customizedTitleForItemInBar:(id)bar withActionType:(int)actionType;
 - (void)dealloc;
 - (void)dismiss;
 - (BOOL)isSupportedInterfaceOrientation:(int)orientation;

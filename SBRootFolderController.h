@@ -13,7 +13,8 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) SBRootFolderView *contentView;
 @property(retain, nonatomic) SBRootFolder *folder;
-- (id)initWithFolder:(id)folder orientation:(int)orientation;
++ (Class)listViewClass;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
 - (Class)_contentViewClass;
 - (unsigned)_depth;
 - (BOOL)_listIndexIsVisible:(unsigned)visible;
@@ -21,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (id)dockListView;
 - (id)folderControllers;
-- (BOOL)hasDock;
 - (BOOL)isDisplayingIcon:(id)icon;
 - (BOOL)setCurrentPageIndex:(int)index animated:(BOOL)animated;
 - (void)setDockOffscreenFraction:(float)fraction;

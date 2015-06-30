@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBUIUserAgent.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIUserAgent.h"
 
 
 __attribute__((visibility("hidden")))
@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (id)_safeValue:(id)value forKey:(id)key ofType:(Class)type;
 - (void)activateModalBulletinAlert:(id)alert;
 - (void)activateRemoteAlertService:(id)service options:(id)options;
-- (void)activateStarkRemoteAlertService:(id)service ofType:(id)type;
 - (int)activeInterfaceOrientation;
 - (void)addActiveInterfaceOrientationObserver:(id)observer;
 - (BOOL)alertIsActive;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBFolderView.h"
+#import "SpringBoard-Structs.h"
 #import "SBSearchGestureObserver.h"
 #import "_UISettingsKeyObserver.h"
-#import "SpringBoard-Structs.h"
+#import "SBFolderView.h"
 
 
 __attribute__((visibility("hidden")))
@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 }
 @property(retain, nonatomic) SBRootFolder *folder;
 @property(readonly, assign, nonatomic) SBSearchViewController *searchViewController;
-- (id)initWithFolder:(id)folder orientation:(int)orientation;
-- (id)initWithFolder:(id)folder orientation:(int)orientation forSnapshot:(BOOL)snapshot;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map forSnapshot:(BOOL)snapshot;
 - (void)_configureParallax;
 - (void)_disableUserInteractionBeforeSignificantAnimation;
 - (void)_enableUserInteractionAfterSignificantAnimation;
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didAnimate;
 - (id)dockView;
+- (float)effectiveStatusBarHeight;
 - (void)fadeContentForMagnificationFraction:(float)magnificationFraction;
 - (void)fadeContentForMinificationFraction:(float)minificationFraction;
 - (id)iconListViewAtIndex:(unsigned)index;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)setDockOffscreenFraction:(float)fraction;
 - (void)setDockVerticalStretch:(float)stretch;
 - (void)setIdleText:(id)text;
+- (void)setLegibilitySettings:(id)settings;
 - (void)setNeedsLayout;
 - (void)setOrientation:(int)orientation;
 - (void)settings:(id)settings changedValueForKey:(id)key;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBUserInstalledApplicationIcon.h"
 #import "SpringBoard-Structs.h"
+#import "SBUserInstalledApplicationIcon.h"
 
 
 __attribute__((visibility("hidden")))
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconAppearsInNewsstand;
 - (int)iconFormatForLocation:(int)location;
 - (Class)iconImageViewClassForLocation:(int)location;
-- (Class)iconViewClassForLocation:(int)location;
 - (BOOL)isNewsstandApplicationIcon;
 - (BOOL)launchEnabled;
 - (void)launchFromLocation:(int)location;

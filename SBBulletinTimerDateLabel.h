@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinDateLabel.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBDateLabelDelegate;
 

@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBIconListLayoutDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBIconZoomAnimator.h"
+#import "SBIconListLayoutDelegate.h"
 
 
 __attribute__((visibility("hidden")))

@@ -6,9 +6,9 @@
  */
 
 #import "SBWallpaperObserver.h"
+#import "SpringBoard-Structs.h"
 #import "_UISettingsKeyObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 	CGColorRef _blurColor;
 	CGColorRef _solidColor;
 }
-+ (BOOL)_supportsPhasedPatterns;
 + (id)sharedInstance;
 - (id)init;
 - (void)_updateAllClients;

@@ -10,5 +10,6 @@
 
 @protocol _SBRemoteAlertHostViewControllerDelegate <NSObject>
 - (void)remoteAlertDidTerminateWithError:(id)remoteAlert;
+- (void)remoteAlertWantsToAllowBanners:(BOOL)allowBanners;
 @end
 

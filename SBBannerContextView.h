@@ -5,13 +5,14 @@
  * Source: (null)
  */
 
-#import "SBUIBannerView.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import "SBUIBannerView.h"
+#import "SBVibrantBannerView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface SBBannerContextView : XXUnknownSuperclass <SBUIBannerView> {
+@interface SBBannerContextView : XXUnknownSuperclass <SBUIBannerView, SBVibrantBannerView> {
 	UIEdgeInsets _clippingInsets;
 	UIView *_clippingView;
 	SBUIBannerContext *_context;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 	SBBannerViewCallbackManager *_wrapperCallbacks;
 	_UIBackdropView *_backdropView;
 	UIImageView *_backgroundImageView;
+	BOOL _isDismissing;
 	struct {
 		unsigned delegateOverrideRequester : 1;
 		unsigned delegateShouldEnableContextHostingForRequester : 1;
@@ -28,19 +30,22 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) _UIBackdropView *backdrop;
 @property(retain, nonatomic) UIImage *backgroundImage;
 @property(assign, nonatomic) UIEdgeInsets clippingInsets;
-@property(readonly, assign, nonatomic) UIColor *defaultGrabberColor;
-@property(copy, nonatomic) UIColor *grabberColor;
-+ (id)defaultGrabberColor;
+@property(readonly, assign, nonatomic, getter=isDismissing) BOOL dismissing;
++ (id)defaultColorForElement:(int)element;
 - (id)initWithFrame:(CGRect)frame;
 - (CGRect)_contentFrame;
 - (CGRect)_frameInClippingViewForFrame:(CGRect)frame;
+- (id)_vibrantContentView;
 - (id)bannerContext;
+- (id)colorForElement:(int)element;
 - (void)dealloc;
+- (id)defaultColorForElement:(int)element;
 - (void)layoutSubviews;
 - (void)noteDidAppear;
 - (void)noteDidDismissWithReason:(int)note;
 - (void)noteWillAppear;
 - (void)noteWillDismissWithReason:(int)note;
 - (void)setBannerContext:(id)context withReplaceReason:(int)replaceReason;
+- (void)setColor:(id)color forElement:(int)element;
 @end
 

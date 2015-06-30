@@ -5,14 +5,14 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBSearchGestureObserver.h"
-#import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
-#import "SpringBoard-Structs.h"
+#import "UITableViewDataSource.h"
 #import "SPSearchAgentDelegate.h"
 #import "UISearchBarDelegate.h"
+#import "SBSearchGestureObserver.h"
 #import "SBSearchHeaderDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))

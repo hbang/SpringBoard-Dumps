@@ -8,10 +8,14 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
+@protocol SBAppSliderContainerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSliderContainer : XXUnknownSuperclass {
+	id<SBAppSliderContainerDelegate> _delegate;
 }
+@property(assign, nonatomic) id<SBAppSliderContainerDelegate> delegate;
+- (void)didMoveToWindow;
 - (void)setFrame:(CGRect)frame;
 @end
 

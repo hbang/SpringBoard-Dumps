@@ -5,31 +5,36 @@
  * Source: (null)
  */
 
-#import "SBDateLabelDelegate.h"
-#import "SBUIBannerView.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import "SBUIBannerView.h"
+#import "SBVibrantBannerView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol SBBulletinDateLabel, SBDefaultBannerViewSource;
+@protocol SBDefaultBannerViewSource;
 
 __attribute__((visibility("hidden")))
-@interface SBDefaultBannerView : XXUnknownSuperclass <SBDateLabelDelegate, SBUIBannerView> {
+@interface SBDefaultBannerView : XXUnknownSuperclass <SBUIBannerView, SBVibrantBannerView> {
 	SBUIBannerContext *_context;
 	id<SBDefaultBannerViewSource> _viewSource;
 	UIImageView *_iconImageView;
-	UILabel<SBBulletinDateLabel> *_relevanceDateLabel;
 	SBDefaultBannerTextView *_textView;
 	UIImageView *_attachmentImageView;
 	CGSize _grabberSize;
 	UIView *_grabberView;
 }
-@property(copy, nonatomic) UIColor *grabberColor;
-+ (id)defaultGrabberColor;
++ (id)_defaultGrabberColor;
++ (id)_defaultRelevanceDateColor;
++ (id)defaultColorForElement:(int)element;
 - (id)initWithContext:(id)context;
 - (id)initWithFrame:(CGRect)frame;
+- (id)_grabberColor;
+- (id)_relevanceDateColor;
+- (void)_setGrabberColor:(id)color;
+- (void)_setRelevanceDateColor:(id)color;
 - (id)bannerContext;
-- (void)dateLabelDidChange:(id)dateLabel;
+- (id)colorForElement:(int)element;
 - (void)dealloc;
 - (void)layoutSubviews;
+- (void)setColor:(id)color forElement:(int)element;
 @end
 

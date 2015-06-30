@@ -5,15 +5,16 @@
  * Source: (null)
  */
 
-#import "SBFolderViewDelegate.h"
+#import "SBFolderObserver.h"
 #import "SBFolderControllerDelegate.h"
+#import "SBFolderViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import "SBFolderObserver.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBFolderController : XXUnknownSuperclass <SBFolderControllerDelegate, SBFolderViewDelegate, SBFolderObserver> {
+@interface SBFolderController : XXUnknownSuperclass <SBFolderControllerDelegate, SBFolderObserver, SBFolderViewDelegate> {
+	SBIconViewMap *_viewMap;
 	SBFolderView *_contentView;
 	BOOL _didAutoScroll;
 	NSTimer *_autoScrollTimer;
@@ -34,17 +35,20 @@ __attribute__((visibility("hidden")))
 	_UILegibilitySettings *_legibilitySettings;
 	SBFolderController *_outerFolderController;
 	SBFolderController *_innerFolderController;
+	SBFolderControllerAnimationContext *_animationContext;
 	SBIcon *_grabbedIcon;
 	SBFolderContext *_lastContext;
 }
 @property(assign, nonatomic, getter=isActive) BOOL active;
 @property(assign, nonatomic, getter=isAnimating) BOOL animating;
+@property(retain, nonatomic) SBFolderControllerAnimationContext *animationContext;
 @property(readonly, assign, nonatomic) SBFolderView *contentView;
 @property(readonly, assign, nonatomic) int currentPageIndex;
 @property(assign, nonatomic) id<SBFolderControllerDelegate> delegate;
 @property(readonly, assign, nonatomic, getter=isEditing) BOOL editing;
 @property(retain, nonatomic) SBFolder *folder;
 @property(retain, nonatomic) SBIcon *grabbedIcon;
+@property(readonly, assign, nonatomic) unsigned iconListViewCount;
 @property(readonly, assign, nonatomic) NSArray *iconListViews;
 @property(retain, nonatomic) SBFolderController *innerFolderController;
 @property(retain, nonatomic) SBFolderContext *lastContext;
@@ -54,9 +58,10 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) SBFolderController *outerFolderController;
 @property(assign, nonatomic, getter=isRotating) BOOL rotating;
 @property(readonly, assign, nonatomic, getter=isScrolling) BOOL scrolling;
++ (Class)listViewClass;
 + (unsigned)maxFolderDepth;
 + (float)wallpaperScaleForDepth:(unsigned)depth;
-- (id)initWithFolder:(id)folder orientation:(int)orientation;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
 - (id)_addEmptyListForce:(BOOL)force;
 - (BOOL)_allowUserInteraction;
 - (void)_animateFloatyFolderOpen:(BOOL)open settings:(id)settings completion:(id)completion;
@@ -75,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)_doAutoScrollByPageCount:(int)count;
 - (void)_dragPauseTimerFired:(id)fired;
 - (BOOL)_iconAppearsOnCurrentPage:(id)page;
+- (id)_iconPageIndicatorImageSetCache;
 - (unsigned)_indexOfIconListForIcon:(id)icon;
 - (void)_invalidate;
 - (BOOL)_listIndexIsVisible:(unsigned)visible;
@@ -91,8 +97,11 @@ __attribute__((visibility("hidden")))
 - (void)_updateAutoScrollForTouch:(id)touch;
 - (void)_updateCloseFolderForTouch:(id)touch;
 - (void)_updateDragPauseForTouch:(id)touch;
+- (id)_viewMap;
 - (id)addEmptyListView;
+- (Class)controllerClassForFolder:(id)folder;
 - (id)currentIconListView;
+- (id)currentIndexPath;
 - (void)dealloc;
 - (id)deepestFolderController;
 - (void)didAnimate;
@@ -118,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)folderViewWillBeginScrolling:(id)folderView;
 - (BOOL)hasDock;
 - (id)iconListViewAtIndex:(unsigned)index;
+- (Class)iconListViewClassForFolderView:(id)folderView;
 - (id)iconListViewContainingIcon:(id)icon;
 - (id)iconListViewForTouch:(id)touch;
 - (BOOL)isDisplayingIcon:(id)icon;

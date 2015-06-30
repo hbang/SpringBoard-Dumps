@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -21,8 +21,6 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_disableLockScreenIfPossibleAssertions;
 	NSHashTable *_disableUnlockAssertions;
 	BOOL _isInLostMode;
-	BOOL _biometricEventStartedWithScreenOff;
-	unsigned long long _biometricEventStartTime;
 	unsigned _failedMesaUnlockAttempts;
 	BOOL _bioAuthenticatedWhileMenuButtonDown;
 }

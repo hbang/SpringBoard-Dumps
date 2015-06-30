@@ -5,13 +5,14 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
 @interface SBDefaultImageInfo : XXUnknownSuperclass {
 	BOOL _hasSnapshot;
+	BOOL _isDownscaled;
 	int _launchingInterfaceOrientation;
 	float _launchingScale;
 	int _originalOrientation;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) int currentOrientation;
 @property(assign, nonatomic) BOOL hasSnapshot;
 @property(retain, nonatomic) UIImage *image;
+@property(assign, nonatomic) BOOL isDownscaled;
 @property(assign, nonatomic) int launchingInterfaceOrientation;
 @property(assign, nonatomic) float launchingScale;
 @property(assign, nonatomic) CGSize launchingScreenSize;

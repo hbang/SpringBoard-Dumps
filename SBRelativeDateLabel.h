@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBRelativeDateTimerDelegate.h"
 #import "SBDefaultDateLabel.h"
+#import "SBRelativeDateTimerDelegate.h"
 
 
 __attribute__((visibility("hidden")))

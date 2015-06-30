@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBControlCenterSectionViewController.h"
 #import "SBUIControlCenterButtonDelegate.h"
-#import "SpringBoard-Structs.h"
 
 @protocol OS_dispatch_queue;
 

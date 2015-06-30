@@ -5,15 +5,16 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
-#import "SBUIPasscodeLockViewDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBUIPasscodeLockViewDelegate.h"
+#import "SBAlert.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBPasscodeEntryAlertViewController : SBAlert <SBUIPasscodeLockViewDelegate> {
 	BOOL _attemptingUnlock;
 }
+- (void)_passcodeLockViewPasscodeEntered:(id)entered viaMesa:(BOOL)mesa;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)deactivate;
 - (BOOL)hasTranslucentBackground;

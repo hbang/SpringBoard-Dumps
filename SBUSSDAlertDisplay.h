@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 	TPButton *_replyButton;
 	UIView *_notifyView;
 	UIView *_replyView;
-	UITransitionView *_transitionView;
 	UITextView *_charsRemainingView;
 	UIActivityIndicatorView *_progressIndicator;
 	UITextField *_responseField;
@@ -26,6 +25,7 @@ __attribute__((visibility("hidden")))
 }
 - (id)initWithFrame:(CGRect)frame;
 - (void)_cancelClicked;
+- (void)_centerTextView:(id)view inRect:(CGRect)rect;
 - (id)_charsRemainingView;
 - (id)_notifyView;
 - (void)_okayClicked;

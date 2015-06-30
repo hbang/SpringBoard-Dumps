@@ -5,20 +5,27 @@
  * Source: (null)
  */
 
-#import "SBIconLabelImageParameters.h"
 #import "SpringBoard-Structs.h"
+#import "SBIconLabelImageParameters.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBMutableIconLabelImageParameters : SBIconLabelImageParameters {
 }
+@property(assign, nonatomic) BOOL accessibilityIncreaseContrastEnabled;
 @property(assign, nonatomic) BOOL canEllipsize;
+@property(assign, nonatomic) BOOL canUseMemoryPool;
 @property(assign, nonatomic) BOOL containsEmoji;
 @property(assign, nonatomic) BOOL containsNonLatinLikeCharacters;
+@property(retain, nonatomic) UIColor *focusHighlightColor;
 @property(retain, nonatomic) UIFont *font;
+@property(assign, nonatomic) int iconLocation;
 @property(assign, nonatomic) CGSize maxSize;
+@property(assign, nonatomic) float scale;
 @property(assign, nonatomic) int style;
 @property(copy, nonatomic) NSString *text;
+@property(retain, nonatomic) UIColor *textColor;
+@property(assign, nonatomic) UIEdgeInsets textInsets;
 - (id)copy;
 @end
 

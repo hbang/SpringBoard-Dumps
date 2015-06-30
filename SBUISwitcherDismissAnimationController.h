@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_crossfadeApp;
+- (void)_evaluateDependenciesForCrossfadeStart;
 - (void)_noteCrossfadeDidFinish;
 - (void)_noteSwitcherAnimationFinished;
 - (void)_prepareAnimation;

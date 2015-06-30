@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_captureApplicationData;
 - (void)_commit;
 - (void)_fireAndClearActivationContinuationForActivationFailureIfNecessary;
+- (void)_handleAppDidNotChange;
 - (void)_interruptWithReason:(int)reason;
 - (BOOL)_shouldBeWatchdogged:(id *)watchdogged;
 - (void)_transactionComplete;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)debugDescription;
 - (void)performToAppStateCleanup;
+- (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
 - (BOOL)shouldAnimateOrientationChangeOnCompletion;
 - (BOOL)shouldDismissSwitcher;
 - (BOOL)shouldHideSpringBoardStatusBarOnCleanup;

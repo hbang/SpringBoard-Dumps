@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBControlCenterSectionViewController.h"
 #import "MPUSystemMediaControlsDelegate.h"
-#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))

@@ -6,6 +6,8 @@
  */
 
 #import "SBLockScreenViewControllerBase.h"
+#import "SpringBoard-Structs.h"
+#import "SBWallpaperObserver.h"
 #import "SBLockScreenViewDelegate.h"
 #import "SBLockScreenTimerViewControllerDelegate.h"
 #import "SBLockScreenNotificationListDelegate.h"
@@ -14,8 +16,6 @@
 #import "SBLockScreenInfoOverlayDelegate.h"
 #import "SBLockScreenCameraControllerDelegate.h"
 #import "SBLockScreenPluginControllerDelegate.h"
-#import "SBWallpaperObserver.h"
-#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -55,7 +55,12 @@ __attribute__((visibility("hidden")))
 	SBLockOverlayContext *_resetRestoreOverlayContext;
 	SBLockScreenEmergencyCallViewController *_emergencyCallController;
 	BOOL _suppressWallpaperAlphaChangeOnScroll;
+	SBUnlockActionContext *_bioUnlockActionContext;
+	BOOL _disabledMesaForPhoneCall;
+	SBLockScreenHintManager *_hintManager;
+	SBDisableAppStatusBarUserInteractionChangesAssertion *_statusBarUserInteractionAssertion;
 }
+@property(retain, nonatomic, setter=_setBioUnlockActionContext:) SBUnlockActionContext *_bioUnlockActionContext;
 @property(readonly, assign, nonatomic) SBLockScreenPluginController *pluginController;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (BOOL)__shouldHidePasscodeForActiveCall;
@@ -107,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (void)_handlePasscodeLockStateChanged;
 - (void)_handlePasscodePolicyChanged;
 - (BOOL)_isFadeInAnimationInProgress;
+- (BOOL)_isLockScreenViewObscuredBySomethingLikeSayTheCamera;
 - (id)_lockScreenViewCreatingIfNecessary;
 - (void)_mediaControlsDidHideOrShow:(id)_mediaControls;
 - (void)_notificationCenterDidPresent:(id)_notificationCenter;
@@ -134,9 +140,13 @@ __attribute__((visibility("hidden")))
 - (void)_removeThermalTrapView:(BOOL)view;
 - (void)_removeTimerView;
 - (void)_resetActivePlugin;
+- (void)_setHintManagerEnabledIfPossible:(BOOL)possible;
+- (void)_setHintManagerEnabledIfPossible:(BOOL)possible removingLockScreenView:(BOOL)view;
 - (void)_setMediaControlsVisible:(BOOL)visible;
 - (void)_setNowPlayingControllerEnabled:(BOOL)enabled;
+- (void)_setStatusBarUserInteractionEnabledForTopGrabber:(BOOL)topGrabber;
 - (BOOL)_shouldDismissSwitcherOnActivation;
+- (BOOL)_shouldShowChargingText;
 - (BOOL)_shouldShowDate;
 - (void)_startFadeInAnimationForBatteryView:(BOOL)batteryView;
 - (void)_toggleMediaControls;
@@ -155,7 +165,8 @@ __attribute__((visibility("hidden")))
 - (void)activateCameraAnimated:(BOOL)animated;
 - (void)activateCardItem:(id)item animated:(BOOL)animated;
 - (id)activeLockScreenPluginController;
-- (void)addOverlay:(id)overlay animated:(BOOL)animated completion:(id)completion;
+- (void)addCoordinatedPresentingController:(id)controller;
+- (void)addOverlay:(id)overlay transitionIfNecessary:(BOOL)necessary animated:(BOOL)animated completion:(id)completion;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)alertDisplayWillBecomeVisible;
 - (id)allPendingAlertItems;
@@ -200,19 +211,26 @@ __attribute__((visibility("hidden")))
 - (BOOL)handleVolumeUpButtonPressed;
 - (BOOL)hasSuperModalAlertItems;
 - (BOOL)hasTranslucentBackground;
+- (float)hintDisplacementForController:(id)controller;
+- (unsigned)hintEdgeForController:(id)controller;
 - (void)infoOverlayWantsDismissal;
+- (BOOL)isBounceEnabledForPresentingController:(id)presentingController locationInWindow:(CGPoint)window;
 - (BOOL)isHidingPasscodeViewDuringCall;
 - (BOOL)isInScreenOffMode;
 - (BOOL)isLockScreenPluginViewVisible;
 - (BOOL)isLockScreenVisible;
 - (BOOL)isMakingEmergencyCall;
 - (BOOL)isPasscodeLockVisible;
+- (BOOL)isPresentationEnabledForPresentingController:(id)presentingController locationInWindow:(CGPoint)window;
 - (BOOL)isShowingMediaControls;
 - (BOOL)isShowingOverheatUI;
+- (BOOL)isSystemGesturePermittedForPresentingController:(id)presentingController;
 - (void)launchEmergencyDialer;
 - (id)legibilitySettings;
 - (void)loadView;
 - (BOOL)lockScreenBulletinControllerIsActive;
+- (id)lockScreenCameraController;
+- (id)lockScreenHintManager;
 - (BOOL)lockScreenIsShowingBulletins;
 - (id)lockScreenScrollView;
 - (id)lockScreenView;
@@ -244,7 +262,8 @@ __attribute__((visibility("hidden")))
 - (void)prepareToEnterLostMode;
 - (void)prepareToReturnToCameraFromCall;
 - (void)presentFullscreenBulletinAlertWithItem:(id)item;
-- (void)removeOverlay:(id)overlay animated:(BOOL)animated completion:(id)completion;
+- (void)removeCoordinatedPresentingController:(id)controller;
+- (void)removeOverlay:(id)overlay transitionIfNecessary:(BOOL)necessary animated:(BOOL)animated completion:(id)completion;
 - (void)setForcesPasscodeViewDuringCall:(BOOL)call;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
 - (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated completion:(id)completion;
@@ -264,6 +283,7 @@ __attribute__((visibility("hidden")))
 - (void)timerControllerDidStartTimer:(id)timerController;
 - (void)timerControllerDidStopTimer:(id)timerController;
 - (void)updateCardItem:(id)item;
+- (void)viewDidAppear:(BOOL)view;
 - (void)viewDidDisappear:(BOOL)view;
 - (id)viewToAnimateForAlertTransition;
 - (void)viewWillAppear:(BOOL)view;

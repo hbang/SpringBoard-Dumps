@@ -5,17 +5,18 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "_UISettingsKeyObserver.h"
-#import "SBAppSliderIconControllerDelegate.h"
 #import "SpringBoard-Structs.h"
-#import "SBAppSliderScrollingViewDelegate.h"
 #import "SBVolumePressBandit.h"
+#import "_UISettingsKeyObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBAppSliderIconControllerDelegate.h"
+#import "SBAppSliderScrollingViewDelegate.h"
+#import "SBAppSliderContainerDelegate.h"
 
 @protocol SBAppSliderControllerDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SBAppSliderController : XXUnknownSuperclass <SBAppSliderIconControllerDelegate, SBAppSliderScrollingViewDelegate, _UISettingsKeyObserver, SBVolumePressBandit> {
+@interface SBAppSliderController : XXUnknownSuperclass <SBAppSliderIconControllerDelegate, SBAppSliderScrollingViewDelegate, SBAppSliderContainerDelegate, _UISettingsKeyObserver, SBVolumePressBandit> {
 	id<SBAppSliderControllerDelegate> _delegate;
 	NSMutableArray *_appList;
 	SBAppSwitcherServices *_switcherServices;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
 	unsigned _appListAccessCount;
 	SBAppSliderScrollingViewController *_pageController;
 	SBAppSliderIconController *_iconController;
-	UIView *_containerView;
+	SBAppSliderContainer *_containerView;
 	UIView *_contentView;
 	UIView *_pageView;
 	UIView *_iconView;
@@ -46,7 +47,8 @@ __attribute__((visibility("hidden")))
 	SBAppSliderSettings *_settings;
 	NSObject<OS_dispatch_queue> *_snapshotQueue;
 	NSMutableArray *_servicesRemovedWhileAwayFromSwitcher;
-	SBFakeStatusBarViewCache *_statusBarCache;
+	SBAppSwitcherStatusBarViewCache *_statusBarCache;
+	BOOL _simplifiedStatusBars;
 	CGAffineTransform _wallpaperTransform;
 }
 @property(readonly, assign, nonatomic) NSArray *applicationList;
@@ -54,8 +56,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) SBAppSliderIconController *iconController;
 @property(copy, nonatomic) NSString *startingDisplayIdentifier;
 @property(retain, nonatomic) NSDictionary *startingViews;
+@property(readonly, assign, nonatomic) SBAppSwitcherStatusBarViewCache *statusBarViewCache;
 @property(assign, nonatomic) CGAffineTransform wallpaperTransform;
 + (BOOL)_shouldUseSerialSnapshotQueue;
++ (float)pageScale;
++ (void)setPerformSochiMigrationTasksWhenLoaded:(BOOL)loaded;
 + (BOOL)shouldProvideHomeSnapshotIfPossible;
 + (BOOL)shouldProvideSnapshotIfPossible;
 - (id)init;
@@ -66,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_disableContextHostingForApp:(id)app;
 - (id)_displayIDAtIndex:(unsigned)index;
 - (void)_endAppListAccess;
+- (void)_finishDeferredSochiMigrationTasks;
 - (float)_frameScaleValueForAnimation;
 - (id)_generateCellViewForIndex:(unsigned)index;
 - (void)_getRotationContentSettings:(XXStruct_3uUjXA *)settings;
@@ -80,22 +86,25 @@ __attribute__((visibility("hidden")))
 - (void)_reverseAppList;
 - (float)_scaleForFullscreenPageView;
 - (void)_setInteractionEnabled:(BOOL)enabled;
+- (void)_simplifyStatusBarsForMotion;
 - (float)_sliderThumbnailVerticalPositionOffset;
-- (void)_snapshotChangedOnDisk:(id)disk;
 - (id)_snapshotViewForDisplayIdentifier:(id)displayIdentifier;
 - (void)_switcherServiceRemoved:(id)removed;
 - (void)_temporarilyHostAppForQuitting:(id)quitting;
 - (unsigned)_totalSnapshotsToKeepAround;
 - (id)_transitionAnimationFactory;
+- (void)_unsimplifyStatusBarsAfterMotion;
 - (void)_updateForAnimationFrame:(float)animationFrame withAnchor:(unsigned)anchor;
 - (void)_updatePageViewScale:(float)scale;
 - (void)_updatePageViewScale:(float)scale xTranslation:(float)translation;
 - (void)_updateSnapshots;
 - (id)_viewForService:(id)service;
+- (void)_warmAppInfoForAppsInList;
 - (int)_windowInterfaceOrientation;
 - (BOOL)allowShowHide;
 - (void)animateDismissalToDisplayIdentifier:(id)displayIdentifier withCompletion:(id)completion;
 - (void)animatePresentationFromDisplayIdentifier:(id)displayIdentifier withViews:(id)views fromSide:(int)side withCompletion:(id)completion;
+- (void)appSliderContainer:(id)container movedToWindow:(id)window;
 - (void)dealloc;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)forceDismissAnimated:(BOOL)animated;
@@ -120,9 +129,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)sliderScroller:(id)scroller itemWantsToBeKeptInViewHierarchy:(unsigned)viewHierarchy;
 - (void)sliderScroller:(id)scroller itemWantsToBeRemoved:(unsigned)beRemoved;
 - (id)sliderScroller:(id)scroller viewForIndex:(unsigned)index;
+- (void)sliderScrollerBeganMoving:(id)moving;
 - (void)sliderScrollerBeganPanning:(id)panning;
 - (void)sliderScrollerDidEndScrolling:(id)sliderScroller;
 - (float)sliderScrollerDistanceBetweenItemCenters:(id)centers forOrientation:(int)orientation;
+- (BOOL)sliderScrollerIsRelayoutBlocked:(id)blocked;
 - (unsigned)sliderScrollerItemCount:(id)count;
 - (CGSize)sliderScrollerItemSize:(id)size forOrientation:(int)orientation;
 - (unsigned)supportedInterfaceOrientations;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "NSFastEnumeration.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "SBIconIndexNodeObserver.h"
+#import "NSFastEnumeration.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBIconIndexMutableListObserver;
 
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)removeAllNodes;
 - (void)removeNode:(id)node;
 - (void)removeNodeAtIndex:(unsigned)index;
+- (void)removeNodesAtIndexes:(id)indexes;
 - (void)replaceNodeAtIndex:(unsigned)index withNode:(id)node;
 @end
 

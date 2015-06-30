@@ -10,7 +10,11 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUISwitcherCenterZoomAnimationController : SBUIAnimationZoomUpApp {
+	UIView *__switcherSnapshotView;
 }
+@property(retain, nonatomic, setter=_setSwitcherSnapshotView:) UIView *_switcherSnapshotView;
 - (id)_getTransitionWindow;
+- (void)cleanupZoom;
+- (void)prepareZoom;
 @end
 

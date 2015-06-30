@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "UIScrollViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconViewDelegate.h"
-#import "SpringBoard-Structs.h"
 #import "SBIconViewMapDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
+#import "UIScrollViewDelegate.h"
 
 @protocol SBAppSliderIconControllerDelegate;
 
@@ -30,12 +30,15 @@ __attribute__((visibility("hidden")))
 	int _layoutOrientation;
 	int _simplicityOptions;
 	CGRect _iconViewDefaultFrame;
+	SBIconViewMap *_iconViewMap;
 	id<SBAppSliderIconControllerDelegate> _delegate;
 	NSArray *_displayIdentifiers;
+	SBIconViewMap *_viewMap;
 }
 @property(assign, nonatomic) id<SBAppSliderIconControllerDelegate> delegate;
 @property(copy, nonatomic) NSArray *displayIdentifiers;
 @property(assign, nonatomic) unsigned iconTransitionIndex;
+@property(readonly, assign, nonatomic) SBIconViewMap *viewMap;
 + (float)nominalDistanceBetween3IconCentersForSize:(CGSize)size;
 + (float)nominalDistanceBetween5IconCentersForSize:(CGSize)size;
 - (id)init;
@@ -51,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleStopScrollingGesture:(id)gesture;
 - (CGRect)_iconFaultRectForIndex:(unsigned)index;
 - (id)_iconViewForIndex:(unsigned)index;
-- (void)_iconsReloaded;
+- (void)_iconsReloaded:(id)reloaded;
 - (BOOL)_isIndexVisible:(unsigned)visible withPadding:(BOOL)padding;
 - (void)_layoutForDistance:(float)distance;
 - (float)_maxXOffsetForDistance:(float)distance;
@@ -68,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconShouldAllowTap:(id)icon;
 - (void)iconTapped:(id)tapped;
 - (void)iconTouchBegan:(id)began;
+- (Class)iconViewClassForIcon:(id)icon location:(int)location;
 - (BOOL)isScrolling;
 - (void)loadView;
 - (void)reloadInOrientation:(int)orientation;
@@ -85,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)switcherWasDismissed:(BOOL)dismissed;
 - (Class)viewMap:(id)map iconViewClassForIcon:(id)icon;
 - (int)viewMap:(id)map locationForIcon:(id)icon;
-- (unsigned)viewMap:(id)map maxRecycledIconViewsOfClass:(Class)aClass;
+- (unsigned)viewMap:(id)map maxRecycledViewsOfClass:(Class)aClass;
+- (id)windowForRecycledViewsInViewMap:(id)viewMap;
 @end
 

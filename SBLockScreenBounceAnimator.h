@@ -6,13 +6,14 @@
  */
 
 #import "UIDynamicAnimatorDelegate.h"
-#import "SBResponderTouchDelegate.h"
+#import "UIGestureRecognizerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 
+@protocol SBPresentingDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenBounceAnimator : XXUnknownSuperclass <UIDynamicAnimatorDelegate, _UISettingsKeyObserver, SBResponderTouchDelegate> {
+@interface SBLockScreenBounceAnimator : XXUnknownSuperclass <UIDynamicAnimatorDelegate, _UISettingsKeyObserver, UIGestureRecognizerDelegate> {
 	NSMutableSet *_tapExcludedViews;
 	BOOL _isAnimating;
 	BOOL _bounceEnabled;
@@ -22,25 +23,28 @@ __attribute__((visibility("hidden")))
 	SBBouncingItem *_item;
 	SBBounceBehavior *_behavior;
 	UIGestureRecognizer *_tapRecognizer;
-	UIGestureRecognizer *_panRecognizer;
+	NSSet *_gestures;
+	id _shouldBeginBlock;
 	id _prepareBlock;
 	id _translateBlock;
 	id _canceledBlock;
 	id _completedBlock;
 	SBBounceSettings *_settings;
+	id<SBPresentingDelegate> _presentingDelegate;
 }
 @property(copy) id canceledBlock;
 @property(copy) id completedBlock;
+@property(readonly, assign, nonatomic) NSSet *gestures;
 @property(copy) id prepareBlock;
+@property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
 @property(retain, nonatomic) SBBounceSettings *settings;
+@property(copy) id shouldBeginBlock;
 @property(readonly, assign, nonatomic) NSSet *tapExcludedViews;
 @property(copy) id translateBlock;
-- (id)initWithView:(id)view allowPan:(BOOL)pan;
-- (void)_addPanRecognizer;
+- (id)initWithView:(id)view;
 - (void)_addTapRecognizer;
-- (void)_beginAnimating;
+- (void)_beginAnimating:(id)animating;
 - (void)_createAnimator;
-- (void)_handlePanGesture:(id)gesture;
 - (void)_handleTapGesture:(id)gesture;
 - (void)_removeAnimator;
 - (void)_removeTapRecognizer;
@@ -48,13 +52,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateSettings;
 - (void)addTapExcludedView:(id)view;
 - (void)cancelAnimation;
+- (void)cancelGestureRecognizer:(id)recognizer;
 - (void)dealloc;
 - (void)dynamicAnimatorDidPause:(id)dynamicAnimator;
+- (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
+- (BOOL)gestureRecognizerShouldBegin:(id)gestureRecognizer;
 - (BOOL)isAnimating;
+- (void)reenableGestureRecognizer:(id)recognizer;
 - (void)removeTapExcludedView:(id)view;
-- (void)responder:(id)responder touchesBegan:(id)began withEvent:(id)event;
-- (void)responder:(id)responder touchesCancelled:(id)cancelled withEvent:(id)event;
-- (void)responder:(id)responder touchesEnded:(id)ended withEvent:(id)event;
 - (void)setBounceEnabled:(BOOL)enabled;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 @end

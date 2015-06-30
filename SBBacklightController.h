@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_spuriousScreenUndimmingAssertions;
 	BOOL _isPendingScreenUnblankAfterCACommit;
 	BOOL _undimmedForBulletinSinceLastUserEvent;
+	BOOL _allowIdleTimerToBeReset;
 }
 @property(readonly, assign, nonatomic) BOOL isPendingScreenUnblankAfterCACommit;
 @property(readonly, assign, nonatomic) BOOL screenIsOff;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_resetIdleTimerAndUndim:(BOOL)undim source:(int)source;
 - (void)_resetLockScreenIdleTimerWithDuration:(double)duration mode:(int)mode;
 - (void)_setBacklightFactorToZeroForProx;
+- (void)_startAllowingIdleTimer;
 - (void)_startFadeOutAnimationIfNecessary;
 - (void)_undimFromSource:(int)source;
 - (void)_userEventOccurred;
@@ -69,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)setBacklightFactorToZeroForProx;
 - (void)setIdleTimerDisabled:(BOOL)disabled;
 - (void)setIdleTimerDisabled:(BOOL)disabled forReason:(id)reason;
+- (BOOL)shouldTurnOnScreenForBacklightSource:(int)backlightSource;
 - (void)turnOnScreenFullyWithBacklightSource:(int)backlightSource;
 @end
 

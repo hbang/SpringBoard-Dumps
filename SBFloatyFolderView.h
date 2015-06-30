@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "UIGestureRecognizerDelegate.h"
-#import "SBFolderView.h"
-#import "_UISettingsKeyObserver.h"
 #import "SpringBoard-Structs.h"
+#import "UIGestureRecognizerDelegate.h"
+#import "_UISettingsKeyObserver.h"
+#import "SBFolderView.h"
 
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 	UILongPressGestureRecognizer *_longPressGesture;
 	SBFolderSettings *_folderSettings;
 }
-- (id)initWithFolder:(id)folder orientation:(int)orientation;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
 - (void)_configureGestures;
 - (CGRect)_frameForScalingView;
 - (void)_handleLongPressGesture:(id)gesture;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizer:(id)recognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)gestureRecognizer;
 - (BOOL)locationCountsAsInsideFolder:(CGPoint)folder;
 - (void)setBackgroundAlpha:(float)alpha;
+- (void)setLegibilitySettings:(id)settings;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (CGPoint)visibleFolderRelativeImageCenterForIcon:(id)icon;
 - (void)willAnimate;

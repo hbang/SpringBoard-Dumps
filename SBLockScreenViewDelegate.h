@@ -9,6 +9,7 @@
 
 
 @protocol SBLockScreenViewDelegate <NSObject>
+- (void)addCoordinatedPresentingController:(id)controller;
 - (id)effectiveCustomSlideToUnlockText;
 - (void)lockScreenView:(id)view didEndScrollingOnPage:(int)page;
 - (void)lockScreenView:(id)view didScrollToPage:(int)page;
@@ -16,6 +17,7 @@
 - (void)lockScreenViewDidScrollWithNewScrollPercentage:(float)lockScreenView tracking:(BOOL)tracking;
 - (BOOL)lockScreenViewPhonePluginIsActive;
 - (void)lockScreenViewWillEndDraggingWithPercentScrolled:(float)lockScreenView percentScrolledVelocity:(float)velocity targetScrollPercentage:(float)percentage;
+- (void)removeCoordinatedPresentingController:(id)controller;
 - (BOOL)wantsToShowStatusBarTime;
 @end
 

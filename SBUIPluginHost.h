@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIPluginControllerHost.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -31,25 +31,25 @@ __attribute__((visibility("hidden")))
 - (void)_uiLocked:(id)locked;
 - (void)_updateExpectsFaceContactWithChangedValue:(BOOL)changedValue;
 - (void)_updateFaceContactForVisibilityChange:(BOOL)visibilityChange;
-- (BOOL)activatePluginForEvent:(int)event;
-- (BOOL)activatePluginForEvent:(int)event context:(void *)context;
+- (BOOL)activatePluginForEvent:(int)event eventSource:(int)source context:(void *)context;
 - (void)cancelPendingPluginActivationEvent:(int)event;
 - (void)dealloc;
 - (void)dismissPluginForEvent:(int)event;
 - (BOOL)expectsFaceContact;
-- (BOOL)pluginHandledMenuButtonDownEvent;
-- (BOOL)pluginHandledMenuButtonTap;
+- (BOOL)pluginHandledButtonDownEventFromSource:(int)source;
+- (BOOL)pluginHandledButtonTapEventFromSource:(int)source;
+- (BOOL)pluginHandledButtonUpEventFromSource:(int)source;
 - (BOOL)pluginHandledPasscodeUnlockWithCompletion:(id)completion;
-- (BOOL)pluginHandledWiredMicButtonTap;
 - (BOOL)pluginSupportedAndEnabled;
 - (BOOL)pluginSuppressesNotifications;
-- (BOOL)pluginWantsActivationEvent:(int)event interval:(double *)interval;
+- (BOOL)pluginWantsActivationEvent:(int)event eventSource:(int)source interval:(double *)interval;
 - (BOOL)pluginWantsInterfaceOrientation:(int *)orientation;
 - (BOOL)pluginWantsScreenDimInterval:(double *)interval;
-- (void)preparePluginForActivationEvent:(int)activationEvent afterInterval:(double)interval;
+- (void)preparePluginForActivationEvent:(int)activationEvent eventSource:(int)source afterInterval:(double)interval;
 - (void)uiPlugin:(id)plugin forceUpdateToInterfaceOrientation:(int)interfaceOrientation animated:(BOOL)animated;
 - (void)uiPlugin:(id)plugin isNowRunning:(BOOL)running;
 - (BOOL)uiPlugin:(id)plugin launchApplicationWithBundleID:(id)bundleID openURL:(id)url;
+- (BOOL)uiPlugin:(id)plugin launchApplicationWithBundleID:(id)bundleID openURL:(id)url allowDismissal:(BOOL)dismissal;
 - (BOOL)uiPlugin:(id)plugin openURL:(id)url;
 - (void)uiPlugin:(id)plugin setExpectsFaceContact:(BOOL)contact;
 - (BOOL)uiPluginAttemptDeviceUnlock:(id)unlock withPassword:(id)password lockViewOwner:(id)owner;

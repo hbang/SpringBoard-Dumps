@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
+#import "UIGestureRecognizerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "UICollectionViewDataSource.h"
 #import "UICollectionViewDelegate.h"
 #import "SBCollectionViewCellDelegate.h"
-#import "UIGestureRecognizerDelegate.h"
 #import "SBStarkBannerTargetObserver.h"
-#import "SpringBoard-Structs.h"
 
 @protocol SBStarkNotificationViewControllerDelegate;
 
@@ -29,13 +29,11 @@ __attribute__((visibility("hidden")))
 	SBStarkBannerCell *_currentCell;
 	int _state;
 	SBStarkNotificationLayout *_notificationsLayout;
-	UICollectionView *_notificationsView;
+	SBCarBannerNotificationView *_notificationsView;
 }
 @property(assign, nonatomic) id<SBStarkNotificationViewControllerDelegate> delegate;
 @property(assign, nonatomic) int state;
-@property(assign, nonatomic, getter=isSuspended) BOOL suspended;
-@property(assign, nonatomic, getter=isSuspendedForAssistant) BOOL suspendedForAssistant;
-- (id)initWithInterfaceType:(int)interfaceType;
+- (id)initWithInteractionAffordances:(unsigned)interactionAffordances;
 - (void)_performBackGesture:(id)gesture;
 - (void)_performSelectGesture:(id)gesture;
 - (void)_setState:(int)state;
@@ -47,9 +45,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)collectionView:(id)view shouldHighlightItemAtIndexPath:(id)indexPath;
 - (BOOL)collectionView:(id)view shouldSelectItemAtIndexPath:(id)indexPath;
 - (void)dealloc;
-- (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
+- (void)dismissCurrent;
+- (BOOL)isSuspended;
 - (void)loadView;
 - (int)numberOfSectionsInCollectionView:(id)collectionView;
+- (void)setSuspended:(BOOL)suspended cancellingCurrent:(BOOL)current forReason:(id)reason;
+- (void)setSuspended:(BOOL)suspended forReason:(id)reason;
 - (void)starkBannerTarget:(id)target didChangeContextWithDismissReason:(int)dismissReason;
 @end
 

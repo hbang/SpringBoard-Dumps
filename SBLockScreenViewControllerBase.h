@@ -96,5 +96,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)wantsPasscodeLockForUIUnlockFromSource:(int)source withOptions:(id)options;
 - (BOOL)wantsScreenToAutoDim;
 - (BOOL)wantsToHandleAlert:(id)handleAlert;
+- (void)willBeginDeactivationForTransitionToApp:(id)app animated:(BOOL)animated;
 @end
 

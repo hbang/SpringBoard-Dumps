@@ -12,7 +12,6 @@
 @protocol SBUIUserAgent <NSObject>
 - (void)activateModalBulletinAlert:(id)alert;
 - (void)activateRemoteAlertService:(id)service options:(id)options;
-- (void)activateStarkRemoteAlertService:(id)service ofType:(id)type;
 - (int)activeInterfaceOrientation;
 - (void)addActiveInterfaceOrientationObserver:(id)observer;
 - (BOOL)alertIsActive;

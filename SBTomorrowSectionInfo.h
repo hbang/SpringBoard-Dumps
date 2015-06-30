@@ -10,9 +10,12 @@
 
 __attribute__((visibility("hidden")))
 @interface SBTomorrowSectionInfo : SBBBSectionInfo {
+	SBItemInfoLayoutCache *_layoutCache;
 }
-- (float)heightForReusableViewInTableView:(id)tableView;
+- (void)dealloc;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
 - (id)identifier;
+- (void)invalidateCachedLayoutData;
 - (void)populateReusableView:(id)view;
 - (Class)reusableViewClass;
 @end

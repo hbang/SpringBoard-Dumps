@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 	NSMutableDictionary *_applications;
 	NSMutableDictionary *_applicationsByBundleIdentifer;
 	NSMutableSet *_applicationsPlayingMutedAudioSinceLastLock;
-	SBApplication *_applicationCurrentlyRecordingAudio;
 	int _locationStatusBarIconType;
 	NSDictionary *_backgroundDisplayDict;
 	NSOperationQueue *_backgroundOperationQueue;
@@ -30,12 +29,14 @@ __attribute__((visibility("hidden")))
 	NSCountedSet *_pendingRequestedUninstallsBundleID;
 }
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
++ (void)setClearSystemAppSnapshotsWhenLoaded:(BOOL)loaded;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
 - (BOOL)_applicationHasBeenModified:(id)modified applicationProxy:(id)proxy;
 - (void)_calculateApplicationDiff:(id *)diff removed:(id *)removed applicationProxies:(id)proxies;
 - (void)_deviceFirstUnlocked;
+- (void)_finishDeferredMajorVersionMigrationTasks;
 - (id)_getLSApplicationProxies;
 - (void)_loadApplication:(id)application proxy:(id)proxy;
 - (id)_loadApplications:(id)applications removed:(id)removed applicationProxies:(id)proxies;
@@ -45,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)_memoryWarningReceived;
 - (id)_modifiedApplications:(id)applications applicationProxies:(id)proxies;
 - (void)_preLoadApplications;
-- (void)_recordingStateChanged:(id)changed;
 - (void)_registerForAVSystemControllerNotifications;
 - (void)_reloadBackgroundIDsDict;
 - (void)_removePendingRequestedUninstalledBundleID:(id)anId;
@@ -59,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (id)allDisplayIdentifiers;
 - (int)appVisibilityOverrideForBundleIdentifier:(id)bundleIdentifier;
 - (Class)applicationClassForInfoDictionary:(id)infoDictionary;
-- (id)applicationCurrentlyRecordingAudio;
 - (id)applicationWithDisplayIdentifier:(id)displayIdentifier;
 - (id)applicationWithPid:(int)pid;
 - (void)applicationsInstalled:(id)installed;

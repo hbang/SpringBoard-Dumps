@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 	SBLegibilitySettings *_legibilitySettings;
 	SBFWallpaperSettings *_wallpaperSettings;
 	SBFAnimationFactorySettings *_animationSettings;
+	SBHomeButtonSettings *_homeButtonSettings;
 	NSString *_testRecipeClassName;
 }
 @property(retain) SBAlertItemsSettings *alertItemsSettings;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(retain) SBControlCenterSettings *controlCenterSettings;
 @property(retain) SBFadeAnimationSettings *fadeAnimationSettings;
 @property(retain) SBFolderSettings *folderSettings;
+@property(retain) SBHomeButtonSettings *homeButtonSettings;
 @property(retain) SBIconColorSettings *iconColorSettings;
 @property(retain) SBLegibilitySettings *legibilitySettings;
 @property(retain) SBLockScreenSettings *lockScreenSettings;
