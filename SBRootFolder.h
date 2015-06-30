@@ -11,16 +11,19 @@ __attribute__((visibility("hidden")))
 @interface SBRootFolder : SBFolder <SBIconIndexNodeObserver> {
 	SBDockIconListModel *_dock;
 }
-+ (int)maxListCount;
 - (id)init;
+- (id)_listsForCompaction;
 - (void)_notifyIndexChange:(int)change identifiers:(id)identifiers withValidationBlock:(id)validationBlock;
+- (BOOL)canEditDisplayName;
+- (BOOL)canRemoveIcons;
 - (id)containedNodeIdentifiers;
 - (BOOL)containsNodeIdentifier:(id)identifier;
+- (Class)controllerClass;
 - (void)dealloc;
 - (id)dockModel;
 - (id)folderType;
 - (id)iconsOfClass:(Class)aClass;
-- (unsigned)indexOfIconList:(id)iconList;
+- (unsigned)indexOfList:(id)list;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (BOOL)isIconStateDirty;
 - (void)list:(id)list didAddContainedNodeIdentifiers:(id)identifiers;

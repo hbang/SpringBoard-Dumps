@@ -9,14 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBFakeStatusBarView : XXUnknownSuperclass {
-	BOOL _initialized;
 }
-@property(assign, nonatomic) BOOL initialized;
-+ (id)allocWithZone:(NSZone *)zone;
-- (id)initWithFrame:(CGRect)frame;
-- (void)_clearChanges;
-- (void)dealloc;
-- (oneway void)release;
-- (id)retain;
+- (void)setSnapshotOverridesWithTimeEnabled:(BOOL)timeEnabled;
 @end
 

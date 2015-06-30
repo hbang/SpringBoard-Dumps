@@ -11,8 +11,11 @@ __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomUpAppFromPhone : SBUIAnimationZoomUpApp {
 }
 - (void)_cleanupAnimation;
+- (void)_cleanupPhonesContextHostView;
 - (void)_prepareAnimation;
+- (void)animateZoomWithCompletion:(id)completion;
+- (id)appStatusBarTransitionInfoWithStartStyleRequest:(id)startStyleRequest startOrientation:(int)orientation;
 - (void)dealloc;
-- (XXStruct_UhFvxB)fakeStatusBarInfoWithStartStyle:(int)startStyle startOrientation:(int)orientation;
+- (void)prepareZoom;
 @end
 

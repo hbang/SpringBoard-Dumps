@@ -10,10 +10,9 @@
 __attribute__((visibility("hidden")))
 @interface SBAppExitedWorkspaceTransaction : SBAppToAppWorkspaceTransaction {
 }
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager from:(id)from to:(id)to;
+- (id)initWithWorkspace:(id)workspace alertManager:(id)manager from:(id)from to:(id)to activationHandler:(id)handler;
 - (void)_kickOffActivation;
 - (id)_setupAnimationFrom:(id)from to:(id)to;
 - (int)_setupMilestonesFrom:(id)from to:(id)to;
-- (BOOL)shouldDismissShowcase;
 @end
 

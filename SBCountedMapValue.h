@@ -6,9 +6,8 @@
  */
 
 
-@protocol NSCopying;
 
 @protocol SBCountedMapValue <NSObject>
-@property(readonly, assign, nonatomic) id<NSCopying> countedMapKey;
+- (id)countedMapKey;
 @end
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 + (id)fakeApplication;
 - (id)init;
+- (id)icon:(id)icon imageWithFormat:(int)format;
 - (BOOL)isFakeApp;
 @end
 

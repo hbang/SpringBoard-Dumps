@@ -8,41 +8,21 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAlertWindow : XXUnknownSuperclass {
-	UIView *_contentLayer;
-	unsigned _isAnimating : 1;
-	unsigned _isInvalid : 1;
-	unsigned _handlerActive : 1;
-	float _finalAlpha;
-	int _currentOrientation;
-	SBAlertView *_currentDisplay;
-	NSMutableArray *_stackedAlertDisplays;
+@interface SBAlertWindow : SBWindow {
+	SBAlertWindowViewController *_rootViewController;
 	NSMapTable *_alertToDisplayMap;
 }
-+ (CGRect)constrainFrameToScreen:(CGRect)screen;
-- (id)initWithContentRect:(CGRect)contentRect;
-- (BOOL)_isSupportedInterfaceOrientation:(int)orientation;
-- (void)_setupContentLayerForCurrentOrientation;
-- (void)alertDisplayWillDismiss;
-- (id)contentLayer;
-- (id)currentDisplay;
++ (int)jailBehavior;
+- (id)initWithFrame:(CGRect)frame;
+- (id)initWithScreen:(id)screen;
+- (id)initWithScreen:(id)screen rootViewController:(id)controller;
 - (BOOL)deactivateAlert:(id)alert;
 - (void)dealloc;
-- (void)dismissWindow:(id)window;
 - (void)displayAlert:(id)alert;
-- (int)displayCount;
-- (BOOL)handlerAlreadyActive;
 - (BOOL)hasActiveAlertsOrDisplays;
 - (BOOL)isOpaque;
 - (void)noteInterfaceOrientationChangingTo:(int)to animated:(BOOL)animated;
-- (id)rotatingContentViewForWindow:(id)window;
-- (void)setHandlerAlreadyActive:(BOOL)active;
-- (BOOL)shouldWindowUseOnePartInterfaceRotationAnimation:(id)animation;
-- (id)stackedDisplayForAlert:(id)alert;
-- (void)window:(id)window didRotateFromInterfaceOrientation:(int)interfaceOrientation;
-- (BOOL)window:(id)window shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
-- (void)window:(id)window willAnimateFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame3;
-- (void)window:(id)window willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
-- (void)window:(id)window willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (id)stackedAlertsIncludingActiveAlert:(BOOL)alert;
+- (int)stackedDisplayCount;
 @end
 

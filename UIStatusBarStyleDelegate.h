@@ -9,6 +9,9 @@
 
 @protocol UIStatusBarStyleDelegate <NSObject>
 - (void)statusBar:(id)bar didAnimateFromHeight:(float)height toHeight:(float)height3 animation:(int)animation;
+@optional
+- (void)statusBar:(id)bar didTriggerButtonType:(int)type withAction:(int)action;
+@required
 - (int)statusBar:(id)bar styleForRequestedStyle:(int)requestedStyle overrides:(int)overrides;
 - (void)statusBar:(id)bar willAnimateFromHeight:(float)height toHeight:(float)height3 duration:(double)duration animation:(int)animation;
 @end

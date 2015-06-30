@@ -10,15 +10,18 @@
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomDownAppToPhone : SBUIAnimationZoomDownApp {
 	BOOL _usingSuperZoomImplementation;
+	BOOL _fromPhoneAppToFaceTimeAppDuringCall;
 }
 - (id)_animationProgressDependency;
+- (BOOL)_animationShouldStart;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_cleanupPhonesContextHostView;
 - (void)_prepareAnimation;
 - (BOOL)_shouldZoomUsingSuperImplementation;
 - (void)_startAnimation;
+- (void)animateZoomWithCompletion:(id)completion;
+- (id)appStatusBarTransitionInfoWithStartEffectivelyHidden:(BOOL)startEffectivelyHidden endStyleRequest:(id)request endOrientation:(int)orientation;
 - (void)dealloc;
-- (XXStruct_UhFvxB)fakeStatusBarInfoWithStartEffectivelyHidden:(BOOL)startEffectivelyHidden endStyle:(int)style endOrientation:(int)orientation;
 @end
 

@@ -27,9 +27,11 @@ __attribute__((visibility("hidden")))
 	BOOL _hasSignificantMotion;
 	CGPoint _movementVelocityInPointsPerSecond;
 	CGPoint _centroidPoint;
+	double _recognitionStartTimestamp;
 }
 @property(assign, nonatomic) float accelerationPower;
 @property(assign, nonatomic) float accelerationThreshold;
+@property(readonly, assign, nonatomic) double activeRecognitionDuration;
 @property(assign, nonatomic) float animationDistance;
 @property(readonly, assign, nonatomic) CGPoint centroidPoint;
 @property(readonly, assign, nonatomic) float cumulativeMotion;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) int requiredDirectionality;
 @property(readonly, assign, nonatomic) float skippedCumulativePercentage;
 - (id)init;
+- (double)activeTouchTimestamp;
 - (int)completionTypeProjectingMomentumForInterval:(double)interval;
 - (void)computeCentroidPoint:(SBGestureContextRef)point;
 - (void)computeGestureMotion:(SBGestureContextRef)motion;
@@ -50,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (float)computeNonlinearSpeedGain:(float)gain;
 - (float)projectMotionForInterval:(double)interval;
 - (void)reset;
+- (void)setState:(int)state;
 - (void)skipCumulativeMotion;
 - (void)touchesBegan:(SBGestureContextRef)began;
 - (void)touchesCancelled:(SBGestureContextRef)cancelled;

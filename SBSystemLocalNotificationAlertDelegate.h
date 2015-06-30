@@ -8,8 +8,8 @@
 
 
 @protocol SBSystemLocalNotificationAlertDelegate
-- (void)systemLocalNotificationAlertShouldLaunch:(id)systemLocalNotificationAlert forApplication:(id)application;
+- (void)systemLocalNotificationAlertShouldLaunch:(id)systemLocalNotificationAlert;
 @optional
-- (void)systemLocalNotificationAlertShouldSnooze:(id)systemLocalNotificationAlert forApplication:(id)application;
+- (void)systemLocalNotificationAlertShouldSnooze:(id)systemLocalNotificationAlert;
 @end
 

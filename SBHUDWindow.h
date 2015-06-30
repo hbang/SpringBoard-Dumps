@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBHUDWindow : XXUnknownSuperclass {
+@interface SBHUDWindow : SBWindow {
 }
 - (BOOL)_ignoresHitTest;
 @end

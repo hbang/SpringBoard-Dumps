@@ -8,7 +8,6 @@
 
 
 @protocol SBUIAnimationControllerDelegate <NSObject>
-- (void)animationController:(id)controller didCommitAnimation:(BOOL)animation withDuration:(double)duration afterDelay:(double)delay;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 @end

@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIStaticAnimationController : SBUIAnimationController {
+@interface SBUIStaticAnimationController : SBUIMainScreenAnimationController {
 	BOOL _relaunchExpected;
 	BOOL _awaitingKeybagRefetch;
 	BOOL _appWasActivating;
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_animationShouldStart;
 - (void)_cleanupAnimation;
 - (void)_prepareAnimation;
+- (BOOL)_shouldDismissBanner;
 - (void)_startAnimation;
 - (BOOL)_willAnimate;
 - (void)dealloc;

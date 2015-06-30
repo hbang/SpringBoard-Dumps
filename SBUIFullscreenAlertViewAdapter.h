@@ -8,24 +8,19 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIFullscreenAlertViewAdapter : SBAlertView {
+@interface SBUIFullscreenAlertViewAdapter : SBAlertViewAdapter {
 	BOOL _revealedContentBeneathForDismiss;
-	UIView *_alertView;
+	BOOL _animatingOut;
 }
-- (id)initWithFrame:(CGRect)frame andContentView:(id)view;
-- (id)_alertAdapter;
+- (id)alert;
 - (void)alertDisplayWillBecomeVisible;
-- (void)alertWindowResizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame2;
-- (void)dealloc;
-- (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)dismiss;
-- (BOOL)displaysAboveStatusBar;
+- (BOOL)isAnimatingOut;
 - (BOOL)isReadyToBeRemovedFromView;
+- (void)setAlert:(id)alert;
 - (void)setShouldAnimateIn:(BOOL)animateIn;
 - (BOOL)shouldAnimateIconsIn;
 - (void)updateSpringBoardInPreparationForTransparentDismiss;
 - (void)viewAnimatedOut;
-- (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
-- (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

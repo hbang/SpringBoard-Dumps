@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)_activationDidChange;
 - (void)_externalSIMStatusChanged:(id)changed;
 - (void)_handlePromptForUnlock;
-- (BOOL)_hopelesslyPUKLocked;
 - (void)_initialUpdate;
 - (void)_postponementDidChange;
 - (void)_setupAppActivationStateDidChange:(id)_setupAppActivationState;

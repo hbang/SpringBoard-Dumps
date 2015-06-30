@@ -8,41 +8,45 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBFolderIcon : SBIcon <SBIconObserver, SBIconIndexNodeObserver> {
+@interface SBFolderIcon : SBIcon <SBFolderObserver, SBIconObserver, SBIconIndexNodeObserver> {
+	NSMutableArray *_cachedMiniGrids;
 	SBFolder *_folder;
 	NSHashTable *_nodeObservers;
 	NSMutableSet *_finishedDownloadIdentifiers;
-	float _progress;
+	int _progressState;
+	float _progressPercent;
 }
-@property(readonly, assign) float progress;
 + (Class)_iconGridImageClass;
 + (unsigned)_maxIconsInGridImage;
 - (id)initWithFolder:(id)folder;
 - (void)_adjustForIconsAdded:(id)iconsAdded removed:(id)removed;
+- (void)_appPlaceholdersDidChange:(id)_appPlaceholders;
 - (void)_containedIconImageChanged:(id)changed;
-- (NSRange)_gridImageSkippedIconsRange;
-- (id)_miniIconGridWithSkipping:(BOOL)skipping;
+- (id)_miniIconGridForPage:(int)page;
 - (void)_updateBadgeValue;
-- (void)_updateProgressBar;
+- (void)_updateProgress;
 - (void)addNodeObserver:(id)observer;
 - (id)containedNodeIdentifiers;
 - (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
 - (id)description;
 - (id)displayName;
-- (void)downloadingIconStatusDidChange:(id)downloadingIconStatus;
 - (id)folder;
+- (void)folder:(id)folder didAddList:(id)list;
+- (void)folder:(id)folder didRemoveLists:(id)lists atIndexes:(id)indexes;
 - (id)generateIconImage:(int)image;
 - (id)getGenericIconImage:(int)image;
-- (unsigned)gridCellIndexForIconIndex:(unsigned)iconIndex withSkipping:(BOOL)skipping;
-- (BOOL)gridImageShouldSkipIcons;
-- (id)gridImageWithSkipping:(BOOL)skipping;
+- (unsigned)gridCellIndexForIconIndex:(unsigned)iconIndex;
+- (id)gridImages;
+- (BOOL)hasFolderIconView;
 - (void)iconAccessoriesDidUpdate:(id)iconAccessories;
 - (void)iconImageDidUpdate:(id)iconImage;
-- (id)iconOverlayImageForLocation:(int)location;
+- (Class)iconImageViewClassForLocation:(int)location;
+- (Class)iconViewClassForLocation:(int)location;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (BOOL)isFolderIcon;
-- (void)launch;
+- (void)launchFromLocation:(int)location;
+- (unsigned)listIndexForContainedIcon:(id)containedIcon;
 - (void)localeChanged;
 - (BOOL)matchesRepresentation:(id)representation;
 - (id)miniGridCellImageForIcon:(id)icon;
@@ -51,12 +55,14 @@ __attribute__((visibility("hidden")))
 - (id)nodeDescriptionWithPrefix:(id)prefix;
 - (id)nodeIdentifier;
 - (id)nodesAlongIndexPath:(id)path consumedIndexes:(unsigned)indexes;
-- (void)noteCompletedDownloadIdentifier:(id)identifier;
 - (void)noteContainedIcon:(id)icon replacedIcon:(id)icon2;
 - (void)noteContainedIconsAdded:(id)added removed:(id)removed;
+- (BOOL)progressIsPaused;
+- (float)progressPercent;
+- (int)progressState;
+- (void)purgeCachedImages;
 - (void)removeNodeObserver:(id)observer;
 - (id)representation;
 - (void)updateLabel;
-- (void)updateProgress;
 @end
 

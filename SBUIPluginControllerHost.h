@@ -9,7 +9,6 @@
 
 @protocol SBUIPluginControllerHost <NSObject>
 - (void)uiPlugin:(id)plugin forceUpdateToInterfaceOrientation:(int)interfaceOrientation animated:(BOOL)animated;
-- (void)uiPlugin:(id)plugin ignoresKeyboardAvoidance:(BOOL)avoidance;
 - (void)uiPlugin:(id)plugin isNowRunning:(BOOL)running;
 - (BOOL)uiPlugin:(id)plugin launchApplicationWithBundleID:(id)bundleID openURL:(id)url;
 - (BOOL)uiPlugin:(id)plugin openURL:(id)url;
@@ -17,8 +16,7 @@
 - (BOOL)uiPluginAttemptDeviceUnlock:(id)unlock withPassword:(id)password lockViewOwner:(id)owner;
 - (BOOL)uiPluginExpectsFaceContact:(id)contact;
 - (void)uiPluginUserEventOccurred:(id)occurred;
-- (BOOL)uiPluginWantsActivation:(id)activation forEvent:(int)event revealMode:(int)mode completion:(id)completion;
+- (BOOL)uiPluginWantsActivation:(id)activation forEvent:(int)event completion:(id)completion;
 - (void)uiPluginWantsDismissal:(id)dismissal withAnimation:(BOOL)animation;
-- (void)uiPluginWantsSizeUpdate:(id)update revealMode:(int)mode withBlock:(id)block;
 @end
 

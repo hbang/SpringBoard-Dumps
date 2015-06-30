@@ -11,6 +11,7 @@
 @protocol SBBulletinDateLabel <NSObject>
 @property(assign, nonatomic, getter=isAllDay) BOOL allDay;
 @property(assign, nonatomic) id<SBDateLabelDelegate> delegate;
+@property(assign, nonatomic) BOOL isTimestamp;
 @property(assign, nonatomic) int labelType;
 - (void)prepareForReuse;
 - (void)setEndDate:(id)date withTimeZone:(id)timeZone;

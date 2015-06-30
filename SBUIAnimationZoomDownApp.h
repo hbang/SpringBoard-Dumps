@@ -8,23 +8,23 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIAnimationZoomDownApp : SBUIAnimationController {
+@interface SBUIAnimationZoomDownApp : SBUIMainScreenAnimationController {
 	UIView *_viewToAnimate;
-	BOOL _animateBanner;
-	XXStruct_UhFvxB _fakeStatusBarInfo;
+	SBAppStatusBarTransitionInfo *_appStatusBarTransitionInfo;
 }
 - (id)initWithDeactivatingApp:(id)deactivatingApp;
 - (void)_cleanupAnimation;
 - (void)_prepareAnimation;
 - (void)_startAnimation;
+- (void)animateFakeStatusBarWithParameters:(id)parameters;
+- (void)animateZoomWithCompletion:(id)completion;
 - (double)animationDelay;
-- (void)animationDidStop:(id)animation finished:(id)finished context:(void *)context;
 - (double)animationDuration;
-- (double)animationStartTime;
 - (id)appContext;
+- (id)appStatusBarTransitionInfoWithStartEffectivelyHidden:(BOOL)startEffectivelyHidden endStyleRequest:(id)request endOrientation:(int)orientation;
+- (void)cleanupZoom;
 - (void)dealloc;
-- (float)endZoomScale;
-- (XXStruct_UhFvxB)fakeStatusBarInfoWithStartEffectivelyHidden:(BOOL)startEffectivelyHidden endStyle:(int)style endOrientation:(int)orientation;
 - (BOOL)prefersLayerHostSnapshot;
+- (void)prepareZoom;
 @end
 

@@ -8,6 +8,6 @@
 
 
 @protocol SBFolderIconObserver <SBIconObserver>
-- (void)folderIcon:(id)icon didUpdateGridImage:(id)image withSkipping:(BOOL)skipping forContainedIconImageUpdate:(id)containedIconImageUpdate;
+- (void)folderIcon:(id)icon didUpdateGridImage:(id)image forListIndex:(unsigned)listIndex forContainedIconImageUpdate:(id)containedIconImageUpdate;
 @end
 

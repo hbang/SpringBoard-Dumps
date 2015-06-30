@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
 - (void)_postResetEnded;
 - (void)_resetFinished;
 - (void)_resetThread;
+- (void)_setProgress:(float)progress;
 - (void)beginReset;
 - (void)dealloc;
 - (float)progress;
 - (void)setMode:(int)mode;
-- (void)setProgress:(float)progress;
 @end
 

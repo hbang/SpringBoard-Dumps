@@ -9,6 +9,7 @@
 
 @protocol MCProfileConnectionObserver <NSObject>
 @optional
+- (void)profileConnectionDidReceiveAppWhitelistChangedNotification:(id)profileConnection userInfo:(id)info;
 - (void)profileConnectionDidReceiveDefaultsChangedNotification:(id)profileConnection userInfo:(id)info;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)profileConnection userInfo:(id)info;
 - (void)profileConnectionDidReceivePasscodeChangedNotification:(id)profileConnection userInfo:(id)info;

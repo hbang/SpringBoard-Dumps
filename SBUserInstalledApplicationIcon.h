@@ -11,14 +11,6 @@ __attribute__((visibility("hidden")))
 @interface SBUserInstalledApplicationIcon : SBApplicationIcon {
 	BOOL _shouldHaveSash;
 }
-- (id)initWithApplication:(id)application;
-- (void)_checkHasBeenLaunchedState;
-- (id)_newlyInstalledSashLabel;
-- (BOOL)_shouldShowSashForNewlyInstalledApp;
-- (int)accessoryTypeForLocation:(int)location;
-- (BOOL)allowsUninstall;
-- (id)badgeTextForLocation:(int)location;
-- (BOOL)hasBeenSyncedBackToITunes;
 - (id)ratingsAlertBody;
 - (id)ratingsAlertRateButtonTitle;
 - (id)ratingsAlertSkipTitle;

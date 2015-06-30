@@ -11,10 +11,11 @@ __attribute__((visibility("hidden")))
 @interface SBSIMLockEntryAlert : SBAlert {
 	int _status;
 }
-- (id)init;
 - (void)activate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)deactivate;
+- (BOOL)hasTranslucentBackground;
+- (id)lockEntryView;
 - (int)status;
 @end
 

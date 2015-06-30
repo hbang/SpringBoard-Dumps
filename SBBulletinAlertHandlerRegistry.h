@@ -12,12 +12,15 @@
 @end
 
 __attribute__((visibility("hidden")))
-@interface SBBulletinAlertHandlerRegistry : XXUnknownSuperclass <SBBulletinAlertHandlerRegistry> {
+@interface SBBulletinAlertHandlerRegistry : XXUnknownSuperclass <_UISettingsKeyObserver, SBBulletinAlertHandlerRegistry> {
 	NSMutableDictionary *_handlersBySectionID;
+	SBAlertItemsSettings *_settings;
+	BOOL _disabled;
 }
 - (id)init;
 - (void)addAlertHandler:(id)handler forSection:(id)section;
 - (id)alertHandlersForSection:(id)section;
 - (void)dealloc;
+- (void)settings:(id)settings changedValueForKey:(id)key;
 @end
 

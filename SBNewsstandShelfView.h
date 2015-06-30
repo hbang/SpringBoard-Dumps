@@ -8,25 +8,16 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBNewsstandShelfView : XXUnknownSuperclass {
-	UIImageView *_body;
-	UIImageView *_leftEdge;
-	UIImageView *_rightEdge;
-	UIImageView *_shadowLeft;
-	UIImageView *_shadowMiddle;
-	UIImageView *_shadowRight;
-	int _orientation;
+@interface SBNewsstandShelfView : SBGradientView {
+	UIView *_tintView;
+	float _tintAlpha;
+	SBHighlightView *_highlightView;
 	unsigned _shelfIndex;
-	UILabel *_label;
 }
-+ (id)reuseIdentifier;
-+ (id)shelf;
-+ (float)shelfEdgeHeight;
-+ (float)shelfHeight;
-+ (float)shelfItemBaselineOffset;
-- (id)initWithStyle:(int)style reuseIdentifier:(id)identifier;
-- (void)configureForOrientation:(int)orientation shelfIndex:(unsigned)index;
+@property(assign, nonatomic) unsigned shelfIndex;
+@property(assign, nonatomic) float tintAlpha;
+@property(retain, nonatomic) UIColor *tintColor;
 - (void)dealloc;
-- (unsigned)shelfIndex;
+- (void)layoutSubviews;
 @end
 

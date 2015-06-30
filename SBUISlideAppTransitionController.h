@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBUISlideAppTransitionController : SBUIAnimationController <SBUIFullscreenAnimationViewDelegate> {
+@interface SBUISlideAppTransitionController : SBUIMainScreenAnimationController <SBUIFullscreenAnimationViewDelegate> {
 	SBUISlideAppTransitionView *_transitionView;
 	double _animationDelay;
 	double _animationDuration;

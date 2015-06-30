@@ -21,13 +21,13 @@ __attribute__((visibility("hidden")))
 + (BOOL)addManyIcons;
 + (BOOL)alwaysShowIconLabels;
 + (id)bundleIDToReplicate;
-+ (BOOL)debugRotation;
 + (BOOL)disableIconSkew;
 + (void)initialize;
 + (BOOL)newsstandEnabled;
 + (BOOL)newsstandStoreIsAvailable;
-+ (void)noteCapabilitiesDidChange;
++ (void)noteAppRestrictionsDidChange;
 + (void)openNewsstandAppStore;
 + (void)reloadDefaults;
++ (BOOL)useInternationalAssets;
 @end
 

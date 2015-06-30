@@ -11,9 +11,10 @@ __attribute__((visibility("hidden")))
 @interface SBFolderIconListView : SBIconListView {
 }
 + (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
-+ (unsigned)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
++ (unsigned)maxVisibleIconRowsInterfaceOrientation:(int)orientation;
 - (float)bottomIconInset;
-- (CGRect)nineIconRectForScrollPosition:(int)scrollPosition;
+- (int)iconLocation;
+- (float)sideIconInset;
 - (float)topIconInset;
 @end
 
