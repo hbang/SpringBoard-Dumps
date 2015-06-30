@@ -22,6 +22,7 @@
 	unsigned _preventIdleSleep : 1;
 }
 @property(readonly, assign) unsigned clientPort;
+@property(readonly, assign) BOOL hasFixedStartTime;
 @property(retain, nonatomic) NSString *identifier;
 @property(readonly, assign) int ownerPID;
 @property(readonly, assign) double permittedBackgroundDuration;

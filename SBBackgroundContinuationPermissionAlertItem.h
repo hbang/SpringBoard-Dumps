@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBBackgroundContinuationPermissionAlertItem : SBAlertItem {
+@interface SBBackgroundContinuationPermissionAlertItem : XXUnknownSuperclass {
 	SBApplication *_app;
 }
 - (id)initWithApplication:(id)application;

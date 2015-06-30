@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBDismissOnlyAlertItem : SBAlertItem {
+@interface SBDismissOnlyAlertItem : XXUnknownSuperclass {
 	NSString *_title;
 	NSString *_body;
 	double _autoDismissInterval;

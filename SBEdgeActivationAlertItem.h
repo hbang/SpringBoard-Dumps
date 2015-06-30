@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBEdgeActivationAlertItem : SBAlertItem {
+@interface SBEdgeActivationAlertItem : XXUnknownSuperclass {
 	int _error;
 	NSString *_reason;
 	BOOL _suggestWiFi;

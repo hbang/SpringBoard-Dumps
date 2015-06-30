@@ -5,24 +5,27 @@
  * Source: (null)
  */
 
+#import "SBShowcaseViewController.h"
 #import "SBAppSwitcherBarViewDelegate.h"
-#import "SBIconDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconViewDelegate.h"
 
 
-@interface SBAppSwitcherController : XXUnknownSuperclass <SBIconDelegate, SBAppSwitcherBarViewDelegate> {
+@interface SBAppSwitcherController : SBShowcaseViewController <SBIconViewDelegate, SBAppSwitcherBarViewDelegate> {
 	SBAppSwitcherModel *_model;
 	SBNowPlayingBar *_nowPlayingBar;
 	SBAppSwitcherBarView *_bottomBar;
-	SBApplicationIcon *_pressedIcon;
 	BOOL _editing;
+	int _orientation;
+	NSString *_topAppDisplayID;
 	SBPrintStatusController *_printStatusController;
 }
 @property(readonly, assign, nonatomic) SBAppSwitcherModel *model;
+@property(retain) NSString *topAppDisplayID;
 + (id)sharedInstance;
 + (id)sharedInstanceIfAvailable;
 - (id)init;
-- (id)_applicationIconsExcept:(id)except forOrientation:(int)orientation;
+- (id)_applicationIconsExceptTopApp;
+- (void)_appsDidChange:(id)_apps;
 - (void)_beginEditing;
 - (id)_currentDownloads;
 - (id)_currentIcons;
@@ -30,39 +33,48 @@
 - (id)_iconForDownload:(id)download;
 - (id)_iconForPrinting;
 - (BOOL)_inEditMode;
+- (void)_newsstandFolderWasOpened:(id)opened;
+- (void)_reloadIconViewsAndShowFirstPage:(BOOL)page;
 - (void)_removeApplicationFromRecents:(id)recents;
 - (void)_stopEditing;
+- (id)_view;
 - (BOOL)airPlayControlsVisible;
 - (void)appSwitcherBar:(id)bar pageAtIndexDidAppear:(int)pageAtIndex;
 - (void)appSwitcherBar:(id)bar pageAtIndexDidDisappear:(int)pageAtIndex;
 - (BOOL)appSwitcherBar:(id)bar scrollShouldCancelInContentForView:(id)scroll;
 - (void)appSwitcherBarRemovedFromSuperview:(id)superview;
 - (void)applicationDied:(id)died;
-- (id)applicationIconForDisplayIdentifier:(id)displayIdentifier;
 - (void)applicationLaunched:(id)launched;
 - (void)applicationSuspended:(id)suspended;
-- (void)applicationsRemoved:(id)removed andAdded:(id)added;
+- (float)bottomBarHeight;
 - (int)closeBoxTypeForIcon:(id)icon;
 - (void)dealloc;
-- (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)dismissPrintView;
+- (void)downloadChanged:(id)changed;
 - (void)downloadItemUpdatingStatusChanged:(id)changed;
-- (void)downloadsChanged:(id)changed withRemovals:(id)removals;
+- (void)downloadRemoved:(id)removed;
 - (BOOL)handleMenuButtonTap;
 - (void)iconCloseBoxTapped:(id)tapped;
 - (void)iconHandleLongPress:(id)press;
 - (BOOL)iconShouldAllowTap:(id)icon;
 - (void)iconTapped:(id)tapped;
 - (void)iconTouchBegan:(id)began;
+- (BOOL)iconViewDisplaysBadges:(id)badges;
 - (BOOL)isScrolling;
+- (void)noteIconModelDidReload;
 - (BOOL)nowPlayingControlsVisible;
 - (id)printIcon;
 - (BOOL)printViewIsShowing;
 - (void)removePrintStatusIconBadge;
+- (void)restoreScrollPositionAfterSuspendGesture;
+- (void)saveScrollPositionBeforeSuspendGesture;
 - (void)setNeedsPrintStatusIcon:(BOOL)icon;
-- (id)switcherViewForApp:(id)app orientation:(int)orientation;
+- (void)setupForApp:(id)app orientation:(int)orientation;
+- (id)view;
+- (void)viewDidAppear;
+- (void)viewDidRotateFromInterfaceOrientation:(int)view;
 - (void)viewWillAppear;
-- (void)viewWillDisappearWithAnimationDuration:(double)view;
-- (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (void)viewWillDisappear;
+- (void)viewWillRotateToInterfaceOrientation:(int)view;
 @end
 

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 @interface SBPasscodeTextField : XXUnknownSuperclass {
@@ -20,8 +20,10 @@
 - (void)_handleKeyEvent:(GSEventRef)event;
 - (id)_style;
 - (void)attachFieldEditor:(id)editor;
+- (BOOL)becomeFirstResponder;
 - (CGRect)clearButtonRectForBounds:(CGRect)bounds;
 - (id)createTextLabelWithTextColor:(id)textColor;
 - (void)dealloc;
+- (BOOL)resignFirstResponder;
 @end
 

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SBSwitcherPopoverWindowControllerDelegate.h"
+#import "UIPrintStatusDelegate.h"
 #import "UIStatusBarStyleDelegate.h"
 #import "UINavigationControllerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBSwitcherPopoverWindowControllerDelegate.h"
-#import "UIPrintStatusDelegate.h"
 
 
 @interface SBPrintStatusController : XXUnknownSuperclass <UIPrintStatusDelegate, UINavigationControllerDelegate, UIStatusBarStyleDelegate, SBSwitcherPopoverWindowControllerDelegate> {

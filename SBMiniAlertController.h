@@ -5,14 +5,14 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 @interface SBMiniAlertController : XXUnknownSuperclass {
 	SBApplication *_displayShowingAnAlert;
 	UIWindow *_dimmingWindow;
-	unsigned _miniAlertVisible : 1;
+	unsigned _sbMiniAlertVisible : 1;
 	unsigned _showDimmingWindowAfterAlertsDismissed : 1;
 	UIView *_hiddenAlertWindow;
 	CGAffineTransform _dimmingWindowTranslation;
@@ -23,6 +23,7 @@
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_setDisplayShowingAnAlert:(id)alert;
 - (void)applyTranslationToDimmingView:(CGAffineTransform)dimmingView;
 - (void)applyTranslationToDimmingWindow:(CGAffineTransform)dimmingWindow;
 - (BOOL)canShowAlerts;

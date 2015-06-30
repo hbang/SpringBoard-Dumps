@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 @interface SBLinenView : XXUnknownSuperclass {
@@ -15,7 +15,6 @@
 }
 @property(assign, nonatomic) int type;
 + (id)_allFolderSwitcherLinenPaths:(BOOL)paths;
-+ (id)_createDataWithMappedFile:(id)mappedFile;
 + (id)_folderSwitcherLinenPath;
 + (void)_generateLinenStripsIfNeeded;
 + (id)_imageForIndex:(unsigned)index;

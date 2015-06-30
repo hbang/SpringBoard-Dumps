@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "NSCoding.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "NSCoding.h"
 
 
 @interface SBRemoteNotificationClient : XXUnknownSuperclass <NSCoding> {
@@ -17,11 +17,13 @@
 	int _settingsPresentedTypes;
 	NSData *_lastKnownDeviceToken;
 	NSDate *_missingDate;
+	NSDate *_contentPushDisallowedBeforeDate;
 	BOOL _hasShownSystemwideEnableAlert;
 	NSDictionary *_lastUserInfo;
 }
 @property(assign, nonatomic) int appEnabledTypes;
 @property(readonly, retain, nonatomic) NSString *bundleIdentifier;
+@property(retain, nonatomic) NSDate *contentPushDisallowedBeforeDate;
 @property(retain, nonatomic) NSString *environment;
 @property(assign, nonatomic) BOOL hasShownSystemwideEnableAlert;
 @property(retain, nonatomic) NSData *lastKnownDeviceToken;

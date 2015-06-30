@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 @interface VolumeControl : XXUnknownSuperclass {
@@ -21,7 +21,6 @@
 + (float)volumeStep;
 - (id)init;
 - (BOOL)_HUDIsDisplayableForCategory:(id)category;
-- (BOOL)_allowVolumeAdjust;
 - (float)_calcButtonRepeatDelay;
 - (void)_changeVolumeBy:(float)by;
 - (void)_effectiveVolumeChanged:(id)changed;

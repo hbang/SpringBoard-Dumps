@@ -9,14 +9,14 @@
 
 
 @interface SBSyncController : XXUnknownSuperclass {
-	int _syncState;
 	int _restoreState;
 	int _resetState;
-	int _sofwareUpdateState;
 	int _restoreTimerState;
 	NSTimer *_restoreTimer;
 	BOOL _showingResetUI;
 	BOOL _appsChangedDuringSync;
+	int _restoreStartedNotifyToken;
+	int _restoreEndedNotifyToken;
 }
 + (id)sharedInstance;
 - (void)_appInstallationNotification;
@@ -25,41 +25,30 @@
 - (void)_invalidateRestoreTimer;
 - (BOOL)_isBackupAgentRunning;
 - (void)_killApplications;
-- (void)_notifyAppsSyncWillBegin;
 - (void)_notifyRestoreCanProceed;
 - (void)_rebootNow;
 - (void)_resetEnded:(id)ended;
 - (void)_resetStarted:(id)started;
 - (void)_restoreTimerFired:(id)fired;
+- (void)_setRestoreState:(int)state;
 - (void)_setupRestoreTimer;
+- (void)_wirelessSyncEnded:(id)ended;
 - (void)beginResetting:(BOOL)resetting;
 - (void)beginRestoring;
-- (void)beginSyncing;
 - (void)cancelRestoring;
-- (void)cancelSyncing;
 - (void)dealloc;
 - (void)didEndResetting;
 - (void)didEndRestoring:(int)restoring;
-- (void)didEndSyncing;
-- (void)didShowSyncPanel;
 - (void)finishEndRestoring;
 - (void)finishedTerminatingApplications;
 - (void)frontLockedWhenPossible;
-- (void)iTunesSyncPhaseDidFinish:(int)iTunesSyncPhase reason:(int)reason;
-- (void)iTunesSyncRequestedStart;
 - (BOOL)isInUse;
 - (BOOL)isResetting;
 - (BOOL)isRestoring;
-- (BOOL)isSoftwareUpdating;
-- (BOOL)isSyncing;
 - (int)resetState;
 - (int)restoreState;
-- (void)resumeSyncing;
-- (void)setSoftwareUpdateState:(int)state;
-- (void)showPreSoftwareUpdateScreen;
 - (void)startObserving;
 - (void)stopObserving;
-- (void)suspendSyncing;
-- (int)syncState;
+- (void)syncSessionDidEnd;
 @end
 

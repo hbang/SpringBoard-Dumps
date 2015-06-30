@@ -16,6 +16,7 @@
 	int _unlockScreenType;
 	SBPasscodeComplianceAlertItem *_complianceAlertItem;
 	NSDate *_forcedComplianceDate;
+	id _telephonyNotificationObserver;
 }
 + (id)sharedInstance;
 - (void)_abort;

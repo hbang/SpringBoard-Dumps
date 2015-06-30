@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBCallFailureAlertItem : SBAlertItem {
+@interface SBCallFailureAlertItem : XXUnknownSuperclass {
 	int _causeCode;
 	NSString *_address;
 	CTCallRef _call;
@@ -21,5 +21,6 @@
 - (void)dealloc;
 - (id)lockLabel;
 - (void)performUnlockAction;
+- (id)shortLockLabel;
 @end
 

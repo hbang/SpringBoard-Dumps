@@ -5,44 +5,27 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "UISearchBarDelegate.h"
 #import "UITableViewDelegate.h"
 #import "UITableViewDataSource.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import "UISearchBarDelegate.h"
 
 
 @interface SBSearchController : XXUnknownSuperclass <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
 	SBSearchView *_searchView;
-	NSTimeZone *_calTimeZone;
-	NSDateFormatter *_calDayDateFormatter;
-	NSDateFormatter *_dayDateFormatter;
-	NSDateFormatter *_timeDateFormatter;
 	BOOL _reloadingTableContent;
 	BOOL _resultsUpdated;
-	NSCalendar *_autoUpdatingCurrentCalendar;
-	NSDate *_midnightThisMorning;
 	void *_addressBook;
 }
 @property(retain, nonatomic) SBSearchView *searchView;
 - (id)init;
-- (id)_autoUpdatingCurrentCalendar;
 - (id)_auxiliaryTitleForABRecordID:(int)abrecordID;
-- (id)_calDayDateFormatter;
-- (id)_calTimeZone;
 - (void)_clearResultsString:(id)string;
-- (id)_dayAndTimeStringForDate:(id)date;
-- (id)_dayDateFormatter;
-- (id)_dayStringForDate:(id)date useCalendarTimeZone:(BOOL)zone;
 - (void)_deselect;
 - (BOOL)_hasSearchResults;
-- (id)_midnightThisMorning;
 - (void)_populateCell:(id)cell withSearchResult:(id)searchResult;
-- (void)_resetCalTimeZone;
-- (void)_significantTimeChange:(id)change;
 - (void)_tableViewDidFadeOut:(id)_tableView finished:(id)finished context:(void *)context;
-- (id)_timeDateFormatter;
-- (id)_timeStringForDate:(id)date;
 - (void)_updateResults:(id)results;
 - (void)_updateTableContents;
 - (void)controllerWasDeactivated;
@@ -53,8 +36,6 @@
 - (void)scrollViewIsScrollingHorizontallyInSearchView;
 - (void)searchBar:(id)bar textDidChange:(id)text;
 - (void)searchBarSearchButtonClicked:(id)clicked;
-- (void)searchBarTextDidBeginEditing:(id)searchBarText;
-- (void)searchBarTextDidEndEditing:(id)searchBarText;
 - (BOOL)shouldShowKeyboardOnScroll;
 - (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didSelectRowAtIndexPath:(id)indexPath;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBFlippyAlertItem : SBAlertItem {
+@interface SBFlippyAlertItem : XXUnknownSuperclass {
 	UIAlertView *_frontAlertSheet;
 	UIAlertView *_backAlertSheet;
 	BOOL _showingBack;

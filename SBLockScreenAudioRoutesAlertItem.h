@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBLockScreenAudioRoutesAlertItem : SBAlertItem {
+@interface SBLockScreenAudioRoutesAlertItem : XXUnknownSuperclass {
 }
 - (id)alertSheet;
 - (Class)alertSheetClass;

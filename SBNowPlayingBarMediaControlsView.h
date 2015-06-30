@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 @interface SBNowPlayingBarMediaControlsView : XXUnknownSuperclass {
@@ -14,7 +14,7 @@
 	UIButton *_playButton;
 	UIButton *_nextButton;
 	UIButton *_airPlayButton;
-	SBIconLabel *_trackLabel;
+	UILabel *_trackLabel;
 	int _toggleType;
 	SBIconLabel *_toggleLabel;
 	BOOL _isAirPlayVisible;
@@ -24,6 +24,7 @@
 }
 @property(readonly, assign, nonatomic) UIButton *airPlayButton;
 @property(assign, nonatomic) BOOL airPlayButtonVisible;
+@property(assign, nonatomic) BOOL marqueeRunning;
 @property(readonly, assign, nonatomic) UIButton *nextButton;
 @property(readonly, assign, nonatomic) UIButton *playButton;
 @property(readonly, assign, nonatomic) UIButton *prevButton;

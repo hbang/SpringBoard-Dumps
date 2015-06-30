@@ -10,6 +10,7 @@
 
 @interface SBAppDosadoView : SBAppToAppTransitionView {
 }
-- (void)_beginTransition;
+- (void)beginTransition;
+- (void)endTransition;
 @end
 

@@ -26,6 +26,7 @@
 + (int)maxListCount;
 - (id)init;
 - (BOOL)_isCoalescingContentChanges;
+- (void)_setDisplayNameFromRepresentation:(id)representation;
 - (id)addEmptyList;
 - (id)addIcon:(id)icon;
 - (id)allIcons;
@@ -36,6 +37,9 @@
 - (id)folderContainingIcon:(id)icon relativeIndexPath:(id *)path;
 - (id)folderContainingIndexPath:(id)path relativeIndexPath:(id *)path2;
 - (id)folderIcons;
+- (Class)folderSlidingViewClass;
+- (id)folderType;
+- (Class)folderViewClass;
 - (id)iconAtIndexPath:(id)indexPath;
 - (id)iconsOfClass:(Class)aClass;
 - (unsigned)indexOfList:(id)list;
@@ -47,6 +51,7 @@
 - (BOOL)isEmpty;
 - (BOOL)isFull;
 - (BOOL)isIconStateDirty;
+- (BOOL)isNewsstandFolder;
 - (id)leafIcons;
 - (id)listAtIndex:(unsigned)index;
 - (id)listContainingIcon:(id)icon;
@@ -57,6 +62,7 @@
 - (id)lists;
 - (void)markIconStateClean;
 - (BOOL)matchesRepresentation:(id)representation;
+- (void)noteIcon:(id)icon replacedIcon:(id)icon2;
 - (void)noteIconAdded:(id)added;
 - (void)noteIconRemoved:(id)removed;
 - (id)performCascadingIconInsertion:(id)insertion listIndex:(unsigned)index iconIndex:(unsigned)index3 addPageIfNecessary:(BOOL)necessary;
@@ -66,9 +72,10 @@
 - (void)removeEmptyList:(id)list;
 - (void)removeIconAtIndexPath:(id)indexPath;
 - (id)representation;
-- (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id *)added;
+- (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id)added;
 - (void)startCoalescingContentChangesWithRequestID:(id)requestID;
 - (void)stopCoalescingContentChangesForRequestID:(id)requestID;
 - (void)stopCoalescingContentChangesForRequestID:(id)requestID forceReload:(BOOL)reload;
+- (id)visibleIcons;
 @end
 

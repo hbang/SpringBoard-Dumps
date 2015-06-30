@@ -5,20 +5,22 @@
  * Source: (null)
  */
 
-#import "UITextFieldDelegate.h"
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import "UITextFieldDelegate.h"
 
 
-@interface SBPasscodeAlertItem : SBAlertItem <UITextFieldDelegate> {
+@interface SBPasscodeAlertItem : XXUnknownSuperclass <UITextFieldDelegate> {
 	int _mode;
 	int _unlockScreenType;
+	NSString *_errorString;
 	BOOL _hasEmergencyCall;
 }
 - (id)initWithPasscodeMode:(int)passcodeMode unlockScreenType:(int)type;
 - (void)_setErrorString:(id)string;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
+- (void)dealloc;
 - (void)didEndCall;
 - (void)dismiss:(int)dismiss;
 - (void)returnKeyPressed:(id)pressed;

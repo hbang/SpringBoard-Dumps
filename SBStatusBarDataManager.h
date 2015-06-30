@@ -11,13 +11,13 @@
 
 @interface SBStatusBarDataManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
 	struct {
-		BOOL itemIsEnabled[22];
+		BOOL itemIsEnabled[23];
 		BOOL timeString[64];
 		int gsmSignalStrengthRaw;
 		int gsmSignalStrengthBars;
 		BOOL serviceString[100];
-		BOOL serviceImageBlack[100];
-		BOOL serviceImageSilver[100];
+		BOOL serviceCrossfadeString[100];
+		BOOL serviceImages[3][100];
 		BOOL operatorDirectory[1024];
 		unsigned serviceContentType;
 		int wifiSignalStrengthRaw;
@@ -30,29 +30,32 @@
 		int thermalColor;
 		unsigned thermalSunlightMode : 1;
 		unsigned slowActivity : 1;
+		unsigned syncActivity : 1;
 		BOOL activityDisplayId[256];
 		unsigned bluetoothConnected : 1;
 		unsigned displayRawGSMSignal : 1;
 		unsigned displayRawWifiSignal : 1;
 	} _data;
 	int _actions;
-	BOOL _itemIsEnabled[22];
-	BOOL _itemIsCloaked[22];
+	BOOL _itemIsEnabled[23];
+	BOOL _itemIsCloaked[23];
+	BOOL _telephonyAndBluetoothCloaked;
+	BOOL _allButBatteryCloaked;
+	BOOL _timeCloaked;
 	int _updateBlockDepth;
 	BOOL _dataChangedSinceLastPost;
 	NSDateFormatter *_timeItemDateFormatter;
 	NSTimer *_timeItemTimer;
 	NSString *_timeItemTimeString;
 	RadiosPreferences *_radiosPrefs;
-	BOOL _cellRadio;
-	BOOL _registered;
-	BOOL _simError;
 	BOOL _simulateInCallStatusBar;
 	NSString *_serviceString;
-	NSString *_serviceImageBlack;
-	NSString *_serviceImageSilver;
+	NSString *_serviceCrossfadeString;
+	NSString *_serviceImages[3];
 	NSString *_operatorDirectory;
 	BOOL _showsActivityIndicatorOnHomeScreen;
+	int _syncActivityIndicatorCount;
+	int _activityIndicatorEverywhereCount;
 	int _thermalColor;
 	BOOL _thermalSunlightMode;
 	NSString *_recordingAppString;
@@ -67,12 +70,12 @@
 - (void)_callForwardingChange;
 - (void)_configureTimeItemDateFormatter;
 - (void)_dataChanged;
+- (void)_dataConnectionTypeChange;
 - (void)_dataNetworkChange;
 - (void)_didWakeFromSleep;
 - (id)_displayStringForRegistrationStatus:(int)registrationStatus;
 - (id)_displayStringForSIMStatus:(id)simstatus;
-- (void)_getBlackImageName:(id *)name silverImageName:(id *)name2 directory:(id *)directory forFakeCarrier:(id)fakeCarrier;
-- (BOOL)_getBlackImageName:(id *)name silverImageName:(id *)name2 directory:(id *)directory forOperator:(id)anOperator statusBarCarrierName:(id *)name5;
+- (BOOL)_getServiceImageNames:(id [3])names directory:(id *)directory forOperator:(id)anOperator statusBarCarrierName:(id *)name;
 - (void)_initializeData;
 - (void)_locationStatusChange;
 - (void)_notChargingStatusChange;
@@ -81,9 +84,11 @@
 - (void)_registerForNotifications;
 - (void)_restartTimeItemTimer;
 - (void)_rotationLockChange;
+- (BOOL)_shouldShowEmergencyOnlyStatus;
 - (BOOL)_shouldShowNotChargingItem;
 - (void)_signalStrengthChange;
 - (void)_significantTimeOrLocaleChange;
+- (BOOL)_simStatusMeansLocked:(id)locked;
 - (void)_stopTimeItemTimer;
 - (void)_ttyChange;
 - (void)_updateActivityItem;
@@ -93,6 +98,7 @@
 - (void)_updateBluetoothBatteryItem;
 - (void)_updateBluetoothItem;
 - (void)_updateCallForwardingItem;
+- (void)_updateCloakedItems;
 - (void)_updateDataNetworkItem;
 - (void)_updateLocationItem;
 - (void)_updateNotChargingItem;
@@ -115,11 +121,13 @@
 - (void)endUpdateBlock;
 - (void)sendStatusBarActions:(int)actions;
 - (void)setAllItemsExceptBatteryCloaked:(BOOL)cloaked;
+- (void)setShowsActivityIndicatorEverywhere:(BOOL)everywhere;
 - (void)setShowsActivityIndicatorOnHomeScreen:(BOOL)screen;
-- (void)setStatusBarItem:(int)item cloaked:(BOOL)cloaked;
+- (void)setShowsSyncActivityIndicator:(BOOL)indicator;
 - (void)setStatusBarItem:(int)item enabled:(BOOL)enabled;
 - (void)setTelephonyAndBluetoothItemsCloaked:(BOOL)cloaked;
 - (void)setThermalColor:(int)color sunlightMode:(BOOL)mode;
+- (void)setTimeCloaked:(BOOL)cloaked;
 - (void)toggleSimulatesInCallStatusBar;
 - (void)updateStatusBarItem:(int)item;
 @end

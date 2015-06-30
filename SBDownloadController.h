@@ -12,18 +12,26 @@
 @interface SBDownloadController : XXUnknownSuperclass <SSDownloadQueueObserver> {
 	SSDownloadQueue *_downloadQueue;
 	NSMutableSet *_pendingDownloadRemovals;
+	NSMutableSet *_pendingDownloadIconsToSwapForApplicationIcons;
+	NSMutableArray *_downloads;
+	unsigned _downloadLoadCount;
 }
 + (id)sharedInstance;
 - (id)init;
 - (void)_delayedDownloadQueueChange;
+- (void)_downloadsEnded;
+- (void)_finishDownload:(id)download;
+- (void)_processDownloadQueueChangedWithPendingRemovals;
 - (void)_showDownloadQueueError;
+- (BOOL)bundledIdentifierIsBeingDownloaded:(id)downloaded;
+- (void)cancelDownload:(id)download;
 - (BOOL)checkQueue;
 - (id)currentDownloads;
 - (void)dealloc;
-- (id)downloadQueue;
 - (void)downloadQueue:(id)queue changedWithRemovals:(id)removals;
 - (void)downloadQueue:(id)queue downloadStatusChangedAtIndex:(int)index;
 - (void)downloadQueueError:(id)error;
 - (void)downloadQueueNetworkUsageChanged:(id)changed;
+- (BOOL)moveDownloadToFrontOfQueue:(id)queue;
 @end
 

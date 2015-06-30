@@ -18,8 +18,12 @@
 - (id)ratingsAlertSkipTitle;
 - (id)ratingsAlertTitle;
 - (id)uninstallAlertBody;
+- (id)uninstallAlertBodyForAppWithDocumentUpdatesPending;
+- (id)uninstallAlertBodyForAppWithDocumentsInCloud;
 - (id)uninstallAlertCancelTitle;
 - (id)uninstallAlertConfirmTitle;
 - (id)uninstallAlertTitle;
+- (id)uninstallAlertTitleForAppWithDocumentUpdatesPending;
+- (id)uninstallAlertTitleForAppWithDocumentsInCloud;
 @end
 

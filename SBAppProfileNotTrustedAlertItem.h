@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
 #import "UIAlertViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAppProfileNotTrustedAlertItem : SBAlertItem <UIAlertViewDelegate> {
+@interface SBAppProfileNotTrustedAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBApplicationIcon *_icon;
 	BOOL _launchApp;
 }

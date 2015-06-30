@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 @interface SBMediaController : XXUnknownSuperclass {
@@ -33,9 +33,11 @@
 - (void)_delayedExtendSleepTimer;
 - (void)_nowPlayingAppIsPlayingDidChange;
 - (id)_nowPlayingInfo;
+- (void)_nowPlayingInfoChanged;
 - (void)_nowPlayingPIDChanged;
 - (void)_registerForNotifications;
 - (void)_serverConnectionDied:(id)died;
+- (void)_softMuteChanged:(id)changed;
 - (void)_systemMuteChanged:(id)changed;
 - (void)_systemVolumeChanged:(id)changed;
 - (void)_unregisterForNotifications;

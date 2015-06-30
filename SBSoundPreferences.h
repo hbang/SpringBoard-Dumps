@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBSoundPreferences.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 @interface SBSoundPreferences : XXUnknownSuperclass {

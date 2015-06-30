@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SPDaemonQueryDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 @interface SBSearchModel : XXUnknownSuperclass <SPDaemonQueryDelegate> {

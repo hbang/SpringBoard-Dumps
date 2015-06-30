@@ -13,6 +13,7 @@
 @interface SBTelephonyManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
 	void *_suspendDormancyAssertion;
 	NSString *_operatorName;
+	NSString *_lastKnownNetworkCountryCode;
 	unsigned _suspendDormancyEnabled;
 	unsigned _usingWifi : 1;
 	unsigned _usingVPN : 1;
@@ -28,6 +29,7 @@
 	NSString *_inCallStatusPreamble;
 	NSTimer *_inCallTimer;
 	RadiosPreferences *_radioPrefs;
+	int _needsUserIdentificationModule;
 }
 + (id)sharedTelephonyManager;
 + (id)sharedTelephonyManagerCreatingIfNecessary:(BOOL)necessary;
@@ -43,6 +45,7 @@
 - (void)_headphoneChanged:(id)changed;
 - (void)_postDataConnectionTypeChangedNotification;
 - (void)_postStartupNotification;
+- (void)_prepareToAnswerCall;
 - (BOOL)_pretendingToSearch;
 - (void)_provisioningUpdateWithStatus:(int)status;
 - (void)_proximityChanged:(id)changed;
@@ -56,17 +59,17 @@
 - (void)_setRegistrationStatus:(int)status;
 - (void)_startFakeServiceIfNecessary;
 - (void)_stopFakeService;
+- (BOOL)_updateLastKnownNetworkCountryCode;
 - (void)_updateRegistrationNow;
 - (void)_updateState;
 - (void)_wokeFromSleep:(id)sleep;
 - (BOOL)activeCallExists;
 - (void)airplaneModeChanged;
 - (id)allMissedCallsAfterRowID:(long long)anId;
-- (void)answerIncomingCall;
-- (void)answerIncomingCallEndingOthers;
 - (int)callCount;
 - (int)callForwardingIndicator;
 - (BOOL)callWouldUseReceiver:(BOOL)receiver;
+- (BOOL)canOnlyMakeEmergencyCalls;
 - (void)carrierBundleChanged;
 - (BOOL)cellularRadioCapabilityIsActive;
 - (void)checkForRegistrationSoon;
@@ -86,7 +89,7 @@
 - (BOOL)heldCallExists;
 - (BOOL)inCall;
 - (double)inCallDuration;
-- (BOOL)inCallUsingReceiver;
+- (BOOL)inCallUsingReceiverForcingRoutingToReceiver:(BOOL)receiver;
 - (BOOL)incomingCallExists;
 - (BOOL)isCallAmbiguous;
 - (BOOL)isEmergencyCallActive;
@@ -98,16 +101,21 @@
 - (BOOL)isTTYEnabled;
 - (BOOL)isUsingSlowDataConnection;
 - (BOOL)isUsingVPNConnection;
+- (id)lastKnownNetworkCountryCode;
+- (BOOL)multipleCallsExist;
+- (BOOL)needsUserIdentificationModule;
 - (void)noteSIMUnlockAttempt;
 - (void)noteWirelessModemChanged;
 - (int)numberOfNetworkTetheredDevices;
 - (void)operatorBundleChanged;
 - (id)operatorName;
 - (BOOL)outgoingCallExists;
+- (void)postponementStatusChanged;
 - (int)registrationCauseCode;
 - (int)registrationStatus;
 - (void)setCallForwardingIndicator:(int)indicator;
 - (void)setFastDormancySuspended:(BOOL)suspended;
+- (void)setIncomingVoiceCallsEnabled:(BOOL)enabled;
 - (void)setIsInAirplaneMode:(BOOL)airplaneMode;
 - (void)setIsNetworkTethering:(BOOL)tethering withNumberOfDevices:(int)devices;
 - (void)setIsUsingVPNConnection:(BOOL)connection;
@@ -129,6 +137,6 @@
 - (void)updateStatusBarCallDuration;
 - (void)updateStatusBarCallState:(BOOL)state;
 - (void)updateTTYIndicator;
-- (id)urlWithScheme:(id)scheme fromDialingNumber:(id)dialingNumber abUID:(int)uid urlPathAddition:(id)addition;
+- (id)urlWithScheme:(id)scheme fromDialingNumber:(id)dialingNumber abUID:(int)uid urlPathAddition:(id)addition forceAssist:(BOOL)assist suppressAssist:(BOOL)assist6 wasAlreadyAssisted:(BOOL)assisted;
 @end
 

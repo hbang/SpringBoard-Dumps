@@ -11,7 +11,6 @@
 
 @interface SBSMSApplication : SBApplication {
 }
-- (id)defaultImage:(BOOL *)image;
-- (void)launchSucceeded:(BOOL)succeeded;
+- (id)activationValue:(unsigned)value;
 @end
 

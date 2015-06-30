@@ -5,13 +5,14 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBIcon.h"
 
 
 @interface SBLeafIcon : SBIcon {
 }
 - (id)description;
+- (unsigned)hash;
+- (BOOL)isEqual:(id)equal;
 - (BOOL)matchesRepresentation:(id)representation;
 - (id)representation;
 @end

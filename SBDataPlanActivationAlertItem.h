@@ -10,9 +10,11 @@
 
 @interface SBDataPlanActivationAlertItem : SBDataPlanAccountAlertItem {
 	BOOL _newAccount;
+	BOOL _promptToDisable;
 }
 @property(assign, nonatomic, getter=isNewAccount) BOOL newAccount;
-- (id)initWithAccountURL:(id)accountURL newAccount:(BOOL)account;
+- (id)initWithAccountURL:(id)accountURL newAccount:(BOOL)account promptToDisable:(BOOL)disable;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 @end
 

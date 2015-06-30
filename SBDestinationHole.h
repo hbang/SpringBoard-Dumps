@@ -11,8 +11,8 @@
 @interface SBDestinationHole : SBIcon {
 }
 + (id)destinationHole;
-- (id)_automationID;
-- (void)setDisplayedIconImage:(id)image;
+- (id)automationID;
+- (id)generateIconImage:(int)image;
 - (BOOL)shouldCacheImageForFormat:(int)format;
 @end
 

@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 @interface SBDeviceLockKeypad : XXUnknownSuperclass {
-	UIPushButton *_deleteButton;
-	UIPushButton *_cancelButton;
+	UIButton *_deleteButton;
+	UIButton *_cancelButton;
 	BOOL _deleteEnabled;
 	BOOL _playKeyboardClicks;
 }
@@ -22,7 +22,6 @@
 @property(assign, nonatomic) BOOL playsKeyboardClicks;
 @property(assign, nonatomic) BOOL showsEmergencyCallButton;
 + (CGSize)defaultSize;
-+ (void)flushPressedImage;
 + (id)keypadImage;
 + (id)pressedImage;
 - (id)initWithDefaultSize;

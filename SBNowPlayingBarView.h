@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 @interface SBNowPlayingBarView : XXUnknownSuperclass {
@@ -18,12 +18,13 @@
 	UIImageView *_brightnessImage;
 	UIImageView *_volumeImage;
 	SBNowPlayingBarMediaControlsView *_mediaView;
-	SBApplicationIcon *_nowPlayingIcon;
+	SBIconView *_nowPlayingIconView;
 }
 @property(readonly, assign, nonatomic) UIButton *airPlayButton;
 @property(readonly, assign, nonatomic) UISlider *brightnessSlider;
+@property(assign, nonatomic) BOOL marqueeRunning;
 @property(readonly, assign, nonatomic) SBNowPlayingBarMediaControlsView *mediaView;
-@property(retain, nonatomic) SBApplicationIcon *nowPlayingIcon;
+@property(retain, nonatomic) SBIconView *nowPlayingIconView;
 @property(readonly, assign, nonatomic) UIButton *toggleButton;
 @property(assign, nonatomic) int toggleType;
 @property(readonly, assign, nonatomic) UISlider *volumeSlider;

@@ -5,16 +5,16 @@
  * Source: (null)
  */
 
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBRemoteNotificationNeedIdentityAlert : SBAlertItem {
+@interface SBRemoteNotificationNeedIdentityAlert : XXUnknownSuperclass {
 	SBApplication *_app;
 }
 - (id)initWithApplication:(id)application;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (BOOL)dismissOnAlertActivation;
 - (BOOL)dismissOnLock;
+- (BOOL)dismissOnModalDisplayActivation;
 @end
 

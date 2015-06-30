@@ -5,16 +5,15 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBDeviceLockKeypad.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBDeviceLockKeypadPhone : SBDeviceLockKeypad {
-	SBEmergencyCallButton *_emergencyCallButton;
-	UIPushButton *_poundButton;
+	UIButton *_emergencyCallButton;
+	UIButton *_poundButton;
 	UIImage *_deleteIcon;
 }
-+ (void)flushPressedImage;
 + (id)keypadImage;
 + (id)pressedImage;
 - (id)initWithFrame:(CGRect)frame;

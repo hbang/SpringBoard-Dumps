@@ -15,6 +15,7 @@
 - (id)init;
 - (void)dealloc;
 - (id)dockModel;
+- (id)folderType;
 - (id)iconsOfClass:(Class)aClass;
 - (unsigned)indexOfIconList:(id)iconList;
 - (id)indexPathForEntity:(id)entity;
@@ -28,6 +29,6 @@
 - (void)placeIconsOnFirstPage:(id)page;
 - (void)removeEmptyList:(id)list;
 - (id)representation;
-- (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id *)added;
+- (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id)added;
 @end
 

@@ -6,10 +6,10 @@
  */
 
 #import "UIAlertViewDelegate.h"
-#import "SBAlertItem.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBActivationFailedAlertItem : SBAlertItem <UIAlertViewDelegate> {
+@interface SBActivationFailedAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	BOOL _showRetryButton;
 	BOOL _showSupportNumber;
 }

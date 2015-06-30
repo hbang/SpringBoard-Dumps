@@ -5,14 +5,13 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBWiFiManagerDelegate.h"
-#import "UIApplicationDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard.h"
+#import "UIApplicationDelegate.h"
+#import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SpringBoard : XXUnknownSuperclass <UIApplicationDelegate, SBWiFiManagerDelegate> {
+@interface SpringBoard : XXUnknownSuperclass <UIApplicationDelegate> {
 	SBUIController *_uiController;
 	NSTimer *_menuButtonTimer;
 	NSTimer *_lockButtonTimer;
@@ -33,9 +32,9 @@
 	unsigned _dontLockOnNextLockUp : 1;
 	unsigned _poweringDown : 1;
 	unsigned _headsetDownDelayedActionPerformed : 1;
-	unsigned _nowPlayingAppIsPlaying : 1;
 	unsigned _isSeekingInMedia : 1;
 	unsigned _forcePortraitStatusBarOrientation : 1;
+	unsigned _lockScreenCameraWantsIdleTimerDisabled : 1;
 	int _mediaSeekDirection;
 	float _currentBacklightLevel;
 	unsigned _springBoardRequestsAccelerometerEvents;
@@ -43,6 +42,9 @@
 	NSURL *_menuDoubleTapURL;
 	int _notifyDontAnimateREOToken;
 	int _notifyDontAllowMediaHUDToken;
+	BOOL _expectsFaceContact;
+	BOOL _expectsFaceContactInLandscape;
+	BOOL _proximityEventsEnabled;
 	NSSet *_restrictionDisabledApplications;
 	double _sampleSystemStartTime;
 	NSDictionary *_startAppsCPUTimes;
@@ -50,15 +52,21 @@
 	SBApplication *_registeredSimpleRemoteApp;
 	SBApplication *_nowPlayingApp;
 	SBApplication *_menuButtonInterceptApp;
+	BOOL _menuButtonInterceptAppEnabledForever;
 	NSString *_originatingOpenURLDisplayId;
 	NSMutableArray *_disableNowPlayingHUDAssertionBundleIds;
+	NSMutableArray *_appsRegisteredForVolumeEvents;
 	NSNumberFormatter *_decimalFormatter;
 	NSNumberFormatter *_percentFormatter;
 	NSTimer *_midnightTimer;
 	NSDate *_midnightFireDate;
 	opaque_pthread_t *_backgroundMIGServerThread;
+	opaque_pthread_t *_iconGenerationMIGServerThread;
+	SBAppContextHostManager *_springBoardContextHostManager;
+	UIWindow *_springBoardContextHostWindow;
+	NSMutableSet *_displaysRequestingAggressiveJetsamMode;
 }
-@property(retain, nonatomic) SBApplication *menuButtonInterceptApp;
+@property(retain, nonatomic) UIWindow *window;
 + (BOOL)registerForSystemEvents;
 + (BOOL)rendersLocally;
 - (id)init;
@@ -72,12 +80,15 @@
 - (BOOL)_accessibilityIsSBStealingEvents;
 - (BOOL)_accessibilityIsSystemGestureActive;
 - (BOOL)_accessibilityObjectWithinProximity;
+- (void)_accessibilityProcessHIDEvent:(IOHIDEventRef)event;
 - (id)_accessibilityRunningApplications;
 - (void)_accessibilitySetEventTapCallback:(void *)callback;
 - (id)_accessibilityTopDisplay;
+- (void)_activateAssistantWithEvent:(int)event withCompletion:(id)completion;
 - (void)_adjustMidnightTimerAfterSleep;
 - (BOOL)_alertWindowShouldRotate;
 - (void)_applicationOpenURL:(id)url event:(GSEventRef)event;
+- (void)_assistantPreferenceDidChange:(id)_assistantPreference;
 - (void)_beginThermalJetsamCPUSampling;
 - (void)_createLogFile;
 - (void)_effectiveSettingsDidChange;
@@ -92,30 +103,46 @@
 - (void)_keyboardAvailabilityChanged;
 - (void)_killThermallyActiveApplication;
 - (void)_launchMusicPlayerSuspendedAndStartMusic;
-- (void)_mapsVisibilityChanged;
+- (void)_localeChanged;
+- (void)_lockdownActivationChanged:(id)changed;
 - (void)_menuButtonWasHeld;
+- (double)_menuHoldTime;
 - (void)_midnightPassed;
 - (void)_migrateMenuDoubleTapSetting;
 - (id)_newAppsCPUTimesDictionary;
 - (void)_nowPlayingAppDidChangeNotification:(id)_nowPlayingApp;
-- (void)_performDelayedHeadsetAction;
+- (void)_openURLCore:(id)core display:(id)display publicURLsOnly:(BOOL)only animating:(BOOL)animating additionalActivationFlag:(unsigned)flag;
+- (void)_overrideDefaultInterfaceOrientationWithOrientation:(int)orientation;
+- (void)_performDeferredLaunchWork;
+- (void)_performDelayedHeadsetActionForAssistant;
+- (void)_performDelayedHeadsetActionForVoiceControl;
 - (void)_performDelayedHeadsetClickTimeout;
 - (void)_powerDownNow;
+- (void)_primeMenuButtonAssistant;
 - (void)_proximityChanged:(id)changed;
 - (void)_rebootNow;
 - (void)_relaunchSpringBoardNow;
+- (void)_removeDefaultInterfaceOrientatationOverride;
+- (void)_rotateView:(id)view toOrientation:(int)orientation;
+- (void)_runActivateAssistantTest;
 - (void)_setDeferredHeadsetButtonDownEvent:(GSEventRef)event;
 - (void)_setLockButtonTimer:(id)timer;
 - (void)_setMenuButtonTimer:(id)timer;
+- (void)_setStatusBarShowsProgress:(BOOL)progress;
+- (id)_settingLanguageStringForNewLanguage;
 - (void)_significantTimeChange;
+- (void)_spokenLanguageChanged;
 - (void)_startSeekWithDirection:(id)direction;
 - (void)_tearDownNow;
 - (void)_testPhoneAlerts;
 - (void)_updateRegisteredSimpleRemoteApp;
-- (void)_updateRingerStateWithVisuals:(BOOL)visuals;
+- (void)_updateRejectedInputSettingsForInCallState:(BOOL)callState isOutgoing:(BOOL)outgoing triggeredbyRouteWillChangeToReceiverNotification:(BOOL)triggeredbyRoute;
+- (void)_updateRingerStateWithVisuals:(BOOL)visuals updatePreferenceRegister:(BOOL)aRegister;
 - (void)accessoryKeyStateChanged:(GSEventRef)changed;
+- (void)activateAssistantWithOptions:(id)options withCompletion:(id)completion;
 - (int)activeInterfaceOrientation;
-- (int)alertOrientation;
+- (int)activeInterfaceOrientationWithoutConsideringAlerts;
+- (int)alertInterfaceOrientation;
 - (BOOL)allowCaseLatchLockAndUnlock;
 - (void)animateBacklightToFactor:(float)factor duration:(double)duration didFinishTarget:(id)target selector:(SEL)selector;
 - (void)animateBacklightToFactor:(float)factor duration:(double)duration keepTouchOn:(BOOL)on didFinishTarget:(id)target selector:(SEL)selector;
@@ -123,24 +150,28 @@
 - (void)appleIconViewRemoved;
 - (BOOL)applicationCanOpenURL:(id)url publicURLsOnly:(BOOL)only;
 - (void)applicationDidFinishLaunching:(id)application;
-- (void)applicationDidOrderOutContext:(unsigned)application;
+- (void)applicationDidOrderOutContext:(id)application;
 - (void)applicationExited:(GSEventRef)exited;
 - (void)applicationOpenURL:(id)url;
 - (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only;
 - (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only animating:(BOOL)animating;
+- (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only animating:(BOOL)animating additionalActivationFlag:(unsigned)flag;
 - (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only animating:(BOOL)animating sender:(id)sender;
+- (void)applicationOpenURL:(id)url publicURLsOnly:(BOOL)only animating:(BOOL)animating sender:(id)sender additionalActivationFlag:(unsigned)flag;
 - (void)applicationSuspend:(GSEventRef)suspend;
 - (void)applicationSuspended:(GSEventRef)suspended;
 - (void)applicationSuspendedSettingsUpdated:(GSEventRef)updated;
-- (void)applicationWillOrderInContext:(unsigned)application windowLevel:(float)level windowOutput:(int)output;
+- (void)applicationWillOrderInContext:(id)application windowLevel:(float)level windowOutput:(int)output;
+- (id)appsRegisteredForVolumeEvents;
 - (void)autoLock;
 - (void)autoLockPrefsChanged;
 - (void)batteryStatusDidChange:(id)batteryStatus;
+- (void)beginListeningForAssistantActivationGesture;
 - (BOOL)canOpenURL:(id)url;
 - (BOOL)canShowAlerts;
+- (BOOL)canShowLockScreenCameraButton;
 - (BOOL)canShowLockScreenHUDControls;
 - (BOOL)canShowNowPlayingControls;
-- (BOOL)canShowNowPlayingHUD;
 - (void)cancelMenuButtonRequests;
 - (void)cancelSetBacklightFactorToZeroAfterDelay;
 - (BOOL)caseIsEnabledAndLatched;
@@ -150,12 +181,14 @@
 - (void)clearLaunchedAfterLanguageRestart;
 - (void)clearMenuButtonTimer;
 - (float)currentBacklightLevel;
-- (int)currentInterfaceOrientation;
 - (void)debuggingAndDemoPrefsWereChanged;
 - (void)didDismissMiniAlert;
 - (void)didIdle;
 - (void)didReceiveMemoryWarning;
 - (void)dimToBlackKeepingTouchOn;
+- (id)displayIDForURLScheme:(id)urlscheme isPublic:(BOOL)aPublic;
+- (BOOL)expectsFaceContact;
+- (BOOL)expectsFaceContactInLandscape;
 - (void)extendButtonTimersForWake;
 - (id)formattedDecimalStringForNumber:(id)number;
 - (id)formattedPercentStringForNumber:(id)number;
@@ -170,8 +203,11 @@
 - (void)hideSimulatedScreenBlank;
 - (void)hideSpringBoardStatusBar;
 - (BOOL)iapIsInExtendedMode;
+- (int)interfaceOrientationForCurrentDeviceOrientation;
+- (BOOL)isCameraApp;
 - (BOOL)isDisplayIdentifierRestrictionDisabled:(id)disabled;
 - (BOOL)isLocked;
+- (BOOL)isMetaHostingEnabled;
 - (BOOL)isMusicPlayerInNowPlayingView;
 - (BOOL)isMusicPlayerPlaying;
 - (BOOL)isNowPlayingAppPlaying;
@@ -180,7 +216,6 @@
 - (void)languageChanged;
 - (void)launchMusicPlayerSuspended;
 - (BOOL)launchedAfterLanguageRestart;
-- (int)launchingInterfaceOrientation;
 - (void)loadDebuggingAndDemoPrefs;
 - (void)localeChanged;
 - (void)lockAfterCall;
@@ -191,7 +226,11 @@
 - (void)mediaKeyDown:(GSEventRef)down;
 - (void)mediaKeyUp:(GSEventRef)up;
 - (void)menuButtonDown:(GSEventRef)down;
+- (id)menuButtonInterceptApp;
+- (BOOL)menuButtonInterceptAppEnabledForever;
 - (void)menuButtonUp:(GSEventRef)up;
+- (id)metaHostView;
+- (id)metaHostWindow;
 - (double)nextIdleTimeDuration;
 - (double)nextLockTimeDuration;
 - (void)noteCaseHardwarePresent;
@@ -199,6 +238,7 @@
 - (void)noteInterfaceOrientationChanged:(int)changed updateMirroredDisplays:(BOOL)displays;
 - (void)noteSubstantialTransitionOccured;
 - (id)nowPlayingApp;
+- (BOOL)openURL:(id)url;
 - (void)pinPolicyChanged;
 - (void)powerDown;
 - (void)powerDownCanceled:(id)canceled;
@@ -206,9 +246,11 @@
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)profileConnection userInfo:(id)info;
 - (void)profileConnectionDidReceivePasscodePolicyChangedNotification:(id)profileConnection userInfo:(id)info;
 - (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)profileConnection userInfo:(id)info;
+- (BOOL)proximityEventsEnabled;
 - (void)quitTopApplication:(GSEventRef)application;
 - (void)reboot;
 - (void)relaunchSpringBoard;
+- (BOOL)relaunchingForSetupLanguageChange;
 - (void)reportStatusBarOrientationAsPortrait:(BOOL)portrait;
 - (void)resetIdleTimerAndUndim;
 - (void)resetIdleTimerAndUndim:(BOOL)undim;
@@ -218,6 +260,7 @@
 - (void)runFieldTestScript;
 - (void)sendSimpleRemoteActionToRegisteredApp:(int)registeredApp;
 - (void)setAppDisabledNowPlayingHUD:(BOOL)hud bundleIdentifier:(id)identifier;
+- (void)setAppRegisteredForVolumeEvents:(id)volumeEvents isActive:(BOOL)active;
 - (void)setBacklightFactor:(float)factor;
 - (void)setBacklightFactor:(float)factor keepTouchOn:(BOOL)on;
 - (void)setBacklightFactorPending:(float)pending;
@@ -225,13 +268,20 @@
 - (void)setBacklightFactorToZeroAfterDelay;
 - (void)setBacklightLevel:(float)level;
 - (void)setBacklightLevel:(float)level permanently:(BOOL)permanently;
+- (void)setExpectsFaceContact:(BOOL)contact;
+- (void)setExpectsFaceContact:(BOOL)contact inLandscape:(BOOL)landscape;
 - (void)setHardwareKeyboardLayoutName:(id)name;
 - (void)setHasMiniAlerts:(BOOL)alerts;
+- (void)setIdleTimerDisabled:(BOOL)disabled;
+- (void)setMenuButtonInterceptApp:(id)app forever:(BOOL)forever;
+- (void)setMetaHostingEnabled:(BOOL)enabled;
 - (void)setNowPlayingInfo:(id)info forApplication:(id)application;
+- (void)setProximityEventsEnabled:(BOOL)enabled;
 - (void)setSimpleRemoteRoutingPriority:(unsigned)priority forApplication:(id)application;
-- (void)setSpringBoardStatusBarAlpha:(float)alpha;
-- (void)setSpringBoardStatusBarOpaque:(BOOL)opaque;
+- (void)setSuspensionAnimationDelay:(double)delay;
+- (void)setSystemAggressiveJetsamEnabled:(BOOL)enabled forDisplay:(id)display;
 - (void)setSystemVolumeHUDEnabled:(BOOL)enabled forAudioCategory:(id)audioCategory;
+- (void)setWantsVolumeButtonEvents:(BOOL)events;
 - (void)setZoomTouchEnabled:(BOOL)enabled;
 - (void)setupMidnightTimer;
 - (BOOL)shouldDimToBlackInsteadOfLock;
@@ -241,21 +291,19 @@
 - (void)showSimulatedScreenBlank;
 - (void)showSpringBoardStatusBar;
 - (void)showThermalAlertIfNecessary;
-- (void)showWiFiAlert;
-- (void)showWiFiEnterpriseTrustAlert:(id)alert;
 - (void)significantTimeChange;
 - (id)simpleRemoteDestinationApp;
+- (unsigned)simpleRemoteRoutingPriority;
 - (unsigned)simpleRemoteRoutingPriorityForApplication:(id)application;
 - (void)smsPrefsChanged;
-- (id)springBoardPluginsDirectory;
 - (int)statusBar:(id)bar styleForRequestedStyle:(int)requestedStyle overrides:(int)overrides;
 - (int)statusBarOrientation;
 - (void)statusBarReturnActionTap:(GSEventRef)tap;
+- (void)stopListeningForAssistantActivationGesture;
 - (float)systemBacklightLevel;
 - (void)systemWillSleep;
 - (void)tearDown;
 - (void)undim;
-- (void)updateAirPortForDisplay:(id)display;
 - (void)updateCapabilitiesAndIconVisibility;
 - (void)updateMenuDoubleTapSettings;
 - (void)updateMirroredDisplayOrientation;
@@ -263,11 +311,11 @@
 - (void)updateProximitySettings;
 - (void)updateRejectedInputSettings;
 - (void)updateRejectedInputSettingsForInCallState:(BOOL)callState isOutgoing:(BOOL)outgoing;
+- (void)updateRejectedInputSettingsTriggeredByRouteChangeToReceiverNotification:(BOOL)receiverNotification;
 - (void)updateStackshotSettings;
 - (void)userDefaultsDidChange:(id)userDefaults;
 - (void)userEventOccurred;
 - (void)volumeChanged:(GSEventRef)changed;
-- (void)wifiManager:(id)manager scanCompleted:(id)completed;
 - (void)willDismissMiniAlert:(int *)alert andShowAnother:(BOOL)another;
 - (void)willDisplayMiniAlert:(int *)alert;
 - (double)windowRotationDuration;
@@ -282,6 +330,7 @@
 @interface SpringBoard (SBApplicationTesting)
 - (void)_retryLaunchTestWithOptions:(id)options;
 - (void)endLaunchTest;
+- (void)finishedTest:(id)test extraResults:(id)results;
 - (BOOL)runTest:(id)test options:(id)options;
 - (void)startLaunchTestNamed:(id)named options:(id)options;
 - (void)startResumeTestNamed:(id)named options:(id)options;
