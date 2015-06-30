@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBIconView.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (int)_defaultIconFormat;
 + (float)_labelHeight;
 + (CGRect)_rectForLayoutMetric:(int)layoutMetric;
-+ (BOOL)canShowUpdatedMark;
++ (BOOL)canShowLabelAccessoryView;
 + (CGSize)defaultIconSize;
 + (UIEdgeInsets)iconImagePaddingInsets;
 + (CGSize)maxLabelSize;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexNodeObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
 	SBFMappedImageCache *_imageCache;
 	int _invalidatedLocations;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithImageCache:(id)imageCache;
 - (void)_backlightFadeFinished;
 - (id)_homeScreenSnapshotProvider;

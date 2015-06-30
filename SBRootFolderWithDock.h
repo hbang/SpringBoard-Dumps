@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 @interface SBRootFolderWithDock : SBRootFolder <SBIconIndexNodeObserver> {
 	SBIconListModel *_dock;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (void)_notifyIndexChange:(int)change identifiers:(id)identifiers withValidationBlock:(id)validationBlock;
 - (void)_setDock:(id)dock;
 - (id)containedNodeIdentifiers;

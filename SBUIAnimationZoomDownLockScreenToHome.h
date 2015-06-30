@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 - (id)initWithLockScreenViewController:(id)lockScreenViewController;
 - (void)_prepareAnimation;
-- (BOOL)_shouldTakeActivationAssertionForDeactivatingApp;
+- (BOOL)_shouldDismissBanner;
 - (void)animateZoomWithCompletion:(id)completion;
 - (void)cleanupZoom;
 - (void)dealloc;

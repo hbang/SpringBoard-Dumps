@@ -12,12 +12,9 @@ __attribute__((visibility("hidden")))
 @interface SBSheetController : XXUnknownSuperclass {
 	NSMutableDictionary *_appToSheetMap;
 	UIWindow *_presentationWindow;
-	SBApplication *_topHostedApp;
-	UIView *_topHostedAppView;
 }
 + (id)sharedInstance;
 - (id)init;
-- (void)_positionFakeStatusBarView:(id)view forOrientation:(int)orientation;
 - (void)_tearDownSheet:(id)sheet;
 - (id)applicationForTopSheet;
 - (void)dealloc;

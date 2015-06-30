@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBBulletinBusyClient.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -17,10 +17,15 @@ __attribute__((visibility("hidden")))
 	NSMutableArray *_blockQueue;
 	NSMutableDictionary *_playingSounds;
 	NSMutableSet *_internalBulletinsWePlayedSoundsFor;
+	NSMutableSet *_bulletinsRequiringExplicitKill;
 	BOOL _deviceIsLocked;
 	BOOL _quietModeEnabled;
 	unsigned _quietModeState;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
@@ -34,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)killSoundForBulletin:(id)bulletin;
 - (void)killSounds;
-- (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
+- (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed playLightsAndSirens:(BOOL)sirens withReply:(id)reply;
 - (void)observer:(id)observer noteAlertBehaviorOverrideStateChanged:(unsigned)changed;
 - (void)observer:(id)observer noteAlertBehaviorOverridesChanged:(unsigned)changed;
 - (void)observer:(id)observer noteInvalidatedBulletinIDs:(id)ids;

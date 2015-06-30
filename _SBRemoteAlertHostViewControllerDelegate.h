@@ -10,6 +10,20 @@
 
 @protocol _SBRemoteAlertHostViewControllerDelegate <NSObject>
 - (void)remoteAlertDidTerminateWithError:(id)remoteAlert;
+- (void)remoteAlertWantsMenuButtonDismissal:(BOOL)dismissal;
+- (void)remoteAlertWantsToAllowAlertStacking:(BOOL)allowAlertStacking;
 - (void)remoteAlertWantsToAllowBanners:(BOOL)allowBanners;
+- (void)remoteAlertWantsToDisableFadeInAnimation:(BOOL)animation;
+- (void)remoteAlertWantsToDismissOnUILock:(BOOL)dismissOnUILock;
+- (void)remoteAlertWantsToLockUIAndDismiss;
+- (void)remoteAlertWantsToSetAutoLockDuration:(double)setAutoLockDuration;
+- (void)remoteAlertWantsToSetBackgroundStyle:(int)setBackgroundStyle withDuration:(double)duration;
+- (void)remoteAlertWantsToSetDesiredStatusBarStyleOverrides:(int)setDesiredStatusBarStyleOverrides;
+- (void)remoteAlertWantsToSetIdleTimerDisabled:(BOOL)setIdleTimerDisabled forReason:(id)reason;
+- (void)remoteAlertWantsToSetStatusBarHidden:(BOOL)setStatusBarHidden withDuration:(double)duration;
+- (void)remoteAlertWantsToUpdateAllowedHardwareButtonEvents:(int)updateAllowedHardwareButtonEvents;
+- (void)remoteAlertWantsWallpaperTunnelActive:(BOOL)active;
+- (void)remoteAlertWantstoSetDismissalAnimationStyle:(int)style;
+- (void)remoteAlertWantstoSetSupportedInterfaceOrientationOverride:(unsigned)override;
 @end
 

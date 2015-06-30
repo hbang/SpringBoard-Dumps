@@ -18,11 +18,10 @@ __attribute__((visibility("hidden")))
 - (id)attachmentText;
 - (void)dealloc;
 - (id)iconImage;
-- (BOOL)isVIP;
+- (id)lockScreenActionContext;
 - (id)message;
 - (id)sound;
 - (id)sourceDate;
 - (id)title;
-- (id)unlockActionContext;
 @end
 

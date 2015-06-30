@@ -14,15 +14,11 @@ __attribute__((visibility("hidden")))
 	SBAlert *_deactivatingAlert;
 	BOOL _activation;
 }
-- (id)initActivationWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller from:(id)from to:(id)to;
-- (id)initDeactivationWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller from:(id)from to:(id)to;
-- (void)_commit;
-- (id)_initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller activatingAlert:(id)alert deactivatingAlert:(id)alert5 activation:(BOOL)activation;
+- (id)initActivationWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
+- (id)initDeactivationWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
+- (void)_begin;
+- (id)_initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller activatingAlert:(id)alert deactivatingAlert:(id)alert4 activation:(BOOL)activation;
 - (void)dealloc;
 - (id)debugDescription;
-- (BOOL)selfStarkAlertDidActivate:(id)selfStarkAlert overAlerts:(id)alerts;
-- (BOOL)selfStarkAlertDidDeactivate:(id)selfStarkAlert;
-- (BOOL)selfStarkAlertWillActivate:(id)selfStarkAlert overAlerts:(id)alerts;
-- (BOOL)selfStarkAlertWillDeactivate:(id)selfStarkAlert;
 @end
 

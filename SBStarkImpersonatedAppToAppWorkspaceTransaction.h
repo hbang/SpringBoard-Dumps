@@ -10,24 +10,22 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkImpersonatedAppToAppWorkspaceTransaction : SBStarkAppToAppWorkspaceTransaction {
+	SBAlertChangeTransaction *_deactivateAlertTransaction;
 	SBAlert *_deactivatingAlert;
 	BOOL _animatedAppActivation;
 }
-- (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller from:(id)from to:(id)to;
+- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
 - (void)_deactivateAlertIfPossible;
+- (void)_didComplete;
 - (void)_doCommit;
 - (void)_handleFailureToLaunch;
 - (id)_newAnimationFromAppToApp;
 - (id)_newAnimationFromAppToLauncher;
 - (id)_newAnimationFromAppToNowPlaying;
-- (int)_setupMilestonesFrom:(id)from to:(id)to;
-- (void)_transactionComplete;
+- (void)_setupMilestonesFrom:(id)from to:(id)to;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
-- (BOOL)selfApplicationExited:(id)exited;
-- (BOOL)selfApplicationLaunchDidFail:(id)selfApplicationLaunch;
-- (BOOL)selfStarkAlertDidDeactivate:(id)selfStarkAlert;
-- (BOOL)selfStarkAlertWillDeactivate:(id)selfStarkAlert;
+- (void)mainScreenApplicationUpdateScenesTransactionCompleted:(id)completed;
 @end
 

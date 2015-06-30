@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SBHUDWindow : SBWindow {
 }
++ (BOOL)_isSecure;
 - (BOOL)_ignoresHitTest;
 @end
 

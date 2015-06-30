@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "_SBFVibrantView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -26,7 +26,11 @@ __attribute__((visibility("hidden")))
 }
 @property(assign, nonatomic) double animationDuration;
 @property(retain, nonatomic) UIColor *color;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) int state;
+@property(readonly, assign) Class superclass;
 @property(retain, nonatomic) _SBFVibrantSettings *vibrantSettings;
 - (id)initWithColor:(id)color;
 - (id)initWithFrame:(CGRect)frame;
@@ -36,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_setUnified:(BOOL)unified;
 - (CGAffineTransform)_transformForGrabberView:(id)grabberView forState:(int)state;
 - (void)dealloc;
-- (id)description;
 - (void)layoutSubviews;
 - (void)setBackgroundView:(id)view;
 - (void)setState:(int)state animated:(BOOL)animated;

@@ -11,10 +11,13 @@
 @protocol BBSectionIdentity <NSObject>
 @optional
 - (id)defaultSectionInfo;
+- (id)parentSectionIdentifier;
 - (id)sectionDisplayName;
 - (id)sectionIcon;
 - (id)sectionIconData;
 @required
 - (id)sectionIdentifier;
+@optional
+- (id)universalSectionIdentifier;
 @end
 

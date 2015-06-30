@@ -10,11 +10,12 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationDosidoTransitionController : SBUIMainScreenAnimationController {
-	SBUIAnimationWindow *_transitionWindow;
 	UIView *_fromAppContextHostView;
 	UIView *_fromView;
 	UIView *_toView;
 	SBDosidoAnimator *_dosidoAnimator;
+	FBWindowContextHostManager *_toAppContextHostManager;
+	FBWindowContextHostManager *_fromAppContextHostManager;
 	int _fromOrientation;
 	BOOL _fromNC;
 	BOOL _fromCC;
@@ -22,9 +23,8 @@ __attribute__((visibility("hidden")))
 	BOOL _requiresHostView;
 }
 - (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
-- (id)_animationProgressDependency;
-- (BOOL)_animationShouldStart;
 - (void)_cleanupAnimation;
+- (void)_cleanupFromContextHostView;
 - (id)_getTransitionWindow;
 - (void)_kickOffAnimation;
 - (void)_performDosido;
@@ -32,9 +32,9 @@ __attribute__((visibility("hidden")))
 - (void)_setFromView:(id)view;
 - (void)_setHidden:(BOOL)hidden;
 - (void)_startAnimation;
-- (void)captureFlagsForActivatingDisplay:(id)activatingDisplay;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
+- (void)captureFlagsForActivatingApp:(id)activatingApp;
 - (void)dealloc;
-- (void)hideRealFromView;
 - (int)orientationAtLaunch;
 - (void)setToView:(id)view;
 @end

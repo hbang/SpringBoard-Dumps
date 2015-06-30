@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBIconAccessoryView.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,10 @@ __attribute__((visibility("hidden")))
 	SBIconAccessoryImage *_textImage;
 	SBDarkeningImageView *_textView;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)_checkoutBackgroundImage;
 + (id)_checkoutImageForText:(id)text highlighted:(BOOL)highlighted;
 + (id)_createImageForText:(id)text highlighted:(BOOL)highlighted;

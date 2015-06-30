@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "UIDynamicItem.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "UIDynamicItem.h"
 
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,11 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) CGRect bounds;
 @property(assign, nonatomic) CGPoint center;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign) float multiplier;
+@property(readonly, assign) Class superclass;
 @property(assign, nonatomic) CGAffineTransform transform;
 @property(copy) id translateBlock;
 - (void)dealloc;

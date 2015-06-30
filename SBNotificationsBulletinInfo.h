@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBBBBulletinInfo.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationsBulletinInfo : SBBBBulletinInfo {
-	SBNotificationsSectionInfo *_sectionInfo;
+	SBNotificationCenterSectionInfo *_sectionInfo;
 	SBItemInfoLayoutCache *_layoutCache;
 	UIImage *_icon;
 	UIImage *_attachmentImage;
@@ -19,13 +19,15 @@ __attribute__((visibility("hidden")))
 	float _secondaryTextHeight;
 	BOOL _suppressingMessageForPrivacy;
 	BOOL _isCachedMessageSuppressionValid;
+	UIViewController *_secondaryContentViewController;
 	UIColor *_secondaryTextColor;
 }
 @property(retain, nonatomic) UIImage *attachmentImage;
 @property(assign, nonatomic) CGSize attachmentImageSize;
 @property(retain, nonatomic) UIImage *icon;
+@property(readonly, assign, nonatomic) UIViewController *secondaryContentViewController;
 @property(readonly, assign, nonatomic) UIColor *secondaryTextColor;
-@property(retain, nonatomic) SBNotificationsSectionInfo *sectionInfo;
+@property(retain, nonatomic) SBNotificationCenterSectionInfo *sectionInfo;
 @property(readonly, assign, nonatomic, getter=isSuppressingMessageForPrivacy) BOOL suppressingMessageForPrivacy;
 - (id)_attachmentImageToDisplay;
 - (void)_configureEventDateLabel:(id)label;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)_relevanceDateLabel;
 - (XXStruct_Xx1ZfA)_relevanceDateLabelDescription;
 - (id)_relevanceDateTextColor;
+- (id)_secondaryContentView;
 - (id)_secondaryText;
 - (id)_secondaryTextColor;
 - (id)_secondaryTextToDisplay;
@@ -46,10 +49,11 @@ __attribute__((visibility("hidden")))
 - (id)_subtitleTextColor;
 - (id)_subtitleTextToDisplay;
 - (void)dealloc;
-- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode bulletinLocation:(int)location;
 - (id)identifier;
 - (void)invalidateCachedLayoutData;
 - (void)populateReusableView:(id)view;
+- (void)prepareWithCompletion:(id)completion;
 - (Class)reusableViewClass;
 @end
 

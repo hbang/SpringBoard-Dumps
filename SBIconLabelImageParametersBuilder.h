@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 @protocol SBIconViewDelegate;
 
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *text;
 @property(assign, nonatomic) BOOL wantsFocusHighlight;
 - (BOOL)_canEllipsizeLabel;
+- (BOOL)_canTightenLabel;
 - (BOOL)_canUseMemoryPool;
 - (id)_focusHighlightColor;
 - (id)_font;

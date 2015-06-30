@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
 	SBLockScreenViewController *_lockScreenViewController;
 	SBAlert *_deactivatingAlert;
 	SBAlertManager *_alertManager;
-	UIView *_cameraSnapshotView;
-	BOOL _animatingBackToCamera;
 }
 - (id)initWithLockScreenController:(id)lockScreenController deactivatingAlert:(id)alert alertManager:(id)manager;
 - (void)_cleanupAnimation;

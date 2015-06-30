@@ -13,9 +13,15 @@ __attribute__((visibility("hidden")))
 @interface SBTestDataProvider : XXUnknownSuperclass <BBRemoteDataProvider> {
 	BBDataProviderConnection *_connection;
 	BBDataProviderProxy *_proxy;
+	NSMutableArray *_bulletins;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
+- (id)_bulletin;
 - (float)attachmentAspectRatioForRecordID:(id)recordID;
 - (id)attachmentPNGDataForRecordID:(id)recordID sizeConstraints:(id)constraints;
 - (id)bulletinsFilteredBy:(unsigned)by count:(unsigned)count lastCleared:(id)cleared;

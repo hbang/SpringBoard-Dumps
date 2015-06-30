@@ -21,8 +21,12 @@ __attribute__((visibility("hidden")))
 	BOOL _dirty;
 }
 @property(retain, nonatomic, setter=_setIconSource:) SBIconModel *_iconSource;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, assign, nonatomic, getter=isDirty) BOOL dirty;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) id<SBIconIndexNode> node;
+@property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic, getter=isValid) BOOL valid;
 - (id)_currentFolder;
 - (int)_currentParseDepth;

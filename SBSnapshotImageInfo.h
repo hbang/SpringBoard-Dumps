@@ -6,6 +6,7 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -13,10 +14,11 @@ __attribute__((visibility("hidden")))
 	BOOL _defaultPNG;
 	NSString *_path;
 	NSString *_downscaledPath;
-	UIScreen *_screen;
+	NSString *_sceneID;
 	float _scale;
 	int _launchingOrientation;
 	int _originalOrientation;
+	CGSize _size;
 }
 @property(assign, nonatomic) BOOL defaultPNG;
 @property(copy, nonatomic) NSString *downscaledPath;
@@ -24,8 +26,9 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) int originalOrientation;
 @property(copy, nonatomic) NSString *path;
 @property(assign, nonatomic) float scale;
-@property(retain, nonatomic) UIScreen *screen;
-+ (id)snapshotImageInfoWithPath:(id)path downscaledPath:(id)path2 launchingOrientation:(int)orientation originalOrientation:(int)orientation4 forScreen:(id)screen;
+@property(retain, nonatomic) NSString *sceneID;
+@property(assign, nonatomic) CGSize size;
++ (id)snapshotImageInfoWithPath:(id)path downscaledPath:(id)path2 launchingOrientation:(int)orientation originalOrientation:(int)orientation4 forSceneID:(id)sceneID size:(CGSize)size scale:(float)scale;
 - (id)_stringForInterfaceOrientation:(int)interfaceOrientation;
 - (void)dealloc;
 - (id)description;

@@ -7,9 +7,9 @@
 
 #import "SpringBoard-Structs.h"
 #import "SBBulletinAlertHandler.h"
+#import "BBObserverDelegate.h"
 #import "SBBulletinBusyClient.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "BBObserverDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,10 @@ __attribute__((visibility("hidden")))
 	NSMapTable *_alertsByBulletinID;
 	BOOL _quietModeEnabled;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
@@ -45,5 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)observer:(id)observer removeBulletin:(id)bulletin;
 - (id)observer:(id)observer thumbnailSizeConstraintsForAttachmentType:(int)attachmentType;
 - (BOOL)observerShouldFetchAttachmentImageBeforeBulletinDelivery:(id)observer;
+- (void)showTestBulletin;
 @end
 

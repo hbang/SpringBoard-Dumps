@@ -5,47 +5,47 @@
  * Source: (null)
  */
 
+#import "SBUIAnimationControllerGroupObserver.h"
 #import "SBToAppWorkspaceTransaction.h"
-#import "SBUIAnimationControllerGroupDelegate.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppToAppWorkspaceTransaction : SBToAppWorkspaceTransaction <SBUIAnimationControllerGroupDelegate> {
+@interface SBAppToAppWorkspaceTransaction : SBToAppWorkspaceTransaction <SBUIAnimationControllerGroupObserver> {
 	SBApplication *_fromApp;
 	SBUIAnimationController *_animationController;
-	BKSApplicationActivationAssertion *_suspendingAppAssertion;
 	BOOL _animatedActivation;
 	BOOL _animatedDeactivation;
 	BOOL _deactivatingAppFromAppToAppGesture;
 	BOOL _appQuitFromSwitcher;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(retain, nonatomic) SBApplication *fromApp;
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager exitedApp:(id)app;
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager from:(id)from to:(id)to activationHandler:(id)handler;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
+- (id)initWithAlertManager:(id)alertManager exitedApp:(id)app;
+- (id)initWithAlertManager:(id)alertManager from:(id)from to:(id)to withResult:(id)result;
+- (void)_begin;
+- (void)_beginAnimation;
 - (BOOL)_canBeInterrupted;
-- (void)_commit;
+- (void)_didComplete;
+- (void)_didInterruptWithReason:(id)reason;
 - (void)_endAnimation;
-- (void)_handleAppDidNotChange;
-- (void)_interruptWithReason:(int)reason;
+- (void)_handleApplicationDidNotChange:(id)_handleApplication;
+- (void)_handleApplicationUpdateScenesTransactionFailed:(id)failed;
 - (void)_kickOffActivation;
 - (void)_setupAnimation;
 - (id)_setupAnimationFrom:(id)from to:(id)to;
-- (int)_setupMilestonesFrom:(id)from to:(id)to;
-- (void)_transactionComplete;
+- (id)_setupMilestonesFrom:(id)from to:(id)to;
+- (void)_synchronizeWithSceneUpdates;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
+- (void)animationControllerDidRevealApplication:(id)animationController;
 - (void)dealloc;
-- (id)debugDescription;
-- (BOOL)selfAlertDidDeactivate:(id)selfAlert;
-- (BOOL)selfApplicationActivated:(id)activated;
-- (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
-- (BOOL)selfApplicationDidFinishLaunching:(id)selfApplication withInfo:(id)info;
-- (BOOL)selfApplicationExited:(id)exited;
-- (BOOL)selfApplicationLaunchDidFail:(id)selfApplicationLaunch;
-- (BOOL)selfApplicationWillBecomeReceiver:(id)selfApplication fromApplication:(id)application;
 - (BOOL)shouldAnimateOrientationChangeOnCompletion;
 - (BOOL)shouldDismissSwitcher;
 - (BOOL)shouldPerformToAppStateCleanupOnCompletion;
+- (BOOL)shouldRestoreSpringBoardContentOnCleanup;
 - (BOOL)shouldToggleSpringBoardStatusBarOnCleanup;
 @end
 

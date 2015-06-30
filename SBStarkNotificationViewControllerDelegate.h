@@ -10,5 +10,6 @@
 
 @protocol SBStarkNotificationViewControllerDelegate <NSObject>
 - (void)notificationViewController:(id)controller stateDidChangeFrom:(int)state;
+- (void)notificationViewController:(id)controller willDisplayBannerView:(id)view;
 @end
 

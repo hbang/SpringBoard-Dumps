@@ -5,18 +5,13 @@
  * Source: (null)
  */
 
-#import "SBBBSectionInfo.h"
+#import "SBNotificationCenterSectionInfo.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBTomorrowSectionInfo : SBBBSectionInfo {
-	SBItemInfoLayoutCache *_layoutCache;
+@interface SBTomorrowSectionInfo : SBNotificationCenterSectionInfo {
 }
-- (void)dealloc;
-- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
 - (id)identifier;
-- (void)invalidateCachedLayoutData;
 - (void)populateReusableView:(id)view;
-- (Class)reusableViewClass;
 @end
 

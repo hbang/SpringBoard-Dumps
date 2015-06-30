@@ -6,21 +6,22 @@
  */
 
 #import "SBCoordinatedPresenting.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "SBControlCenterViewControllerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBPresentingDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBControlCenterController : XXUnknownSuperclass <SBControlCenterViewControllerDelegate, SBCoordinatedPresenting> {
-	SBControlCenterWindow *_window;
+	SBWindow *_window;
 	SBControlCenterRootView *_rootView;
 	SBControlCenterViewController *_viewController;
 	UIImageView *_coveredContentSnapshot;
 	UIView *_fullScreenGrabberContainer;
 	_UIBackdropView *_fullScreenGrabberBackdrop;
 	SBChevronView *_fullScreenChevron;
+	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
 	NSMutableSet *_preventDismissalOnLockReasons;
 	BOOL _uiLocked;
 	NSHashTable *_observers;
@@ -36,21 +37,23 @@ __attribute__((visibility("hidden")))
 	BOOL _presented;
 	BOOL _transitioning;
 	BOOL _fullyRevealed;
-	SBApplication *_coveredApplication;
 	float _backgroundBrightness;
 }
 @property(assign, nonatomic, getter=isUILocked) BOOL UILocked;
 @property(assign, nonatomic) float backgroundBrightness;
 @property(readonly, assign, nonatomic) NSSet *conflictingGestures;
 @property(readonly, assign, nonatomic) int coordinatedPresentingControllerIdentifier;
-@property(retain, nonatomic) SBApplication *coveredApplication;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(assign, nonatomic, getter=isFullyRevealed) BOOL fullyRevealed;
 @property(readonly, assign, nonatomic) NSSet *gestures;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) float hintDisplacement;
 @property(readonly, assign, nonatomic) unsigned hintEdge;
 @property(assign, nonatomic) BOOL inGrabberOnlyMode;
 @property(assign, nonatomic, getter=isPresented) BOOL presented;
 @property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
+@property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic) NSSet *tapExcludedViews;
 @property(assign, nonatomic, getter=isTransitioning) BOOL transitioning;
 + (id)_sharedInstanceCreatingIfNeeded:(BOOL)needed;
@@ -99,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)dismissAnimated:(BOOL)animated completion:(id)completion;
 - (void)dismissAnimated:(BOOL)animated withAdditionalAnimations:(id)additionalAnimations completion:(id)completion;
 - (void)endTransitionWithVelocity:(CGPoint)velocity completion:(id)completion;
+- (void)endTransitionWithVelocity:(CGPoint)velocity wasCancelled:(BOOL)cancelled completion:(id)completion;
 - (BOOL)handleMenuButtonTap;
 - (void)hideGrabberAnimated:(BOOL)animated;
 - (void)hideGrabberAnimated:(BOOL)animated completion:(id)completion;

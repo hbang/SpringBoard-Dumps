@@ -11,9 +11,13 @@
 @protocol SBUIBannerTargetBase <NSObject>
 @property(readonly, assign, nonatomic) void *bannerTargetIdentifier;
 @property(readonly, assign, nonatomic) int bannerTargetIdiom;
+- (void)cacheBannerForContext:(id)context withCompletion:(id)completion;
 - (id)currentBannerContextForSource:(id)source;
 - (void)dismissCurrentBannerContextForSource:(id)source;
+- (BOOL)isShowingModalBanner;
+- (void)modallyPresentBannerWithContext:(id)context;
 - (void)registerSource:(id)source;
+- (void)removeCachedBannerForContext:(id)context;
 - (void)signalSource:(id)source;
 - (void)unregisterSource:(id)source;
 @end

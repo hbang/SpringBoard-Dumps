@@ -52,6 +52,13 @@ typedef struct CGAffineTransform {
 	float ty;
 } CGAffineTransform;
 
+typedef struct UIEdgeInsets {
+	float top;
+	float left;
+	float bottom;
+	float right;
+} UIEdgeInsets;
+
 typedef struct CGColor *CGColorRef;
 
 typedef struct {
@@ -91,7 +98,7 @@ typedef struct __darwin_pthread_handler_rec darwin_pthread_handler_rec;
 typedef struct _opaque_pthread_t {
 	long _field1;
 	darwin_pthread_handler_rec *_field2;
-	BOOL _field3[596];
+	BOOL _field3[4088];
 } opaque_pthread_t;
 
 typedef struct __CFBoolean *CFBooleanRef;
@@ -103,13 +110,6 @@ typedef struct SBIconCoordinate {
 	int col;
 } SBIconCoordinate;
 
-typedef struct UIEdgeInsets {
-	float top;
-	float left;
-	float bottom;
-	float right;
-} UIEdgeInsets;
-
 typedef struct _opaque_pthread_mutex_t {
 	long __sig;
 	BOOL __opaque[40];
@@ -119,15 +119,19 @@ typedef struct {
 	unsigned _field1[8];
 } XXStruct_kUSYWB;
 
-typedef struct tcp_connection_fallback_watch_s tcp_connection_fallback_watch_s;
-
 typedef struct __CTServerConnection *CTServerConnectionRef;
+
+typedef struct __SCDynamicStore *SCDynamicStoreRef;
 
 typedef struct __CFString *CFStringRef;
 
+typedef struct tcp_connection_fallback_watch_s tcp_connection_fallback_watch_s;
+
 typedef struct __CFDictionary *CFDictionaryRef;
 
-typedef struct __SCDynamicStore *SCDynamicStoreRef;
+typedef struct NSString {
+	Class _field1;
+} NSString;
 
 typedef struct BKSDisplayBrightnessTransaction *BKSDisplayBrightnessTransactionRef;
 
@@ -162,17 +166,6 @@ typedef struct {
 
 typedef struct __SBGestureContext *SBGestureContextRef;
 
-typedef struct SBBannerDismissGestureState {
-	BOOL _field1;
-	BOOL _field2;
-	CGSize _field3;
-	CGSize _field4;
-	CGRect _field5;
-	int _field6;
-	float _field7;
-	BOOL _field8;
-} SBBannerDismissGestureState;
-
 typedef struct _CARenderImage *CARenderImageRef;
 
 typedef struct {
@@ -190,19 +183,19 @@ typedef struct {
 
 typedef struct CGImage *CGImageRef;
 
-typedef struct SBWindowLevelRange_struct {
-	float start;
-	float end;
-} SBWindowLevelRange_struct;
-
-typedef struct __CFArray *CFArrayRef;
-
 typedef struct {
 	id _field1;
 	id _field2;
 	id _field3;
 	id _field4;
 } XXStruct_Xx1ZfA;
+
+typedef struct SBWindowLevelRange_struct {
+	float start;
+	float end;
+} SBWindowLevelRange_struct;
+
+typedef struct __CFArray *CFArrayRef;
 
 typedef struct CGImageSource *CGImageSourceRef;
 

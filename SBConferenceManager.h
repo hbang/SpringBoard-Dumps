@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -18,21 +18,23 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)init;
 - (id)_faceTimeApp;
-- (void)_faceTimeAppActivationStateChanged:(id)changed;
 - (void)_faceTimeCapabilityChanged:(id)changed;
 - (void)_faceTimeStateChanged:(id)changed;
-- (void)_updateStatusBar;
+- (void)_updateStatusBarForChat:(id)chat;
+- (id)activeFaceTimeCall;
 - (BOOL)activeFaceTimeCallExists;
 - (BOOL)canStartFaceTime;
 - (id)currentCallRemoteUserId;
 - (id)currentCallStatusDisplayString;
+- (id)currentFaceTimeCall;
 - (void)dealloc;
 - (void)endFaceTime;
 - (BOOL)faceTimeInvitationExists;
 - (BOOL)faceTimeIsAvailable;
 - (BOOL)hasFaceTimeCapability;
 - (BOOL)inFaceTime;
+- (id)incomingFaceTimeCall;
 - (void)invitedToIMAVChat:(id)imavchat;
-- (void)updateStatusBar;
+- (void)updateStatusBarForChat:(id)chat;
 @end
 

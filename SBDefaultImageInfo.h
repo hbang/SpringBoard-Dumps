@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 	int _originalOrientation;
 	int _currentOrientation;
 	UIImage *_image;
-	CGSize _launchingScreenSize;
+	CGSize _launchingSize;
 }
 @property(assign, nonatomic) int currentOrientation;
 @property(assign, nonatomic) BOOL hasSnapshot;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) BOOL isDownscaled;
 @property(assign, nonatomic) int launchingInterfaceOrientation;
 @property(assign, nonatomic) float launchingScale;
-@property(assign, nonatomic) CGSize launchingScreenSize;
+@property(assign, nonatomic) CGSize launchingSize;
 @property(assign, nonatomic) int originalOrientation;
 - (void)dealloc;
 - (id)description;

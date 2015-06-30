@@ -34,11 +34,15 @@ __attribute__((visibility("hidden")))
 }
 @property(copy) id canceledBlock;
 @property(copy) id completedBlock;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, assign, nonatomic) NSSet *gestures;
+@property(readonly, assign) unsigned hash;
 @property(copy) id prepareBlock;
 @property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
 @property(retain, nonatomic) SBBounceSettings *settings;
 @property(copy) id shouldBeginBlock;
+@property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic) NSSet *tapExcludedViews;
 @property(copy) id translateBlock;
 - (id)initWithView:(id)view;

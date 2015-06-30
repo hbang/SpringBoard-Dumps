@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
 	UIView<SBAppSwitcherPageContentView> *_view;
 	UIView *_overlayView;
 	int _orientation;
+	UIView *auxiliaryView;
 }
+@property(readonly, assign, nonatomic) UIView *auxiliaryView;
 @property(assign, nonatomic) int orientation;
 @property(retain, nonatomic) UIView *overlay;
 @property(assign, nonatomic) float shadowAlpha;
 @property(retain, nonatomic) UIView<SBAppSwitcherPageContentView> *view;
-+ (float)_edgeBorderForOrientation:(int)orientation;
++ (float)_horizontalEdgeBorderForOrientation:(int)orientation;
 + (CGSize)sizeForOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
 - (CGAffineTransform)_transformForOrientation:(int)orientation;

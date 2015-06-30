@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 	NSString *_reason;
 }
 @property(readonly, assign, nonatomic) int orientation;
-@property(readonly, assign, nonatomic) NSString *reason;
+@property(readonly, copy, nonatomic) NSString *reason;
 - (id)initWithOrientation:(int)orientation andReason:(id)reason;
 - (void)dealloc;
 @end

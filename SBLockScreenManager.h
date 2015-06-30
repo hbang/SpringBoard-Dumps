@@ -6,16 +6,20 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBUIBiometricEventObserver.h"
+#import "SBLockScreenViewControllerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIBiometricEventMonitorDelegate.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenManager : XXUnknownSuperclass {
+@interface SBLockScreenManager : XXUnknownSuperclass <SBLockScreenViewControllerDelegate, SBUIBiometricEventObserver, SBUIBiometricEventMonitorDelegate> {
 	SBLockScreenViewControllerBase *_lockScreenViewController;
 	BOOL _isUILocked;
 	BOOL _isWaitingToLockUI;
 	BOOL _appRequestedPasscodeEntry;
 	BOOL _uiHasBeenLockedOnce;
+	BOOL _uiUnlocking;
 	SBPasscodeEntryAlertViewController *_passcodeEntryController;
 	SBPasscodeLockDisableAssertion *_disablePasscodeLockWhileUIUnlockedAssertion;
 	NSMutableSet *_disableLockScreenIfPossibleAssertions;
@@ -23,11 +27,17 @@ __attribute__((visibility("hidden")))
 	BOOL _isInLostMode;
 	unsigned _failedMesaUnlockAttempts;
 	BOOL _bioAuthenticatedWhileMenuButtonDown;
+	NSMutableSet *_bioUnlockingDisabledRequesters;
 }
+@property(assign, nonatomic, getter=isUIUnlocking) BOOL UIUnlocking;
 @property(readonly, assign) BOOL bioAuthenticatedWhileMenuButtonDown;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign) BOOL isUILocked;
 @property(readonly, assign) BOOL isWaitingToLockUI;
 @property(readonly, assign, nonatomic) SBLockScreenViewControllerBase *lockScreenViewController;
+@property(readonly, assign) Class superclass;
 + (id)_sharedInstanceCreateIfNeeded:(BOOL)needed;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
@@ -51,8 +61,8 @@ __attribute__((visibility("hidden")))
 - (void)_sendUILockStateChangedNotification;
 - (void)_setUILocked:(BOOL)locked;
 - (BOOL)_shouldAutoUnlockFromUnlockSource:(int)unlockSource;
-- (BOOL)_shouldLockAfterFaceTimeCall;
-- (BOOL)_shouldLockAfterTelephonyCall;
+- (BOOL)_shouldLockAfterEndingFaceTimeCall;
+- (BOOL)_shouldLockAfterEndingTelephonyCall;
 - (void)activateLostModeForRemoteLock:(BOOL)remoteLock;
 - (void)activationChanged:(id)changed;
 - (void)addLockScreenDisableAssertion:(id)assertion;
@@ -70,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)lockUIFromSource:(int)source withOptions:(id)options;
 - (void)remoteLock:(BOOL)lock;
 - (void)removeLockScreenDisableAssertion:(id)assertion;
+- (void)setBioUnlockingDisabled:(BOOL)disabled forRequester:(id)requester;
 - (BOOL)shouldLockUIAfterEndingCall;
 - (void)startUIUnlockFromSource:(int)source withOptions:(id)options;
 - (void)unlockUIFromSource:(int)source withOptions:(id)options;

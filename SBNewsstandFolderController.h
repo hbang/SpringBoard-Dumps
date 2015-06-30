@@ -5,6 +5,7 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBFolderController.h"
 
 
@@ -16,5 +17,6 @@ __attribute__((visibility("hidden")))
 - (unsigned)_depth;
 - (id)_statusBarColor;
 - (id)legibilitySettings;
+- (UIEdgeInsets)statusBarInsetsForOrientation:(int)orientation;
 @end
 

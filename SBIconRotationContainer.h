@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 	CGPoint _wallpaperRelativeImageCenter;
 }
 @property(readonly, assign, nonatomic) SBIconCoordinate coordinate;
-@property(readonly, assign, nonatomic) SBIcon *endIcon;
+@property(readonly, retain, nonatomic) SBIcon *endIcon;
 @property(readonly, assign, nonatomic) CGPoint iconImageCenter;
 @property(assign, nonatomic) CGPoint wallpaperRelativeImageCenter;
 - (id)initWithFrame:(CGRect)frame startIcon:(id)icon endIcon:(id)icon3 viewMap:(id)map coordinate:(SBIconCoordinate)coordinate;

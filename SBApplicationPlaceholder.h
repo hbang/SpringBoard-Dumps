@@ -5,16 +5,16 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "FBApplicationPlaceholderObserver.h"
 #import "SBLeafIconDataSource.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface SBApplicationPlaceholder : XXUnknownSuperclass <SBLeafIconDataSource> {
-	LSApplicationProxy *_appProxy;
+@interface SBApplicationPlaceholder : XXUnknownSuperclass <FBApplicationPlaceholderObserver, SBLeafIconDataSource> {
+	FBApplicationPlaceholder *_placeholderProxy;
 	NSString *_applicationBundleID;
 	NSString *_applicationDisplayName;
-	NSProgress *_progress;
 	double _fractionProgress;
 	BOOL _installing;
 	BOOL _isNewsstand;
@@ -24,12 +24,15 @@ __attribute__((visibility("hidden")))
 	NSMutableDictionary *_generatedIconImagesByKey;
 	NSMutableSet *_formatsPendingGeneration;
 }
-@property(retain, nonatomic) LSApplicationProxy *appProxy;
 @property(copy, nonatomic) NSString *applicationBundleID;
 @property(copy, nonatomic) NSString *applicationDisplayName;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(retain, nonatomic) FBApplicationPlaceholder *placeholderProxy;
+@property(readonly, assign) Class superclass;
 + (id)backgroundQueue;
-- (id)initWithProxy:(id)proxy;
-- (void)_addKVOObserversForProgress;
+- (id)initWithPlaceholderProxy:(id)placeholderProxy;
 - (id)_defaultIconImageWithFormat:(int)format;
 - (id)_downloadingLabel;
 - (void)_generateIconImageWithFormat:(int)format;
@@ -39,13 +42,10 @@ __attribute__((visibility("hidden")))
 - (int)_newsstandImageOptions;
 - (void)_prioritize;
 - (void)_progressChanged;
-- (void)_progressMayHaveChanged;
 - (void)_reloadThumbnailImage;
-- (void)_removeKVOObserversForProgress;
 - (BOOL)_shouldDisplayAppName;
 - (void)cancel;
 - (void)dealloc;
-- (id)description;
 - (id)fetchIconImageWithFormat:(int)format;
 - (id)icon:(id)icon defaultImageWithFormat:(int)format;
 - (id)icon:(id)icon imageWithFormat:(int)format;
@@ -56,10 +56,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconAppearsInNewsstand:(id)newsstand;
 - (id)iconBadgeNumberOrString:(id)string;
 - (BOOL)iconCanEllipsizeLabel:(id)label;
+- (BOOL)iconCanTightenLabel:(id)label;
 - (void)iconChanged;
 - (BOOL)iconCompleteUninstall:(id)uninstall;
 - (id)iconDisplayName:(id)name;
 - (id)iconFormattedAccessoryString:(id)string;
+- (BOOL)iconIsBeta:(id)beta;
 - (BOOL)iconIsRecentlyUpdated:(id)updated;
 - (unsigned)iconPriority:(id)priority;
 - (BOOL)iconProgressIsPaused:(id)paused;
@@ -78,11 +80,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)isNewsstand;
 - (BOOL)isPausable;
 - (BOOL)isPaused;
-- (void)noteDownloadStatusChanged;
-- (void)observeValueForKeyPath:(id)keyPath ofObject:(id)object change:(id)change context:(void *)context;
 - (void)pause;
-- (id)proxy;
+- (void)placeholderCancellabilityDidChange:(id)placeholderCancellability;
+- (void)placeholderDidChangeSignificantly:(id)placeholder;
+- (void)placeholderInstallPhaseDidChange:(id)placeholderInstallPhase;
+- (void)placeholderInstallStateDidChange:(id)placeholderInstallState;
+- (void)placeholderPausabilityDidChange:(id)placeholderPausability;
+- (void)placeholderPercentCompleteDidChange:(id)placeholderPercentComplete;
 - (void)resume;
-- (void)setApplicationProxy:(id)proxy;
 @end
 

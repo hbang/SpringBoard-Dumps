@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *view;
 - (id)init;
 - (void)dealloc;
+- (void)didFinishBackwardToStart;
 - (void)finishBackwardToStart;
 - (void)finishForwardToEnd;
 - (void)stepAnimationsInView:(id)view animatingSubviews:(id)subviews duration:(double)duration;

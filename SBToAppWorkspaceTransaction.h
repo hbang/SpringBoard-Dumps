@@ -5,38 +5,14 @@
  * Source: (null)
  */
 
-#import "SBWorkspaceTransaction.h"
+#import "SBToAppsWorkspaceTransaction.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBToAppWorkspaceTransaction : SBWorkspaceTransaction {
+@interface SBToAppWorkspaceTransaction : SBToAppsWorkspaceTransaction {
 	SBApplication *_toApp;
-	BOOL _activateSuspended;
-	double _watchdogExtension;
-	BOOL _fromAssistant;
-	BOOL _fromSwitcher;
-	id _activationHandlerBlock;
 }
-@property(readonly, assign, nonatomic) SBApplication *toApplication;
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager toApplication:(id)application activationHandler:(id)handler;
-- (void)_captureApplicationData;
-- (void)_commit;
-- (void)_fireAndClearActivationContinuationForActivationFailureIfNecessary;
-- (void)_handleAppDidNotChange;
-- (void)_interruptWithReason:(int)reason;
-- (BOOL)_shouldBeWatchdogged:(id *)watchdogged;
-- (void)_transactionComplete;
-- (double)_watchdogInterval;
-- (void)activate:(id)activate;
+- (id)initWithAlertManager:(id)alertManager toApplication:(id)application withResult:(id)result;
 - (void)dealloc;
-- (id)debugDescription;
-- (void)performToAppStateCleanup;
-- (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
-- (BOOL)shouldAnimateOrientationChangeOnCompletion;
-- (BOOL)shouldDismissSwitcher;
-- (BOOL)shouldHideSpringBoardStatusBarOnCleanup;
-- (BOOL)shouldPerformToAppStateCleanupOnCompletion;
-- (BOOL)shouldToggleSpringBoardStatusBarOnCleanup;
-- (void)toggleStatusBarForCleanup;
 @end
 

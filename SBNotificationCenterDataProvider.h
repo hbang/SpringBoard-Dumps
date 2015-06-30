@@ -12,12 +12,23 @@
 __attribute__((visibility("hidden")))
 @interface SBNotificationCenterDataProvider : XXUnknownSuperclass <BBRemoteDataProvider> {
 	BBSectionInfo *_sectionInfo;
+	NSExtension *_extension;
+	NSString *_sectionDisplayName;
+	BBSectionIcon *_sectionIcon;
 }
-+ (id)notificationCenterDataProviderWithSectionInfo:(id)sectionInfo;
-- (id)initWithSectionInfo:(id)sectionInfo;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
++ (BOOL)isIconForSectionPrecomposed:(id)sectionPrecomposed;
++ (id)notificationCenterDataProviderWithSectionInfo:(id)sectionInfo extension:(id)extension;
+- (id)initWithSectionInfo:(id)sectionInfo extension:(id)extension;
+- (void)_invalidateCachedValues;
 - (id)bulletinsWithRequestParameters:(id)requestParameters lastCleared:(id)cleared;
 - (void)dealloc;
 - (id)defaultSectionInfo;
+- (id)sectionDisplayName;
+- (id)sectionIcon;
 - (id)sectionIdentifier;
 - (id)sortDescriptors;
 @end

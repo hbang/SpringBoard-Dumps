@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
 	BBDataProviderConnection *_connection;
 	BBDataProviderProxy *_proxy;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
 - (float)attachmentAspectRatioForRecordID:(id)recordID;

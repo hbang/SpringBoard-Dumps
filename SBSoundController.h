@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)_killAVController;
 - (BOOL)_playAVItem:(id)item forSound:(id)sound;
 - (BOOL)_playRingtone:(id)ringtone;
+- (BOOL)_playSong:(id)song;
 - (BOOL)_playSystemSound:(id)sound;
 - (BOOL)_playToneAlert:(id)alert;
 - (void)_ringerStateChanged:(id)changed;

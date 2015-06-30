@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "SBFolderViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,10 @@ __attribute__((visibility("hidden")))
 	SBIconViewMap *_viewMap;
 	SBFolderView *_folderContent;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (void)cleanupPreview;
 + (id)preview;
 - (id)initWithFrame:(CGRect)frame iconController:(id)controller;

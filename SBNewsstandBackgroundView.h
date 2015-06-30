@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 	UIView *_bottomView;
 }
 + (float)baselineForShelfAtIndex:(unsigned)index withOrientation:(int)orientation;
++ (float)dockHeightForOrientation:(int)orientation;
 + (float)shelfHeightForOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
 - (void)dealloc;

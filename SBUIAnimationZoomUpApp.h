@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomUpApp : SBUIMainScreenAnimationController {
 	UIView *_contextHostView;
 	BOOL _zoomHostView;
+	FBWindowContextHostManager *_activatingContextHostManager;
 	SBAppStatusBarTransitionInfo *_appStatusBarTransitionInfo;
 	int _animationTransition;
 	BOOL _finishedZooming;
@@ -26,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) int animationTransition;
 - (id)initWithActivatingApp:(id)activatingApp;
 - (id)_animationProgressDependency;
-- (BOOL)_animationShouldStart;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_maybeReportAnimationFinished;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_prepareAnimation;
 - (BOOL)_shouldWaitForSiriDismissBeforeZooming;
 - (void)_startAnimation;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
 - (void)animateFakeStatusBarWithParameters:(id)parameters;
 - (void)animateZoomWithCompletion:(id)completion;
 - (double)animationDelay;

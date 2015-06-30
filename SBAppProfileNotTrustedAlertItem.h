@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
 	SBApplicationIcon *_icon;
 	BOOL _launchApp;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithIcon:(id)icon;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

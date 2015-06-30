@@ -11,16 +11,23 @@
 __attribute__((visibility("hidden")))
 @interface SBKeybagNonsenseWorkspaceTransaction : SBRelaunchAppWorkspaceTransaction {
 	SSKeybagRequest *_keybagRequest;
+	SSVClaimApplicationsRequest *_claimApplicationsRequest;
+	SBUIAnimationController *_zoomDownAnimationController;
+	BOOL _keepAliveTillZoomDownFinishes;
 }
-- (id)initWithWorkspace:(id)workspace alertManager:(id)manager application:(id)application;
+- (id)initWithAlertManager:(id)alertManager application:(id)application;
+- (void)_begin;
 - (BOOL)_canBeInterrupted;
-- (void)_commit;
 - (void)_completeKeybagRefetchForApp:(id)app relaunch:(BOOL)relaunch;
+- (void)_didComplete;
+- (void)_didInterruptWithReason:(id)reason;
+- (void)_endAnimation;
+- (void)_endKeybagRefetchAndZoomDownNicely;
 - (void)_handleAppRelaunch:(id)relaunch;
-- (void)_interruptWithReason:(int)reason;
 - (id)_setupAnimationForApp:(id)app;
-- (BOOL)_shouldBeWatchdogged:(id *)watchdogged;
-- (void)_transactionComplete;
+- (BOOL)_shouldComplete;
+- (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
+- (BOOL)shouldWatchdog:(id *)watchdog;
 @end
 

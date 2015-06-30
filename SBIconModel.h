@@ -24,10 +24,10 @@ __attribute__((visibility("hidden")))
 	BOOL _allowsSaving;
 }
 @property(assign, nonatomic) BOOL allowsSaving;
-@property(readonly, assign, nonatomic) id<SBIconModelApplicationDataSource> applicationDataSource;
+@property(readonly, retain, nonatomic) id<SBIconModelApplicationDataSource> applicationDataSource;
 @property(assign, nonatomic) id<SBIconModelDelegate> delegate;
 @property(retain, nonatomic) NSDictionary *leafIconsByIdentifier;
-@property(readonly, assign, nonatomic) id<SBIconModelStore> store;
+@property(readonly, retain, nonatomic) id<SBIconModelStore> store;
 - (id)initWithStore:(id)store applicationDataSource:(id)source;
 - (id)_applicationIcons;
 - (BOOL)_canAddDownloadingIconForBundleID:(id)bundleID;
@@ -38,13 +38,15 @@ __attribute__((visibility("hidden")))
 - (void)_replaceAppIconsWithDownloadingIcons;
 - (void)_replaceAppIconsWithDownloadingIcons:(id)downloadingIcons;
 - (void)_saveDesiredIconState;
+- (void)_saveIconState;
 - (id)_unarchiveRootFolder;
 - (id)addBookmarkIconForWebClip:(id)webClip;
 - (id)addDownloadingIconForBundleID:(id)bundleID withIdentifier:(id)identifier;
 - (id)addDownloadingIconForDownload:(id)download;
 - (void)addIcon:(id)icon;
 - (void)addIconForApplication:(id)application;
-- (id)applicationIconForDisplayIdentifier:(id)displayIdentifier;
+- (id)applicationIconForBundleIdentifier:(id)bundleIdentifier;
+- (id)bookmarkIconForWebClipIdentifier:(id)webClipIdentifier;
 - (void)clearDesiredIconState;
 - (void)clearDesiredIconStateIfPossible;
 - (void)dealloc;
@@ -64,8 +66,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isIconVisible:(id)visible;
 - (void)layout;
 - (id)leafIconForIdentifier:(id)identifier;
-- (id)leafIconForWebClip:(id)webClip;
-- (id)leafIconForWebClipIdentifier:(id)webClipIdentifier;
 - (id)leafIcons;
 - (void)loadAllIcons;
 - (void)localeChanged;
@@ -73,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)removeIcon:(id)icon;
 - (void)removeIconForIdentifier:(id)identifier;
 - (id)rootFolder;
-- (void)saveIconState;
+- (void)saveIconStateIfNeeded;
 - (void)setVisibilityOfIconsWithVisibleTags:(id)visibleTags hiddenTags:(id)tags;
 - (id)visibleIconIdentifiers;
 @end

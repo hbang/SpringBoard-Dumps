@@ -6,13 +6,13 @@
  */
 
 #import "SBLeafIconDataSource.h"
+#import "SpringBoard-Structs.h"
 #import "SBApplicationRestrictionObserver.h"
 #import "SBFolderControllerDelegate.h"
 #import "SBIconViewDelegate.h"
 #import "SBIconModelDelegate.h"
 #import "SBIconViewMapDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -35,8 +35,12 @@ __attribute__((visibility("hidden")))
 	BOOL _invalidated;
 	BOOL _hidden;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(retain, nonatomic) SBStarkFakeIconOperationController *fakeIconOperationController;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) SBStarkIconLayoutOverrideStrategy *iconLayoutOverrideStrategy;
+@property(readonly, assign) Class superclass;
 - (id)initWithInteractionAffordances:(unsigned)interactionAffordances externalDevice:(id)device;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (BOOL)_buttons:(id)buttons hasType:(int)type;
@@ -55,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)_physicalButtonsEnded:(id)ended withEvent:(id)event;
 - (void)_prepareToResetRootIconLists;
 - (void)_resetRootIconLists;
-- (id)applicationIconForDisplayID:(id)displayID;
+- (id)applicationIconForBundleIdentifier:(id)bundleIdentifier;
 - (void)applicationRestrictionController:(id)controller didUpdateVisibleTags:(id)tags hiddenTags:(id)tags3;
 - (BOOL)canAddDownloadingIconForApplication:(id)application;
 - (BOOL)canAddWebClip:(id)clip;
@@ -83,10 +87,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconAppearsInNewsstand:(id)newsstand;
 - (id)iconBadgeNumberOrString:(id)string;
 - (BOOL)iconCanEllipsizeLabel:(id)label;
+- (BOOL)iconCanTightenLabel:(id)label;
 - (BOOL)iconCompleteUninstall:(id)uninstall;
 - (id)iconDisplayName:(id)name;
 - (id)iconForLeafID:(id)leafID;
 - (id)iconFormattedAccessoryString:(id)string;
+- (BOOL)iconIsBeta:(id)beta;
 - (BOOL)iconIsRecentlyUpdated:(id)updated;
 - (unsigned)iconPriority:(id)priority;
 - (BOOL)iconProgressIsPaused:(id)paused;

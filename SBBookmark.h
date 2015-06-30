@@ -13,13 +13,18 @@ __attribute__((visibility("hidden")))
 @interface SBBookmark : XXUnknownSuperclass <SBLeafIconDataSource> {
 	UIWebClip *_webClip;
 }
-@property(retain, nonatomic) UIWebClip *webClip;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) NSString *identifier;
+@property(readonly, retain, nonatomic) NSURL *launchURL;
+@property(readonly, assign) Class superclass;
+@property(readonly, retain, nonatomic) UIWebClip *webClip;
 + (id)bookmarkWithWebClip:(id)webClip;
 - (id)initWithWebClip:(id)webClip;
+- (void)_deviceUnlockedForFirstTime:(id)firstTime;
 - (BOOL)allowsUninstall;
-- (id)bundleIdentifier;
 - (void)dealloc;
-- (void)deviceUnlockedForFirstTime:(id)firstTime;
 - (id)icon:(id)icon defaultImageWithFormat:(int)format;
 - (id)icon:(id)icon imageWithFormat:(int)format;
 - (BOOL)icon:(id)icon launchFromLocation:(int)location;
@@ -29,14 +34,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconAppearsInNewsstand:(id)newsstand;
 - (id)iconBadgeNumberOrString:(id)string;
 - (BOOL)iconCanEllipsizeLabel:(id)label;
+- (BOOL)iconCanTightenLabel:(id)label;
 - (BOOL)iconCompleteUninstall:(id)uninstall;
 - (id)iconDisplayName:(id)name;
 - (id)iconFormattedAccessoryString:(id)string;
+- (BOOL)iconIsBeta:(id)beta;
 - (BOOL)iconIsRecentlyUpdated:(id)updated;
 - (unsigned)iconPriority:(id)priority;
 - (BOOL)iconProgressIsPaused:(id)paused;
 - (float)iconProgressPercent:(id)percent;
 - (int)iconProgressState:(id)state;
-- (id)identifier;
 @end
 

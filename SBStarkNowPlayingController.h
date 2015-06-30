@@ -18,6 +18,10 @@ __attribute__((visibility("hidden")))
 	NSMutableArray *_notifyBlocks;
 	SBSUICarDisplayNowPlayingStateContext *_context;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (void)_noteServiceFailure;
 - (void)_notifyActive:(BOOL)active;

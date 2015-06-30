@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBControlCenterObserver.h"
 #import "SBUIControlCenterControlObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBControlCenterObserver.h"
 
 
 __attribute__((visibility("hidden")))
@@ -21,8 +21,12 @@ __attribute__((visibility("hidden")))
 	NSMutableDictionary *_statusByReason;
 	NSMutableArray *_statusReasonQueue;
 	SBControlCenterStatusUpdate *_activeStatus;
-	BKSTimer *_statusTimer;
+	BSTimer *_statusTimer;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (float)defaultHeightForOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_animateNextStatus;

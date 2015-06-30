@@ -10,18 +10,23 @@
 
 __attribute__((visibility("hidden")))
 @interface SBSearchTableHeaderView : XXUnknownSuperclass {
-	UILabel *_titleLabel;
-	UIView *_separatorView;
 	NSString *_reuseIdentifier;
+	SBObservingLabel *_titleLabel;
+	UIView *_separatorView;
+	NSDictionary *_titleTextAttributes;
 }
-@property(readonly, assign, nonatomic) NSString *reuseIdentifier;
+@property(readonly, copy, nonatomic) NSString *reuseIdentifier;
+@property(retain, nonatomic) UIView *separatorView;
 @property(retain, nonatomic) NSString *title;
-+ (float)heightForActiveContentSizeCategory;
+@property(retain, nonatomic) SBObservingLabel *titleLabel;
+@property(retain, nonatomic) NSDictionary *titleTextAttributes;
 + (id)lineColor;
++ (BOOL)requiresConstraintBasedLayout;
 - (id)initWithReuseIdentifier:(id)reuseIdentifier;
+- (void)_contentSizeCategoryDidChange:(id)_contentSizeCategory;
 - (void)dealloc;
 - (BOOL)isUserInteractionEnabled;
-- (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)updateFonts;
 @end
 

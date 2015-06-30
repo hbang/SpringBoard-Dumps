@@ -12,13 +12,18 @@
 __attribute__((visibility("hidden")))
 @interface SBApplicationTerminationAssertionImpl : XXUnknownSuperclass <SBApplicationTerminationAssertion> {
 	NSString *_displayId;
+	id _pluginHoldToken;
 	unsigned char _reason;
 	SBApplicationTerminationAssertionManager *_manager;
 }
-@property(readonly, assign, nonatomic) NSString *displayId;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSString *displayId;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) id pluginHoldToken;
 @property(readonly, assign, nonatomic) unsigned char reason;
-- (id)initWithDisplayId:(id)displayId reason:(unsigned char)reason manager:(id)manager;
+@property(readonly, assign) Class superclass;
+- (id)initWithDisplayId:(id)displayId pluginHoldToken:(id)token reason:(unsigned char)reason manager:(id)manager;
 - (void)dealloc;
-- (id)description;
 @end
 

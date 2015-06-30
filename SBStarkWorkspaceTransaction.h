@@ -15,19 +15,15 @@ __attribute__((visibility("hidden")))
 	SBAlertManager *_starkScreenAlertManager;
 	SBAlertManager *_mainScreenAlertManager;
 }
-@property(readonly, assign, nonatomic) SBAlertManager *mainScreenAlertManager;
-@property(readonly, assign, nonatomic) SBAlertManager *starkScreenAlertManager;
-@property(readonly, assign, nonatomic) SBStarkScreenController *starkScreenController;
-- (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller;
-- (void)_transactionComplete;
-- (void)alertManager:(id)manager didActivateAlert:(id)alert overAlerts:(id)alerts;
-- (void)alertManager:(id)manager didDeactivateAlert:(id)alert top:(BOOL)top;
-- (void)alertManager:(id)manager willActivateAlert:(id)alert overAlerts:(id)alerts;
-- (void)alertManager:(id)manager willDeactivateAlert:(id)alert top:(BOOL)top;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) SBAlertManager *mainScreenAlertManager;
+@property(readonly, retain, nonatomic) SBAlertManager *starkScreenAlertManager;
+@property(readonly, retain, nonatomic) SBStarkScreenController *starkScreenController;
+@property(readonly, assign) Class superclass;
+- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller;
+- (void)_didComplete;
 - (void)dealloc;
-- (BOOL)selfStarkAlertDidActivate:(id)selfStarkAlert overAlerts:(id)alerts;
-- (BOOL)selfStarkAlertDidDeactivate:(id)selfStarkAlert;
-- (BOOL)selfStarkAlertWillActivate:(id)selfStarkAlert overAlerts:(id)alerts;
-- (BOOL)selfStarkAlertWillDeactivate:(id)selfStarkAlert;
 @end
 

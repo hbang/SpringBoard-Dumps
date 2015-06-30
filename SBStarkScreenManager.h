@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBScreenConnectionHandler.h"
 #import "SBStarkScreenControllerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBStarkScreenManagerDelegate;
 
@@ -27,7 +27,11 @@ __attribute__((visibility("hidden")))
 	BOOL _delayUpdatingLockOutMode;
 	id<SBStarkScreenManagerDelegate> _delegate;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBStarkScreenManagerDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
 - (void)_clearEarlyConnectState;

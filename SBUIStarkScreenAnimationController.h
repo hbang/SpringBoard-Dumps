@@ -12,12 +12,13 @@ __attribute__((visibility("hidden")))
 @interface SBUIStarkScreenAnimationController : SBUIAnimationController {
 	SBStarkScreenController *_starkScreenController;
 }
-@property(readonly, assign, nonatomic) SBStarkScreenController *starkScreenController;
+@property(readonly, retain, nonatomic) SBStarkScreenController *starkScreenController;
 - (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app starkScreenController:(id)controller;
+- (id)__newWaitForAppActivationTransaction;
 - (void)__startAnimation;
+- (BOOL)__wantsInitialProgressStateChange;
 - (void)_cleanupAnimation;
 - (id)_getTransitionWindow;
-- (BOOL)_wantsInitialProgressStateChange;
 - (void)dealloc;
 @end
 

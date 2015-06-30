@@ -5,15 +5,19 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBControlCenterSectionViewController.h"
 #import "MPUSystemMediaControlsDelegate.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBCCMediaControlsSectionController : SBControlCenterSectionViewController <MPUSystemMediaControlsDelegate> {
 	MPUSystemMediaControlsViewController *_systemMediaViewController;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (CGSize)contentSizeForOrientation:(int)orientation;
 - (void)dealloc;

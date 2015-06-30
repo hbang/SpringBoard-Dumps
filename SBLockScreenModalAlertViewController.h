@@ -10,22 +10,26 @@
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenModalAlertViewController : XXUnknownSuperclass {
-	SBLockScreenModalAlertView *_modalAlertView;
 	NSMutableArray *_pendingAlertItems;
 	NSMutableArray *_pendingSuperModalAlertItems;
+	NSMutableArray *_presentedAlertItems;
 	SBAlertItem *_currentAlertItem;
+	SBUIBiometricEventMonitor *_bioEventMonitor;
 }
 @property(readonly, assign, nonatomic) SBAlertItem *currentAlertItem;
+@property(readonly, assign, nonatomic) NSArray *presentedAlertItems;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
+- (void)_addPresentedAlertItem:(id)item;
 - (void)_pendAlertItem:(id)item;
-- (BOOL)activateAlertItem:(id)item pended:(BOOL)pended;
+- (void)_pendOrDeactivateAlertItem:(id)item animated:(BOOL)animated;
+- (void)_removePresentedAlertItem:(id)item;
+- (BOOL)activateAlertItem:(id)item pended:(BOOL)pended animated:(BOOL)animated;
 - (id)allPendingAlertItems;
-- (void)deactivateAlertItem:(id)item;
+- (void)deactivateAlertItem:(id)item animated:(BOOL)animated;
 - (void)dealloc;
 - (id)dequeueAllPendingAlertItems;
 - (id)dequeueAllPendingSuperModalAlertItems;
 - (BOOL)hasSuperModalAlertItems;
-- (void)loadView;
 - (void)pendOrDeactivateCurrentAlertItem;
 @end
 

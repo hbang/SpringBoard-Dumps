@@ -5,7 +5,6 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBStatusBarStateProvider.h"
 
 

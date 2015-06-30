@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)loadView;
 - (void)setContentAlpha:(float)alpha withDateVisible:(BOOL)dateVisible;
+- (void)setCustomSubtitleText:(id)text withColor:(id)color;
 - (void)setView:(id)view;
 - (void)willMoveToParentViewController:(id)parentViewController;
 @end

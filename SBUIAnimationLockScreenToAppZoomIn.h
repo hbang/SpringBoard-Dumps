@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationLockScreenToAppZoomIn : SBUIMainScreenAnimationController {
 	SBAlert *_fromAlert;
-	SBWindow *_transitionWindow;
 	UIView *_viewToAnimate;
 	UIView *_contextHostView;
 	UIView *_fakeStatusBarViewContainer;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 }
 - (id)initWithActivatingApp:(id)activatingApp fromAlert:(id)alert;
 - (id)_animationProgressDependency;
-- (BOOL)_animationShouldStart;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_doAnimation;
@@ -42,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldDismissBanner;
 - (void)_showFakeStatusBarIfNecessary;
 - (void)_startAnimation;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
 - (void)dealloc;
 - (BOOL)isReasonableMomentToInterrupt;
 @end

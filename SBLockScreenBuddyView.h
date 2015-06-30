@@ -13,8 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface SBLockScreenBuddyView : SBLockOverlayView {
 	UILabel *_titleLabel;
-	UIView *_logoImageContainer;
-	UIImageView *_logoImageView;
+	SBUIAppleLogoView *_logoView;
 	BOOL _usesWhiteLogo;
 	int _viewState;
 	SBLockOverlayStylePropertiesFactory *_underlayPropertiesFactory;

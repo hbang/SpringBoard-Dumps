@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "_UIScreenEdgePanRecognizerDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBPanGestureRecognizer.h"
+#import "_UIScreenEdgePanRecognizerDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -24,12 +24,16 @@ __attribute__((visibility("hidden")))
 	_UIScreenEdgePanRecognizer *m_recognizer;
 }
 @property(assign, nonatomic) float allowableDistanceFromEdgeCenter;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(assign, nonatomic) float edgeCenter;
 @property(assign, nonatomic) float edgeMargin;
 @property(assign, nonatomic) float falseEdge;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) BOOL requiresSecondTouchInRange;
 @property(retain, nonatomic) _UIScreenEdgePanRecognizerSettings *settings;
 @property(assign, nonatomic) BOOL shouldUseUIKitHeuristics;
+@property(readonly, assign) Class superclass;
 + (void)reloadDefaults;
 - (id)initForOffscreenEdge:(unsigned)offscreenEdge;
 - (BOOL)_firstTouchInRange:(const XXStruct_pqIg_A *)range;

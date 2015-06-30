@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (id)initFromApp:(id)app toApp:(id)app2 starkScreenController:(id)controller;
 - (double)_animationDelay;
 - (id)_animationProgressDependency;
-- (BOOL)_animationShouldStart;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_cleanupHosting;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_maybeReportAnimationFinished;
 - (void)_prepareAnimation;
 - (void)_startAnimation;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
 - (void)dealloc;
 - (void)noteDependencyDidInvalidate;
 @end

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconModelStore.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,11 @@ __attribute__((visibility("hidden")))
 	NSDictionary *_desiredState;
 }
 @property(retain, nonatomic) NSDictionary *currentState;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSDictionary *desiredState;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithCurrentState:(id)currentState desiredState:(id)state;
 - (void)dealloc;
 - (BOOL)deleteCurrentIconState:(id *)state;

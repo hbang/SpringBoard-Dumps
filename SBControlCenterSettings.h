@@ -11,7 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface SBControlCenterSettings : XXUnknownSuperclass {
 	BOOL _highlightUsesPlusL;
+	BOOL _forceVibrantControls;
 	BOOL _useNewBounce;
+	SBControlCenterSettingsSectionSettings *_settingsSectionSettings;
+	SBControlCenterShortcutSectionSettings *_shortcutSectionSettings;
 	float _controlAlpha;
 	float _controlAlpha1x;
 	float _minControlAlpha;
@@ -47,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property(assign) float controlAlpha1x;
 @property(assign) float disabledAlpha;
 @property(assign) float disabledAlpha1x;
+@property(assign) BOOL forceVibrantControls;
 @property(assign) float glowAlpha;
 @property(assign) float highlightAlpha;
 @property(retain) UIColor *highlightColor;
@@ -56,6 +60,8 @@ __attribute__((visibility("hidden")))
 @property(assign) float minControlAlpha;
 @property(assign) float minVelocity;
 @property(assign) float oldBounceFriction;
+@property(retain) SBControlCenterSettingsSectionSettings *settingsSectionSettings;
+@property(retain) SBControlCenterShortcutSectionSettings *shortcutSectionSettings;
 @property(assign) BOOL useNewBounce;
 + (id)settingsControllerModule;
 - (float)resolvedControlAlpha;

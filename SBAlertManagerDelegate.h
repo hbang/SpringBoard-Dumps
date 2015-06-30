@@ -5,12 +5,16 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "NSObject.h"
 
 
 @protocol SBAlertManagerDelegate <NSObject>
 @optional
-- (id)alertManager:(id)manager newAlertWindowForLockAlerts:(BOOL)lockAlerts;
+- (id)alertManager:(id)manager newAlertWindowForScene:(id)scene;
 - (BOOL)alertManager:(id)manager shouldDeactivateDismissedAlert:(id)alert;
+@required
+- (CGRect)sceneFrameForAlerts:(id)alerts;
+- (float)sceneLevelForAlerts;
 @end
 

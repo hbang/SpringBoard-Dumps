@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
 	BOOL _fromPhoneAppToFaceTimeAppDuringCall;
 }
 - (id)_animationProgressDependency;
-- (BOOL)_animationShouldStart;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_cleanupPhonesContextHostView;
 - (void)_prepareAnimation;
 - (BOOL)_shouldZoomUsingSuperImplementation;
 - (void)_startAnimation;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
 - (void)animateZoomWithCompletion:(id)completion;
 - (id)appStatusBarTransitionInfoWithStartEffectivelyHidden:(BOOL)startEffectivelyHidden endStyleRequest:(id)request endOrientation:(int)orientation;
 - (void)dealloc;

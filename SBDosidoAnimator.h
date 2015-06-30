@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)_doReducedMotionDosido:(id)dosido completion:(id)completion;
 - (void)_rotateViewIfNecessary:(id)necessary inverted:(BOOL)inverted;
 - (id)_transformedContentView;
-- (void)animateFromView:(id)view toView:(id)view2 withSpacingBetween:(float)spacingBetween outAnimationSettings:(id *)settings completion:(id)completion;
+- (void)animateFromView:(id)view toView:(id)view2 withSpacingBetween:(float)spacingBetween outAnimationFactory:(id *)factory completion:(id)completion;
 - (void)dealloc;
 @end
 

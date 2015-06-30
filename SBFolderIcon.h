@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import "SBFolderObserver.h"
 #import "SBIconObserver.h"
 #import "SBIconIndexNodeObserver.h"
 #import "SBIcon.h"
-#import "SBFolderObserver.h"
 
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,10 @@ __attribute__((visibility("hidden")))
 	int _progressState;
 	float _progressPercent;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (Class)_iconGridImageClass;
 + (unsigned)_maxIconsInGridImage;
 - (id)initWithFolder:(id)folder;
@@ -33,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (id)containedNodeIdentifiers;
 - (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
-- (id)description;
 - (id)displayName;
 - (id)folder;
 - (void)folder:(id)folder didAddList:(id)list;

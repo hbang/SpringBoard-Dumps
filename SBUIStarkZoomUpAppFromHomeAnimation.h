@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconAnimatorDelegate.h"
 #import "SBUIStarkScreenAnimationController.h"
+#import "SBIconAnimatorDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
 	BOOL _animationFinished;
 	BOOL _fromAssistant;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithActivatingApp:(id)activatingApp alertImpersonator:(id)impersonator starkScreenController:(id)controller;
 - (void)_animateZoomWithCompletion:(id)completion;
 - (double)_animationDelay;
-- (double)_animationDuration;
 - (id)_animationProgressDependency;
-- (BOOL)_animationShouldStart;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_cleanupHosting;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_prepareZoom;
 - (void)_startAnimation;
 - (id)_viewToAnimate;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
 - (void)dealloc;
 - (void)iconAnimatorWasInvalidated:(id)invalidated;
 @end

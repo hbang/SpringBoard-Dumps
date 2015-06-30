@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import "SBInteractionPassThroughView.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconImageCrossfadeView : SBInteractionPassThroughView {
+@interface SBIconImageCrossfadeView : XXUnknownSuperclass {
 	_SBAnimatableCorneredView *_containerView;
 	SBIconImageView *_imageView;
 	UIView *_crossfadeView;

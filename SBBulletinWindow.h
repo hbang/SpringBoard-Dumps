@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface SBBulletinWindow : SBWindow {
 }
++ (BOOL)_isSecure;
 - (BOOL)_canBecomeKeyWindow;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
 @end

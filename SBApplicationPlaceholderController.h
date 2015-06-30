@@ -5,23 +5,27 @@
  * Source: (null)
  */
 
-#import "SBLSApplicationPlaceholderLifecycleObserver.h"
 #import "SBIconObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBApplicationPlaceholderLifecycleObserver.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBApplicationPlaceholderController : XXUnknownSuperclass <SBIconObserver, SBLSApplicationPlaceholderLifecycleObserver> {
+@interface SBApplicationPlaceholderController : XXUnknownSuperclass <SBIconObserver, SBApplicationPlaceholderLifecycleObserver> {
 	SBApplicationController *_appController;
-	SBLSApplicationWorkspaceObserver *_lsWorkspaceObserver;
+	SBApplicationLibraryObserver *_lsWorkspaceObserver;
 	NSMutableDictionary *_placeholdersByBundleID;
 	NSMutableSet *_pendingAdded;
 	NSMutableSet *_pendingInstalled;
 	NSMutableSet *_pendingCancelled;
-	NSMutableSet *_removingProxies;
+	NSMutableSet *_removingPlaceholderProxies;
 	BOOL _hasDownloadedFromStore;
 	BOOL _usingNetwork;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
 - (void)_addPlaceholders:(id)placeholders;
@@ -32,12 +36,10 @@ __attribute__((visibility("hidden")))
 - (void)_processPendingProxies;
 - (void)_removeDownloadingIcons:(id)icons saveState:(BOOL)state;
 - (void)_removePlaceholders:(id)placeholders forInstall:(BOOL)install;
-- (void)_swapDownloadingIcon:(id)icon forApplicationIcon:(id)applicationIcon proxy:(id)proxy;
+- (void)_swapDownloadingIcon:(id)icon forApplicationIcon:(id)applicationIcon placeholderProxy:(id)proxy;
 - (void)applicationPlaceholdersAdded:(id)added;
 - (void)applicationPlaceholdersCancelled:(id)cancelled;
-- (void)applicationPlaceholdersIconUpdated:(id)updated;
 - (void)applicationPlaceholdersInstalled:(id)installed;
-- (void)applicationPlaceholdersModified:(id)modified;
 - (void)applicationPlaceholdersNetworkUsageChanged:(BOOL)changed;
 - (void)dealloc;
 - (BOOL)hasDownloadedStoreApplication;

@@ -28,9 +28,13 @@ __attribute__((visibility("hidden")))
 	SBIconIndexMutableList *_lists;
 }
 @property(assign, nonatomic, getter=isCancelable) BOOL cancelable;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(copy, nonatomic) NSString *displayName;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) SBFolderIcon *icon;
 @property(assign, nonatomic) BOOL isOpen;
+@property(readonly, assign) Class superclass;
 + (BOOL)isNewsstandFolderClass;
 + (BOOL)isRootFolderClass;
 - (id)init;

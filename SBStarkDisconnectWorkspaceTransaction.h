@@ -11,6 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkDisconnectWorkspaceTransaction : SBStarkWorkspaceTransaction {
 }
-- (void)_commit;
+- (void)_begin;
 @end
 

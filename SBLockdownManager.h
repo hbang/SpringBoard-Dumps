@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldShowTelephonyAlerts;
 - (BOOL)brickedDevice;
 - (void)dealloc;
+- (id)developerBuildExpirationDate;
 - (BOOL)isDeveloperDevice;
 - (int)lockdownState;
 @end

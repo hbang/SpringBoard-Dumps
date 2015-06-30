@@ -17,9 +17,12 @@ __attribute__((visibility("hidden")))
 	NSString *_lastNotificationReceivedBundleIdentifier;
 	NSMutableDictionary *_appImportanceTracker;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
-- (id)_allPushRegisteredThirdPartyBundleIDs;
 - (id)_allTopicsForApplication:(id)application;
 - (void)_appDebugStateDidChange:(id)_appDebugState;
 - (void)_appImportanceDecreased:(id)decreased;
@@ -27,31 +30,22 @@ __attribute__((visibility("hidden")))
 - (void)_appStateDidChange:(id)_appState;
 - (id)_cloudDatabaseTopicsForApplication:(id)application;
 - (void)_moveTopicsForApp:(id)app fromList:(unsigned)list toList:(unsigned)list3;
-- (id)allAppEnabledTypeValues;
-- (id)allSettingsEnabledTypeValues;
-- (unsigned)appEnabledTypesForBundleIdentifier:(id)bundleIdentifier;
+- (id)allBackgroundAppRefreshCapableBundleIdentifiers;
+- (id)allBackgroundAppRefreshEnabledBundleIdentifiers;
 - (void)calculateTopics;
-- (void)clearMessageUserInfoForToken:(int)token forBundleIdentifier:(id)bundleIdentifier;
 - (void)connection:(id)connection didReceiveIncomingMessage:(id)message;
 - (void)connection:(id)connection didReceivePublicToken:(id)token;
 - (void)connection:(id)connection didReceiveToken:(id)token forTopic:(id)topic identifier:(id)identifier;
 - (void)dealloc;
-- (unsigned)getEffectiveEnabledTypesForApplication:(id)application;
-- (id)getMessageUserInfoForBundleIdentifier:(id)bundleIdentifier;
-- (id)getMessageUserInfoForToken:(int)token forBundleIdentifier:(id)bundleIdentifier;
-- (BOOL)hasRegisteredBundleIdentifiers;
-- (BOOL)isSystemwideEnabled;
+- (BOOL)isAppPushEnabled:(id)enabled;
+- (BOOL)isPushAllowedForBundleIdentifier:(id)bundleIdentifier;
 - (id)lastNotificationReceivedBundleIdentifier;
-- (void)notePermissionAlertAcceptedTypes:(unsigned)types forBundleIdentifier:(id)bundleIdentifier;
-- (void)postSettingsChangedNotificationForBundleIdentifier:(id)bundleIdentifier;
-- (void)registerApplication:(id)application forEnvironment:(id)environment withTypes:(unsigned)types;
+- (unsigned)legacyRegisteredTypesForApp:(id)app;
+- (void)registerApplication:(id)application forEnvironment:(id)environment appWantsPush:(BOOL)push;
+- (void)requestTokenForClient:(id)client;
 - (void)run;
+- (void)setBackgroundAppRefreshAllowed:(BOOL)allowed forBundleIdentifier:(id)bundleIdentifier;
 - (void)setBackgroundDeliveryDisabled:(BOOL)disabled forBundleIdentifier:(id)bundleIdentifier;
-- (void)setMessageUserInfo:(id)info forBundleIdentifier:(id)bundleIdentifier;
-- (void)setMessageUserInfo:(id)info forToken:(int)token forBundleIdentifier:(id)bundleIdentifier;
-- (void)setSettingsTypes:(unsigned)types forBundleIdentifier:(id)bundleIdentifier;
-- (void)setSystemwideEnabled:(BOOL)enabled;
-- (unsigned)settingsEnabledTypesForBundleIdentifier:(id)bundleIdentifier;
-- (void)unregisterApplication:(id)application;
+- (void)userNotificationsChangedStateForBundleIdentifier:(id)bundleIdentifier becameEnabled:(BOOL)enabled;
 @end
 

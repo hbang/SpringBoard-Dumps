@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 	SBLockOverlayContext *_to;
 	SBLockScreenViewController *_lockScreenVC;
 }
++ (id)underlayRequesterNameForContext:(id)context;
 - (id)initFromOverlay:(id)overlay toOverlay:(id)overlay2 inside:(id)inside;
 - (void)_hideLockContent;
-- (id)_requestForContext:(id)context;
 - (void)dealloc;
 - (void)performTransitionAnimated:(BOOL)animated completion:(id)completion;
 @end

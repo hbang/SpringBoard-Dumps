@@ -10,18 +10,22 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUISwitcherDismissAnimationController : SBUIMainScreenAnimationController {
-	SBAppSliderController *_sliderController;
+	SBAppSwitcherController *_switcherController;
 	UIView *_appContextHostView;
+	FBWindowContextHostManager *_contextHostManager;
 	SBAppSwitcherPageView *_animatingPageView;
+	SBDisplayLayout *_activatingDisplayLayout;
 	BOOL _finishedSwitcherAnimation;
 	BOOL _finishedCrossfadingToHostView;
 }
+- (id)initWithActivatingApp:(id)activatingApp activatingDisplayLayout:(id)layout deactivatingApp:(id)app;
 - (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
 - (id)_animationProgressDependency;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_crossfadeApp;
 - (void)_evaluateDependenciesForCrossfadeStart;
+- (BOOL)_isActivatingFromContinuityApp;
 - (void)_noteCrossfadeDidFinish;
 - (void)_noteSwitcherAnimationFinished;
 - (void)_prepareAnimation;

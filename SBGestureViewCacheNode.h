@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
 	NSString *m_contextHostViewRequester;
 	int m_orientation;
 	NSString *m_bundleIdentifier;
+	BOOL m_includesStatusBar;
 }
 @property(copy, nonatomic) NSString *bundleIdentifier;
 @property(copy, nonatomic) NSString *contextHostViewRequester;
+@property(assign, nonatomic) BOOL includesStatusBar;
 @property(assign, nonatomic) int orientation;
 @property(retain, nonatomic) UIView *view;
 @property(assign, nonatomic) int viewType;

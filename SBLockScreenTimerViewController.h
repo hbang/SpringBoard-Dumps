@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
+#import "SpringBoard-Structs.h"
 
 @protocol SBLockScreenTimerViewControllerDelegate;
 
@@ -20,7 +20,11 @@ __attribute__((visibility("hidden")))
 	id<SBLockScreenTimerViewControllerDelegate> _delegate;
 	BBBulletin *_timerBulletin;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign) id<SBLockScreenTimerViewControllerDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 @property(retain) BBBulletin *timerBulletin;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (BOOL)_isEndDateValid;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (id)initWithScreen:(id)screen;
 - (void)addAlertController:(id)controller;
+- (void)addView:(id)view toBeObscuredByAlert:(id)beObscuredByAlert;
 - (BOOL)alertWindow:(id)window canAnimateInAlert:(id)alert;
 - (void)dealloc;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;

@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "_UISettingsKeyObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -29,12 +29,16 @@ __attribute__((visibility("hidden")))
 	SBSlideToUnlockTriangleView *_debugInclineDownView;
 }
 @property(assign, nonatomic) BOOL allowMultiTouch;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) unsigned maxAllowableVerticalOffset;
 @property(assign, nonatomic) float maxAllowedBottomAngle;
 @property(assign, nonatomic) float maxAllowedTopAngle;
 @property(assign, nonatomic) float minAllowedBottomAngle;
 @property(assign, nonatomic) float minAllowedTopAngle;
 @property(retain, nonatomic) UIView *relativeView;
+@property(readonly, assign) Class superclass;
 @property(assign, nonatomic) BOOL viewDebugArea;
 - (id)initWithTarget:(id)target action:(SEL)action;
 - (int)_activeTouchCountForEvent:(id)event;

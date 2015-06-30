@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)bodyText;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
+- (id)dismissButtonText;
 - (void)performUnlockAction;
 - (void)setAutoDismissInterval:(double)interval;
 - (void)setBodyText:(id)text;

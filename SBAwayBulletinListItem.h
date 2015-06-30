@@ -19,13 +19,14 @@ __attribute__((visibility("hidden")))
 	NSString *_message;
 	UIImage *_listItemImage;
 	BBBulletin *_activeBulletin;
+	UIViewController *_secondaryContentViewController;
 }
 @property(retain) BBBulletin *activeBulletin;
+@property(retain) UIViewController *secondaryContentViewController;
 - (id)initWithBulletin:(id)bulletin andObserver:(id)observer;
 - (BOOL)_suppressesMessageForPrivacy;
 - (void)_update;
 - (void)_updateActiveBulletin;
-- (void)_updateButtonLabels;
 - (void)_updateDisplayDate;
 - (void)_updateImage;
 - (void)_updateMessage;
@@ -48,12 +49,12 @@ __attribute__((visibility("hidden")))
 - (id)iconImage;
 - (BOOL)inertWhenLocked;
 - (BOOL)isCritical;
-- (BOOL)isVIP;
 - (unsigned)maxMessageLines;
 - (id)message;
 - (void)modifyBulletin:(id)bulletin;
 - (id)observer;
 - (BOOL)overridesQuietMode;
+- (void)prepareWithCompletion:(id)completion;
 - (id)publishDate;
 - (void)removeAllBulletins;
 - (void)removeBulletin:(id)bulletin;

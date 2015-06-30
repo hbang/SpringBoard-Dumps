@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAlertWindow.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBStarkAlertWindow : SBAlertWindow {
 }
-+ (int)jailBehavior;
++ (float)windowLevel;
 @end
 

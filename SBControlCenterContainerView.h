@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBControlCenterObserver.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -15,14 +15,21 @@ __attribute__((visibility("hidden")))
 	UIView *_darkeningView;
 	float _revealPercentage;
 	SBChevronView *_chevronToTrack;
+	BOOL _useMaxDarkness;
 	BOOL _animatingDynamically;
+	BOOL _adjustingBrightness;
 	UIView *_dynamicsContainerView;
 	SBControlCenterContentContainerView *_contentContainerView;
 }
+@property(assign, nonatomic, getter=isAdjustingBrightness) BOOL adjustingBrightness;
 @property(assign, nonatomic) BOOL animatingDynamically;
-@property(readonly, assign, nonatomic) SBControlCenterContentContainerView *contentContainerView;
-@property(readonly, assign, nonatomic) UIView *dynamicsContainerView;
+@property(readonly, retain, nonatomic) SBControlCenterContentContainerView *contentContainerView;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, retain, nonatomic) UIView *dynamicsContainerView;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) float revealPercentage;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (id)_contentChevronView;
 - (id)_currentBGColor;

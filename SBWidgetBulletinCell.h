@@ -5,14 +5,21 @@
  * Source: (null)
  */
 
+#import "SBModalLayoutCaching.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface SBWidgetBulletinCell : XXUnknownSuperclass {
+@interface SBWidgetBulletinCell : XXUnknownSuperclass <SBModalLayoutCaching> {
 	SBBBWidgetBulletinInfo *_representedWidgetBulletinInfo;
+	int _layoutMode;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(assign, nonatomic) int layoutMode;
 @property(retain, nonatomic) SBBBWidgetBulletinInfo *representedWidgetBulletinInfo;
+@property(readonly, assign) Class superclass;
 - (id)initWithStyle:(int)style reuseIdentifier:(id)identifier;
 - (void)dealloc;
 @end

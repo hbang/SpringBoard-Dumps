@@ -5,89 +5,122 @@
  * Source: (null)
  */
 
-#import "BKSWorkspaceDelegate.h"
+#import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "BSTransactionObserver.h"
 #import "SBAlertManagerDelegate.h"
 #import "SBAlertManagerObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBWorkspaceTransactionGroupDelegate.h"
 #import "SBStarkScreenManagerDelegate.h"
 #import "SBStarkScreenControllerObserver.h"
+#import "SBReachabilityObserver.h"
+#import "FBSystemServiceDelegate.h"
+#import "FBProcessManagerObserver.h"
+#import "FBApplicationProcessObserver.h"
+#import "BSWatchdogDelegate.h"
+#import "FBSceneManagerObserver.h"
 
-@protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface SBWorkspace : XXUnknownSuperclass <BKSWorkspaceDelegate, SBAlertManagerDelegate, SBAlertManagerObserver, SBWorkspaceTransactionGroupDelegate, SBStarkScreenManagerDelegate, SBStarkScreenControllerObserver> {
-	BKSWorkspace *_bksWorkspace;
+@interface SBWorkspace : XXUnknownSuperclass <BSTransactionObserver, SBAlertManagerDelegate, SBAlertManagerObserver, SBStarkScreenManagerDelegate, SBStarkScreenControllerObserver, SBReachabilityObserver, FBSystemServiceDelegate, FBProcessManagerObserver, FBApplicationProcessObserver, BSWatchdogDelegate, FBSceneManagerObserver> {
+	FBSceneManager *_sceneManager;
 	SBAlertManager *_alertManager;
 	BOOL _alertManagerIsDeactivatingAlert;
+	BOOL _alertManagerIsActivatingLockAlert;
 	SBScreenTimeTrackingController *_screenTimeTrackingController;
 	SBWorkspaceTransaction *_currentTransaction;
-	SBWorkspaceEventQueueLockAssertion *_eventQueueLock;
-	NSObject<OS_dispatch_source> *_transactionWatchdog;
+	FBWorkspaceEventQueueLock *_eventQueueLock;
 	NSTimer *_relaunchTimer;
 	NSMutableArray *_applicationsToRelaunch;
+	SBWindow *_reachabilityWindow;
+	FBScene *_sceneForReachabilityApp;
+	SBWindow *_reachabilityEffectWindow;
+	BSWatchdog *_transactionWatchdog;
+	NSMutableDictionary *_extensionHandlersByType;
+	NSMutableSet *_foregroundAppPidsWhenDisplaySecureModeWasEnabled;
 }
 @property(readonly, assign, nonatomic) SBAlertManager *alertManager;
-@property(readonly, assign, nonatomic) BKSWorkspace *bksWorkspace;
+@property(readonly, assign, nonatomic) BOOL alertManagerIsActivatingLockAlert;
 @property(retain, nonatomic) SBWorkspaceTransaction *currentTransaction;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign, nonatomic) NSSet *foregroundAppPidsWhenDisplaySecureModeWasEnabled;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign, nonatomic) FBSceneManager *sceneManager;
+@property(readonly, assign) Class superclass;
++ (id)debugDescription;
 - (id)init;
-- (BOOL)_applicationExited:(id)exited withInfo:(id)info;
-- (id)_applicationForBundleIdentifier:(id)bundleIdentifier frontmost:(BOOL)frontmost;
+- (id)_applicationForBundleIdentifier:(id)bundleIdentifier;
+- (BOOL)_applicationProcessExited:(id)exited withContext:(id)context;
+- (void)_deviceWillDisableDisplaySecureMode:(id)_device;
+- (void)_deviceWillEnableDisplaySecureMode:(id)_device;
+- (void)_disableReachabilityImmediately:(BOOL)immediately;
+- (void)_exitReachabilityModeWithCompletion:(id)completion;
 - (void)_handleBuddyLaunchFinished;
+- (void)_handleOpenApplicationRequest:(id)request options:(id)options origin:(id)origin withResult:(id)result;
+- (void)_handleOpenURLRequest:(id)request application:(id)application options:(id)options activationSettings:(id)settings origin:(id)origin withResult:(id)result;
 - (BOOL)_handleSetupExited:(id)exited;
+- (id)_handlerForExtensionPoint:(id)extensionPoint;
 - (void)_invalidateRelaunchTimer;
 - (void)_launchNextPendedAutoLaunchApp;
 - (void)_memoryPressureRelieved:(id)relieved;
 - (void)_memoryPressureWarn:(id)warn;
 - (void)_noteCurrentTransactionFailed:(const char *)failed;
+- (void)_promptUnlockWithHandler:(id)handler;
+- (void)_registerHandler:(id)handler forExtensionPoint:(id)extensionPoint;
 - (void)_scheduleRelaunchTimerIfNecessary;
-- (id)_selectTransactionForAppActivationToApp:(id)app activationHandler:(id)handler;
-- (id)_selectTransactionForAppActivationToApp:(id)app activationHandler:(id)handler canDeactivateAlerts:(BOOL)alerts;
-- (id)_selectTransactionForAppActivationUnderMainScreenLock:(id)appActivationUnderMainScreenLock;
+- (id)_selectTransactionForAppActivationToApp:(id)app canDeactivateAlerts:(BOOL)alerts withResult:(id)result;
+- (id)_selectTransactionForAppActivationToApp:(id)app withResult:(id)result;
+- (id)_selectTransactionForAppActivationUnderMainScreenLock:(id)appActivationUnderMainScreenLock forRelaunch:(BOOL)relaunch withResult:(id)result;
 - (id)_selectTransactionForAppExited:(id)appExited;
 - (id)_selectTransactionForAppRelaunch:(id)appRelaunch;
-- (id)_selectTransactionForReturningToTheLockScreenFromApp:(id)app forceToBuddy:(BOOL)buddy withActivationHandler:(id)activationHandler;
-- (id)_selectTransactionForReturningToTheLockScreenWithActivationHandler:(id)activationHandler;
+- (id)_selectTransactionForReturningToTheLockScreenFromApp:(id)app forceToBuddy:(BOOL)buddy withResult:(id)result;
+- (id)_selectTransactionForReturningToTheLockScreenWithResult:(id)result;
+- (void)_unregisterHandler:(id)handler forExtensionPoint:(id)extensionPoint;
 - (void)_updateStatusBarTimeItemEnabled;
-- (void)_workspace:(id)workspace handleOpenApplicationRequest:(id)request withOptions:(id)options origin:(id)origin withResult:(id)result;
-- (void)_workspace:(id)workspace handleOpenURLRequest:(id)request application:(id)application withOptions:(id)options origin:(id)origin withResult:(id)result;
 - (void)alertManager:(id)manager didActivateAlert:(id)alert overAlerts:(id)alerts;
+- (void)alertManager:(id)manager didChangeTopAlertFrom:(id)from toAlert:(id)alert;
 - (void)alertManager:(id)manager didDeactivateAlert:(id)alert top:(BOOL)top;
 - (void)alertManager:(id)manager didRemoveAlert:(id)alert fromWindow:(id)window;
 - (void)alertManager:(id)manager didTearDownAlertWindow:(id)window;
-- (id)alertManager:(id)manager newAlertWindowForLockAlerts:(BOOL)lockAlerts;
+- (id)alertManager:(id)manager newAlertWindowForScene:(id)scene;
 - (BOOL)alertManager:(id)manager shouldDeactivateDismissedAlert:(id)alert;
 - (void)alertManager:(id)manager topAlert:(id)alert requestsWallpaperStyleChangeWithAnimationFactory:(id)animationFactory;
 - (void)alertManager:(id)manager willActivateAlert:(id)alert overAlerts:(id)alerts;
 - (void)alertManager:(id)manager willDeactivateAlert:(id)alert top:(BOOL)top;
 - (void)alertManager:(id)manager willTearDownAlertWindow:(id)window;
-- (void)alertManagerDidChangeTopAlert:(id)alertManager;
+- (void)applicationProcessDebuggingStateDidChange:(id)applicationProcessDebuggingState;
+- (void)applicationProcessDidExit:(id)applicationProcess withContext:(id)context;
+- (void)applicationProcessDidLaunch:(id)applicationProcess;
+- (void)applicationProcessWillLaunch:(id)applicationProcess;
 - (void)dealloc;
-- (id)debugDescription;
+- (void)handleCancelReachabilityRecognizer:(id)recognizer;
+- (void)handleReachabilityModeActivated;
+- (void)handleReachabilityModeDeactivated;
+- (void)handleRevealNotificationCenterGesture:(id)gesture;
+- (void)process:(id)process stateDidChangeFromState:(id)state toState:(id)state3;
+- (void)processDidExit:(id)process;
+- (void)processManager:(id)manager didAddProcess:(id)process;
+- (void)processManager:(id)manager didRemoveProcess:(id)process;
+- (CGRect)sceneFrameForAlerts:(id)alerts;
+- (float)sceneLevelForAlerts;
+- (void)sceneManager:(id)manager didCommitUpdateForScene:(id)scene transactionID:(unsigned)anId;
+- (void)sceneManager:(id)manager didCreateScene:(id)scene withClient:(id)client;
+- (void)sceneManager:(id)manager didDestroyScene:(id)scene;
+- (void)sceneManager:(id)manager willCommitUpdateForScene:(id)scene transactionID:(unsigned)anId;
+- (void)sceneManager:(id)manager willDestroyScene:(id)scene;
+- (void)sceneManager:(id)manager willUpdateScene:(id)scene withSettings:(id)settings transitionContext:(id)context;
 - (void)starkScreenController:(id)controller didChangeStateFromState:(int)state;
 - (void)starkScreenManagerDidChangeActiveController:(id)starkScreenManager;
 - (void)starkScreenManagerWillChangeActiveController:(id)starkScreenManager;
-- (void)transactionDidFinish:(id)transaction success:(BOOL)success;
-- (void)transactionGroup:(id)group childTransactionDidFinish:(id)childTransaction success:(BOOL)success;
+- (void)systemService:(id)service canActivateApplication:(id)application withResult:(id)result;
+- (void)systemService:(id)service handleActions:(id)actions origin:(id)origin withResult:(id)result;
+- (void)systemService:(id)service handleOpenApplicationRequest:(id)request options:(id)options origin:(id)origin withResult:(id)result;
+- (void)systemService:(id)service handleOpenURLRequest:(id)request application:(id)application options:(id)options origin:(id)origin withResult:(id)result;
+- (void)systemServicePrepareForExit:(id)exit andRelaunch:(BOOL)relaunch;
+- (void)systemServicePrepareForShutdown:(id)shutdown andReboot:(BOOL)reboot;
+- (void)transactionDidComplete:(id)transaction;
 - (void)updateInterruptedByCallSettingsFrom:(id)from to:(id)to;
-- (void)workspace:(id)workspace applicationActivated:(id)activated;
-- (void)workspace:(id)workspace applicationDebugStateChanged:(id)changed newState:(BOOL)state;
-- (void)workspace:(id)workspace applicationDidBecomeReceiver:(id)application fromApplication:(id)application3;
-- (void)workspace:(id)workspace applicationDidFailToLaunch:(id)application;
-- (void)workspace:(id)workspace applicationDidFinishLaunching:(id)application withInfo:(id)info;
-- (void)workspace:(id)workspace applicationDidStartLaunching:(id)application;
-- (void)workspace:(id)workspace applicationExited:(id)exited withInfo:(id)info;
-- (void)workspace:(id)workspace applicationFinishedBackgroundContentFetching:(id)fetching withInfo:(id)info;
-- (void)workspace:(id)workspace applicationSuspended:(id)suspended withSettings:(id)settings;
-- (void)workspace:(id)workspace applicationSuspensionSettingsUpdated:(id)updated withSettings:(id)settings;
-- (id)workspace:(id)workspace applicationWillBecomeReceiver:(id)application fromApplication:(id)application3;
-- (int)workspace:(id)workspace canOpenApplication:(id)application;
-- (void)workspace:(id)workspace handleOpenApplicationRequest:(id)request withOptions:(id)options origin:(id)origin withResult:(id)result;
-- (void)workspace:(id)workspace handleOpenURLRequest:(id)request application:(id)application withOptions:(id)options origin:(id)origin withResult:(id)result;
-- (void)workspace:(id)workspace handleStatusBarReturnActionFromApplication:(id)application statusBarStyle:(id)style;
-- (void)workspaceDidResume:(id)workspace;
-- (void)workspaceDidSuspend:(id)workspace;
-- (void)workspaceWillResume:(id)workspace;
-- (void)workspaceWillSuspend:(id)workspace;
+- (void)watchdogFired:(id)fired;
+- (void)watchdogStarted:(id)started;
 @end
 

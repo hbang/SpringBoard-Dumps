@@ -23,6 +23,7 @@
 - (void)tableView:(id)view didHighlightRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didSelectRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didUnhighlightRowAtIndexPath:(id)indexPath;
+- (id)tableView:(id)view editActionsForRowAtIndexPath:(id)indexPath;
 - (int)tableView:(id)view editingStyleForRowAtIndexPath:(id)indexPath;
 - (float)tableView:(id)view estimatedHeightForFooterInSection:(int)section;
 - (float)tableView:(id)view estimatedHeightForHeaderInSection:(int)section;
