@@ -5,6 +5,8 @@
  * Source: (null)
  */
 
+typedef struct _NSZone NSZone;
+
 typedef struct CGPoint {
 	float x;
 	float y;
@@ -20,8 +22,6 @@ typedef struct CGRect {
 	CGSize size;
 } CGRect;
 
-typedef struct _NSZone NSZone;
-
 typedef struct {
 	BOOL _field1;
 	BOOL _field2;
@@ -32,13 +32,18 @@ typedef struct {
 } XXStruct_3uUjXA;
 
 typedef struct _NSRange {
-	unsigned _field1;
-	unsigned _field2;
+	unsigned location;
+	unsigned length;
 } NSRange;
 
-typedef struct __GSEvent *GSEventRef;
+typedef struct {
+	unsigned long _field1;
+	id *_field2;
+	unsigned long *_field3;
+	unsigned long _field4[5];
+} XXStruct_kFm5bA;
 
-typedef struct __CFDictionary *CFDictionaryRef;
+typedef struct __GSEvent *GSEventRef;
 
 typedef struct __darwin_pthread_handler_rec darwin_pthread_handler_rec;
 
@@ -47,8 +52,6 @@ typedef struct _opaque_pthread_t {
 	darwin_pthread_handler_rec *_field2;
 	BOOL _field3[596];
 } opaque_pthread_t;
-
-typedef struct __IOHIDEvent *IOHIDEventRef;
 
 typedef struct CGAffineTransform {
 	float a;
@@ -64,20 +67,18 @@ typedef struct _opaque_pthread_mutex_t {
 	BOOL __opaque[40];
 } opaque_pthread_mutex_t;
 
-typedef struct _MISProfile *MISProfileRef;
-
 typedef struct {
 	unsigned _field1[8];
 } XXStruct_kUSYWB;
 
-typedef struct dispatch_queue_s dispatch_queue_s;
+typedef struct __CTServerConnection *CTServerConnectionRef;
 
 typedef struct {
 	int _field1;
 	int _field2;
 } XXStruct_K5nmsA;
 
-typedef struct __CTServerConnection *CTServerConnectionRef;
+typedef struct __CFString *CFStringRef;
 
 typedef struct CATransform3D {
 	float _field1;
@@ -100,44 +101,76 @@ typedef struct CATransform3D {
 
 typedef struct __CTCall *CTCallRef;
 
-typedef struct __CFString *CFStringRef;
-
-typedef struct __WiFiManagerClient WiFiManagerClient;
-
-typedef struct __WiFiDeviceClient WiFiDeviceClient;
-
-typedef struct __WiFiNetwork WiFiNetwork;
-
-typedef struct __SCDynamicStore *SCDynamicStoreRef;
-
-typedef struct dispatch_source_s dispatch_source_s;
+typedef struct __CFDictionary *CFDictionaryRef;
 
 typedef struct __CFBoolean *CFBooleanRef;
-
-typedef struct CGImage *CGImageRef;
-
-typedef struct __CFBundle *CFBundleRef;
-
-typedef struct __CFMachPort *CFMachPortRef;
-
-typedef struct CGPath *CGPathRef;
-
-typedef struct __CFCharacterSet *CFCharacterSetRef;
-
-typedef struct dispatch_group_s dispatch_group_s;
-
-typedef struct SBProcessTimes {
-	double execTime;
-	double beginUserCPUElapsedTime;
-	double beginSystemCPUElapsedTime;
-	double beginIdleCPUElapsedTime;
-	double beginApplicationCPUElapsedTime;
-} SBProcessTimes;
 
 typedef struct {
 	int direction;
 	CGRect rect;
 } XXStruct_9ihRqB;
+
+typedef struct {
+	BOOL itemIsEnabled[24];
+	BOOL timeString[64];
+	int gsmSignalStrengthRaw;
+	int gsmSignalStrengthBars;
+	BOOL serviceString[100];
+	BOOL serviceCrossfadeString[100];
+	BOOL serviceImages[2][100];
+	BOOL operatorDirectory[1024];
+	unsigned serviceContentType;
+	int wifiSignalStrengthRaw;
+	int wifiSignalStrengthBars;
+	unsigned dataNetworkType;
+	int batteryCapacity;
+	unsigned batteryState;
+	BOOL batteryDetailString[150];
+	int bluetoothBatteryCapacity;
+	int thermalColor;
+	unsigned thermalSunlightMode : 1;
+	unsigned slowActivity : 1;
+	unsigned syncActivity : 1;
+	BOOL activityDisplayId[256];
+	unsigned bluetoothConnected : 1;
+	unsigned displayRawGSMSignal : 1;
+	unsigned displayRawWifiSignal : 1;
+	unsigned locationIconType : 1;
+} XXStruct_dUflDB;
+
+typedef struct {
+	BOOL _field1[24];
+	unsigned _field2 : 1;
+	unsigned _field3 : 1;
+	unsigned _field4 : 1;
+	unsigned _field5 : 1;
+	unsigned _field6 : 2;
+	unsigned _field7 : 1;
+	unsigned _field8 : 1;
+	unsigned _field9 : 1;
+	unsigned _field10 : 1;
+	unsigned _field11 : 1;
+	unsigned _field12 : 1;
+	unsigned _field13 : 1;
+	unsigned _field14 : 1;
+	unsigned _field15 : 1;
+	unsigned _field16 : 1;
+	unsigned _field17 : 1;
+	unsigned _field18 : 1;
+	unsigned _field19 : 1;
+	unsigned _field20 : 1;
+	unsigned _field21 : 1;
+	unsigned _field22 : 1;
+	XXStruct_dUflDB _field23;
+} XXStruct_5beXPD;
+
+typedef struct CGImage *CGImageRef;
+
+typedef struct CGPath *CGPathRef;
+
+typedef struct __CFMachPort *CFMachPortRef;
+
+typedef struct BKSDisplayBrightnessTransaction *BKSDisplayBrightnessTransactionRef;
 
 typedef struct UIEdgeInsets {
 	float _field1;
@@ -158,6 +191,24 @@ typedef struct {
 
 typedef struct __SBGestureContext *SBGestureContextRef;
 
+typedef struct _CARenderImage *CARenderImageRef;
+
 typedef struct CGContext *CGContextRef;
+
+typedef struct vImage_Buffer {
+	void *_field1;
+	unsigned _field2;
+	unsigned _field3;
+	unsigned _field4;
+} vImage_Buffer;
+
+typedef struct {
+	int startStyle;
+	int startOrientation;
+	int endStyle;
+	int endOrientation;
+	int transitionType;
+	BOOL zoomOther;
+} XXStruct_UhFvxB;
 
 

@@ -6,84 +6,27 @@
  */
 
 
+@protocol OS_dispatch_semaphore;
 
+__attribute__((visibility("hidden")))
 @interface SBSearchModel : XXUnknownSuperclass <SPDaemonQueryDelegate> {
-	NSString *_queryString;
-	NSString *_firstNoResultsQuery;
-	CPSearchMatcher *_queryMatcher;
-	unsigned *_domainOrdering;
-	NSArray *_querySearchDomains;
-	unsigned *_nakedQuerySearchDomains;
-	BOOL _querySearchDomainsIncludesApplications;
-	int *_sectionToGroupMap;
-	BOOL _sectionToGroupMapIsValid;
-	int _resultSectionCount;
-	int _applicationsSectionIndex;
-	SPSearchResultDeserializer **_resultGroups;
-	SPSearchResultDeserializer **_accumulatingResultGroups;
-	BOOL *_resultGroupsIsCurrent;
-	SPDaemonQueryToken *_currentToken;
-	NSArray *_matchingLaunchingIcons;
-	NSMutableArray *_accumulatingLaunchingIcons;
 	NSTimer *_clearSearchTimer;
 	NSDate *_clearSearchDate;
-	BOOL _hasResults;
-	BOOL _queryFinished;
-	BOOL _haveCachedWebSearchFlag;
-	BOOL _isAbleToShowWebSearch;
-	unsigned _domainCount;
-	NSMutableDictionary *_cachedCustomImages;
-	SPSearchResult *_topHitResult;
+	NSMutableDictionary *_cachedImages;
+	NSObject<OS_dispatch_semaphore> *_cacheLock;
 }
-@property(readonly, assign, nonatomic) NSString *firstNoResultsQuery;
-@property(readonly, assign, nonatomic) BOOL hasResults;
-@property(readonly, assign, nonatomic) BOOL queryFinished;
 + (id)sharedInstance;
 - (id)init;
-- (id)_cachedCustomImageForPath:(id)path;
-- (void)_clearCachedWebSearchFlag;
 - (void)_clearSearchTimerFired;
-- (void)_freeArrays;
-- (int)_groupIndexForSection:(int)section;
-- (void)_makeArrays;
-- (void)_promoteAccumulatedApplicationResults;
-- (void)_promoteAccumulatedResults;
-- (void)_pruneTopHitFromAccumulatingResuts;
-- (void)_releaseAccumulatingResultGroups;
-- (void)_releaseResultGroups;
-- (int)_resultSectionCount;
-- (BOOL)_searchResultDeserializer:(id)deserializer isTopHitResult:(id)result;
-- (void)_sendUpdateNotification;
-- (BOOL)_shouldDisplayWebSearchResults;
-- (BOOL)_shouldIgnoreQuery:(id)query;
-- (void)_updateApplicationSearchResults;
+- (id)_customImageForPath:(id)path;
+- (id)_imageForDomain:(unsigned)domain andDisplayID:(id)anId;
 - (void)_updateClearSearchTimerFireDate;
-- (void)_updateSectionToGroupMap;
-- (void)clearSearchResults;
 - (void)dealloc;
-- (id)groupForSection:(int)section;
-- (BOOL)hasQueryString;
-- (BOOL)hasSearchResults;
-- (id)iconForAppIndex:(int)appIndex;
+- (void)handleOptionsForNewSections:(id)newSections;
 - (id)imageForDisplayIdentifier:(id)displayIdentifier spotlightKey:(id)key;
-- (id)imageForDomain:(unsigned)domain andDisplayID:(id)anId;
-- (id)imageForWebSearch;
-- (BOOL)isAbleToShowWebSearchResults;
-- (id)launchingURLForResult:(id)result withDisplayIdentifier:(id)displayIdentifier;
-- (id)launchingURLForWebSearchRow:(int)webSearchRow queryString:(id)string;
-- (int)numberOfSections;
-- (id)queryString;
+- (id)imageViewForDomain:(unsigned)domain andDisplayID:(id)anId;
+- (id)launchingURLForResult:(id)result withDisplayIdentifier:(id)displayIdentifier andSection:(id)section;
 - (void)resetClearSearchTimer;
-- (void)searchDaemonQuery:(id)query addedResults:(id)results;
-- (void)searchDaemonQuery:(id)query encounteredError:(id)error;
-- (void)searchDaemonQueryCompleted:(id)completed;
-- (BOOL)sectionIsApp:(int *)app appOffset:(int *)offset;
-- (BOOL)sectionIsWebSearch:(int)search;
-- (int)sectionItemCount:(int)count;
-- (BOOL)setQueryString:(id)string;
-- (BOOL)shouldDisplayApplicationSearchResults;
 - (void)startClearSearchTimer;
-- (void)updateSearchOrdering;
-- (id)webSearchTitleForRow:(int)row;
 @end
 

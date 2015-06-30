@@ -7,13 +7,17 @@
 
 
 
-@interface SBPowerDownController : SBAlert {
+__attribute__((visibility("hidden")))
+@interface SBPowerDownController : SBAlert <SBPowerDownViewDelegate> {
 	int _count;
 	id _delegate;
 	SBPowerDownView *_powerDownView;
 	BOOL _isFront;
+	id _orderOutCompletion;
 }
+@property(copy, nonatomic) id orderOutCompletion;
 + (id)sharedInstance;
+- (id)init;
 - (void)_restoreIconListIfNecessary;
 - (void)activate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
@@ -23,9 +27,13 @@
 - (void)deactivate;
 - (void)dealloc;
 - (BOOL)isOrderedFront;
+- (void)lockedOnTop;
 - (void)orderFront;
-- (void)orderOut;
+- (void)orderOutWithCompletion:(id)completion;
 - (void)powerDown;
+- (void)powerDownViewAnimateOutCompleted:(id)completed;
+- (void)powerDownViewRequestCancel:(id)cancel;
+- (void)powerDownViewRequestPowerDown:(id)down;
 - (id)powerDownViewWithSize:(CGSize)size;
 - (void)setDelegate:(id)delegate;
 @end

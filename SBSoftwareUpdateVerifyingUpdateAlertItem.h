@@ -7,12 +7,14 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBSoftwareUpdateVerifyingUpdateAlertItem : SBBaseSoftwareUpdateAlertItem {
 	UIActivityIndicatorView *_activityView;
 	UILabel *_label;
 }
 - (id)initWithDescriptor:(id)descriptor;
 - (BOOL)allowMenuButtonDismissal;
+- (BOOL)behavesSuperModally;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (BOOL)dismissOnLock;

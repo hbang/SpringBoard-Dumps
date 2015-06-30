@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBDockIconListModel : SBIconListModel {
 }
 + (Class)viewClass;

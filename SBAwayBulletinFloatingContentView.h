@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwayBulletinFloatingContentView : SBBulletinCellContentViewBase {
 	BOOL _hasButton;
 }
@@ -15,14 +16,13 @@
 + (float)heightForBulletinStyleWithSubtitle:(id)subtitle message:(id)message maxLines:(unsigned)lines contentWidth:(float)width;
 + (float)heightForSystemAlertStyleWithTitle:(id)title maxLines:(unsigned)lines message:(id)message maxLines:(unsigned)lines4 buttonHeight:(float)height contentWidth:(float)width;
 - (id)_attachmentFont;
-- (void)_configureLabel:(id)label withFont:(id)font alignment:(int)alignment;
+- (void)_configureLabel:(id)label withFont:(id)font color:(id)color alignment:(int)alignment;
 - (id)_dateFont;
 - (id)_messageFont;
 - (id)_subtitleFont;
 - (id)_titleFont;
+- (id)_vipAccessoryImage;
 - (void)layoutSubviews;
-- (void)setAttachmentImage:(id)image;
-- (void)setAttachmentImageSize:(CGSize)size;
 - (void)setAttachmentText:(id)text;
 - (void)setMessage:(id)message;
 - (void)setStartDate:(id)date endDate:(id)date2 timeZone:(id)zone allDay:(BOOL)day formatStyle:(int)style;

@@ -7,17 +7,28 @@
 
 
 
-@interface SBBulletinTableView : XXUnknownSuperclass <SBBulletinHeaderViewDelegate> {
+__attribute__((visibility("hidden")))
+@interface SBBulletinTableView : XXUnknownSuperclass <SBBulletinHeaderViewDelegate, SBBulletinFadeOverlayOwner> {
 	NSMutableSet *_visibleSectionHeaders;
-	UIView *_fadeContainer;
-	SBBulletinLinenSegmentView *_fadeSegment;
-	UIImageView *_fadeOverlayMask;
+	SBBulletinLinenFadeView *_fadeContainer;
+	BOOL _suppressUpdates;
+	BOOL _hasReloadedOnce;
+	unsigned _animatingUpdateCount;
 }
+@property(assign, nonatomic) BOOL suppressUpdates;
 - (id)initWithFrame:(CGRect)frame linenView:(id)view;
+- (void)_decrementAnimatingCount;
+- (void)_incrementAnimatingCount;
+- (void)_orderHeierarchyAndAdjustLinenViewBackingAsNecessary;
+- (void)beginUpdates;
 - (void)dealloc;
+- (void)endUpdates;
+- (BOOL)hasReloadedOnce;
 - (void)headerViewWillAppear:(id)headerView;
 - (void)headerViewWillDisappear:(id)headerView;
+- (BOOL)isAnimatingUpdates;
 - (void)layoutSubviews;
+- (void)reloadData;
 - (void)setLinenGradientAlpha:(float)alpha;
 - (void)setRasterizesFadeOverlay:(BOOL)overlay;
 - (id)visibleSectionHeaders;

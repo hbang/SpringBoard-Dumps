@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBOffscreenSwipeGestureRecognizer : SBPanGestureRecognizer {
 	int m_offscreenEdge;
 	float m_edgeMargin;

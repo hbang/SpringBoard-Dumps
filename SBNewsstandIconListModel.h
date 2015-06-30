@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandIconListModel : SBIconListModel {
 }
 + (Class)viewClass;

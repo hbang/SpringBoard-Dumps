@@ -7,10 +7,15 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinLinenBackedCell : XXUnknownSuperclass {
+	UIView *_linenView;
+	BOOL _showsLinen;
 }
+@property(assign, nonatomic) BOOL showsLinen;
 - (id)initWithLinenView:(id)linenView reuseIdentifier:(id)identifier;
 - (void)adjustLinenContents;
+- (void)dealloc;
 - (void)setFrame:(CGRect)frame;
 - (void)setLinenGradientAlpha:(float)alpha;
 @end

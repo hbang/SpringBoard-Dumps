@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBFolderScrollOffset : XXUnknownSuperclass {
 	CGPoint _scrollOffset;
 	unsigned _identifier;

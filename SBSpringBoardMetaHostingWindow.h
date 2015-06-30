@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBSpringBoardMetaHostingWindow : XXUnknownSuperclass {
 }
 - (BOOL)_isWindowServerHostingManaged;

@@ -7,22 +7,24 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandApplication : SBApplication {
 	BOOL _isMagazineApp;
 	BOOL _iconIsBoundOnRight;
+	unsigned _supportsNewsstandContentBackgroundMode : 1;
+	unsigned _allowedContentNotificationsPerDay;
 	unsigned char _newsstandWakes;
 	unsigned _lastPostedState;
 }
 @property(readonly, assign, nonatomic) BOOL iconIsBoundOnRight;
 @property(readonly, assign, nonatomic) BOOL isMagazineApp;
 - (id)initWithBundleIdentifier:(id)bundleIdentifier webClip:(id)clip path:(id)path bundle:(id)bundle infoDictionary:(id)dictionary isSystemApplication:(BOOL)application signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated;
-- (void)_sendApplicationStateChangedNotification:(unsigned)notification;
 - (void)activate;
-- (BOOL)hasReachedWakeQuota;
 - (Class)iconClass;
 - (BOOL)isFakeApp;
 - (BOOL)isNewsstandApplication;
-- (void)process:(id)process didAddAssertion:(id)assertion;
 - (void)resumeForContentAvailable;
+- (void)setApplicationState:(unsigned)state;
+- (BOOL)shouldThrottleContentNotificationOnDate:(id)date withLastCount:(unsigned *)lastCount onDay:(int *)day;
 @end
 

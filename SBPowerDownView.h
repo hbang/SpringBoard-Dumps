@@ -6,14 +6,17 @@
  */
 
 
+@protocol SBPowerDownViewDelegate;
 
-@interface SBPowerDownView : SBAlertDisplay {
+__attribute__((visibility("hidden")))
+@interface SBPowerDownView : SBAlertView {
+	id<SBPowerDownViewDelegate> _delegate;
 	UIView *_dimView;
 	TPTopLockBar *_lockView;
 	TPBottomSingleButtonBar *_cancelView;
-	SBPowerDownController *_powerDownController;
 	NSTimer *_autoDismissTimer;
 }
+@property(assign, nonatomic) id<SBPowerDownViewDelegate> delegate;
 - (id)initWithFrame:(CGRect)frame;
 - (void)animateDark;
 - (void)animateIn;
@@ -31,6 +34,5 @@
 - (void)notifyDelegateOfPowerDown;
 - (void)powerDown:(id)down;
 - (void)resetAutoDismissTimer;
-- (void)setPowerDownController:(id)controller;
 @end
 

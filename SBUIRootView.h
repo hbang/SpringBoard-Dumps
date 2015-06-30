@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBUIRootView : XXUnknownSuperclass {
 	BOOL _animatingAlpha;
 }

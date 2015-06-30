@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBResetProgressView : XXUnknownSuperclass {
 	UIColor *_progressColor;
 	UIBezierPath *_path;

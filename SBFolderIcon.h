@@ -7,46 +7,56 @@
 
 
 
-@interface SBFolderIcon : SBIcon {
+__attribute__((visibility("hidden")))
+@interface SBFolderIcon : SBIcon <SBIconObserver, SBIconIndexNodeObserver> {
 	SBFolder *_folder;
+	NSHashTable *_nodeObservers;
+	NSMutableSet *_finishedDownloadIdentifiers;
 	float _progress;
 }
 @property(readonly, assign) float progress;
++ (Class)_iconGridImageClass;
++ (unsigned)_maxIconsInGridImage;
 - (id)initWithFolder:(id)folder;
-- (unsigned)_firstSkippedIconIndex;
-- (unsigned)_gridColumns;
-- (unsigned)_gridRows;
-- (unsigned)_maxIcons;
-- (float)_miniIconGap;
+- (void)_adjustForIconsAdded:(id)iconsAdded removed:(id)removed;
+- (void)_containedIconImageChanged:(id)changed;
+- (NSRange)_gridImageSkippedIconsRange;
 - (id)_miniIconGridWithSkipping:(BOOL)skipping;
-- (float)_miniIconSize;
-- (unsigned)_numberOfExcessIcons;
-- (CGRect)_rectForMiniIconAtIndex:(unsigned)index;
-- (CGRect)_rectForMiniIconImage:(id)miniIconImage atIndex:(unsigned)index;
-- (CGSize)_sizeOfMiniIconGridWithRows:(unsigned)rows;
-- (unsigned)_skippingIconThreshold;
 - (void)_updateBadgeValue;
 - (void)_updateProgressBar;
-- (id)croppedImageForIcon:(id)icon;
+- (void)addNodeObserver:(id)observer;
+- (id)containedNodeIdentifiers;
+- (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
 - (id)description;
 - (id)displayName;
+- (void)downloadingIconStatusDidChange:(id)downloadingIconStatus;
 - (id)folder;
 - (id)generateIconImage:(int)image;
 - (id)getGenericIconImage:(int)image;
+- (unsigned)gridCellIndexForIconIndex:(unsigned)iconIndex withSkipping:(BOOL)skipping;
+- (BOOL)gridImageShouldSkipIcons;
 - (id)gridImageWithSkipping:(BOOL)skipping;
+- (void)iconAccessoriesDidUpdate:(id)iconAccessories;
+- (void)iconImageDidUpdate:(id)iconImage;
 - (id)iconOverlayImageForLocation:(int)location;
+- (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
+- (BOOL)isFolderIcon;
 - (void)launch;
+- (void)localeChanged;
 - (BOOL)matchesRepresentation:(id)representation;
-- (id)miniImageForIcon:(id)icon;
+- (id)miniGridCellImageForIcon:(id)icon;
+- (void)node:(id)node didAddContainedNodeIdentifiers:(id)identifiers;
+- (void)node:(id)node didRemoveContainedNodeIdentifiers:(id)identifiers;
+- (id)nodeDescriptionWithPrefix:(id)prefix;
+- (id)nodeIdentifier;
+- (id)nodesAlongIndexPath:(id)path consumedIndexes:(unsigned)indexes;
+- (void)noteCompletedDownloadIdentifier:(id)identifier;
 - (void)noteContainedIcon:(id)icon replacedIcon:(id)icon2;
-- (void)noteContainedIconBadgeChanged:(id)changed;
-- (void)noteContainedIconDownloadingStateChanged:(id)changed;
-- (void)noteContainedIconImageChanged:(id)changed;
 - (void)noteContainedIconsAdded:(id)added removed:(id)removed;
+- (void)removeNodeObserver:(id)observer;
 - (id)representation;
-- (BOOL)shouldSkipIcons;
-- (id)updateGridImageIcon:(id)icon inGrid:(id)grid withImage:(id)image skipping:(BOOL)skipping;
 - (void)updateLabel;
+- (void)updateProgress;
 @end
 

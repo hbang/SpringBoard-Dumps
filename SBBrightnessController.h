@@ -7,8 +7,11 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBBrightnessController : XXUnknownSuperclass {
 	BOOL _debounce;
+	BKSDisplayBrightnessTransactionRef _brightnessDownTransaction;
+	BKSDisplayBrightnessTransactionRef _brightnessUpTransaction;
 }
 + (id)sharedBrightnessController;
 - (float)_calcButtonRepeatDelay;

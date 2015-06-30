@@ -7,10 +7,10 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstand : XXUnknownSuperclass {
 }
 + (void)_availableStoreItemKindsDidChange:(id)_availableStoreItemKinds;
-+ (void)_buildCacheDirectory;
 + (void)_checkStoreSupport;
 + (void)_iconVisibilityDidChange:(id)_iconVisibility;
 + (void)_loadDefaults;
@@ -21,7 +21,6 @@
 + (BOOL)addManyIcons;
 + (BOOL)alwaysShowIconLabels;
 + (id)bundleIDToReplicate;
-+ (id)cachePath;
 + (BOOL)debugRotation;
 + (BOOL)disableIconSkew;
 + (void)initialize;
@@ -30,8 +29,5 @@
 + (void)noteCapabilitiesDidChange;
 + (void)openNewsstandAppStore;
 + (void)reloadDefaults;
-+ (void)removeCacheFiles;
-+ (void)removeLocalizedCacheFiles;
-+ (void)setupCache;
 @end
 

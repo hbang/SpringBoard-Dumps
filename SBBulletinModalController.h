@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinModalController : XXUnknownSuperclass <BBObserverDelegate, SBBulletinAlertHandler, SBBulletinBusyClient> {
 	BBObserver *_observer;
 	BOOL _deviceIsLocked;
@@ -19,18 +20,16 @@
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
+- (void)_configureBBObserver;
 - (void)_dequeuePendedEventsIfPossible;
 - (BOOL)_enqueueEventBlock:(id)block;
 - (BOOL)bindBulletin:(id)bulletin forRegistry:(id)registry;
 - (void)bulletinWindowStoppedBeingBusy;
+- (void)destroyingAlert:(id)alert withBulletinID:(id)bulletinID;
 - (void)handleEvent:(int)event withBulletin:(id)bulletin forRegistry:(id)registry;
 - (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
 - (void)observer:(id)observer modifyBulletin:(id)bulletin;
 - (void)observer:(id)observer purgeReferencesToBulletinID:(id)bulletinID;
 - (void)observer:(id)observer removeBulletin:(id)bulletin;
-@end
-
-@interface SBBulletinModalController (SBBulletinModalAlertLifeCycle)
-- (void)destroyingAlert:(id)alert withBulletinID:(id)bulletinID;
 @end
 

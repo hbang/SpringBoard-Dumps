@@ -6,10 +6,12 @@
  */
 
 
+@protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface SBPushStore : XXUnknownSuperclass {
-	dispatch_queue_s *_readQueue;
-	dispatch_queue_s *_writeQueue;
+	NSObject<OS_dispatch_queue> *_notificationsQueue;
+	NSObject<OS_dispatch_queue> *_settingsQueue;
 }
 + (void)initialize;
 + (void)migratePushStore;
@@ -17,6 +19,7 @@
 - (id)init;
 - (id)_allNotificationDataFromPath:(id)path;
 - (id)_allNotificationsFromPath:(id)path;
+- (unsigned)_effectivePushSettingsForBundleID:(id)bundleID;
 - (BOOL)_notificationDataExistsAtPath:(id)path;
 - (id)_notificationStoreFilenameForBundleID:(id)bundleID;
 - (void)_removeNotificationsForBundleID:(id)bundleID andSendNotification:(id)notification;
@@ -31,7 +34,7 @@
 - (id)lastUpdateDateForBundleID:(id)bundleID;
 - (void)makeTestNotificationStores;
 - (void)noteInstalledAppsChanged;
-- (BOOL)prepareToSupportLocalNotificationsTypes:(int)supportLocalNotificationsTypes forBundleID:(id)bundleID;
+- (BOOL)prepareToSupportLocalNotificationsTypes:(unsigned)supportLocalNotificationsTypes forBundleID:(id)bundleID;
 - (void)registerAppForNotificationsWithBundleID:(id)bundleID;
 - (void)removeAllLocalNotificationsForBundleID:(id)bundleID;
 - (void)removeLocalNotification:(id)notification forBundleID:(id)bundleID;

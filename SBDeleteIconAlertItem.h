@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBDeleteIconAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBIcon *_icon;
 	BOOL _checkedDocumentsInCloudState;

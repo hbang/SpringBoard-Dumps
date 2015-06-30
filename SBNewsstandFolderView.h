@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandFolderView : SBFolderView {
 	UIButton *_storeButton;
 	UIImageView *_navigationBar;
@@ -56,6 +57,7 @@
 - (void)_setupFolderTitleLabel;
 - (void)_setupNavigationBar;
 - (id)_shadowForPosition:(int)position;
+- (id)_shadowImageForPosition:(int)position;
 - (float)_shelfHeaderHeight;
 - (BOOL)_shouldShowStoreButton;
 - (CGSize)_sizeForCurrentConfiguration;

@@ -7,13 +7,14 @@
 
 
 
-@interface SBIconBadgeImage : XXUnknownSuperclass {
-	NSString *_text;
-	int _checkoutCount;
+__attribute__((visibility("hidden")))
+@interface SBIconBadgeImage : SBIconAccessoryImage {
 }
-@property(assign) int checkoutCount;
-@property(readonly, copy) NSString *text;
++ (float)_badgeLabelVerticalOffset;
++ (id)creationBlockForText:(id)text;
 - (id)initWithCGImage:(CGImageRef)cgimage scale:(float)scale orientation:(int)orientation text:(id)text;
+- (CGRect)accessoryFrameForIconBounds:(CGRect)iconBounds;
+- (id)countedMapKey;
 - (void)dealloc;
 @end
 

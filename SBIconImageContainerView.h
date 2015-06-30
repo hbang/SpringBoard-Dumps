@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBIconImageContainerView : XXUnknownSuperclass {
 }
 - (id)hitTest:(CGPoint)test withEvent:(id)event;

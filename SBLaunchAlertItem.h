@@ -7,8 +7,9 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBLaunchAlertItem : XXUnknownSuperclass {
-	SBDisplay *_associatedDisplay;
+	SBApplication *_associatedDisplay;
 	int _type;
 	NSString *_bundleID;
 	BOOL _isDataAlert;

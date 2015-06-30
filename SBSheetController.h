@@ -7,12 +7,16 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBSheetController : XXUnknownSuperclass {
 	NSMutableDictionary *_appToSheetMap;
 	UIWindow *_presentationWindow;
+	SBApplication *_topHostedApp;
+	UIView *_topHostedAppView;
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_positionFakeStatusBarView:(id)view forOrientation:(int)orientation;
 - (void)_tearDownSheet:(id)sheet;
 - (void)animationDidStop:(id)animation finished:(id)finished context:(void *)context;
 - (id)applicationForTopSheet;
@@ -25,7 +29,6 @@
 - (BOOL)isShowingSheetsForApplication:(id)application;
 - (BOOL)presentRemoteViewIdentifier:(id)identifier asSheetForApplication:(id)application requireTopApplication:(BOOL)application3 animated:(BOOL)animated;
 - (void)presentSheetView:(id)view animated:(BOOL)animated;
-- (void)sendDeviceOrientationChangesToSheets;
 - (void)sendStatusBarOrientationWillChangeToSheets:(int)sendStatusBarOrientation duration:(float)duration;
 - (BOOL)sheetWantsProgress;
 @end

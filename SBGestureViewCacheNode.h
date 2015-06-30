@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBGestureViewCacheNode : XXUnknownSuperclass {
 	UIView *m_view;
 	int m_viewType;

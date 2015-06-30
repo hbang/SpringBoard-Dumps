@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBFolderSlidingView : XXUnknownSuperclass {
 	int _position;
 	SBFolderView *_folderView;
@@ -29,7 +30,7 @@
 - (void)cleanUpAfterDockOrientationChange;
 - (void)dealloc;
 - (id)folderView;
-- (void)handleTapGestureInWallpaperContainer:(id)wallpaperContainer;
+- (void)handleGestureInWallpaperContainer:(id)wallpaperContainer;
 - (void)prepareToSetDockOrientation:(int)setDockOrientation;
 - (void)setOrientation:(int)orientation wallpaperRect:(CGRect)rect notchInfo:(XXStruct_9ihRqB)info;
 - (void)setShouldRasterize:(BOOL)rasterize;

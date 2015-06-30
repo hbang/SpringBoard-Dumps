@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNetworkReselectionAlertItem : SBPhoneAlertItem {
 }
 - (id)init;

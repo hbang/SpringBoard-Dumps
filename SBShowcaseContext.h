@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBShowcaseContext : XXUnknownSuperclass {
 	int _appOrientation;
 	int _showcaseOrientation;

@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandShelfView : XXUnknownSuperclass {
 	UIImageView *_body;
 	UIImageView *_leftEdge;

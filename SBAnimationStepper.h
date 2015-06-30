@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAnimationStepper : XXUnknownSuperclass {
 	id m_delegate;
 	UIView *m_view;

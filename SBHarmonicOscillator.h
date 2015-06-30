@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBHarmonicOscillator : XXUnknownSuperclass {
 	float A;
 	float Z;

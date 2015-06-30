@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBHandMotionExtractor : XXUnknownSuperclass {
 	UIEdgeInsets _pixelDeltas;
 	UIEdgeInsets _smoothedDeltas;

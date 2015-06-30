@@ -8,14 +8,18 @@
 
 @protocol SBAwayListCellButtonHandler;
 
+__attribute__((visibility("hidden")))
 @interface SBAwaySystemAlertCell : SBAwayListItemCell {
 	NSArray *_buttons;
 	id<SBAwayListCellButtonHandler> _buttonHandler;
 	BOOL _horizontalButtonLayout;
 }
++ (id)_alarmButtonBackgroundImage;
++ (id)_alarmButtonPressedImage;
 + (id)_buttonBackgroundImage;
 + (id)_buttonFont;
 + (float)_buttonHorizontalInset;
++ (id)_buttonPressedImage;
 + (float)_buttonVerticalInset;
 + (float)_buttonWidthForText:(id)text;
 + (float)rowHeightForTitle:(id)title message:(id)message rowWidth:(float)width buttonLabels:(id)labels;

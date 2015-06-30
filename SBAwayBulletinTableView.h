@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwayBulletinTableView : XXUnknownSuperclass {
 }
 - (BOOL)touchesShouldBegin:(id)touches withEvent:(id)event inContentView:(id)contentView;

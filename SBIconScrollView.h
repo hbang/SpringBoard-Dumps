@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBIconScrollView : XXUnknownSuperclass {
 }
 - (BOOL)_scrollsToMakeFirstResponderVisible;

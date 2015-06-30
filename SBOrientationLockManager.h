@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBOrientationLockManager : XXUnknownSuperclass {
 	NSMutableSet *_lockOverrideReasons;
 	int _userLockedOrientation;

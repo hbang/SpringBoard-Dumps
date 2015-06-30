@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAppContextHostView : XXUnknownSuperclass {
 	SBAppContextHostManager *_manager;
 }
@@ -15,5 +16,6 @@
 - (id)initWithFrame:(CGRect)frame;
 - (id)description;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
+- (id)window;
 @end
 

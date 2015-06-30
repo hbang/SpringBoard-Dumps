@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNowPlayingPushButton : XXUnknownSuperclass {
 	float _yOffset;
 	float _xOffset;

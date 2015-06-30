@@ -7,10 +7,14 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBPluginManager : XXUnknownSuperclass {
 	NSString *_pluginsDirectory;
+	NSMutableDictionary *_plugins;
 }
 + (id)sharedInstance;
+- (id)init;
+- (void)dealloc;
 - (void)loadAllLaunchPlugins;
 - (Class)loadPluginBundle:(id)bundle;
 - (Class)loadPluginNamed:(id)named;

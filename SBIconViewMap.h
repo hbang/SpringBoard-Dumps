@@ -6,34 +6,39 @@
  */
 
 
-@protocol SBIconViewDelegate;
+@protocol SBIconViewDelegate, SBIconViewMapDelegate;
 
-@interface SBIconViewMap : XXUnknownSuperclass <SBIconViewLocker, SBIconObserver> {
+__attribute__((visibility("hidden")))
+@interface SBIconViewMap : XXUnknownSuperclass <SBIconObserver, SBIconIndexNodeObserver, SBIconViewObserver> {
+	SBIconModel *_model;
 	NSMapTable *_iconViewsForIcons;
-	id<SBIconViewDelegate> _iconViewdelegate;
+	id<SBIconViewMapDelegate> _delegate;
+	id<SBIconViewDelegate> _viewDelegate;
 	NSMapTable *_recycledIconViewsByType;
 	NSMapTable *_labels;
 	NSMapTable *_badges;
 }
+@property(assign, nonatomic) id<SBIconViewDelegate> viewDelegate;
 + (id)homescreenMap;
-+ (Class)iconViewClassForIcon:(id)icon location:(int)location;
-- (id)init;
++ (id)switcherMap;
+- (id)initWithIconModel:(id)iconModel delegate:(id)delegate;
 - (void)_addIconView:(id)view forIcon:(id)icon;
 - (id)_iconViewForIcon:(id)icon;
-- (void)_modelListAddedIcon:(id)icon;
 - (void)_modelReloadedIcons;
 - (void)_modelReloadedState;
 - (void)_modelRemovedIcon:(id)icon;
 - (void)_recycleIconView:(id)view;
-- (void)captureIconLabel:(id)label forIcon:(id)icon;
 - (void)dealloc;
 - (void)iconAccessoriesDidUpdate:(id)iconAccessories;
+- (id)iconModel;
+- (void)iconViewDidChangeLocation:(id)iconView;
 - (id)iconViewForIcon:(id)icon;
 - (id)mappedIconViewForIcon:(id)icon;
+- (void)node:(id)node didAddContainedNodeIdentifiers:(id)identifiers;
+- (void)node:(id)node didRemoveContainedNodeIdentifiers:(id)identifiers;
 - (void)purgeIconFromMap:(id)map;
 - (void)purgeRecycledIconViewsForClass:(Class)aClass;
 - (void)recycleAndPurgeAll;
 - (void)recycleViewForIcon:(id)icon;
-- (id)releaseIconLabelForIcon:(id)icon;
 @end
 

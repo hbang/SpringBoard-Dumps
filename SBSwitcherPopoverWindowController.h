@@ -8,6 +8,7 @@
 
 @protocol SBSwitcherPopoverWindowControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SBSwitcherPopoverWindowController : XXUnknownSuperclass <UIWindowDelegate> {
 	UIWindow *_popoverWindow;
 	UIView *_popoverRootView;
@@ -24,6 +25,6 @@
 - (void)didRotateFromOrientation:(int)orientation;
 - (void)prepareAndPresentPopoverForFrame:(CGRect)frame inView:(id)view delegate:(id)delegate withPresentationBlock:(id)presentationBlock;
 - (void)rotatePopoverWindowToOrientation:(int)orientation;
-- (void)willRotateToOrientation:(int)orientation;
+- (void)willAnimateRotationToOrientation:(int)orientation;
 @end
 

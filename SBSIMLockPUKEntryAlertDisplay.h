@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBSIMLockPUKEntryAlertDisplay : SBSIMLockEntryAlertDisplay {
 	int _state;
 	NSString *_enteredPUKCode;

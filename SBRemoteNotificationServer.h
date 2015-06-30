@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBRemoteNotificationServer : XXUnknownSuperclass <APSConnectionDelegate> {
 	NSMutableDictionary *_bundleIdentifiersToClients;
 	NSMutableDictionary *_environmentsToConnections;
@@ -17,25 +18,25 @@
 - (id)_allPushRegisteredThirdPartyBundleIDs;
 - (id)allAppEnabledTypeValues;
 - (id)allSettingsEnabledTypeValues;
-- (int)appEnabledTypesForBundleIdentifier:(id)bundleIdentifier;
+- (unsigned)appEnabledTypesForBundleIdentifier:(id)bundleIdentifier;
 - (void)calculateTopics;
-- (void)connection:(id)connection didReceiveMessageForTopic:(id)topic userInfo:(id)info;
+- (void)connection:(id)connection didReceiveIncomingMessage:(id)message;
 - (void)connection:(id)connection didReceivePublicToken:(id)token;
 - (void)dealloc;
-- (int)getEffectiveEnabledTypesForApplication:(id)application;
+- (unsigned)getEffectiveEnabledTypesForApplication:(id)application;
 - (id)getMessageUserInfoForBundleIdentifier:(id)bundleIdentifier;
 - (BOOL)hasRegisteredBundleIdentifiers;
 - (BOOL)isSystemwideEnabled;
 - (id)lastNotificationReceivedBundleIdentifier;
 - (void)noteApplicationFinishedLaunching:(id)launching;
-- (void)notePermissionAlertAcceptedTypes:(int)types forBundleIdentifier:(id)bundleIdentifier;
+- (void)notePermissionAlertAcceptedTypes:(unsigned)types forBundleIdentifier:(id)bundleIdentifier;
 - (void)postSettingsChangedNotificationForBundleIdentifier:(id)bundleIdentifier;
-- (void)registerApplication:(id)application forEnvironment:(id)environment withTypes:(int)types;
+- (void)registerApplication:(id)application forEnvironment:(id)environment withTypes:(unsigned)types;
 - (void)run;
 - (void)setMessageUserInfo:(id)info forBundleIdentifier:(id)bundleIdentifier;
-- (void)setSettingsTypes:(int)types forBundleIdentifier:(id)bundleIdentifier;
+- (void)setSettingsTypes:(unsigned)types forBundleIdentifier:(id)bundleIdentifier;
 - (void)setSystemwideEnabled:(BOOL)enabled;
-- (int)settingsEnabledTypesForBundleIdentifier:(id)bundleIdentifier;
+- (unsigned)settingsEnabledTypesForBundleIdentifier:(id)bundleIdentifier;
 - (void)unregisterApplication:(id)application;
 @end
 

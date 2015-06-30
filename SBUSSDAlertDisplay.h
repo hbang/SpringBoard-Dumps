@@ -7,7 +7,8 @@
 
 
 
-@interface SBUSSDAlertDisplay : SBAlertDisplay <UITextFieldDelegate> {
+__attribute__((visibility("hidden")))
+@interface SBUSSDAlertDisplay : SBAlertView <UITextFieldDelegate> {
 	TPBottomSingleButtonBar *_responseBar;
 	UIView *_notifyView;
 	UIView *_replyView;

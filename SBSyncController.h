@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBSyncController : XXUnknownSuperclass {
 	int _restoreState;
 	int _resetState;
@@ -16,6 +17,7 @@
 	BOOL _appsChangedDuringSync;
 	int _restoreStartedNotifyToken;
 	int _restoreEndedNotifyToken;
+	SBDeviceLockDisableAssertion *_disableDeviceLockAssertion;
 }
 + (id)sharedInstance;
 - (void)_appInstallationNotification;

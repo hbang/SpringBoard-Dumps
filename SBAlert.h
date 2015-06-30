@@ -7,11 +7,21 @@
 
 
 
-@interface SBAlert : SBDisplay {
-	SBAlertDisplay *_display;
+__attribute__((visibility("hidden")))
+@interface SBAlert : XXUnknownSuperclass <SBDisplayProtocol> {
+	SBAlertView *_display;
 	NSMutableDictionary *_dictionary;
-	SBAlertWindow *_deferredAlertWindow;
+	BOOL _SEO;
+	SBActivationContext *_activationContext;
+	NSMapTable *_displayValues;
+	NSHashTable *_displayFlags;
+	BOOL _orientationChangedEventsEnabled;
+	float _accelerometerSampleInterval;
+	BOOL _expectsFaceContact;
+	BOOL _expectsFaceContactInLandscape;
 }
+@property(assign, nonatomic) BOOL SEO;
+@property(copy, nonatomic) SBActivationContext *activationContext;
 + (id)_adapterForController:(id)controller;
 + (void)activateAlertForController:(id)controller animated:(BOOL)animated animateCurrentDisplayOut:(BOOL)anOut withDelay:(BOOL)delay isSlidingDisplay:(BOOL)display;
 + (void)alertAdapterDisplayDidDisappear:(id)alertAdapterDisplay;
@@ -19,22 +29,41 @@
 + (void)deactivateAlertForController:(id)controller animated:(BOOL)animated animateOldDisplayInWithStyle:(int)style isSlidingDisplay:(BOOL)display;
 + (void)registerForAlerts;
 + (void)test;
-- (void)_updateStatusBarLockAndTime;
+- (id)init;
+- (double)accelerometerSampleInterval;
 - (void)activate;
+- (BOOL)activationFlag:(unsigned)flag;
+- (id)activationValue:(unsigned)value;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (Class)alertWindowClass;
 - (CGRect)alertWindowRect;
+- (BOOL)allowsEventOnlySuspension;
 - (BOOL)allowsStackingOfAlert:(id)alert;
+- (void)animateDeactivation;
 - (double)autoDimTime;
+- (double)autoLockTime;
+- (void)clearActivationSettings;
+- (void)clearDeactivationSettings;
+- (void)clearDisplay;
+- (void)clearDisplaySettings;
+- (BOOL)currentlyAnimatingDeactivation;
 - (void)deactivate;
+- (BOOL)deactivationFlag:(unsigned)flag;
+- (id)deactivationValue:(unsigned)value;
 - (void)dealloc;
+- (id)description;
 - (void)didAnimateLockKeypadIn;
 - (void)didAnimateLockKeypadOut;
 - (void)didFinishAnimatingIn;
 - (void)didFinishAnimatingOut;
 - (id)display;
+- (BOOL)displayFlag:(unsigned)flag;
+- (id)displayValue:(unsigned)value;
 - (int)effectiveStatusBarStyle;
+- (BOOL)expectsFaceContact;
+- (BOOL)expectsFaceContactInLandscape;
 - (float)finalAlpha;
+- (void)handleAutoLock;
 - (BOOL)handleHeadsetButtonPressed:(BOOL)pressed;
 - (BOOL)handleLockButtonPressed;
 - (BOOL)handleMenuButtonTap;
@@ -43,16 +72,27 @@
 - (BOOL)hasTranslucentBackground;
 - (int)interfaceOrientationForActivation;
 - (id)objectForKey:(id)key;
+- (BOOL)orientationChangedEventsEnabled;
 - (void)removeFromView;
 - (void)removeObjectForKey:(id)key;
+- (void)setAccelerometerSampleInterval:(double)interval;
+- (void)setActivationSetting:(unsigned)setting flag:(BOOL)flag;
+- (void)setActivationSetting:(unsigned)setting value:(id)value;
+- (void)setDeactivationSetting:(unsigned)setting flag:(BOOL)flag;
+- (void)setDeactivationSetting:(unsigned)setting value:(id)value;
 - (void)setDisplay:(id)display;
+- (void)setDisplaySetting:(unsigned)setting flag:(BOOL)flag;
+- (void)setDisplaySetting:(unsigned)setting value:(id)value;
+- (void)setExpectsFaceContact:(BOOL)contact;
+- (void)setExpectsFaceContact:(BOOL)contact inLandscape:(BOOL)landscape;
 - (void)setObject:(id)object forKey:(id)key;
+- (void)setOrientationChangedEventsEnabled:(BOOL)enabled;
 - (BOOL)shouldDeactivateAlertItemsOnActivation;
+- (BOOL)shouldPendAlertItemsWhileActive;
 - (BOOL)showsSpringBoardStatusBar;
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
 - (BOOL)suppressesNotifications;
-- (void)tearDownAlertWindow:(id)window;
 - (BOOL)undimsDisplay;
 @end
 

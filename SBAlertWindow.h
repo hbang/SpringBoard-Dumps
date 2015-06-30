@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAlertWindow : XXUnknownSuperclass {
 	UIView *_contentLayer;
 	unsigned _isAnimating : 1;
@@ -14,9 +15,9 @@
 	unsigned _handlerActive : 1;
 	float _finalAlpha;
 	int _currentOrientation;
-	SBAlertDisplay *_currentDisplay;
+	SBAlertView *_currentDisplay;
 	NSMutableArray *_stackedAlertDisplays;
-	NSMutableDictionary *_alertToDisplayMap;
+	NSMapTable *_alertToDisplayMap;
 }
 + (CGRect)constrainFrameToScreen:(CGRect)screen;
 - (id)initWithContentRect:(CGRect)contentRect;
@@ -31,9 +32,9 @@
 - (void)displayAlert:(id)alert;
 - (int)displayCount;
 - (BOOL)handlerAlreadyActive;
+- (BOOL)hasActiveAlertsOrDisplays;
 - (BOOL)isOpaque;
 - (void)noteInterfaceOrientationChangingTo:(int)to animated:(BOOL)animated;
-- (void)popInCurrentDisplay;
 - (id)rotatingContentViewForWindow:(id)window;
 - (void)setHandlerAlreadyActive:(BOOL)active;
 - (BOOL)shouldWindowUseOnePartInterfaceRotationAnimation:(id)animation;

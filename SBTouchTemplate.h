@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBTouchTemplate : XXUnknownSuperclass {
 	SBPolygon *m_template;
 	SBPolygon *m_candidate;

@@ -7,11 +7,11 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBLockdownManager : XXUnknownSuperclass {
 	int _state;
 	BOOL _settingUpActivationState;
 	BOOL _isBricked;
-	BOOL _isInternalInstall;
 	BOOL _isDeveloperDevice;
 	BOOL _hasShownMismatchedSIM;
 	SBDismissOnlyAlertItem *_activatingAlertItem;
@@ -33,7 +33,6 @@
 - (BOOL)brickedDevice;
 - (void)dealloc;
 - (BOOL)isDeveloperDevice;
-- (BOOL)isInternalInstall;
 - (int)lockdownState;
 - (id)uniqueDeviceIdentifier;
 - (id)valueForDomain:(id)domain key:(id)key;

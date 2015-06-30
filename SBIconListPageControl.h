@@ -8,6 +8,7 @@
 
 @protocol SBIconListPageControlDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SBIconListPageControl : XXUnknownSuperclass {
 	id _delegate;
 }

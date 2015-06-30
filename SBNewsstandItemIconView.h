@@ -7,33 +7,21 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandItemIconView : SBNewsstandItemIconViewBase {
 	UIView *_iconTransformView;
-	SBDownloadingProgressBar *_progressBar;
 	UILabel *_indexLabel;
 	unsigned _newsstandIndex;
 }
-+ (float)_badgeLabelFontSize;
-+ (BOOL)allowsRecycling;
-+ (CGPoint)badgeLabelCenterPoint;
-+ (id)createBadgeLabelImageAndGetTextCenterPoint:(CGPoint *)point;
++ (CGSize)_maxLabelSize;
 + (CGSize)defaultIconSize;
 - (id)initWithDefaultSize;
 - (id)initWithFrame:(CGRect)frame;
-- (CGRect)_adjustProspectiveBadgeFrame:(CGRect)frame fromView:(id)view toView:(id)view3;
-- (float)_badgeHorizontalPadding;
-- (float)_badgeVerticalPadding;
-- (Class)_labelClass;
-- (id)_overriddenBadgeTextForText:(id)text;
-- (void)_removeProgressBar;
-- (id)_superviewForBadge;
-- (void)_updateLabelVisibility;
-- (void)_updateProgressBar;
+- (CGRect)_frameForAccessoryView;
 - (void)applyIconImageTransform:(CATransform3D)transform duration:(float)duration delay:(float)delay;
 - (id)createShadowImageView;
 - (void)dealloc;
 - (CGRect)defaultFrameForProgressBar;
-- (void)iconAccessoriesDidUpdate:(id)iconAccessories;
 - (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;
 - (void)positionCloseBoxOfType:(int)type;
 - (void)positionIconImageView;

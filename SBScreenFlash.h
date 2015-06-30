@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBScreenFlash : XXUnknownSuperclass {
 	UIWindow *_flashWindow;
 	UIView *_flashView;

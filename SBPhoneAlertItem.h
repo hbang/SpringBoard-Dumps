@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBPhoneAlertItem : XXUnknownSuperclass {
 	NSString *_bodyText;
 	NSString *_title;

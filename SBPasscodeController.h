@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBPasscodeController : XXUnknownSuperclass {
 	SBPasscodeAlertItem *_passcodeAlertItem;
 	int _mode;

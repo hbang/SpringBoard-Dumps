@@ -14,6 +14,7 @@
 - (CGSize)observer:(id)observer composedAttachmentSizeForType:(int)type thumbnailWidth:(float)width height:(float)height key:(id)key;
 - (void)observer:(id)observer modifyBulletin:(id)bulletin;
 - (id)observer:(id)observer multipleThumbnailSizeConstraintsForAttachmentType:(int)attachmentType;
+- (void)observer:(id)observer noteAlertBehaviorOverridesChanged:(unsigned)changed;
 - (void)observer:(id)observer noteSectionParametersChanged:(id)changed;
 - (void)observer:(id)observer purgeReferencesToBulletinID:(id)bulletinID;
 - (void)observer:(id)observer removeBulletin:(id)bulletin;

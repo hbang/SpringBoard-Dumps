@@ -7,8 +7,15 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBTelephonyManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
+	NSString *_cachedCTRegistrationStatus;
+	BOOL _emergencyCallsOnly;
+	int _registrationStatus;
 	void *_suspendDormancyAssertion;
+	BOOL _signalStrengthHasBeenSet;
+	long _signalStrength;
+	long _signalStrengthBars;
 	NSString *_operatorName;
 	NSString *_lastKnownNetworkCountryCode;
 	unsigned _suspendDormancyEnabled;
@@ -22,11 +29,16 @@
 	unsigned _hasShownWaitingAlert : 1;
 	SBAlertItem *_activationAlertItem;
 	int _numActivationFailures;
+	int _inEmergencyCallbackMode;
 	unsigned _loggingCallAudio : 1;
 	NSString *_inCallStatusPreamble;
 	NSTimer *_inCallTimer;
 	RadiosPreferences *_radioPrefs;
 	int _needsUserIdentificationModule;
+	NSString *_simStatus;
+	int _wantsToHideDataIndicators;
+	int _modemDataConnectionType;
+	BOOL _modemDataConnectionTypeIsKnown;
 }
 + (id)sharedTelephonyManager;
 + (id)sharedTelephonyManagerCreatingIfNecessary:(BOOL)necessary;
@@ -36,27 +48,37 @@
 - (void)SBTelephonyDaemonRestartHandler;
 - (id)SIMStatus;
 - (void)_avSystemControllerDidError:(id)_avSystemController;
+- (CFStringRef)_cachedCTRegistrationStatus;
 - (void)_cancelFakeService;
 - (void)_delayedAudioResume;
-- (id)_fetchOperatorName;
+- (void)_fetchOperatorNameWithCompletion:(id)completion;
 - (void)_headphoneChanged:(id)changed;
-- (void)_postDataConnectionTypeChangedNotification;
+- (void)_performQueryInBackground:(id)background withMainQueueResultHandler:(id)mainQueueResultHandler;
+- (void)_phoneActivationStateChanged:(id)changed;
+- (id)_phoneApp;
+- (void)_postDataConnectionTypeChanged;
 - (void)_postStartupNotification;
 - (void)_prepareToAnswerCall;
 - (BOOL)_pretendingToSearch;
 - (void)_provisioningUpdateWithStatus:(int)status;
-- (void)_proximityChanged:(id)changed;
-- (id)_radioPrefs;
 - (void)_reallySetOperatorName:(id)name;
 - (void)_resetCTMMode;
+- (void)_resetModemConnectionType;
 - (CTServerConnectionRef)_serverConnection;
 - (void)_serverConnectionDidError:(XXStruct_K5nmsA)_serverConnection;
+- (void)_setCachedCTRegistrationStatus:(CFStringRef)status;
 - (void)_setCurrentActivationAlertItem:(id)item;
+- (void)_setIsInEmergencyCallbackMode:(unsigned char)emergencyCallbackMode;
 - (void)_setIsLoggingCallAudio:(BOOL)audio;
 - (void)_setRegistrationStatus:(int)status;
+- (void)_setSIMStatus:(id)status;
+- (void)_setSignalStrength:(long)strength andBars:(long)bars;
+- (void)_setWantsToHideDataIndicators:(int)hideDataIndicators;
 - (void)_startFakeServiceIfNecessary;
 - (void)_stopFakeService;
-- (BOOL)_updateLastKnownNetworkCountryCode;
+- (void)_updateCanOnlyMakeEmergencyCalls;
+- (void)_updateLastKnownNetworkCountryCode;
+- (int)_updateModemDataConnectionTypeWithCTInfo:(id)ctinfo;
 - (void)_updateRegistrationNow;
 - (void)_updateState;
 - (void)_wokeFromSleep:(id)sleep;
@@ -69,7 +91,6 @@
 - (BOOL)canOnlyMakeEmergencyCalls;
 - (void)carrierBundleChanged;
 - (BOOL)cellularRadioCapabilityIsActive;
-- (void)checkForRegistrationSoon;
 - (void)configureForTTY:(BOOL)tty;
 - (id)copyMobileEquipmentInfo;
 - (id)copyTelephonyCapabilities;
@@ -78,15 +99,14 @@
 - (void)disconnectCall;
 - (void)disconnectCallAndActivateHeld;
 - (void)disconnectIncomingCall;
-- (id)displayForOutgoingCallURL:(id)outgoingCallURL;
 - (void)dumpBasebandState:(id)state;
 - (void)exitEmergencyCallbackMode;
 - (long long)getRowIDOfLastCallInsert;
-- (void)handleSIMReady;
 - (BOOL)heldCallExists;
 - (BOOL)inCall;
 - (double)inCallDuration;
 - (BOOL)inCallUsingReceiverForcingRoutingToReceiver:(BOOL)receiver;
+- (BOOL)inCallUsingSpeakerOrReceiver;
 - (BOOL)incomingCallExists;
 - (BOOL)isCallAmbiguous;
 - (BOOL)isEmergencyCallActive;
@@ -122,14 +142,17 @@
 - (void)setOperatorName:(id)name;
 - (BOOL)shouldHangUpOnLock;
 - (BOOL)shouldPromptForTTY;
+- (long)signalStrength;
+- (long)signalStrengthBars;
 - (void)swapCalls;
 - (id)ttyTitle;
 - (void)unmute;
 - (void)updateAirplaneMode;
 - (void)updateCallForwardingIndicator;
 - (void)updateCalls;
+- (void)updateDisplaySettings:(id)settings forOutgoingCallURL:(id)outgoingCallURL outURL:(id *)url;
 - (BOOL)updateLocale;
-- (BOOL)updateNetworkLocale;
+- (void)updateNetworkLocale;
 - (void)updateSpringBoard;
 - (void)updateStatusBarCallDuration;
 - (void)updateStatusBarCallState:(BOOL)state;

@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandFolder : SBFolder {
 }
 + (int)maxListCount;
@@ -19,6 +20,7 @@
 - (BOOL)isNewsstandFolder;
 - (Class)listModelClass;
 - (Class)listViewClass;
+- (id)nodeIdentifier;
 - (void)setIsOpen:(BOOL)open;
 @end
 

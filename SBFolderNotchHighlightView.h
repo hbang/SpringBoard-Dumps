@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBFolderNotchHighlightView : XXUnknownSuperclass {
 	XXStruct_9ihRqB _notchInfo;
 }
