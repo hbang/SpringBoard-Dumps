@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 	SBApplication *_targetApp;
 	LSBestAppSuggestion *_targetAppInfo;
 	BOOL _targetAppIsSiri;
+	BOOL _targetAppIsInCallService;
+	BOOL _deactivatingForInCallService;
 	NSURL *_targetURL;
 	UIImage *_grabberImage;
 	BBObserver *_bulletinObserver;
@@ -35,7 +37,6 @@ __attribute__((visibility("hidden")))
 	UIView *_appPortraitDefaultImageView;
 	UIView *_appLandscapeDefaultImageView;
 	UIView *_appBackgroundView;
-	SBWallpaperEffectView *_fakeBlurBackgroundView;
 	SBUIPasscodeViewWithLockScreenStyle *_passcodeView;
 	UIView *_passcodeOverscrollView;
 	UIView *_appContextHostView;
@@ -70,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_animateSlideUpWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)_cleanupBackgroundLaunchAndContextHostingNonsense;
 - (void)_cleanupFromDismissal;
+- (void)_clearAppDefaultImagesAndRemoveFromSuperview:(BOOL)superview;
 - (void)_commonGestureCleanup;
 - (void)_deviceBlockedStateChanged:(id)changed;
 - (void)_executeDeferredAppUpdateBlocks;
@@ -90,7 +92,6 @@ __attribute__((visibility("hidden")))
 - (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
 - (id)bounceAnimator;
 - (void)cancelGestureRecognizer:(id)recognizer;
-- (id)customSlideToUnlockText;
 - (void)deactivate;
 - (void)dealloc;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
@@ -123,7 +124,6 @@ __attribute__((visibility("hidden")))
 - (void)translateSlidingViewByY:(float)y;
 - (void)treatCurrentPositionAsBoundaryforGesture:(id)gesture;
 - (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
-- (BOOL)wantsToShowCustomSlideToUnlockText;
 - (BOOL)wantsToShowStatusBar;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;

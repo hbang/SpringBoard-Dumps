@@ -27,6 +27,9 @@ __attribute__((visibility("hidden")))
 - (void)_updateState;
 - (void)activate;
 - (id)aggdKey;
+- (id)confirmationAlertMessage;
+- (id)confirmationAlertTitle;
+- (void)confirmed:(BOOL)confirmed;
 - (void)cooldown;
 - (void)deactivate;
 - (id)description;
@@ -35,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)glyphImageForState:(int)state section:(int)section;
 - (id)identifier;
 - (BOOL)isRestricted;
+- (BOOL)needsConfirmation;
 - (int)state;
 - (id)statusUpdate;
 - (void)toggleState;

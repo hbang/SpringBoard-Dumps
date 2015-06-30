@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 	UIView *_slideToUnlockSpringView;
 	BOOL _isShakingSlideToUnlockText;
 	BOOL _isAnimatingSlideToUnlockText;
-	BOOL _isUpdatingSlideToUnlockTextAnimated;
 	NSCountedSet *_slideToUnlockWhiteModeRequesters;
 	SBWallpaperEffectView *_slideToUnlockBackgroundView;
 	SBWallpaperEffectView *_topGrabberBackgroundView;
@@ -275,7 +274,7 @@ __attribute__((visibility("hidden")))
 - (void)setBottomLeftGrabberHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setCameraGrabberHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setCustomSlideToUnlockLanguage:(id)unlockLanguage;
-- (void)setCustomSlideToUnlockText:(id)unlockText animated:(BOOL)animated;
+- (void)setCustomSlideToUnlockText:(id)unlockText;
 - (void)setEmergencyCallViewController:(id)controller withDuration:(double)duration completion:(id)completion;
 - (void)setForegroundHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setLockContentHidden:(BOOL)hidden forRequester:(id)requester;

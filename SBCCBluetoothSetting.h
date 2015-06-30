@@ -16,8 +16,12 @@ __attribute__((visibility("hidden")))
 - (void)_updateState;
 - (void)activate;
 - (id)aggdKey;
+- (id)confirmationAlertMessage;
+- (id)confirmationAlertTitle;
+- (void)confirmed:(BOOL)confirmed;
 - (void)deactivate;
 - (void)dealloc;
 - (id)glyphImageForState:(int)state;
+- (BOOL)needsConfirmation;
 @end
 

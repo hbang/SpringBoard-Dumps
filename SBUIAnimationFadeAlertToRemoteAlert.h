@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 	SBAlert *_fromAlert;
 	SBRemoteAlertAdapter *_remoteAlert;
 	SBAlertManager *_alertManager;
+	BOOL _initialFakeStatusBarNeeded;
 	double _animationDuration;
 }
 - (id)initWithAlert:(id)alert toAlert:(id)alert2 alertManager:(id)manager;

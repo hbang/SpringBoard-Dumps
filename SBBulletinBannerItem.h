@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (id)itemWithBulletin:(id)bulletin andObserver:(id)observer;
 + (id)itemWithSeedBulletin:(id)seedBulletin additionalBulletins:(id)bulletins andObserver:(id)observer;
-- (id)_appName;
 - (id)_defaultBBAction;
 - (id)_initWithSeedBulletin:(id)seedBulletin additionalBulletins:(id)bulletins andObserver:(id)observer;
 - (id)_seedBulletinMessage;

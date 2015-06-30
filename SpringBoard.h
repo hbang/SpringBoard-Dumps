@@ -306,6 +306,7 @@ __attribute__((visibility("hidden")))
 - (void)noteBacklightControllerUndimming:(id)undimming;
 - (void)noteBacklightFadeFinished;
 - (void)noteBacklightLevelChanged;
+- (void)noteBuddyNoLongerPreparingForLanguageChange;
 - (void)noteCaseHardwarePresent;
 - (void)noteInterfaceOrientationChanged:(int)changed;
 - (void)noteInterfaceOrientationChanged:(int)changed duration:(float)duration;

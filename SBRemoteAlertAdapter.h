@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 	int _customStatusBarStyle;
 	int _desiredStatusBarStyleOverrides;
 	BOOL _wantsToShowStatusBar;
+	BOOL _wantsToManageStatusBarAtActivation;
 	BOOL _suppressesSiri;
 	BOOL _dismissOnUILock;
 	int _desiredLaunchingInterfaceOrientation;
@@ -76,9 +77,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasTranslucentBackground;
 - (int)interfaceOrientationForActivation;
 - (BOOL)isRemote;
+- (BOOL)managesOwnStatusBarAtActivation;
 - (BOOL)matchesAnyInCallService;
 - (BOOL)matchesInCallUIService;
 - (BOOL)matchesRemoteAlertService:(id)service options:(id)options;
+- (void)noteActivatedForActivityContinuationWithIdentifier:(id)identifier;
 - (void)noteActivatedForCustomReason:(id)customReason;
 - (void)noteShouldStopDisablingStatusBarOverrides;
 - (void)remoteAlertDidTerminateWithError:(id)remoteAlert;
@@ -99,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)remoteAlertWantstoSetSupportedInterfaceOrientationOverride:(unsigned)override;
 - (void)setActivationHandler:(id)handler deactivationHandler:(id)handler2;
 - (void)setLockUIAndDismissActions:(id)actions;
+- (void)setWantsToManageStatusBarAtActivation:(BOOL)activation;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (BOOL)showsSpringBoardStatusBar;
 - (int)statusBarStyle;

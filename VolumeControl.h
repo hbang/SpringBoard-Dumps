@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 	BOOL _debounce;
 	int _numberOfVolumeDecreasesSinceDownButtonDown;
 	int _mode;
-	NSMutableSet *_alwaysHiddenCategories;
 @private
+	NSMutableSet *_alwaysHiddenCategories;
+@protected
 	NSString *_lastDisplayedCategory;
 	NSString *_lastEventCategory;
-@protected
 	BOOL _hudHandledLastVolumeChange;
 	BOOL _euDevice;
 	float _euVolumeLimit;
