@@ -5,16 +5,16 @@
  * Source: (null)
  */
 
+#import <StoreServices/_kSSNotificationApplicationInstalled.h>
 #import "SpringBoard-Structs.h"
 #import "SBPowerDownControllerDelegate.h"
 #import "MCProfileConnectionObserver.h"
 #import "UIApplicationDelegate.h"
-#import <StoreServices/_SSItemKindNewsstand.h>
 
 @protocol OS_dispatch_source, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SpringBoard : _SSItemKindNewsstand <SBPowerDownControllerDelegate, MCProfileConnectionObserver, UIApplicationDelegate> {
+@interface SpringBoard : _kSSNotificationApplicationInstalled <SBPowerDownControllerDelegate, MCProfileConnectionObserver, UIApplicationDelegate> {
 	SBUIController *_uiController;
 	NSTimer *_menuButtonTimer;
 	NSTimer *_lockButtonTimer;
@@ -149,6 +149,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeTransientActiveInterfaceOrientationOverrideForReason:(id)reason;
 - (BOOL)_requestPermissionToOpenURL:(id)openURL withApplication:(id)application sender:(id)sender;
 - (void)_retryLaunchTestWithOptions:(id)options;
+- (void)_revealSpotlight;
 - (void)_ringerChanged:(IOHIDEventRef)changed;
 - (void)_rotateView:(id)view toOrientation:(int)orientation;
 - (void)_runAppSliderBringupTest;
@@ -231,7 +232,6 @@ __attribute__((visibility("hidden")))
 - (id)formattedDecimalStringForNumber:(id)number;
 - (id)formattedPercentStringForNumber:(id)number;
 - (void)frontDisplayDidChange:(id)frontDisplay;
-- (void)goToSpotlight:(BOOL)spotlight;
 - (BOOL)handleDoubleHeightStatusBarTap:(int)tap;
 - (void)handleKeyHIDEvent:(IOHIDEventRef)event;
 - (void)handleMenuDoubleTap;

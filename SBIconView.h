@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "_UISettingsKeyObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "_UISettingsKeyObserver.h"
+#import "SpringBoard-Structs.h"
 #import "SBIconObserver.h"
 
 @protocol SBIconViewDelegate, SBIconViewObserver, SBIconAccessoryView;
@@ -148,6 +148,7 @@ __attribute__((visibility("hidden")))
 - (void)setLabelHidden:(BOOL)hidden;
 - (void)setPaused:(BOOL)paused;
 - (void)setRefusesRecipientStatus:(BOOL)status;
+- (void)setSuppressesBlurryBackgroundChanges:(BOOL)changes;
 - (void)setTouchDownInIcon:(BOOL)icon;
 - (void)setUpdatedMarkHidden:(BOOL)hidden;
 - (void)settings:(id)settings changedValueForKey:(id)key;

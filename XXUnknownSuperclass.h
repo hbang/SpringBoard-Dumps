@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIQuietModePlayability.h"
 
 
@@ -166,6 +166,7 @@
 @interface XXUnknownSuperclass (SpringBoardAdditions)
 - (void)_printLayer:(id)layer level:(int)level;
 - (BOOL)hasActiveKeyboardOnScreen;
+- (void)sb_removeAllSubviews;
 - (id)sb_snapshotImage;
 - (void)sbs_printLayerHierarchy;
 @end
@@ -183,10 +184,10 @@
 @end
 
 @interface XXUnknownSuperclass (SpringBoard)
-- (void)sb_each:(id)each;
-- (id)sb_filter:(id)filter;
-- (id)sb_firstObjectPassingTest:(id)test;
-- (id)sb_map:(id)map;
+- (void)sbf_each:(id)each;
+- (id)sbf_filter:(id)filter;
+- (id)sbf_firstObjectPassingTest:(id)test;
+- (id)sbf_map:(id)map;
 @end
 
 @interface XXUnknownSuperclass (SBMutableArrayQueueAdditions)

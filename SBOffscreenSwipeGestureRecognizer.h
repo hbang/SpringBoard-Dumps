@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBPanGestureRecognizer.h"
 #import "_UIScreenEdgePanRecognizerDelegate.h"
+#import "SBPanGestureRecognizer.h"
 
 
 __attribute__((visibility("hidden")))

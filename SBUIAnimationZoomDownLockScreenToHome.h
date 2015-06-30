@@ -12,12 +12,11 @@ __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomDownLockScreenToHome : SBUIAnimationZoomDownAppToHome {
 	SBLockScreenViewController *_lockScreenViewController;
 	SBLockToAppStatusBarAnimator *_statusBarAnimator;
-	SBCenterAppIconZoomAnimator *_zoomAnimator;
+	SBIconAnimator *_iconAnimator;
 }
 - (id)initWithLockScreenViewController:(id)lockScreenViewController;
 - (void)_prepareAnimation;
 - (BOOL)_shouldTakeActivationAssertionForDeactivatingApp;
-- (id)_zoomSettings;
 - (void)animateZoomWithCompletion:(id)completion;
 - (void)cleanupZoom;
 - (void)dealloc;

@@ -10,7 +10,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomDownAppToHome : SBUIAnimationZoomDownApp {
-	SBIconZoomAnimator *_zoomAnimator;
+	SBIconAnimator *_iconAnimator;
 }
 - (BOOL)_shouldUpdateStatusBarOnContentRestore;
 - (void)animateZoomWithCompletion:(id)completion;

@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBWallpaperObserver.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBWallpaperObserver.h"
 #import "_SBFakeBlurObserver.h"
 
 @protocol _SBFakeBlur;

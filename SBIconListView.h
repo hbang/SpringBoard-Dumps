@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBIconListLayoutDelegate;
 
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_sendLayoutDelegateLayoutInvalidated;
 - (void)_sendLayoutDelegateWouldHaveMovedIcon:(id)icon;
 - (void)_updateEditingStateForIcons:(id)icons animated:(BOOL)animated;
+- (CGPoint)_wallpaperRelativeIconCenterForIconImageCenter:(CGPoint)iconImageCenter;
 - (CGPoint)_wallpaperRelativeIconCenterForIconView:(id)iconView;
 - (Class)baseIconViewClass;
 - (float)bottomIconInset;

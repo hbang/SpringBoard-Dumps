@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBStarkLauncher.h"
 #import "SBStarkTouchLauncherObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
 @protocol SBStarkAutoHideControlBarDelegate;

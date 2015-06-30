@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBDisplayProtocol.h"
 #import "SBScreenObserver.h"
 #import "SBWindowContextManagerDelegate.h"
@@ -81,6 +81,7 @@ __attribute__((visibility("hidden")))
 	BOOL _defaultStatusBarHidden;
 	BOOL _statusBarIsLegacy;
 	int _defaultWallpaperStyle;
+	BOOL _canChangeWallpaperStyle;
 	unsigned _defaultInterfaceOrientation : 8;
 	unsigned _defaultInterfaceOrientationOverride : 8;
 	unsigned _interfaceOrientationOverrideSet : 1;
@@ -486,7 +487,7 @@ __attribute__((visibility("hidden")))
 - (void)setUsesBackgroundNetwork:(BOOL)network;
 - (void)setUsesEdgeNetwork:(BOOL)network;
 - (void)setUsesWiFiNetwork:(BOOL)network;
-- (void)setWallpaperStyleForBackgroundStyle:(int)backgroundStyle;
+- (BOOL)setWallpaperStyleForBackgroundStyle:(int)backgroundStyle;
 - (BOOL)shouldAutoLaunchOnBootOrInstall;
 - (BOOL)shouldAutoRelaunchAfterExit;
 - (BOOL)shouldLaunchPNGless;

@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 	UIView *_slideToUnlockSpringView;
 	_UILegibilityLabel *_slideToUnlockLegibilityLabel;
 	BOOL _isShakingSlideToUnlockText;
+	BOOL _isAnimatingSlideToUnlockText;
 	SBWallpaperEffectView *_slideToUnlockBackgroundView;
 	SBWallpaperEffectView *_topGrabberBackgroundView;
 	SBWallpaperEffectView *_bottomGrabberBackgroundView;
@@ -82,6 +83,7 @@ __attribute__((visibility("hidden")))
 	UIView *_whiteUnderlayView;
 	SBFakeStatusBarView *_fakePasscodeStatusBarView;
 	SBFakeStatusBarView *_fakeLockStatusBarView;
+	SBFakeStatusBarView *_fakeStatusBarWithTimeView;
 	SBDisableAppStatusBarAlphaChangesAssertion *_statusBarAssertion;
 	SBSlideToUnlockFailureRecognizer *_slideToUnlockFailureRecognizer;
 	int _slideToUnlockFailureGestureToken;
@@ -174,6 +176,8 @@ __attribute__((visibility("hidden")))
 - (void)_setScrollingEnabled:(BOOL)enabled;
 - (void)_shakeSlideToUnlockAnimationEnded;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
+- (BOOL)_shouldCrossfadeStatusBars;
+- (BOOL)_shouldCrossfadeStatusBarsForLegibility;
 - (void)_showFakeWallpaperBlurWithAlpha:(float)alpha;
 - (void)_slideToUnlockFailureGestureRecognizerChanged;
 - (float)_topGrabberYOriginForPercentScrolled:(float)percentScrolled;
@@ -200,6 +204,8 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (void)glintyAnimationDidStart;
 - (void)glintyAnimationDidStop;
+- (void)glintyFadeInAnimationDidStop;
+- (void)glintyFadeOutAnimationDidStop;
 - (BOOL)hasTransparentUnderlay;
 - (void)invalidateGrabberOrigins;
 - (BOOL)isBottomGrabberHidden;
@@ -243,6 +249,8 @@ __attribute__((visibility("hidden")))
 - (void)shakeSlideToUnlockTextWithCustomText:(id)customText;
 - (void)slideForegroundVerticallyBy:(float)by;
 - (void)startAnimating;
+- (void)startAnimatingDelayFinished;
+- (void)startAnimatingWithDelay:(BOOL)delay;
 - (void)stopAnimating;
 - (void)willMoveToWindow:(id)window;
 @end

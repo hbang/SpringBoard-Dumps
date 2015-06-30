@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBUIRemoteAlertHostInterface.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIRemoteAlertHostInterface.h"
 
 @protocol _SBRemoteAlertHostViewControllerDelegate;
 

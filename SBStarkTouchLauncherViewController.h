@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
+#import "SBStarkLauncherViewController.h"
 #import "UICollectionViewDataSource.h"
 #import "UICollectionViewDelegate.h"
 #import "SBStarkIconCellDelegate.h"
 #import "SBStarkLauncherLayoutDelegate.h"
-#import "SBStarkLauncherViewController.h"
+#import "SpringBoard-Structs.h"
 
 @protocol SBStarkTouchLauncherObserver;
 

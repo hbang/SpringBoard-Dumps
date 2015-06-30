@@ -11,10 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface SBRootSettings : XXUnknownSuperclass {
 	BOOL _preventLockover;
-	BOOL _slowSpringAnimations;
 	SBAppParallaxSettings *_parallaxSettings;
 	SBFolderSettings *_folderSettings;
-	SBRootZoomSettings *_rootZoomSettings;
+	SBRootAnimationSettings *_rootAnimationSettings;
 	SBControlCenterSettings *_controlCenterSettings;
 	SBAppSliderSettings *_appSliderSettings;
 	SBLockScreenSettings *_lockScreenSettings;
@@ -26,9 +25,11 @@ __attribute__((visibility("hidden")))
 	SBNotificationCenterSettings *_notificationCenterSettings;
 	SBLegibilitySettings *_legibilitySettings;
 	SBFWallpaperSettings *_wallpaperSettings;
+	SBFAnimationFactorySettings *_animationSettings;
 	NSString *_testRecipeClassName;
 }
 @property(retain) SBAlertItemsSettings *alertItemsSettings;
+@property(retain) SBFAnimationFactorySettings *animationSettings;
 @property(retain) SBAppSliderSettings *appSliderSettings;
 @property(retain) SBCarDisplaySettings *carDisplaySettings;
 @property(retain) SBControlCenterSettings *controlCenterSettings;
@@ -41,11 +42,11 @@ __attribute__((visibility("hidden")))
 @property(retain) SBNotificationCenterSettings *notificationCenterSettings;
 @property(retain) SBAppParallaxSettings *parallaxSettings;
 @property(assign) BOOL preventLockover;
-@property(retain) SBRootZoomSettings *rootZoomSettings;
-@property(assign) BOOL slowSpringAnimations;
+@property(retain) SBRootAnimationSettings *rootAnimationSettings;
 @property(retain) NSString *testRecipeClassName;
 @property(retain) SBFWallpaperSettings *wallpaperSettings;
 + (id)settingsControllerModule;
+- (BOOL)_hasPreviousSettings;
 - (void)setDefaultValues;
 @end
 

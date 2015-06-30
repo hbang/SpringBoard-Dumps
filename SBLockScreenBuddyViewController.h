@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBLockOverlayViewController.h"
 #import "SBLockScreenBuddyViewDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBLockOverlayViewController.h"
 
 
 __attribute__((visibility("hidden")))
@@ -43,8 +43,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *telephonyPrimaryLanguage;
 @property(copy, nonatomic) NSString *wifiPrimaryLanguage;
 - (id)initWithLockScreenViewController:(id)lockScreenViewController;
-- (void)_backlightDidDim:(id)_backlight;
-- (void)_backlightDidTurnOn:(id)_backlight;
 - (void)_closeWifiConnection;
 - (id)_currentLanguageIdentifier;
 - (id)_currentStringsDictionary;
@@ -59,7 +57,6 @@ __attribute__((visibility("hidden")))
 - (void)_startCyclingLocalizedStrings;
 - (void)_startCyclingLocalizedStringsWithDelay:(double)delay;
 - (void)_startWifiScan;
-- (void)_stopCyclingLocalizedStrings;
 - (void)_toggleShowsIMEIandICCID:(id)iccid;
 - (void)_transitionFromFakeBootLogoToWelcomeStrings;
 - (void)_updateDisplayedStrings;
@@ -70,6 +67,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)handleTapGestureFromView:(id)view;
 - (void)loadView;
+- (void)setInScreenOffMode:(BOOL)screenOffMode;
+- (void)stopCyclingLocalizedStrings;
 - (void)viewDidAppear:(BOOL)view;
 - (void)viewDidDisappear:(BOOL)view;
 - (void)viewWillAppear:(BOOL)view;

@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import "NSObject.h"
+#import "SBStatusBarStateProvider.h"
 
 
-@protocol SBIconZoomAnimatorDelegate <NSObject>
-- (void)iconZoomAnimatorWasInvalidated:(id)invalidated;
+__attribute__((visibility("hidden")))
+@interface SBLockScreenFakeStatusBarStateProvider : SBStatusBarStateProvider {
+}
 @end
 

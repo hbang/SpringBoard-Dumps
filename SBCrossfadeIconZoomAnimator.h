@@ -17,15 +17,15 @@ __attribute__((visibility("hidden")))
 }
 @property(assign, nonatomic) BOOL masksCorners;
 @property(assign, nonatomic) BOOL performsTrueCrossfade;
-@property(retain, nonatomic) SBCrossfadeZoomSettings *zoomSettings;
+@property(retain, nonatomic) SBCrossfadeZoomSettings *settings;
 - (id)initWithFolderController:(id)folderController crossfadeView:(id)view icon:(id)icon;
-- (void)_animateToZoomFraction:(float)zoomFraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
+- (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (void)_assertCrossfadeViewSizeIfNecessary;
-- (void)_cleanupZoom;
+- (void)_cleanupAnimation;
 - (void)_delayedForRotation;
 - (unsigned)_numberOfSignificantAnimations;
-- (void)_prepareZoom;
-- (void)_setZoomFraction:(float)fraction;
+- (void)_prepareAnimation;
+- (void)_setAnimationFraction:(float)fraction;
 - (CGRect)_zoomedFrame;
 - (CGPoint)_zoomedIconCenter;
 - (void)dealloc;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SBAlertManagerDelegate.h"
 #import "SBAlertManagerObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIStatusBarStyleDelegate.h"
 
 @protocol SBStarkScreenControllerDelegate, SBDisplayProtocol;

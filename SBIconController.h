@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "MCProfileConnectionObserver.h"
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationRestrictionObserver.h"
 #import "SBFolderControllerDelegate.h"
 #import "SBSearchGestureObserver.h"
@@ -67,11 +67,11 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)init;
 - (void)_addToFolderAnimation:(id)folderAnimation didFinish:(id)finish context:(id)context;
-- (void)_animateFolder:(id)folder open:(BOOL)open animated:(BOOL)animated;
+- (void)_animateFolder:(id)folder open:(BOOL)open animated:(BOOL)animated withCompletion:(id)completion;
 - (BOOL)_badgesAreDisabledForSectionInfo:(id)sectionInfo;
 - (void)_cancelFolderSpringloadTimer;
 - (void)_cleanupForClosingFolderAnimated:(BOOL)closingFolderAnimated;
-- (void)_closeFolderController:(id)controller animated:(BOOL)animated;
+- (void)_closeFolderController:(id)controller animated:(BOOL)animated withCompletion:(id)completion;
 - (void)_compactRootListsAfterFolderCloseWithAnimation:(BOOL)animation;
 - (CGRect)_contentViewRelativeFrameForIcon:(id)icon;
 - (id)_currentFolderController;
@@ -128,6 +128,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canUninstallIcon:(id)icon;
 - (void)clearHighlightedIcon;
 - (void)closeFolderAnimated:(BOOL)animated;
+- (void)closeFolderAnimated:(BOOL)animated withCompletion:(id)completion;
 - (void)compactFolders:(id)folders;
 - (void)compactIconsInIconListsInFolder:(id)folder moveNow:(BOOL)now limitToIconList:(id)iconList;
 - (void)compactRootIconLists;

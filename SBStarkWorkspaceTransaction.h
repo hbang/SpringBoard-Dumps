@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBWorkspaceTransaction.h"
 #import "SBAlertManagerObserver.h"
+#import "SBWorkspaceTransaction.h"
 
 
 __attribute__((visibility("hidden")))

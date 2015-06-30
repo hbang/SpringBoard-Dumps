@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SBAppSliderIconControllerDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBAppSliderScrollingViewDelegate.h"
 #import "SBVolumePressBandit.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBAppSliderControllerDelegate, OS_dispatch_queue;
 

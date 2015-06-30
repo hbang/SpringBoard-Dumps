@@ -5,6 +5,7 @@
  * Source: (null)
  */
 
+#import "SBLockScreenViewControllerBase.h"
 #import "SBLockScreenViewDelegate.h"
 #import "SBLockScreenTimerViewControllerDelegate.h"
 #import "SBLockScreenNotificationListDelegate.h"
@@ -14,7 +15,6 @@
 #import "SBLockScreenCameraControllerDelegate.h"
 #import "SBLockScreenPluginControllerDelegate.h"
 #import "SBWallpaperObserver.h"
-#import "SBLockScreenViewControllerBase.h"
 #import "SpringBoard-Structs.h"
 
 
@@ -272,6 +272,7 @@ __attribute__((visibility("hidden")))
 - (void)wallpaperLegibilitySettingsDidChange:(id)wallpaperLegibilitySettings forVariant:(int)variant;
 - (BOOL)wantsPasscodeLockForUIUnlockFromSource:(int)source withOptions:(id)options;
 - (BOOL)wantsToHandleAlert:(id)handleAlert;
+- (BOOL)wantsToShowStatusBarTime;
 - (BOOL)wasAutoUnlocked;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;

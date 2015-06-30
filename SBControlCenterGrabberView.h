@@ -6,8 +6,8 @@
  */
 
 #import "SBUIControlCenterControlObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBControlCenterObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 
 

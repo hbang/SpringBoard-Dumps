@@ -6,8 +6,8 @@
  */
 
 #import "RadiosPreferencesDelegate.h"
-#import "SBUIControlCenterButtonDelegate.h"
 #import "SBControlCenterSectionViewController.h"
+#import "SBUIControlCenterButtonDelegate.h"
 #import "SpringBoard-Structs.h"
 
 
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)_tearDownMute;
 - (void)_tearDownOrientationLock;
 - (void)_tearDownWifi;
-- (void)_updateBluetoothButtonState;
+- (void)_updateBluetoothState;
 - (void)_updateMuteButtonState;
 - (void)_updateOrientationLockButtonState;
 - (void)_updateWifiButtonState;

@@ -5,14 +5,14 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "SBUIActiveOrientationObserver.h"
 #import "SBAppSliderControllerDelegate.h"
 #import "SBScreenConnectionHandler.h"
 #import "SBWallpaperObserver.h"
 #import "_UISettingsKeyObserver.h"
 #import "UIWindowDelegate.h"
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

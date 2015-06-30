@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBFWallpaperViewLegibilityObserver.h"
 #import "SBFWallpaperViewInternalObserver.h"
 #import "SBUIActiveOrientationObserver.h"
 #import "UIWindowDelegate.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -46,6 +46,8 @@ __attribute__((visibility("hidden")))
 	BOOL _isSuspendingMotionEffectsForBlur;
 	SBWallpaperPreviewSnapshotCache *_previewCache;
 	int _activeOrientationSource;
+	BOOL _coalescingGeometryChanges;
+	int _locationsWithCoalescedGeometryChanges;
 	float _homescreenWallpaperScale;
 	float _lockscreenWallpaperScale;
 }
@@ -58,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)_accessibilityEnhanceBackgroundContrastChanged:(id)changed;
 - (void)_beginDisallowRasterizationBlock;
 - (void)_beginSuspendingMotionEffectsForBlurIfNeeded;
+- (id)_blurImageObservableForBlurView:(id)blurView sourceView:(id)view;
 - (id)_blurViewsForVariant:(int)variant;
 - (void)_clearHomescreenLightForegroundBlurColor;
 - (void)_clearWallpaperEffectView:(id *)view;
@@ -93,7 +96,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateScreenBlanked;
 - (void)_updateSeparateWallpaper;
 - (void)_updateSharedWallpaper;
-- (void)_updateWallpaperForLocations:(int)locations updatePreviews:(BOOL)previews withCompletion:(id)completion;
 - (void)_updateWallpaperForLocations:(int)locations withCompletion:(id)completion;
 - (void)_updateWallpaperHidden;
 - (id)_wallpaperViewForVariant:(int)variant;

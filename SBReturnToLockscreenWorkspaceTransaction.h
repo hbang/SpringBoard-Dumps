@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBActivateAppUnderLockScreenWorkspaceTransaction.h"
 #import "SBUIAnimationControllerDelegate.h"
+#import "SBActivateAppUnderLockScreenWorkspaceTransaction.h"
 
 
 __attribute__((visibility("hidden")))

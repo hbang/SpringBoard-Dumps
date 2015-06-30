@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_allowsShowTransition;
 - (void)_beginPresentation;
 - (float)_controlCenterHeightForTouchLocation:(CGPoint)touchLocation;
-- (id)_createDynamicAnimationForShow:(BOOL)show currentValue:(double)value velocity:(double)velocity;
+- (id)_createDynamicAnimationForShow:(BOOL)show currentValue:(double)value velocity:(double)velocity unitSize:(double)size;
 - (void)_dismissOnLock;
 - (void)_dismissWithDuration:(double)duration additionalAnimations:(id)animations completion:(id)completion;
 - (void)_endPresentation;

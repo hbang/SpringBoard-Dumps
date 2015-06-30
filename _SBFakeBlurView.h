@@ -22,7 +22,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) int variant;
 + (id)_imageForStyle:(inout int *)style withSource:(id)source;
 - (id)initWithVariant:(int)variant;
+- (void)_setImage:(id)image style:(int)style notify:(BOOL)notify;
 - (void)_updateImageWithSource:(id)source notifyObserver:(BOOL)observer;
+- (id)blurImageWithSource:(id)source;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (int)effectiveStyle;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)reconfigureWithSource:(id)source;
 - (void)requestStyle:(int)style;
 - (void)rotateToInterfaceOrientation:(int)interfaceOrientation;
+- (void)setBlurImage:(id)image;
 - (void)updateImageWithSource:(id)source;
 - (void)willMoveToWindow:(id)window;
 @end

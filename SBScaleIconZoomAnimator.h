@@ -20,20 +20,20 @@ __attribute__((visibility("hidden")))
 	SBIcon *_targetIcon;
 	float _zoomScale;
 }
+@property(retain, nonatomic) SBScaleZoomSettings *settings;
 @property(readonly, assign, nonatomic) SBIcon *targetIcon;
 @property(readonly, assign, nonatomic) SBIconView *targetIconView;
 @property(readonly, assign, nonatomic) float zoomScale;
-@property(retain, nonatomic) SBScaleZoomSettings *zoomSettings;
 - (id)initWithFolderController:(id)folderController targetIcon:(id)icon;
-- (void)_animateToZoomFraction:(float)zoomFraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
+- (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (void)_applyOuterFadeFraction:(float)fraction;
 - (void)_applyZoomFraction:(float)fraction;
 - (void)_calculateIconScootch;
-- (void)_cleanupZoom;
+- (void)_cleanupAnimation;
 - (unsigned)_numberOfSignificantAnimations;
-- (void)_prepareZoom;
+- (void)_prepareAnimation;
 - (CGPoint)_scootchForIcon:(id)icon inDock:(BOOL)dock;
-- (void)_setZoomFraction:(float)fraction;
+- (void)_setAnimationFraction:(float)fraction;
 - (CGRect)_zoomedFrame;
 - (CGPoint)_zoomedIconCenter;
 - (float)_zoomedVisualAltitude;
