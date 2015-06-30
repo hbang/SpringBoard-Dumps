@@ -6,10 +6,10 @@
  */
 
 #import "SBIconProgressViewDelegate.h"
-#import "SpringBoard-Structs.h"
 #import "SBReusableView.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "SBIconObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

@@ -108,6 +108,8 @@ __attribute__((visibility("hidden")))
 - (double)_accessibilityDeactivationAnimationStartDelay;
 - (void)_accessibilityDeactivationAnimationWillBegin;
 - (id)_accessibilityFrontMostApplication;
+- (BOOL)_accessibilityIsSystemGestureActive;
+- (BOOL)_accessibilityObjectWithinProximity;
 - (id)_accessibilityRunningApplications;
 - (void)_accessibilitySetSystemGesturesDisabledByAccessibility:(BOOL)accessibility;
 - (BOOL)_accessibilityShouldAllowAppLaunch;
@@ -125,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)_cleanUpLaunchTestState;
 - (void)_clearPreheatedLockAudio;
 - (BOOL)_computeVolumeButtonsHavePrecedence;
+- (void)_createLogFile;
 - (int)_currentNonFlatDeviceOrientation;
 - (void)_daylightSavingsTimeChanged;
 - (void)_deactivateReachability;
@@ -307,7 +310,6 @@ __attribute__((visibility("hidden")))
 - (id)menuButtonInterceptApp;
 - (BOOL)menuButtonInterceptAppEnabledForever;
 - (void)menuButtonUp:(GSEventRef)up;
-- (void)monitorForPurpleServerTermination;
 - (void)noteAlertView:(id)view willChangeInterfaceOrientation:(int)orientation duration:(double)duration;
 - (void)noteBacklightControllerUndimming:(id)undimming;
 - (void)noteBacklightFadeFinished;
@@ -394,5 +396,6 @@ __attribute__((visibility("hidden")))
 - (void)willDisplayMiniAlert;
 - (double)windowRotationDuration;
 - (void)wipeDeviceNow;
+- (void)writeLogFile;
 @end
 

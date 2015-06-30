@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBWidgetViewController.h"
 #import "_SBUIWidgetHost.h"
+#import "SBWidgetViewController.h"
 
 
 __attribute__((visibility("hidden")))

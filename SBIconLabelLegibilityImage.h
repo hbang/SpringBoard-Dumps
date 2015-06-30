@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "SBCountedMapValue.h"
 
 
@@ -30,5 +30,6 @@ __attribute__((visibility("hidden")))
 - (id)_initWithCGImage:(CGImageRef)cgimage scale:(float)scale orientation:(int)orientation parameters:(id)parameters;
 - (id)countedMapKey;
 - (void)dealloc;
+- (BOOL)isIconLabelLegibilityImage;
 @end
 

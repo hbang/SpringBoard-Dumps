@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBLockScreenBuddyViewDelegate.h"
 #import "SBLockOverlayViewController.h"
+#import "SBLockScreenBuddyViewDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 	BOOL _needsTransitionFromFakeLogoToWelcomeStrings;
 	BOOL _cyclingLabels;
 	BOOL _viewVisible;
+	WiFiManagerClient *_wifiManager;
+	WiFiDeviceClient *_wifiDevice;
 	BOOL _showingBootLogo;
 	BOOL _startsWithBlackBackground;
 	BOOL _hasResultsFromWifiScan;

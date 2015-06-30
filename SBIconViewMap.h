@@ -6,9 +6,9 @@
  */
 
 #import "SBIconViewObserver.h"
-#import "SBReusableViewMap.h"
 #import "SBIconObserver.h"
 #import "SBIconIndexNodeObserver.h"
+#import "SBReusableViewMap.h"
 
 @protocol SBIconViewDelegate, SBIconViewMapDelegate;
 

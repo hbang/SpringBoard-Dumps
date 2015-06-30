@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "_NCWidgetController_Host_IPC.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "NSXPCListenerDelegate.h"
-#import "_NCWidgetController_Host_IPC.h"
 
 
 __attribute__((visibility("hidden")))

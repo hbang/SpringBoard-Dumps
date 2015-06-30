@@ -5,16 +5,15 @@
  * Source: (null)
  */
 
+#import "SBStatusBarStateProvider.h"
 #import "SpringBoard-Structs.h"
 #import "UIStatusBarStateObserver.h"
-#import "SBStatusBarStateProvider.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBMainStatusBarStateProvider : SBStatusBarStateProvider <UIStatusBarStateObserver> {
 	BOOL _overridePercent;
 	BOOL _killActivity;
-	BOOL _simulateInCallStatusBar;
 	BOOL _itemIsDisabled[26];
 	BOOL _itemWasDisabled[26];
 	BOOL _timeEnabled;
@@ -30,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_composePostDataFromAggregatorData:(XXStruct_gly1hD *)aggregatorData;
 - (BOOL)_shouldPostForVisitedItem:(int)visitedItem withUpdates:(BOOL)updates toAggregatorData:(const XXStruct_gly1hD *)aggregatorData;
-- (void)_toggleSimulatesInCallStatusBar;
 - (void)_updateDisabledItems;
 - (void)dealloc;
 - (void)enableTime:(BOOL)time;

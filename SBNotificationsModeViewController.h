@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBBulletinObserverViewController.h"
 #import "SpringBoard-Structs.h"
+#import "SBBulletinObserverViewController.h"
 
 @protocol SBBulletinActionHandler;
 

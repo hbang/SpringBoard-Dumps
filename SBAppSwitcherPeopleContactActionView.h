@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAppSwitcherPeopleButtonAndLabelView.h"
 #import "SpringBoard-Structs.h"
+#import "SBAppSwitcherPeopleButtonAndLabelView.h"
 
 
 __attribute__((visibility("hidden")))

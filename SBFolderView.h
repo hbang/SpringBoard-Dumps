@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "UIGestureRecognizerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBIconListPageControlDelegate.h"
 #import "UITextFieldDelegate.h"
+#import "SBIconListPageControlDelegate.h"
 #import "SBIconScrollViewDelegate.h"
-#import "SpringBoard-Structs.h"
 
 @protocol SBFolderViewDelegate;
 

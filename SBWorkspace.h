@@ -6,18 +6,18 @@
  */
 
 #import "BSTransactionObserver.h"
-#import "SpringBoard-Structs.h"
 #import "SBAlertManagerDelegate.h"
 #import "SBAlertManagerObserver.h"
 #import "SBStarkScreenManagerObserver.h"
 #import "SBStarkScreenControllerObserver.h"
+#import "SpringBoard-Structs.h"
 #import "SBReachabilityObserver.h"
 #import "FBSystemServiceDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "FBProcessManagerObserver.h"
 #import "FBApplicationProcessObserver.h"
 #import "BSWatchdogDelegate.h"
 #import "FBSceneManagerObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

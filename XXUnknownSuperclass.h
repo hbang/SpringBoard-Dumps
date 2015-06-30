@@ -8,8 +8,8 @@
 #import "SpringBoard-Structs.h"
 #import "SBSearchText.h"
 #import "SBAppSwitcherCacheVended.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIQuietModePlayability.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 @interface XXUnknownSuperclass (AppSwitcherCacheVendedCompliance) <SBAppSwitcherCacheVended>
@@ -148,6 +148,10 @@
 - (unsigned)sbIconIndex;
 - (unsigned)sbListIndex;
 - (id)subpathFromPosition:(unsigned)position;
+@end
+
+@interface XXUnknownSuperclass (SBIconLabelLegibilityImage)
+- (BOOL)isIconLabelLegibilityImage;
 @end
 
 @interface XXUnknownSuperclass (WidgetsSettings)

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedController;
 - (id)init;
 - (void)_cachePassword:(id)password;
+- (void)_keybagLockStateChangedTo:(int)to;
 - (void)_lockStateChangedFrom:(int)from to:(int)to;
 - (BOOL)_shouldLockDeviceNow;
 - (BOOL)_shouldSuppressLockOnInit;

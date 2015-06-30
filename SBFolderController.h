@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBFolderViewDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBFolderViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBFolderControllerDelegate.h"
 #import "SBFolderObserver.h"
 

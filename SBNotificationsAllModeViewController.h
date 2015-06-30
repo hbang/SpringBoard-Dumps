@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBNotificationsModeViewController.h"
-#import "UIGestureRecognizerDelegatePrivate.h"
 #import "SpringBoard-Structs.h"
+#import "UIGestureRecognizerDelegatePrivate.h"
+#import "SBNotificationsModeViewController.h"
 
 
 __attribute__((visibility("hidden")))

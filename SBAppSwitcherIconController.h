@@ -7,8 +7,8 @@
 
 #import "UIScrollViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 #import "SBIconViewDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "SBIconViewMapDelegate.h"
 
 @protocol SBAppSwitcherIconControllerDelegate;

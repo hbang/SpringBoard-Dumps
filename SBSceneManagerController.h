@@ -9,9 +9,9 @@
 #import "FBWorkspaceDelegate.h"
 #import "FBDisplayManagerObserver.h"
 #import "SBSceneManagerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "FBProcessManagerObserver.h"
 #import "FBSceneManagerObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

@@ -6,8 +6,8 @@
  */
 
 #import "SBSIMLockEntryViewInterface.h"
-#import "SpringBoard-Structs.h"
 #import "SBUIPasscodeLockViewDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "SBPasscodeEntryAlertView.h"
 
 

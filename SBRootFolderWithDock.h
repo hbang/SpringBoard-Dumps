@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconIndexNodeObserver.h"
 #import "SBRootFolder.h"
+#import "SBIconIndexNodeObserver.h"
 
 
 __attribute__((visibility("hidden")))

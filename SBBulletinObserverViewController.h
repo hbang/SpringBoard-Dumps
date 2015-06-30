@@ -7,9 +7,9 @@
 
 #import "SBNotificationCenterWidgetHost.h"
 #import "SBModeViewControllerContentProviding.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "BBObserverDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUISizeObservingViewDelegate.h"
 #import "SBBulletinViewControllerDelegate.h"
 #import "SBWidgetViewControllerDelegate.h"

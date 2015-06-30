@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBStatusBarStateProvider.h"
+#import "SpringBoard-Structs.h"
 #import "SBStarkScreenManagerObserver.h"
 
 

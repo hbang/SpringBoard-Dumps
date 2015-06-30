@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UITableViewDelegate.h"
 #import "UITableViewDataSource.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

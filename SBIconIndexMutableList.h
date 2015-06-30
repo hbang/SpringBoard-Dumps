@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBIconIndexNodeObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconIndexNodeObserver.h"
 #import "NSFastEnumeration.h"
 
 @protocol SBIconIndexMutableListObserver;

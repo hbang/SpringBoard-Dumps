@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexNode.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexMutableListObserver.h"
 #import "SBIconListModelObserver.h"
 

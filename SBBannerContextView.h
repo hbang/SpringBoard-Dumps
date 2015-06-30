@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerView.h"
 #import "SBVibrantBannerView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

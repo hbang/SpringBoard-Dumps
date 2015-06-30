@@ -13,10 +13,11 @@ __attribute__((visibility("hidden")))
 @interface SBWorkStore : XXUnknownSuperclass {
 	NSMutableDictionary *_workItemsPerKey;
 	NSMutableArray *_keysWithWork;
-	NSMutableArray *_observers;
-	NSObject<OS_dispatch_queue> *_dispatchQueue;
-	unsigned _maxWorkPerKey;
 	NSMutableDictionary *_workExpirationPeriods;
+	NSObject<OS_dispatch_queue> *_workQueue;
+	unsigned _maxWorkPerKey;
+	NSMutableArray *_observers;
+	NSObject<OS_dispatch_queue> *_observerQueue;
 	double _defaultWorkExpirationPeriod;
 }
 @property(assign, nonatomic) double defaultWorkExpirationPeriod;
@@ -26,10 +27,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) NSMutableDictionary *workItemsPerKey;
 - (id)initWithMaximumNumberOfWorkItemsPerKey:(unsigned)workItemsPerKey;
 - (void)_notifyObserversWorkDidChange;
-- (void)_queue_expireWorkForKey:(id)key;
+- (void)_workQueue_expireWorkForKey:(id)key;
 - (void)addObserver:(id)observer;
 - (void)addWorkItem:(id)item forKey:(id)key;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)dequeueWorkForKey:(id)key;
 - (id)description;
 - (void)purgeWorkForKey:(id)key;

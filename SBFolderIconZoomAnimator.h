@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBScaleIconZoomAnimator.h"
 #import "SpringBoard-Structs.h"
+#import "SBScaleIconZoomAnimator.h"
 
 
 __attribute__((visibility("hidden")))

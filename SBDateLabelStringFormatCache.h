@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBFLockScreenDateFormatter.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBFLockScreenDateFormatter.h"
 
 
 __attribute__((visibility("hidden")))

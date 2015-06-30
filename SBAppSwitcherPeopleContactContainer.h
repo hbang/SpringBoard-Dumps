@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBPeopleScrollViewItemView.h"
 #import "UIActionSheetDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

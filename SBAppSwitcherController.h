@@ -6,9 +6,9 @@
  */
 
 #import "SBVolumePressBandit.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 #import "_UISettingsKeyObserver.h"
+#import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBReachabilityObserver.h"
 #import "SBAppSwitcherIconControllerDelegate.h"
 #import "SBAppSwitcherScrollingViewDelegate.h"

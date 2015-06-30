@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "_SBFakeBlurObserver.h"
+#import "SpringBoard-Structs.h"
 #import "SBWallpaperObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol _SBFakeBlur;
 

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBUIAnimationControllerObserver.h"
 #import "SBWorkspaceTransaction.h"
+#import "SBUIAnimationControllerObserver.h"
 
 
 __attribute__((visibility("hidden")))

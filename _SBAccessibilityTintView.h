@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_SBFakeBlur.h"
 #import "SBWallpaperObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol _SBFakeBlurObserver;
 

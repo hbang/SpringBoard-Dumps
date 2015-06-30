@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBFolderView.h"
 #import "SBSearchGestureObserver.h"
 #import "UIGestureRecognizerDelegate.h"
+#import "SpringBoard-Structs.h"
+#import "SBFolderView.h"
 #import "_UISettingsKeyObserver.h"
 
 

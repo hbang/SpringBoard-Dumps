@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBLockOverlayViewController.h"
 #import "SBUIPasscodeLockViewDelegate.h"
+#import "SBLockOverlayViewController.h"
 
 
 __attribute__((visibility("hidden")))

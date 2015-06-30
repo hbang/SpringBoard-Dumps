@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationRestrictionDataSource.h"
 #import "SBApplicationLifecycleObserver.h"
 #import "FBUIApplicationServiceDelegate.h"
 #import "SBApplicationRestrictionControllerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

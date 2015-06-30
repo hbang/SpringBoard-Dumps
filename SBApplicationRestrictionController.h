@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "MCProfileConnectionObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 @protocol SBApplicationRestrictionDataSource, SBApplicationRestrictionControllerDelegate;
 

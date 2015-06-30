@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBMainScreenApplicationSceneTransactionObserver.h"
 #import "FBSynchronizedTransactionDelegate.h"
 #import "SBStarkWorkspaceTransaction.h"
-#import "SBMainScreenApplicationSceneTransactionObserver.h"
 
 
 __attribute__((visibility("hidden")))

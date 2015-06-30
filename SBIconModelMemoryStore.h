@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconModelStore.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconModelStore.h"
 
 
 __attribute__((visibility("hidden")))

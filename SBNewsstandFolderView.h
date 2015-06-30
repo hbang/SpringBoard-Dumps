@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBFolderView.h"
 #import "SBIconIndexNodeObserver.h"
+#import "SBFolderView.h"
 
 
 __attribute__((visibility("hidden")))

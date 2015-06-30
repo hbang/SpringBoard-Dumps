@@ -6,8 +6,8 @@
  */
 
 #import "UIGestureRecognizerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBiometricEventObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBPresentingDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBControlCenterObserver.h"

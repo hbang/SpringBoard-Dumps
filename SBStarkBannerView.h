@@ -7,9 +7,9 @@
 
 #import "SBStarkBannerItemObserver.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBDateLabelDelegate.h"
 #import "SBUIBannerView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBBulletinDateLabel;
 

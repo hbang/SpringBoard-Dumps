@@ -7,9 +7,9 @@
 
 #import "SpringBoard-Structs.h"
 #import "SBFWallpaperViewLegibilityObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBFWallpaperViewInternalObserver.h"
 #import "SBUIActiveOrientationObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIWindowDelegate.h"
 
 

@@ -11,11 +11,11 @@
 #import "UITableViewDelegate.h"
 #import "UITableViewDataSource.h"
 #import "SPSearchAgentDelegate.h"
-#import "SpringBoard-Structs.h"
 #import "UIGestureRecognizerDelegate.h"
 #import "UISearchBarDelegate.h"
 #import "SBSearchResultsActionManagerDelegate.h"
 #import "UINavigationControllerDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "SBReachabilityObserver.h"
 #import "SBSearchHeaderDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library

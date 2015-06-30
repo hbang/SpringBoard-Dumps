@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "_SBFVibrantView.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBResponderTouchDelegate;
 

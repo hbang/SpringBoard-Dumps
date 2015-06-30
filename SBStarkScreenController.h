@@ -7,11 +7,11 @@
 
 #import "UIStatusBarStyleDelegate.h"
 #import "FBWindowContextManagerObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "AVExternalDeviceDelegate.h"
+#import "_UISettingsKeyObserver.h"
 #import "SBStarkIconControllerDelegate.h"
 #import "SpringBoard-Structs.h"
-#import "_UISettingsKeyObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBAlertManagerDelegate.h"
 #import "SBAlertManagerObserver.h"
 #import "FBWindowContextManagerDelegate.h"

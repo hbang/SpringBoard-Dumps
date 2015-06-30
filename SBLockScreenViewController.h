@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBWallpaperObserver.h"
+#import "SpringBoard-Structs.h"
 #import "SBLockScreenViewControllerBase.h"
 #import "SBLockScreenViewDelegate.h"
 #import "SBLockScreenTimerViewControllerDelegate.h"

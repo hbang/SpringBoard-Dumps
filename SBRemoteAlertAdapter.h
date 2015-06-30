@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "_SBRemoteAlertHostViewControllerDelegate.h"
 #import "SBAlertAdapter.h"
+#import "_SBRemoteAlertHostViewControllerDelegate.h"
 
 
 __attribute__((visibility("hidden")))

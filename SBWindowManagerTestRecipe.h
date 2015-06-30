@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "FBApplicationProcessObserver.h"
 #import "SBTestRecipe.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "UIGestureRecognizerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBCoordinatedPresenting.h"
-#import "_UISettingsKeyObserver.h"
 #import "SpringBoard-Structs.h"
+#import "UIGestureRecognizerDelegate.h"
+#import "SBCoordinatedPresenting.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "_UISettingsKeyObserver.h"
 #import "SBReachabilityObserver.h"
 #import "SBBulletinWindowClient.h"
 #import "SBNotificationCenterViewControllerDelegate.h"
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 	BOOL _didCoalesceWidgetsConnections;
 	NSTimer *_widgetConnectionsTimer;
 	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
+	NCLaunchStats *_launchStats;
 	NSMutableSet *_bulletinWindowClients;
 }
 @property(readonly, assign, nonatomic, getter=isAvailableWhileLocked) BOOL availableWhileLocked;
@@ -78,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleActionContextRequiringAuthentication:(id)authentication;
 - (void)_handleActionContextRequiringUIUnlock:(id)unlock;
 - (BOOL)_handleActionOrRequestWithDefaultAction:(id)defaultAction lockedAction:(id)action;
+- (void)_handleWidgetLaunchRecommendation:(id)recommendation completion:(id)completion;
 - (void)_insertCoveredContentSnapshotIfNecessary:(id)necessary;
 - (void)_invalidateCoveredContentSnapshot;
 - (BOOL)_isNotificationCenterViewAvailableWhileLockedWithProfileBlock:(id)profileBlock counterpartBlock:(id)block;

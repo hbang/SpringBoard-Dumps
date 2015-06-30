@@ -7,8 +7,8 @@
 
 #import "SBVolumePressBandit.h"
 #import "SBAssertionDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SpringBoard-Structs.h"
 

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBIcon.h"
 #import "SBFolderObserver.h"
 #import "SBIconObserver.h"
 #import "SBIconIndexNodeObserver.h"
+#import "SBIcon.h"
 
 
 __attribute__((visibility("hidden")))
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)containedNodeIdentifiers;
 - (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
-- (id)displayName;
+- (id)displayNameForLocation:(int)location;
 - (id)folder;
 - (void)folder:(id)folder didAddList:(id)list;
 - (void)folder:(id)folder didRemoveLists:(id)lists atIndexes:(id)indexes;

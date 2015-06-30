@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "UIScrollViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
 @protocol SBAppSwitcherScrollingViewDelegate;
 

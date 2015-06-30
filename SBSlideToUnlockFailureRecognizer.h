@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "_UISettingsKeyObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "_UISettingsKeyObserver.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))

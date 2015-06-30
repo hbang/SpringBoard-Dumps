@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "SBStatusBarStateAggregatorPosting.h"
 #import "UIStatusBarStateProvider.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

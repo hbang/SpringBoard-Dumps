@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBLeafIconDataSource.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationRestrictionObserver.h"
-#import "SpringBoard-Structs.h"
 #import "SBFolderControllerDelegate.h"
 #import "SBIconViewDelegate.h"
 #import "SBIconModelDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "SBIconViewMapDelegate.h"
 
 @protocol SBStarkSessionConfiguring, SBStarkIconControllerDelegate;
@@ -87,7 +87,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconCanEllipsizeLabel:(id)label;
 - (BOOL)iconCanTightenLabel:(id)label;
 - (BOOL)iconCompleteUninstall:(id)uninstall;
-- (id)iconDisplayName:(id)name;
+- (id)iconDisplayName:(id)name forLocation:(int)location;
 - (id)iconFormattedAccessoryString:(id)string;
 - (BOOL)iconIsBeta:(id)beta;
 - (BOOL)iconIsRecentlyUpdated:(id)updated;

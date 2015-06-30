@@ -6,8 +6,8 @@
  */
 
 #import "SBUIPasscodeLockViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBCoordinatedPresenting.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBPresentingDelegate.h"
 #import "SpringBoard-Structs.h"
 

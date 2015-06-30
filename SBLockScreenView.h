@@ -6,11 +6,11 @@
  */
 
 #import "UIScrollViewDelegate.h"
-#import "SpringBoard-Structs.h"
 #import "_UISettingsKeyObserver.h"
-#import "SBAlertView.h"
+#import "SpringBoard-Structs.h"
 #import "_UIGlintyStringViewDelegate.h"
 #import "SBCoordinatedPresenting.h"
+#import "SBAlertView.h"
 #import "SBPresentingDelegate.h"
 
 @protocol _SBFVibrantView, SBUIPasscodeLockView, SBLegibility, SBLockScreenViewDelegate;

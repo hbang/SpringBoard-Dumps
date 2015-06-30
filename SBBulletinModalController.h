@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
 #import "SBBulletinAlertHandler.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinBusyClient.h"
 
 

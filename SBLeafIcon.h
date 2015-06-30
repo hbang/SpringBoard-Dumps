@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIcon.h"
 #import "SpringBoard-Structs.h"
+#import "SBIcon.h"
 #import "NSCopying.h"
 
 @protocol SBLeafIconDataSource;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
 - (id)description;
-- (id)displayName;
+- (id)displayNameForLocation:(int)location;
 - (id)generateIconImage:(int)image;
 - (id)getGenericIconImage:(int)image;
 - (unsigned)hash;

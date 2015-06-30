@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBLockScreenViewControllerDelegate.h"
 #import "SBUIBiometricEventMonitorDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBiometricEventObserver.h"
-#import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

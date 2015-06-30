@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAppSwitcherPageView.h"
 #import "SpringBoard-Structs.h"
+#import "SBAppSwitcherPageView.h"
 
 
 __attribute__((visibility("hidden")))

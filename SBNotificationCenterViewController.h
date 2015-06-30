@@ -6,9 +6,9 @@
  */
 
 #import "SBNotificationCenterWidgetHost.h"
+#import "SpringBoard-Structs.h"
 #import "UIGestureRecognizerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 #import "SBReachabilityObserver.h"
 #import "SBBulletinActionHandler.h"
 #import "SBUISizeObservingViewDelegate.h"

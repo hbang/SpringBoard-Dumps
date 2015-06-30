@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBDateLabelDelegate.h"
 #import "SBLockScreenBulletinCell.h"
+#import "SBDateLabelDelegate.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))

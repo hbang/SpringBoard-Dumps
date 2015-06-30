@@ -6,8 +6,8 @@
  */
 
 #import "_UIDynamicReferenceSystem.h"
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBControlCenterObserver.h"
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 

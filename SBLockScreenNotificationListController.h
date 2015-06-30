@@ -7,9 +7,9 @@
 
 #import "SBVolumePressBandit.h"
 #import "SBMotionGestureObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
 #import "SBCoordinatedPresenting.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBPresentingDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBLockScreenActionHandler.h"
@@ -19,7 +19,7 @@
 #import "SBUIBannerTargetManagerObserver.h"
 #import "SBLockScreenNotificationBannerItemDelegate.h"
 
-@protocol SBLockScreenNotificationListDelegate, SBUIBannerTarget;
+@protocol SBUIBannerTarget, SBLockScreenNotificationListDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenNotificationListController : XXUnknownSuperclass <SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel, BBObserverDelegate, SBVolumePressBandit, SBUIBannerSource, SBUIBannerTargetManagerObserver, SBLockScreenActionHandler, SBLockScreenNotificationBannerItemDelegate, SBPresentingDelegate, SBCoordinatedPresenting, SBMotionGestureObserver> {

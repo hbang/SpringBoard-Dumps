@@ -15,8 +15,8 @@
 #import "MCProfileConnectionObserver.h"
 #import "SpringBoard-Structs.h"
 #import "SBReachabilityObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -31,7 +31,9 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_displayIDsWithBadgingDisabled;
 	SBRootFolderController *_rootFolderController;
 	SBFolder *_closingFolder;
+@private
 	SBFolder *_folderToOpenWhenScrollingEnds;
+@protected
 	BOOL _rotating;
 	int _orientation;
 	SBIcon *_launchingIcon;

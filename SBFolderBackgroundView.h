@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWallpaperObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 
 

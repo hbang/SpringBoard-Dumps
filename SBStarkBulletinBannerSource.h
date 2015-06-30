@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBVolumePressBandit.h"
 #import "SBStarkBannerSource.h"
+#import "SpringBoard-Structs.h"
 #import "BBObserverDelegate.h"
 
 

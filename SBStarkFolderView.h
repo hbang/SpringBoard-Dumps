@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBFolderView.h"
 #import "SpringBoard-Structs.h"
+#import "SBFolderView.h"
 
 
 __attribute__((visibility("hidden")))

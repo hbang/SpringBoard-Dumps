@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBAlertDelegate.h"
 #import "FBWindowContextManagerDelegate.h"
-#import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "FBWindowContextManagerObserver.h"
+#import "SpringBoard-Structs.h"
 
 @protocol SBAlertManagerDelegate;
 

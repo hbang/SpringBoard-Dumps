@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBWindow.h"
 #import "SpringBoard-Structs.h"
 #import "SBStarkNotificationViewControllerDelegate.h"
-#import "SBWindow.h"
 
 @protocol SBStarkSessionConfiguring;
 

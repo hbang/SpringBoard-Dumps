@@ -7,11 +7,11 @@
 
 #import "SBBulletinBusyClient.h"
 #import "UIGestureRecognizerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerTargetImplementation.h"
 #import "SBAssistantObserver.h"
 #import "SBAlertObserver.h"
 #import "SBBannerContextViewControllerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBannerGestureHandlerDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBBulletinWindowClient.h"

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBBBBulletinInfo.h"
 #import "SpringBoard-Structs.h"
+#import "SBBBBulletinInfo.h"
 
 
 __attribute__((visibility("hidden")))

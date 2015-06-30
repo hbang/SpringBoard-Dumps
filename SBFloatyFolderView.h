@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "UIGestureRecognizerDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBFolderView.h"
-#import "UIGestureRecognizerDelegate.h"
 #import "_UISettingsKeyObserver.h"
 
 

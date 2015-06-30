@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAlertView.h"
+#import "SpringBoard-Structs.h"
 
-@protocol SBUIPasscodeLockView, SBPasscodeEntryAlertViewDelegate;
+@protocol SBPasscodeEntryAlertViewDelegate, SBUIPasscodeLockView;
 
 __attribute__((visibility("hidden")))
 @interface SBPasscodeEntryAlertView : SBAlertView {
