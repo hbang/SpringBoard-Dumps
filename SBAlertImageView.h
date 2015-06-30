@@ -12,6 +12,7 @@
 	UILabel *_labelView;
 }
 - (id)initWithFrame:(CGRect)frame errorString:(id)string;
+- (void)dealloc;
 - (void)layoutSubviews;
 @end
 

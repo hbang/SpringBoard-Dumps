@@ -16,11 +16,10 @@
 	unsigned _didHeldRelease : 1;
 	unsigned _setupForThree : 1;
 }
-+ (id)_createBottomButtonBarForDisplay:(id)display;
-+ (id)createBottomBarForInstance:(id)instance;
++ (id)_newBottomButtonBarForDisplay:(id)display;
++ (id)newBottomBarForInstance:(id)instance;
 - (id)initWithSize:(CGSize)size;
 - (void)_addCallWaitingButtons:(BOOL)buttons;
-- (void)_answerButtonsSwapped;
 - (void)_bottomBarSwitchDone;
 - (void)_bottomBarSwitchHalfDone;
 - (void)_callCountChanged:(id)changed;
@@ -34,5 +33,6 @@
 - (void)ignore;
 - (void)lockBarUnlocked:(id)unlocked;
 - (void)setMiddleContentAlpha:(float)alpha;
+- (void)updateDesktopImage:(id)image;
 @end
 

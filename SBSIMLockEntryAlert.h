@@ -15,6 +15,5 @@
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)deactivate;
 - (int)status;
-- (int)statusBarMode;
 @end
 

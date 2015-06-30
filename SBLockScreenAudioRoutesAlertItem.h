@@ -10,7 +10,6 @@
 @interface SBLockScreenAudioRoutesAlertItem : SBAlertItem {
 }
 - (id)alertSheet;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (Class)alertSheetClass;
 - (BOOL)allowAutoUnlock;
 - (BOOL)allowMenuButtonDismissal;

@@ -30,12 +30,12 @@
 - (id)_dateString;
 - (id)_stringForDateTime:(XXStruct_fhKmAA)dateTime timeZone:(CFTimeZoneRef)zone;
 - (id)_stringForTime:(XXStruct_fhKmAA)time;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (int)count;
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;
-- (void)didPresentAlertSheet:(id)sheet;
+- (void)didPresentAlertView:(id)view;
 - (int)eventId;
 - (id)lockLabel;
 - (void)performUnlockAction;

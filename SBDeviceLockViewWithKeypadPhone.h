@@ -9,6 +9,6 @@
 
 @interface SBDeviceLockViewWithKeypadPhone : SBDeviceLockViewWithKeypad {
 }
-- (id)initWithStyle:(int)style interfaceOrientation:(int)orientation;
+- (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 @end
 

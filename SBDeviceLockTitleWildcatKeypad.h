@@ -13,7 +13,7 @@
 	UILabel *_subtitleLabel;
 }
 - (id)_backgroundImage;
-- (id)_protectedInitWithStyle:(int)style interfaceOrientation:(int)orientation;
+- (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation;
 - (void)blinkSubtitle;
 - (void)dealloc;
 - (BOOL)isHighlighted;

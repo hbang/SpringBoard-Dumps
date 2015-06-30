@@ -15,6 +15,7 @@
 @property(assign, nonatomic) float letterSpacing;
 @property(assign, nonatomic) BOOL usesLargeClearButton;
 - (void)_endedEditing;
+- (void)_handleKeyEvent:(GSEventRef)event;
 - (id)_style;
 - (void)attachFieldEditor:(id)editor;
 - (CGRect)clearButtonRectForBounds:(CGRect)bounds;

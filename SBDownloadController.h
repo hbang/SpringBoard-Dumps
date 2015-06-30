@@ -9,9 +9,11 @@
 
 @interface SBDownloadController : NSObject <SSDownloadQueueObserver> {
 	SSDownloadQueue *_downloadQueue;
+	NSMutableSet *_pendingDownloadRemovals;
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_delayedDownloadQueueChange;
 - (void)_showDownloadQueueError;
 - (BOOL)checkQueue;
 - (id)currentDownloads;

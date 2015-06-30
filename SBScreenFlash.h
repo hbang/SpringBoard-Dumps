@@ -18,6 +18,7 @@
 - (void)_orderWindowOut:(id)anOut;
 - (void)_tearDown;
 - (void)animationDidStop:(id)animation finished:(id)finished context:(void *)context;
+- (void)dealloc;
 - (void)flash;
 - (void)flashColor:(id)color;
 - (void)stopFlash;

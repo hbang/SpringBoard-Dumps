@@ -9,7 +9,7 @@
 
 @interface SBSIMToolkitOneShotGetInputDisplay : SBSIMToolkitGetInputDisplay {
 }
-+ (id)createBottomBarForInstance:(id)instance;
++ (id)newBottomBarForInstance:(id)instance;
 - (BOOL)textField:(id)field shouldInsertText:(id)text replacingRange:(NSRange)range;
 @end
 

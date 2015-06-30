@@ -11,7 +11,7 @@
 }
 - (id)init;
 - (void)_showPrefs;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (id)lockLabel;
 - (void)performUnlockAction;

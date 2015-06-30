@@ -11,7 +11,8 @@
 }
 - (void)alertDisplayWillBecomeVisible;
 - (void)displayDidTimeout;
-- (void)navigationBar:(id)bar buttonClicked:(int)clicked;
+- (void)leftNavigationButtonPressed;
+- (void)rightNavigationButtonPressed;
 - (void)sbAlertInputViewCancelClicked:(id)clicked;
 - (void)sbAlertInputViewSendClicked:(id)clicked;
 @end

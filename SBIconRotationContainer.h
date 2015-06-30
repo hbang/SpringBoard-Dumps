@@ -14,9 +14,9 @@
 	BOOL _shouldCrossfade;
 }
 @property(retain, nonatomic) SBIcon *icon;
-- (id)createSnapshot:(id)snapshot includingShadows:(BOOL)shadows;
 - (void)crossfadeWithDuration:(double)duration;
 - (void)dealloc;
+- (id)newSnapshot:(id)snapshot includingShadows:(BOOL)shadows;
 - (void)prepareToCrossfade;
 - (void)setOrigin:(CGPoint)origin;
 - (void)setStartIcon:(id)icon endIcon:(id)icon2;

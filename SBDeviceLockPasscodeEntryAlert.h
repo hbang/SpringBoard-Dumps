@@ -12,6 +12,6 @@
 + (id)sharedInstance;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)deactivate;
-- (int)statusBarMode;
+- (int)statusBarStyle;
 @end
 

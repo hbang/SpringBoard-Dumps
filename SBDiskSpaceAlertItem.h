@@ -9,7 +9,6 @@
 
 @interface SBDiskSpaceAlertItem : SBAlertItem {
 }
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)performUnlockAction;
 - (BOOL)shouldShowInEmergencyCall;

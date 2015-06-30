@@ -7,9 +7,9 @@
 
 
 
-@interface SBDownloadingIcon : SBIcon {
-	NSString *_displayID;
-	NSString *_bundleID;
+@interface SBDownloadingIcon : SBLeafIcon {
+	NSString *_leafIdentifier;
+	NSString *_applicationBundleID;
 	SSDownload *_download;
 	SBDownloadingProgressBar *_progressView;
 	float _progress;
@@ -17,36 +17,38 @@
 	BOOL _wasUninstalledByUser;
 	SSDownloadStatus *_lastStatus;
 }
-+ (id)displayIdentifierForDownload:(id)download;
-+ (id)displayIdentifierForDownloadUniqueID:(id)downloadUniqueID;
-- (id)initWithDisplayIdentifier:(id)displayIdentifier;
++ (id)leafIdentifierForDownload:(id)download;
++ (id)leafIdentifierForDownloadUniqueID:(id)downloadUniqueID;
 - (id)initWithDownload:(id)download;
+- (id)initWithLeafIdentifier:(id)leafIdentifier;
 - (void)_showAlertForError:(id)error;
 - (void)_thumbnailAvailableNotification:(id)notification;
-- (BOOL)allowsCloseBox;
-- (id)bundleID;
-- (void)closeBoxClicked:(id)clicked;
+- (BOOL)allowsUninstall;
+- (id)applicationBundleID;
 - (void)completeUninstall;
 - (void)dealloc;
 - (id)description;
-- (id)displayIdentifier;
 - (id)displayName;
 - (id)download;
 - (id)generateIconImage:(int)image;
+- (id)identifierForCorrespondingApplicationIcon;
 - (void)launch;
+- (id)leafIdentifier;
+- (float)progress;
 - (void)reloadForStatusChange;
 - (void)remove;
 - (void)retry;
-- (void)setBundleID:(id)anId;
-- (void)setDisplayIdentifier:(id)identifier;
-- (void)setDisplayedIcon:(id)icon;
+- (void)setApplicationBundleID:(id)anId;
+- (void)setDisplayedIconImage:(id)image;
 - (void)setDownload:(id)download;
+- (void)setGhostly:(BOOL)ghostly requester:(int)requester;
+- (void)setLeafIdentifier:(id)identifier;
 - (BOOL)shouldEllipsizeLabel;
-- (BOOL)shouldKernLabel;
 - (id)uninstallAlertBody;
 - (id)uninstallAlertCancelTitle;
 - (id)uninstallAlertConfirmTitle;
 - (id)uninstallAlertTitle;
+- (void)uninstallClicked:(id)clicked;
 - (void)updateDisplayName;
 @end
 

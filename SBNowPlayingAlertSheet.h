@@ -7,7 +7,7 @@
 
 
 
-@interface SBNowPlayingAlertSheet : UIModalView {
+@interface SBNowPlayingAlertSheet : UIAlertView {
 	CGRect normalSliderFrame;
 	CGRect narrowSliderFrame;
 	BOOL showingSliderOrLabel;

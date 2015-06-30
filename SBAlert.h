@@ -15,12 +15,12 @@
 + (id)alertWindow;
 + (void)registerForAlerts;
 + (void)test;
+- (BOOL)_tearDownFencedWindowWithObserver;
 - (void)_updateStatusBarLockAndTime;
 - (void)activate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (Class)alertWindowClass;
 - (CGRect)alertWindowRect;
-- (BOOL)allowsDoubleHeightStatusBar:(BOOL)bar;
 - (BOOL)allowsStackingOfAlert:(id)alert;
 - (double)autoDimTime;
 - (void)deactivate;
@@ -30,14 +30,16 @@
 - (void)didFinishAnimatingIn;
 - (void)didFinishAnimatingOut;
 - (id)display;
+- (int)effectiveStatusBarStyle;
 - (float)finalAlpha;
-- (void)handleMenuButtonTap;
+- (BOOL)handleMenuButtonTap;
 - (id)objectForKey:(id)key;
 - (void)removeFromView;
 - (void)removeObjectForKey:(id)key;
 - (void)setDisplay:(id)display;
 - (void)setObject:(id)object forKey:(id)key;
-- (int)statusBarMode;
+- (int)statusBarStyle;
+- (int)statusBarStyleOverridesToCancel;
 - (void)tearDownAlertWindow:(id)window;
 - (BOOL)undimsDisplay;
 @end
