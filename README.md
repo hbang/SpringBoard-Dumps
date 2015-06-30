@@ -27,6 +27,7 @@ It’s better to clone this repo to your computer and use `git diff`. See the ma
 * [8.1](https://github.com/hbang/SpringBoard-Dumps/tree/8.1)
 * [8.2](https://github.com/hbang/SpringBoard-Dumps/tree/8.2)
 * [8.3](https://github.com/hbang/SpringBoard-Dumps/tree/8.3)
+* [8.4](https://github.com/hbang/SpringBoard-Dumps/tree/8.4)
 
 ## Doing it yourself
 The makefile is designed to support any iOS or OS X binary by only changing a variable or two, however do keep in mind that there’s already [nst/iOS-Runtime-Headers](https://github.com/nst/iOS-Runtime-Headers) for public/private frameworks and libraries.
