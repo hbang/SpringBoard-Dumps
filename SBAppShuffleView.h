@@ -7,11 +7,8 @@
 
 
 
-@interface SBRotationLockHUDView : SBHUDView {
-	BOOL _locked;
+@interface SBAppShuffleView : SBAppToAppTransitionView {
 }
-@property(assign, nonatomic, getter=isLocked) BOOL locked;
-- (id)init;
-- (void)_updateLockedImage;
+- (void)_beginTransition;
 @end
 

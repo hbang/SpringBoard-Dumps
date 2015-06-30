@@ -19,6 +19,7 @@
 - (id)conferenceID;
 - (void)dealloc;
 - (id)displayController;
+- (void)handleLock:(BOOL)lock;
 - (id)inviter;
 - (void)inviterCanceledConference;
 @end

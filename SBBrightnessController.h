@@ -12,10 +12,12 @@
 }
 + (id)sharedBrightnessController;
 - (float)_calcButtonRepeatDelay;
+- (void)_setBrightnessLevel:(float)level showHUD:(BOOL)hud;
 - (void)adjustBacklightLevel:(BOOL)level;
 - (void)cancelBrightnessEvent;
 - (void)decreaseBrightnessAndRepeat;
 - (void)handleBrightnessEvent:(GSEventRef)event;
 - (void)increaseBrightnessAndRepeat;
+- (void)setBrightnessLevel:(float)level;
 @end
 

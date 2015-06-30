@@ -15,6 +15,7 @@
 }
 + (id)newBottomBarForInstance:(id)instance;
 + (id)newBottomLockBarForDisplay:(id)display;
++ (id)newTopBarForInstance:(id)instance;
 - (void)_ringIfNecessary;
 - (id)additionalURLParameter;
 - (void)alertDisplayBecameVisible;

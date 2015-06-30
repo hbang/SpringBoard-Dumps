@@ -60,6 +60,7 @@
 - (void)_mediaPlayerDied;
 - (void)_notifyDeviceTermination;
 - (id)_openTelURL:(id)url;
+- (id)_openVideoURL:(id)url;
 - (void)_performConfirmationAction;
 - (void)_performNoMatchFound;
 - (void)_performSoundCompletionAction;

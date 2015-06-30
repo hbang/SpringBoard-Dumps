@@ -7,43 +7,56 @@
 
 
 
-@interface SBNowPlayingBar : NSObject <SBIconDelegate> {
-	UIView *_containerView;
-	UIButton *_orientationLockButton;
-	UIButton *_prevButton;
-	UIButton *_playButton;
-	UIButton *_nextButton;
-	SBIconLabel *_trackLabel;
-	SBIconLabel *_orientationLabel;
-	SBApplicationIcon *_nowPlayingIcon;
+@interface SBNowPlayingBar : NSObject <SBIconDelegate, UIPopoverControllerDelegate, SBSwitcherPopoverWindowControllerDelegate> {
+	SBNowPlayingBarView *_barView;
+	SBAirPlayBarView *_airPlayView;
+	MPAudioVideoRoutingActionSheet *_airPlayActionSheet;
+	SBSwitcherSlider *_volumeSlider;
+	UIButton *_airPlayButton;
 	SBApplication *_nowPlayingApp;
 	int _scanDirection;
-	BOOL _isPlaying;
-	BOOL _isEnabled;
-	BOOL _showingOrientationLabel;
+	MPAudioDeviceController *_audioDeviceController;
+	MPAudioVideoRoutingPopoverController *_audioRoutingPopoverController;
+	BOOL _audioRoutingPopoverVisible;
+	BOOL _showPopoverWhenRotationComplete;
 }
 - (id)init;
-- (id)_descriptionLabel;
-- (void)_displayOrientationStatus:(BOOL)status;
+- (void)_airPlayButtonHit:(id)hit;
+- (void)_brightnessSliderChanged:(id)changed;
 - (void)_iapExtendedModeChanged:(id)changed;
+- (BOOL)_isAirPlayOn;
 - (void)_orientationLockHit:(id)hit;
 - (void)_playButtonHit:(id)hit;
-- (void)_toggleStatus:(id)status;
+- (BOOL)_shouldShowAirPlayButton;
+- (void)_showAudioRoutingActionSheet;
+- (void)_showAudioRoutingPopover;
+- (void)_systemVolumeChanged:(id)changed;
 - (void)_trackButtonCancel:(id)cancel;
 - (void)_trackButtonDown:(id)down;
 - (void)_trackButtonDownSeek:(id)seek;
 - (void)_trackButtonUp:(id)up;
+- (void)_updateAudioRouteDisplay:(BOOL)display;
 - (void)_updateDisplay;
 - (void)_updateNowPlayingApp;
 - (void)_updateNowPlayingButtonImages;
 - (void)_updateNowPlayingInfo;
+- (void)_volumeChanged:(id)changed;
+- (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
+- (void)audioDeviceControllerMediaServerDied:(id)died;
+- (void)backlightLevelChanged;
 - (void)dealloc;
-- (float)iconScale:(id)scale;
 - (BOOL)iconShouldAllowTap:(id)icon;
 - (void)iconTapped:(id)tapped;
 - (void)iconTouchBegan:(id)began;
+- (void)popoverControllerDidDismissPopover:(id)popoverController;
+- (void)prepareToAppear;
+- (void)prepareToDisappear;
 - (int)scanDirection;
-- (id)view;
-- (void)viewWillAppear;
+- (BOOL)shouldScrollCancelInContentForView:(id)view;
+- (void)switcherPopoverController:(id)controller didRotateFromInterfaceOrientation:(int)interfaceOrientation;
+- (void)switcherPopoverController:(id)controller willRotateToOrientation:(int)orientation duration:(double)duration;
+- (void)viewAtIndexDidAppear:(int)viewAtIndex;
+- (void)viewAtIndexDidDisappear:(int)viewAtIndex;
+- (id)views;
 @end
 

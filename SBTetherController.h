@@ -11,7 +11,9 @@
 	int _tetherState;
 	unsigned _demoCardConnection;
 	int _lastOrientationCode;
+	BOOL _orientationNotificationsDisabled;
 }
+@property(assign, nonatomic, getter=isOrientationNotificationDisabled) BOOL orientationNotificationDisabled;
 + (id)sharedInstance;
 - (id)init;
 - (unsigned)_demoCardConnection;

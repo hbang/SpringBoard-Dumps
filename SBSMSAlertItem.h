@@ -16,13 +16,17 @@
 	NSString *_name;
 }
 + (BOOL)_showSMSPreview;
++ (unsigned long)customAlertToneForSender:(void *)sender;
++ (void)defaultAlertTonePrefChanged;
++ (void *)lastMessageSender;
 + (void)playMessageReceived;
-+ (void)prefsChanged;
++ (void)setLastMessageSender:(void *)sender;
 + (BOOL)shouldHideSMSPreview;
 + (BOOL)shouldPlayMessageReceived;
++ (void)showSMSPreviewPrefChanged;
++ (void)stopPlayingCurrentAlertTone;
 - (void)_deactivateAllTaggedSMSAlertItems;
 - (int)_groupID;
-- (void)_markReadIfDisplayingEntireMessage;
 - (void)_tag;
 - (void)_untag;
 - (id)address;
@@ -46,8 +50,10 @@
 - (BOOL)senderIsVoicemail;
 - (void)setMessage:(id)message;
 - (BOOL)shouldShowInEmergencyCall;
+- (BOOL)shouldShowInLockScreen;
 - (void)willActivate;
 - (void)willPresentAlertView:(id)view;
+- (void)willRelockForButtonPress:(BOOL)buttonPress;
 - (BOOL)willShowInAwayItems;
 @end
 

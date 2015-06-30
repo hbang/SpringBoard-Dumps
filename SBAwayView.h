@@ -25,7 +25,6 @@
 	SBAlertImageView *_firewireWarningView;
 	SBAwayViewPluginController *_awayPluginController;
 	SBAwaySwipeGestureRecognizer *_gestureRecognizer;
-	MPAudioDeviceController *_audioDeviceController;
 	NSTimer *_mediaControlsTimer;
 	NSTimer *_fullscreenTimer;
 	NSTimer *_chargingViewTimer;
@@ -40,6 +39,7 @@
 	TPBottomButtonBar *_cancelSyncBar;
 	UIPushButton *_infoButton;
 	float _mediaControlHeightDelta;
+	UIView *_legalTextView;
 }
 @property(assign, nonatomic) int autocapitalizationType;
 @property(assign, nonatomic) int autocorrectionType;
@@ -53,6 +53,7 @@
 - (id)initWithFrame:(CGRect)frame;
 - (void)_chargingViewTimerFired;
 - (void)_clearBlockedStatusUpdateTimer;
+- (id)_currentTitleForDateView;
 - (void)_didFadeChargingView;
 - (void)_finalizeAndClearPluginAnimationContext;
 - (void)_fixupFirstResponder;
@@ -60,6 +61,8 @@
 - (void)_fullscreenTimerFired;
 - (void)_hideChargingViewAndClearTimer;
 - (void)_hideMediaControls;
+- (void)_initializeLegalTextOverlay;
+- (void)_layoutLegalTextOverlay;
 - (void)_pluginFadeInAnimationDidStop:(id)_pluginFadeInAnimation finished:(id)finished context:(void *)context;
 - (void)_positionAwayItemsView;
 - (void)_postLockCompletedNotification;
@@ -70,14 +73,12 @@
 - (id)_topBarLCDControlsImage;
 - (void)_updateBlockedStatus;
 - (void)_updateBlockedStatusLabel;
-- (void)_updateShowsBluetoothButtonAnimated:(BOOL)animated;
 - (void)_wirelessModemStateChanged:(id)changed;
 - (void)addDateView;
 - (void)addFirewireWarningView;
 - (void)alertDisplayWillBecomeVisible;
 - (void)animateToHidingDeviceLockFinished;
 - (void)animateToShowingDeviceLock:(BOOL)showingDeviceLock duration:(float)duration;
-- (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
 - (void)awayDateViewDidChangeTitle:(id)awayDateView;
 - (BOOL)canBecomeFirstResponder;
 - (void)cancelFullscreenTimer;
@@ -92,6 +93,7 @@
 - (void)didMoveToWindow;
 - (BOOL)dimmed;
 - (void)dismiss;
+- (void)dismissMediaControlsOverlaysAnimated:(BOOL)animated;
 - (float)durationForOthersActivation;
 - (void)enableOrDisableNowPlayingPlugin;
 - (void)finishedAnimatingIn;
@@ -112,6 +114,7 @@
 - (BOOL)isAlwaysFullscreen;
 - (BOOL)isAnimating;
 - (BOOL)isFullscreen;
+- (BOOL)isMediaControlsShowingOverlays;
 - (BOOL)isPlaying;
 - (BOOL)isShowingMediaControls;
 - (BOOL)isShowingWallpaper;

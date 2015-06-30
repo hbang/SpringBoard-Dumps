@@ -12,6 +12,9 @@
 	unsigned _deferLayout : 1;
 	unsigned _needsLayout : 1;
 	MPAudioDeviceController *_audioDeviceController;
+	UIButton *_prevButton;
+	UIButton *_playButton;
+	UIButton *_nextButton;
 }
 - (id)init;
 - (void)_changeTrackButtonDown:(id)down;

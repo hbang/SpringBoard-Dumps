@@ -22,6 +22,7 @@
 - (void)dismiss;
 - (void)dismiss:(id)dismiss;
 - (void)displayDidTimeout;
+- (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)leftNavigationButtonPressed;
 - (void)rightNavigationButtonPressed;
 - (void)setMiddleContentAlpha:(float)alpha;

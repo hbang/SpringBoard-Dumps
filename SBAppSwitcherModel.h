@@ -19,6 +19,8 @@
 - (void)appsRemoved:(id)removed added:(id)added;
 - (unsigned)count;
 - (void)dealloc;
+- (id)identifierAtIndex:(unsigned)index;
+- (id)identifiers;
 - (void)remove:(id)remove;
 @end
 

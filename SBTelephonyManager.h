@@ -56,6 +56,7 @@
 - (int)callForwardingIndicator;
 - (BOOL)callWouldUseReceiver:(BOOL)receiver;
 - (void)carrierBundleChanged;
+- (BOOL)cellularRadioCapabilityIsActive;
 - (void)checkForRegistrationSoon;
 - (void)configureForTTY:(BOOL)tty;
 - (void)copyICCID:(id *)iccid IMEI:(id *)imei;
