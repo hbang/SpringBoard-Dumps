@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
 	NSMutableDictionary *_identifiersToDataProviderProxies;
 	NSMutableDictionary *_identifiersToWidgetExtensions;
 	NSArray *_defaultEnabledWeeAppIDs;
-	NSArray *_updatedAvailableExtensions;
-	BOOL _isCoalescingAvailableExtensions;
 	BOOL _isCoalescingForSectionSort;
 	NSMutableSet *_serviceIDsOnProbation;
 	id _plugInDiscoveryToken;
@@ -45,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_setShowsInNotificationCenter:(BOOL)notificationCenter andUpdateExtensionOptInState:(BOOL)state forDataProviderWithIdentifier:(id)identifier completion:(id)completion;
 - (void)_setupBBObserverIfNecessary;
 - (BOOL)_shouldPublishWidgetExtension:(id)extension;
+- (void)_updatePublishedWidgetExtensions:(id)extensions;
 - (id)_widgetExtensionsDiscoveryAttributes;
 - (void)beginPublishingIfNecessary;
 - (void)buddyCompleted:(id)completed;

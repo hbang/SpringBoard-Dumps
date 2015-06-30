@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBLegibility, _SBFVibrantView, SBLockScreenViewDelegate, SBUIPasscodeLockView;
+@protocol _SBFVibrantView, SBUIPasscodeLockView, SBLegibility, SBLockScreenViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenView : SBAlertView <UIScrollViewDelegate, _UIGlintyStringViewDelegate, _UISettingsKeyObserver, SBCoordinatedPresenting, SBPresentingDelegate> {

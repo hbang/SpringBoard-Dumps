@@ -8,6 +8,7 @@
 
 
 @protocol SBBannerContextViewControllerDelegate
+- (void)bannerViewController:(id)controller didRequestSticky:(BOOL)sticky;
 - (void)bannerViewController:(id)controller willSelectActionWithContext:(id)context;
 - (void)bannerViewControllerDidPullDown:(id)bannerViewController;
 - (void)bannerViewControllerDidReceiveRaiseGesture:(id)bannerViewController;

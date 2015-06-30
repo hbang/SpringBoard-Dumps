@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic, getter=isQueueSuspended) BOOL queueSuspended;
 @property(assign, nonatomic, getter=isShowingAlert) BOOL showingAlert;
 @property(readonly, assign) Class superclass;
-+ (id)_controllerForBundleIdentifier:(id)bundleIdentifier;
 + (id)controllerForApplication:(id)application;
++ (id)controllerForBundleIdentifier:(id)bundleIdentifier;
 + (void)createCacheIfNecessary;
 + (void)evictControllerFromCache:(id)cache;
 + (void)migratePushSettings:(unsigned)settings forBundleIdentifier:(id)bundleIdentifier;

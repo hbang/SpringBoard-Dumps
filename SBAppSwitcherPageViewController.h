@@ -82,7 +82,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAutorotate;
 - (unsigned)supportedInterfaceOrientations;
 - (void)switcherWasDismissed:(BOOL)dismissed;
-- (void)viewDidDisappear:(BOOL)view;
 - (NSRange)visibleItems;
 @end
 

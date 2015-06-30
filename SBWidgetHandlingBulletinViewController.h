@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_widgetHasOutstandingUpdateRequest:(id)request;
 - (void)addChildBulletinIfPossible:(id)possible;
 - (void)dealloc;
-- (void)makeVisibleWidgetInSection:(id)section animated:(BOOL)animated completion:(id)completion;
+- (void)makeVisibleWidgetInSection:(id)section andReconnect:(BOOL)reconnect animated:(BOOL)animated completion:(id)completion;
 - (void)removeChildBulletinIfPossible:(id)possible;
 - (void)scrollViewDidEndDecelerating:(id)scrollView;
 - (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;

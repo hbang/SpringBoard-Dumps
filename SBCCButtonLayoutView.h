@@ -11,17 +11,17 @@ __attribute__((visibility("hidden")))
 @interface SBCCButtonLayoutView : SBControlCenterSectionView {
 	NSMutableArray *_buttons;
 	UIScrollView *_scrollView;
-	BOOL _useFlexiblePadding;
 	float _interButtonPadding;
 	unsigned _buttonStretchThreshold;
+	unsigned _buttonShrinkThreshold;
 	int _maxButtons;
 	UIEdgeInsets _contentEdgeInsets;
 }
+@property(assign, nonatomic) unsigned buttonShrinkThreshold;
 @property(assign, nonatomic) unsigned buttonStretchThreshold;
 @property(assign, nonatomic) UIEdgeInsets contentEdgeInsets;
 @property(assign, nonatomic) float interButtonPadding;
 @property(assign, nonatomic) int maxButtons;
-@property(assign, nonatomic) BOOL useFlexiblePadding;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_didAddButton:(id)button;
 - (void)_didRemoveButton:(id)button;

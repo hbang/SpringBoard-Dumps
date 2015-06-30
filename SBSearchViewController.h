@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (UIEdgeInsets)actionManagerDetailsViewEdgeInsets:(id)insets;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(int)activeInterfaceOrientation willAnimateWithDuration:(double)duration fromOrientation:(int)orientation;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(int)activeInterfaceOrientation;
+- (void)attributionButtonTapped:(id)tapped;
 - (void)cancelButtonPressed;
 - (void)dealloc;
 - (void)dismiss;

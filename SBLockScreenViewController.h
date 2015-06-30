@@ -65,8 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (BOOL)__shouldHidePasscodeForActiveCall;
 - (void)__transitionOverlayAnimated:(BOOL)animated from:(id)from to:(id)to completion:(id)completion;
-- (void)_acStatusChanged:(id)changed;
-- (void)_addBatteryChargingView;
+- (void)_addBatteryChargingViewAndShowBattery:(BOOL)battery;
 - (void)_addBottomLeftGrabberIfNecessaryForAutoUnlock:(BOOL)autoUnlock;
 - (void)_addCameraGrabberIfNecessary;
 - (void)_addDateView;
@@ -108,7 +107,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleBacklightFadeEnded;
 - (void)_handleBacklightLevelChanged:(id)changed;
 - (void)_handleDisplayTurnedOff;
-- (void)_handleDisplayTurnedOn;
+- (void)_handleDisplayTurnedOn:(id)on;
 - (void)_handleDisplayWillUndim;
 - (void)_handlePasscodeLockStateChanged;
 - (void)_handlePasscodePolicyChanged;
@@ -124,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (void)_passcodeStateChanged;
 - (id)_pluginLegibilitySettings;
 - (void)_postPasscodeLockNotification:(int)notification;
+- (void)_powerStatusChanged:(id)changed;
 - (void)_releaseLockScreenView;
 - (void)_removeActivePluginView;
 - (void)_removeAllOverlays;

@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 	_SBBulletinRootViewControllerTransitionContext *_activeTransitionContext;
 }
 - (id)initWithBulletinWindowController:(id)bulletinWindowController;
-- (void)_getRotationContentSettings:(XXStruct_3uUjXA *)settings;
+- (void)_getRotationContentSettings:(XXStruct_ykCi7C *)settings;
 - (void)bulletinWindowControllerDismissViewControllerAnimated:(BOOL)animated completion:(id)completion;
 - (void)bulletinWindowControllerPresentViewController:(id)controller animated:(BOOL)animated completion:(id)completion;
 - (void)dealloc;

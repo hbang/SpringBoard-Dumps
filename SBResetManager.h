@@ -6,6 +6,7 @@
  */
 
 
+@protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
 @interface SBResetManager : XXUnknownSuperclass {
@@ -14,6 +15,11 @@ __attribute__((visibility("hidden")))
 	int _mode;
 	NSLock *_progressLock;
 	float _progress;
+	BOOL _paymentCardsExist;
+	PKPassLibrary *_passLibrary;
+	XXStruct_qXnNTD *_paymentCardDeletionProgressStack;
+	id _postCardDeletionHandler;
+	NSObject<OS_dispatch_semaphore> *_resetThreadSemaphore;
 }
 + (id)sharedInstance;
 - (id)init;
@@ -24,6 +30,9 @@ __attribute__((visibility("hidden")))
 - (void)_setProgress:(float)progress;
 - (void)beginReset;
 - (void)dealloc;
+- (void)passLibrary:(id)library removingPassesOfType:(unsigned)type didFinishWithSuccess:(BOOL)success;
+- (void)passLibrary:(id)library removingPassesOfType:(unsigned)type didUpdateWithProgress:(double)progress;
+- (void)performPaymentCardDeletionWithCompletion:(id)completion;
 - (float)progress;
 - (void)setMode:(int)mode;
 @end

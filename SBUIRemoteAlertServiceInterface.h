@@ -16,5 +16,6 @@
 - (void)handleVolumeDownButtonPressed;
 - (void)handleVolumeUpButtonPressed;
 - (void)noteActivatedForCustomReason:(id)customReason;
+- (void)setUserInfo:(id)info;
 @end
 
