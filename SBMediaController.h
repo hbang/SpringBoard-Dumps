@@ -16,7 +16,10 @@
 	NSTimer *_volumeCommitTimer;
 	BOOL _debounceVolumeRepeat;
 	int _numberOfVolumeDecreasesSinceDownButtonDown;
+	int _lastNowPlayingAppPID;
+	BOOL _lastNowPlayingAppIsPlaying;
 }
++ (BOOL)applicationCanBeConsideredNowPlaying:(id)playing;
 + (id)sharedInstance;
 - (id)init;
 - (float)_calcButtonRepeatDelay;
@@ -24,6 +27,9 @@
 - (void)_changeVolumeBy:(float)by;
 - (void)_commitVolumeChange:(id)change;
 - (void)_delayedExtendSleepTimer;
+- (void)_nowPlayingAppIsPlayingDidChange:(id)_nowPlayingAppIsPlaying;
+- (id)_nowPlayingInfo;
+- (void)_nowPlayingPIDChanged:(id)changed;
 - (void)_registerForAVSystemControllerNotifications;
 - (void)_serverConnectionDied:(id)died;
 - (void)_systemVolumeChanged:(id)changed;
@@ -42,7 +48,10 @@
 - (BOOL)isMovie;
 - (BOOL)isPlaying;
 - (BOOL)isTVOut;
+- (id)mediaControlsDestinationApp;
+- (BOOL)muted;
 - (id)nowPlayingAlbum;
+- (id)nowPlayingApplication;
 - (id)nowPlayingArtist;
 - (id)nowPlayingTitle;
 - (void)setNowPlayingInfo:(id)info;

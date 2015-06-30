@@ -5,22 +5,19 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIView.h>
 
 
 @interface SBRoundedCornersView : UIView {
 	float _cornerRadius;
+	UIView *_contentView;
 	SBWallpaperClipView *_topLeftCorner;
 	SBWallpaperClipView *_topRightCorner;
 	SBWallpaperClipView *_bottomLeftCorner;
 	SBWallpaperClipView *_bottomRightCorner;
-	SBRoundedMaskCornerView *_topLeftCornerMask;
-	SBRoundedMaskCornerView *_topRightCornerMask;
-	SBRoundedMaskCornerView *_bottomLeftCornerMask;
-	SBRoundedMaskCornerView *_bottomRightCornerMask;
 }
-- (id)initWithFrame:(CGRect)frame cornerRadius:(float)radius;
+- (id)initWithFrame:(CGRect)frame cornerRadius:(float)radius content:(id)content wallpaperView:(id)view;
 - (void)dealloc;
 - (void)setFrame:(CGRect)frame;
 - (void)updateWallpaperOffsets;

@@ -15,9 +15,8 @@
 }
 @property(assign, nonatomic) id delegate;
 - (id)initWithNetworkName:(id)networkName error:(int)error;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (void)dismiss;
+- (void)dismiss:(int)dismiss;
 @end
 

@@ -12,8 +12,8 @@
 	id _delegate;
 }
 @property(assign, nonatomic) id delegate;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
-- (void)dismiss;
+- (void)dismiss:(int)dismiss;
 @end
 

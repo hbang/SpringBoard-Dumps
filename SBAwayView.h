@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "UIKeyInput.h"
 #import "SpringBoard-Structs.h"
+#import "UIKeyInput.h"
 #import "SBSlidingAlertDisplay.h"
 
 
@@ -18,6 +18,7 @@
 	BOOL _showingBlockedIndicator;
 	BOOL _hasTelephony;
 	BOOL _wasShowingAlertAtDismiss;
+	BOOL _removingAlertAtUnlock;
 	BOOL _awayPluginIsVisible;
 	BOOL _ignoreFullScreenUpdates;
 	SBAwayChargingView *_chargingView;
@@ -35,7 +36,7 @@
 	BOOL _isPlaying;
 	NSDictionary *_currentPluginFadeAnimationContext;
 	NSTimer *_blockedStatusUpdateTimer;
-	UIModalView *_alertSheet;
+	UIAlertView *_alertSheet;
 	int _alertSheetPosition;
 	SBAwayInCallController *_inCallController;
 	SBAwayLockBar *_lockBar;
@@ -49,8 +50,8 @@
 @property(assign, nonatomic) int keyboardType;
 @property(assign, nonatomic) int returnKeyType;
 @property(assign, nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
-+ (id)createBottomBarForInstance:(id)instance;
 + (id)lockLabels:(BOOL)labels fontSize:(float *)size;
++ (id)newBottomBarForInstance:(id)instance;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_chargingViewTimerFired;
 - (void)_clearBlockedStatusUpdateTimer;
@@ -77,7 +78,7 @@
 - (void)addFirewireWarningView;
 - (void)alertDisplayWillBecomeVisible;
 - (void)animateToHidingDeviceLockFinished;
-- (void)animateToShowingDeviceLock:(BOOL)showingDeviceLock;
+- (void)animateToShowingDeviceLock:(BOOL)showingDeviceLock duration:(float)duration;
 - (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
 - (void)awayDateViewDidChangeTitle:(id)awayDateView;
 - (BOOL)canBecomeFirstResponder;
@@ -89,6 +90,7 @@
 - (id)dateView;
 - (void)dealloc;
 - (void)deleteBackward;
+- (void)deviceUnlockCanceled;
 - (void)didMoveToWindow;
 - (BOOL)dimmed;
 - (void)dismiss;
@@ -114,12 +116,12 @@
 - (BOOL)isFullscreen;
 - (BOOL)isPlaying;
 - (BOOL)isShowingMediaControls;
+- (BOOL)isShowingWallpaper;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)lockBarStartedTracking:(id)tracking;
 - (void)lockBarStoppedTracking:(id)tracking;
 - (void)lockBarUnlocked:(id)unlocked;
 - (void)lockBarUnlocked:(id)unlocked freezeKnobInLockedPosition:(BOOL)lockedPosition;
-- (int)lockoutMode;
 - (void)postLockCompletedNotification:(BOOL)notification;
 - (void)removeAlertSheet;
 - (void)removeBlockedStatus;

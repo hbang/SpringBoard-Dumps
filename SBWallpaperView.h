@@ -13,27 +13,34 @@
 	int _orientation;
 	UIImageView *_topGradient;
 	UIImageView *_bottomGradient;
+	BOOL _usesFilter;
 	float _filterAlpha;
 	float _gradientAlpha;
 	CGRect _wallpaperContentsRect;
+	UIImage *_uncomposedImage;
+	UIImage *_portraitComposedImage;
+	UIImage *_landscapeComposedImage;
 }
 @property(assign, nonatomic) float gradientAlpha;
 @property(assign, nonatomic) int orientation;
-+ (id)_desktopImage;
 + (int)_desktopVariant;
-+ (id)_nameForVariant:(int)variant;
 + (void)initialize;
 + (BOOL)lockScreenAndHomeScreenShareWallpaper;
 + (void)noteWallpaperPreferencesChanged;
 - (id)initWithOrientation:(int)orientation;
+- (void)_resetImage;
+- (void)_setOrientation:(int)orientation duration:(double)duration force:(BOOL)force;
+- (void)_setOrientationAnimationFinished;
+- (void)_setUsesComposedImage:(BOOL)image;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_wallpaperChanged;
 - (float)alpha;
 - (void)dealloc;
 - (id)gradientImageForInterfaceOrientation:(int)interfaceOrientation;
+- (void)replaceWallpaperWithImage:(id)image;
+- (void)resetCurrentImageToWallpaper;
 - (void)setAlpha:(float)alpha;
-- (void)setOrientation:(int)orientation duration:(double)duration;
-- (void)setOrientation:(int)orientation duration:(double)duration force:(BOOL)force;
+- (id)uncomposedImage;
 - (CGRect)wallpaperContentsRect;
 @end
 

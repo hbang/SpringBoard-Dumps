@@ -13,17 +13,16 @@
 	NSString *_label;
 	unsigned _drawMoreLegibly : 1;
 	unsigned _inDock : 1;
-	unsigned _ellipsesText : 1;
+	unsigned _ellipsizesText : 1;
 	unsigned _kerningAllowed : 1;
-	unsigned _textMightOverlap : 1;
 	unsigned _onWallpaper : 1;
 }
-- (id)initWithSize:(CGSize)size label:(id)label;
 - (void)dealloc;
 - (void)drawRect:(CGRect)rect;
 - (void)setDisplaysOnWallpaper:(BOOL)wallpaper;
-- (void)setEllipsesText:(BOOL)text;
+- (void)setEllipsizesText:(BOOL)text;
 - (void)setInDock:(BOOL)dock;
 - (void)setKerningAllowed:(BOOL)allowed;
+- (void)setText:(id)text;
 @end
 

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSObject.h>
 
 
 @interface SBAwayInCallController : NSObject {
@@ -22,7 +22,7 @@
 - (id)callerImage;
 - (BOOL)callerImageIsFullScreen;
 - (void)dealloc;
-- (void)fetchCallInformation:(id *)information name:(id *)name label:(id *)label image:(id *)image isFullScreen:(BOOL *)screen;
+- (void)fetchCallInformation:(id *)information name:(id *)name label:(id *)label image:(id *)image isFullScreen:(BOOL *)screen wantsHighResolution:(BOOL)resolution;
 - (void)reload;
 - (void)setShowsInCallInfo:(BOOL)callInfo;
 - (void)updateDuration;

@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBAlertDisplay.h"
 #import <UIKit/UIView.h>
-#import "SpringBoard-Structs.h"
 
 
 @interface SBAlertDisplay : UIView {
@@ -19,6 +19,7 @@
 - (id)alert;
 - (void)alertDisplayBecameVisible;
 - (void)alertDisplayWillBecomeVisible;
+- (void)alertWindowResizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame2;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)dismiss;
 - (BOOL)displaysAboveStatusBar;

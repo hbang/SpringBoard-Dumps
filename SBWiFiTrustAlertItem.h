@@ -16,8 +16,8 @@
 }
 - (id)initWithCertificateArray:(id)certificateArray networkName:(id)name;
 - (id)_scanDictionaryWithCertificateData;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (Class)alertSheetClass;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowMenuButtonDismissal;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;

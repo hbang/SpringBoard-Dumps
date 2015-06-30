@@ -5,51 +5,46 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
-#import "SBPlatformController.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBPlatformController : NSObject {
 	NSString *_currentConfigurationName;
 	NSMutableDictionary *_currentConfiguration;
 	NSMutableDictionary *_currentCapabilities;
+	NSDictionary *_discoveredCapabilities;
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_addConfigurationNamed:(id)named toCompositeDictionary:(id)compositeDictionary;
 - (void)_addIconListIdentifiers:(id)identifiers toSet:(id)set;
-- (void)addCapabilities:(id)capabilities removeCapabilities:(id)capabilities2;
-- (BOOL)canTakePhoto;
+- (void)_mergeDictionary:(id)dictionary intoDictionary:(id)dictionary2;
+- (void)addCapabilities:(id)capabilities resetCapabilites:(id)capabilites;
+- (BOOL)allowSensitiveUI:(BOOL)ui hasInternalBundle:(BOOL)bundle;
+- (BOOL)allowYouTube;
+- (BOOL)allowYouTubePlugin;
+- (BOOL)canDisplayHomescreenWallpaper;
+- (id)currentConfigurationName;
+- (CFBooleanRef)currentITunesStoreCapability;
 - (void)dealloc;
 - (id)defaultDisplayIdentifiers;
+- (void)discoverCurrentConfiguration;
 - (id)enabledCapabilities;
 - (BOOL)hasCapability:(id)capability;
 - (BOOL)hasRestriction:(id)restriction;
 - (id)iconState;
 - (id)infoForCapability:(id)capability;
 - (BOOL)isCarrierInstall;
+- (BOOL)isCarrierInstall:(BOOL)install hasInternalBundle:(BOOL)bundle;
 - (BOOL)isInternalInstall;
 - (id)localizedPlatformName;
 - (BOOL)matchesPlatforms:(id)platforms;
+- (void)noteConfigurationChangedWithKeys:(id)keys;
 - (void)noteITunesStoreCapabilityChanged;
 - (id)platformName;
-- (void)setInfo:(id)info forCapability:(id)capability;
-- (id)systemBuildVersion;
-@end
-
-@interface SBPlatformController (private)
-- (void)_addConfigurationNamed:(id)named toCompositeDictionary:(id)compositeDictionary;
-- (id)_macAddress;
-- (void)_mergeDictionary:(id)dictionary intoDictionary:(id)dictionary2;
-- (BOOL)allowSensitiveUI:(BOOL)ui hasInternalBundle:(BOOL)bundle;
-- (BOOL)allowWiFi;
-- (BOOL)allowYouTube;
-- (BOOL)allowYouTubePlugin;
-- (id)currentConfigurationName;
-- (CFBooleanRef)currentITunesStoreCapability;
-- (void)discoverCurrentConfiguration;
-- (BOOL)isCarrierInstall:(BOOL)install hasInternalBundle:(BOOL)bundle;
-- (void)noteConfigurationChanged:(id)changed;
 - (void)postCurrentConfiguration;
+- (void)setValue:(id)value forCapability:(id)capability;
+- (id)systemBuildVersion;
 @end
 

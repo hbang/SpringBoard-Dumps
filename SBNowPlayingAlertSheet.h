@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIModalView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIAlertView.h>
 
 
-@interface SBNowPlayingAlertSheet : UIModalView {
+@interface SBNowPlayingAlertSheet : UIAlertView {
 	CGRect normalSliderFrame;
 	CGRect narrowSliderFrame;
 	BOOL showingSliderOrLabel;

@@ -13,15 +13,15 @@
 	BOOL _wasToldToStopRinging;
 	BOOL _answered;
 	BOOL _pendingRing;
+	BOOL _isVCCallWaitingRinging;
 }
-+ (id)createBottomBarForInstance:(id)instance;
-+ (id)createBottomLockBarForDisplay:(id)display;
++ (id)newBottomBarForInstance:(id)instance;
++ (id)newBottomLockBarForDisplay:(id)display;
 - (void)_ringIfNecessary;
 - (id)additionalURLParameter;
 - (void)alertDisplayBecameVisible;
 - (void)alertDisplayWillBecomeVisible;
 - (void)answer:(id)answer;
-- (void)answerAndRelease;
 - (void)answerCall:(CTCallRef)call;
 - (void)checkForStatusChange;
 - (void)dealloc;
@@ -29,7 +29,6 @@
 - (void)finishedAnimatingIn;
 - (void)handleVolumeEvent:(GSEventRef)event;
 - (void)ignore;
-- (void)ignoreAndRelease;
 - (void)lockBarUnlocked:(id)unlocked;
 - (void)ringOrVibrate;
 - (void)ringerChanged;

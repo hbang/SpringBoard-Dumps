@@ -11,14 +11,13 @@
 @interface SBDeviceLockViewWithKeypad : SBDeviceLockView {
 	SBDeviceLockKeypad *_keypad;
 }
-- (id)initWithStyle:(int)style interfaceOrientation:(int)orientation;
+- (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (void)dealloc;
 - (void)deviceLockEntryFieldTextDidChange:(id)deviceLockEntryFieldText;
 - (id)keypadView;
 - (void)phonePad:(id)pad keyDown:(BOOL)down;
 - (void)phonePad:(id)pad keyUp:(BOOL)up;
 - (BOOL)playsKeyboardClicks;
-- (id)protectedInitWithStyle:(int)style interfaceOrientation:(int)orientation;
 - (void)setPasscode:(id)passcode;
 - (void)setPlaysKeyboardClicks:(BOOL)clicks;
 - (void)setShowsEmergencyCallButton:(BOOL)button;

@@ -6,6 +6,7 @@
  */
 
 #import "SBApplication.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBSMSApplication : SBApplication {

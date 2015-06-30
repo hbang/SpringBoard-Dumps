@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlertDisplay.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlertDisplay.h"
 
 
 @interface SBPowerDownView : SBAlertDisplay {

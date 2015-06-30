@@ -42,6 +42,7 @@
 - (id)stackedDisplayForAlert:(id)alert;
 - (void)window:(id)window didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (BOOL)window:(id)window shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
+- (void)window:(id)window willAnimateFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame3;
 - (void)window:(id)window willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)window:(id)window willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end

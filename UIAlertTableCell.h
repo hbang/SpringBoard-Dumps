@@ -5,10 +5,16 @@
  * Source: (null)
  */
 
-#import <UIKit/UIPreferencesTableCell.h>
+#import <UIKit/UITableViewCell.h>
 
 
-@interface UIAlertTableCell : UIPreferencesTableCell {
+@interface UIAlertTableCell : UITableViewCell {
+	int _cellOutline;
+	BOOL _checked;
 }
+@property(assign, nonatomic) int cellOutline;
+@property(assign, nonatomic) BOOL checked;
+- (void)_setCellOutline:(int)outline;
+- (void)_setChecked:(BOOL)checked;
 @end
 

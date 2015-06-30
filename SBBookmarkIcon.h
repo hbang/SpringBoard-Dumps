@@ -5,20 +5,22 @@
  * Source: (null)
  */
 
-#import "SBIcon.h"
+#import "SBLeafIcon.h"
 
 
-@interface SBBookmarkIcon : SBIcon {
+@interface SBBookmarkIcon : SBLeafIcon {
 	UIWebClip *_webClip;
 }
 - (id)initWithWebClip:(id)webClip;
-- (BOOL)allowsCloseBox;
+- (BOOL)allowsUninstall;
 - (void)completeUninstall;
 - (void)dealloc;
-- (id)displayIdentifier;
 - (id)displayName;
+- (id)folderFallbackTitle;
+- (id)folderTitleOptions;
 - (id)generateIconImage:(int)image;
 - (void)launch;
+- (id)leafIdentifier;
 - (id)webClip;
 @end
 

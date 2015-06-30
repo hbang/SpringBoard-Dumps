@@ -10,8 +10,8 @@
 
 @interface SBSIMToolkitSetUpCallDisplay : SBSIMToolkitTextAlertDisplay {
 }
-+ (id)createBottomBarForInstance:(id)instance;
-+ (id)createTopBarForInstance:(id)instance;
++ (id)newBottomBarForInstance:(id)instance;
++ (id)newTopBarForInstance:(id)instance;
 - (id)_activeCalls;
 - (id)alertText;
 - (void)dial:(id)dial;

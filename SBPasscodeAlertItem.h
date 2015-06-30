@@ -6,19 +6,20 @@
  */
 
 #import "SBAlertItem.h"
-#import "SpringBoard-Structs.h"
 #import "UITextFieldDelegate.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBPasscodeAlertItem : SBAlertItem <UITextFieldDelegate> {
 	int _mode;
 	int _unlockScreenType;
+	BOOL _hasEmergencyCall;
 }
 - (id)initWithPasscodeMode:(int)passcodeMode unlockScreenType:(int)type;
 - (void)_setErrorString:(id)string;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
-- (void)dismiss;
+- (void)dismiss:(int)dismiss;
 - (void)returnKeyPressed:(id)pressed;
 - (BOOL)shouldShowInLockScreen;
 - (BOOL)textField:(id)field shouldChangeCharactersInRange:(NSRange)range replacementString:(id)string;

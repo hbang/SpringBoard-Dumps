@@ -19,7 +19,7 @@
 - (id)_customAirplaneModeAlertPrompt;
 - (void)_displayDeactivated:(id)deactivated;
 - (id)alertSheet;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)dealloc;
 - (BOOL)dismissOnLock;
 - (void)setAssociatedWithDisplay:(id)display;

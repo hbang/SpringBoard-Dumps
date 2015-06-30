@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlert.h"
 
 
 @interface SBTTYPromptAlert : SBAlert {

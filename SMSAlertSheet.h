@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIModalView.h>
+#import <UIKit/UIAlertView.h>
 
 
-@interface SMSAlertSheet : UIModalView {
+@interface SMSAlertSheet : UIAlertView {
 	BOOL _showingTagline;
 	BOOL _showingImage;
 }

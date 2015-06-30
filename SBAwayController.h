@@ -33,6 +33,7 @@
 	unsigned _performingAutoUnlock : 1;
 	unsigned _springBoardIdleTimerScheduled : 1;
 	unsigned _validPhotoCountCheck : 1;
+	unsigned _nowPlayingAppIsThirdParty : 1;
 	NSDictionary *_nowPlayingInfo;
 	NSNumber *_iPodNowPlayingPID;
 	BOOL _iPodIsPlaying;
@@ -41,7 +42,7 @@
 	double _lastLockWallTime;
 	NSTimeZone *_lastLockTimeZone;
 	double _lastLockSecondsSinceBoot;
-	NSTimer *_deviceLockTimer;
+	PCPersistentTimer *_deviceLockTimer;
 	BOOL _devicePasscodeLoaded;
 	NSString *_devicePasscode;
 	BOOL _chargingViewHasFadedOut;
@@ -49,11 +50,14 @@
 	SBAlertItem *_currentAlertItem;
 	NSMutableDictionary *_awayViewPluginControllers;
 	NSString *_alwaysFullscreenAwayPluginName;
-	SBSleepProofTimer *_smsSoundWakeTimers[2];
+	PCPersistentTimer *_smsSoundWakeTimers[2];
+	int _gracePeriodWhenLocked;
 }
 @property(assign, nonatomic) BOOL chargingViewHasFadedOut;
+@property(readonly, assign) NSDate *lastLockDate;
 + (void)registerForAlerts;
 + (id)sharedAwayController;
++ (id)sharedAwayControllerIfExists;
 - (id)initWithUIController:(id)uicontroller;
 - (void)_batteryStatusChanged;
 - (void)_clearBlockedState;
@@ -63,11 +67,14 @@
 - (void)_finishedUnlockAttemptWithStatus:(BOOL)status;
 - (int)_getGracePeriod;
 - (void)_handleFetchediPodNowPlayingInfo:(id)info;
+- (void)_iapExtendedModeChanged:(id)changed;
 - (void)_markLockTime;
+- (void)_nowPlayingAppChanged:(id)changed;
 - (void)_pendAlertItem:(id)item;
 - (void)_photoLibraryChanged;
 - (void)_releaseAwayView;
 - (void)_sendLockStateChangedNotification;
+- (BOOL)_shouldLockDeviceWithCurrentGracePeriod:(int)currentGracePeriod;
 - (void)_smsSoundWakeTimerFired:(id)fired;
 - (void)_undimScreen;
 - (void)_unlockWithSound:(BOOL)sound isAutoUnlock:(BOOL)unlock;
@@ -80,12 +87,10 @@
 - (void)alertDisplayWillBecomeVisible;
 - (CGRect)alertWindowRect;
 - (void)allowIdleSleep;
-- (BOOL)allowsDoubleHeightStatusBar:(BOOL)bar;
 - (BOOL)allowsIdleDimming;
 - (BOOL)allowsStackingOfAlert:(id)alert;
 - (void)applicationRequestedDeviceUnlock;
 - (BOOL)attemptDeviceUnlockWithPassword:(id)password alertDisplay:(id)display;
-- (BOOL)attemptSnoozeRingingAlertItem;
 - (void)attemptUnlock;
 - (void)attemptUnlockWithHardwareKeyPress:(BOOL)hardwareKeyPress;
 - (id)awayModel;
@@ -99,9 +104,7 @@
 - (id)currentAlertItem;
 - (void)deactivate;
 - (void)deactivateAlertItem:(id)item;
-- (void)dealloc;
 - (BOOL)deviceHasPhotos;
-- (id)devicePasscode;
 - (void)didAnimateLockKeypadIn;
 - (void)didAnimateLockKeypadOut;
 - (void)didFinishAnimatingOut;
@@ -110,6 +113,7 @@
 - (void)dimTimerFired;
 - (void)disableLockScreenBundleWithName:(id)name;
 - (void)disablePluginContainerNotification:(id)notification;
+- (int)effectiveStatusBarStyle;
 - (void)emergencyCallWasDisplayed;
 - (void)emergencyCallWasRemoved;
 - (void)enableAlwaysFullscreenAwayPlugin;
@@ -135,7 +139,6 @@
 - (BOOL)isAttemptingUnlock;
 - (BOOL)isAwayPluginViewVisible;
 - (BOOL)isBlocked;
-- (BOOL)isCurrentAlertItemRinging;
 - (BOOL)isDeviceLockedOrBlocked;
 - (BOOL)isDimmed;
 - (BOOL)isLocked;
@@ -144,13 +147,13 @@
 - (BOOL)isPermanentlyBlocked:(double *)blocked;
 - (BOOL)isShowingMediaControls;
 - (BOOL)isSyncing;
-- (void)loadPasscode;
 - (void)lock;
 - (void)lockBarStartedTracking:(id)tracking;
 - (void)lockBarStoppedTracking:(id)tracking;
 - (void)makeEmergencyCall;
 - (BOOL)moveAlertItemToAwayView:(id)awayView;
 - (id)nameOfPluginController:(id)pluginController;
+- (void)notePasscodeGracePeriodMayHaveChanged;
 - (void)noteResetRestoreStateChanged;
 - (void)noteSpringBoardIdleTimerScheduled:(BOOL)scheduled;
 - (void)noteSyncStateChanged;
@@ -166,7 +169,7 @@
 - (void)reactivatePendingAlertItems;
 - (void)relockForButtonPress:(BOOL)buttonPress afterCall:(BOOL)call;
 - (void)relockForButtonPress:(BOOL)buttonPress afterCall:(BOOL)call dimmed:(BOOL)dimmed;
-- (void)resetAwayItems;
+- (void)resetAwayItemsAndMark:(BOOL)mark;
 - (void)restartDimTimer:(float)timer;
 - (void)screensaverDidFadeToBlack:(id)screensaver finished:(id)finished context:(void *)context;
 - (void)setAlwaysFullscreenAwayPluginName:(id)name;
@@ -178,9 +181,8 @@
 - (BOOL)shouldShowSlideshowButton;
 - (BOOL)showOverheatUI;
 - (void)smsMessageReceived;
-- (void)snoozeOrStopRingingAlertItem;
-- (int)statusBarMode;
-- (void)stopRingingAlertItem;
+- (int)statusBarStyle;
+- (int)statusBarStyleOverridesToCancel;
 - (void)tearDownAlertWindow:(id)window;
 - (BOOL)toggleMediaControls;
 - (void)toggleShowsIMEIandICCID:(id)iccid;
@@ -194,8 +196,8 @@
 - (void)updateAwayViewNowPlayingInfo;
 - (void)updateClockFormat;
 - (void)updateInCallUI;
+- (void)updateInterfaceIfNecessary;
 - (void)updateNowPlayingInfo:(id)info fromiPod:(BOOL)pod;
-- (void)updateStatusBar:(double)bar orientation:(int)orientation fence:(int)fence animation:(int)animation startTime:(double)time;
 - (void)updateiPodNowPlayingInfo:(id)info;
 - (void)updateiPodPlaybackState:(id)state;
 - (void)userEventOccurred;

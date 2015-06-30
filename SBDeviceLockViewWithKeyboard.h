@@ -15,7 +15,7 @@
 	BOOL _wasMinimizedWhenAnimationStarted;
 	BOOL _triedToMinMaxWhileRotating;
 }
-- (id)initWithStyle:(int)style interfaceOrientation:(int)orientation;
+- (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (void)_layoutEntryView;
 - (void)_layoutForCurrentOrientation;
 - (void)animateToInterfaceInterfaceOrientation:(int)interfaceInterfaceOrientation;
@@ -27,7 +27,6 @@
 - (id)keypadView;
 - (void)maximize;
 - (void)minimize;
-- (id)protectedInitWithStyle:(int)style interfaceOrientation:(int)orientation;
 - (void)returnKeyPressed:(id)pressed;
 - (void)setInterfaceOrientation:(int)orientation;
 - (void)setMinimized:(BOOL)minimized;

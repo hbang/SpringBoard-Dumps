@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlert.h"
 
 
 @interface SBSIMLockEntryAlert : SBAlert {
@@ -17,6 +17,5 @@
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)deactivate;
 - (int)status;
-- (int)statusBarMode;
 @end
 

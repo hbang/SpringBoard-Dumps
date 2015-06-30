@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBSIMToolkitAlert.h"
 #import "SpringBoard-Structs.h"
 #import "SBAlert.h"
+#import "SBSIMToolkitAlert.h"
 
 
 @interface SBSIMToolkitAlert : SBAlert {

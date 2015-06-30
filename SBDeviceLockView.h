@@ -28,7 +28,8 @@
 @property(retain, nonatomic) NSString *statusTitle;
 @property(readonly, assign, nonatomic) UIView *statusView;
 @property(readonly, assign, nonatomic) int style;
-- (id)initWithStyle:(int)style interfaceOrientation:(int)orientation;
++ (id)newWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
+- (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (void)animateToInterfaceInterfaceOrientation:(int)interfaceInterfaceOrientation;
 - (void)blinkStatusView;
 - (void)dealloc;
@@ -41,7 +42,6 @@
 - (void)notifyDelegateThatEmergencyCallButtonWasPressed;
 - (void)notifyDelegateThatPasscodeDidChange;
 - (void)notifyDelegateThatPasscodeWasEntered;
-- (id)protectedInitWithStyle:(int)style interfaceOrientation:(int)orientation;
 - (void)setUserInteractionEnabled:(BOOL)enabled;
 - (void)willAnimateToInterfaceOrientation:(int)interfaceOrientation;
 @end

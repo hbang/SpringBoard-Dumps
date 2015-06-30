@@ -5,15 +5,14 @@
  * Source: (null)
  */
 
-#import <UIKit/UIModalView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIAlertView.h>
 
 
-@interface SBAwayItemsView : UIModalView {
+@interface SBAwayItemsView : UIAlertView {
 	NSArray *_displayedItems;
 	float _widestLabel;
 }
-- (id)init;
 - (id)_labelForAwayItem:(id)awayItem count:(int)count;
 - (id)_titleForAwayItem:(id)awayItem count:(int)count;
 - (void)dealloc;

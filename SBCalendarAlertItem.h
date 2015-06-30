@@ -10,6 +10,7 @@
 
 @interface SBCalendarAlertItem : SBAlertItem {
 	double _date;
+	NSTimeZone *_timeZone;
 	NSString *_title;
 	NSString *_location;
 	int _eventId;
@@ -18,18 +19,18 @@
 + (void)alarmsDidFire:(id)alarms;
 + (void)registerForAlerts;
 + (void)significantTimeChange;
-- (id)initWithDate:(double)date title:(id)title location:(id)location eventId:(int)anId isAllDay:(BOOL)day;
-- (id)_dateString:(BOOL)string;
-- (id)_dayString:(BOOL)string;
-- (id)_timeString;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (id)initWithDate:(double)date timeZone:(id)zone title:(id)title location:(id)location eventId:(int)anId isAllDay:(BOOL)day;
+- (void)_updateEventDetails:(id)details;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (id)awayItem;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (void)didPresentAlertSheet:(id)sheet;
+- (id)description;
+- (void)didPresentAlertView:(id)view;
 - (id)lockLabel;
 - (void)performUnlockAction;
 - (void)revealEvent;
+- (void)screenWillUndim;
 - (BOOL)shouldShowInEmergencyCall;
 - (BOOL)willShowInAwayItems;
 @end

@@ -14,7 +14,9 @@
 }
 - (id)initWithFrame:(CGRect)frame deviceLockView:(id)view;
 - (BOOL)canDismiss;
+- (BOOL)isMinimized;
 - (void)maximize;
 - (void)minimize;
+- (void)setMinimized:(BOOL)minimized;
 @end
 

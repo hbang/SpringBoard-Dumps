@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIView.h>
 
 
 @interface SBZoomView : UIView {
@@ -16,8 +16,8 @@
 	NSMutableArray *_cornerViews;
 }
 - (id)initWithFrame:(CGRect)frame;
-- (id)initWithSnapshotFrame:(CGRect)snapshotFrame image:(id)image originalImageOrientation:(int)orientation currentImageOrientation:(int)orientation4 interfaceOrientation:(int)orientation5 doubleHeightStatusBar:(BOOL)bar preventSplit:(BOOL)split chrome:(id)chrome chromeStatusBarStyle:(int)style needsZoomFilter:(BOOL)filter;
-- (id)initWithSnapshotFrame:(CGRect)snapshotFrame ioSurface:(void *)surface transform:(CGAffineTransform)transform;
+- (id)initWithSnapshotFrame:(CGRect)snapshotFrame image:(id)image originalImageOrientation:(int)orientation currentImageOrientation:(int)orientation4 interfaceOrientation:(int)orientation5 doubleHeightStatusBar:(BOOL)bar preventSplit:(BOOL)split chrome:(id)chrome chromeStatusBarHidden:(BOOL)hidden needsZoomFilter:(BOOL)filter;
+- (id)initWithSnapshotFrame:(CGRect)snapshotFrame ioSurface:(void *)surface snapshotTransform:(CGAffineTransform)transform;
 - (id)_chromeStatusBarImageForInterfaceOrientation:(int)interfaceOrientation;
 - (void)_createCornerViewsIfNecessaryWithCornersFrame:(CGRect)cornersFrame;
 - (int)_degreesForRotationFromInterfaceOrientation:(int)interfaceOrientation toInterfaceOrientation:(int)interfaceOrientation2;

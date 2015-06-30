@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIView.h>
 
 
 @interface SBAlertImageView : UIView {
@@ -14,6 +14,7 @@
 	UILabel *_labelView;
 }
 - (id)initWithFrame:(CGRect)frame errorString:(id)string;
+- (void)dealloc;
 - (void)layoutSubviews;
 @end
 

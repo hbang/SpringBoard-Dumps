@@ -5,89 +5,54 @@
  * Source: (null)
  */
 
+#import "UISearchBarDelegate.h"
 #import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
-#import "SPDaemonQueryDelegate.h"
 #import "UITableViewDelegate.h"
 #import "UITableViewDataSource.h"
-#import "UISearchBarDelegate.h"
 
 
-@interface SBSearchController : NSObject <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, SPDaemonQueryDelegate> {
+@interface SBSearchController : NSObject <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
 	SBSearchView *_searchView;
-	NSString *_queryString;
-	NSString *_firstNoResultsQuery;
 	NSDateFormatter *_dayDateFormatter;
 	NSDateFormatter *_timeDateFormatter;
-	int _domainOrdering[12];
-	NSArray *_querySearchDomains;
-	BOOL _querySearchDomainsIncludesApplications;
-	int _sectionToGroupMap[12];
-	BOOL _sectionToGroupMapIsValid;
-	int _resultSectionCount;
-	int _applicationsSectionIndex;
-	SPSearchResult *_cursor;
-	SPSearchResultDeserializer *_resultGroups[12];
-	SPSearchResultDeserializer *_accumulatingResultGroups[12];
-	BOOL _resultGroupsIsCurrent[12];
-	SPDaemonQueryToken *_currentToken;
-	BOOL _shouldShowNoResultsView;
-	BOOL _queryIsActive;
-	NSMutableArray *_matchingLaunchingIcons;
-	NSTimer *_clearSearchTimer;
-	NSDate *_clearSearchDate;
 	BOOL _reloadingTableContent;
-	int _previousSectionCount;
+	BOOL _resultsUpdated;
+	NSCalendar *_autoUpdatingCurrentCalendar;
+	NSDate *_midnightThisMorning;
 }
 @property(retain, nonatomic) SBSearchView *searchView;
-+ (id)sharedInstance;
 - (id)init;
-- (void)_clearSearchTimerFired;
+- (id)_autoUpdatingCurrentCalendar;
+- (void)_clearResultsString:(id)string;
 - (id)_dayAndTimeStringForDate:(id)date;
 - (id)_dayStringForDate:(id)date;
 - (void)_deselect;
-- (id)_groupForSection:(int)section;
-- (int)_groupIndexForSection:(int)section;
-- (id)_imageForDisplayIdentifier:(id)displayIdentifier andSpotlightCategory:(id)category;
-- (id)_imageForDomain:(int)domain andDisplayID:(id)anId;
-- (id)_launchingURLForResult:(id)result withDisplayIdentifier:(id)displayIdentifier;
+- (BOOL)_hasSearchResults;
+- (id)_midnightThisMorning;
 - (void)_populateCell:(id)cell withSearchResult:(id)searchResult;
-- (void)_promoteAccumulatedResults;
-- (void)_releaseAccumulatingResultGroups;
-- (void)_releaseResultGroups;
-- (int)_resultSectionCount;
-- (BOOL)_sectionIsApp:(int *)app appOffset:(int *)offset;
-- (BOOL)_shouldDisplayApplicationSearchResults;
-- (void)_tableViewDidFadeOut:(id)_tableView finished:(id)finished context:(void *)context;
+- (void)_significantTimeChange:(id)change;
 - (id)_timeStringForDate:(id)date;
-- (void)_updateApplicationSearchResults;
-- (void)_updateClearSearchTimerFireDate;
-- (void)_updateSectionToGroupMap;
-- (void)clearSearchResults;
+- (void)_updateResults:(id)results;
+- (void)_updateTableContents;
 - (void)controllerWasDeactivated;
 - (void)dealloc;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
-- (BOOL)hasQueryString;
-- (BOOL)hasSearchResults;
 - (int)numberOfSectionsInTableView:(id)tableView;
-- (void)resetClearSearchTimer;
 - (void)scrollViewDidScroll:(id)scrollView;
 - (void)scrollViewIsScrollingHorizontallyInSearchView;
 - (void)searchBar:(id)bar textDidChange:(id)text;
 - (void)searchBarSearchButtonClicked:(id)clicked;
 - (void)searchBarTextDidBeginEditing:(id)searchBarText;
 - (void)searchBarTextDidEndEditing:(id)searchBarText;
-- (void)searchDaemonQuery:(id)query addedResults:(id)results;
-- (void)searchDaemonQuery:(id)query encounteredError:(id)error;
-- (void)searchDaemonQueryCompleted:(id)completed;
-- (void)startClearSearchTimer;
+- (BOOL)shouldShowKeyboardOnScroll;
 - (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didSelectRowAtIndexPath:(id)indexPath;
 - (int)tableView:(id)view numberOfRowsInSection:(int)section;
 - (id)tableView:(id)view viewForHeaderInSection:(int)section;
+- (BOOL)tableView:(id)view wantsHeaderForSection:(int)section;
 - (void)tableView:(id)view willDisplayCell:(id)cell forRowAtIndexPath:(id)indexPath;
-- (void)updateSearchOrdering;
-- (void)updateTableContents;
+- (void)updateResultsIfNecessary;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end

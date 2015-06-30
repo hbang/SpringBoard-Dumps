@@ -5,16 +5,16 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <UIKit/UIView.h>
 
 
 @interface SBAwayMediaControlsView : UIView {
 	unsigned _beganSeeking : 1;
 	int _seekingDirection;
-	UIPushButton *_prevButton;
-	UIPushButton *_nextButton;
-	UIPushButton *_playPauseButton;
+	UIButton *_prevButton;
+	UIButton *_nextButton;
+	UIButton *_playPauseButton;
 	UISlider *_slider;
 	UIButton *_routeButton;
 	UILabel *_routeLabel;
@@ -27,7 +27,7 @@
 - (void)_changeTrackButtonEndSeek:(id)seek;
 - (void)_changeTrackButtonTouchPause:(id)pause;
 - (void)_changeTrackButtonUp:(id)up;
-- (id)_createButtonWithImage:(id)image action:(SEL)action tag:(int)tag;
+- (id)_newButtonWithImage:(id)image action:(SEL)action tag:(int)tag;
 - (void)_nowPlayingChanged:(id)changed;
 - (void)_playPauseButtonAction:(id)action;
 - (void)_registerForNowPlayingNotifications;

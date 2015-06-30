@@ -6,25 +6,28 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "UITableViewDelegate.h"
+#import "UITableViewDataSource.h"
 #import "SBSlidingAlertDisplay.h"
 
 
-@interface SBSIMToolkitListDisplay : SBSlidingAlertDisplay {
-	UITable *_table;
+@interface SBSIMToolkitListDisplay : SBSlidingAlertDisplay <UITableViewDelegate, UITableViewDataSource> {
+	UITableView *_table;
 	NSArray *_items;
 }
-+ (id)createTopBarForInstance:(id)instance;
++ (id)newTopBarForInstance:(id)instance;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_selectListItem:(unsigned long)item;
 - (id)_simToolkitListItems;
 - (void)alertDisplayWillBecomeVisible;
 - (void)dealloc;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
-- (void)navigationBar:(id)bar buttonClicked:(int)clicked;
-- (int)numberOfRowsInTable:(id)table;
+- (void)leftNavigationButtonPressed;
+- (void)rightNavigationButtonPressed;
 - (void)setMiddleContentAlpha:(float)alpha;
 - (BOOL)showsDesktopImage;
-- (id)table:(id)table cellForRow:(int)row column:(id)column;
-- (void)tableSelectionDidChange:(id)tableSelection;
+- (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;
+- (void)tableView:(id)view didSelectRowAtIndexPath:(id)indexPath;
+- (int)tableView:(id)view numberOfRowsInSection:(int)section;
 @end
 

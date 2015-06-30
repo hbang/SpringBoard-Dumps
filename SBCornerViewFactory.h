@@ -11,7 +11,7 @@
 
 @interface SBCornerViewFactory : NSObject {
 }
-+ (id)createCornerViewForCorner:(int)corner cornersFrame:(CGRect)frame;
 + (id)createCornerWindowForCorner:(int)corner windowLevel:(float)level cornersFrame:(CGRect)frame;
++ (id)newCornerViewForCorner:(int)corner cornersFrame:(CGRect)frame;
 @end
 

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlert.h"
 
 
 @interface SBVoiceControlAlert : SBAlert {
@@ -16,6 +16,7 @@
 		unsigned hasBeenActivated : 1;
 	} _voiceControlFlags;
 }
++ (BOOL)_bluetoothDevicesPickable;
 + (void)_configureSession:(id)session forAlert:(id)alert;
 + (void)_setNextRecognitionAudioInputPathForSession:(id)session resetting:(BOOL)resetting;
 + (void)bluetoothDeviceRequestedVoiceControl:(id)control;
@@ -48,7 +49,7 @@
 - (void)deactivateAfterLocking;
 - (void)dealloc;
 - (void)handleHeadsetButtonUpFromActivation:(BOOL)activation;
-- (void)handleMenuButtonTap;
+- (BOOL)handleMenuButtonTap;
 - (BOOL)recognitionSessionWillBeginAction:(id)recognitionSession;
 @end
 

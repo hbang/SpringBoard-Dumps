@@ -9,14 +9,19 @@
 
 
 @interface SBPasscodeController : NSObject {
-	SBPasscodeAlertItem *_alertItem;
+	SBPasscodeAlertItem *_passcodeAlertItem;
 	int _mode;
-	NSString *_password;
-	NSString *_originalPassword;
+	NSString *_previousPasscode;
+	NSString *_newPasscode;
 	int _unlockScreenType;
+	SBPasscodeComplianceAlertItem *_complianceAlertItem;
+	NSDate *_forcedComplianceDate;
 }
 + (id)sharedInstance;
+- (void)_abort;
 - (void)_passwordEntered:(id)entered;
+- (void)_userWantsToComplyNow:(BOOL)complyNow;
+- (void)checkPasscodeCompliance;
 - (void)dealloc;
 - (void)forceUserToChangePasscode;
 @end
