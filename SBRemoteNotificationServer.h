@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)postSettingsChangedNotificationForBundleIdentifier:(id)bundleIdentifier;
 - (void)registerApplication:(id)application forEnvironment:(id)environment withTypes:(unsigned)types;
 - (void)run;
+- (void)setBackgroundDeliveryDisabled:(BOOL)disabled forBundleIdentifier:(id)bundleIdentifier;
 - (void)setMessageUserInfo:(id)info forBundleIdentifier:(id)bundleIdentifier;
 - (void)setMessageUserInfo:(id)info forToken:(int)token forBundleIdentifier:(id)bundleIdentifier;
 - (void)setSettingsTypes:(unsigned)types forBundleIdentifier:(id)bundleIdentifier;

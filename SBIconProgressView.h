@@ -41,6 +41,8 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) float foregroundAlpha;
 @property(retain, nonatomic) UIImage *overlayImage;
 @property(assign, nonatomic) float pauseRadiusFraction;
++ (id)_pieImageAtFraction:(float)fraction;
++ (id)_pieImagesMemoryPool;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_clearDisplayLink;
 - (void)_clearTransitionIfComplete:(id *)complete;

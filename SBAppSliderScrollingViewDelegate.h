@@ -14,9 +14,11 @@
 - (BOOL)sliderScroller:(id)scroller itemWantsToBeKeptInViewHierarchy:(unsigned)viewHierarchy;
 - (void)sliderScroller:(id)scroller itemWantsToBeRemoved:(unsigned)beRemoved;
 - (id)sliderScroller:(id)scroller viewForIndex:(unsigned)index;
+- (void)sliderScrollerBeganMoving:(id)moving;
 - (void)sliderScrollerBeganPanning:(id)panning;
 - (void)sliderScrollerDidEndScrolling:(id)sliderScroller;
 - (float)sliderScrollerDistanceBetweenItemCenters:(id)centers forOrientation:(int)orientation;
+- (BOOL)sliderScrollerIsRelayoutBlocked:(id)blocked;
 - (unsigned)sliderScrollerItemCount:(id)count;
 - (CGSize)sliderScrollerItemSize:(id)size forOrientation:(int)orientation;
 @end

@@ -8,9 +8,18 @@
 
 
 @protocol SBIconModelDelegate <NSObject>
+- (BOOL)canAddDownloadingIconForApplication:(id)application;
+- (BOOL)canAddWebClip:(id)clip;
 @optional
 - (BOOL)canSaveIconState:(id)state;
 - (void)didDeleteIconState:(id)state;
 - (void)didSaveIconState:(id)state;
+@required
+- (unsigned)maxColCountForListInRootFolderWithInterfaceOrientation:(int)interfaceOrientation;
+- (unsigned)maxIconCountForDock;
+- (unsigned)maxIconCountForListInFolderClass:(Class)folderClass;
+- (unsigned)maxListCountForFolders;
+- (unsigned)maxRowCountForListInRootFolderWithInterfaceOrientation:(int)interfaceOrientation;
+- (BOOL)supportsDock;
 @end
 

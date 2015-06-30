@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 @interface SBStarkIconBadgeView : SBIconBadgeView {
 }
 + (id)_checkoutBackgroundImage;
-+ (id)_createImageForText:(id)text highlighted:(BOOL)highlighted;
++ (float)_maxTextWidth;
++ (CGPoint)_overhang;
++ (id)_textFont;
++ (CGPoint)_textOffset;
++ (float)_textPadding;
 @end
 

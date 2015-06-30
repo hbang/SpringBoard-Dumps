@@ -9,17 +9,20 @@
 
 __attribute__((visibility("hidden")))
 @interface SBWindow : XXUnknownSuperclass {
+	SBRecycledViewsContainer *_recycledViewsContainerView;
 	int _jailBehavior;
 }
 @property(readonly, assign, nonatomic) UIEdgeInsets jailInsets;
 + (CGRect)_actualBoundsForScreen:(id)screen withJailBehavior:(int)jailBehavior;
 + (UIEdgeInsets)_jailInsetsForScreen:(id)screen;
 - (id)initWithFrame:(CGRect)frame;
+- (id)initWithScreen:(id)screen;
 - (id)initWithScreen:(id)screen jailBehavior:(int)behavior;
 - (BOOL)_isClippedByScreenJail;
 - (BOOL)_isConstrainedByScreenJail;
+- (void)dealloc;
+- (id)recycledViewsContainer;
 - (void)setAlpha:(float)alpha;
 - (void)setAlphaAndObeyBecauseIAmTheWindowManager:(float)manager;
-- (void)setScreen:(id)screen;
 @end
 

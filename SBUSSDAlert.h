@@ -29,5 +29,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)receivedString;
 - (BOOL)sentResponse;
 - (void)setDismissOnActivate:(BOOL)activate;
+- (int)statusBarStyle;
 @end
 

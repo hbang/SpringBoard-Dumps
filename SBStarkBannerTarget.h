@@ -9,39 +9,41 @@
 @protocol SBStarkBannerTargetObserver;
 
 __attribute__((visibility("hidden")))
-@interface SBStarkBannerTarget : XXUnknownSuperclass <SBUIBannerTarget> {
+@interface SBStarkBannerTarget : XXUnknownSuperclass <SBUIBannerTargetImplementation> {
 	id<SBStarkBannerTargetObserver> _observer;
 	NSHashTable *_sources;
 	BOOL _invalidated;
+	NSMutableSet *_suspensionReasons;
 	NSMutableArray *_pendedContexts;
 	SBUIBannerContext *_currentContext;
 	SBUISound *_currentSound;
 	int _displayAssertions;
-	BOOL _suspended;
-	BOOL _suspendedForAssistant;
 }
+@property(readonly, assign, nonatomic) void *bannerTargetIdentifier;
 @property(readonly, assign, nonatomic) int bannerTargetIdiom;
 @property(readonly, assign, nonatomic) SBUIBannerContext *currentContext;
 @property(assign, nonatomic) id<SBStarkBannerTargetObserver> observer;
 @property(assign, nonatomic, getter=isPausedForUserInteraction) BOOL pausedForUserInteraction;
-@property(assign, nonatomic, getter=isSuspended) BOOL suspended;
-@property(assign, nonatomic, getter=isSuspendedForAssistant) BOOL suspendedForAssistant;
 - (id)init;
 - (BOOL)_canDequeueWithOptions:(int)options;
 - (BOOL)_canDismissWithOptions:(int)options;
 - (void)_dequeueWithOptions:(int)options dismissReason:(int)reason;
 - (void)_dismissContext:(id)context withOptions:(int)options dismissReason:(int)reason;
 - (void)_dismissIntervalElapsed:(id)elapsed;
+- (BOOL)_isSuspendedForAssistant;
 - (void)_killIntervalElapsed:(id)elapsed;
 - (void)_replaceIntervalElapsed:(id)elapsed;
 - (id)currentBannerContextForSource:(id)source;
 - (void)dealloc;
 - (void)dismissCurrentBannerContextForSource:(id)source;
 - (void)invalidate;
+- (BOOL)isSuspended;
+- (BOOL)isSuspendedForReason:(id)reason;
 - (void)noteContext:(id)context subActionSelected:(unsigned)selected;
 - (void)noteContextCanceled:(id)canceled;
 - (void)noteContextSelected:(id)selected;
 - (void)registerSource:(id)source;
+- (void)setSuspended:(BOOL)suspended cancellingCurrent:(BOOL)current forReason:(id)reason;
 - (void)signalSource:(id)source;
 - (void)unregisterSource:(id)source;
 @end

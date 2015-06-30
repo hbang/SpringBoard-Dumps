@@ -9,39 +9,40 @@
 @protocol SBIconViewMapDelegate, SBIconViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBIconViewMap : XXUnknownSuperclass <SBIconObserver, SBIconIndexNodeObserver, SBIconViewObserver> {
+@interface SBIconViewMap : SBReusableViewMap <SBIconObserver, SBIconIndexNodeObserver, SBIconViewObserver> {
 	SBIconModel *_model;
 	NSMapTable *_iconViewsForIcons;
 	id<SBIconViewMapDelegate> _delegate;
 	id<SBIconViewDelegate> _viewDelegate;
-	NSMapTable *_recycledIconViewsByType;
 	NSMapTable *_labelsForIcons;
 	NSMapTable *_lightLegibilityImagesForIcons;
 	NSMapTable *_darkLegibilityImagesForIcons;
 	NSMapTable *_accessoryImagesForIcons;
 	_UILegibilitySettings *_legibilitySettings;
 }
+@property(readonly, assign, nonatomic) SBIconModel *iconModel;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
-@property(assign, nonatomic) id<SBIconViewDelegate> viewDelegate;
 + (id)homescreenMap;
-+ (id)switcherMap;
-- (id)initWithIconModel:(id)iconModel delegate:(id)delegate;
+- (id)initWithIconModel:(id)iconModel delegate:(id)delegate viewDelegate:(id)delegate3;
 - (void)_addIconView:(id)view forIcon:(id)icon;
 - (void)_cacheAccessoryImagesForIcon:(id)icon location:(int *)location;
 - (void)_cacheImagesForIcon:(id)icon;
-- (void)_cacheLabelImagesForIcon:(id)icon location:(int *)location;
+- (void)_cacheLabelImagesForIcon:(id)icon location:(int)location;
 - (id)_iconViewForIcon:(id)icon;
 - (void)_modelReloadedIcons;
 - (void)_modelReloadedState;
 - (void)_modelRemovedIcon:(id)icon;
+- (void)_modelWillReloadState;
+- (void)_observeIconAndCacheIfNecessary:(id)necessary;
 - (void)_recycleIconView:(id)view;
 - (void)dealloc;
 - (id)extraIconViewForIcon:(id)icon;
 - (void)iconAccessoriesDidUpdate:(id)iconAccessories;
-- (id)iconModel;
 - (void)iconViewDidChangeLocation:(id)iconView;
 - (id)iconViewForIcon:(id)icon;
+- (void)invalidate;
 - (id)mappedIconViewForIcon:(id)icon;
+- (id)newViewOfClass:(Class)aClass;
 - (void)node:(id)node didAddContainedNodeIdentifiers:(id)identifiers;
 - (void)node:(id)node didRemoveContainedNodeIdentifiers:(id)identifiers;
 - (void)purgeIconFromMap:(id)map;

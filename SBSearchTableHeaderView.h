@@ -15,9 +15,8 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) NSString *reuseIdentifier;
 @property(retain, nonatomic) NSString *title;
-+ (float)heightForContentSizeCategory:(id)contentSizeCategory;
++ (float)heightForActiveContentSizeCategory;
 + (id)lineColor;
-+ (float)titleBaselineFromBottomForContentSizeCategory:(id)contentSizeCategory;
 - (id)initWithReuseIdentifier:(id)reuseIdentifier;
 - (void)dealloc;
 - (BOOL)isUserInteractionEnabled;

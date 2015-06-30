@@ -13,22 +13,22 @@ __attribute__((visibility("hidden")))
 	UIImageView *_iconImageView;
 	SBNotificationsClearButton *_xButton;
 	SBNotificationsClearButton *_clearButton;
-	UIImageView *_buttonBackground;
 	id _xAction;
 	id _clearAction;
-	float _widthWhenShowingClear;
 	BOOL _showingClear;
 	SBNotificationCenterSeparatorView *_separator;
+	float _clearButtonDescender;
 }
 + (void)_compositingFilterForView:(id)view;
 + (id)defaultBackgroundColorForGraphicsQuality:(int)graphicsQuality;
 - (id)initWithFrame:(CGRect)frame;
-- (CGRect)_buttonBackgroundFrame;
-- (id)_clearBackgroundImage;
+- (void)_addClearButtons;
+- (id)_circleXImage;
+- (CGRect)_clearButtonFrame;
 - (id)_clearImage;
+- (void)_removeClearButtons;
 - (void)_setShowsClear:(BOOL)clear animated:(BOOL)animated;
 - (CGRect)_xButtonFrame;
-- (id)_xImage;
 - (void)buttonAction:(id)action;
 - (CGRect)contentBounds;
 - (void)dealloc;

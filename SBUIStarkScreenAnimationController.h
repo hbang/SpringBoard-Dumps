@@ -13,7 +13,10 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) SBStarkScreenController *starkScreenController;
 - (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app starkScreenController:(id)controller;
+- (void)__startAnimation;
+- (void)_cleanupAnimation;
 - (id)_getTransitionWindow;
+- (BOOL)_wantsInitialProgressStateChange;
 - (void)dealloc;
 @end
 

@@ -9,7 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUIController : XXUnknownSuperclass <SBUIActiveOrientationObserver, SBAppSliderControllerDelegate, SBScreenConnectionHandler, SBWallpaperObserver, _UISettingsKeyObserver, UIWindowDelegate> {
-	UIWindow *_window;
+	SBWindow *_window;
 	UIView *_iconsView;
 	UIView *_contentView;
 	UIStatusBar *_fakeSpringBoardStatusBar;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 	id _suspendGestureCompleteBackwardToStartHandler;
 	BOOL _switcherVisibleWhenSuspendGestureStarted;
 	SBWorkspaceEventQueueLockAssertion *_suspendGestureWorkspaceLock;
+	BOOL _shouldUnscatterForSuspendGesture;
 	BOOL _switcherAnimationRevealing;
 	BOOL _switcherAnimationInProgress;
 	BOOL _switcherGestureRevealedOrDismissedSwitcher;
@@ -71,14 +72,15 @@ __attribute__((visibility("hidden")))
 - (void)ACPowerChanged;
 - (void)_accessibilityWillBeginAppSwitcherRevealAnimation;
 - (BOOL)_activateAppSwitcherFromSide:(int)side;
-- (void)_airPlayPasswordAlertWillAppear:(id)_airPlayPasswordAlert;
 - (BOOL)_allowSwitcherGesture;
 - (void)_animateStatusBarForSuspendGesture;
 - (id)_appSliderController;
 - (float)_appSwitcherRevealAnimationDelay;
 - (void)_applicationActivationStateDidChange:(id)_applicationActivationState;
 - (void)_awayControllerActivated:(id)activated;
+- (void)_backgroundContrastDidChange:(id)_backgroundContrast;
 - (id)_calculateSwitchAppList;
+- (BOOL)_canPresentCenterController:(id)controller;
 - (void)_clearAllInstalledSystemGestureViews;
 - (void)_clearGestureViewVendorCacheForAppWithDisplayIdenitifier:(id)displayIdenitifier;
 - (void)_clearInstalledSystemGestureViewForKey:(id)key;
@@ -163,7 +165,6 @@ __attribute__((visibility("hidden")))
 - (void)activeInterfaceOrientationWillChangeToOrientation:(int)activeInterfaceOrientation;
 - (BOOL)allowAlertWindowRotation;
 - (BOOL)allowSystemGestureType:(unsigned)type atLocation:(CGPoint)location;
-- (BOOL)allowsShowControlCenterGesture;
 - (float)ambiguousControlCenterActivationMargin;
 - (void)animateAppSwitcherDismissalToApplication:(id)application withCompletion:(id)completion;
 - (void)animateAppleDown:(BOOL)down;
@@ -178,12 +179,11 @@ __attribute__((visibility("hidden")))
 - (void)cleanUpOnFrontLocked;
 - (void)cleanupRunningGestureIfNeeded;
 - (void)cleanupSwitchAppGestureViews;
-- (void)clearFakeSpringBoardStatusBar;
 - (void)clearPendingAppActivatedByGesture;
 - (BOOL)clickedMenuButton;
+- (void)configureFakeSpringBoardStatusBarWithDefaultStyleRequestForStyle:(int)style;
+- (void)configureFakeSpringBoardStatusBarWithStyleRequest:(id)styleRequest;
 - (id)contentView;
-- (void)createFakeSpringBoardStatusBarWithDefaultStyleRequestForStyle:(int)style;
-- (void)createFakeSpringBoardStatusBarWithStyleRequest:(id)styleRequest;
 - (float)curvedBatteryCapacity;
 - (int)curvedBatteryCapacityAsPercentage;
 - (void)dealloc;
@@ -226,6 +226,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)promptUnlockForAppActivation:(id)appActivation withCompletion:(id)completion;
 - (void)releaseSwitcherOrientationLock;
 - (void)removeAppFromSwitchAppList:(id)switchAppList;
+- (void)removeFakeSpringBoardStatusBar;
 - (void)requestApplicationEventsEnabledIfNecessary;
 - (void)restoreContent;
 - (void)restoreContentAndUnscatterIconsAnimated:(BOOL)animated;

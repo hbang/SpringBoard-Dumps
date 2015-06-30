@@ -11,12 +11,19 @@ __attribute__((visibility("hidden")))
 @interface SBFolderBackgroundView : XXUnknownSuperclass <_UISettingsKeyObserver, SBWallpaperObserver> {
 	SBWallpaperEffectView *_backdropView;
 	UIImageView *_backgroundImageView;
+	UIView *_accessibilityBackgroundView;
 	SBFolderSettings *_folderSettings;
+	_UILegibilitySettings *_legibilitySettings;
 }
+@property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 + (float)cornerRadiusToInsetContent;
 + (CGSize)folderBackgroundSize;
++ (void)warmupIfNecessary;
 - (id)initWithFrame:(CGRect)frame;
-- (void)_configureBackground;
+- (void)_backgroundContrastDidChange:(id)_backgroundContrast;
+- (void)_configureAccessibilityBackground;
+- (BOOL)_shouldUseDarkBackground;
+- (void)_updateBackgroundImageView;
 - (void)adjustCornerRadiusForMagnificationFraction:(float)magnificationFraction;
 - (void)dealloc;
 - (void)didAnimate;

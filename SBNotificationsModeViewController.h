@@ -50,6 +50,5 @@ __attribute__((visibility("hidden")))
 - (void)updateForChangeInMessagePrivacy;
 - (void)updateSection:(id)section withInfo:(id)info;
 - (void)updateSection:(id)section withParameters:(id)parameters;
-- (void)viewWillAppear:(BOOL)view;
 @end
 

@@ -8,28 +8,36 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconImageView : XXUnknownSuperclass <SBIconObserver, SBIconProgressViewDelegate> {
+@interface SBIconImageView : XXUnknownSuperclass <SBIconObserver, SBIconProgressViewDelegate, SBReusableView> {
+	SBIcon *_icon;
+	float _brightness;
+	int _location;
 	UIImageView *_overlayView;
 	SBIconProgressView *_progressView;
 	BOOL _isPaused;
 	UIImage *_cachedSquareContentsImage;
 	BOOL _showsSquareCorners;
-	SBIcon *_icon;
-	float _brightness;
 	float _overlayAlpha;
 }
 @property(assign, nonatomic) float brightness;
-@property(retain, nonatomic) SBIcon *icon;
+@property(readonly, assign, nonatomic) SBIcon *icon;
 @property(assign, nonatomic) float overlayAlpha;
 @property(assign, nonatomic) BOOL showsSquareCorners;
 + (float)cornerRadius;
 + (id)dequeueRecycledIconImageViewOfClass:(Class)aClass;
 + (void)recycleIconImageView:(id)view;
++ (id)viewMap;
++ (unsigned)viewMap:(id)map maxRecycledViewsOfClass:(Class)aClass;
++ (id)windowForRecycledViewsInViewMap:(id)viewMap;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_clearCachedImages;
 - (void)_clearProgressView;
 - (id)_currentOverlayImage;
+- (id)_generateIconBasicOverlayImageForFormat:(int)format;
+- (id)_generateIconSquareOverlayImageForFormat:(int)format;
 - (id)_generateSquareContentsImage;
+- (id)_iconBasicOverlayImage;
+- (id)_iconSquareOverlayImage;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_updateOverlayAlpha;
 - (void)_updateOverlayImage;
@@ -41,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)progressViewCanBeRemoved:(id)removed;
-- (void)setIcon:(id)icon animated:(BOOL)animated;
+- (void)setIcon:(id)icon location:(int)location animated:(BOOL)animated;
 - (void)setPaused:(BOOL)paused;
 - (void)setProgressAlpha:(float)alpha;
 - (void)setProgressState:(int)state paused:(BOOL)paused percent:(float)percent animated:(BOOL)animated;

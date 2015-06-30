@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)didExitWithInfo:(id)info type:(int)type;
 - (id)icon:(id)icon imageWithFormat:(int)format;
 - (BOOL)iconAllowsUninstall:(id)uninstall;
+- (BOOL)iconCanEllipsizeLabel:(id)label;
 - (BOOL)isSnapshotPresentForLaunchingInterfaceOrientation:(int)launchingInterfaceOrientation;
 - (BOOL)isWebApplication;
 - (void)setProcessInfo:(id)info;

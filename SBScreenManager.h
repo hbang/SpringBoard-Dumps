@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)mainWindowForScreen:(id)screen;
 - (void)removeScreenObserver:(id)observer forScreen:(id)screen;
 - (void)removeSuppressionReason:(id)reason forScreen:(id)screen;
+- (void)requestScreenWithId:(unsigned)anId minimumSeed:(unsigned)seed completion:(id)completion;
 - (id)screenWithID:(unsigned)anId;
 - (void)setMainWindow:(id)window forScreen:(id)screen;
 @end

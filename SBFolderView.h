@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SBFolderView : XXUnknownSuperclass <SBIconScrollViewDelegate, SBIconListPageControlDelegate, UITextFieldDelegate> {
 	NSMutableArray *_iconListViews;
+	NSMutableSet *_scrollingDisabledReasons;
 	SBIconListView *_rotatingIconList;
 	int _minVisibleListViewIndex;
 	int _maxVisibleListViewIndex;
@@ -41,27 +42,32 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) id<SBFolderViewDelegate> delegate;
 @property(readonly, assign, nonatomic, getter=isEditing) BOOL editing;
 @property(retain, nonatomic) SBFolder *folder;
+@property(readonly, assign, nonatomic) unsigned iconListViewCount;
 @property(readonly, assign, nonatomic) NSArray *iconListViews;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(assign, nonatomic) int orientation;
 @property(assign, nonatomic, getter=isScrolling) BOOL scrolling;
 @property(assign, nonatomic) float statusBarHeight;
 @property(readonly, assign, nonatomic) SBIconViewMap *viewMap;
-- (id)initWithFolder:(id)folder orientation:(int)orientation;
 - (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
 - (void)_addIconListView:(id)view;
 - (void)_addIconListViewsForModels:(id)models;
+- (void)_backgroundContrastDidChange:(id)_backgroundContrast;
 - (id)_createIconListViewForList:(id)list;
 - (id)_currentIconListView;
 - (void)_disableUserInteractionBeforeSignificantAnimation;
 - (void)_enableUserInteractionAfterSignificantAnimation;
+- (void)_endScrollingTest;
 - (CGRect)_frameForScalingView;
 - (BOOL)_hasMinusPages;
 - (id)_iconListViewAtIndex:(unsigned)index;
 - (id)_iconListViewForList:(id)list;
+- (id)_interactionTintColor;
 - (BOOL)_isValidPageIndex:(int)index;
 - (void)_layoutSubviews;
+- (id)_legibilitySettingsWithPrimaryColor:(id)primaryColor;
 - (unsigned)_minusPageCount;
+- (id)_newPageControl;
 - (float)_offsetToCenterPageControlInSpaceForPageControl;
 - (int)_pageIndexForOffset:(float)offset;
 - (float)_pageWidth;
@@ -77,12 +83,15 @@ __attribute__((visibility("hidden")))
 - (void)_setCurrentPageIndex:(int)index;
 - (void)_setCurrentPageIndex:(int)index deferringPageControlUpdate:(BOOL)update;
 - (void)_setFolderName:(id)name;
+- (void)_setScrollingDisabled:(BOOL)disabled forReason:(id)reason;
 - (BOOL)_shouldDisableUpdatingCurrentIconList;
 - (BOOL)_showsTitle;
 - (float)_titleFontSize;
 - (void)_updateEditingStateAnimated:(BOOL)animated;
 - (void)_updateIconListFrames;
 - (void)_updateIconListViews;
+- (void)_updatePageControlToIndex:(int)index;
+- (void)_updateTitleLegibilitySettings;
 - (id)borrowScalingView;
 - (void)cleanupAfterClosing;
 - (id)currentIconListView;
@@ -118,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewWillBeginDragging:(id)scrollView;
 - (BOOL)setCurrentPageIndex:(int)index animated:(BOOL)animated;
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated;
+- (void)setIconPageIndicatorImageSetCache:(id)cache;
 - (void)setNeedsLayout;
 - (void)tearDownListViews;
 - (void)textFieldDidEndEditing:(id)textField;

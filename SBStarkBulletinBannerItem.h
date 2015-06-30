@@ -11,14 +11,17 @@ __attribute__((visibility("hidden")))
 @interface SBStarkBulletinBannerItem : SBStarkBannerItem {
 	BBBulletin *_bulletin;
 	SBUISound *_sound;
+	unsigned _feed;
 }
-- (id)initWithBulletin:(id)bulletin;
+- (id)initWithBulletin:(id)bulletin feed:(unsigned)feed;
 - (id)action;
-- (int)actionType;
 - (id)categoryImage;
 - (void)dealloc;
+- (int)defaultActionType;
+- (id)ignoreAction;
 - (BOOL)matchesContext:(id)context;
 - (id)sound;
+- (id)sourceDate;
 - (id)subActionLabels;
 - (id)subActionWithIndex:(unsigned)index;
 - (id)subTitle;

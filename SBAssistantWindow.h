@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBAssistantWindow : SBWindow {
 }
 @property(readonly, assign, nonatomic) SBAssistantRootViewController *assistantRootViewController;
-- (id)initWithFrame:(CGRect)frame;
+- (id)initWithScreen:(id)screen jailBehavior:(int)behavior;
 - (void)dealloc;
 - (BOOL)isOpaque;
 @end

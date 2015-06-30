@@ -17,17 +17,20 @@ __attribute__((visibility("hidden")))
 	BOOL _isWallpaperTunnelActive;
 	BOOL _backgroundStyleIsSet;
 	int _backgroundStyle;
+	BOOL _suppressesBanners;
 	NSMapTable *_displayValues;
 	NSHashTable *_displayFlags;
 	BOOL _orientationChangedEventsEnabled;
 	float _accelerometerSampleInterval;
 	BOOL _requestedDismissal;
 	UIScreen *_targetScreen;
+	NSHashTable *_observers;
 	SBAlertManager *_alertManager;
 }
 @property(copy, nonatomic) SBActivationContext *activationContext;
 @property(retain, nonatomic) SBAlertManager *alertManager;
 @property(assign, nonatomic, getter=_requestedDismissal, setter=_setRequestedDismissal:) BOOL requestedDismissal;
+@property(assign, nonatomic) BOOL suppressesBanners;
 + (void)registerForAlerts;
 + (void)test;
 - (id)init;
@@ -41,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)activate;
 - (BOOL)activationFlag:(unsigned)flag;
 - (id)activationValue:(unsigned)value;
+- (void)addObserver:(id)observer;
 - (id)alertDelegate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)alertViewIsReadyToDismiss:(id)dismiss;
@@ -64,7 +68,6 @@ __attribute__((visibility("hidden")))
 - (void)didAnimateLockKeypadOut;
 - (void)didFinishAnimatingIn;
 - (void)didFinishAnimatingOut;
-- (void)didMoveToParentViewController:(id)parentViewController;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)dismissAlert;
 - (id)display;
@@ -99,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)removeBackgroundStyleWithAnimationFactory:(id)animationFactory;
 - (void)removeFromView;
 - (void)removeObjectForKey:(id)key;
+- (void)removeObserver:(id)observer;
 - (void)setAccelerometerSampleInterval:(double)interval;
 - (void)setActivationSetting:(unsigned)setting flag:(BOOL)flag;
 - (void)setActivationSetting:(unsigned)setting value:(id)value;
@@ -121,7 +125,6 @@ __attribute__((visibility("hidden")))
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
 - (id)statusBarStyleRequest;
-- (BOOL)suppressesBanners;
 - (BOOL)suppressesControlCenter;
 - (BOOL)suppressesNotificationCenter;
 - (BOOL)undimsDisplay;
@@ -132,6 +135,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)wantsCustomBackgroundStyle;
 - (BOOL)wantsFullScreenLayout;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (void)willBeginDeactivationForTransitionToApp:(id)app animated:(BOOL)animated;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

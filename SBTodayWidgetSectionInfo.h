@@ -9,8 +9,13 @@
 
 __attribute__((visibility("hidden")))
 @interface SBTodayWidgetSectionInfo : SBBBWidgetSectionInfo {
+	SBItemInfoLayoutCache *_layoutCache;
+	BOOL _isAfterTodaySection;
 }
-- (float)heightForReusableViewInTableView:(id)tableView;
+- (BOOL)_isPreviousSectionTodaySection:(id)section;
+- (void)dealloc;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
+- (void)invalidateCachedLayoutData;
 - (void)populateReusableView:(id)view;
 - (id)representedListSection;
 - (Class)reusableViewClass;

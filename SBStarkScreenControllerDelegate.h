@@ -8,6 +8,7 @@
 
 
 @protocol SBStarkScreenControllerDelegate <NSObject>
-- (void)starkScreenController:(id)controller didChangeStateFromState:(int)state;
+- (BOOL)starkScreenControllerShouldDelayUpdateLockoutMode:(id)starkScreenController;
+- (void)starkScreenControllerWantsRelockUI:(id)ui;
 @end
 

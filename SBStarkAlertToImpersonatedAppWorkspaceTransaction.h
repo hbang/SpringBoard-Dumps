@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller alert:(id)alert toApplication:(id)application;
 - (void)_activateAlert;
 - (void)_beginAnimation;
-- (id)_newAnimationControllerFrom:(id)from to:(id)to;
 - (int)_setupMilestonesFrom:(id)from to:(id)to;
+- (BOOL)_shouldDisallowSuspension;
 - (void)dealloc;
 - (id)debugDescription;
 - (BOOL)selfStarkAlertDidActivate:(id)selfStarkAlert overAlerts:(id)alerts;

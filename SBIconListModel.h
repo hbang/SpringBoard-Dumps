@@ -8,16 +8,16 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconListModel : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver, NSFastEnumeration> {
+@interface SBIconListModel : XXUnknownSuperclass <SBIconIndexNode, NSFastEnumeration> {
 	SBIconIndexMutableList *_icons;
+	unsigned _maxIconCount;
 	NSHashTable *_nodeObservers;
 	NSHashTable *_listObservers;
 	BOOL _iconStateIsDirty;
 	SBFolder *_folder;
 }
-+ (unsigned)maxIcons;
-+ (Class)viewClass;
-- (id)initWithFolder:(id)folder;
+- (id)init;
+- (id)initWithFolder:(id)folder maxIconCount:(unsigned)count;
 - (void)_notifyListObservers:(id)observers;
 - (BOOL)addIcon:(id)icon;
 - (BOOL)addIcon:(id)icon asDirty:(BOOL)dirty;
@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)list:(id)list didAddContainedNodeIdentifiers:(id)identifiers;
 - (void)list:(id)list didRemoveContainedNodeIdentifiers:(id)identifiers;
 - (void)markIconStateClean;
-- (BOOL)matchesRepresentation:(id)representation;
+- (unsigned)maxNumberOfIcons;
 - (BOOL)needsCompacting;
 - (id)nodeDescriptionWithPrefix:(id)prefix;
 - (id)nodeIdentifier;
@@ -59,8 +59,6 @@ __attribute__((visibility("hidden")))
 - (void)removeIconAtIndex:(unsigned)index;
 - (void)removeListObserver:(id)observer;
 - (void)removeNodeObserver:(id)observer;
-- (id)representation;
-- (BOOL)resetWithRepresentation:(id)representation model:(id)model overflowNodes:(id)nodes leafIdentifiersAdded:(id)added;
-- (void)warmUpIconImages;
+- (void)warmUpIconImagesForLocation:(int)location;
 @end
 

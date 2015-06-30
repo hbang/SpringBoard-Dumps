@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBStarkScreenFocusController : XXUnknownSuperclass {
 	UIScreen *_screen;
 	NSMutableArray *_assertions;
+	NSString *_displayID;
 }
 - (id)initWithScreen:(id)screen;
 - (void)_applyAssertion:(id)assertion;
@@ -20,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void)dropReason:(id)reason;
 - (id)focusWindow;
 - (void)invalidate;
-- (void)suspendWithPriority:(float)priority reason:(id)reason;
-- (void)takeWithPriority:(float)priority reason:(id)reason forWindow:(id)window;
+- (void)takeWithPriority:(float)priority reason:(id)reason forWindow:(id)window bundleIdentifier:(id)identifier;
 @end
 

@@ -8,6 +8,7 @@
 
 
 @protocol SBLockScreenNotificationListDelegate <NSObject>
+- (void)addCoordinatedPresentingController:(id)controller;
 - (void)attemptToUnlockUIFromNotification;
 - (void)bannerEnablementChanged;
 - (void)dismissFullscreenBulletinAlertWithItem:(id)item;
@@ -15,5 +16,6 @@
 - (void)modifyFullscreenBulletinAlertWithItem:(id)item;
 - (void)notificationListBecomingVisible:(BOOL)visible;
 - (void)presentFullscreenBulletinAlertWithItem:(id)item;
+- (void)removeCoordinatedPresentingController:(id)controller;
 @end
 

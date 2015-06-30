@@ -6,17 +6,20 @@
  */
 
 
+@protocol SBUIPluginViewControllerInterface;
 
 __attribute__((visibility("hidden")))
 @interface SBAssistantRootViewController : XXUnknownSuperclass {
-	UIViewController *_assistantViewController;
+	UIViewController<SBUIPluginViewControllerInterface> *_assistantViewController;
 	UIView *_contentView;
 	UIView *_clippingView;
+	UIScreen *_screen;
 }
-@property(retain, nonatomic) UIViewController *assistantController;
+@property(retain, nonatomic) UIViewController<SBUIPluginViewControllerInterface> *assistantController;
 @property(readonly, assign, nonatomic) UIView *clippingView;
 @property(readonly, assign, nonatomic) UIView *contentView;
-- (id)initWithNibName:(id)nibName bundle:(id)bundle;
+@property(retain, nonatomic) UIScreen *screen;
+- (id)initWithScreen:(id)screen;
 - (void)dealloc;
 - (void)loadView;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;

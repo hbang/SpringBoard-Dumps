@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldDismissBanner;
 - (BOOL)_shouldTakeActivationAssertionForDeactivatingApp;
 - (void)_startAnimation;
+- (BOOL)_wantsInitialProgressStateChange;
 - (BOOL)_willAnimate;
 - (BOOL)animating;
 - (void)beginAnimation;

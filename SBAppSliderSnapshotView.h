@@ -6,57 +6,69 @@
  */
 
 
-@protocol OS_dispatch_queue;
+@protocol SBAppSwitcherCacheVended, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSliderSnapshotView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {
 	SBApplication *_application;
 	UIView *_containerView;
+	SBAppSliderSettings *_settings;
 	SBWallpaperEffectView *_wallpaperEffectView;
 	SBSnapshotImageInfo *_snapshotImageInfo;
-	UIImageView *_snapshotImage;
+	UIImageView *_snapshotImageView;
 	CGSize _imageSize;
-	SBFakeStatusBarViewCache *_statusBarCache;
-	SBFakeStatusBarView *_statusBar;
-	NSString *_statusBarCacheKey;
+	SBZoomableCrossfadeView *_updateCrossfadeView;
+	SBZoomableCrossfadeView *_zoomUpCrossfadeView;
+	UIImageView *_zoomUpSnapshotView;
+	CGSize _zoomUpImageSize;
+	UIImage *_deferredUpdateImage;
+	SBAppSwitcherStatusBarViewCache *_statusBarCache;
+	UIView<SBAppSwitcherCacheVended> *_statusBar;
 	BOOL _isVisible;
+	BOOL _simplifyForMotion;
 	BOOL _invalidated;
 	BOOL _needsZoomFilter;
 	BOOL _loadedImage;
+	BOOL _needsZoomUpImage;
+	int _appSnapshotUpdatedSequenceID;
 	NSObject<OS_dispatch_queue> *_snapshotQueue;
 	int _orientation;
 }
 @property(retain, nonatomic) SBApplication *application;
-@property(assign, nonatomic) BOOL invalidated;
+@property(retain, nonatomic) UIImage *deferredUpdateImage;
+@property(assign) BOOL invalidated;
 @property(assign, nonatomic) int orientation;
 @property(retain, nonatomic) SBSnapshotImageInfo *snapshotImageInfo;
+@property(retain, nonatomic) SBZoomableCrossfadeView *updateCrossfadeView;
 + (id)_fallbackDefaultBackgroundColor;
 + (id)appSliderSnapshotViewForApplication:(id)application orientation:(int)orientation loadAsync:(BOOL)async withQueue:(id)queue statusBarCache:(id)cache;
 - (id)initWithApplication:(id)application orientation:(int)orientation async:(BOOL)async withQueue:(id)queue statusBarCache:(id)cache;
 - (id)initWithFrame:(CGRect)frame;
-- (id)_cachedImageForImageInfos:(id)imageInfos foundInfo:(out id *)info;
-- (id)_cachedSnapshotForSnapshotInfos:(id)snapshotInfos foundInfo:(out id *)info;
-- (CGImageRef)_cgImageForSnapshotInfo:(id)snapshotInfo;
+- (id)_cachedImageForImageInfos:(id)imageInfos downscaled:(BOOL)downscaled foundInfo:(out id *)info;
+- (id)_cachedSnapshotForSnapshotInfos:(id)snapshotInfos downscaled:(BOOL)downscaled foundInfo:(out id *)info;
+- (CGImageRef)_cgImageForSnapshotInfo:(id)snapshotInfo downscaled:(BOOL)downscaled;
 - (int)_containerOrientation;
-- (id)_defaultImageforImageInfo:(id)info;
-- (id)_imageAtPath:(id)path preferredScale:(float)scale orientation:(out int *)orientation;
+- (void)_crossfadeToNewSnapshotImage:(id)newSnapshotImage;
+- (void)_crossfadeToZoomUpViewIfNecessary;
+- (id)_imageFromSnapshotInfos:(id)snapshotInfos forZoomUp:(BOOL)zoomUp loadedImageInfoOut:(out id *)anOut loadedDownscaledOut:(out BOOL *)anOut4;
 - (void)_layoutContainer;
 - (void)_layoutStatusBar;
+- (void)_loadImageAsyncBodySnapshotInfo:(id)info displayIdentifier:(id)identifier;
 - (void)_loadImageAsyncFromSnapshotInfo:(id)snapshotInfo;
 - (void)_loadSnapshotAsync;
 - (void)_loadSnapshotSync;
+- (void)_loadZoomUpSnapshotSync;
 - (CGImageRef)_queue_createDecodedImageIfPossible:(CGImageRef)possible;
 - (BOOL)_queue_keepGoing;
 - (CGAffineTransform)_rotationTransformForOrientation;
+- (void)_snapshotChanged:(id)changed;
 - (CGRect)_snapshotFrame;
-- (id)_snapshotImage;
-- (id)_snapshotImageForImageInfo:(id)imageInfo;
-- (void)_snapshotImageLoaded:(CGImageRef)loaded withInfo:(id)info;
+- (id)_snapshotImageForImageInfo:(id)imageInfo downscaledIfAvailable:(BOOL)available downscaledWasAvailableOut:(out BOOL *)anOut;
+- (void)_snapshotImageLoaded:(CGImageRef)loaded withInfo:(id)info downscaled:(BOOL)downscaled;
 - (id)_snapshotInfoForDefaultPNG;
 - (id)_snapshotInfoForSnapshotFromInfos:(id)infos;
 - (id)_snapshotInfos;
 - (id)_snapshotName;
-- (id)_statusBarCacheKeyForStyleRequest:(id)styleRequest;
 - (void)_updateStatusbarTranslucency;
 - (void)_updateTranslucency;
 - (void)_viewDismissing:(id)dismissing;
@@ -68,6 +80,8 @@ __attribute__((visibility("hidden")))
 - (void)prepareToBecomeVisibleIfNecessary;
 - (void)respondToBecomingInvisibleIfNecessary;
 - (void)setOrientation:(int)orientation orientationBehavior:(int)behavior;
+- (void)simplifyForMotion;
 - (CGSize)sizeThatFits:(CGSize)fits;
+- (void)unsimplifyAfterMotion;
 @end
 

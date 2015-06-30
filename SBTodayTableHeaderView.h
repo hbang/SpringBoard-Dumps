@@ -10,17 +10,26 @@
 __attribute__((visibility("hidden")))
 @interface SBTodayTableHeaderView : XXUnknownSuperclass {
 	UILabel *_dateLabel;
+	BOOL _isContentValid;
+	CGRect _calculatedDateLabelFrame;
+	BOOL _achievedPreferredDateLabelLayout;
+	CGSize _sizeThatFitsCalculatedDateLabelFrame;
+	int _layoutMode;
 }
+@property(assign, nonatomic) int layoutMode;
 + (id)defaultBackgroundColor;
 + (id)defaultFont;
 + (id)defaultTextColor;
 - (id)initWithFrame:(CGRect)frame;
-- (id)dateHeader;
-- (id)dateHeaderAttributedString;
-- (CGRect)dateLabelFrame;
+- (BOOL)_dateLabelNeedsLayoutForSize:(CGSize)size;
+- (float)_dateLabelWidthForSize:(CGSize)size layoutMode:(int)mode;
+- (BOOL)_isCachedSizeThatFitsValidForSize:(CGSize)size;
+- (id)dateHeaderAttributedStringOnSingleLine:(BOOL)line;
+- (id)dateHeaderOnSingleLine:(BOOL)line;
+- (CGRect)dateLabelFrameForBounds:(CGRect)bounds force:(BOOL)force;
 - (void)dealloc;
+- (void)invalidateContent;
 - (void)layoutSubviews;
 - (CGSize)sizeThatFits:(CGSize)fits;
-- (void)updateContent;
 @end
 

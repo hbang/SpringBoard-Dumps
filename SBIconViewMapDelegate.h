@@ -7,9 +7,9 @@
 
 
 
-@protocol SBIconViewMapDelegate <NSObject>
+@protocol SBIconViewMapDelegate <SBReusableViewMapDelegate>
+- (Class)iconViewClassForIcon:(id)icon location:(int)location;
 - (int)viewMap:(id)map locationForIcon:(id)icon;
-- (unsigned)viewMap:(id)map maxRecycledIconViewsOfClass:(Class)aClass;
 @optional
 - (unsigned)viewMap:(id)map numberOfViewsToPrepareOfClass:(Class)aClass;
 - (id)viewMapShouldPrepareViewsOfClasses:(id)viewMap;

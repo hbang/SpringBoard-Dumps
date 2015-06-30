@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)_safeValue:(id)value forKey:(id)key ofType:(Class)type;
 - (void)activateModalBulletinAlert:(id)alert;
 - (void)activateRemoteAlertService:(id)service options:(id)options;
-- (void)activateStarkRemoteAlertService:(id)service ofType:(id)type;
 - (int)activeInterfaceOrientation;
 - (void)addActiveInterfaceOrientationObserver:(id)observer;
 - (BOOL)alertIsActive;

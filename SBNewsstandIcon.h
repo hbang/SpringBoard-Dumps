@@ -19,6 +19,5 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasFolderIconView;
 - (BOOL)isNewsstandIcon;
 - (void)launchFromLocation:(int)location;
-- (id)leafIdentifier;
 @end
 

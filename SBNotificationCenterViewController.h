@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBNotificationCenterViewControllerDelegate, SBWidgetViewControllerHostDelegate;
+@protocol SBWidgetViewControllerHostDelegate, SBNotificationCenterViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationCenterViewController : XXUnknownSuperclass <SBBulletinViewControllerDelegate, SBSizeObservingViewDelegate, SBNotificationCenterWidgetHost, SBBulletinActionHandler> {
@@ -43,9 +43,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) CGRect contentFrame;
 @property(assign, nonatomic) float contentViewAlpha;
 @property(assign, nonatomic) id<SBNotificationCenterViewControllerDelegate> delegate;
-@property(readonly, assign, nonatomic) UIColor *grabberColor;
 @property(readonly, assign, nonatomic) SBChevronView *grabberView;
 @property(assign, nonatomic, getter=isGrabberViewEnabled) BOOL grabberViewEnabled;
+@property(readonly, assign, nonatomic) int layoutMode;
 @property(assign, nonatomic) BOOL showsBackground;
 @property(assign, nonatomic, getter=isSuppressingNotificationUpdates) BOOL suppressesNotificationUpdates;
 @property(assign, nonatomic) id<SBWidgetViewControllerHostDelegate> widgetDelegate;
@@ -58,6 +58,8 @@ __attribute__((visibility("hidden")))
 - (void)_configureModeControllerView;
 - (void)_configureView;
 - (CGRect)_containerFrame;
+- (CGRect)_containerFrame:(BOOL)frame;
+- (id)_grabberColor;
 - (CGRect)_grabberContentViewFrameForDefaultGrabberPresentation;
 - (CGRect)_grabberContentViewFrameForRegisteredGrabber;
 - (void)_loadBottomSeparator;
@@ -72,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (id)_newBulletinObserverViewControllerOfClass:(Class)aClass;
 - (id)_newGrabberView;
 - (void)_register:(BOOL)aRegister grabberView:(id)view withHideBlock:(id)hideBlock;
+- (id)_relevanceDateColor;
 - (void)_reloadAllWidgets;
 - (void)_setContainerFrame:(CGRect)frame;
 - (void)_setViewHitTestAsOpaque:(BOOL)opaque;
@@ -79,15 +82,19 @@ __attribute__((visibility("hidden")))
 - (void)_updateContrastSettingsForBottomSeparator;
 - (void)_updateContrastSettingsForGrabberView;
 - (void)_validateBackgroundViewIfNecessary;
+- (void)abortAnimatedPositionChange;
+- (id)colorForElement:(int)element;
 - (void)dealloc;
 - (void)disableGrabberLock;
 - (void)dismissGrabberView;
+- (CGRect)grabberContentRect;
 - (BOOL)handleActionForBulletin:(id)bulletin;
 - (void)hostDidDismiss;
 - (void)hostDidPresent;
 - (void)hostWillDismiss;
 - (void)hostWillPresent;
 - (BOOL)isGrabberLocked;
+- (void)loadInitialViewState;
 - (void)loadView;
 - (CGRect)positionContentForTouchAtLocation:(CGPoint)location;
 - (void)prepareLayoutForPresentationFromBanner;

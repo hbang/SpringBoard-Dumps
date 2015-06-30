@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface SBModeViewController : XXUnknownSuperclass <SBSizeObservingViewDelegate, _UISettingsKeyPathObserver> {
 	id<SBBulletinActionHandler> _delegate;
 	SBBulletinObserverViewController *_selectedViewController;
+	SBBulletinObserverViewController *_deselectedViewController;
 	UIScrollView *_contentView;
 	UIView *_headerView;
 	SBModeControlManager *_modeControl;
@@ -26,26 +27,25 @@ __attribute__((visibility("hidden")))
 	} _modeViewControllerFlags;
 }
 @property(assign, nonatomic) id<SBBulletinActionHandler> delegate;
+@property(retain, nonatomic) SBBulletinObserverViewController *deselectedViewController;
 @property(assign, nonatomic, getter=isRequestHandlingEnabled) BOOL requestHandlingEnabled;
 @property(assign, nonatomic) UIViewController *selectedViewController;
 @property(retain, nonatomic) NSArray *viewControllers;
 + (id)_buttonTitleFont;
-+ (float)_minScreenDimension;
 - (BOOL)_addBulletinObserverViewController:(id)controller;
 - (void)_backgroundContrastDidChange:(id)_backgroundContrast;
 - (BOOL)_contentOffset:(CGPoint *)offset forChildViewController:(id)childViewController;
 - (float)_headerViewHeightForMode:(int)mode;
 - (void)_invalidateContentLayout;
 - (void)_invalidateSegmentLayout;
+- (BOOL)_isChildViewControllerViewLoadedInContentView:(id)contentView;
 - (BOOL)_isRequestHandlingEnabled;
 - (void)_layoutContentIfNecessary;
 - (void)_layoutHeaderViewIfNecessary;
-- (int)_layoutMode;
 - (void)_layoutSegmentsIfNecessary;
 - (void)_loadContentView;
 - (void)_loadHeaderView;
 - (CGRect)_modeControlFrameWithHeaderBounds:(CGRect)headerBounds forMode:(int)mode;
-- (CGSize)_modeControlSizeForMode:(int)mode;
 - (id)_newSwipeGestureRecognizerWithDirection:(unsigned)direction;
 - (void)_setContentViewContentOffset:(CGPoint)offset animated:(BOOL)animated;
 - (void)_setSelectedBulletinObserverViewController:(id)controller animated:(BOOL)animated;
@@ -59,15 +59,20 @@ __attribute__((visibility("hidden")))
 - (void)hostDidPresent;
 - (void)hostWillDismiss;
 - (void)hostWillPresent;
+- (int)layoutMode;
 - (void)loadView;
 - (CGRect)rectForBulletin:(id)bulletin;
 - (void)removeViewController:(id)controller;
 - (void)setSelectedViewController:(id)controller animated:(BOOL)animated;
 - (void)setWidgetDelegate:(id)delegate;
 - (void)settings:(id)settings changedValueForKeyPath:(id)keyPath;
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)sizeObservingView:(id)view didChangeSize:(CGSize)size;
+- (void)viewDidAppear:(BOOL)view;
+- (void)viewDidDisappear:(BOOL)view;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)view;
+- (void)viewWillDisappear:(BOOL)view;
 - (void)viewWillLayoutSubviews;
 - (id)widgetDelegate;
 @end

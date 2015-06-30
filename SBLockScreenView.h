@@ -6,10 +6,10 @@
  */
 
 
-@protocol SBLockScreenViewDelegate, _SBFVibrantView, SBUIPasscodeLockView, SBLegibility;
+@protocol SBLockScreenViewDelegate, SBUIPasscodeLockView, _SBFVibrantView, SBLegibility;
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenView : SBAlertView <UIScrollViewDelegate, SBFGlintyStringViewDelegate, _UISettingsKeyObserver> {
+@interface SBLockScreenView : SBAlertView <UIScrollViewDelegate, _UIGlintyStringViewDelegate, _UISettingsKeyObserver, SBCoordinatedPresenting, SBPresentingDelegate> {
 	SBLockOverlayStylePropertiesFactory *_contentUnderlayOverride;
 	NSMutableSet *_contentUnderlayRequesters;
 	NSMutableArray *_contentOverlays;
@@ -25,10 +25,9 @@ __attribute__((visibility("hidden")))
 	SBFLockScreenDateView *_dateView;
 	UIView<SBLegibility> *_legalView;
 	SBLockScreenTimerView *_timerView;
-	SBFGlintyStringView<_SBFVibrantView> *_slideToUnlockView;
+	_UIGlintyStringView<_SBFVibrantView> *_slideToUnlockView;
 	UIView *_slideToUnlockParentSpringView;
 	UIView *_slideToUnlockSpringView;
-	_UILegibilityLabel *_slideToUnlockLegibilityLabel;
 	BOOL _isShakingSlideToUnlockText;
 	BOOL _isAnimatingSlideToUnlockText;
 	SBWallpaperEffectView *_slideToUnlockBackgroundView;
@@ -64,6 +63,7 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_mediaControlsHiddenRequesters;
 	NSMutableSet *_pluginHiddenRequesters;
 	NSMutableSet *_scrollingDisabledRequesters;
+	NSMutableSet *_scrollViewInteractionDisabledRequesters;
 	float _foregroundTranslationY;
 	SBLockScreenBounceAnimator *_bounceAnimator;
 	NSMutableArray *_scrollCompletionBlocks;
@@ -83,6 +83,8 @@ __attribute__((visibility("hidden")))
 	SBSlideToUnlockFailureRecognizer *_slideToUnlockFailureRecognizer;
 	int _slideToUnlockFailureGestureToken;
 	BOOL _slideToUnlockFailureRecognizerNeedsRemoval;
+	BOOL _showingEmergencyCall;
+	id<SBPresentingDelegate> _presentingDelegate;
 	BOOL _statusBarLegibilityEnabled;
 	id<SBLockScreenViewDelegate> _delegate;
 	_UILegibilitySettings *_legibilitySettings;
@@ -90,9 +92,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) SBLockScreenBatteryChargingView *batteryChargingView;
 @property(retain, nonatomic) SBChevronView *bottomGrabberView;
 @property(retain, nonatomic) UIView<_SBFVibrantView> *cameraGrabberView;
+@property(readonly, assign, nonatomic) NSSet *conflictingGestures;
+@property(readonly, assign, nonatomic) int coordinatedPresentingControllerIdentifier;
 @property(retain, nonatomic) SBFLockScreenDateView *dateView;
 @property(assign) id<SBLockScreenViewDelegate> delegate;
 @property(readonly, assign, nonatomic) UIView *foregroundView;
+@property(readonly, assign, nonatomic) NSSet *gestures;
+@property(readonly, assign, nonatomic) float hintDisplacement;
+@property(readonly, assign, nonatomic) unsigned hintEdge;
 @property(readonly, assign, nonatomic) BOOL isShakingSlideToUnlockText;
 @property(retain, nonatomic) UIView<SBLegibility> *legalView;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
@@ -101,8 +108,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *notificationView;
 @property(retain, nonatomic) UIView<SBUIPasscodeLockView> *passcodeView;
 @property(retain, nonatomic) UIView *pluginBackgroundView;
+@property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
 @property(readonly, assign, nonatomic) UIScrollView *scrollView;
 @property(assign, nonatomic) BOOL statusBarLegibilityEnabled;
+@property(readonly, assign, nonatomic) NSSet *tapExcludedViews;
 @property(retain, nonatomic) SBLockScreenTimerView *timerView;
 @property(retain, nonatomic) SBChevronView *topGrabberView;
 - (id)initWithFrame:(CGRect)frame;
@@ -112,17 +121,21 @@ __attribute__((visibility("hidden")))
 - (void)_addLockContentUnderlayWithRequester:(id)requester;
 - (void)_addOrRemoveFakeStatusBars;
 - (void)_addViews;
+- (void)_adjustTextBlurForPercentScrolled:(float)percentScrolled;
 - (void)_adjustTopAndBottomGrabbersForPercentScrolled:(float)percentScrolled;
 - (id)_averageWallpaperColorForFrame:(CGRect)frame;
 - (void)_beginCrossfadingFakeStatusBars;
 - (float)_bottomGrabberYOriginForPercentScrolled:(float)percentScrolled;
+- (id)_debugDescription;
 - (id)_defaultSlideToUnlockText;
+- (BOOL)_disallowScrollingInTouchedView:(id)touchedView;
 - (id)_effectiveStatusBarColor;
 - (int)_effectiveStatusBarLegibilityStyle;
 - (void)_endCrossfadingFakeStatusBars;
 - (void)_evaluateOverlaysForChange;
 - (BOOL)_hasLockContentUnderlayRequester:(id)requester;
 - (BOOL)_isPluginBelowForegroundScrollView;
+- (BOOL)_isScrollOffsetOnPage;
 - (BOOL)_isValidPage:(unsigned)page;
 - (void)_layoutCameraGrabberView;
 - (void)_layoutChargingView;
@@ -153,6 +166,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_needsRealBlur;
 - (id)_newScrollView;
 - (void)_noteAppearing;
+- (void)_noteWillDisappear;
 - (id)_overlayStylePropertiesFromPropertiesFactory:(id)propertiesFactory;
 - (void)_passcodePropertiesChanged;
 - (float)_percentScrolled;
@@ -160,7 +174,6 @@ __attribute__((visibility("hidden")))
 - (void)_preventScrollingOnGrabberView:(id)view;
 - (void)_removeLockContentOverlay:(id)overlay;
 - (void)_removeLockContentUnderlayWithRequester:(id)requester;
-- (void)_resetSlideToUnlockLegibilityLabel;
 - (void)_scrollBy:(float)by;
 - (void)_scrollingDidFinish;
 - (void)_setAllowPasscodeCharacterUndoOnTouchesCancelled:(BOOL)cancelled;
@@ -173,8 +186,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (BOOL)_shouldCrossfadeStatusBars;
 - (BOOL)_shouldCrossfadeStatusBarsForLegibility;
-- (void)_showFakeWallpaperBlurWithAlpha:(float)alpha;
+- (void)_showFakeWallpaperBlurWithAlpha:(float)alpha withFactory:(id)factory;
 - (void)_slideToUnlockFailureGestureRecognizerChanged;
+- (void)_startAnimatingSlideToUnlockDelayFinished;
+- (void)_startAnimatingSlideToUnlockWithDelay:(double)delay;
 - (float)_topGrabberYOriginForPercentScrolled:(float)percentScrolled;
 - (void)_updateBottomGrabberBackground;
 - (void)_updateCameraGrabberBackground;
@@ -186,17 +201,23 @@ __attribute__((visibility("hidden")))
 - (void)_updateLegibility;
 - (void)_updateOverlaysForScroll:(float)scroll;
 - (void)_updateSlideToUnlockBackground;
+- (void)_updateSlideToUnlockBlurVisibility;
 - (void)_updateStatusBarLegibility;
 - (void)_updateTimerLegibility;
 - (void)_updateTopGrabberBackground;
 - (void)_updateVibrantView:(id)view screenRect:(CGRect)rect backgroundView:(id)view3;
 - (void)_updateVibrantViewBackgrounds;
-- (void)_updateVibrantViewLegibility;
+- (float)_wallpaperContrastForFrame:(CGRect)frame;
+- (void)abortAnimatedForegroundSlide;
+- (void)abortAnimatedTransition;
 - (void)animationDidStop:(id)animation finished:(BOOL)finished;
+- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
+- (void)cancelGestureRecognizer:(id)recognizer;
 - (int)currentPage;
 - (void)dealloc;
-- (id)description;
 - (void)didMoveToWindow;
+- (void)endTransitionWithVelocity:(CGPoint)velocity completion:(id)completion;
+- (float)foregroundTranslationY;
 - (void)glintyAnimationDidStart;
 - (void)glintyAnimationDidStop;
 - (void)glintyFadeInAnimationDidStop;
@@ -204,11 +225,20 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasTransparentUnderlay;
 - (void)invalidateGrabberOrigins;
 - (BOOL)isBottomGrabberHidden;
+- (BOOL)isCameraGrabberHidden;
 - (BOOL)isCurrentPageTransparent;
+- (BOOL)isPresentingControllerTransitioning;
 - (BOOL)isTopGrabberHidden;
 - (void)layoutSubviews;
 - (BOOL)mediaControlsHidden;
+- (BOOL)modalAlertViewHidden;
+- (BOOL)notificationsViewHidden;
 - (BOOL)pluginViewHidden;
+- (BOOL)presentingController:(id)controller gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
+- (BOOL)presentingController:(id)controller gestureRecognizerShouldBegin:(id)gestureRecognizer;
+- (void)presentingController:(id)controller willHandleGesture:(id)gesture;
+- (void)presentingControllerDidFinishPresentation:(id)presentingController;
+- (void)reenableGestureRecognizer:(id)recognizer;
 - (void)resetContentOffsetToCurrentPage;
 - (void)scrollToPage:(int)page animated:(BOOL)animated;
 - (void)scrollToPage:(int)page animated:(BOOL)animated completion:(id)completion;
@@ -223,7 +253,7 @@ __attribute__((visibility("hidden")))
 - (void)setCustomSlideToUnlockDisplayForBuddyMode:(BOOL)buddyMode;
 - (void)setCustomSlideToUnlockLanguage:(id)unlockLanguage;
 - (void)setCustomSlideToUnlockText:(id)unlockText;
-- (void)setEmergencyCallView:(id)view withDuration:(double)duration completion:(id)completion;
+- (void)setEmergencyCallViewController:(id)controller withDuration:(double)duration completion:(id)completion;
 - (void)setForegroundHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setLegalTextHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setLockContentHidden:(BOOL)hidden forRequester:(id)requester;
@@ -236,17 +266,20 @@ __attribute__((visibility("hidden")))
 - (void)setPasscodeHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setPluginView:(id)view presentationStyle:(unsigned)style notificationBehavior:(unsigned)behavior;
 - (void)setPluginViewHidden:(BOOL)hidden forRequester:(id)requester;
+- (void)setScrollViewInteractionDisabled:(BOOL)disabled forRequester:(id)requester;
 - (void)setScrollingDisabled:(BOOL)disabled forRequester:(id)requester;
+- (void)setSlideToUnlockBlurHidden:(BOOL)unlockBlurHidden forRequester:(id)requester;
 - (void)setSlideToUnlockHidden:(BOOL)unlockHidden forRequester:(id)requester;
 - (void)setTopBottomGrabbersHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setTopGrabberHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)shakeSlideToUnlockTextWithCustomText:(id)customText;
 - (void)slideForegroundVerticallyBy:(float)by;
+- (void)slideUpGestureDidBegin;
+- (void)slideUpGestureDidCleanup;
 - (void)startAnimating;
-- (void)startAnimatingDelayFinished;
-- (void)startAnimatingWithDelay:(BOOL)delay;
 - (void)stopAnimating;
+- (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
 - (void)willMoveToWindow:(id)window;
 @end
 

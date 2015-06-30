@@ -10,8 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBNotificationsBulletinInfo : SBBBBulletinInfo {
 	SBNotificationsSectionInfo *_sectionInfo;
-	float _heightForReusableView;
-	CGSize _referenceSize;
+	SBItemInfoLayoutCache *_layoutCache;
 	UIImage *_icon;
 	UIImage *_attachmentImage;
 	CGSize _attachmentImageSize;
@@ -33,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)_endDate;
 - (id)_eventDateLabel;
 - (id)_eventDateLabelForDisplay;
-- (BOOL)_isLayoutValidWithReferenceSize:(CGSize)referenceSize;
 - (id)_primaryText;
 - (id)_primaryTextColor;
 - (id)_relevanceDateLabel;
@@ -46,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)_subtitleTextColor;
 - (id)_subtitleTextToDisplay;
 - (void)dealloc;
-- (float)heightForReusableViewInTableView:(id)tableView;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
 - (id)identifier;
 - (void)invalidateCachedLayoutData;
 - (void)populateReusableView:(id)view;

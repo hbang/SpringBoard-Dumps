@@ -6,23 +6,29 @@
  */
 
 
+@protocol SBWindowContextHostViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBWindowContextHostView : XXUnknownSuperclass <SBWindowContextManagerObserver> {
 	UIScreen *_screen;
-	SBWindowContextHostManager *_hostManager;
+	CALayer *_contentLayer;
+	id<SBWindowContextHostViewDelegate> _delegate;
 	SBWindowContextManager *_contextManager;
+	SBWindowContextHostViewContentLayerDelegate *_contentLayerDelegate;
+	int _jailBehavior;
 	NSMutableSet *_hiddenContexts;
 	NSMutableOrderedSet *_contexts;
 	NSMutableArray *_layerHosts;
 }
 @property(retain, nonatomic) SBWindowContextManager *contextManager;
+@property(assign, nonatomic) id<SBWindowContextHostViewDelegate> delegate;
 @property(copy, nonatomic) NSSet *hiddenContexts;
-@property(assign, nonatomic) SBWindowContextHostManager *hostManager;
 @property(readonly, assign, nonatomic) UIScreen *screen;
 - (id)init;
 - (id)initWithScreen:(id)screen jailBehavior:(int)behavior;
 - (void)_adjustLayerFrameAndTransform:(id)transform;
+- (void)_noteHostingStatusChanged;
+- (CGRect)contentFrame;
 - (void)dealloc;
 - (id)description;
 - (BOOL)hasContent;

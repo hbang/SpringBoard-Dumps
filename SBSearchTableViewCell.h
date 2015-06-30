@@ -49,13 +49,10 @@ __attribute__((visibility("hidden")))
 + (id)lineColor;
 + (id)maskedSelectedBackgroundColor;
 + (void)resetContentSizeCache;
-+ (float)rowHeightForPreferredContentSizeWithNumberOfSummaryLines:(int)summaryLines;
++ (float)rowHeightForPreferredContentSizeWithSubtitle:(BOOL)subtitle numberOfSummaryLines:(int)summaryLines;
 + (id)secontaryTextColor;
 + (id)selectedTextColor;
 + (id)starImage;
-+ (float)subtitleBaselineOriginForContentSizeCategory:(id)contentSizeCategory;
-+ (float)summaryBaselineOriginForContentSizeCategory:(id)contentSizeCategory;
-+ (float)titleBaselineOriginForContentSizeCategory:(id)contentSizeCategory;
 + (id)unmaskedSelectedBackgroundColor;
 + (id)unreadImage;
 - (id)initWithStyle:(int)style reuseIdentifier:(id)identifier;

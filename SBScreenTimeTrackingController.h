@@ -30,7 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)_noteLocked;
 - (void)_noteMediaControlsDidAppear;
 - (void)_noteMediaControlsDidDisappear;
-- (void)_noteNotificationCenterNotificationsWillAppear;
+- (void)_noteNotificationCenterAllWillAppear;
+- (void)_noteNotificationCenterMissedWillAppear;
 - (void)_noteNotificationCenterTodayWillAppear;
 - (void)_noteNotificationCenterWillDismiss;
 - (void)_noteSearchVisibilityDidChange:(id)_noteSearchVisibility;

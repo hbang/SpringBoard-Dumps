@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 	BOOL _delayedAssistantActivationPending;
 	BOOL _headsetDownDelayedActionPerformed;
 }
++ (BOOL)isVoiceControlVisible;
 + (id)sharedInstance;
 - (id)init;
 - (void)_assistantActivationSettingsDidChange:(id)_assistantActivationSettings;

@@ -9,6 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBFAnimationFactorySettings : XXUnknownSuperclass {
+	BOOL _isArchiveValue;
 	BOOL _slowAnimations;
 	float _slowDownFactor;
 	float _springMassFactor;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) float springMassFactor;
 @property(assign, nonatomic) float springStiffnessFactor;
 + (id)settingsControllerModule;
+- (void)applyArchiveValue:(id)value forKey:(id)key;
 - (void)setDefaultValues;
 - (void)setValue:(id)value forKey:(id)key;
 - (id)valueForKey:(id)key;

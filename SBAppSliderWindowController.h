@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_rotationPreventionReasons;
 }
 @property(retain, nonatomic) UIViewController *rootViewController;
-@property(readonly, assign, nonatomic) UIWindow *window;
+@property(readonly, assign, nonatomic) SBWindow *window;
 - (id)initWithRootViewController:(id)rootViewController;
 - (BOOL)_hasOrientationOverride;
 - (void)_rotateIfNecessaryTo:(int)to withDuration:(double)duration forOverride:(BOOL)override;

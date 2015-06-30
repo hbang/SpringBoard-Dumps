@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 	SBStopScrollingGestureRecognizer *_stopScrollingGesture;
 	int _layoutOrientation;
 	id _scrollDoneBlock;
+	BOOL _isMoving;
 	id<SBAppSliderScrollingViewDelegate> _delegate;
 }
 @property(assign, nonatomic) id<SBAppSliderScrollingViewDelegate> delegate;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_setContentOffset:(CGPoint)offset animated:(BOOL)animated;
 - (void)_setScrollingDoneBlock:(id)block;
 - (void)_updateVisiblePageViews;
+- (void)cancelPossibleRemovalOfIndex:(unsigned)index;
 - (void)cancelScrolling;
 - (unsigned)currentPage;
 - (void)dealloc;

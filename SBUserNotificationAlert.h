@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
 	NSString *_alternateButtonTitle;
 	NSString *_otherButtonTitle;
 	NSString *_soundPath;
+	unsigned long _soundID;
+	unsigned long _soundIDBehavior;
+	NSDictionary *_vibrationPattern;
 	NSDictionary *_avControllerAttributes;
 	NSDictionary *_avItemAttributes;
 	double _soundRepeatDuration;
@@ -76,6 +79,8 @@ __attribute__((visibility("hidden")))
 @property(retain) NSString *defaultResponseLaunchBundleID;
 @property(retain) id keyboardTypes;
 @property(retain) NSString *otherButtonTitle;
+@property(assign) unsigned long soundID;
+@property(assign) unsigned long soundIDBehavior;
 @property(retain) NSString *soundPath;
 @property(retain) id textFieldButtonDisplayDefaultButtonTitles;
 @property(retain) id textFieldButtonDisplayDefaultButtonURLs;
@@ -83,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property(retain) id textFieldButtonImagePaths;
 @property(retain) id textFieldTitles;
 @property(retain) id textFieldValues;
+@property(retain) NSDictionary *vibrationPattern;
 - (id)initWithMessage:(id)message replyPort:(unsigned)port requestFlags:(int)flags auditToken:(XXStruct_kUSYWB)token;
 - (void)_cleanup;
 - (BOOL)_needsDismissalWithClickedButtonIndex:(int)clickedButtonIndex;

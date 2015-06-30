@@ -9,7 +9,7 @@
 
 @protocol SBControlCenterSectionViewControllerDelegate <NSObject>
 - (void)noteSectionEnabledStateDidChange:(id)noteSectionEnabledState;
-- (void)section:(id)section updateStatusText:(id)text reason:(id)reason;
+- (void)section:(id)section publishStatusUpdate:(id)update;
 - (void)sectionWantsControlCenterDismissal:(id)dismissal;
 @end
 

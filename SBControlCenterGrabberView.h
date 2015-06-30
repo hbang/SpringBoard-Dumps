@@ -10,20 +10,30 @@
 __attribute__((visibility("hidden")))
 @interface SBControlCenterGrabberView : XXUnknownSuperclass <SBUIControlCenterControlObserver, SBControlCenterObserver> {
 	SBChevronView *_chevronView;
+	float _defaultChevronAlpha;
 	SBUIControlCenterLabel *_statusLabel;
 	SBUIControlCenterLabel *_statusLabel2;
-	BOOL _statusBusy;
+	int _statusState;
 	NSMutableDictionary *_statusByReason;
 	NSMutableArray *_statusReasonQueue;
+	SBControlCenterStatusUpdate *_activeStatus;
+	BKSTimer *_statusTimer;
 }
 + (float)defaultHeightForOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_animateNextStatus;
-- (void)_dequeueStatus;
-- (void)_didPresentStatus;
+- (void)_animateWithDuration:(double)duration animations:(id)animations;
+- (void)_animateWithDuration:(double)duration delay:(double)delay animations:(id)animations;
+- (void)_evaluateStatusStateForNewStatus:(id)newStatus;
+- (id)_getNextStatusString;
 - (CGRect)_grabberRect;
 - (BOOL)_hasPendingStatus;
+- (id)_peekNextStatus;
 - (id)_popNextStatus;
+- (void)_rescindStatusUpdate:(id)update;
+- (void)_resetLabelAndChevronState;
+- (void)_restartTimerWithInterval:(double)interval handler:(id)handler;
+- (void)_setStatusState:(int)state;
 - (id)chevronView;
 - (void)controlAppearanceDidChangeForState:(int)controlAppearance;
 - (void)controlCenterDidDismiss;
@@ -33,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)controlConfigurationDidChangeForState:(int)controlConfiguration;
 - (void)dealloc;
 - (void)layoutSubviews;
+- (void)presentStatusUpdate:(id)update;
 - (CGSize)sizeThatFits:(CGSize)fits;
-- (void)updateStatusText:(id)text reason:(id)reason;
 @end
 

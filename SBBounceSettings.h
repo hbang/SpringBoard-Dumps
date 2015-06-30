@@ -9,7 +9,6 @@
 
 __attribute__((visibility("hidden")))
 @interface SBBounceSettings : XXUnknownSuperclass {
-	BOOL _resistanceAppliesAfterBounce;
 	float _gravity;
 	float _velocity;
 	float _elasticity;
@@ -28,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property(assign) float minVelocityToAssist;
 @property(assign) float multiplier;
 @property(assign) float resistance;
-@property(assign) BOOL resistanceAppliesAfterBounce;
 @property(assign) float velocity;
 - (void)setDefaultValues;
 @end

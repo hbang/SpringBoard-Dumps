@@ -7,6 +7,9 @@
 
 
 
+@interface XXUnknownSuperclass (AppSwitcherCacheVendedCompliance) <SBAppSwitcherCacheVended>
+@end
+
 @interface XXUnknownSuperclass (SBApplicationAdditions)
 - (void)addObjectsFromDictionary:(id)dictionary forKeys:(id)keys;
 @end
@@ -96,15 +99,13 @@
 - (CGImageRef)_newThumbnailWithJPEG:(id)jpeg forMaxPixelDimension:(float)maxPixelDimension;
 - (id)_thumbnailFitToSize:(CGSize)size;
 - (BOOL)isAnimated;
+- (id)sbg_cropImageWithRect:(CGRect)rect outputSize:(CGSize)size;
 - (id)sbg_memoryMappedImageWithPool:(id)pool;
 - (id)sbg_resizeImageToSize:(CGSize)size;
 - (id)sbg_resizeImageToSize:(CGSize)size preservingAspectRatio:(BOOL)ratio;
 - (id)sbg_squareImage;
 - (id)sbg_thumbnailFitToSize:(CGSize)size;
-@end
-
-@interface XXUnknownSuperclass (SBIconScales)
-+ (float)scaleForApplicationIconFormat:(int)applicationIconFormat;
+- (BOOL)sbs_hasAlpha;
 @end
 
 @interface XXUnknownSuperclass (SBSystemLocalNotificationAlert)
@@ -164,6 +165,7 @@
 - (void)_printLayer:(id)layer level:(int)level;
 - (BOOL)hasActiveKeyboardOnScreen;
 - (void)sb_removeAllSubviews;
+- (void)sb_removeAnimationsForKeys:(id)keys update:(id)update;
 - (id)sb_snapshotImage;
 - (void)sbs_printLayerHierarchy;
 @end
@@ -174,6 +176,10 @@
 
 @interface XXUnknownSuperclass (SBWidgetAdditions)
 - (id)sb_supportedWidgetIdioms;
+@end
+
+@interface XXUnknownSuperclass (UIGestureRecognizer_SpringBoard)
+- (id)sb_briefDescription;
 @end
 
 @interface XXUnknownSuperclass (SBSnapshotExtensions)

@@ -11,11 +11,15 @@ __attribute__((visibility("hidden")))
 @interface SBDockView : XXUnknownSuperclass <SBWallpaperObserver> {
 	SBDockIconListView *_iconListView;
 	SBHighlightView *_highlightView;
-	_SBDockBackgroundView *_backgroundView;
+	SBWallpaperEffectView *_backgroundView;
 	UIImageView *_backgroundImageView;
+	UIView *_accessibilityBackgroundView;
+	_UILegibilitySettings *_legibilitySettings;
 }
+@property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 + (float)defaultHeight;
 - (id)initWithDockListView:(id)dockListView forSnapshot:(BOOL)snapshot;
+- (void)_backgroundContrastDidChange:(id)_backgroundContrast;
 - (id)_newBackgroundImage;
 - (void)dealloc;
 - (id)dockListView;

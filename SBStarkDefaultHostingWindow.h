@@ -10,5 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkDefaultHostingWindow : SBWindow {
 }
+- (id)hitTest:(CGPoint)test withEvent:(id)event;
 @end
 

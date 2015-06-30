@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) NSString *dateString;
 @property(readonly, assign) NSRange ordinalRange;
 @property(readonly, assign) BOOL shouldSuperscriptOrdinal;
-+ (id)dateHeaderWithDate:(id)date locale:(id)locale;
++ (id)dateHeaderWithDate:(id)date locale:(id)locale singleLine:(BOOL)line;
 - (id)initWithDateString:(id)dateString ordinalRange:(NSRange)range shouldSuperscriptOrdinal:(BOOL)ordinal;
 - (void)dealloc;
 @end

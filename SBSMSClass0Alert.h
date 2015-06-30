@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithString:(id)string;
 - (void)_registerForNotifications;
 - (void)_unregisterForNotifications;
+- (BOOL)allowsStackingOfAlert:(id)alert;
 - (void)deactivate;
 @end
 

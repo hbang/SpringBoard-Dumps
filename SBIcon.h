@@ -51,13 +51,11 @@ __attribute__((visibility("hidden")))
 - (id)getStandardIconImageForLocation:(int)location;
 - (id)getUnmaskedIconImage:(int)image;
 - (id)gridCellImage;
-- (BOOL)hasCachedImageForLocation:(int)location;
 - (BOOL)hasFolderIconView;
 - (BOOL)hasObserver:(id)observer;
 - (BOOL)iconAppearsInNewsstand;
 - (int)iconFormatForLocation:(int)location;
 - (Class)iconImageViewClassForLocation:(int)location;
-- (Class)iconViewClassForLocation:(int)location;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (BOOL)isApplicationIcon;
 - (BOOL)isBookmarkIcon;
@@ -79,7 +77,6 @@ __attribute__((visibility("hidden")))
 - (void)localeChanged;
 - (int)localizedCompareDisplayNames:(id)names;
 - (BOOL)matchesEntity:(id)entity;
-- (BOOL)matchesRepresentation:(id)representation;
 - (id)nodeDescriptionWithPrefix:(id)prefix;
 - (id)nodeIdentifier;
 - (id)nodesAlongIndexPath:(id)path consumedIndexes:(unsigned)indexes;
@@ -92,9 +89,9 @@ __attribute__((visibility("hidden")))
 - (void)reloadIconImagePurgingImageCache:(BOOL)cache;
 - (void)removeNodeObserver:(id)observer;
 - (void)removeObserver:(id)observer;
-- (id)representation;
 - (void)setBadge:(id)badge;
 - (void)setUninstalled;
+- (BOOL)shouldAnimateProgress;
 - (BOOL)shouldCacheImageForFormat:(int)format;
 - (id)tags;
 - (id)uninstallAlertBody;

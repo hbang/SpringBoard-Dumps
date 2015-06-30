@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) id clearPossibleAction;
 @property(readonly, assign, nonatomic) SBBulletinListSection *representedListSection;
 - (void)dealloc;
-- (float)heightForReusableViewInTableView:(id)tableView;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
 - (id)identifier;
 - (void)populateReusableView:(id)view;
 - (Class)reusableViewClass;

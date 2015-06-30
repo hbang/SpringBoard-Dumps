@@ -29,6 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)prepareGeometry;
 - (void)setFadeFraction:(float)fraction;
-- (void)setMorphFraction:(float)fraction;
+- (void)setMorphFraction:(float)fraction totalScale:(float)scale;
 @end
 

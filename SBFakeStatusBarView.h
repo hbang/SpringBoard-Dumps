@@ -9,7 +9,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBFakeStatusBarView : XXUnknownSuperclass {
+	NSString *_cacheKey;
 }
+@property(copy, nonatomic) NSString *cacheKey;
+- (void)dealloc;
 - (void)setSnapshotOverridesWithTimeEnabled:(BOOL)timeEnabled;
 @end
 

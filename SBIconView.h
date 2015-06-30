@@ -6,10 +6,10 @@
  */
 
 
-@protocol SBIconViewDelegate, SBIconViewObserver, SBIconAccessoryView;
+@protocol SBIconViewDelegate, SBIconAccessoryView, SBIconViewObserver;
 
 __attribute__((visibility("hidden")))
-@interface SBIconView : XXUnknownSuperclass <_UISettingsKeyObserver, SBIconObserver> {
+@interface SBIconView : XXUnknownSuperclass <_UISettingsKeyObserver, SBIconObserver, SBReusableView> {
 	SBIcon *_icon;
 	int _iconLocation;
 	UIView *_currentImageView;
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 	SBCloseBoxView *_closeBox;
 	SBFParallaxSettings *_closeBoxParallaxSettings;
 	CGPoint _wallpaperRelativeCloseBoxCenter;
-	_UILegibilityView *_labelView;
+	SBIconLabelView *_labelView;
 	UIView *_updatedMark;
 	SBFolderIconBackgroundView *_dropGlow;
 	unsigned _drawsLabel : 1;
@@ -75,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)_applyIconImageAlpha:(float)alpha;
 - (void)_applyIconLabelAlpha:(float)alpha;
 - (id)_automationID;
+- (void)_backgroundContrastDidChange:(id)_backgroundContrast;
 - (CGPoint)_centerForCloseBox;
 - (CGPoint)_centerForCloseBoxRelativeToVisibleImageFrame:(CGRect)visibleImageFrame;
 - (void)_closeBoxTapped;
@@ -85,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (CGRect)_frameForImageView;
 - (CGRect)_frameForLabel;
 - (CGRect)_frameForUpdatedMarkWithLabelFrame:(CGRect)labelFrame;
+- (CGRect)_frameForVisibleImage;
 - (id)_iconImageView;
 - (BOOL)_isShowingCloseBox;
 - (id)_labelImage;
@@ -92,6 +94,9 @@ __attribute__((visibility("hidden")))
 - (float)_labelVerticalOffset;
 - (id)_legibilitySettingsWithParameters:(id)parameters;
 - (id)_legibilitySettingsWithPrimaryColor:(id)primaryColor;
+- (id)_legibilitySettingsWithStyle:(int)style primaryColor:(id)color;
+- (void)_recursiveNotifyInteractionTintColorDidChangeForReasons:(unsigned)_recursiveNotifyInteractionTintColor;
+- (void)_recursivelyUpdateBackdropMaskFrames;
 - (void)_setIcon:(id)icon animated:(BOOL)animated;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_updateAccessoryViewWithAnimation:(BOOL)animation;
@@ -108,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelLongPressTimer;
 - (void)cleanupAfterImageCrossfade;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (id)dropGlow;
 - (double)grabDurationForEvent:(id)event;
 - (void)iconAccessoriesDidUpdate:(id)iconAccessories;
@@ -126,7 +132,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;
 - (BOOL)pointMostlyInside:(CGPoint)inside withEvent:(id)event;
 - (void)prepareDropGlow;
-- (void)prepareForRecycling;
+- (void)prepareForReuse;
 - (void)prepareToCrossfadeImageWithView:(id)view maskCorners:(BOOL)corners trueCrossfade:(BOOL)crossfade;
 - (void)prepareToCrossfadeImageWithView:(id)view maskCorners:(BOOL)corners trueCrossfade:(BOOL)crossfade anchorPoint:(CGPoint)point;
 - (void)removeAllIconAnimations;
@@ -137,13 +143,14 @@ __attribute__((visibility("hidden")))
 - (void)setIconImageAndAccessoryAlpha:(float)alpha;
 - (void)setIconPosition:(CGPoint)position;
 - (void)setImageCrossfadeFadeFraction:(float)fraction;
-- (void)setImageCrossfadeMorphFraction:(float)fraction;
+- (void)setImageCrossfadeMorphFraction:(float)fraction totalScale:(float)scale;
 - (void)setIsEditing:(BOOL)editing animated:(BOOL)animated;
 - (void)setIsGrabbed:(BOOL)grabbed;
 - (void)setIsOverlapping:(BOOL)overlapping;
 - (void)setLabelHidden:(BOOL)hidden;
 - (void)setPaused:(BOOL)paused;
 - (void)setRefusesRecipientStatus:(BOOL)status;
+- (void)setShouldRasterizeImageView:(BOOL)rasterizeImageView;
 - (void)setSuppressesBlurryBackgroundChanges:(BOOL)changes;
 - (void)setTouchDownInIcon:(BOOL)icon;
 - (void)setUpdatedMarkHidden:(BOOL)hidden;
@@ -151,6 +158,7 @@ __attribute__((visibility("hidden")))
 - (void)showDropGlow:(BOOL)glow;
 - (UIEdgeInsets)snapshotEdgeInsets;
 - (void)swapInIcon:(id)icon;
+- (id)tintColor;
 - (void)touchesBegan:(id)began withEvent:(id)event;
 - (void)touchesCancelled:(id)cancelled withEvent:(id)event;
 - (void)touchesEnded:(id)ended withEvent:(id)event;

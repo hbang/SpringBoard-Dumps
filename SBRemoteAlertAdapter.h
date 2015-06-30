@@ -27,5 +27,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isRemote;
 - (BOOL)matchesRemoteAlertService:(id)service options:(id)options;
 - (void)remoteAlertDidTerminateWithError:(id)remoteAlert;
+- (void)remoteAlertWantsToAllowBanners:(BOOL)allowBanners;
 @end
 

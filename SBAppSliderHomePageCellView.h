@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 	UIView *_homeSnapshot;
 	UIView *_wallpaperView;
 	SBFakeStatusBarView *_fakeStatusBar;
+	SBAppSwitcherStatusBarViewCache *_statusBarCache;
 	BOOL _usesSnapshots;
 	int _snapshotOrientation;
 	int _orientation;
@@ -24,6 +25,8 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) int orientation;
 + (id)wallpaperSnapshotForZoomFactor:(float)zoomFactor orientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame statusBarCache:(id)cache;
+- (void)_addHomeScreenViewAsSubview:(id)subview;
 - (void)_statusBarFrameChanging;
 - (void)_updateWallpaperView;
 - (void)_viewDidAnimatePresentation:(id)_view;
