@@ -23,7 +23,6 @@
 	BOOL _iconsAreElsewhere;
 	BOOL _recyclesIconViewsWhenNotShowing;
 	NSMutableSet *_notShownIconViews;
-	NSMutableArray *_rasterizedIcons;
 	BOOL _showingCloseBoxes;
 }
 + (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
@@ -100,7 +99,6 @@
 - (void)setModel:(id)model;
 - (void)setOrientation:(int)orientation;
 - (void)setRecyclesIconViewsWhenNotShowing:(BOOL)showing;
-- (void)setShouldRasterizeAllIcons:(BOOL)rasterizeAllIcons;
 - (void)showCloseBoxes;
 - (void)showIconAnimationDidStop:(id)showIconAnimation didFinish:(id)finish iconView:(id)view;
 - (void)showIconImagesFromColumn:(int)column toColumn:(int)column2 totalColumns:(int)columns visibleIconsJitter:(BOOL)jitter;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBLeafIcon.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBDownloadingIcon : SBLeafIcon {

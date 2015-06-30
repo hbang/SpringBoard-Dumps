@@ -13,7 +13,7 @@
 	id<SBAssistantEducationAlertItemDelegate> _delegate;
 }
 @property(assign, nonatomic) id<SBAssistantEducationAlertItemDelegate> delegate;
-- (id)initWithDelegate:(id)delegate;
+- (id)initWithType:(int)type language:(id)language delegate:(id)delegate;
 - (void)_assistantActivationChanged:(id)changed;
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;

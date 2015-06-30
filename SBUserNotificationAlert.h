@@ -8,7 +8,6 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
 @interface SBUserNotificationAlert : XXUnknownSuperclass {
 	unsigned _replyPort;
 	int _token;

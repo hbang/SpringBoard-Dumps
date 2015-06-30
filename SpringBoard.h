@@ -119,6 +119,7 @@
 - (void)_performDelayedHeadsetClickTimeout;
 - (void)_powerDownNow;
 - (void)_primeMenuButtonAssistant;
+- (void)_profileListDidChange;
 - (void)_proximityChanged:(id)changed;
 - (void)_rebootNow;
 - (void)_relaunchSpringBoardNow;
@@ -169,7 +170,7 @@
 - (void)beginListeningForAssistantActivationGesture;
 - (BOOL)canOpenURL:(id)url;
 - (BOOL)canShowAlerts;
-- (BOOL)canShowLockScreenCameraButton;
+- (BOOL)canShowLockScreenCameraKnob;
 - (BOOL)canShowLockScreenHUDControls;
 - (BOOL)canShowNowPlayingControls;
 - (void)cancelMenuButtonRequests;
@@ -223,6 +224,7 @@
 - (void)lockButtonUp:(GSEventRef)up;
 - (void)lockButtonWasHeld;
 - (void)lockDevice:(GSEventRef)device;
+- (BOOL)lockScreenCameraSupported;
 - (void)mediaKeyDown:(GSEventRef)down;
 - (void)mediaKeyUp:(GSEventRef)up;
 - (void)menuButtonDown:(GSEventRef)down;
@@ -331,6 +333,7 @@
 - (void)_retryLaunchTestWithOptions:(id)options;
 - (void)endLaunchTest;
 - (void)finishedTest:(id)test extraResults:(id)results;
+- (void)runRotationTest:(int)test;
 - (BOOL)runTest:(id)test options:(id)options;
 - (void)startLaunchTestNamed:(id)named options:(id)options;
 - (void)startResumeTestNamed:(id)named options:(id)options;

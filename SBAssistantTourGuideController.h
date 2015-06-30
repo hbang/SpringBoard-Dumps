@@ -16,6 +16,7 @@
 	SBAssistantGuideSectionListController *_sectionListController;
 	SBAssistantGuideModel *_model;
 }
++ (float)_calculatePeekAmount;
 + (float)peekAmount;
 - (BOOL)_affectsMagicPocket;
 - (void)_backButtonHit:(id)hit;

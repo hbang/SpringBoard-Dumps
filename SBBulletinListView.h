@@ -13,7 +13,7 @@
 	int _orientation;
 	float _currentY;
 	UIView *_slidingView;
-	UIView *_linenView;
+	UIImageView *_linenView;
 	CGSize _linenSize;
 	SBBulletinTableView *_tableView;
 	UIStatusBar *_statusBar;
@@ -26,6 +26,7 @@
 	UIView *_linenMask;
 	UIView *_linenGradient;
 	UIView *_linenRim;
+	UIView *_linenContainer;
 	UIView *_wholeShadowView;
 	UIView *_sideShadowView[2];
 	float _tableViewContentHeight;

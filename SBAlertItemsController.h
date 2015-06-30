@@ -23,6 +23,7 @@
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_buddyDidExit;
 - (void)_notificationClientEnded:(id)ended;
 - (void)_notificationClientStarted:(id)started;
 - (void)_postAlertPresentedNotificationForType:(int)type sender:(id)sender date:(id)date;
@@ -43,6 +44,7 @@
 - (void)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason animated:(BOOL)animated;
 - (void)deactivateVisibleAlertItemOfClass:(Class)aClass reason:(int)reason;
 - (void)dealloc;
+- (id)description;
 - (BOOL)dontLockOverAlertItems;
 - (void)forceAlertsToPendAndMoveActiveAlertsToPendingWithAnimation:(BOOL)animation;
 - (BOOL)hasAlertOfClass:(Class)aClass;

@@ -34,7 +34,6 @@
 - (void)launchFromViewSwitcher;
 - (id)leafIdentifier;
 - (void)setBadge:(id)badge;
-- (BOOL)shouldCacheImageForFormat:(int)format;
 - (id)tags;
 @end
 

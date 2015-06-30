@@ -17,7 +17,7 @@
 }
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithImage:(id)image;
-- (id)initWithSnapshotFrame:(CGRect)snapshotFrame image:(id)image originalImageOrientation:(int)orientation currentImageOrientation:(int)orientation4 interfaceOrientation:(int)orientation5 doubleHeightStatusBar:(BOOL)bar preventSplit:(BOOL)split chrome:(id)chrome chromeStatusBarHidden:(BOOL)hidden needsZoomFilter:(BOOL)filter;
+- (id)initWithSnapshotFrame:(CGRect)snapshotFrame image:(id)image originalImageOrientation:(int)orientation currentImageOrientation:(int)orientation4 interfaceOrientation:(int)orientation5 doubleHeightStatusBar:(BOOL)bar preventSplit:(BOOL)split chrome:(id)chrome chromeStatusBarHidden:(BOOL)hidden needsZoomFilter:(BOOL)filter asyncDecodeImage:(BOOL)image11;
 - (id)initWithSnapshotFrame:(CGRect)snapshotFrame ioSurface:(void *)surface snapshotTransform:(CGAffineTransform)transform;
 - (id)_chromeStatusBarImageForInterfaceOrientation:(int)interfaceOrientation;
 - (void)_createCornerViewsIfNecessaryWithCornersFrame:(CGRect)cornersFrame;

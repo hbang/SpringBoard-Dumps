@@ -18,13 +18,15 @@
 	BOOL _showOrScheduleForcedInstallAlertAfterNextUnlock;
 	BOOL _scheduleForcedInstallAlertAfterNextUnlock;
 	BOOL _scheduleForcedInstallAlertWhenAble;
+	BOOL _settingsResetPrefsBadgedFlag;
 }
 + (id)sharedInstance;
 + (id)stringFromReasons:(int)reasons;
 - (id)init;
 - (void)_autoDownloadUnknownToUserFailedForDescriptor:(id)descriptor error:(id)error;
 - (void)_callCountChanged:(id)changed;
-- (void)_clearLegacyBadgePreferenceIfNecessary;
+- (void)_clearLegacyBadgeIfNecessary:(id)necessary;
+- (void)_completeMigrationForSettingsReset;
 - (BOOL)_forceInstallAfterDownload;
 - (void)_handleInstallError:(id)error;
 - (void)_iCloudStatusChanged;
@@ -34,14 +36,18 @@
 - (void)_isUpdateInstallable:(id)installable;
 - (void)_lockStateChanged:(id)changed;
 - (void)_migrateForNewOSVersionIfNecessary;
+- (void)_prepareMigrationForSettingsReset;
 - (void)_registerForInstallRelatedNotifications;
 - (void)_resetAndCancelExistingScheduledForcedInstallAlerts;
 - (void)_resetState;
+- (void)_saveLastKnownVersionPreference:(id)preference;
+- (void)_savePreferencesBadgeFlag:(id)flag;
 - (void)_scheduleForcedInstallRepeatAlert:(double)alert;
 - (void)_setUpdateToInstall:(id)install;
 - (void)_showForcedInstallAlert;
 - (void)_showOrScheduleNextForcedInstallAlert;
 - (void)_showOrScheduleNextForcedInstallAlertWithReasons:(int)reasons;
+- (id)_stringForCurrentVersionPreference;
 - (void)_syncDidEnd:(id)_sync;
 - (void)_syncWillStart:(id)_sync;
 - (void)_toggleSettingsBadge:(BOOL)badge;

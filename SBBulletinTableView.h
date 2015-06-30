@@ -12,7 +12,8 @@
 
 @interface SBBulletinTableView : XXUnknownSuperclass <SBBulletinHeaderViewDelegate> {
 	NSMutableSet *_visibleSectionHeaders;
-	SBBulletinLinenSegmentView *_fadeOverlay;
+	UIView *_fadeContainer;
+	SBBulletinLinenSegmentView *_fadeSegment;
 	UIImageView *_fadeOverlayMask;
 }
 - (id)initWithFrame:(CGRect)frame linenView:(id)view;

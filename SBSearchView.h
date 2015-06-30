@@ -19,6 +19,7 @@
 	UIView *_contentView;
 	BOOL _isKeyboardAnimatingRotation;
 	BOOL _hidesEmptyTableFooter;
+	BOOL _translatedKbForScatter;
 }
 @property(retain, nonatomic) UIView *contentView;
 @property(retain, nonatomic) UIView *rootView;
@@ -31,7 +32,9 @@
 - (id)_keyboard;
 - (void)_layoutNoResultsView;
 - (void)_resetContentViewTransform;
+- (void)_resetKeyboardTransformForScatter;
 - (void)_setDistantContentViewTransform;
+- (void)cleanupKeyboardForScatterIfNecessary;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;

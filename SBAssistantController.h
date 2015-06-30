@@ -32,6 +32,7 @@
 	NSMutableArray *_repeatQueue;
 	NSMutableSet *_modalRequesters;
 	NSMutableSet *_snippetsToToss;
+	NSMutableSet *_snippetsToFadeAfterToss;
 	unsigned _tableAnimationCount;
 	VSSpeechSynthesizer *_synthesizer;
 	NSString *_spokenLanguageCode;
@@ -73,6 +74,8 @@
 	BOOL _endVoiceSessionWhenDoneSpeaking;
 	NSString *_currentAddViewsIdentifier;
 	int _networkErrorIndex;
+	BOOL _displayErrorWhenVisible;
+	BOOL _didDisplayNotReadyError;
 	SBAssistantNavigationController *_viewController;
 	NSMutableArray *_nextRecognitionAudioInputPaths;
 	BOOL _shouldRouteToReceiver;
@@ -86,10 +89,7 @@
 @property(assign, nonatomic) BOOL willOpenTelURL;
 + (BOOL)canActivateWithActiveTouchesUsingOptions:(id)activeTouchesUsingOptions;
 + (BOOL)deviceSupported;
-+ (void)educateUserAboutAssistantWhenAppropriate;
-+ (BOOL)hasUserBeenEducated;
 + (BOOL)preferenceEnabled;
-+ (void)setUserHasBeenEducated;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 + (BOOL)shouldEnterAssistant;
@@ -97,6 +97,7 @@
 - (id)init;
 - (id)_addAceView:(id)view phase:(int)phase;
 - (void)_addAceViewAdornmentsIfNecessary:(id)necessary;
+- (void)_addSnippetToFadeAfterToss:(id)fadeAfterToss;
 - (void)_addSnippetToToss:(id)toss;
 - (void)_addSpeakableTextForExchange:(id)exchange listenFollowingSpeech:(BOOL)speech;
 - (void)_addTemporaryMessageToSpeechQueue:(id)speechQueue;
@@ -128,9 +129,11 @@
 - (void)_clearTempSpeechTimer;
 - (void)_clearTemporarySpeechQueue;
 - (id)_connection;
+- (id)_connectionIfExists;
 - (void)_delayedDeactivateAssistant;
 - (void)_detachFromAssistantView;
 - (void)_displayDidLaunchFrontmost:(id)_display;
+- (void)_displayNotReadyError;
 - (void)_endBTVoiceSession;
 - (void)_endConversationUpdates;
 - (void)_entryFinishedWithPassword:(id)password;
@@ -158,7 +161,7 @@
 - (void)_keyboardWillShow:(id)_keyboard;
 - (id)_lastNonSpaceSnippet;
 - (unsigned)_lastNonSpaceSnippetIndex;
-- (id)_lastNonStaticSnippet;
+- (id)_lastNonStaticSnippetAfterUserUtterance;
 - (unsigned)_lastNonTemporarySnippetAbsentFrom:(id)from;
 - (id)_lastReplaceableTemporarySnippet;
 - (void)_listen;
@@ -173,6 +176,7 @@
 - (BOOL)_phaseIsInterstitial:(int)interstitial;
 - (BOOL)_phaseIsTemporary:(int)temporary;
 - (BOOL)_phaseReplacesPreviousAvailableSnippetContents:(int)contents;
+- (void)_pickableAudioRoutesChanged:(id)changed;
 - (void)_pinSnippetToTop:(id)top;
 - (void)_playSound:(unsigned long)sound;
 - (void)_positionSnippet:(id)snippet aboveKeyboard:(CGRect)keyboard withCurve:(int)curve duration:(double)duration atPosition:(int)position positionHandler:(id)handler;
@@ -208,6 +212,7 @@
 - (void)_setViewState:(int)state;
 - (BOOL)_shouldActAsIfInConfirmationPhase;
 - (void)_showPasscodeKeypad:(BOOL)keypad;
+- (void)_snippetAnimationFinished:(id)finished;
 - (id)_snippetWithFirstResponder;
 - (id)_snippetsOfPhase:(int)phase;
 - (void)_stampLastSnippetWithStamp:(int)stamp;
@@ -245,6 +250,7 @@
 - (void)assistantConnectionSpeechRecordingWillBegin:(id)assistantConnectionSpeechRecording;
 - (void)assistantTableViewCellDidRemoveFromSuperview:(id)assistantTableViewCell;
 - (void)assistantView:(id)view madeRequest:(id)request;
+- (BOOL)assistantViewAffectsMagicPocket:(int)pocket;
 - (void)assistantViewAnimatedIn:(id)anIn;
 - (void)assistantViewAnimatedOut:(id)anOut;
 - (float)assistantViewAudioLevel:(id)level;
@@ -300,6 +306,7 @@
 - (id)snippetControllerViewController:(id)controller;
 - (void)speechSynthesizer:(id)synthesizer didFinishSpeaking:(BOOL)speaking withError:(id)error;
 - (void)speechSynthesizerDidStartSpeaking:(id)speechSynthesizer;
+- (id)spokenLanguageCode;
 - (id)supportedCommands;
 - (id)tableView:(id)view cellForRowAtIndexPath:(id)indexPath;
 - (float)tableView:(id)view heightForRowAtIndexPath:(id)indexPath;

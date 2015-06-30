@@ -9,7 +9,7 @@
 
 
 @interface SBGestureViewVendor : XXUnknownSuperclass {
-	NSCache *m_cache;
+	CPLRUDictionary *m_cache;
 }
 + (id)sharedInstance;
 - (id)init;
@@ -18,5 +18,6 @@
 - (void)dealloc;
 - (void)maskViewIfNeeded:(id)needed gestureType:(int)type viewType:(int)type3 contextHostViewRequester:(id)requester app:(id)app;
 - (id)viewForApp:(id)app gestureType:(int)type includeStatusBar:(BOOL)bar;
+- (id)viewForApp:(id)app gestureType:(int)type includeStatusBar:(BOOL)bar decodeImage:(BOOL)image;
 @end
 
