@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBSearchGestureObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBSearchGestureObserver.h"
 
 @protocol SBSearchHeaderDelegate;
 

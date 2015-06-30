@@ -10,6 +10,7 @@
 
 @protocol SBAlertDelegate <NSObject>
 - (void)alert:(id)alert requestsBackgroundStyleChangeWithAnimationFactory:(id)animationFactory;
+- (BOOL)alertCanAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (void)alertIsReadyToBeDeactivated:(id)beDeactivated;
 - (void)alertIsReadyToBeRemovedFromView:(id)view;
 - (void)alertWantsToForceWallpaperTunnelUpdate:(id)forceWallpaperTunnelUpdate;

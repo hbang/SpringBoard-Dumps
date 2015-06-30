@@ -12,6 +12,7 @@
 @optional
 - (void)hostViewController:(id)controller didEnable:(BOOL)enable actionAtIndex:(unsigned)index;
 - (void)hostViewController:(id)controller didRequestDismissalWithContext:(id)context;
+- (void)hostViewController:(id)controller serviceRequestedDismissalEnabled:(BOOL)enabled;
 - (void)hostViewControllerDidChangePreferredContentSize:(id)hostViewController;
 @end
 

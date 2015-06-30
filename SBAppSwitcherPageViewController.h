@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "UIScrollViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 @protocol SBAppSwitcherScrollingViewDelegate;
 
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 	BOOL _isMoving;
 	BOOL _isLayingOutForReachability;
 	SBDisplayItem *_displayItemForWhichRemovalIsBeingCancelled;
+	NSMutableSet *_scrollViewsToKillWithOnScrollEnd;
 	id<SBAppSwitcherScrollingViewDelegate> _delegate;
 }
 @property(readonly, copy) NSString *debugDescription;

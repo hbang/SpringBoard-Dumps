@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBFolderView.h"
 #import "SBSearchGestureObserver.h"
 #import "UIGestureRecognizerDelegate.h"
-#import "SBFolderView.h"
 #import "_UISettingsKeyObserver.h"
 
 
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) SBSearchViewController *searchViewController;
 @property(readonly, assign) Class superclass;
 - (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map context:(id)context;
 - (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map forSnapshot:(BOOL)snapshot;
 - (void)_configureParallax;
 - (void)_disableUserInteractionBeforeSignificantAnimation;
@@ -76,6 +77,6 @@ __attribute__((visibility("hidden")))
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)tearDownListViews;
 - (void)updateDockViewOrientation;
-- (void)willAnimate;
+- (void)willAnimateWithSettings:(id)settings;
 @end
 

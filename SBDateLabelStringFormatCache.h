@@ -27,10 +27,8 @@ __attribute__((visibility("hidden")))
 	NSDateFormatter *_longYMDHMSNoSpaceFormatter;
 	NSNumberFormatter *_decimalFormatter;
 	NSNumberFormatter *_timerNumberFormatter;
-	NSDateFormatter *_abbreviatedTimerFormatter;
-	NSDateFormatter *_alarmSnoozeFormatter;
-	NSDate *_timerReferenceDate;
-	NSDate *_alarmReferenceDate;
+	NSDateComponentsFormatter *_abbreviatedTimerFormatter;
+	NSDateComponentsFormatter *_alarmSnoozeFormatter;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlertWindow.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlertWindow.h"
 
 
 __attribute__((visibility("hidden")))

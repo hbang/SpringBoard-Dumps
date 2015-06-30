@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import "SBUIPasscodeLockViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBCoordinatedPresenting.h"
 #import "SBPresentingDelegate.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBUIPasscodeLockViewDelegate.h"
 
 @protocol SBLockScreenSlideUpToAppControllerDelegate;
 
@@ -38,6 +38,8 @@ __attribute__((visibility("hidden")))
 	NSMutableArray *_deferredAppUpdateBlocks;
 	BOOL _executingDeferredAppUpdateBlocks;
 	BOOL _waitingToDeactivateForActivityLaunch;
+	id _preUIUnlockActions;
+	SBPasscodeLockDisableAssertion *_passcodeDisableAssertionForContinuityUnlock;
 	UIView *_clippingView;
 	UIView *_appPortraitDefaultImageView;
 	UIView *_appLandscapeDefaultImageView;

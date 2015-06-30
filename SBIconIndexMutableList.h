@@ -7,8 +7,8 @@
 
 #import "SBIconIndexNodeObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "NSFastEnumeration.h"
 #import "SpringBoard-Structs.h"
+#import "NSFastEnumeration.h"
 
 @protocol SBIconIndexMutableListObserver;
 

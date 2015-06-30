@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "RadiosPreferencesDelegate.h"
 #import "SBCCSettingModule.h"
+#import "RadiosPreferencesDelegate.h"
 
 
 __attribute__((visibility("hidden")))

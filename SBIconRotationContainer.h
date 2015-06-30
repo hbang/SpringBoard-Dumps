@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -16,12 +16,14 @@ __attribute__((visibility("hidden")))
 	SBIconView *_startView;
 	SBIconView *_endView;
 	CGPoint _wallpaperRelativeImageCenter;
+	int _location;
 }
 @property(readonly, assign, nonatomic) SBIconCoordinate coordinate;
 @property(readonly, retain, nonatomic) SBIcon *endIcon;
 @property(readonly, assign, nonatomic) CGPoint iconImageCenter;
+@property(readonly, assign, nonatomic) int location;
 @property(assign, nonatomic) CGPoint wallpaperRelativeImageCenter;
-- (id)initWithFrame:(CGRect)frame startIcon:(id)icon endIcon:(id)icon3 viewMap:(id)map coordinate:(SBIconCoordinate)coordinate;
+- (id)initWithFrame:(CGRect)frame startIcon:(id)icon endIcon:(id)icon3 viewMap:(id)map coordinate:(SBIconCoordinate)coordinate location:(int)location;
 - (void)crossfadeWithDuration:(double)duration;
 - (void)dealloc;
 - (void)prepareToCrossfade;

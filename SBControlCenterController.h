@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBCoordinatedPresenting.h"
 #import "SpringBoard-Structs.h"
 #import "SBControlCenterViewControllerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBPresentingDelegate;
 

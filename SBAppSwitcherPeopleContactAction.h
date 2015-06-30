@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "NSCopying.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol OS_dispatch_queue;
 

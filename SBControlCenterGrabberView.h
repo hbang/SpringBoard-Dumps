@@ -7,8 +7,8 @@
 
 #import "SpringBoard-Structs.h"
 #import "SBControlCenterObserver.h"
-#import "SBUIControlCenterControlObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIControlCenterControlObserver.h"
 
 
 __attribute__((visibility("hidden")))

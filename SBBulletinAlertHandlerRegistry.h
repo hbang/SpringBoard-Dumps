@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBBulletinAlertHandlerRegistry.h"
 #import "_UISettingsKeyObserver.h"
+#import "SBBulletinAlertHandlerRegistry.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 

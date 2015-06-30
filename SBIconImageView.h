@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBIconProgressViewDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "SBReusableView.h"
-#import "SBIconObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconObserver.h"
 
 
 __attribute__((visibility("hidden")))
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_clearCachedImages;
 - (void)_clearProgressView;
 - (id)_currentOverlayImage;
+- (void)_didReceiveLowMemoryWarning:(id)warning;
 - (id)_generateIconBasicOverlayImageForFormat:(int)format;
 - (id)_generateIconSquareOverlayImageForFormat:(int)format;
 - (id)_generateSquareContentsImage;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexNode.h"
 #import "SBIconIndexMutableListObserver.h"
 #import "SBIconListModelObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

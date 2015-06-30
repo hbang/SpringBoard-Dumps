@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import "SBSIMLockEntryViewInterface.h"
+#import "SpringBoard-Structs.h"
 #import "SBUIPasscodeLockViewDelegate.h"
 #import "SBPasscodeEntryAlertView.h"
-#import "SpringBoard-Structs.h"
-#import "SBSIMLockEntryViewInterface.h"
 
 
 __attribute__((visibility("hidden")))

@@ -5,33 +5,32 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBLeafIconDataSource.h"
-#import "SpringBoard-Structs.h"
 #import "SBApplicationRestrictionObserver.h"
+#import "SpringBoard-Structs.h"
 #import "SBFolderControllerDelegate.h"
 #import "SBIconViewDelegate.h"
 #import "SBIconModelDelegate.h"
 #import "SBIconViewMapDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
+@protocol SBStarkSessionConfiguring, SBStarkIconControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkIconController : XXUnknownSuperclass <SBIconModelDelegate, SBApplicationRestrictionObserver, SBFolderControllerDelegate, SBIconViewMapDelegate, SBIconViewDelegate, SBLeafIconDataSource> {
+	id<SBStarkSessionConfiguring> _configuration;
+	id<SBStarkIconControllerDelegate> _delegate;
 	SBIconModel *_iconModel;
 	SBIconViewMap *_iconViewMap;
 	SBStarkFolderController *_rootFolderController;
-	unsigned _interactionAffordances;
-	AVExternalDevice *_externalDevice;
 	_UILegibilitySettings *_legibilitySettings;
 	SBIcon *_highlightedIcon;
 	SBIcon *_launchingIcon;
 	SBIcon *_focusedIconForLayout;
+	BOOL _preparingForLayout;
 	NSIndexPath *_indexPathToResetTo;
 	SBStarkFakeIconOperationController *_fakeIconOperationController;
 	SBStarkIconLayoutOverrideStrategy *_iconLayoutOverrideStrategy;
-	BOOL _geoSupported;
-	NSSet *_visibleTags;
-	NSSet *_hiddenTags;
 	BOOL _invalidated;
 	BOOL _hidden;
 }
@@ -41,12 +40,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) SBStarkIconLayoutOverrideStrategy *iconLayoutOverrideStrategy;
 @property(readonly, assign) Class superclass;
-- (id)initWithInteractionAffordances:(unsigned)interactionAffordances externalDevice:(id)device;
+- (id)initWithCoder:(id)coder;
+- (id)initWithConfiguration:(id)configuration delegate:(id)delegate;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (BOOL)_buttons:(id)buttons hasType:(int)type;
 - (void)_clearHighlightedIcon;
 - (Class)_controllerClassForFolderClass:(Class)folderClass;
-- (void)_geoSupportChanged;
 - (void)_iconModelDidLayout:(id)_iconModel;
 - (void)_iconModelDidReloadIcons:(id)_iconModel;
 - (void)_iconModelWillLayout:(id)_iconModel;
@@ -59,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (void)_physicalButtonsEnded:(id)ended withEvent:(id)event;
 - (void)_prepareToResetRootIconLists;
 - (void)_resetRootIconLists;
-- (id)applicationIconForBundleIdentifier:(id)bundleIdentifier;
 - (void)applicationRestrictionController:(id)controller didUpdateVisibleTags:(id)tags hiddenTags:(id)tags3;
 - (BOOL)canAddDownloadingIconForApplication:(id)application;
 - (BOOL)canAddWebClip:(id)clip;
@@ -78,7 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)folderControllerShouldClose:(id)folderController;
 - (id)icon:(id)icon defaultImageWithFormat:(int)format;
 - (id)icon:(id)icon imageWithFormat:(int)format;
-- (BOOL)icon:(id)icon launchFromLocation:(int)location;
+- (BOOL)icon:(id)icon launchFromLocation:(int)location context:(id)context;
 - (void)icon:(id)icon touchEnded:(BOOL)ended;
 - (void)icon:(id)icon touchMoved:(id)moved;
 - (int)iconAccessoryType:(id)type;
@@ -90,7 +88,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconCanTightenLabel:(id)label;
 - (BOOL)iconCompleteUninstall:(id)uninstall;
 - (id)iconDisplayName:(id)name;
-- (id)iconForLeafID:(id)leafID;
 - (id)iconFormattedAccessoryString:(id)string;
 - (BOOL)iconIsBeta:(id)beta;
 - (BOOL)iconIsRecentlyUpdated:(id)updated;
@@ -106,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (id)iconsView;
 - (void)invalidate;
 - (BOOL)isHidden;
+- (id)leafIconForIdentifier:(id)identifier;
 - (void)loadView;
 - (unsigned)maxColCountForListInRootFolderWithInterfaceOrientation:(int)interfaceOrientation;
 - (unsigned)maxIconCountForDock;
@@ -114,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (unsigned)maxRowCountForListInRootFolderWithInterfaceOrientation:(int)interfaceOrientation;
 - (void)relayout;
 - (id)rootFolder;
+- (float)scale;
 - (void)setHidden:(BOOL)hidden withAnimationFactory:(id)animationFactory;
 - (BOOL)supportsDock;
 - (int)viewMap:(id)map locationForIcon:(id)icon;

@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "UITableViewDelegate.h"
 #import "UITableViewDataSource.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -29,7 +29,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (void)_disableWidgetAtIndexPath:(id)indexPath inTableView:(id)tableView;
-- (void)_dismissWidgetsSettings;
+- (void)_dismissWidgetsSettingsAnimated:(BOOL)animated;
+- (void)_dismissWidgetsSettingsWithAnimation;
+- (void)_dismissWidgetsSettingsWithoutAnimation;
 - (void)_enableWidgetAtIndexPath:(id)indexPath inTableView:(id)tableView;
 - (unsigned)_indexForInsertingSection:(id)insertingSection intoArray:(id)array;
 - (int)_indexOfFirstEnabledWidget;

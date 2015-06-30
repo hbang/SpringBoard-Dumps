@@ -5,15 +5,16 @@
  * Source: (null)
  */
 
-#import "UIStatusBarStyleDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "UIStatusBarStyleDelegate.h"
 
+@protocol SBStarkSessionConfiguring;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkStatusBarViewController : XXUnknownSuperclass <UIStatusBarStyleDelegate> {
+	id<SBStarkSessionConfiguring> _configuration;
 	UIStatusBar *_statusBarView;
 	id<UIStatusBarStyleDelegate> _statusBarStyleDelegate;
-	int _layoutJustification;
 	NSMutableSet *_statusBarHideReasons;
 	int _requestedStyle;
 	BOOL _styleHasBeenRequested;
@@ -24,10 +25,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
-@property(assign, nonatomic) int layoutJustification;
 @property(assign, nonatomic, getter=isSeparatorHidden) BOOL separatorHidden;
 @property(assign, nonatomic) id<UIStatusBarStyleDelegate> statusBarStyleDelegate;
 @property(readonly, assign) Class superclass;
+- (id)initWithCoder:(id)coder;
+- (id)initWithConfiguration:(id)configuration;
+- (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (BOOL)_isStatusBarHidden;
 - (void)_layoutStatusBar:(id)bar;
 - (void)dealloc;

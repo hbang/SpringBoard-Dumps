@@ -6,11 +6,11 @@
  */
 
 #import "UIGestureRecognizerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBiometricEventObserver.h"
 #import "SBPresentingDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBControlCenterObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBCoordinatedPresenting;
 
@@ -85,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (id)_lockScreenNotificationListController;
 - (id)_lockScreenNotificationListView;
 - (id)_lockScreenViewController;
+- (void)_noteBioMatchingEnabledDidChange:(id)_noteBioMatchingEnabled;
 - (void)_presentingController:(id)controller willHandlePan:(id)pan;
 - (void)_presentingController:(id)controller willHandleTap:(id)tap;
 - (void)_reenableGestures;

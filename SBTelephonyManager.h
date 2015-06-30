@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "RadiosPreferencesDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "RadiosPreferencesDelegate.h"
 
 @protocol OS_dispatch_queue;
 

@@ -11,6 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface SBCarDisplaySceneManager : SBSceneManager {
 }
-+ (Class)_layoutManagerClass;
+- (id)_newLayoutManager;
 @end
 

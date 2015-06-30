@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBAlertView.h"
 #import "SpringBoard-Structs.h"
 #import "UITextFieldDelegate.h"
-#import "SBAlertView.h"
 
 
 __attribute__((visibility("hidden")))

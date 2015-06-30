@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconIndexNodeObserver.h"
 #import "SBFolderView.h"
+#import "SBIconIndexNodeObserver.h"
 
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map context:(id)context;
 - (void)_layoutSubviews;
 - (void)_newsstandStoreAvailabilityDidChangeNotification:(id)_newsstandStoreAvailability;
 - (BOOL)_showsTitle;

@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "NSCopying.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "NSCopying.h"
 #import "NSMutableCopying.h"
 
 

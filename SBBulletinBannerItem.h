@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBDefaultBannerViewSource.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -46,11 +46,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)overridesQuietMode;
 - (id)pullDownNotification;
 - (id)seedBulletin;
+- (BOOL)showMessagePreview;
 - (id)sortDate;
 - (id)sound;
 - (id)sourceDate;
 - (id)subActionLabels;
 - (id)subActions;
+- (id)subtitle;
 - (id)suppressedMessage;
 - (id)title;
 @end

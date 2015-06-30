@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import "SBAlertView.h"
 #import "SpringBoard-Structs.h"
 #import "_UIActionSliderDelegate.h"
 #import "SBPowerDownViewInterface.h"
-#import "SBAlertView.h"
 
 @protocol SBPowerDownViewDelegate;
 

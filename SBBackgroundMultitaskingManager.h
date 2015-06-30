@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWorkStoreObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol OS_dispatch_queue;
 

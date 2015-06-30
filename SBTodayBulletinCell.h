@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBModalLayoutCaching.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 + (id)defaultFontColor;
 + (id)defaultTextAttributes;
 + (float)interCellSpacingInLayoutMode:(int)layoutMode;
++ (float)snippetLineHeight;
 - (id)initWithStyle:(int)style reuseIdentifier:(id)identifier;
 - (void)dealloc;
 - (void)layoutSubviews;

@@ -10,7 +10,9 @@
 
 __attribute__((visibility("hidden")))
 @interface SBBoundLayoutConstraint : XXUnknownSuperclass {
+@private
 	id _object;
+@protected
 	NSString *_keyPath;
 }
 @property(copy, nonatomic) NSString *keyPath;

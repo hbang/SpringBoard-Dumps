@@ -14,7 +14,9 @@
 - (id)attachmentText;
 - (id)iconImage;
 - (id)message;
+- (BOOL)showMessagePreview;
 - (id)sourceDate;
+- (id)subtitle;
 - (id)suppressedMessage;
 - (id)title;
 @end

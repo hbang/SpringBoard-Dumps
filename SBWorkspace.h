@@ -5,15 +5,15 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BSTransactionObserver.h"
+#import "SpringBoard-Structs.h"
 #import "SBAlertManagerDelegate.h"
 #import "SBAlertManagerObserver.h"
-#import "SBStarkScreenManagerDelegate.h"
+#import "SBStarkScreenManagerObserver.h"
 #import "SBStarkScreenControllerObserver.h"
 #import "SBReachabilityObserver.h"
 #import "FBSystemServiceDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "FBProcessManagerObserver.h"
 #import "FBApplicationProcessObserver.h"
 #import "BSWatchdogDelegate.h"
@@ -21,7 +21,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBWorkspace : XXUnknownSuperclass <BSTransactionObserver, SBAlertManagerDelegate, SBAlertManagerObserver, SBStarkScreenManagerDelegate, SBStarkScreenControllerObserver, SBReachabilityObserver, FBSystemServiceDelegate, FBProcessManagerObserver, FBApplicationProcessObserver, BSWatchdogDelegate, FBSceneManagerObserver> {
+@interface SBWorkspace : XXUnknownSuperclass <BSTransactionObserver, SBAlertManagerDelegate, SBAlertManagerObserver, SBStarkScreenManagerObserver, SBStarkScreenControllerObserver, SBReachabilityObserver, FBSystemServiceDelegate, FBProcessManagerObserver, FBApplicationProcessObserver, BSWatchdogDelegate, FBSceneManagerObserver> {
 	FBSceneManager *_sceneManager;
 	SBAlertManager *_alertManager;
 	BOOL _alertManagerIsDeactivatingAlert;
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_disableReachabilityImmediately:(BOOL)immediately;
 - (void)_exitReachabilityModeWithCompletion:(id)completion;
 - (void)_handleBuddyLaunchFinished;
+- (void)_handleInitialSpringBoardLaunch:(id)launch;
 - (void)_handleOpenApplicationRequest:(id)request options:(id)options origin:(id)origin withResult:(id)result;
 - (void)_handleOpenURLRequest:(id)request application:(id)application options:(id)options activationSettings:(id)settings origin:(id)origin withResult:(id)result;
 - (BOOL)_handleSetupExited:(id)exited;

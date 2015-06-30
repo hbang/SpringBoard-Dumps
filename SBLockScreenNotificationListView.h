@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "UITableViewDelegate.h"
 #import "UITableViewDataSource.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel;
 

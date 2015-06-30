@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBIconImageView.h"
 #import "SBFolderIconObserver.h"
 #import "SBIconBlurryBackgroundViewObserver.h"
-#import "SBIconImageView.h"
 
 
 __attribute__((visibility("hidden")))

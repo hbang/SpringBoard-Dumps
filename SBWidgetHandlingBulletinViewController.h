@@ -5,9 +5,8 @@
  * Source: (null)
  */
 
-#import "SBNotificationCenterWidgetHost.h"
-#import "SpringBoard-Structs.h"
 #import "SBBulletinViewController.h"
+#import "SBNotificationCenterWidgetHost.h"
 
 @protocol SBWidgetViewControllerDelegate;
 
@@ -15,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface SBWidgetHandlingBulletinViewController : SBBulletinViewController <SBNotificationCenterWidgetHost> {
 	NSMutableDictionary *_identifiersToWidgets;
 	id _owedWillAppearBlock;
-	CGRect _endDraggingTargetFrame;
 	NSMutableDictionary *_outstandingWidgetUpdateRequests;
 	id _cancelTouchesForHitWidgetAssertion;
 	id<SBWidgetViewControllerDelegate> _widgetDelegate;
@@ -40,17 +38,17 @@ __attribute__((visibility("hidden")))
 - (void)_invokeBlockWithAllVisibleWidgets:(id)allVisibleWidgets;
 - (void)_noteOutstandingUpdateRequestForWidget:(id)widget;
 - (void)_registerUpdateRequestCompletionHandler:(id)handler forWidget:(id)widget;
-- (void)_updateWidgetViewStateAfterScroll;
+- (void)_updateWidgetViewState;
 - (BOOL)_widgetHasOutstandingUpdateRequest:(id)request;
 - (void)addChildBulletinIfPossible:(id)possible;
 - (void)dealloc;
-- (void)makeVisibleWidgetInSection:(id)section andReconnect:(BOOL)reconnect animated:(BOOL)animated completion:(id)completion;
+- (void)invalidateSectionAndRowViewHeights:(id)heights;
+- (void)makeVisibleWidgetInSection:(id)section andConnect:(BOOL)connect animated:(BOOL)animated completion:(id)completion;
 - (void)removeChildBulletinIfPossible:(id)possible;
 - (void)scrollViewDidEndDecelerating:(id)scrollView;
 - (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidScrollToTop:(id)scrollView;
 - (void)scrollViewWillBeginDragging:(id)scrollView;
-- (void)scrollViewWillEndDragging:(id)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)offset;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)tableView:(id)view didEndDisplayingCell:(id)cell forRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view willDisplayCell:(id)cell forRowAtIndexPath:(id)indexPath;

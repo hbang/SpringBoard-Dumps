@@ -5,25 +5,25 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIStatusBarStyleDelegate.h"
 #import "FBWindowContextManagerObserver.h"
-#import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "AVExternalDeviceDelegate.h"
+#import "SBStarkIconControllerDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "_UISettingsKeyObserver.h"
 #import "SBAlertManagerDelegate.h"
 #import "SBAlertManagerObserver.h"
 #import "FBWindowContextManagerDelegate.h"
 #import "SBAlertObserver.h"
 
-@protocol SBStarkScreenControllerDelegate, SBDisplayProtocol;
+@protocol SBStarkScreenControllerDelegate, SBDisplayProtocol, SBStarkSessionConfiguring;
 
 __attribute__((visibility("hidden")))
-@interface SBStarkScreenController : XXUnknownSuperclass <SBAlertManagerDelegate, SBAlertManagerObserver, SBAlertObserver, UIStatusBarStyleDelegate, _UISettingsKeyObserver, AVExternalDeviceDelegate, FBWindowContextManagerDelegate, FBWindowContextManagerObserver> {
+@interface SBStarkScreenController : XXUnknownSuperclass <SBAlertManagerDelegate, SBAlertManagerObserver, SBAlertObserver, UIStatusBarStyleDelegate, _UISettingsKeyObserver, AVExternalDeviceDelegate, FBWindowContextManagerDelegate, FBWindowContextManagerObserver, SBStarkIconControllerDelegate> {
+	SBStarkSessionConfiguration *_configuration;
 	FBSDisplay *_fbsDisplay;
 	UIScreen *_screen;
-	unsigned _interactionAffordances;
-	int _layoutJustification;
 	SBCarDisplaySettings *_settings;
 	id<SBStarkScreenControllerDelegate> _delegate;
 	id<SBDisplayProtocol> _actualTopDisplay;
@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 	SBStarkFakeIconOperationController *_fakeIconOperationController;
 	AVExternalDevice *_externalDevice;
 	BOOL _externalDeviceScreenAvailable;
-	SBWindow *_mainWindow;
+	BOOL _isPairedScreen;
 }
 @property(readonly, retain, nonatomic) SBAlertManager *alertManager;
 @property(readonly, retain, nonatomic) SBWindow *animationWindow;
@@ -68,18 +68,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(readonly, retain, nonatomic) SBStarkIconController *iconController;
 @property(readonly, retain, nonatomic) SBWindow *iconWindow;
-@property(readonly, assign, nonatomic) unsigned interactionAffordances;
-@property(readonly, assign, nonatomic) int layoutJustification;
+@property(readonly, assign, nonatomic) BOOL isPairedScreen;
 @property(readonly, retain, nonatomic) SBWindow *lockoutWindow;
-@property(readonly, retain, nonatomic) SBWindow *mainWindow;
 @property(readonly, retain, nonatomic) SBStarkNotificationViewController *notificationController;
 @property(readonly, retain, nonatomic) UIScreen *screen;
+@property(readonly, retain, nonatomic) id<SBStarkSessionConfiguring> sessionConfiguration;
+@property(readonly, assign, nonatomic, getter=isShowingNowPlaying) BOOL showNowPlaying;
 @property(readonly, assign, nonatomic) int state;
 @property(readonly, retain, nonatomic) SBStarkStatusBarViewController *statusBarController;
 @property(readonly, assign) Class superclass;
 + (void)_launchNowPlaying;
 - (id)init;
-- (id)initWithScreen:(id)screen;
+- (id)initWithConfiguration:(id)configuration;
 - (void)_alertSheetDismissed:(id)dismissed;
 - (void)_alertSheetPresented:(id)presented;
 - (BOOL)_allowInCallOverrideStyle;
@@ -114,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)alertManager:(id)manager shouldDeactivateDismissedAlert:(id)alert;
 - (void)alertManager:(id)manager willActivateAlert:(id)alert overAlerts:(id)alerts;
 - (void)alertManager:(id)manager willTearDownAlertWindow:(id)window;
+- (id)animationWindowForIconController:(id)iconController;
 - (void)cleanupForTopDisplayIfNecessaryWithAnimationFactory:(id)animationFactory;
 - (void)dealloc;
 - (void)dismissSiriWithAnimation:(int)animation factory:(id)factory completion:(id)completion;
@@ -123,7 +124,6 @@ __attribute__((visibility("hidden")))
 - (void)handleUnhandledBack;
 - (void)iOSUIRequestedForApplicationURL:(id)applicationURL;
 - (void)invalidate;
-- (BOOL)isShowingNowPlaying;
 - (void)notifyWhenNowPlayingIsActive:(id)active withTimeout:(double)timeout;
 - (id)nowPlayingContextHostManager;
 - (id)nowPlayingSnapshot;

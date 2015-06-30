@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "UIGestureRecognizerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "UIGestureRecognizerDelegate.h"
 
 
 __attribute__((visibility("hidden")))

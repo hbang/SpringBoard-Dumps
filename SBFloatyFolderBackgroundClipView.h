@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) SBFolderBackgroundView *backgroundView;
 - (id)initWithFrame:(CGRect)frame;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)dealloc;
 - (void)layoutSubviews;
 @end

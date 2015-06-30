@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBUIControlCenterButtonDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIControlCenterButtonDelegate.h"
 #import "_UISettingsKeyObserver.h"
 
 

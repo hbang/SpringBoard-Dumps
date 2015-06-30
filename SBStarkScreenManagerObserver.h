@@ -8,7 +8,8 @@
 #import "NSObject.h"
 
 
-@protocol SBStarkScreenManagerDelegate <NSObject>
+@protocol SBStarkScreenManagerObserver <NSObject>
+@optional
 - (void)starkScreenManagerDidChangeActiveController:(id)starkScreenManager;
 - (void)starkScreenManagerWillChangeActiveController:(id)starkScreenManager;
 @end

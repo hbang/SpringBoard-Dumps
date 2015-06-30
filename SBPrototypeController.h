@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBVolumePressBandit.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBVolumePressBandit.h"
 #import "_UISettingsKeyObserver.h"
 
 @protocol SBTestRecipe;

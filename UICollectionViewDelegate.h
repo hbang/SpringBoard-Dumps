@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "UIScrollViewDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "UIScrollViewDelegate.h"
 
 
 @protocol UICollectionViewDelegate <UIScrollViewDelegate>

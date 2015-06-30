@@ -6,12 +6,14 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBWindow.h"
 #import "SBStarkNotificationViewControllerDelegate.h"
+#import "SBWindow.h"
 
+@protocol SBStarkSessionConfiguring;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkNotificationWindow : SBWindow <SBStarkNotificationViewControllerDelegate> {
+	id<SBStarkSessionConfiguring> _configuration;
 	SBStarkScreenFocusController *_focusController;
 	BOOL _assertingFocus;
 	id _borrowScreenToken;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) SBStarkNotificationViewController *rootViewController;
 @property(readonly, assign) Class superclass;
+- (id)initWithConfiguration:(id)configuration layoutStrategy:(id)strategy debugName:(id)name scene:(id)scene;
 - (id)initWithScreen:(id)screen layoutStrategy:(id)strategy debugName:(id)name scene:(id)scene;
 - (void)dealloc;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBFolderViewDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBFolderControllerDelegate.h"
 #import "SBFolderObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 + (unsigned)maxFolderDepth;
 + (float)wallpaperScaleForDepth:(unsigned)depth;
 - (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map context:(id)context;
 - (id)_addEmptyListForce:(BOOL)force;
 - (BOOL)_allowUserInteraction;
 - (void)_animateFloatyFolderOpen:(BOOL)open settings:(id)settings completion:(id)completion;
@@ -166,8 +167,8 @@ __attribute__((visibility("hidden")))
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 - (UIEdgeInsets)statusBarInsetsForOrientation:(int)orientation;
 - (void)unscatterAnimated:(BOOL)animated afterDelay:(double)delay withCompletion:(id)completion;
-- (void)willAnimate;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (void)willAnimateWithSettings:(id)settings;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

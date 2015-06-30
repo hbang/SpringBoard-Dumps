@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerView.h"
 #import "SBVibrantBannerView.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBDefaultBannerViewSource;
 
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (CGRect)_attachmentImageViewFrame;
 - (CGRect)_contentFrame;
 - (CGRect)_contentFrameForBounds:(CGRect)bounds;
+- (BOOL)_hasAttachment;
 - (CGRect)_iconImageViewFrame;
 - (float)_iconInsetY;
 - (id)_relevanceDateColor;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (CGRect)_secondaryContentFrameForBounds:(CGRect)bounds;
 - (float)_secondaryContentInsetY;
 - (void)_setRelevanceDateColor:(id)color;
+- (BOOL)_showAttachmentPreview;
 - (float)_textInsetX;
 - (CGRect)_textViewFrame;
 - (CGRect)_textViewFrameForBounds:(CGRect)bounds;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBSearchStandardCell.h"
 #import "SpringBoard-Structs.h"
+#import "SBSearchStandardCell.h"
 
 
 __attribute__((visibility("hidden")))

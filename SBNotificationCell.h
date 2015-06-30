@@ -7,8 +7,8 @@
 
 #import "SpringBoard-Structs.h"
 #import "SBModalLayoutCaching.h"
-#import "SBDateLabelDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBDateLabelDelegate.h"
 
 @protocol SBBulletinDateLabel;
 

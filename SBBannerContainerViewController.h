@@ -5,15 +5,15 @@
  * Source: (null)
  */
 
-#import "UIViewControllerAnimatedTransitioning.h"
-#import "SpringBoard-Structs.h"
-#import "SBBulletinWindowClient.h"
-#import "NCInteractiveNotificationHostDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBBannerButtonViewControllerDelegate.h"
 #import "NCBannerAccessoryHostViewControllerDelegate.h"
 #import "SBMotionGestureObserver.h"
 #import "UIViewControllerTransitioningDelegate.h"
+#import "UIViewControllerAnimatedTransitioning.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
+#import "SBBulletinWindowClient.h"
+#import "NCInteractiveNotificationHostDelegate.h"
+#import "SBBannerButtonViewControllerDelegate.h"
 
 @protocol SBBannerContextViewControllerDelegate;
 
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 	NCContentHostViewController *_inlayContentViewController;
 	SBBannerButtonViewController *_buttonViewController;
 	BOOL _notifiedAppeared;
+	BOOL _manualDismissalEnabled;
 	SBUIBannerContext *_bannerContext;
 	SBBannerContainerView *_containerView;
 	SBBannerContextView *_bannerContextView;
@@ -104,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveRaiseGesture;
 - (void)hostViewController:(id)controller didRequestDismissalWithContext:(id)context;
 - (void)hostViewController:(id)controller didRequestSticky:(BOOL)sticky;
+- (void)hostViewController:(id)controller serviceRequestedDismissalEnabled:(BOOL)enabled;
 - (void)hostViewControllerDidChangePreferredContentSize:(id)hostViewController;
 - (void)hostViewControllerDidRequestDismissal:(id)hostViewController;
 - (void)hostViewControllerDidRequestSticky:(id)hostViewController;

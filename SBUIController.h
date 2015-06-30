@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBUIActiveOrientationObserver.h"
 #import "SBAppSwitcherControllerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWallpaperObserver.h"
 #import "_UISettingsKeyObserver.h"
+#import "SpringBoard-Structs.h"
 #import "UIWindowDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -30,7 +30,9 @@ __attribute__((visibility("hidden")))
 	unsigned _isBatteryCharging : 1;
 	unsigned _isOnAC : 1;
 	unsigned _isConnectedToUnsupportedChargingAccessory : 1;
+@private
 	unsigned _isConnectedToChargeIncapablePowerSource : 1;
+@protected
 	unsigned _allowAlertWindowRotation : 1;
 	id _volumeHandler;
 	float _batteryCapacity;
@@ -55,14 +57,10 @@ __attribute__((visibility("hidden")))
 	unsigned _switchAppGestureChangedFrames;
 	UIView *_pendingGestureLaunchView;
 	SBApplication *_pendingAppActivatedByGesture;
-@private
 	SBApplication *_appCurrentlyActivatingByGesture;
-@protected
 	NSMutableArray *_switchAppFullyOrderedList;
 	NSArray *_switchAppFilteredList;
-@private
 	BOOL _toggleSwitcherAfterLaunchAppUsesSystemGestureOrientation;
-@protected
 	float _ambiguousCCActivationMargin;
 	NSMutableSet *_rotationPreventionReasons;
 	BOOL _disableAnimationForNextIconRotation;
@@ -239,7 +237,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isHeadsetDocked;
 - (BOOL)isOnAC;
 - (void)launchApplicationByGesture:(id)gesture;
-- (void)launchIcon:(id)icon fromLocation:(int)location;
+- (void)launchIcon:(id)icon fromLocation:(int)location context:(id)context;
 - (void)launchPendingAppActivatedByGestureIfExists;
 - (void)noteStatusBarHeightChanged:(id)changed;
 - (void)openNewsstand;

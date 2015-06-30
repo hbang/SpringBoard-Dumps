@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import "SBIcon.h"
 #import "SBFolderObserver.h"
 #import "SBIconObserver.h"
 #import "SBIconIndexNodeObserver.h"
-#import "SBIcon.h"
 
 
 __attribute__((visibility("hidden")))
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (Class)iconImageViewClassForLocation:(int)location;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (BOOL)isFolderIcon;
-- (void)launchFromLocation:(int)location;
+- (void)launchFromLocation:(int)location context:(id)context;
 - (unsigned)listIndexForContainedIcon:(id)containedIcon;
 - (void)localeChanged;
 - (id)miniGridCellImageForIcon:(id)icon;

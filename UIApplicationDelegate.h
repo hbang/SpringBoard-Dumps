@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "NSObject.h"
 #import "SpringBoard-Structs.h"
+#import "NSObject.h"
 
 
 @protocol UIApplicationDelegate <NSObject>

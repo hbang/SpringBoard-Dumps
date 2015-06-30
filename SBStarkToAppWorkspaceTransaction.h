@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBMainScreenApplicationSceneTransactionObserver.h"
 #import "FBSynchronizedTransactionDelegate.h"
 #import "SBStarkWorkspaceTransaction.h"
+#import "SBMainScreenApplicationSceneTransactionObserver.h"
 
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 	NSSet *_scenesToBackground;
 	BOOL _fromAssistant;
 	FBSDisplay *_starkDisplay;
+	SBStarkScreenController *_screenController;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

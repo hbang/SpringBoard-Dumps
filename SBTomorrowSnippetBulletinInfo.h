@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBSnippetBulletinInfo.h"
 #import "SpringBoard-Structs.h"
+#import "SBSnippetBulletinInfo.h"
 
 
 __attribute__((visibility("hidden")))

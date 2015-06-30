@@ -5,6 +5,9 @@
  * Source: (null)
  */
 
+#import "SBVolumePressBandit.h"
+#import "SBMotionGestureObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
 #import "SBCoordinatedPresenting.h"
 #import "SBPresentingDelegate.h"
@@ -15,9 +18,6 @@
 #import "SBUIBannerSource.h"
 #import "SBUIBannerTargetManagerObserver.h"
 #import "SBLockScreenNotificationBannerItemDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBMotionGestureObserver.h"
-#import "SBVolumePressBandit.h"
 
 @protocol SBLockScreenNotificationListDelegate, SBUIBannerTarget;
 
@@ -79,7 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)_listItemContainingBulletinID:(id)anId;
 - (id)_listItemContainingCardItem:(id)item;
 - (id)_listItemContainingSystemAlert:(id)alert;
-- (id)_newItemForBulletin:(id)bulletin;
+- (id)_newItemForBulletin:(id)bulletin shouldPlayLightsAndSirens:(BOOL)sirens;
 - (void)_playSoundForBulletinIfPossible:(id)bulletinIfPossible;
 - (void)_presentFullscreenBulletinAlertIfNeeded;
 - (void)_realertTimerFired:(id)fired;

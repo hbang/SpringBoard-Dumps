@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBIconIndexNode.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconIndexNode.h"
 
 
 __attribute__((visibility("hidden")))
@@ -79,7 +79,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isUninstalled;
 - (BOOL)isUserInstalledApplicationIcon;
 - (BOOL)launchEnabled;
-- (void)launchFromLocation:(int)location;
+- (void)launchFromLocation:(int)location context:(id)context;
 - (id)leafIdentifier;
 - (void)localeChanged;
 - (int)localizedCompareDisplayNames:(id)names;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBSearchResultDetailsViewController.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBSearchResultDetailsViewController.h"
 
 @protocol SBSearchResultDetailsViewControllerDelegate;
 

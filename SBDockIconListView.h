@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBRootIconListView.h"
 #import "SpringBoard-Structs.h"
+#import "SBRootIconListView.h"
 
 
 __attribute__((visibility("hidden")))

@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBThermalWarningAlertItemDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBThermalWarningSuppressionAssertionDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBThermalWarningAlertItemDelegate.h"
 
 
 __attribute__((visibility("hidden")))

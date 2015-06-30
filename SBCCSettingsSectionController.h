@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBCCButtonSectionController.h"
 #import "SpringBoard-Structs.h"
+#import "SBCCButtonSectionController.h"
 
 
 __attribute__((visibility("hidden")))

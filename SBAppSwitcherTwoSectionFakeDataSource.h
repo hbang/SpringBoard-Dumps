@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAppSwitcherPeopleAbstractDataSource.h"
 #import "SBAppSwitcherPeopleDataSource.h"
+#import "SBAppSwitcherPeopleAbstractDataSource.h"
 
 @protocol SBAppSwitcherPeopleDataSourceConsumer;
 

@@ -8,9 +8,9 @@
 #import "SBAppSwitcherPeopleDataSourceConsumer.h"
 #import "SBAppSwitcherPeopleScrollViewDelegate.h"
 #import "UIGestureRecognizerDelegate.h"
-#import "SpringBoard-Structs.h"
-#import "_UISettingsKeyObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "_UISettingsKeyObserver.h"
+#import "SpringBoard-Structs.h"
 
 @protocol SBAppSwitcherPeopleDelegate, SBAppSwitcherPeopleDataSource;
 

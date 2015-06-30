@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "_UISettingsKeyPathObserver.h"
 #import "SBUISizeObservingViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol SBBulletinActionHandler, SBModeViewControllerContentProviding;
+@protocol SBModeViewControllerContentProviding, SBBulletinActionHandler;
 
 __attribute__((visibility("hidden")))
 @interface SBModeViewController : XXUnknownSuperclass <SBUISizeObservingViewDelegate, _UISettingsKeyPathObserver> {

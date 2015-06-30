@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBSUIRemoteAlertItemContentHostInterface.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import "SBSUIRemoteAlertItemContentHostInterface.h"
 
 
 __attribute__((visibility("hidden")))

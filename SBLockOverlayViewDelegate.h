@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "NSObject.h"
 #import "SBUILockOverlayViewDelegate.h"
+#import "NSObject.h"
 
 
 @protocol SBLockOverlayViewDelegate <SBUILockOverlayViewDelegate, NSObject>

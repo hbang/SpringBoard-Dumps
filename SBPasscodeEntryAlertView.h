@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlertView.h"
 #import "SpringBoard-Structs.h"
+#import "SBAlertView.h"
 
 @protocol SBUIPasscodeLockView, SBPasscodeEntryAlertViewDelegate;
 

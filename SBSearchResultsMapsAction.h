@@ -6,16 +6,22 @@
  */
 
 #import "SBSearchResultsModalViewControllerAction.h"
+#import "_MKPlaceViewControllerFeedbackDelegate.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBSearchResultsMapsAction : SBSearchResultsModalViewControllerAction {
+@interface SBSearchResultsMapsAction : SBSearchResultsModalViewControllerAction <_MKPlaceViewControllerFeedbackDelegate> {
 	MKMapItem *_mapItem;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) MKMapItem *mapItem;
+@property(readonly, assign) Class superclass;
 - (id)buttonActionTitle;
 - (void)dealloc;
 - (void)loadModalViewControllerWithCompletionBlock:(id)completionBlock;
 - (void)performButtonAction;
+- (void)placeViewController:(id)controller shouldLogFeedbackOfType:(int)type;
 @end
 

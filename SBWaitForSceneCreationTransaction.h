@@ -7,8 +7,8 @@
 
 #import "BSWatchdogDelegate.h"
 #import "FBSceneManagerObserver.h"
-#import "FBWindowContextManagerObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "FBWindowContextManagerObserver.h"
 
 
 __attribute__((visibility("hidden")))

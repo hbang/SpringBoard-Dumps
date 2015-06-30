@@ -7,9 +7,9 @@
 
 #import "SpringBoard-Structs.h"
 #import "SBSearchText.h"
-#import "SBUIQuietModePlayability.h"
 #import "SBAppSwitcherCacheVended.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIQuietModePlayability.h"
 
 
 @interface XXUnknownSuperclass (AppSwitcherCacheVendedCompliance) <SBAppSwitcherCacheVended>

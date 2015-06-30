@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAnimationStepper.h"
 #import "SpringBoard-Structs.h"
+#import "SBAnimationStepper.h"
 
 
 __attribute__((visibility("hidden")))

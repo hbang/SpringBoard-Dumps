@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBCCButtonModuleDelegate.h"
 #import "SBUIControlCenterButtonDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBCCButtonModuleDelegate.h"
 
 @protocol SBCCButtonControllerDelegate;
 

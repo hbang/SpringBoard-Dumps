@@ -6,11 +6,11 @@
  */
 
 #import "UIGestureRecognizerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconListPageControlDelegate.h"
+#import "UITextFieldDelegate.h"
 #import "SBIconScrollViewDelegate.h"
 #import "SpringBoard-Structs.h"
-#import "UITextFieldDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBFolderViewDelegate;
 
@@ -68,7 +68,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) SBIconViewMap *viewMap;
 + (unsigned)_countOfAdditionalPagesToKeepVisibleInOneDirection;
 + (Class)_scrollViewClass;
-- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map context:(id)context;
 - (void)_addIconListView:(id)view;
 - (void)_addIconListViewsForModels:(id)models;
 - (void)_backgroundContrastDidChange:(id)_backgroundContrast;
@@ -172,8 +172,8 @@ __attribute__((visibility("hidden")))
 - (void)updateIconListIndexAndVisibility;
 - (void)updateIconListIndexAndVisibility:(BOOL)visibility;
 - (void)updateIconListViews;
-- (void)willAnimate;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (void)willAnimateWithSettings:(id)settings;
 - (void)willMoveToWindow:(id)window;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation;
 @end

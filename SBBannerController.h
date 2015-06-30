@@ -7,6 +7,7 @@
 
 #import "SBBulletinBusyClient.h"
 #import "UIGestureRecognizerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerTargetImplementation.h"
 #import "SBAssistantObserver.h"
 #import "SBAlertObserver.h"
@@ -14,7 +15,6 @@
 #import "SBBannerGestureHandlerDelegate.h"
 #import "SpringBoard-Structs.h"
 #import "SBBulletinWindowClient.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -91,7 +91,6 @@ __attribute__((visibility("hidden")))
 - (void)_screenUndimmmed:(id)undimmmed;
 - (void)_setBannerSticky:(BOOL)sticky;
 - (void)_setBannerViewControllerForContext:(id)context;
-- (void)_setLockScreenContentHidden:(BOOL)hidden;
 - (void)_setOverdueCompletionBlock:(id)block;
 - (void)_setupBannerDismissTimers;
 - (BOOL)_shouldPendStickyBannerContext:(id)context withReason:(int)reason;
@@ -101,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateBannerSuppressionState;
 - (void)_updateBannerSuppressionStateAndDequeueIfPossible:(BOOL)possible withDelay:(BOOL)delay;
 - (void)_updateGestureHandlerWithState:(int)state type:(int)type;
+- (void)_updateLockScreenForBannerVisible:(BOOL)bannerVisible;
 - (void)alertBannerSuppressionChanged:(id)changed;
 - (void)assistant:(id)assistant viewDidAppear:(int)view;
 - (void)assistant:(id)assistant viewDidDisappear:(int)view;

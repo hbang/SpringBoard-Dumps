@@ -6,10 +6,10 @@
  */
 
 #import "SBAppSwitcherPageContentView.h"
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
-@protocol SBAppSwitcherCacheVended, OS_dispatch_queue;
+@protocol OS_dispatch_queue, SBAppSwitcherCacheVended;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherSnapshotView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {

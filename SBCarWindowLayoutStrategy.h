@@ -6,22 +6,25 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBWindowLayoutStrategy.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBWindowLayoutStrategy.h"
 
+@protocol SBStarkSessionConfiguring;
 
 __attribute__((visibility("hidden")))
 @interface SBCarWindowLayoutStrategy : XXUnknownSuperclass <SBWindowLayoutStrategy> {
+	id<SBStarkSessionConfiguring> _configuration;
 	unsigned _layout;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-+ (UIEdgeInsets)edgeInsetsForStatusBar;
-+ (id)strategyWithLayout:(unsigned)layout;
-- (id)initWithLayout:(unsigned)layout;
++ (UIEdgeInsets)statusBarEdgeInsetsForConfiguration:(id)configuration;
++ (id)strategyWithConfiguration:(id)configuration layout:(unsigned)layout;
+- (id)initWithConfiguration:(id)configuration layout:(unsigned)layout;
 - (BOOL)_isLayoutBoundsOnly;
+- (void)dealloc;
 - (CGRect)frameForWindow:(id)window;
 - (int)jailBehavior;
 @end

@@ -5,6 +5,8 @@
  * Source: (null)
  */
 
+#import "SBApplicationRestrictionObserver.h"
+#import "SBFolderControllerDelegate.h"
 #import "SBSearchGestureObserver.h"
 #import "SBIconViewDelegate.h"
 #import "SBIconModelDelegate.h"
@@ -12,11 +14,9 @@
 #import "SBIconModelApplicationDataSource.h"
 #import "MCProfileConnectionObserver.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBReachabilityObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
-#import "SBApplicationRestrictionObserver.h"
-#import "SBFolderControllerDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -26,9 +26,7 @@ __attribute__((visibility("hidden")))
 	SBIconModel *_iconModel;
 	SBIconContentView *_contentView;
 	BOOL _needsRelayout;
-@private
 	BOOL _sendITunesNotification;
-@protected
 	BBObserver *_bbObserver;
 	NSMutableSet *_displayIDsWithBadgingDisabled;
 	SBRootFolderController *_rootFolderController;

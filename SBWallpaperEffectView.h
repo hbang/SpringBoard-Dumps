@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "_SBFakeBlurObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "_SBFakeBlurObserver.h"
 #import "SBWallpaperObserver.h"
 
 @protocol _SBFakeBlur;

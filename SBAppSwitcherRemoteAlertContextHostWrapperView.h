@@ -9,7 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBAppSwitcherPageContentView.h"
 
-@protocol SBAppSwitcherCacheVended, FBWindowContextAppearance;
+@protocol FBWindowContextAppearance, SBAppSwitcherCacheVended;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherRemoteAlertContextHostWrapperView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {

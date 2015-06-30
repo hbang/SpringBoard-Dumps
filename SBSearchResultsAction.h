@@ -10,14 +10,18 @@
 
 __attribute__((visibility("hidden")))
 @interface SBSearchResultsAction : XXUnknownSuperclass {
+	BOOL _sendDestinationEngagementFeedback;
 	SPSearchResult *_result;
 	SPSearchResultSection *_section;
 	NSArray *_urls;
+	NSString *_cardTypeForFeedback;
 	SBSearchResultsActionManager *_actionManager;
 }
 @property(assign, nonatomic) SBSearchResultsActionManager *actionManager;
+@property(retain) NSString *cardTypeForFeedback;
 @property(readonly, assign) SPSearchResult *result;
 @property(readonly, assign) SPSearchResultSection *section;
+@property(assign) BOOL sendDestinationEngagementFeedback;
 @property(retain, nonatomic) NSArray *urls;
 + (id)actionForResult:(id)result inSection:(id)section;
 - (void)cancelAnimated:(BOOL)animated withCompletionBlock:(id)completionBlock;

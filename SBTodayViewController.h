@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBBulletinObserverViewController.h"
 #import "SpringBoard-Structs.h"
 #import "SBWidgetHandling.h"
-#import "SBBulletinObserverViewController.h"
 
 
 __attribute__((visibility("hidden")))

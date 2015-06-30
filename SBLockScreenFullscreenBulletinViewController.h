@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBLockOverlayViewController.h"
 #import "SBLockOverlayViewDelegate.h"
+#import "SBLockOverlayViewController.h"
 
 
 __attribute__((visibility("hidden")))
@@ -26,12 +26,16 @@ __attribute__((visibility("hidden")))
 - (id)_customTitleForAlternateActionButton;
 - (id)_dismissAction;
 - (BOOL)_hasAlternateAction;
+- (BOOL)_hasSnoozeAction;
 - (id)_lockScreenActionContext;
 - (id)_snoozeAction;
 - (id)_titleForAlternateActionButton;
 - (void)dealloc;
 - (void)handleTapGestureFromView:(id)view;
-- (BOOL)isRepeatingSound;
+- (BOOL)handleVolumeButtonPressed;
+- (BOOL)handleVolumeDownButtonPressed;
+- (BOOL)handleVolumeUpButtonPressed;
+- (BOOL)isPlayingSound;
 - (void)loadView;
 - (void)lockButtonPressed:(id)pressed;
 - (void)performAction:(id)action;

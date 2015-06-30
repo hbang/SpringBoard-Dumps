@@ -9,26 +9,26 @@
 #import "SBStarkScreenControllerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol SBStarkScreenManagerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkScreenManager : XXUnknownSuperclass <SBScreenConnectionHandler, SBStarkScreenControllerDelegate> {
 	NSMapTable *_screenToControllerMap;
+	NSHashTable *_observers;
 	SBStarkScreenController *_currentScreenController;
 	SBStarkStatusBarStateProvider *_statusBarStateProvider;
 	SBSpuriousScreenUndimmingAssertion *_spuriousScreenUndimmingAssertion;
 	SBPasscodeLockDisableAssertion *_deviceLockDisableAssertion;
 	SBLockScreenDisableAssertion *_lockScreenDisableAssertion;
 	SBPasscodeLockDisableAssertion *_earlyConnectDeviceLockDisableAssertion;
+	SBSStatusBarStyleOverridesAssertion *_carPlayStatusBarStyleOverrideAssertion;
+	SBSStatusBarStyleOverridesAssertion *_earlyCarPlayStatusBarStyleOverrideAssertion;
 	BOOL _hasShownConnectedAlert;
 	BOOL _delayShowingConnectedAlert;
 	BOOL _geoSupported;
 	BOOL _earlyStarkConnection;
 	BOOL _delayUpdatingLockOutMode;
-	id<SBStarkScreenManagerDelegate> _delegate;
 }
 @property(readonly, copy) NSString *debugDescription;
-@property(assign, nonatomic) id<SBStarkScreenManagerDelegate> delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
@@ -41,11 +41,11 @@ __attribute__((visibility("hidden")))
 - (void)_promptConnectionSteps;
 - (void)_scheduleClearEarlyConnectStateExpirationTimer;
 - (void)_setCurrentController:(id)controller;
-- (void)_setGeoSupported:(BOOL)supported;
 - (void)_unscheduleClearEarlyConnectStateExpirationTimer;
 - (void)_updateGeoSupport;
 - (void)_usbStarkConnected;
 - (id)activeScreenController;
+- (void)addObserver:(id)observer;
 - (id)currentScreenController;
 - (void)dealloc;
 - (BOOL)handleUnlockAttempt;
@@ -53,8 +53,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)isStarkActive;
 - (void)prepareToHandleUnlockAttempt;
 - (BOOL)promptRelockUIIfAppropriate;
+- (void)removeObserver:(id)observer;
+- (id)screenControllerForDisplay:(id)display;
+- (id)screenControllerForScreen:(id)screen;
 - (void)screenManager:(id)manager didTriggerConnectionHandlerEvent:(int)event forScreen:(id)screen;
 - (BOOL)screenManager:(id)manager shouldBindConnectionHandlerToScreen:(id)screen;
+- (BOOL)shouldShowCarPlayStatusBarItem;
 - (BOOL)starkScreenControllerShouldDelayUpdateLockoutMode:(id)starkScreenController;
 - (void)starkScreenControllerWantsRelockUI:(id)ui;
 - (BOOL)starkScreenIsAttached;

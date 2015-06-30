@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBDefaultBannerViewSource.h"
 #import "SBUIQuietModePlayability.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol SBLockScreenActionHandler, SBLockScreenNotificationBannerItemDelegate;
+@protocol SBLockScreenNotificationBannerItemDelegate, SBLockScreenActionHandler;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenNotificationBannerItem : XXUnknownSuperclass <SBDefaultBannerViewSource, SBUIQuietModePlayability> {
@@ -37,8 +37,11 @@ __attribute__((visibility("hidden")))
 - (id)lockScreenActionContext;
 - (id)message;
 - (BOOL)overridesQuietMode;
+- (BOOL)shouldPlayLightsAndSirens;
+- (BOOL)showMessagePreview;
 - (id)sortDate;
 - (id)sourceDate;
+- (id)subtitle;
 - (id)suppressedMessage;
 - (id)title;
 @end

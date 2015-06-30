@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBNotificationCell.h"
+#import "SpringBoard-Structs.h"
 
 @protocol UIScrollViewDelegate, SBAwayListCellButtonHandler;
 

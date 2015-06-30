@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBStarkNowPlayingServiceDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBStarkNowPlayingServiceDelegate.h"
 
 
 __attribute__((visibility("hidden")))

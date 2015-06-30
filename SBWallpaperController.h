@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SBFWallpaperViewLegibilityObserver.h"
-#import "SBFWallpaperViewInternalObserver.h"
 #import "SpringBoard-Structs.h"
+#import "SBFWallpaperViewLegibilityObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBFWallpaperViewInternalObserver.h"
 #import "SBUIActiveOrientationObserver.h"
 #import "UIWindowDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))

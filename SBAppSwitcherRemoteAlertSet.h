@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "NSCopying.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)alertAtIndex:(unsigned)index;
 - (id)alertForBundleIdentifier:(id)bundleIdentifier;
 - (id)alertForDisplayLayout:(id)displayLayout;
+- (BOOL)containsAlert:(id)alert;
 - (id)copyWithZone:(NSZone *)zone;
 - (unsigned)count;
 - (void)dealloc;

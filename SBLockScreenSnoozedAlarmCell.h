@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBLockScreenBulletinCell.h"
 #import "SBDateLabelDelegate.h"
+#import "SBLockScreenBulletinCell.h"
 
 
 __attribute__((visibility("hidden")))

@@ -11,8 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkScreenFocusController : XXUnknownSuperclass {
 	UIScreen *_screen;
-	NSMutableArray *_assertions;
 	NSString *_displayID;
+	NSMutableArray *_assertions;
+	SBStarkScreenFocusAssertion *_lastFocusAssertion;
+	BSZeroingWeakReference *_weak_lastFocusWindow;
 }
 - (id)initWithScreen:(id)screen;
 - (void)_applyAssertion:(id)assertion;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBNotificationSeparatorView.h"
 #import "SpringBoard-Structs.h"
+#import "SBNotificationSeparatorView.h"
 
 
 __attribute__((visibility("hidden")))

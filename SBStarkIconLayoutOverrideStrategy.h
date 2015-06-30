@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,6 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) UIEdgeInsets layoutInsets;
 @property(readonly, assign, nonatomic) BOOL preservesCurrentListOrigin;
-- (id)initWithFullscreenOverrideStrategy:(id)fullscreenOverrideStrategy;
+- (id)initWithFullscreenOverrideStrategyForConfiguration:(id)configuration;
 @end
 

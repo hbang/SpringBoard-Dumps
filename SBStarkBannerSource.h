@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBUIBannerSource.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerTargetManagerObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIBannerSource.h"
 
 @protocol SBUIBannerTarget;
 

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBUIBiometricEventObserver.h"
 #import "SBLockScreenViewControllerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBiometricEventMonitorDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIBiometricEventObserver.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_activateLockScreenAnimated:(BOOL)animated automatically:(BOOL)automatically inScreenOffMode:(BOOL)screenOffMode dimInAnimation:(BOOL)animation dismissNotificationCenter:(BOOL)center;
 - (void)_addDisableUnlockAssertion:(id)assertion;
+- (BOOL)_attemptUnlockWithPasscode:(id)passcode finishUIUnlock:(BOOL)unlock;
 - (void)_bioAuthenticated:(id)authenticated;
 - (void)_deviceBlockedChanged:(id)changed;
 - (void)_deviceLockedChanged:(id)changed;
@@ -77,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)handleMenuButtonTap;
 - (BOOL)hasUIEverBeenLocked;
 - (BOOL)isInLostMode;
+- (BOOL)isLockScreenDisabledForAssertion;
 - (void)lockUIFromSource:(int)source withOptions:(id)options;
 - (void)remoteLock:(BOOL)lock;
 - (void)removeLockScreenDisableAssertion:(id)assertion;

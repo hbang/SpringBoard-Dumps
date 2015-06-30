@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBUIBannerView.h"
-#import "SBCollectionViewCell.h"
 #import "SpringBoard-Structs.h"
+#import "SBCollectionViewCell.h"
+#import "SBUIBannerView.h"
 
 
 __attribute__((visibility("hidden")))

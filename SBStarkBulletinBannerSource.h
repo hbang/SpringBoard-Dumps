@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBVolumePressBandit.h"
-#import "BBObserverDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBVolumePressBandit.h"
 #import "SBStarkBannerSource.h"
+#import "BBObserverDelegate.h"
 
 
 __attribute__((visibility("hidden")))

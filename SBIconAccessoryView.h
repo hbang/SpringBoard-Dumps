@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBReusableView.h"
+#import "SpringBoard-Structs.h"
 
 
 @protocol SBIconAccessoryView <SBReusableView>

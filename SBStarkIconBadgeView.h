@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconBadgeView.h"
 #import "SpringBoard-Structs.h"
+#import "SBIconBadgeView.h"
 
 
 __attribute__((visibility("hidden")))
@@ -14,9 +14,7 @@ __attribute__((visibility("hidden")))
 }
 + (id)_checkoutBackgroundImage;
 + (float)_maxTextWidth;
-+ (CGPoint)_overhang;
 + (id)_textFont;
-+ (CGPoint)_textOffset;
 + (float)_textPadding;
 @end
 

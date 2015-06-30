@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
+#import "FBSceneManagerDelegate.h"
 #import "FBWorkspaceDelegate.h"
 #import "FBDisplayManagerObserver.h"
 #import "SBSceneManagerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "FBProcessManagerObserver.h"
 #import "FBSceneManagerObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "FBSceneManagerDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)_clientSettingsDiffInspector;
 - (void)_destroySceneManagerIfNecessary:(id)necessary;
-- (Class)_sceneManagerClassForDisplay:(id)display;
+- (void)_handleUnhandledBackButtonForScene:(id)scene;
 - (id)_sceneManagerForDisplay:(id)display creatingIfNecessary:(BOOL)necessary;
 - (void)_updateExternalDisplayScenesIfNecessaryForMainDisplayScene:(id)mainDisplayScene forTransitionToState:(unsigned)state;
 - (void)dealloc;

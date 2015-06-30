@@ -6,8 +6,8 @@
  */
 
 #import "SBControlCenterSectionViewController.h"
-#import "MPUSystemMediaControlsDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "MPUSystemMediaControlsDelegate.h"
 
 
 __attribute__((visibility("hidden")))

@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBApplicationPlaceholderLifecycleObserver.h"
 #import "SBIconObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBApplicationPlaceholderLifecycleObserver.h"
 
 
 __attribute__((visibility("hidden")))

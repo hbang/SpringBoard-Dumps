@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBSearchResultDetailsViewController.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBSearchResultDetailsViewController.h"
 
 @protocol SBSearchResultDetailsViewControllerDelegate;
 

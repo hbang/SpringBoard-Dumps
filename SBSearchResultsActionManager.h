@@ -20,8 +20,10 @@ __attribute__((visibility("hidden")))
 - (id)_actionForResult:(id)result inSection:(id)section;
 - (id)_performAction:(id)action completionBlock:(id)block;
 - (id)_performActionForResult:(id)result inSection:(id)section urls:(id)urls forceDefaultAction:(BOOL)action completionBlock:(id)block;
+- (id)_performActionForResult:(id)result inSection:(id)section urls:(id)urls fromCardType:(id)cardType sendFeedback:(BOOL)feedback forceDefaultAction:(BOOL)action completionBlock:(id)block;
 - (void)cancelCurrentActionAnimated:(BOOL)animated withCompletionBlock:(id)completionBlock;
 - (id)performActionForResult:(id)result inSection:(id)section;
 - (void)performCustomActionWithViewController:(id)viewController;
+- (void)willReturnToResultsList;
 @end
 

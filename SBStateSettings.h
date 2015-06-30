@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
+#import "BSSettingDescriptionProvider.h"
 #import "SBStateSettings.h"
 #import "NSObject.h"
-#import "NSCopying.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "BSSettingDescriptionProvider.h"
+#import "SpringBoard-Structs.h"
+#import "NSCopying.h"
 
 
 @protocol SBStateSettings <NSObject>

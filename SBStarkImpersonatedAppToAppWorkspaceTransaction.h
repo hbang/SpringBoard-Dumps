@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 	SBAlert *_deactivatingAlert;
 	BOOL _animatedAppActivation;
 }
+- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from impersonated:(id)impersonated to:(id)to;
 - (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
 - (void)_deactivateAlertIfPossible;
 - (void)_didComplete;

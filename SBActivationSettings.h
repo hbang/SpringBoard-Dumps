@@ -6,11 +6,11 @@
  */
 
 #import "SBActivationSettings.h"
-#import "SpringBoard-Structs.h"
-#import "NSObject.h"
-#import "NSCopying.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "BSSettingDescriptionProvider.h"
+#import "NSObject.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
+#import "NSCopying.h"
 
 
 @protocol SBActivationSettings <NSObject>

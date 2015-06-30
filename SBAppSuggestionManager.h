@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "LSBestAppSuggestionManagerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "LSBestAppSuggestionManagerDelegate.h"
 
 
 __attribute__((visibility("hidden")))

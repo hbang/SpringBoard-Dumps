@@ -6,8 +6,8 @@
  */
 
 #import "FBApplicationPlaceholderObserver.h"
-#import "SBLeafIconDataSource.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBLeafIconDataSource.h"
 
 
 __attribute__((visibility("hidden")))
@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)fetchIconImageWithFormat:(int)format;
 - (id)icon:(id)icon defaultImageWithFormat:(int)format;
 - (id)icon:(id)icon imageWithFormat:(int)format;
-- (BOOL)icon:(id)icon launchFromLocation:(int)location;
+- (BOOL)icon:(id)icon launchFromLocation:(int)location context:(id)context;
 - (int)iconAccessoryType:(id)type;
 - (BOOL)iconAllowsLaunch:(id)launch;
 - (BOOL)iconAllowsUninstall:(id)uninstall;

@@ -13,17 +13,18 @@ __attribute__((visibility("hidden")))
 	NSIndexPath *_focusedIndex;
 	unsigned _interactionAffordances;
 	BOOL _supportsKnobEvents;
+	BOOL _supportsTouchEvents;
 }
 @property(retain, nonatomic) SBIcon *focusedIcon;
 @property(retain, nonatomic) NSIndexPath *focusedIndex;
 @property(assign, nonatomic) unsigned interactionAffordances;
-- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map context:(id)context;
 - (Class)_contentViewClass;
 - (id)_iconPageIndicatorImageSetCache;
 - (void)_setFocusedIndex:(id)index animated:(BOOL)animated scrollToPageIfNecessary:(BOOL)pageIfNecessary;
 - (void)dealloc;
-- (void)focusChangedByAmount:(int)amount;
 - (void)folderView:(id)view currentPageIndexDidChange:(int)currentPageIndex;
+- (void)handleFocusMoveAlongHeading:(unsigned)heading;
 - (void)setFocusedIndex:(id)index animated:(BOOL)animated;
 - (void)setInnerFolderController:(id)controller;
 @end

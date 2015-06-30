@@ -22,5 +22,6 @@
 - (void)iconTouchBegan:(id)began;
 - (BOOL)iconViewDisplaysBadges:(id)badges;
 - (BOOL)iconViewDisplaysCloseBox:(id)box;
+- (float)scale;
 @end
 

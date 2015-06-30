@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "NSXPCListenerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBCardItemsControllerRemoteInterface.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "NSXPCListenerDelegate.h"
 
 
 __attribute__((visibility("hidden")))

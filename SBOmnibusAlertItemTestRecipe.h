@@ -6,8 +6,8 @@
  */
 
 #import "SBTestRecipe.h"
-#import "SBThermalWarningAlertItemDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBThermalWarningAlertItemDelegate.h"
 
 
 __attribute__((visibility("hidden")))

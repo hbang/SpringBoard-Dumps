@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBVolumePressBandit.h"
 #import "SBUIBannerSource.h"
 #import "SBUIBannerTargetManagerObserver.h"
 #import "BBObserverDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBUIBannerTarget;
 

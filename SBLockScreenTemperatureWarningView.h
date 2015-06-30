@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBLockOverlayView.h"
 #import "SpringBoard-Structs.h"
+#import "SBLockOverlayView.h"
 
 
 __attribute__((visibility("hidden")))

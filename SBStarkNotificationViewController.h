@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
+#import "SBStarkBannerTargetObserver.h"
 #import "UIGestureRecognizerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "UICollectionViewDataSource.h"
 #import "UICollectionViewDelegate.h"
 #import "SBCollectionViewCellDelegate.h"
-#import "SBStarkBannerTargetObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBStarkNotificationViewControllerDelegate;
 

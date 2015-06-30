@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "FBSceneManagerObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "FBSceneManagerObserver.h"
 
 @protocol SBSceneManagerDelegate;
 
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 	BSCopyingCacheSet *_reportedExternalForegroundApplicationScenes;
 	NSCountedSet *_assertedBackgroundScenes;
 	NSMutableSet *_externalForegroundApplicationHostReasons;
-	SBSceneLayoutManager *layoutManager;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBSceneManagerDelegate> delegate;
@@ -35,9 +34,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(readonly, retain, nonatomic) SBSceneLayoutManager *layoutManager;
 @property(readonly, assign) Class superclass;
-+ (Class)_layoutManagerClass;
 - (id)initWithDisplay:(id)display;
 - (BOOL)_isStarkActivelyConnected;
+- (id)_newLayoutManager;
 - (id)allScenes;
 - (id)applicationScenes;
 - (id)assertBackgroundedStatusForScenes:(id)scenes;

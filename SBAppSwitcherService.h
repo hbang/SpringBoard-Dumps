@@ -17,6 +17,5 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *viewServiceClassName;
 + (id)switcherServiceWithName:(id)name viewServiceClassName:(id)name2;
 - (void)dealloc;
-- (id)identifier;
 @end
 

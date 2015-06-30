@@ -6,8 +6,8 @@
  */
 
 #import "SBWallpaperObserver.h"
-#import "SBFLegibilitySettingsProvider.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBFLegibilitySettingsProvider.h"
 
 @protocol SBFLegibilitySettingsProviderDelegate;
 

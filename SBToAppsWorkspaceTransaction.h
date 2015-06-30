@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "FBSynchronizedTransactionDelegate.h"
 #import "SBWorkspaceTransaction.h"
 #import "FBApplicationUpdateScenesTransactionObserver.h"
-#import "FBSynchronizedTransactionDelegate.h"
 
 
 __attribute__((visibility("hidden")))
