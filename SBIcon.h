@@ -13,7 +13,7 @@
 	id _badgeNumberOrString;
 	unsigned _isRevealable : 1;
 	unsigned _uninstalled : 1;
-	UIImage *_cachedIconImages[13];
+	UIImage *_cachedIconImages[12];
 	id<SBIconDelegate> _delegate;
 }
 @property(assign, nonatomic) id<SBIconDelegate> delegate;

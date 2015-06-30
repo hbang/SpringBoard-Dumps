@@ -45,6 +45,7 @@
 + (float)gridHeight;
 - (id)initWithFrame:(CGRect)frame;
 - (CGRect)_defaultTableFrame;
+- (int)_lastCellToAffectMagicPocket;
 - (void)_scrollToPendingCell;
 - (void)_setSpeechEnabled:(BOOL)enabled;
 - (void)_setupForInitialQuery:(BOOL)initialQuery animated:(BOOL)animated;
