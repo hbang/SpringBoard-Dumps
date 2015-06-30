@@ -6,34 +6,34 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
+#import "SBBulletinBusyClient.h"
+#import "BBObserverDelegate.h"
 
 
-@interface SBBulletinSoundController : XXUnknownSuperclass {
+__attribute__((visibility("hidden")))
+@interface SBBulletinSoundController : XXUnknownSuperclass <BBObserverDelegate, SBBulletinBusyClient> {
 	BBObserver *_observer;
-	BOOL _deviceIsLocked;
-	BOOL _assistantIsVisible;
 	NSMutableArray *_blockQueue;
-	BBBulletin *_ringtoneBulletin;
-	AVController *_ringtoneController;
-	id _ringtoneObserver;
-	NSMutableDictionary *_clientsBySoundIDs;
+	NSMutableDictionary *_playingSounds;
+	BOOL _deviceIsLocked;
+	BOOL _quietModeEnabled;
 }
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
-- (void)_cleanupSystemSound:(unsigned long)sound andKill:(BOOL)kill;
+- (void)_configureBBObserver;
 - (void)_enqueueBlock:(id)block;
 - (void)_hardwareButtonPressed:(id)pressed;
-- (void)_killRingtone;
-- (void)_killSystemSound:(unsigned long)sound;
+- (BOOL)_shouldHonorPlaySoundRequestForBulletin:(id)bulletin;
 - (void)bulletinWindowStoppedBeingBusy;
-- (BOOL)handleVolumeButtonDownEvent;
+- (void)dealloc;
 - (void)killSoundForBulletin:(id)bulletin;
 - (void)killSounds;
 - (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
+- (void)observer:(id)observer noteAlertBehaviorOverridesChanged:(unsigned)changed;
 - (void)observer:(id)observer removeBulletin:(id)bulletin;
 - (BOOL)playSoundForBulletin:(id)bulletin;
-- (BOOL)playSystemAlertSound:(unsigned long)sound forBundleID:(id)bundleID;
 @end
 

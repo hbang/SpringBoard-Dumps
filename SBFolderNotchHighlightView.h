@@ -9,6 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBFolderNotchHighlightView : XXUnknownSuperclass {
 	XXStruct_9ihRqB _notchInfo;
 }

@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import "UIGestureRecognizerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "UIGestureRecognizerDelegate.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinListTouchEater : XXUnknownSuperclass <UIGestureRecognizerDelegate> {
 }
 - (BOOL)canBePreventedByGestureRecognizer:(id)recognizer;

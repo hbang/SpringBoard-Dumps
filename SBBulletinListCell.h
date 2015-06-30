@@ -5,23 +5,19 @@
  * Source: (null)
  */
 
-#import "SBBulletinLinenBackedCell.h"
 #import "SpringBoard-Structs.h"
+#import "SBBulletinLinenBackedCell.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinListCell : SBBulletinLinenBackedCell {
 	UIImageView *_bulletinAccessoryView;
 	UIImageView *_bottomCellSeparator;
 	SBBulletinCellContentView *_cellContentView;
-	NSDate *_futureDate;
-	NSTimer *_futureDateTimer;
 }
-@property(retain) NSDate *futureDate;
-+ (float)heightForRowWithSubtitle:(id)subtitle imageHeight:(float)height italicize:(BOOL)italicize;
-+ (float)heightForRowWithSubtitle:(id)subtitle message:(id)message maxLines:(unsigned)lines width:(float)width italicize:(BOOL)italicize;
++ (float)heightForRowWithSubtitle:(id)subtitle imageHeight:(float)height;
++ (float)heightForRowWithSubtitle:(id)subtitle message:(id)message maxLines:(unsigned)lines width:(float)width;
 - (id)initWithLinenView:(id)linenView reuseIdentifier:(id)identifier;
-- (void)_clearFutureDateTimer;
-- (void)_futureDateTimerFired:(id)fired;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
@@ -30,13 +26,11 @@
 - (void)setAttachmentText:(id)text;
 - (void)setBulletinAccessoryStyle:(int)style;
 - (void)setCellSeparatorStyle:(int)style;
-- (void)setContentItalicizedUntil:(id)until;
 - (void)setHighlighted:(BOOL)highlighted;
 - (void)setMaxMessageLines:(unsigned)lines;
 - (void)setMessage:(id)message;
 - (void)setStartDate:(id)date endDate:(id)date2 timeZone:(id)zone allDay:(BOOL)day formatStyle:(int)style;
 - (void)setSubtitle:(id)subtitle;
 - (void)setTitle:(id)title;
-- (void)willMoveToSuperview:(id)superview;
 @end
 

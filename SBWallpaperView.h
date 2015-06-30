@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBWallpaperView : XXUnknownSuperclass {
 	int _orientation;
 	int _variant;
@@ -17,14 +18,10 @@
 	BOOL _usesFilter;
 	float _gradientAlpha;
 	CGRect _wallpaperContentsRect;
-	BOOL _postsNotifications;
-	BOOL _flushWallpaperAutomatically;
 }
 @property(assign, nonatomic) float filterAlpha;
-@property(assign, nonatomic) BOOL flushWallpaperAutomatically;
 @property(assign, nonatomic) float gradientAlpha;
 @property(assign, nonatomic) int orientation;
-@property(assign, nonatomic) BOOL postsNotifications;
 @property(assign, nonatomic) BOOL usesFilter;
 @property(readonly, assign, nonatomic) int variant;
 - (id)initWithOrientation:(int)orientation variant:(int)variant;
@@ -32,17 +29,14 @@
 - (void)_setGradientImagesWithOrientation:(int)orientation;
 - (void)_setOrientation:(int)orientation duration:(double)duration force:(BOOL)force;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
+- (BOOL)_shouldShowGradientOverWallpaper;
 - (void)_wallpaperChanged;
 - (float)alpha;
 - (void)dealloc;
-- (void)didMoveToWindow;
-- (id)gradientImageForInterfaceOrientation:(int)interfaceOrientation;
 - (void)replaceWallpaperWithImage:(id)image;
 - (void)resetCurrentImageToWallpaper;
 - (void)setAlpha:(float)alpha;
 - (void)setImage:(id)image;
 - (void)setOrientation:(int)orientation duration:(double)duration;
-- (void)setViewAlpha:(float)alpha;
-- (CGRect)wallpaperContentsRect;
 @end
 

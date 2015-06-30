@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBAwayDateViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SBAwayDateView : XXUnknownSuperclass {
 	NSTimer *_dateTimer;
 	TPLCDTextView *_timeLabel;
@@ -30,6 +31,7 @@
 @property(assign, nonatomic, getter=isPlaying) BOOL playing;
 @property(retain, nonatomic) NSString *title;
 - (id)initWithFrame:(CGRect)frame;
+- (void)_createFormattersIfNecessary;
 - (id)controlsView;
 - (void)dealloc;
 - (void)didMoveToSuperview;
@@ -42,11 +44,11 @@
 - (void)removeFromSuperview;
 - (void)resizeAndPositionNowPlayingLabels;
 - (void)setAlbum:(id)album;
-- (void)setAlpha:(float)alpha;
 - (void)setArtist:(id)artist;
 - (void)setIsShowingControls:(BOOL)controls;
+- (void)setVisible:(BOOL)visible;
+- (void)update;
 - (void)updateClock;
 - (void)updateClockFormat;
-- (void)updateLabels;
 @end
 

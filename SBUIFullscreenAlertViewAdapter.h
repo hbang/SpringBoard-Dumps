@@ -6,10 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBAlertDisplay.h"
+#import "SBAlertView.h"
 
 
-@interface SBUIFullscreenAlertViewAdapter : SBAlertDisplay {
+__attribute__((visibility("hidden")))
+@interface SBUIFullscreenAlertViewAdapter : SBAlertView {
+	BOOL _revealedContentBeneathForDismiss;
 	UIView *_alertView;
 }
 - (id)initWithFrame:(CGRect)frame andContentView:(id)view;
@@ -23,6 +25,7 @@
 - (BOOL)isReadyToBeRemovedFromView;
 - (void)setShouldAnimateIn:(BOOL)animateIn;
 - (BOOL)shouldAnimateIconsIn;
+- (void)updateSpringBoardInPreparationForTransparentDismiss;
 - (void)viewAnimatedOut;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;

@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandCardView : XXUnknownSuperclass {
 	BOOL _skewed;
 	BOOL _highlighted;
@@ -18,13 +19,10 @@
 	UIImageView *_overlayView;
 	NSTimer *_delayedUnhighlightTimer;
 }
-+ (id)_cachedCardImage;
-+ (id)_cachedCardImagePath;
-+ (id)_cachedImageAtPath:(id)path;
-+ (id)_cachedImagePathForName:(id)name scale:(float)scale;
-+ (id)_cachedTextImage;
-+ (id)_cachedTextImagePath;
-+ (void)_generatedCachedImages;
++ (void)_fetchAndCacheImagesIfNecessary;
++ (void)_fetchAndCacheImagesIfNecessary:(id *)necessary outCardTextImage:(id *)image;
++ (void)_removeCachedLocalizedImages;
++ (void)load;
 + (void)setupCache;
 - (id)init;
 - (void)_delayedUnhighlight;

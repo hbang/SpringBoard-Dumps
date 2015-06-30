@@ -6,11 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBAlertView.h"
 #import "UITextFieldDelegate.h"
-#import "SBAlertDisplay.h"
 
 
-@interface SBUSSDAlertDisplay : SBAlertDisplay <UITextFieldDelegate> {
+__attribute__((visibility("hidden")))
+@interface SBUSSDAlertDisplay : SBAlertView <UITextFieldDelegate> {
 	TPBottomSingleButtonBar *_responseBar;
 	UIView *_notifyView;
 	UIView *_replyView;

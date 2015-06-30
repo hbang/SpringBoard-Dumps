@@ -5,12 +5,14 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBIconListView : XXUnknownSuperclass {
 	SBIconListModel *_model;
+	SBIconViewMap *_viewMap;
 	int _orientation;
 	SBIcon *_bouncedIcon;
 	NSMutableArray *_removedIcons;
@@ -18,7 +20,6 @@
 	unsigned _scattered : 1;
 	unsigned _needsLayout : 1;
 	unsigned _rotating : 1;
-	unsigned _onWallpaper : 1;
 	UIView *_fadeView;
 	BOOL _iconsAreElsewhere;
 	BOOL _recyclesIconViewsWhenNotShowing;
@@ -30,6 +31,8 @@
 + (unsigned)maxIcons;
 + (unsigned)maxVisibleIconRowsInterfaceOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame viewMap:(id)map;
+- (void)_layoutIcon:(id)icon atIndex:(unsigned)index moveNow:(BOOL)now pop:(BOOL)pop;
 - (void)_noteNewIconInModel:(id)model;
 - (void)_popIconView:(id)view;
 - (unsigned)_postRotationFirstVisibleRow;
@@ -88,11 +91,9 @@
 - (id)rotationIconContainers;
 - (unsigned)rowAtPoint:(CGPoint)point;
 - (unsigned)rowForIcon:(id)icon;
-- (void)scatterAnimationDidStop;
-- (void)scatterWithDuration:(double)duration startTime:(double)time;
+- (void)scatterWithDuration:(double)duration delay:(double)delay;
 - (void)setAlphaForAllIcons:(float)allIcons;
 - (void)setBouncedIcon:(id)icon;
-- (void)setDisplaysOnWallpaper:(BOOL)wallpaper;
 - (void)setFrame:(CGRect)frame;
 - (void)setIconsAreElsewhere:(BOOL)elsewhere;
 - (void)setIconsNeedLayout;
@@ -107,8 +108,9 @@
 - (void)stopJittering;
 - (float)topIconInset;
 - (void)unscatterAnimationDidStop;
-- (void)unscatterWithDuration:(double)duration startTime:(double)time;
+- (void)unscatterWithDuration:(double)duration delay:(double)delay;
 - (float)verticalIconPadding;
+- (id)viewMap;
 - (id)visibleIcons;
 @end
 

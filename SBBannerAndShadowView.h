@@ -5,15 +5,18 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
+@protocol SBUIBannerItemView;
 
+__attribute__((visibility("hidden")))
 @interface SBBannerAndShadowView : XXUnknownSuperclass {
-	SBBannerView *_banner;
+	UIView<SBUIBannerItemView> *_banner;
 	UIImageView *_shadow[5];
 	CGRect _shadowFrame[5];
 	CGSize _bannerSize;
+	CGPoint _bannerOrigin;
 	float _sideWidth;
 	float _bottomHeight;
 	BOOL _shadowsInPortraitWindow;

@@ -9,8 +9,11 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBBrightnessController : XXUnknownSuperclass {
 	BOOL _debounce;
+	BKSDisplayBrightnessTransactionRef _brightnessDownTransaction;
+	BKSDisplayBrightnessTransactionRef _brightnessUpTransaction;
 }
 + (id)sharedBrightnessController;
 - (float)_calcButtonRepeatDelay;

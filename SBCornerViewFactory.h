@@ -9,9 +9,10 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBCornerViewFactory : XXUnknownSuperclass {
 }
-+ (id)createCornerWindowForCorner:(int)corner windowLevel:(float)level cornersFrame:(CGRect)frame;
 + (id)newCornerViewForCorner:(int)corner cornersFrame:(CGRect)frame;
++ (id)newCornerWindowForCorner:(int)corner windowLevel:(float)level cornersFrame:(CGRect)frame;
 @end
 

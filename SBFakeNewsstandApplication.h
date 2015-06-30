@@ -5,9 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBNewsstandApplication.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBFakeNewsstandApplication : SBNewsstandApplication {
 }
 + (id)fakeApplication;

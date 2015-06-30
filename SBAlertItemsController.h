@@ -5,29 +5,34 @@
  * Source: (null)
  */
 
-#import "BBObserverDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import "BBObserverDelegate.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBAlertItemsController : XXUnknownSuperclass <BBObserverDelegate> {
 	NSMutableArray *_lockedAlertItems;
 	NSMutableArray *_unlockedAlertItems;
 	NSMutableArray *_pendingAlertItems;
+	NSMutableArray *_superModalAlertItems;
 	NSTimer *_autoDismissTimer;
 	CPDistributedNotificationCenter *_notificationCenter;
 	unsigned _notificationClientCount;
 	BOOL _systemShuttingDown;
-	BOOL _forceAlertsToPend;
+	NSMutableSet *_forceAlertsToPendReasons;
 	BBObserver *_bbObserver;
 }
+@property(readonly, assign, nonatomic) NSArray *lockedAlertItems;
 + (id)sharedInstance;
 - (id)init;
+- (void)_activateSuperModalAlertsIfNecessary;
 - (void)_buddyDidExit;
 - (void)_notificationClientEnded:(id)ended;
 - (void)_notificationClientStarted:(id)started;
 - (void)_postAlertPresentedNotificationForType:(int)type sender:(id)sender date:(id)date;
 - (void)activateAlertItem:(id)item;
+- (void)activatePendedAlertsIfNecessary;
 - (id)alertItemOfClass:(Class)aClass;
 - (id)alertItemsOfClass:(Class)aClass;
 - (void)autoDismissAlertItem:(id)item;
@@ -37,8 +42,7 @@
 - (void)deactivateAlertItem:(id)item;
 - (void)deactivateAlertItem:(id)item reason:(int)reason;
 - (void)deactivateAlertItem:(id)item reason:(int)reason animated:(BOOL)animated;
-- (void)deactivateAlertItemsForAlertActivation;
-- (id)deactivateAlertItemsForLock;
+- (void)deactivateAlertItemsForAlertActivationAndPendMiniAlerts:(BOOL)alertActivationAndPendMiniAlerts;
 - (void)deactivateAlertItemsOfClass:(Class)aClass;
 - (void)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason;
 - (void)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason animated:(BOOL)animated;
@@ -46,16 +50,17 @@
 - (void)dealloc;
 - (id)description;
 - (BOOL)dontLockOverAlertItems;
-- (void)forceAlertsToPendAndMoveActiveAlertsToPendingWithAnimation:(BOOL)animation;
 - (BOOL)hasAlertOfClass:(Class)aClass;
 - (BOOL)hasAlerts;
 - (BOOL)hasVisibleAlert;
+- (BOOL)hasVisibleSuperModalAlert;
+- (void)moveActiveAlertsToPendingWithAnimation:(BOOL)animation;
 - (void)noteSystemShuttingDown;
 - (void)noteVolumeOrLockPressedOverLockedAlerts;
 - (void)notifySystemOfAlertItemActivation:(id)alertItemActivation;
 - (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
 - (void)resetAutoDismissTimer;
-- (void)setForceAlertsToPend:(BOOL)pend;
+- (void)setForceAlertsToPend:(BOOL)pend forReason:(id)reason;
 - (id)visibleAlertItem;
 @end
 

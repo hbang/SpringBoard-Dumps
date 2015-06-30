@@ -9,8 +9,9 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBCallFailureAlertItem : XXUnknownSuperclass {
-	int _causeCode;
+	long _causeCode;
 	NSString *_address;
 	CTCallRef _call;
 }

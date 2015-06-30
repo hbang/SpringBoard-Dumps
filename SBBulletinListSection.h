@@ -8,26 +8,41 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinListSection : XXUnknownSuperclass {
+	NSString *_sectionID;
 	unsigned _sectionType;
 	SBWeeApp *_weeApp;
 	NSMutableArray *_bulletins;
 	NSArray *_sortDescriptors;
+	NSString *_displayName;
+	UIImage *_iconImage;
+	BOOL _displaysCriticalBulletins;
 	NSDate *_lastSortDate;
 }
+@property(copy, nonatomic) NSString *displayName;
+@property(retain, nonatomic) UIImage *iconImage;
+@property(copy, nonatomic) NSString *sectionID;
 @property(retain, nonatomic) NSArray *sortDescriptors;
 @property(retain, nonatomic) SBWeeApp *weeApp;
-- (id)initWithSectionType:(unsigned)sectionType;
+- (id)initWithSectionInfo:(id)sectionInfo;
 - (unsigned)_indexForNewBulletin:(id)newBulletin;
+- (unsigned)_removeBulletin:(id)bulletin;
 - (unsigned)addBulletin:(id)bulletin;
 - (id)bulletinAtIndex:(unsigned)index;
 - (unsigned)bulletinCount;
+- (int)compare:(id)compare;
+- (int)compareSection:(id)section forOrder:(unsigned)order;
 - (void)dealloc;
+- (id)description;
+- (BOOL)displaysCriticalBulletins;
 - (BOOL)hasClearableBulletins;
 - (unsigned)indexOfBulletinID:(id)bulletinID;
 - (BOOL)isBulletinSection;
 - (BOOL)isWeeAppSection;
 - (id)lastSortDate;
 - (unsigned)removeBulletin:(id)bulletin;
+- (unsigned)replaceBulletin:(id)bulletin withBulletin:(id)bulletin2;
+- (BOOL)showsTodaysDate;
 @end
 

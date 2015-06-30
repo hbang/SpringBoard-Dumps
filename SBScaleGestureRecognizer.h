@@ -9,6 +9,7 @@
 #import "SBFluidSlideGestureRecognizer.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBScaleGestureRecognizer : SBFluidSlideGestureRecognizer {
 }
 - (float)computeIncrementalGestureMotion:(SBGestureContextRef)motion;

@@ -5,17 +5,28 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBUIFullscreenAnimationViewDelegate.h"
+#import "SBUIAnimationController.h"
 
 
-@interface SBAppToAppTransitionController : XXUnknownSuperclass {
-	UIWindow *_transitionWindow;
+__attribute__((visibility("hidden")))
+@interface SBAppToAppTransitionController : SBUIAnimationController <SBUIFullscreenAnimationViewDelegate> {
 	SBAppToAppTransitionView *_transitionView;
+	BOOL _requiresHostView;
+	BOOL _dismissBanner;
 }
-@property(readonly, assign, nonatomic) SBAppToAppTransitionView *transitionView;
-- (id)init;
-- (void)beginTransition;
+@property(retain, nonatomic) SBAppToAppTransitionView *transitionView;
++ (id)_transitionWindow;
+- (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
+- (id)_animationProgressDependency;
+- (BOOL)_animationShouldStart;
+- (void)_cancelAnimation;
+- (void)_cleanupAnimation;
+- (void)_prepareAnimation;
+- (void)_setHidden:(BOOL)hidden;
+- (void)_startAnimation;
+- (void)appTransitionView:(id)view animationWillStartWithDuration:(double)animation afterDelay:(double)delay;
+- (void)appTransitionViewAnimationDidStop:(id)appTransitionViewAnimation;
 - (void)dealloc;
-- (void)endTransition;
 @end
 

@@ -9,13 +9,14 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBRemoteViewsController : XXUnknownSuperclass {
 	NSMutableDictionary *_registeredRemoteViewInfos;
 	NSMutableDictionary *_unregisteredRemoteViewInfos;
 }
 + (id)sharedInstance;
 - (id)init;
-- (id)_createProxyRemoteViewForIdentifier:(id)identifier;
+- (id)_newProxyRemoteViewForIdentifier:(id)identifier;
 - (void)_sequesterProxyRemoteView:(id)view;
 - (void)dealloc;
 - (id)proxyRemoteViewForIdentifier:(id)identifier;

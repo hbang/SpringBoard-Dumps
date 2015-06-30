@@ -5,25 +5,24 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBLinenView : XXUnknownSuperclass {
 	int _type;
 	NSMutableArray *_strips;
 }
 @property(assign, nonatomic) int type;
-+ (id)_allFolderSwitcherLinenPaths:(BOOL)paths;
-+ (id)_folderSwitcherLinenPath;
-+ (void)_generateLinenStripsIfNeeded;
-+ (id)_imageForIndex:(unsigned)index;
-+ (id)_imageViewForIndex:(unsigned)index;
++ (id)_cachedImageForIndex:(unsigned)index;
++ (void)_generateStripsIfNecessary;
++ (id)_imageKeyForIndex:(unsigned)index;
++ (unsigned)_maximumNumberOfStrips;
 + (CGRect)_scaledRectForIndex:(unsigned)index ofImage:(id)image;
 + (float)_vOffsetOfTopForType:(int)type;
++ (void)load;
 + (float)naturalWidth;
-+ (void)removeCacheFiles;
-+ (void)setupCache;
 + (id)squareImageForBounds:(CGRect)bounds;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_layoutForBounds:(CGRect)bounds;

@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBDateTimeCache : XXUnknownSuperclass {
 	double _yesterday;
 	double _today;

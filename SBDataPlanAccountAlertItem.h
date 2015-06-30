@@ -8,6 +8,7 @@
 #import "SBDataPlanAlertItem.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBDataPlanAccountAlertItem : SBDataPlanAlertItem {
 	NSURL *_accountURL;
 }

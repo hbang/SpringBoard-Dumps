@@ -5,12 +5,13 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBDownloadingProgressBar : XXUnknownSuperclass {
-	UIImageView *_clipView;
+	UIView *_clipView;
 	UIImageView *_fillView;
 	float _progress;
 }

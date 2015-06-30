@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBSwitchAppGestureView : XXUnknownSuperclass {
 	int m_orientation;
 	SBApplication *m_startingApp;

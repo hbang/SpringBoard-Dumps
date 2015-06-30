@@ -9,6 +9,7 @@
 #import "SBHUDView.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBRotationLockHUDView : SBHUDView {
 	BOOL _locked;
 	BOOL locked;

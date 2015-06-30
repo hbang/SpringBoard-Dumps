@@ -9,6 +9,7 @@
 #import "SBAlert.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBTTYPromptAlert : SBAlert {
 	NSString *_number;
 	int _uid;

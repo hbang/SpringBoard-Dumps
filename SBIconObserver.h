@@ -5,9 +5,10 @@
  * Source: (null)
  */
 
+#import "NSObject.h"
 
 
-@protocol SBIconObserver
+@protocol SBIconObserver <NSObject>
 @optional
 - (void)iconAccessoriesDidUpdate:(id)iconAccessories;
 - (void)iconImageDidUpdate:(id)iconImage;

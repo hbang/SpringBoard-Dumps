@@ -9,6 +9,7 @@
 #import "SBAwayListCellButtonHandler.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwaySystemAlertItem : XXUnknownSuperclass <SBAwayListCellButtonHandler> {
 	SBAlertItem *_currentAlert;
 	NSString *_title;

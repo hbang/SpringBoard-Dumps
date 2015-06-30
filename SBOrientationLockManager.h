@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBOrientationLockManager : XXUnknownSuperclass {
 	NSMutableSet *_lockOverrideReasons;
 	int _userLockedOrientation;

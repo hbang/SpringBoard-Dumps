@@ -9,38 +9,44 @@
 #import "SpringBoard-Structs.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinListView : XXUnknownSuperclass {
 	int _orientation;
 	float _currentY;
 	UIView *_slidingView;
 	UIImageView *_linenView;
+	UIView *_linenContainer;
 	CGSize _linenSize;
 	SBBulletinTableView *_tableView;
+	SBLinenFadeContainer *_tableContainer;
 	UIStatusBar *_statusBar;
 	UIView *_statusBarPocket;
 	UIView *_grabber;
+	SBWeeAppPresentationView *_presentationView;
 	SBBulletinBlurredShadowLabel *_noNotificationsLabel;
 	SBBulletinListTouchEater *_clearButtonTouchEater;
 	UIView *_cornerView[4];
 	UIView *_bottomShadowView;
-	UIView *_linenMask;
 	UIView *_linenGradient;
 	UIView *_linenRim;
-	UIView *_linenContainer;
 	UIView *_wholeShadowView;
 	UIView *_sideShadowView[2];
-	float _tableViewContentHeight;
+	float _contentHeight;
 }
-+ (id)_pathToLinenCache;
 + (id)linen;
-+ (void)loadLinen;
-+ (void)removeCachedLinen;
++ (void)load;
 - (id)initWithFrame:(CGRect)frame delegate:(id)delegate;
 - (void)_ensureContentHeightHasBeenComputed;
 - (float)_iPadSlidingViewHeightInOrientation:(int)orientation;
 - (float)_linenGradientAlphaForHeight:(float)height;
+- (float)_pocketAlphaForTableViewOffset;
 - (void)_positionNoNotificationsLabel;
+- (void)_presentWeeApp:(id)app duration:(float)duration delay:(float)delay completion:(id)completion;
+- (void)_removePresentationView;
+- (void)_removePresentingWeeAppWithDuration:(float)duration delay:(float)delay completion:(id)completion;
+- (id)activeContentView;
 - (void)adjustLayoutForAnimatedTableViewContentHeightChange:(float)animatedTableViewContentHeightChange;
+- (void)adjustLayoutForAnimatedTableViewContentHeightChange:(float)animatedTableViewContentHeightChange duration:(float)duration delay:(float)delay;
 - (void)adjustLayoutForTableViewReload;
 - (id)clearButtonTouchEater;
 - (float)currentY;
@@ -54,6 +60,8 @@
 - (float)offscreenY;
 - (float)onscreenY;
 - (void)positionSlidingViewAtY:(float)y;
+- (void)presentWeeApp:(id)app animateWithDuration:(float)duration delay:(float)delay completion:(id)completion;
+- (id)presentingWeeApp;
 - (void)setBottomCornersOffscreen:(BOOL)offscreen animated:(BOOL)animated;
 - (void)setBottomShadowAlpha:(float)alpha;
 - (void)setCornerAlpha:(float)alpha;

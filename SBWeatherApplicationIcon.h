@@ -8,6 +8,7 @@
 #import "SBApplicationIcon.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBWeatherApplicationIcon : SBApplicationIcon {
 }
 - (void)localeChanged;

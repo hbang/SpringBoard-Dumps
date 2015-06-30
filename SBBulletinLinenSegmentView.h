@@ -9,11 +9,14 @@
 #import "SBBulletinImageView.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinLinenSegmentView : SBBulletinImageView {
 	UIView *_linenView;
 	CGSize _linenSize;
+	BOOL _showsLinen;
 	SBBulletinImageView *_gradientView;
 }
+@property(assign, nonatomic) BOOL showsLinen;
 - (id)initWithFrame:(CGRect)frame linenView:(id)view;
 - (void)adjustContents;
 - (void)dealloc;

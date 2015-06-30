@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBVoiceDisabledBundles : XXUnknownSuperclass {
 }
 + (void)setAppDisabledVoiceControl:(BOOL)control bundleIdentifier:(id)identifier;

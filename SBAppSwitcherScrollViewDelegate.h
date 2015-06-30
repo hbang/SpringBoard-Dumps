@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "UIScrollViewDelegate.h"
+#import "SpringBoard-Structs.h"
 
 
 @protocol SBAppSwitcherScrollViewDelegate <UIScrollViewDelegate>

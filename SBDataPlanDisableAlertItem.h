@@ -8,6 +8,7 @@
 #import "SBDataPlanAlertItem.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBDataPlanDisableAlertItem : SBDataPlanAlertItem {
 }
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;

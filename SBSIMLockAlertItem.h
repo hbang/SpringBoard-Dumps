@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBSIMLockAlertItem : XXUnknownSuperclass {
 	int _status;
 	int _okButtonIndex;
@@ -26,7 +27,6 @@
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;
 - (BOOL)forcesModalAlertAppearance;
-- (id)lockLabel;
 - (BOOL)pendInSetupIfNotAllowed;
 - (void)performUnlockAction;
 - (BOOL)reappearsAfterLock;

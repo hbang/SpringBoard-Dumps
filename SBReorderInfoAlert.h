@@ -8,8 +8,11 @@
 #import "SBDismissOnlyAlertItem.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBReorderInfoAlert : SBDismissOnlyAlertItem {
 }
 - (void)didDeactivateForReason:(int)reason;
+- (BOOL)dismissOnLock;
+- (BOOL)shouldShowInLockScreen;
 @end
 

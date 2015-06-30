@@ -9,6 +9,7 @@
 #import "SpringBoard-Structs.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBRemoteViewInfo : XXUnknownSuperclass {
 	NSString *_remoteViewIdentifier;
 	SBProxyRemoteView *_proxyRemoteView;

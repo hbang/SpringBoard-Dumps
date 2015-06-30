@@ -5,15 +5,16 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
+@protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface SBApplicationPersistence : XXUnknownSuperclass {
 	NSMutableDictionary *_state;
 	BOOL _dirty;
-	dispatch_queue_s *_stateQueue;
-	dispatch_queue_s *_writeQueue;
+	NSObject<OS_dispatch_queue> *_stateQueue;
+	NSObject<OS_dispatch_queue> *_writeQueue;
 }
 + (id)_statePath;
 + (void)migrateSystemLocalNotifications;

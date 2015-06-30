@@ -9,6 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinAttachmentFactory : XXUnknownSuperclass {
 }
 + (id)_genericImageForAttachmentType:(int)attachmentType;

@@ -8,25 +8,22 @@
 #import "SBApplicationIcon.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBWebApplicationIcon : SBApplicationIcon {
 	UIWebClip *_webClip;
 }
+@property(retain, nonatomic) UIWebClip *webClip;
 - (id)initWithApplication:(id)application;
-- (id)_urlForLaunch;
 - (BOOL)allowsUninstall;
-- (BOOL)canGenerateGhostlyImageInBackground;
-- (void)completeUninstall;
+- (BOOL)canGenerateImageInBackgroundForFormat:(int)format;
 - (void)dealloc;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
 - (id)generateIconImage:(int)image;
-- (void)launch;
-- (void)launchFromViewSwitcher;
 - (BOOL)shouldEllipsizeLabel;
 - (id)uninstallAlertBody;
 - (id)uninstallAlertCancelTitle;
 - (id)uninstallAlertConfirmTitle;
 - (id)uninstallAlertTitle;
-- (id)webClip;
 @end
 

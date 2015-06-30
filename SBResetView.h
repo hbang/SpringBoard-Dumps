@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBResetView : XXUnknownSuperclass {
 	SBResetProgressView *_progressView;
 	NSTimer *_progressTimer;

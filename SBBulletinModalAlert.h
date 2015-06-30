@@ -8,12 +8,15 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinModalAlert : XXUnknownSuperclass {
 	BBBulletin *_bulletin;
 	NSArray *_buttons;
+	NSArray *_bulletinButtonIndices;
 	BOOL _playedSound;
 	SBBulletinModalAlert *_superseded;
 }
+@property(retain, nonatomic) NSArray *bulletinButtonIndices;
 @property(retain, nonatomic) NSArray *buttons;
 - (id)initWithBulletin:(id)bulletin;
 - (id)initWithBulletin:(id)bulletin supersededAlert:(id)alert;

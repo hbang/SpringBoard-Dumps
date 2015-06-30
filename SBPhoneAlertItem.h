@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBPhoneAlertItem : XXUnknownSuperclass {
 	NSString *_bodyText;
 	NSString *_title;

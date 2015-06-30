@@ -8,6 +8,7 @@
 #import "SBLeafIcon.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBPrintStatusIcon : SBLeafIcon {
 }
 - (id)applicationBundleID;

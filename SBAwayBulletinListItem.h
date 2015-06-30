@@ -8,17 +8,19 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwayBulletinListItem : XXUnknownSuperclass {
 	NSMutableArray *_bulletins;
 	int _personID;
 	NSString *_contactInfo;
+	BBObserver *_observer;
 	BBBulletin *_activeBulletin;
 	NSDate *_sortDate;
 	NSDate *_displayDate;
 	NSString *_message;
 	UIImage *_listItemImage;
 }
-- (id)initWithBulletin:(id)bulletin;
+- (id)initWithBulletin:(id)bulletin andObserver:(id)observer;
 - (void)_update;
 - (id)activeBulletin;
 - (void)addBulletin:(id)bulletin;
@@ -33,6 +35,7 @@
 - (id)description;
 - (BOOL)hasSamePersonAsBulletin:(id)bulletin;
 - (id)iconImage;
+- (BOOL)isVIP;
 - (unsigned)maxMessageLines;
 - (id)message;
 - (void)modifyBulletin:(id)bulletin;

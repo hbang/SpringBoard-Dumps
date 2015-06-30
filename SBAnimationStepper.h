@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBAnimationStepper : XXUnknownSuperclass {
 	id m_delegate;
 	UIView *m_view;

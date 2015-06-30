@@ -5,14 +5,15 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBBatteryChargingView : XXUnknownSuperclass {
 	int _type;
 	UIImageView *_topBatteryView;
-	UIImageView *_bottomBatteryView;
+	SBBatteryReflectionView *_bottomBatteryView;
 	UIImage *_lastBatteryImage;
 	UILabel *_percentLabel;
 	int _lastBatteryIndex;

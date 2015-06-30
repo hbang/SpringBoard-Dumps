@@ -5,9 +5,11 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBAppToAppTransitionView.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBAppDosadoView : SBAppToAppTransitionView {
 }
 - (void)beginTransition;

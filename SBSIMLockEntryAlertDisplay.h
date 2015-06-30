@@ -9,6 +9,7 @@
 #import "SBSlidingAlertDisplay.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBSIMLockEntryAlertDisplay : SBSlidingAlertDisplay {
 	NSString *_languageCode;
 	NSString *_code;

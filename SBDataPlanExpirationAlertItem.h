@@ -8,6 +8,7 @@
 #import "SBDataPlanAccountAlertItem.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBDataPlanExpirationAlertItem : SBDataPlanAccountAlertItem {
 	NSDate *_expirationDate;
 }

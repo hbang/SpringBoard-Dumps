@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBPasscodeComplianceAlertItem : XXUnknownSuperclass {
 	NSString *_title;
 	NSString *_message;

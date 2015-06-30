@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandShelfFrameView : XXUnknownSuperclass {
 	CGSize _borderSize;
 	SBNewsstandShelfHeaderView *_headerView;
@@ -16,7 +17,6 @@
 	SBNewsstandTilingImageView *_rightBorder;
 	int _orientation;
 }
-+ (void)setupCache;
 - (id)initWithFrame:(CGRect)frame;
 - (void)configureForOrientation:(int)orientation;
 - (void)dealloc;

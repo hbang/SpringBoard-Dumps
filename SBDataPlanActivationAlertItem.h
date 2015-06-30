@@ -8,6 +8,7 @@
 #import "SBDataPlanAccountAlertItem.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBDataPlanActivationAlertItem : SBDataPlanAccountAlertItem {
 	BOOL _newAccount;
 	BOOL _promptToDisable;

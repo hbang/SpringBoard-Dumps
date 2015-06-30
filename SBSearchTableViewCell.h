@@ -5,13 +5,15 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBSearchTableViewCell : XXUnknownSuperclass {
 	UIFont *_titleFont;
 	UIFont *_subtitleFont;
+	UIFont *_auxiliaryTitleFont;
 	UIFont *_topHitFont;
 	NSString *_title;
 	NSString *_subtitle;
@@ -19,10 +21,12 @@
 	NSString *_auxiliaryTitle;
 	NSString *_auxiliarySubtitle;
 	BOOL _badged;
+	BOOL _starred;
 	BOOL _usesAlternateBackgroundColor;
 	BOOL _isTopHit;
 	BOOL _isBelowTopHit;
 	BOOL _isFirstInTableView;
+	BOOL _isLastInTableView;
 	BOOL _isFirstInSection;
 	float _sectionHeaderWidth;
 	float _edgeInset;
@@ -34,7 +38,9 @@
 @property(assign, nonatomic) float edgeInset;
 @property(assign, nonatomic, getter=isFirstInSection) BOOL firstInSection;
 @property(assign, nonatomic, getter=isFirstInTableView) BOOL firstInTableView;
+@property(assign, nonatomic, getter=isLastInTableView) BOOL lastInTableView;
 @property(assign, nonatomic) float sectionHeaderWidth;
+@property(assign, nonatomic, getter=isStarred) BOOL starred;
 @property(retain, nonatomic) NSString *subtitle;
 @property(retain, nonatomic) NSString *summary;
 @property(retain, nonatomic) NSString *title;
@@ -58,6 +64,7 @@
 - (void)_drawContentInRect:(CGRect)rect selected:(BOOL)selected;
 - (BOOL)_drawsContent;
 - (id)_scriptingInfo;
+- (void)_updateOpacity;
 - (void)clearContents;
 - (void)dealloc;
 - (void)drawRect:(CGRect)rect;

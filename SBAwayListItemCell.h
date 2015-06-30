@@ -5,12 +5,14 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwayListItemCell : XXUnknownSuperclass {
-	UIImageView *_separator;
+	UIImageView *_separatorTopHalf;
+	UIImageView *_separatorBottomHalf;
 	UIImageView *_iconImageView;
 	SBBulletinCellContentViewBase *_cellContentView;
 	SBAwayBulletinListController *_controller;
@@ -34,6 +36,7 @@
 - (void)_removeIconBlinkAnimation;
 - (void)dealloc;
 - (void)layoutSubviews;
+- (void)setBackgroundColor:(id)color;
 - (void)setController:(id)controller;
 - (void)setIconImage:(id)image;
 - (void)setMessage:(id)message;

@@ -9,6 +9,7 @@
 #import "SBAlert.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBMobilityManagementAlert : SBAlert {
 }
 + (void)registerForAlerts;

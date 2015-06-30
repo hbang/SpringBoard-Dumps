@@ -9,10 +9,12 @@
 #import "SBSlidingAlertDisplay.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBCallFailureAlertDisplay : SBSlidingAlertDisplay {
 }
-+ (id)newBottomBarForInstance:(id)instance;
-+ (id)newTopBarForInstance:(id)instance;
++ (id)bottomBarForInstance:(id)instance;
++ (id)topBarForInstance:(id)instance;
+- (id)initWithFrame:(CGRect)frame;
 - (void)callBack:(id)back;
 - (void)ignore:(id)ignore;
 - (void)setAlert:(id)alert;

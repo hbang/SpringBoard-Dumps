@@ -5,21 +5,30 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBUserInstalledApplicationIcon.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandApplicationIcon : SBUserInstalledApplicationIcon {
 	SBNewsstandApplication *_fakeApp;
 }
+@property(retain, nonatomic) SBNewsstandApplication *fakeApp;
 + (id)iconOverlayImageForIcon:(id)icon inLocation:(int)location;
 - (id)initWithApplication:(id)application;
+- (id)_newlyInstalledSashLabel;
+- (BOOL)_shouldShowSashForNewlyInstalledApp;
+- (int)accessoryTypeForLocation:(int)location;
 - (id)application;
 - (id)badgeNumberOrString;
+- (id)badgeTextForLocation:(int)location;
 - (void)dealloc;
 - (id)getGenericIconImage:(int)image;
+- (id)gridCellImage;
 - (BOOL)iconAppearsInNewsstand;
 - (int)iconFormatForLocation:(int)location;
 - (id)iconOverlayImageForLocation:(int)location;
+- (BOOL)isNewsstandApplicationIcon;
 - (void)launch;
 - (BOOL)launchEnabled;
 - (BOOL)shouldCacheImageForFormat:(int)format;

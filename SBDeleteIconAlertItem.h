@@ -9,6 +9,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBDeleteIconAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBIcon *_icon;
 	BOOL _checkedDocumentsInCloudState;

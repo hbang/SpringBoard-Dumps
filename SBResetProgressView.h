@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBResetProgressView : XXUnknownSuperclass {
 	UIColor *_progressColor;
 	UIBezierPath *_path;

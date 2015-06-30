@@ -8,6 +8,7 @@
 #import "SBBaseSoftwareUpdateAlertItem.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBSoftwareUpdateAvailableAlertItem : SBBaseSoftwareUpdateAlertItem {
 }
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;

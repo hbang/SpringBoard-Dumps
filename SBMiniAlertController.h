@@ -6,48 +6,29 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBMiniAlertController : XXUnknownSuperclass {
 	SBApplication *_displayShowingAnAlert;
-	UIWindow *_dimmingWindow;
 	unsigned _sbMiniAlertVisible : 1;
-	unsigned _showDimmingWindowAfterAlertsDismissed : 1;
 	UIView *_hiddenAlertWindow;
-	CGAffineTransform _dimmingWindowTranslation;
-	int _dimmingWindowOrientation;
-	UIView *_overrideDimmingParent;
-	UIView *_dimmingContentView;
-	CGAffineTransform _dimmingViewTranslation;
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_hideMiniAlertsForApp:(id)app;
+- (void)_setAlertVisibleNotifyState:(BOOL)state;
 - (void)_setDisplayShowingAnAlert:(id)alert;
-- (void)applyTranslationToDimmingView:(CGAffineTransform)dimmingView;
-- (void)applyTranslationToDimmingWindow:(CGAffineTransform)dimmingWindow;
 - (BOOL)canShowAlerts;
-- (void)cancelHideDimmingWindow;
 - (void)deactivateAlertItemsForDisplay:(id)display;
 - (void)dealloc;
-- (id)dimImageForKeyboard:(BOOL)keyboard;
 - (void)displayDidDismissMiniAlert:(id)display;
 - (id)displayShowingAnAlert;
-- (void)displayWillDismissMiniAlert:(id)display andShowAnother:(BOOL)another fenceId:(unsigned)anId;
-- (void)displayWillShowMiniAlert:(id)display fenceId:(unsigned)anId;
-- (void)finishedAnimatingDimWindowOut:(id)anOut didFinish:(id)finish;
-- (void)hideAlertWindowForFullscreenAlertActivation:(id)fullscreenAlertActivation;
+- (void)displayWillDismissMiniAlert:(id)display;
+- (void)displayWillShowMiniAlert:(id)display;
 - (void)hideApplicationMiniAlerts;
-- (void)hideDimmingWindow;
-- (void)hideDimmingWindowAfterDelay;
-- (BOOL)isHidingAlertWindow;
 - (BOOL)miniAlertVisible;
-- (void)noteFullscreenAlertsDismissed;
 - (void)noteMiniAlertStateChanged;
-- (void)replaceDimmingWindowWithParent:(id)parent;
-- (void)restoreDimmingViewToDimmingWindow;
-- (void)rotateDimmingWindowToOrientation:(int)orientation;
 - (void)showApplicationMiniAlertsIfNeeded;
-- (void)showDimmingWindow;
 @end
 

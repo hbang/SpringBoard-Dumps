@@ -5,11 +5,12 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "UITextFieldDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBFolderView : XXUnknownSuperclass <UITextFieldDelegate> {
 	SBFolder *_folder;
 	UILabel *_label;
@@ -23,6 +24,8 @@
 	int _orientation;
 }
 - (id)initWithFrame:(CGRect)frame;
+- (float)_contentHeightForCurrentConfiguration;
+- (float)_contentHeightForRows:(unsigned)rows;
 - (void)_createInitialIconViews;
 - (float)_labelHorizontalInset;
 - (float)_labelVerticalInset;
@@ -36,6 +39,7 @@
 - (void)_setupFolderTitleLabel;
 - (void)_setupNavigationBar;
 - (id)_shadowForPosition:(int)position;
+- (id)_shadowImageForPosition:(int)position;
 - (CGSize)_sizeForCurrentConfiguration;
 - (BOOL)canEditTitle;
 - (void)cleanUpAfterOrientationChange;

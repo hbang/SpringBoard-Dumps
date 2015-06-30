@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBTransientSettings : XXUnknownSuperclass {
 	NSMutableDictionary *_transientSettings;
 	BOOL _dirty;

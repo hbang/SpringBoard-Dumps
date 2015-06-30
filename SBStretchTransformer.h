@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBStretchTransformer : XXUnknownSuperclass {
 	UIView *m_view;
 	int m_anchorEdge;

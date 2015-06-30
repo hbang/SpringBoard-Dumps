@@ -13,6 +13,7 @@
 - (void)addAlertHandler:(id)handler forSection:(id)section;
 @end
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinAlertHandlerRegistry : XXUnknownSuperclass <SBBulletinAlertHandlerRegistry> {
 	NSMutableDictionary *_handlersBySectionID;
 }

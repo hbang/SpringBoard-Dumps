@@ -6,18 +6,22 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconIndexNode.h"
+#import "SBIconIndexMutableListObserver.h"
 
 
-@interface SBFolder : XXUnknownSuperclass {
+__attribute__((visibility("hidden")))
+@interface SBFolder : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver> {
 	NSString *_displayName;
 	NSString *_defaultDisplayName;
-	NSMutableArray *_lists;
 	BOOL _open;
 	SBFolderIcon *_icon;
 	BOOL _cancelable;
 	NSMutableSet *_addedIcons;
 	NSMutableSet *_removedIcons;
 	NSMutableDictionary *_coalesceChangesRequests;
+	NSHashTable *_nodeObservers;
+	SBIconIndexMutableList *_lists;
 }
 @property(assign, nonatomic, getter=isCancelable) BOOL cancelable;
 @property(retain, nonatomic) NSString *displayName;
@@ -29,12 +33,14 @@
 - (void)_setDisplayNameFromRepresentation:(id)representation;
 - (id)addEmptyList;
 - (id)addIcon:(id)icon;
+- (void)addNodeObserver:(id)observer;
 - (id)allIcons;
 - (BOOL)canAddIcon;
 - (void)compactIconsAndLists;
 - (BOOL)compactLists;
+- (id)containedNodeIdentifiers;
+- (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
-- (id)folderContainingIcon:(id)icon relativeIndexPath:(id *)path;
 - (id)folderContainingIndexPath:(id)path relativeIndexPath:(id *)path2;
 - (id)folderIcons;
 - (Class)folderSlidingViewClass;
@@ -43,16 +49,19 @@
 - (id)iconAtIndexPath:(id)indexPath;
 - (id)iconsOfClass:(Class)aClass;
 - (unsigned)indexOfList:(id)list;
-- (id)indexPathForEntity:(id)entity;
 - (id)indexPathForFirstFreeSlotAvoidingFirstList:(BOOL)firstFreeSlotAvoidingFirstList;
 - (id)indexPathForIcon:(id)icon;
 - (id)indexPathForIconWithIdentifier:(id)identifier;
+- (id)indexPathForNodeIdentifier:(id)nodeIdentifier;
+- (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (id)insertIcon:(id)icon atIndexPath:(id *)indexPath;
 - (BOOL)isEmpty;
 - (BOOL)isFull;
 - (BOOL)isIconStateDirty;
 - (BOOL)isNewsstandFolder;
 - (id)leafIcons;
+- (void)list:(id)list didAddContainedNodeIdentifiers:(id)identifiers;
+- (void)list:(id)list didRemoveContainedNodeIdentifiers:(id)identifiers;
 - (id)listAtIndex:(unsigned)index;
 - (id)listContainingIcon:(id)icon;
 - (id)listContainingLeafIconWithIdentifier:(id)identifier;
@@ -62,6 +71,9 @@
 - (id)lists;
 - (void)markIconStateClean;
 - (BOOL)matchesRepresentation:(id)representation;
+- (id)nodeDescriptionWithPrefix:(id)prefix;
+- (id)nodeIdentifier;
+- (id)nodesAlongIndexPath:(id)path consumedIndexes:(unsigned)indexes;
 - (void)noteIcon:(id)icon replacedIcon:(id)icon2;
 - (void)noteIconAdded:(id)added;
 - (void)noteIconRemoved:(id)removed;
@@ -71,8 +83,9 @@
 - (void)purgeLists;
 - (void)removeEmptyList:(id)list;
 - (void)removeIconAtIndexPath:(id)indexPath;
+- (void)removeNodeObserver:(id)observer;
 - (id)representation;
-- (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id)added;
+- (BOOL)resetWithRepresentation:(id)representation model:(id)model leafIdentifiersAdded:(id)added;
 - (void)startCoalescingContentChangesWithRequestID:(id)requestID;
 - (void)stopCoalescingContentChangesForRequestID:(id)requestID;
 - (void)stopCoalescingContentChangesForRequestID:(id)requestID forceReload:(BOOL)reload;

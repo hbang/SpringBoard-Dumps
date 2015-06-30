@@ -8,6 +8,7 @@
 #import "SBBaseSoftwareUpdateAlertItem.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBSoftwareUpdateForcedInstallAlertItem : SBBaseSoftwareUpdateAlertItem {
 	NSTimer *_timer;
 	unsigned _timeLeftUntilInstall;

@@ -9,6 +9,7 @@
 #import "SBAlert.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBUSSDAlert : SBAlert {
 	unsigned _receivedString : 1;
 	unsigned _dismissOnActivate : 1;

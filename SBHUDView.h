@@ -5,10 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBHUDView : XXUnknownSuperclass {
 	int _level;
 	UILabel *_titleLabel;
@@ -28,6 +29,7 @@
 - (id)initWithHUDViewLevel:(int)hudviewLevel;
 - (void)dealloc;
 - (BOOL)displaysLabel;
+- (void)drawBlockForValue:(float)value point:(CGPoint)point;
 - (void)drawRect:(CGRect)rect;
 - (void)layoutSubviews;
 @end

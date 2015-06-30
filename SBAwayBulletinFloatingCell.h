@@ -9,6 +9,7 @@
 #import "SBAwayBulletinCell.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwayBulletinFloatingCell : SBAwayBulletinCell {
 	BOOL _hideIcon;
 }
@@ -24,6 +25,7 @@
 - (CGRect)_cellContentViewFrame;
 - (CGRect)_contentRect;
 - (void)_createContentView;
+- (BOOL)_createsLockBarEarly;
 - (BOOL)_drawsSeparator;
 - (BOOL)_hasBackgroundColor;
 - (id)_lockBar;

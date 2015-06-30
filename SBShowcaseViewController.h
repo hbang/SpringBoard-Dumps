@@ -5,23 +5,28 @@
  * Source: (null)
  */
 
+#import "SBShowcaseViewControllerProtocol.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBShowcaseViewController : XXUnknownSuperclass {
+__attribute__((visibility("hidden")))
+@interface SBShowcaseViewController : XXUnknownSuperclass <SBShowcaseViewControllerProtocol> {
 	SBShowcaseController *_showcase;
 	int _revealMode;
 }
 @property(assign, nonatomic) int revealMode;
 @property(assign, nonatomic) SBShowcaseController *showcase;
+- (BOOL)activateIgnoringTouches;
 - (float)bottomBarHeight;
 - (BOOL)expectsFaceContact;
-- (BOOL)shouldShowLockStatusBarIcon;
+- (float)revealAmountForMode:(int)mode;
+- (void)revealModeWillChange:(int)revealMode;
 - (BOOL)shouldShowLockStatusBarTime;
 - (id)view;
 - (void)viewDidAppear;
 - (void)viewDidDisappear;
 - (void)viewDidRotateFromInterfaceOrientation:(int)view;
+- (void)viewWillAnimateRotationToInterfaceOrientation:(int)view;
 - (void)viewWillAppear;
 - (void)viewWillDisappear;
 - (void)viewWillRotateToInterfaceOrientation:(int)view;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 @interface XXUnknownSuperclass (SBApplicationAdditions)
@@ -22,6 +22,22 @@
 
 @interface XXUnknownSuperclass (Centerable)
 - (void)centerToContentView;
+@end
+
+@interface XXUnknownSuperclass (CTHelpers)
+- (id)callBarringFacility;
+- (id)callClass;
+- (id)callForwardingReason;
+- (id)callingLineIDRestrictionValue;
+- (id)callingLinePresentationValue;
+- (id)callingNamePresentationValue;
+- (id)connectedLineIDRestrictionValue;
+- (id)connectedLinePresentationValue;
+- (id)enabledString;
+- (id)mmiProcedure;
+- (id)serviceCenterAddress;
+- (CFStringRef)settingType;
+- (id)ssServiceType;
 @end
 
 @interface XXUnknownSuperclass (PrefsNotifications)
@@ -40,22 +56,6 @@
 - (id)_ssPasswordString:(id)string;
 - (void)addPrefNotification:(id)notification withUserInfo:(id)userInfo;
 - (id)prefsNotificationsAlertString;
-@end
-
-@interface XXUnknownSuperclass (CTHelpers)
-- (id)callBarringFacility;
-- (id)callClass;
-- (id)callForwardingReason;
-- (id)callingLineIDRestrictionValue;
-- (id)callingLinePresentationValue;
-- (id)callingNamePresentationValue;
-- (id)connectedLineIDRestrictionValue;
-- (id)connectedLinePresentationValue;
-- (id)enabledString;
-- (id)mmiProcedure;
-- (id)serviceCenterAddress;
-- (CFStringRef)settingType;
-- (id)ssServiceType;
 @end
 
 @interface XXUnknownSuperclass (AlertItemsAdditions)
@@ -85,20 +85,84 @@
 - (id)dictionaryByAddingEntriesFromDictionary:(id)dictionary;
 @end
 
-@interface XXUnknownSuperclass (SBDeviceLockEntryFieldExtras)
-- (BOOL)isNewline;
-- (BOOL)isSingleCharacterAndMemberOfSet:(CFCharacterSetRef)set;
+@interface XXUnknownSuperclass (SBTimeUtilities)
+- (BOOL)isAfterDate:(id)date;
+- (BOOL)isBeforeDate:(id)date;
 @end
 
-@interface XXUnknownSuperclass (LastIndex)
-- (unsigned)lastIndex;
+@interface XXUnknownSuperclass (SBTimeUtilities)
+- (BOOL)isSameDayAsComponents:(id)components;
+- (BOOL)isSameMonthAsComponents:(id)components;
+- (BOOL)isSameYearAsComponents:(id)components;
+@end
+
+@interface XXUnknownSuperclass (SBTimeUtilities)
+- (id)_dateOnlyComponentsForDate:(id)date;
+- (id)_timeOnlyComponentsForDate:(id)date;
+- (BOOL)date:(id)date isSameDayAsDate:(id)date2;
+- (BOOL)date:(id)date isSameYearAsDate:(id)date2;
+@end
+
+@interface XXUnknownSuperclass (SBSearchView)
+- (void)printPinningResponderInfoIfNecessary;
 @end
 
 @interface XXUnknownSuperclass (SBTypeSafety)
 - (id)objectForKey:(id)key ofClass:(Class)aClass;
 @end
 
-@interface XXUnknownSuperclass (SBAssistantUtilities)
-- (BOOL)isAssistantTelephonyURL;
+@interface XXUnknownSuperclass (SBGraphics)
++ (unsigned long)sbg_bytesNeededForSize:(CGSize)size scale:(float)scale withContextType:(int)contextType;
++ (id)sbg_imageFromContextWithSize:(CGSize)size scale:(float)scale type:(int)type data:(id)data drawing:(id)drawing;
++ (id)sbg_imageFromContextWithSize:(CGSize)size scale:(float)scale type:(int)type data:(id)data drawing:(id)drawing encapsulation:(id)encapsulation;
+@end
+
+@interface XXUnknownSuperclass (SBBulletinBanner)
+- (id)_receivedTime;
+- (void)_setReceivedTime:(id)time;
+@end
+
+@interface XXUnknownSuperclass (CompletionSupport)
+- (id)_completionBlock;
+- (void)_setCompletionBlock:(id)block;
+@end
+
+@interface XXUnknownSuperclass (SBIconIndex)
++ (id)emptyPath;
++ (id)indexPathWithIconIndex:(unsigned)iconIndex listIndex:(unsigned)index;
+- (id)_subpathWithRange:(NSRange)range;
+- (id)indexPathWithPrefixPath:(id)prefixPath;
+- (BOOL)isPrefixedByPath:(id)path;
+- (id)subpathFromPosition:(unsigned)position;
+@end
+
+@interface XXUnknownSuperclass (SBUtilities)
+- (id)initWithBBSound:(id)bbsound;
+@end
+
+@interface XXUnknownSuperclass (SBUtilities)
+- (id)iconImageWithFormat:(int)format;
+@end
+
+@interface XXUnknownSuperclass (SBUtilities)
+- (id)sectionIconImageWithFormat:(int)format;
+@end
+
+@interface XXUnknownSuperclass (SBBulletinBannerControllerTest)
+@property(copy, nonatomic) NSString *bulletinID;
+@end
+
+@interface XXUnknownSuperclass (SBAdditions)
+- (BOOL)sb_containsEmoji;
+- (BOOL)sb_containsNonLatinLikeCharacters;
+@end
+
+@interface XXUnknownSuperclass (SBStringDrawing)
+- (void)drawWithMetrics:(id)metrics inContext:(CGContextRef)context;
+- (id)stringMetricsForFirstLineWidth:(float)firstLineWidth;
+@end
+
+@interface XXUnknownSuperclass (SpringBoardAdditions)
+- (BOOL)hasActiveKeyboardOnScreen;
 @end
 

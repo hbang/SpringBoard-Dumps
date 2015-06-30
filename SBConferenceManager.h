@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBConferenceManager : XXUnknownSuperclass {
 	CNFConferenceController *_conferenceController;
 	unsigned _chatState;
@@ -17,19 +18,22 @@
 + (void)initialize;
 + (id)sharedInstance;
 - (id)init;
-- (void)_conferenceAvailabilityChanged:(id)changed;
-- (void)_conferenceCapabilityChanged:(id)changed;
-- (void)_conferenceStateChanged:(id)changed;
+- (id)_faceTimeApp;
+- (void)_faceTimeAppActivationStateChanged:(id)changed;
+- (void)_faceTimeAvailabilityChanged:(id)changed;
+- (void)_faceTimeCapabilityChanged:(id)changed;
+- (void)_faceTimeStateChanged:(id)changed;
 - (void)_handleInvitation:(id)invitation;
 - (void)_updateStatusBar;
 - (BOOL)activeFaceTimeCallExists;
-- (BOOL)canStartConference;
+- (BOOL)canStartFaceTime;
 - (id)currentCallRemoteUserId;
 - (id)currentCallStatusDisplayString;
 - (void)dealloc;
-- (void)endConference;
-- (BOOL)inConference;
+- (void)endFaceTime;
+- (BOOL)faceTimeInvitationExists;
+- (BOOL)faceTimeIsAvailable;
+- (BOOL)inFaceTime;
 - (void)updateStatusBar;
-- (BOOL)videoConferenceInvitationExists;
 @end
 

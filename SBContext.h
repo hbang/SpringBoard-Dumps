@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBContext : XXUnknownSuperclass {
 	unsigned _contextId;
 	float _windowLevel;

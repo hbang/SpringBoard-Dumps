@@ -9,6 +9,7 @@
 
 @protocol SBRelativeDateTimerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SBRelativeDateTimer : XXUnknownSuperclass {
 	NSCalendar *_gregorian;
 	NSTimer *_timer;
@@ -17,6 +18,9 @@
 	int _currResolution;
 	int _currValue;
 }
++ (void)addTimerToMainRunLoop:(id)mainRunLoop;
++ (void)initialize;
++ (void)invalidateTimer:(id)timer;
 - (id)init;
 - (void)_fireAndUpdateTimerIfNecessary;
 - (void)_fireForEvent:(id)event;

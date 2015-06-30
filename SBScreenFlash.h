@@ -8,6 +8,7 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
+__attribute__((visibility("hidden")))
 @interface SBScreenFlash : XXUnknownSuperclass {
 	UIWindow *_flashWindow;
 	UIView *_flashView;

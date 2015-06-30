@@ -7,11 +7,27 @@
 
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBHostView.h"
 
 
-@interface SBHostWrapperView : XXUnknownSuperclass {
+__attribute__((visibility("hidden")))
+@interface SBHostWrapperView : XXUnknownSuperclass <SBHostView> {
+	UIColor *_backgroundColorWhileNotHosting;
+	UIColor *_backgroundColorWhileHosting;
+	SBAppContextHostManager *_manager;
 }
+@property(retain, nonatomic) UIColor *backgroundColorWhileHosting;
+@property(retain, nonatomic) UIColor *backgroundColorWhileNotHosting;
+@property(assign, nonatomic) SBAppContextHostManager *manager;
+- (id)initWithFrame:(CGRect)frame contextHostManager:(id)manager;
+- (void)_hostingStatusChanged;
+- (BOOL)_isReallyHosting;
+- (void)_toggleBackgroundColorIfNecessary;
+- (void)dealloc;
 - (id)description;
+- (void)didAddSubview:(id)subview;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
+- (void)willRemoveSubview:(id)subview;
+- (id)window;
 @end
 
