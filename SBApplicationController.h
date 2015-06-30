@@ -5,87 +5,40 @@
  * Source: (null)
  */
 
-#import "SBApplicationRestrictionDataSource.h"
-#import "SBApplicationLifecycleObserver.h"
-#import "FBUIApplicationServiceDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableDictionary, NSMutableSet, BKSApplicationStateMonitor, FBApplicationLibrary, SBApplicationRestrictionController, SBReverseCountedSemaphore, NSString, SBApplicationLibraryObserver, FBApplicationInfo, NSLock, NSDictionary;
 
-__attribute__((visibility("hidden")))
-@interface SBApplicationController : XXUnknownSuperclass <SBApplicationRestrictionDataSource, SBApplicationLifecycleObserver, FBUIApplicationServiceDelegate> {
-	NSMutableDictionary *_applicationsByBundleIdentifer;
-	NSMutableSet *_applicationsPlayingMutedAudioSinceLastLock;
-	NSDictionary *_backgroundDisplayDict;
-	NSLock *_applicationsLock;
-	NSMutableDictionary *_systemAppsVisibilityOverrides;
-	BOOL _visibilityOverridesAreDirty;
-	BKSApplicationStateMonitor *_appStateMonitor;
-	BOOL _booting;
-	NSMutableSet *_appsToAutoLaunchAfterBoot;
-	SBApplicationRestrictionController *_restrictionController;
-	SBApplicationLibraryObserver *_appLibraryObserver;
-	FBApplicationLibrary *_appLibrary;
-	FBApplicationInfo *_systemAppInfo;
-	SBReverseCountedSemaphore *_uninstallationReverseSemaphore;
+@interface SBApplicationController : NSObject {
+	NSMutableDictionary *_applications;
+	SBApplication *_springBoard;
+	BOOL _logChanges;
+	unsigned _ignoreInstallationEventCount;
+	BOOL _uninstallationThreadRunning;
+	NSLock *_uninstallationLock;
+	NSMutableArray *_uninstallationQueue;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
-+ (void)_setClearSystemAppSnapshotsWhenLoaded:(BOOL)loaded;
-+ (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
+@property(assign) unsigned ignoreInstallationEventCount;
 + (id)sharedInstance;
-+ (id)sharedInstanceIfExists;
 - (id)init;
-- (id)_appInfosToBundleIDs:(id)bundleIDs;
-- (Class)_applicationClassForInfoDictionary:(id)infoDictionary;
-- (void)_autoLaunchAppsIfNecessaryAfterBoot;
-- (void)_deviceFirstUnlocked;
-- (void)_finishDeferredMajorVersionMigrationTasks;
-- (void)_loadApplicationFromApplicationInfo:(id)applicationInfo;
-- (void)_loadApplicationFromInfo:(id)info withBundle:(id)bundle;
-- (BOOL)_loadApplicationWithoutMutatingIconState:(id)state;
-- (id)_loadApplications:(id)applications removed:(id)removed;
-- (void)_loadApplicationsAndIcons:(id)icons removed:(id)removed reveal:(BOOL)reveal;
-- (void)_lockStateChanged:(id)changed;
-- (id)_lock_applicationWithBundleIdentifier:(id)bundleIdentifier;
-- (void)_mediaServerConnectionDied:(id)died;
-- (void)_memoryWarningReceived;
-- (void)_preLoadApplications;
-- (void)_registerForAVSystemControllerNotifications;
-- (void)_reloadBackgroundIDsDict;
-- (void)_removeApplicationsFromModelWithBundleIdentifier:(id)bundleIdentifier;
-- (void)_sendInstalledAppsDidChangeNotification:(id)_sendInstalledApps removed:(id)removed modified:(id)modified;
-- (void)_setVisibilityOverridesAreDirty:(BOOL)dirty;
-- (void)_unregisterForAVSystemControllerNotifications;
-- (void)_unusuallyMutedAudioPlaying:(id)playing;
-- (void)_updateIconControllerAndModelForLoadedApplications:(id)loadedApplications reveal:(BOOL)reveal popIn:(BOOL)anIn reloadAllIcons:(BOOL)icons;
+- (void)_applicationInstallationCallback;
+- (id)_dequeueApplicationToUninstall;
+- (void)_enqueueApplicationToUninstall:(id)uninstall;
+- (void)_uninstallApplicationsThread;
+- (void)_uninstallationThreadFinished;
 - (id)allApplications;
-- (id)allBundleIdentifiers;
-- (int)appVisibilityOverrideForBundleIdentifier:(id)bundleIdentifier;
-- (void)applicationService:(id)service getBadgeValueForBundleIdentifier:(id)bundleIdentifier withCompletion:(id)completion;
-- (void)applicationService:(id)service setBadgeValue:(id)value forBundleIdentifier:(id)bundleIdentifier;
-- (void)applicationService:(id)service setNextWakeDate:(id)date forBundleIdentifier:(id)bundleIdentifier;
-- (id)applicationWithBundleIdentifier:(id)bundleIdentifier;
+- (id)allDisplayIdentifiers:(BOOL)identifiers;
+- (id)applicationWithDisplayIdentifier:(id)displayIdentifier;
 - (id)applicationWithPid:(int)pid;
-- (void)applicationsAdded:(id)added;
-- (void)applicationsModified:(id)modified;
-- (void)applicationsRemoved:(id)removed;
-- (id)cameraApplication;
-- (id)clockApplication;
-- (id)dataActivation;
+- (id)applicationsWithBundleIdentifier:(id)bundleIdentifier;
 - (void)dealloc;
-- (id)faceTimeApp;
-- (id)iPodOutApplication;
-- (id)mobilePhone;
-- (id)musicApplication;
-- (id)newsstandApps;
-- (id)restrictionController;
-- (id)setupApplication;
+- (id)displayNameForRoleDefinition:(id)roleDefinition inBundle:(id)bundle infoDictionary:(id)dictionary;
+- (id)iPod;
+- (void)loadApplications:(BOOL)applications;
+- (void)loadApplicationsWithPath:(id)path isSystemApplication:(BOOL)application defaultTags:(id)tags signerIdentity:(id)identity seatbeltProfilePath:(id)path5 seatbeltEnvironmentVariables:(id)variables;
+- (id)rolesForInfoPlist:(id)infoPlist;
+- (id)rolesForRoleDefinitions:(id)roleDefinitions;
+- (void)setAppsUseDemoRole:(BOOL)role;
+- (id)springBoard;
 - (void)uninstallApplication:(id)application;
-- (BOOL)updateAppIconVisibilityOverridesShowing:(id *)showing hiding:(id *)hiding;
-- (void)waitForUninstallsToComplete;
-- (id)webApplications;
+- (void)updateSchemesForRoleDefinition:(id)roleDefinition displayIdentifier:(id)identifier application:(id)application;
 @end
 

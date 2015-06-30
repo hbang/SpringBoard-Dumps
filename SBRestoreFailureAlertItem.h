@@ -5,19 +5,15 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
-@interface SBRestoreFailureAlertItem : XXUnknownSuperclass {
+@interface SBRestoreFailureAlertItem : SBAlertItem {
 }
 - (void)_rebootNow;
-- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
-- (BOOL)allowInSetup;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (BOOL)allowMenuButtonDismissal;
 - (double)autoDismissInterval;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
-- (BOOL)forcesModalAlertAppearance;
 - (void)performUnlockAction;
 - (void)restartSystemEvent;
 - (BOOL)shouldShowInLockScreen;

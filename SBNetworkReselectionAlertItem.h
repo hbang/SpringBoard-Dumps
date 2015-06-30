@@ -5,18 +5,18 @@
  * Source: (null)
  */
 
-#import "SBPhoneAlertItem.h"
 
 
-__attribute__((visibility("hidden")))
 @interface SBNetworkReselectionAlertItem : SBPhoneAlertItem {
 }
++ (id)currentInstance;
++ (BOOL)hasCurrentInstance;
 - (id)init;
 - (void)_showPrefs;
-- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (id)lockLabel;
 - (void)performUnlockAction;
-- (id)shortLockLabel;
+- (void)willDeactivateForReason:(int)reason;
 @end
 

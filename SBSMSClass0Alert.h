@@ -5,19 +5,13 @@
  * Source: (null)
  */
 
-#import "SBUSSDAlert.h"
 
 
-__attribute__((visibility("hidden")))
 @interface SBSMSClass0Alert : SBUSSDAlert {
 }
-+ (void)alertWithString:(id)string address:(id)address;
-+ (void)playMessageReceived;
 + (void)registerForAlerts;
-- (id)_initWithString:(id)string;
+- (id)initWithString:(id)string;
 - (void)_registerForNotifications;
 - (void)_unregisterForNotifications;
-- (BOOL)allowsStackingOfAlert:(id)alert;
-- (void)deactivate;
 @end
 

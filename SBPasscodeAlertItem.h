@@ -5,30 +5,17 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "UITextFieldDelegate.h"
 
-@class NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBPasscodeAlertItem : XXUnknownSuperclass <UITextFieldDelegate> {
+@interface SBPasscodeAlertItem : SBAlertItem <UITextFieldDelegate> {
 	int _mode;
-	int _unlockScreenType;
-	NSString *_errorString;
-	BOOL _hasEmergencyCall;
+	BOOL _alphanumeric;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
-- (id)initWithPasscodeMode:(int)passcodeMode unlockScreenType:(int)type;
+- (id)initWithPasscodeMode:(int)passcodeMode isAlphanumeric:(BOOL)alphanumeric;
 - (void)_setErrorString:(id)string;
-- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
-- (void)cleanPreviousConfiguration;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
-- (void)dealloc;
-- (void)didEndCall;
+- (void)dismiss;
 - (void)returnKeyPressed:(id)pressed;
 - (BOOL)shouldShowInLockScreen;
 - (BOOL)textField:(id)field shouldChangeCharactersInRange:(NSRange)range replacementString:(id)string;

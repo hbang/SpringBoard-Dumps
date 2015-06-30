@@ -5,22 +5,14 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "UIAlertViewDelegate.h"
 
-@class SBApplicationIcon, NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBAppProfileNotTrustedAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
+@interface SBAppProfileNotTrustedAlertItem : SBAlertItem <UIModalViewDelegate> {
 	SBApplicationIcon *_icon;
 	BOOL _launchApp;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
 - (id)initWithIcon:(id)icon;
-- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;

@@ -5,68 +5,46 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableSet, NSString;
 
-__attribute__((visibility("hidden")))
-@interface VolumeControl : XXUnknownSuperclass {
+@interface VolumeControl : NSObject {
+	UIWindow *_volumeWindow;
+	VolumeControlView *_volumeView;
+	BOOL _windowVisible;
 	BOOL _debounce;
-	int _numberOfVolumeDecreasesSinceDownButtonDown;
 	int _mode;
 	NSMutableSet *_alwaysHiddenCategories;
-@private
 	NSString *_lastDisplayedCategory;
 	NSString *_lastEventCategory;
-@protected
-	BOOL _hudHandledLastVolumeChange;
-	BOOL _euDevice;
-	float _euVolumeLimit;
-	BOOL _euVolumeLimitEnforced;
-	BOOL _lastVolumeChangedWasBlocked;
-	BOOL _volumeDownButtonIsDown;
-	BOOL _volumeUpButtonIsDown;
 }
 + (id)sharedVolumeControl;
 - (id)init;
-- (void)_EUVolumeEnforcementChanged:(id)changed;
-- (void)_EUVolumeLimitChanged:(id)changed;
 - (BOOL)_HUDIsDisplayableForCategory:(id)category;
+- (BOOL)_allowVolumeChangeForCategory:(id)category;
 - (float)_calcButtonRepeatDelay;
 - (void)_changeVolumeBy:(float)by;
-- (void)_effectiveVolumeChanged:(id)changed;
-- (void)_initializeEUVolumeLimits;
-- (BOOL)_isCategoryAlwaysHidden:(id)hidden;
-- (BOOL)_isMusicPlayingSomewhere;
-- (BOOL)_isVolumeHUDVisible;
-- (BOOL)_isVolumeHUDVisibleOrFading;
-- (void)_presentVolumeHUDWithMode:(int)mode volume:(float)volume;
+- (void)_createUI;
+- (void)_orderWindowFront:(id)front forCategory:(id)category;
+- (void)_orderWindowOut:(id)anOut;
 - (void)_registerForAVSystemControllerNotifications;
 - (void)_serverConnectionDied:(id)died;
-- (BOOL)_turnOnScreenIfNecessaryForEULimit:(BOOL)eulimit;
+- (void)_systemVolumeChanged:(id)changed;
+- (void)_tearDown;
 - (void)_unregisterForAVSystemControllerNotifications;
-- (void)_userAcknowledgedEUEnforcement;
-- (id)_volumeHUDViewWithMode:(int)mode volume:(float)volume;
 - (int)_volumeModeForCategory:(id)category;
+- (float)_windowFadeDelay;
 - (void)addAlwaysHiddenCategory:(id)category;
+- (void)animationDidStop:(id)animation finished:(id)finished;
 - (void)cancelVolumeEvent;
-- (void)clearAlwaysHiddenCategories;
 - (void)dealloc;
 - (void)decreaseVolume;
-- (float)getMediaVolume;
-- (void)handleVolumeEvent:(IOHIDEventRef)event;
-- (BOOL)headphonesPresent;
-- (void)hideVolumeHUDIfVisible;
+- (void)handleVolumeEvent:(GSEventRef)event;
+- (void)hideHUD;
 - (void)increaseVolume;
 - (id)lastDisplayedCategory;
 - (void)removeAlwaysHiddenCategory:(id)category;
-- (void)sendEUVolumeLimitAcknowledgementIfNecessary;
-- (void)setMediaVolume:(float)volume;
-- (void)toggleMute;
-- (float)volume;
-- (id)volumeHUDForCurrentCategory;
-- (float)volumeStepDown;
-- (float)volumeStepUp;
+- (void)reorientHUDIfNeeded:(BOOL)needed;
+- (void)setHUDMode:(int)mode;
+- (void)showHUD;
 @end
 

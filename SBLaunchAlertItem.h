@@ -5,23 +5,18 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBApplication, NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBLaunchAlertItem : XXUnknownSuperclass {
-	SBApplication *_associatedDisplay;
+@interface SBLaunchAlertItem : SBAlertItem {
+	SBDisplay *_associatedDisplay;
 	int _type;
-	NSString *_bundleID;
 	BOOL _isDataAlert;
 	BOOL _usesCellNetwork;
 }
-- (id)initWithLaunchAlertType:(int)launchAlertType dataAlert:(BOOL)alert usesCellNetwork:(BOOL)network bundleID:(id)anId;
-- (id)_customAirplaneModeAlertPrompt;
+- (id)initWithLaunchAlertType:(int)launchAlertType dataAlert:(BOOL)alert usesCellNetwork:(BOOL)network;
 - (void)_displayDeactivated:(id)deactivated;
 - (id)alertSheet;
-- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)dealloc;
 - (BOOL)dismissOnLock;
 - (void)setAssociatedWithDisplay:(id)display;

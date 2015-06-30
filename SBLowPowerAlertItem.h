@@ -5,26 +5,24 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
-@interface SBLowPowerAlertItem : XXUnknownSuperclass {
+@interface SBLowPowerAlertItem : SBAlertItem {
+	unsigned _talkMinutesLeft;
 	unsigned _talkLevel;
 }
 + (BOOL)_shouldIgnoreChangeToBatteryLevel:(unsigned)batteryLevel;
 + (unsigned)_thresholdForLevel:(unsigned)level;
-+ (void)initialize;
-+ (void)saveLowBatteryLogWithCapacity:(int)capacity voltage:(int)voltage;
++ (void)saveLowBatteryLogWithCapacity:(int)capacity;
++ (void)savePowerDiagnosisLogWithCurrentCapacity:(int)currentCapacity startCapacity:(int)capacity;
 + (void)setBatteryLevel:(unsigned)level;
 + (id)systemVersionDescription;
-- (id)init;
-- (id)initWithLevel:(unsigned)level;
-- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (id)initWithTalkTimeLeft:(unsigned)talkTimeLeft level:(unsigned)level;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (BOOL)shouldShowInEmergencyCall;
 - (BOOL)shouldShowInLockScreen;
 - (BOOL)undimsScreen;
-- (void)willPresentAlertView:(id)view;
+- (void)willPresentAlertSheet:(id)sheet;
 @end
 

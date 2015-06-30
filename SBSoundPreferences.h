@@ -5,22 +5,22 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
-@interface SBSoundPreferences : XXUnknownSuperclass {
+@interface SBSoundPreferences : NSObject {
 }
-+ (void)_loadDefaultsIfNeeded;
 + (id)calendarAlarmPath;
 + (BOOL)playLockSound;
 + (id)ringtoneIdentifier;
 + (id)ringtonePath;
 + (BOOL)shouldVibrateForCurrentRingerState;
-+ (BOOL)shouldVibrateForCurrentRingerStateWithAudioCategory:(id)audioCategory;
 + (void)userDefaultsDidChanged:(id)userDefaults;
 + (id)vibratePattern;
 + (BOOL)vibrateWhenRinging;
 + (BOOL)vibrateWhenSilent;
+@end
+
+@interface SBSoundPreferences (Private)
++ (void)_loadDefaultsIfNeeded;
 @end
 

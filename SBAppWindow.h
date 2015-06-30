@@ -5,13 +5,14 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBWindow.h"
 
 
-__attribute__((visibility("hidden")))
-@interface SBAppWindow : SBWindow {
+@interface SBAppWindow : UIWindow {
 }
 + (CGRect)constrainFrameToScreen:(CGRect)screen;
+- (id)initWithContentRect:(CGRect)contentRect;
+- (void)dealloc;
+- (void)sendGSEvent:(GSEventRef)event;
+- (BOOL)shouldRespondToStatusBarHeightChange;
 @end
 

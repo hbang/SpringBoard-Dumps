@@ -5,40 +5,40 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBLeafIcon.h"
 
-@class SBApplicationPlaceholder;
 
-__attribute__((visibility("hidden")))
-@interface SBDownloadingIcon : SBLeafIcon {
-	BOOL _wasUninstalledByUser;
-	BOOL _isNewsstandDownload;
-	SBApplicationPlaceholder *_appPlaceholder;
+@interface SBDownloadingIcon : SBIcon {
+	NSString *_displayID;
+	ISDownload *_download;
+	SBDownloadingProgressBar *_progressView;
+	float _progress;
+	BOOL _installing;
 }
-+ (id)leafIdentifierForApplicationPlaceholderBundleID:(id)applicationPlaceholderBundleID;
-- (id)initWithApplicationPlaceholder:(id)applicationPlaceholder;
-- (id)_darkenedIconImageForImage:(id)image;
-- (id)appPlaceholder;
-- (void)cancelDownload;
++ (id)displayIdentifierForDownload:(id)download;
+- (id)initWithDisplayIdentifier:(id)displayIdentifier;
+- (id)initWithDownload:(id)download;
+- (void)_showAlertForError:(id)error;
+- (BOOL)allowsCloseBox;
 - (void)completeUninstall;
-- (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
-- (id)description;
-- (id)gridCellImage;
-- (id)homescreenIconImage;
-- (BOOL)iconAppearsInNewsstand;
-- (BOOL)isDownloadingIcon;
-- (BOOL)isNewsstandDownload;
-- (id)realDisplayName;
-- (void)reloadForStatusChange;
-- (void)setApplicationPlaceholder:(id)placeholder;
-- (void)setNewsstandDownload:(BOOL)download;
-- (void)setUninstalledByUser:(BOOL)user;
+- (id)displayIdentifier;
+- (id)displayName;
+- (id)download;
+- (void)download:(id)download encounteredError:(id)error;
+- (void)downloadStatusChanged:(id)changed;
+- (id)icon;
+- (void)launch;
+- (void)remove;
+- (void)resetIconImage;
+- (void)retry;
+- (void)setDisplayIdentifier:(id)identifier;
+- (void)setDisplayedIcon:(id)icon;
+- (void)setDownload:(id)download;
+- (id)tags;
 - (id)uninstallAlertBody;
 - (id)uninstallAlertCancelTitle;
 - (id)uninstallAlertConfirmTitle;
 - (id)uninstallAlertTitle;
-- (BOOL)uninstalledByUser;
+- (void)updateDisplayName;
 @end
 

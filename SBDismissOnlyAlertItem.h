@@ -5,22 +5,23 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBDismissOnlyAlertItem : XXUnknownSuperclass {
+@interface SBDismissOnlyAlertItem : SBAlertItem {
 	NSString *_title;
 	NSString *_body;
 	double _autoDismissInterval;
+	BOOL _hasDeactivated;
 }
 - (id)initWithTitle:(id)title body:(id)body;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (double)autoDismissInterval;
 - (id)bodyText;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (id)dismissButtonText;
+- (void)didDeactivateForReason:(int)reason;
+- (BOOL)hasDeactivated;
+- (id)lockLabel;
 - (void)performUnlockAction;
 - (void)setAutoDismissInterval:(double)interval;
 - (void)setBodyText:(id)text;

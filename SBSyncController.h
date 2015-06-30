@@ -5,66 +5,56 @@
  * Source: (null)
  */
 
-#import "FBApplicationLibraryObserver.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBPasscodeLockDisableAssertion, NSTimer, NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBSyncController : XXUnknownSuperclass <FBApplicationLibraryObserver> {
+@interface SBSyncController : NSObject {
+	int _syncState;
 	int _restoreState;
 	int _resetState;
-	int _restoreTimerState;
-	NSTimer *_restoreTimer;
-	NSTimer *_progressTimer;
+	int _sofwareUpdateState;
+	CFMachPortRef _backupAgentCFPort;
 	BOOL _showingResetUI;
-	BOOL _appsChangedDuringSync;
-	int _restoreStartedNotifyToken;
-	int _restoreEndedNotifyToken;
-	SBPasscodeLockDisableAssertion *_disableDeviceLockAssertion;
-	BOOL _isAppSyncing;
-	BOOL _inExtendedAppSyncCoalescePeriod;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
-- (void)_appInstallationNotification;
 - (void)_delayedBeginReset;
 - (void)_delayedQuitApplications;
-- (void)_didEndResetting;
-- (void)_didEndRestoring:(int)restoring;
-- (void)_finishEndRestoring;
-- (void)_invalidateRestoreTimer;
-- (BOOL)_isBackupAgentRunning;
+- (void)_didEndRestoringWithRestoreFailed;
+- (void)_invalidateBackupAgentCFPort;
 - (void)_killApplications;
+- (void)_notifyAppsSyncWillBegin;
 - (void)_notifyRestoreCanProceed;
 - (void)_rebootNow;
 - (void)_resetEnded:(id)ended;
 - (void)_resetStarted:(id)started;
-- (void)_restoreTimerFired:(id)fired;
-- (void)_setRestoreState:(int)state;
-- (void)_setupRestoreTimer;
-- (void)_syncSessionDidBegin;
-- (void)_syncSessionDidEnd;
-- (void)_updateProgress;
-- (void)_wirelessSyncBegan:(id)began;
-- (void)_wirelessSyncEnded:(id)ended;
-- (void)applicationLibrary:(id)library didAddApplications:(id)applications;
-- (void)applicationLibrary:(id)library didRemoveApplications:(id)applications;
-- (void)applicationLibrary:(id)library didReplaceApplications:(id)applications withApplications:(id)applications3;
+- (BOOL)_setupBackupAgentPort;
 - (void)beginResetting:(BOOL)resetting;
 - (void)beginRestoring;
+- (void)beginSyncing;
 - (void)cancelRestoring;
+- (void)cancelSyncing;
 - (void)dealloc;
+- (void)didEndResetting;
+- (void)didEndRestoring:(int)restoring;
+- (void)didEndSyncing;
+- (void)didShowSyncPanel;
+- (void)finishEndRestoring;
 - (void)finishedTerminatingApplications;
+- (void)frontLockedWhenPossible;
+- (void)iTunesSyncHasCompleted:(int)completed;
+- (void)iTunesSyncRequestedStart;
 - (BOOL)isInUse;
 - (BOOL)isResetting;
 - (BOOL)isRestoring;
+- (BOOL)isSoftwareUpdating;
+- (BOOL)isSyncing;
 - (int)resetState;
 - (int)restoreState;
+- (void)resumeSyncing;
+- (void)setSoftwareUpdateState:(int)state;
+- (void)showPreSoftwareUpdateScreen;
 - (void)startObserving;
 - (void)stopObserving;
+- (void)suspendSyncing;
+- (int)syncState;
 @end
 

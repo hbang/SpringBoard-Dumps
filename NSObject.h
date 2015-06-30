@@ -5,20 +5,14 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 
-@class NSString;
 
 @protocol NSObject
-@optional
-@property(readonly, copy) NSString *debugDescription;
-@required
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
 - (id)autorelease;
 - (Class)class;
 - (BOOL)conformsToProtocol:(id)protocol;
+- (id)description;
+- (unsigned)hash;
 - (BOOL)isEqual:(id)equal;
 - (BOOL)isKindOfClass:(Class)aClass;
 - (BOOL)isMemberOfClass:(Class)aClass;
@@ -31,6 +25,7 @@
 - (id)retain;
 - (unsigned)retainCount;
 - (id)self;
+- (Class)superclass;
 - (NSZone *)zone;
 @end
 

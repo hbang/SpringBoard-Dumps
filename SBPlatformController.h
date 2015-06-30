@@ -5,46 +5,40 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSSet, NSDictionary, NSOrderedSet, NSLock, NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBPlatformController : XXUnknownSuperclass {
-	long _defaultIconInfoOnce;
-	NSDictionary *_defaultStarkIconState;
-	NSDictionary *_defaultIconState;
-	NSOrderedSet *_defaultIconStateDisplayIdentifiers;
-	NSLock *_iconStateDisplayIdentifiersLock;
-	NSSet *_iconStateDisplayIdentifiers;
-	NSString *_localizedDeviceName;
-	BOOL _hasGasGauge;
-	BOOL _supportsOpenGLES2;
-	BOOL _internalInstall;
-	BOOL _carrierInstall;
-	BOOL _singleCoreDevice;
+@interface SBPlatformController : NSObject {
+	NSString *_currentConfigurationName;
+	NSMutableDictionary *_currentConfiguration;
+	NSMutableDictionary *_currentCapabilities;
 }
-+ (id)deviceClass;
-+ (id)hardwareModel;
-+ (id)productType;
 + (id)sharedInstance;
-+ (id)systemBuildVersion;
-+ (id)uniqueDeviceIdentifier;
 - (id)init;
-- (void)_loadDefaultIconInfoIfNecessary;
-- (void)_visibleIdentifiersChanged:(id)changed;
+- (void)addCapabilities:(id)capabilities removeCapabilities:(id)capabilities2;
 - (void)dealloc;
-- (id)defaultIconState;
-- (id)defaultIconStateDisplayIdentifiers;
-- (id)defaultStarkIconState;
-- (BOOL)hasGasGauge;
-- (id)iconStateDisplayIdentifiers;
-- (BOOL)isCarrierInstall;
-- (BOOL)isDeveloperInstall;
+- (BOOL)hasCapability:(id)capability;
+- (id)iconState;
+- (id)infoForCapability:(id)capability;
 - (BOOL)isInternalInstall;
-- (BOOL)isSingleCoreDevice;
 - (id)localizedPlatformName;
-- (void)registerForIconVisibilityChanges;
-- (BOOL)supportsOpenGLES2;
+- (BOOL)matchesPlatforms:(id)platforms;
+- (id)platformName;
+- (void)setInfo:(id)info forCapability:(id)capability;
+- (id)systemBuildVersion;
+@end
+
+@interface SBPlatformController (private)
+- (void)_addConfigurationNamed:(id)named toCompositeDictionary:(id)compositeDictionary;
+- (id)_macAddress;
+- (void)_mergeDictionary:(id)dictionary intoDictionary:(id)dictionary2;
+- (BOOL)allowSensitiveUI:(BOOL)ui hasInternalBundle:(BOOL)bundle;
+- (BOOL)allowWiFi;
+- (id)currentConfigurationName;
+- (void)discoverCurrentConfiguration;
+- (BOOL)isCarrierInstall:(BOOL)install hasInternalBundle:(BOOL)bundle;
+- (void)loadBundlesForCurrentConfiguration;
+- (void)noteConfigurationChanged:(id)changed;
+- (void)postCurrentConfiguration;
+- (void)runPrefUpdateToolIfNeeded;
 @end
 

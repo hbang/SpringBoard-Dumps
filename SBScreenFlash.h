@@ -5,27 +5,20 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, UIScreen, UIWindow, NSMutableArray;
 
-__attribute__((visibility("hidden")))
-@interface SBScreenFlash : XXUnknownSuperclass {
-	NSMutableArray *_flashCompletionBlocks;
-	UIScreen *_screen;
+@interface SBScreenFlash : NSObject {
 	UIWindow *_flashWindow;
 	UIView *_flashView;
 	BOOL _windowVisible;
 }
-+ (id)mainScreenFlasher;
-- (id)initWithScreen:(id)screen;
-- (void)_animationDidStop:(id)_animation finished:(id)finished context:(void *)context;
-- (void)_createUIWithColor:(id)color;
-- (void)_orderWindowFront:(id)front withColor:(id)color;
++ (id)sharedSBScreenFlash;
+- (void)_createUI;
+- (void)_orderWindowFront:(id)front;
 - (void)_orderWindowOut:(id)anOut;
 - (void)_tearDown;
-- (void)dealloc;
-- (void)flashColor:(id)color withCompletion:(id)completion;
-- (void)flashWhiteWithCompletion:(id)completion;
+- (void)animationDidStop:(id)animation finished:(id)finished;
+- (void)flash;
+- (void)stopFlash;
 @end
 

@@ -5,20 +5,17 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
-@interface SBScreenShotter : XXUnknownSuperclass {
+@interface SBScreenShotter : NSObject {
 	BOOL _writingScreenshot;
-	unsigned _screenshotWriteCount;
 }
+@property(assign) BOOL writingScreenshot;
 + (id)sharedInstance;
-- (void)_decrementWriteCount;
-- (void)_incrementWriteCount;
-- (BOOL)_isWritingSnapshot;
-- (void)finishedWritingCarScreenshot:(id)screenshot didFinishSavingWithError:(id)error context:(void *)context;
-- (void)finishedWritingScreenshot:(id)screenshot didFinishSavingWithError:(id)error context:(void *)context;
+- (void)_createDirectoriesIfNecessary;
+- (id)_posterImageDirectory;
+- (id)_screenshotDirectory;
+- (void)_writeScreenshotAndThumbnailForImage:(CGImageRef)image;
 - (void)saveScreenshot:(BOOL)screenshot;
 @end
 

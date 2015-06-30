@@ -5,16 +5,14 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBPhoneAlertItem : XXUnknownSuperclass {
+@interface SBPhoneAlertItem : SBAlertItem {
 	NSString *_bodyText;
 	NSString *_title;
 }
 - (id)initWithTitle:(id)title bodyText:(id)text;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 @end

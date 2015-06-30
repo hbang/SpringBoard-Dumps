@@ -5,11 +5,9 @@
  * Source: (null)
  */
 
-#import "SBHomeScreenNagAlert.h"
 
 
-__attribute__((visibility("hidden")))
-@interface SBReorderInfoAlert : SBHomeScreenNagAlert {
+@interface SBReorderInfoAlert : SBDismissOnlyAlertItem {
 }
 - (void)didDeactivateForReason:(int)reason;
 @end

@@ -5,14 +5,10 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
-#import "SpringBoard-Structs.h"
 
 
-__attribute__((visibility("hidden")))
 @interface SBNetworkReselectionAlert : SBAlert {
 }
-+ (void)_serviceAvailabilityChanged:(id)changed;
 + (void)registerForAlerts;
 + (void)test;
 @end

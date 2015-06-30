@@ -5,19 +5,16 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBDismissOnlyAlertItem, NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBLockdownManager : XXUnknownSuperclass {
+@interface SBLockdownManager : NSObject {
 	int _state;
 	BOOL _settingUpActivationState;
 	BOOL _isBricked;
-	BOOL _isDeveloperDevice;
+	BOOL _isInternalInstall;
+	BOOL _hasShownWaitingAlertThisSession;
 	BOOL _hasShownMismatchedSIM;
 	SBDismissOnlyAlertItem *_activatingAlertItem;
-	NSString *_unqiueDeviceIdentifier;
 }
 + (id)sharedInstance;
 - (id)init;
@@ -33,8 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldShowTelephonyAlerts;
 - (BOOL)brickedDevice;
 - (void)dealloc;
-- (id)developerBuildExpirationDate;
-- (BOOL)isDeveloperDevice;
+- (BOOL)isInternalInstall;
 - (int)lockdownState;
 @end
 

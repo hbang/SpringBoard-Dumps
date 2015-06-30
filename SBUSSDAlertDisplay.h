@@ -5,49 +5,36 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "UITextFieldDelegate.h"
-#import "SBAlertView.h"
 
-@class UIActivityIndicatorView, UITextField, UIView, NSString, TPButton, UITextView;
 
-__attribute__((visibility("hidden")))
-@interface SBUSSDAlertDisplay : SBAlertView <UITextFieldDelegate> {
-	TPButton *_dismissButton;
-	TPButton *_replyButton;
+@interface SBUSSDAlertDisplay : SBAlertDisplay <UITextFieldDelegate> {
+	TPBottomButtonBar *_responseBar;
 	UIView *_notifyView;
 	UIView *_replyView;
-	UITextView *_charsRemainingView;
-	UIActivityIndicatorView *_progressIndicator;
+	UITransitionView *_transitionView;
+	UIScroller *_scroller;
+	UIView *_contentView;
+	SBTextDisplayView *_charsRemainingView;
+	UIProgressIndicator *_progressIndicator;
 	UITextField *_responseField;
-	UITextView *_textView;
-	UITextView *_responseMessageView;
 	BOOL _allowsResponse;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_cancelClicked;
-- (void)_centerTextView:(id)view inRect:(CGRect)rect;
-- (id)_charsRemainingView;
 - (id)_notifyView;
 - (void)_okayClicked;
 - (void)_replyClicked;
 - (id)_replyView;
-- (id)_responseMessageView;
 - (void)_setupResponseBar;
 - (void)_textChanged:(id)changed;
-- (id)_textView;
 - (void)_updateCharsRemaining;
 - (void)alertDisplayBecameVisible;
 - (void)alertDisplayWillBecomeVisible;
 - (void)alertStringAvailable:(id)available;
 - (BOOL)allowsResponse;
 - (void)dealloc;
-- (void)displayString:(id)string;
-- (void)layoutSubviews;
+- (void)displayString:(id)string centerVertically:(BOOL)vertically;
+- (void)navigationBar:(id)bar buttonClicked:(int)clicked;
 - (void)setAllowsResponse:(BOOL)response;
 - (BOOL)textField:(id)field shouldInsertText:(id)text replacingRange:(NSRange)range;
 @end

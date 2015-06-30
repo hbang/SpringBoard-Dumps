@@ -5,33 +5,24 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSMutableArray;
 
-__attribute__((visibility("hidden")))
-@interface SBBluetoothController : XXUnknownSuperclass {
+@interface SBBluetoothController : NSObject {
 	NSMutableArray *_devices;
-	BOOL _tetheringConnected;
 }
 + (id)sharedInstance;
 - (void)addDeviceNotification:(id)notification;
 - (void)batteryChanged:(id)changed;
-- (int)batteryLevel;
-- (void)bluetoothDeviceEndedVoiceControl:(id)control;
-- (void)bluetoothDeviceInitiatedVoiceControl:(id)control;
+- (float)batteryLevel;
 - (BOOL)canReportBatteryLevel;
 - (void)connectionChanged:(id)changed;
 - (void)dealloc;
-- (id)deviceForAudioRoute:(id)audioRoute;
 - (id)firstBTDeviceToReportBatteryLevel;
 - (void)iapDeviceChanged:(id)changed;
 - (void)noteDevicesChanged;
 - (void)removeDeviceNotification:(id)notification;
 - (void)startWatchingForDevices;
 - (void)stopWatchingForDevices;
-- (BOOL)tetheringConnected;
-- (void)updateBattery;
-- (void)updateTetheringConnected;
+- (void)unjackAudio;
 @end
 

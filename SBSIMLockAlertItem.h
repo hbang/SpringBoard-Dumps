@@ -5,32 +5,20 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
-@interface SBSIMLockAlertItem : XXUnknownSuperclass {
+@interface SBSIMLockAlertItem : SBAlertItem {
 	int _status;
-	int _okButtonIndex;
-	int _unlockButtonIndex;
 }
-+ (id)alertTitleForStatus:(int)status;
-+ (id)alertTitleForStatus:(int)status languageCode:(id)code;
-- (id)initWithStatus:(int)status;
-- (void)_resetButtonIndexes;
-- (id)alertTextForLanguageCode:(id)languageCode;
-- (id)alertTitleForLanguageCode:(id)languageCode;
-- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
-- (BOOL)allowInSetup;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (id)alertText;
+- (id)alertTitle;
 - (BOOL)canUnlock;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;
-- (BOOL)forcesModalAlertAppearance;
-- (BOOL)pendInSetupIfNotAllowed;
+- (id)lockLabel;
 - (void)performUnlockAction;
-- (BOOL)reappearsAfterLock;
-- (BOOL)reappearsAfterUnlock;
 - (int)status;
 - (void)unlock;
 @end

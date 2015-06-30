@@ -5,12 +5,14 @@
  * Source: (null)
  */
 
-#import "SBApplicationIcon.h"
 
 
-__attribute__((visibility("hidden")))
 @interface SBWeatherApplicationIcon : SBApplicationIcon {
 }
-- (void)localeChanged;
+- (id)initWithApplication:(id)application;
+- (void)dealloc;
+- (id)icon;
+- (void)resetIcon;
+- (BOOL)showFahrenheit;
 @end
 

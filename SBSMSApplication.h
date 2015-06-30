@@ -5,13 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBApplication.h"
 
 
-__attribute__((visibility("hidden")))
 @interface SBSMSApplication : SBApplication {
 }
-- (id)objectForActivationSetting:(unsigned)activationSetting;
+- (id)pathForDefaultImage:(BOOL *)defaultImage;
 @end
 

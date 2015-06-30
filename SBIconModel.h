@@ -5,77 +5,54 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSSet, NSDictionary, NSOrderedSet, SBRootFolder, NSMutableDictionary;
-@protocol SBIconModelApplicationDataSource, SBIconModelStore, SBIconModelDelegate;
 
-__attribute__((visibility("hidden")))
-@interface SBIconModel : XXUnknownSuperclass {
-	NSDictionary *_desiredIconState;
-	NSOrderedSet *_desiredIconStateFlattened;
-	NSMutableDictionary *_leafIconsByIdentifier;
-	NSSet *_hiddenIconTags;
-	NSSet *_visibleIconTags;
-	BOOL _tagsHaveBeenSet;
-	SBRootFolder *_rootFolder;
-	id<SBIconModelStore> _store;
-	id<SBIconModelApplicationDataSource> _applicationDataSource;
-	id<SBIconModelDelegate> _delegate;
-	BOOL _allowsSaving;
+@interface SBIconModel : NSObject {
+	NSDictionary *_iconState;
+	NSMutableArray *_iconLists;
+	SBButtonBar *_buttonBar;
+	SBEditIcon *_editIcon;
+	NSMutableDictionary *_allAppIcons;
+	NSMutableArray *_displayedIcons;
+	NSMutableArray *_buttonBarIcons;
+	NSMutableSet *_hiddenIconTags;
+	NSMutableSet *_visibleIconTags;
 }
-@property(assign, nonatomic) BOOL allowsSaving;
-@property(readonly, retain, nonatomic) id<SBIconModelApplicationDataSource> applicationDataSource;
-@property(assign, nonatomic) id<SBIconModelDelegate> delegate;
-@property(retain, nonatomic) NSDictionary *leafIconsByIdentifier;
-@property(readonly, retain, nonatomic) id<SBIconModelStore> store;
-- (id)initWithStore:(id)store applicationDataSource:(id)source;
-- (id)_applicationIcons;
-- (BOOL)_canAddDownloadingIconForBundleID:(id)bundleID;
-- (id)_iconState;
-- (id)_indexPathInRootFolder:(id)rootFolder forNewIcon:(id)newIcon isDesignatedLocation:(BOOL *)location replaceExistingIconAtIndexPath:(id *)indexPath;
-- (id)_newsstandIconInFolder:(id)folder outIndexPath:(id *)path;
-- (void)_postIconVisibilityChangedNotificationShowing:(id)showing hiding:(id)hiding;
-- (void)_replaceAppIconsWithDownloadingIcons;
-- (void)_replaceAppIconsWithDownloadingIcons:(id)downloadingIcons;
-- (void)_saveDesiredIconState;
-- (void)_saveIconState;
-- (id)_unarchiveRootFolder;
-- (id)addBookmarkIconForWebClip:(id)webClip;
-- (id)addDownloadingIconForBundleID:(id)bundleID withIdentifier:(id)identifier;
-- (id)addDownloadingIconForDownload:(id)download;
-- (void)addIcon:(id)icon;
-- (void)addIconForApplication:(id)application;
-- (id)applicationIconForBundleIdentifier:(id)bundleIdentifier;
-- (id)bookmarkIconForWebClipIdentifier:(id)webClipIdentifier;
-- (void)clearDesiredIconState;
-- (void)clearDesiredIconStateIfPossible;
++ (id)sharedInstance;
+- (id)init;
+- (void)_addBookmarks;
+- (void)_addDownloadingApplications;
+- (void)_completedUninstall:(id)uninstall;
+- (void)_writeIconState;
+- (id)addEmptyIconList;
+- (void)addNewIconToDesignatedLocation:(id)designatedLocation animate:(BOOL)animate scrollToList:(BOOL)list;
+- (id)bookmarkIconForDisplayIdentifier:(id)displayIdentifier;
+- (id)buttonBar;
+- (id)buttonBarIcons;
+- (void)changeVisibilityOfIconsWithVisibleTags:(id)visibleTags hiddenTags:(id)tags;
+- (void)compactIconLists;
 - (void)dealloc;
-- (void)deleteIconState;
-- (id)downloadingIconForBundleIdentifier:(id)bundleIdentifier;
-- (id)expectedIconForDisplayIdentifier:(id)displayIdentifier;
-- (id)exportFlattenedState:(BOOL)state includeMissingIcons:(BOOL)icons;
-- (id)exportPendingState:(BOOL)state includeMissingIcons:(BOOL)icons;
-- (id)exportState:(BOOL)state;
-- (id)forecastedLayoutForIconState:(id)iconState includeMissingIcons:(BOOL)icons;
-- (BOOL)hasDesiredIconState;
+- (id)downloadingIconForDisplayIdentifier:(id)displayIdentifier;
+- (id)downloadingIconForDownload:(id)download;
+- (id)editIcon;
+- (id)firstAvailableIconListX:(int *)x Y:(int *)y;
+- (Class)iconClassForApplication:(id)application;
+- (id)iconForDisplayIdentifier:(id)displayIdentifier;
+- (BOOL)iconIsVisible:(id)visible;
+- (id)iconListContainingIcon:(id)icon;
+- (id)iconLists;
+- (BOOL)iconListsAreDirty;
+- (BOOL)iconPositionInPlatformState:(id)platformState X:(int *)x Y:(int *)y inIconListNumber:(int *)iconListNumber;
 - (id)iconState;
-- (id)iconsOfClass:(Class)aClass;
-- (BOOL)importState:(id)state;
-- (id)indexPathForIconInPlatformState:(id)platformState;
-- (id)indexPathForNewIcon:(id)newIcon isDesignatedLocation:(BOOL *)location replaceExistingIconAtIndexPath:(id *)indexPath;
-- (BOOL)isIconVisible:(id)visible;
-- (void)layout;
-- (id)leafIconForIdentifier:(id)identifier;
-- (id)leafIcons;
 - (void)loadAllIcons;
-- (void)localeChanged;
-- (id)newsstandIcon;
-- (void)removeIcon:(id)icon;
-- (void)removeIconForIdentifier:(id)identifier;
-- (id)rootFolder;
-- (void)saveIconStateIfNeeded;
-- (void)setVisibilityOfIconsWithVisibleTags:(id)visibleTags hiddenTags:(id)tags;
-- (id)visibleIconIdentifiers;
+- (void)noteIconStateChangedExternally;
+- (void)relayout;
+- (void)reloadIconForDisplayIdentifier:(id)displayIdentifier;
+- (void)removeEmptyIconList:(id)list;
+- (void)removeIconForDisplayIdentifier:(id)displayIdentifier;
+- (void)replaceDownloadingDisplayIdentifier:(id)identifier withDisplayIdentifier:(id)displayIdentifier;
+- (void)saveIconState;
+- (void)uninstallApplicationIcon:(id)icon;
+- (void)uninstallBookmarkIcon:(id)icon;
 @end
 

@@ -5,12 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
-#import "SpringBoard-Structs.h"
 
-@class NSTimer;
 
-__attribute__((visibility("hidden")))
 @interface SBUSSDAlert : SBAlert {
 	unsigned _receivedString : 1;
 	unsigned _dismissOnActivate : 1;
@@ -18,20 +14,18 @@ __attribute__((visibility("hidden")))
 }
 + (void)_daemonRestart:(id)restart;
 + (void)_newSIM:(id)sim;
-+ (id)errorStringForCode:(id)code;
++ (id)errorStringForCode:(unsigned)code;
 + (void)registerForAlerts;
 + (void)registerForSettingsAlerts;
 + (void)test;
 - (void)USSDStringAvailable:(id)available allowsResponse:(BOOL)response;
 - (void)_delayedDismiss;
-- (void)activate;
+- (BOOL)activate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (BOOL)allowsResponse;
-- (void)deactivate;
+- (BOOL)deactivate;
 - (void)dealloc;
 - (BOOL)receivedString;
-- (BOOL)sentResponse;
 - (void)setDismissOnActivate:(BOOL)activate;
-- (int)statusBarStyle;
 @end
 

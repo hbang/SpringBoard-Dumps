@@ -5,24 +5,14 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
-@class NSObject, PKPassLibrary, NSLock;
-@protocol OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
-@interface SBResetManager : XXUnknownSuperclass {
+@interface SBResetManager : NSObject {
 	BOOL _threadRunning;
 	NSLock *_lock;
 	int _mode;
 	NSLock *_progressLock;
 	float _progress;
-	BOOL _paymentCardsExist;
-	PKPassLibrary *_passLibrary;
-	XXStruct_qXnNTD *_paymentCardDeletionProgressStack;
-	id _postCardDeletionHandler;
-	NSObject<OS_dispatch_semaphore> *_resetThreadSemaphore;
 }
 + (id)sharedInstance;
 - (id)init;
@@ -30,13 +20,10 @@ __attribute__((visibility("hidden")))
 - (void)_postResetEnded;
 - (void)_resetFinished;
 - (void)_resetThread;
-- (void)_setProgress:(float)progress;
 - (void)beginReset;
 - (void)dealloc;
-- (void)passLibrary:(id)library removingPassesOfType:(unsigned)type didFinishWithSuccess:(BOOL)success;
-- (void)passLibrary:(id)library removingPassesOfType:(unsigned)type didUpdateWithProgress:(double)progress;
-- (void)performPaymentCardDeletionWithCompletion:(id)completion;
 - (float)progress;
 - (void)setMode:(int)mode;
+- (void)setProgress:(float)progress;
 @end
 

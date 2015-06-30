@@ -5,68 +5,35 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class NSRecursiveLock, NSObject, NSString;
-@protocol OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
-@interface SBWiFiManager : XXUnknownSuperclass {
-	NSRecursiveLock *_lock;
-	void *_manager;
-	void *_device;
-	NSString *_deviceInterfaceName;
-	BOOL _devicePresent;
-	void *_currentNetwork;
-	void *_previousNetwork;
-	BOOL _currentNetworkHasBeenSet;
-	BOOL _currentNetworkIsIOSHotspot;
-	BOOL _currentNetworkIsIOSHotspotHasBeenSet;
-	BOOL _powered;
-	BOOL _poweredHasBeenSet;
+@interface SBWiFiManager : NSObject {
+	Apple80211 *_wireless;
 	int _rssiThreshold;
-	int _signalStrengthBars;
-	int _signalStrengthRSSI;
-	BOOL _signalStrengthHasBeenSet;
-	SCDynamicStoreRef _SCDynamicStoreNetworkState;
-	NSObject<OS_dispatch_source> *_SCUpdateTimeoutSource;
-	void *_primaryInterface;
-	BOOL _primaryInterfaceHasBeenSet;
-	BOOL _isPrimaryInterface;
-	BOOL _isPrimaryInterfaceChanging;
-	int linkToken;
-	int powerToken;
+	BOOL _busy;
+	BOOL _joining;
+	BOOL _cancel;
+	NSLock *_lock;
+	id _delegate;
 }
 + (id)sharedInstance;
 - (id)init;
-- (BOOL)_cachedIsAssociated;
-- (void)_linkDidChange;
-- (void *)_manager;
-- (void)_powerStateDidChange;
-- (void)_primaryInterfaceChanged:(BOOL)changed;
-- (void)_setPrimaryInterfaceHasBeenSet;
-- (void)_setWiFiDevice:(void *)device;
-- (void)_updateCurrentNetwork;
-- (void)_updateWiFiDevice:(id)device;
-- (void)_updateWiFiState;
-- (id)_wifiInterface;
-- (id)currentNetworkName;
-- (BOOL)devicePresent;
-- (BOOL)isAssociated;
-- (BOOL)isAssociatedToIOSHotspot;
-- (BOOL)isPowered;
-- (BOOL)isPrimaryInterface;
-- (id)knownNetworks;
-- (void)resetSettings;
-- (void)setPowered:(BOOL)powered;
-- (void)setWiFiEnabled:(BOOL)enabled;
-- (int)signalStrengthBars;
-- (int)signalStrengthRSSI;
-- (void)updateDevicePresence;
-- (void)updateSignalStrength;
-- (void)updateSignalStrengthFromRawRSSI:(int)rawRSSI andScaledRSSI:(float)rssi;
-- (BOOL)wiFiEnabled;
-- (BOOL)wifiSupported;
+- (void)_SBAirPortConfigurationChanged;
+- (void)_SBAirPortPowerChanged;
+- (void)_SBAirPortUpdateTimer;
+- (void)_joinComplete:(id)complete;
+- (void)_joinNetwork:(id)network;
+- (void)_joinNetworkThread:(id)thread;
+- (void)_scanComplete:(id)complete;
+- (void)_scanThread;
+- (BOOL)busy;
+- (void)cancel;
+- (void)dealloc;
+- (void)dismissAlerts;
+- (void)joinNetwork:(id)network;
+- (void)joinSecureNetwork:(id)network password:(id)password;
+- (BOOL)joining;
+- (void)scan;
+- (void)setDelegate:(id)delegate;
 @end
 

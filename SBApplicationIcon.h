@@ -5,30 +5,22 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBLeafIcon.h"
 
-@class UIImage;
 
-__attribute__((visibility("hidden")))
-@interface SBApplicationIcon : SBLeafIcon {
-	UIImage *_cachedSquareHomeScreenContentsImage;
+@interface SBApplicationIcon : SBIcon {
+	SBApplication *_app;
 }
-+ (id)_squareHomeScreenIconImagesMemoryPool;
 - (id)initWithApplication:(id)application;
-- (id)__loadIconImageForDataSource:(id)dataSource format:(int)format;
-- (id)__loadUnmaskedIconImageForFormat:(int)format;
-- (id)_blockForGeneratingIconImageInBackgroundWithFormat:(int)format complete:(id)complete;
+- (id)_automationID;
 - (id)application;
-- (id)automationID;
-- (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
-- (id)folderFallbackTitle;
-- (id)folderTitleOptions;
-- (id)generateIconImage:(int)image;
-- (void)generateIconImageInBackground:(id)background;
-- (id)getUnmaskedIconImage:(int)image;
+- (id)displayIdentifier;
+- (id)displayName;
+- (id)icon;
+- (void)launch;
+- (BOOL)launchEnabled;
 - (void)setBadge:(id)badge;
+- (BOOL)shouldEllipsizeLabel;
 - (id)tags;
 @end
 

@@ -5,36 +5,17 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class SBPasscodeAlertItem, SBPasscodeComplianceAlertItem, NSDate, NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBPasscodeController : XXUnknownSuperclass {
-	SBPasscodeAlertItem *_passcodeAlertItem;
+@interface SBPasscodeController : NSObject {
+	SBPasscodeAlertItem *_alertItem;
 	int _mode;
-	NSString *_previousPasscode;
-	NSString *_newPasscode;
-	int _unlockScreenType;
-	SBPasscodeComplianceAlertItem *_complianceAlertItem;
-	NSDate *_forcedComplianceDate;
-	id _telephonyNotificationObserver;
-	int _restoreCompletedAlertStateChangedToken;
-	BOOL _delayedComplianceAlertUntilAfterRestoreCompletedAlert;
+	NSString *_password;
+	NSString *_originalPassword;
+	BOOL _alphanumeric;
 }
 + (id)sharedInstance;
-- (id)init;
-- (void)_abort;
-- (void)_activateComplianceAlert;
-- (void)_didEndCall;
-- (BOOL)_isRestoreCompletedAlertActive;
 - (void)_passwordEntered:(id)entered;
-- (void)_startListeningToRestoreCompletedAlertStateChangedNotifications;
-- (void)_startListeningToTelephonyNotifications;
-- (void)_stopListeningToRestoreCompletedAlertStateChangedNotifications;
-- (void)_stopListeningToTelephonyNotifications;
-- (void)_userWantsToComplyNow:(BOOL)complyNow;
-- (void)checkPasscodeCompliance;
 - (void)dealloc;
 - (void)forceUserToChangePasscode;
 @end

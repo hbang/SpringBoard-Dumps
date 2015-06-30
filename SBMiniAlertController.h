@@ -5,31 +5,30 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
-@class UIView, SBApplication;
 
-__attribute__((visibility("hidden")))
-@interface SBMiniAlertController : XXUnknownSuperclass {
+@interface SBMiniAlertController : NSObject {
 	SBApplication *_displayShowingAnAlert;
-	unsigned _sbMiniAlertVisible : 1;
-	UIView *_hiddenAlertWindow;
+	UIWindow *_dimmingWindow;
+	unsigned _dontAskApps : 1;
+	unsigned _reserved : 31;
 }
 + (id)sharedInstance;
-- (id)init;
-- (void)_hideMiniAlertsForApp:(id)app;
-- (void)_setAlertVisibleNotifyState:(BOOL)state;
-- (void)_setDisplayShowingAnAlert:(id)alert;
 - (BOOL)canShowAlerts;
-- (void)deactivateAlertItemsForDisplay:(id)display;
-- (void)dealloc;
-- (void)displayDidDismissMiniAlert:(id)display;
+- (void)cancelHideDimmingWindow;
+- (void)deactivateAlertItemsWithBundleIdentifier:(id)bundleIdentifier;
+- (id)dimImageForKeyboard:(BOOL)keyboard;
+- (void)displayDidDisableMiniAlerts:(id)display;
 - (id)displayShowingAnAlert;
-- (void)displayWillDismissMiniAlert:(id)display;
+- (void)displayWillDismissMiniAlert:(id)display andShowAnother:(BOOL)another;
 - (void)displayWillShowMiniAlert:(id)display;
+- (void)finishedAnimatingDimWindowOut:(id)anOut didFinish:(id)finish;
 - (void)hideApplicationMiniAlerts;
-- (BOOL)miniAlertVisible;
+- (void)hideDimmingWindow;
+- (void)hideDimmingWindowAfterDelay;
 - (void)noteMiniAlertStateChanged;
+- (void)setShouldAskApps:(BOOL)askApps;
 - (void)showApplicationMiniAlertsIfNeeded;
+- (void)showDimmingWindow;
 @end
 

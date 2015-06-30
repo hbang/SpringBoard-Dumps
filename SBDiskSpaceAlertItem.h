@@ -5,16 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
-@interface SBDiskSpaceAlertItem : XXUnknownSuperclass {
-	int _usageButtonIndex;
+@interface SBDiskSpaceAlertItem : SBAlertItem {
 }
-- (id)init;
-- (void)_showUsagePrefs;
-- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)performUnlockAction;
 - (BOOL)shouldShowInEmergencyCall;

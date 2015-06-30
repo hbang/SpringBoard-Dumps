@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
-@interface SBRingerHUDController : XXUnknownSuperclass {
+@interface SBRingerHUDController : NSObject {
 }
-+ (void)activate:(int)activate;
++ (id)sharedInstance;
+- (void)activate:(int)activate;
+- (void)dealloc;
 @end
 

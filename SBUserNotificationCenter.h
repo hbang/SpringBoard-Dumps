@@ -5,11 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
-@interface SBUserNotificationCenter : XXUnknownSuperclass {
+@interface SBUserNotificationCenter : NSObject {
 }
 + (void)_userNotificationDone:(id)done;
 + (void)startUserNotificationCenter;

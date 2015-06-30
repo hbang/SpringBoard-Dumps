@@ -5,11 +5,8 @@
  * Source: (null)
  */
 
-#import "SBAlert.h"
-#import "SpringBoard-Structs.h"
 
 
-__attribute__((visibility("hidden")))
 @interface SBMobilityManagementAlert : SBAlert {
 }
 + (void)registerForAlerts;

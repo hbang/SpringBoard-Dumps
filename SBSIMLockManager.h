@@ -5,42 +5,27 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
-@class SBSIMLockAlertItem, SBSIMLockEntryAlert, NSString;
 
-__attribute__((visibility("hidden")))
-@interface SBSIMLockManager : XXUnknownSuperclass {
-	BOOL _isBrickedDevice;
+@interface SBSIMLockManager : NSObject {
+	BOOL _isInitialUpdate;
 	int _status;
 	SBSIMLockAlertItem *_currentAlert;
 	SBSIMLockEntryAlert *_lockEntryAlert;
-	NSString *_languageCode;
-	BOOL _hasHadSIMWhileNotBricked;
-	BOOL _wasActivated;
-	BOOL _neededUIM;
 }
 + (id)sharedInstance;
-- (id)init;
 - (int)_CTToSBSIMStatus:(CFStringRef)sbsimstatus;
-- (void)_activationDidChange;
-- (void)_externalSIMStatusChanged:(id)changed;
-- (void)_handlePromptForUnlock;
-- (void)_postponementDidChange;
-- (void)_setupAppActivationStateDidChange:(id)_setupAppActivationState;
-- (BOOL)_shouldSuppressAlert;
+- (BOOL)_hopelesslyPUKLocked;
+- (void)_initialUpdate;
+- (void)_lockdownChanged;
 - (int)_statusFromCT;
 - (void)_tearDownAlertAndUpdateStatus;
-- (void)_telephonyDidRestart;
 - (void)_tryToUpdateStatus;
 - (void)_updateSIMStatus:(CFStringRef)status withOptions:(CFDictionaryRef)options;
 - (void)_updateToStatus:(int)status;
-- (void)airplaneModeChanged;
 - (void)alertItemDismissed:(id)dismissed;
 - (void)attemptUnlock;
 - (void)dealloc;
-- (id)languageCode;
 - (void)lockEntryAlertDismissed:(id)dismissed;
 - (int)pinLockAttemptsRemaining;
 - (int)pukLockAttemptsRemaining;

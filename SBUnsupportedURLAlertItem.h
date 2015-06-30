@@ -5,11 +5,13 @@
  * Source: (null)
  */
 
-#import "SBDismissOnlyAlertItem.h"
 
 
-__attribute__((visibility("hidden")))
 @interface SBUnsupportedURLAlertItem : SBDismissOnlyAlertItem {
 }
++ (id)activeUnsupportedURLAlertItem;
+- (void)dealloc;
+- (void)willActivate;
+- (void)willDeactivateForReason:(int)reason;
 @end
 

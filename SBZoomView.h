@@ -5,19 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
-__attribute__((visibility("hidden")))
-@interface SBZoomView : XXUnknownSuperclass {
+@interface SBZoomView : UIImageView {
 }
-+ (id)_chromeStatusBarImageForInterfaceOrientation:(int)interfaceOrientation;
-+ (int)_degreesForRotationFromInterfaceOrientation:(int)interfaceOrientation toInterfaceOrientation:(int)interfaceOrientation2;
-+ (int)_degreesForRotationFromOriginalImageOrientation:(int)originalImageOrientation toInterfaceOrientation:(int)interfaceOrientation;
-+ (CGSize)_rotateAndNormalizeSize:(CGSize)size withTransform:(CGAffineTransform)transform;
-- (id)initWithFrame:(CGRect)frame;
-- (id)_initWithFrame:(CGRect)frame;
-- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
+- (id)initWithFrame:(CGRect)frame image:(id)image isInCall:(BOOL)call preventSplit:(BOOL)split;
 @end
 

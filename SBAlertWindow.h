@@ -5,29 +5,37 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBWindow.h"
 
-@class NSMapTable, SBAlertWindowViewController;
 
-__attribute__((visibility("hidden")))
-@interface SBAlertWindow : SBWindow {
-	SBAlertWindowViewController *_rootViewController;
-	NSMapTable *_alertToDisplayMap;
+@interface SBAlertWindow : UIWindow {
+	UIView *_contentLayer;
+	unsigned _isAnimating : 1;
+	unsigned _isInvalid : 1;
+	unsigned _handlerActive : 1;
+	float _finalAlpha;
+	SBAlertDisplay *_currentDisplay;
+	NSMutableArray *_stackedAlertDisplays;
+	NSMutableDictionary *_alertToDisplayMap;
 }
-+ (BOOL)_isSecure;
-+ (float)windowLevel;
-- (id)initWithScreen:(id)screen rootViewController:(id)controller debugName:(id)name scene:(id)scene;
-- (id)initWithScreen:(id)screen rootViewController:(id)controller layoutStrategy:(id)strategy debugName:(id)name scene:(id)scene;
-- (id)_initWithFrame:(CGRect)frame debugName:(id)name attached:(BOOL)attached;
-- (void)addView:(id)view toBeObscuredByAlert:(id)beObscuredByAlert;
++ (CGRect)constrainFrameToScreen:(CGRect)screen;
+- (id)initWithContentRect:(CGRect)contentRect;
+- (void)_backgroundFadedIn;
+- (void)_cancelBearTrap;
+- (void)_fireBearTrap;
+- (void)_setBearTrap;
+- (void)alertDisplayWillDismiss;
+- (id)currentDisplay;
 - (BOOL)deactivateAlert:(id)alert;
 - (void)dealloc;
+- (void)dismissWindow:(id)window;
 - (void)displayAlert:(id)alert;
-- (BOOL)hasActiveAlertsOrDisplays;
+- (int)displayCount;
+- (BOOL)handlerAlreadyActive;
 - (BOOL)isOpaque;
-- (void)noteInterfaceOrientationChangingTo:(int)to animated:(BOOL)animated withActivatingAlert:(id)activatingAlert;
-- (id)stackedAlertsIncludingActiveAlert:(BOOL)alert;
-- (int)stackedDisplayCount;
+- (void)mouseUp:(GSEventRef)up;
+- (void)orderOut:(id)anOut;
+- (void)popInCurrentDisplay;
+- (void)setHandlerAlreadyActive:(BOOL)active;
+- (id)stackedDisplayForAlert:(id)alert;
 @end
 

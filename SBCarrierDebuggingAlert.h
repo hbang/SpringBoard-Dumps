@@ -5,10 +5,8 @@
  * Source: (null)
  */
 
-#import "SBDismissOnlyAlertItem.h"
 
 
-__attribute__((visibility("hidden")))
 @interface SBCarrierDebuggingAlert : SBDismissOnlyAlertItem {
 }
 + (BOOL)haveShownAlert;

@@ -5,22 +5,14 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBApplicationIcon.h"
 
 
-__attribute__((visibility("hidden")))
 @interface SBCalendarApplicationIcon : SBApplicationIcon {
+	SBCalendarIconContentsView *_dateContents;
 }
-+ (id)countriesRequiringBlackDayOfWeek;
 - (id)initWithApplication:(id)application;
-- (void)_drawIconIntoCurrentContextWithImageSize:(CGSize)imageSize iconBase:(id)base;
-- (id)colorForDayOfWeek;
 - (void)dealloc;
-- (id)generateIconImage:(int)image;
-- (id)getUnmaskedIconImage:(int)image;
-- (BOOL)isBlackDayOfWeekRequiredForLocale:(id)locale;
-- (void)localeChanged;
-- (id)numberFont;
+- (void)setHighlighted:(BOOL)highlighted;
+- (void)updateInvitationBadge;
 @end
 
