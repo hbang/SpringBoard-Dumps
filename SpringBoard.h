@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import <UIKit/UIApplication.h>
 #import "SpringBoard-Structs.h"
 #import "SpringBoard.h"
-#import <UIKit/UIApplication.h>
 
 
 @interface SpringBoard : UIApplication {
@@ -187,6 +187,8 @@
 - (void)powerDownCanceled:(id)canceled;
 - (void)powerDownRequested:(id)requested;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)profileConnection userInfo:(id)info;
+- (void)profileConnectionDidReceivePasscodePolicyChangedNotification:(id)profileConnection userInfo:(id)info;
+- (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)profileConnection userInfo:(id)info;
 - (void)quitTopApplication:(GSEventRef)application;
 - (void)reboot;
 - (void)relaunchSpringBoard;
@@ -209,7 +211,6 @@
 - (void)setHardwareKeyboardLayoutName:(id)name;
 - (void)setHasMiniAlerts:(BOOL)alerts;
 - (void)setNowPlayingInfo:(id)info forApplication:(id)application;
-- (void)setProximitySensorEnabled:(int)enabled;
 - (void)setSimpleRemoteRoutingPriority:(unsigned)priority forApplication:(id)application;
 - (void)setZoomTouchEnabled:(BOOL)enabled;
 - (void)setupMidnightTimer;
@@ -259,7 +260,6 @@
 @interface SpringBoard (SBApplicationTesting)
 - (void)_retryLaunchTestWithOptions:(id)options;
 - (void)endLaunchTest;
-- (void)finishedTest:(id)test extraResults:(id)results;
 - (BOOL)runTest:(id)test options:(id)options;
 - (void)startLaunchTestNamed:(id)named options:(id)options;
 - (void)startResumeTestNamed:(id)named options:(id)options;

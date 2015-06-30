@@ -10,9 +10,10 @@
 
 
 @interface SBSlidingViewHighlight : UIView {
-	XXStruct_9ihRqB _notchInfo;
+	CGRect _notchRect;
 }
-- (id)initWithFrame:(CGRect)frame notchInfo:(XXStruct_9ihRqB)info;
+- (id)initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame notchRect:(CGRect)rect;
 - (void)drawRect:(CGRect)rect;
 @end
 

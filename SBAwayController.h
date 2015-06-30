@@ -151,6 +151,7 @@
 - (void)lockBarStartedTracking:(id)tracking;
 - (void)lockBarStoppedTracking:(id)tracking;
 - (void)makeEmergencyCall;
+- (float)mediaControlHeightDelta;
 - (BOOL)moveAlertItemToAwayView:(id)awayView;
 - (id)nameOfPluginController:(id)pluginController;
 - (void)notePasscodeGracePeriodMayHaveChanged;

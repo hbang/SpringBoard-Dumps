@@ -26,6 +26,7 @@
 - (void)_thumbnailAvailableNotification:(id)notification;
 - (BOOL)allowsUninstall;
 - (id)applicationBundleID;
+- (void)closeBoxTapped;
 - (void)completeUninstall;
 - (void)dealloc;
 - (id)description;
@@ -49,7 +50,6 @@
 - (id)uninstallAlertCancelTitle;
 - (id)uninstallAlertConfirmTitle;
 - (id)uninstallAlertTitle;
-- (void)uninstallClicked:(id)clicked;
 - (void)updateDisplayName;
 @end
 

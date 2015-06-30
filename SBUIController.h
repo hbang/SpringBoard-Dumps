@@ -43,7 +43,10 @@
 	int _batteryLoggingStartCapacity;
 	SBDismissOnlyAlertItem *_fwChargingAlert;
 }
++ (CFDataRef)_createDataWithMappedFile:(id)mappedFile;
 + (int)displayedLevelForLockScreenBatteryLevel:(int)lockScreenBatteryLevel;
++ (id)folderSwitcherLinen;
++ (id)folderSwitcherLinenPath;
 + (id)sharedInstance;
 - (id)init;
 - (void)ACPowerChanged;
@@ -70,6 +73,7 @@
 - (void)_unhostSwitcherAppImmediately:(BOOL)immediately;
 - (void)_updateWallpaperImage;
 - (id)_zoomViewForApplication:(id)application includeStatusBar:(BOOL)bar snapshotFrame:(CGRect *)frame;
+- (id)_zoomViewForApplication:(id)application includeStatusBar:(BOOL)bar snapshotFrame:(CGRect *)frame canUseIOSurface:(BOOL)surface;
 - (void)activateApplicationAnimated:(id)animated;
 - (void)activateApplicationFromSwitcher:(id)switcher;
 - (BOOL)activateSwitcher;
@@ -80,6 +84,7 @@
 - (void)animateApplicationSuspendFlip:(id)flip;
 - (void)applicationHasDied:(id)died;
 - (void)applicationSuspendAnimationDidStop:(id)applicationSuspendAnimation finished:(id)finished context:(void *)context;
+- (void)applicationSuspendAnimationWillStart:(id)applicationSuspendAnimation context:(void *)context;
 - (void)applicationSuspendFlipDidStop:(id)applicationSuspendFlip;
 - (void)applicationSuspendSwitcherFadeDidStop:(id)applicationSuspendSwitcherFade;
 - (float)batteryCapacity;

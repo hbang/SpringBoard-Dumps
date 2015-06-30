@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIGestureRecognizer.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface SBAwaySwipeGestureRecognizer : UIGestureRecognizer {

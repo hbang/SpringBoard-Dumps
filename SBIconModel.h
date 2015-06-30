@@ -33,7 +33,7 @@
 - (id)_indexPathForIdentifier:(id)identifier inListsRepresentation:(id)listsRepresentation;
 - (void)_replaceAppIconWithDownloadingIcon:(id)downloadingIcon;
 - (void)_replaceAppIconsWithDownloadingIcons;
-- (void)_writeIconState;
+- (void)_writeIconStateWithNotification:(BOOL)notification;
 - (id)addBookmarkIconForWebClip:(id)webClip;
 - (id)addDownloadingIconForDownload:(id)download;
 - (id)addDownloadingIconForIdentifier:(id)identifier;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <Foundation/NSDictionary.h>
 #import "SpringBoard-Structs.h"
+#import <Foundation/NSDictionary.h>
 
 
 @interface NSDictionary (CTHelpers)

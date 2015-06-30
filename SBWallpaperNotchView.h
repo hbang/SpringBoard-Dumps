@@ -9,13 +9,13 @@
 #import <UIKit/UIView.h>
 
 
-@interface SBNotchedWallpaperSlice : UIView {
-	UIImage *_wallpaperImage;
-	CGRect _sliceRect;
+@interface SBWallpaperNotchView : UIView {
 	XXStruct_9ihRqB _notchInfo;
+	UIImage *_wallpaper;
 }
-- (id)initWithFrame:(CGRect)frame sliceRect:(CGRect)rect notchInfo:(XXStruct_9ihRqB)info wallpaper:(id)wallpaper;
+- (id)initWithFrame:(CGRect)frame notchInfo:(XXStruct_9ihRqB)info wallpaper:(id)wallpaper;
 - (void)dealloc;
 - (void)drawRect:(CGRect)rect;
+- (void)setWallpaper:(id)wallpaper;
 @end
 

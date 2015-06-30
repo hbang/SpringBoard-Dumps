@@ -20,6 +20,7 @@
 - (void)_setLayerFrameAndTransform:(id)transform;
 - (void *)createIOSurfaceForFrame:(CGRect)frame;
 - (void *)createIOSurfaceForFrame:(CGRect)frame includeAdditionalContext:(unsigned)context outTransform:(CGAffineTransform *)transform;
+- (void *)createIOSurfaceForFrame:(CGRect)frame includeAdditionalContext:(unsigned)context usePurpleGfx:(BOOL)gfx outTransform:(CGAffineTransform *)transform;
 - (void *)createIOSurfaceForFrame:(CGRect)frame outTransform:(CGAffineTransform *)transform;
 - (void)dealloc;
 - (id)description;

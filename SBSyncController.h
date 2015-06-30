@@ -16,8 +16,10 @@
 	int _restoreTimerState;
 	NSTimer *_restoreTimer;
 	BOOL _showingResetUI;
+	BOOL _appsChangedDuringSync;
 }
 + (id)sharedInstance;
+- (void)_appInstallationNotification;
 - (void)_delayedBeginReset;
 - (void)_delayedQuitApplications;
 - (void)_invalidateRestoreTimer;

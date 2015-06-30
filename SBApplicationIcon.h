@@ -9,7 +9,7 @@
 
 
 @interface SBApplicationIcon : SBLeafIcon {
-	SBApplication *_app;
+	NSString *_displayIdentifier;
 }
 - (id)initWithApplication:(id)application;
 - (id)_automationID;

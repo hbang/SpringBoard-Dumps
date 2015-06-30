@@ -19,6 +19,7 @@
 - (void)_setErrorString:(id)string;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
+- (void)didEndCall;
 - (void)dismiss:(int)dismiss;
 - (void)returnKeyPressed:(id)pressed;
 - (BOOL)shouldShowInLockScreen;

@@ -6,8 +6,8 @@
  */
 
 #import "SBRemoteLocalNotificationAlertDelegate.h"
-#import "SpringBoard-Structs.h"
 #import "SBDisplay.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBApplication : SBDisplay <SBRemoteLocalNotificationAlertDelegate> {
@@ -27,7 +27,6 @@
 	id _processObserver;
 	SBProcessAssertion *_resumeProcessAssertion;
 	SBProcessAssertion *_suspendingProcessAssertion;
-	SBApplicationTimes *_times;
 	double _modificationDate;
 	NSString *_displayName;
 	NSMutableArray *_tags;
@@ -37,6 +36,7 @@
 	NSString *_signerIdentity;
 	unsigned _activationEventSequenceNumber;
 	NSTimer *_watchdogTimer;
+	double _userLaunchEventTime;
 	unsigned _monitoringLocaleAndTimeChanges : 1;
 	unsigned _watchdogType : 4;
 	unsigned _doingBackgroundNetworking : 16;
@@ -54,10 +54,12 @@
 	unsigned _usingLocation : 1;
 	unsigned _roleDisallowsLocationBadge : 1;
 	unsigned _deactivatingForForcedExit : 1;
+	unsigned _isUnsupportediBooks : 1;
 	unsigned _isRevealable : 1;
-	unsigned _uiRequiresPersistentWiFi : 1;
 	unsigned _dataFlagsIsSet : 1;
 	unsigned _isClassic : 1;
+	unsigned _isGameCenterEnabled : 1;
+	unsigned _wasGameCenterEverEnabled : 1;
 	unsigned _backgroundContinuationEnabled : 1;
 	unsigned _backgroundContinuationEnabledValid : 1;
 	unsigned _supportsAudioBackgroundMode : 1;
@@ -75,6 +77,8 @@
 	unsigned _defaultStatusBarStyle : 8;
 	BOOL _defaultStatusBarHidden;
 	unsigned _defaultInterfaceOrientation : 8;
+	unsigned _defaultInterfaceOrientationOverride : 8;
+	unsigned _interfaceOrientationOverrideSet : 1;
 	unsigned _sbUsesNetwork : 8;
 	unsigned _dataFlags : 8;
 	unsigned _hasShownDataPlanAlertSinceLock : 1;
@@ -108,7 +112,6 @@
 + (BOOL)allowAllInBackground;
 + (void)flushLaunchAlertsOfType:(int)type;
 + (id)systemSnapshotsDirectory;
-+ (void)userElapsedCPUTime:(double *)time systemElapsedCPUTime:(double *)time2 idleElapsedCPUTime:(double *)time3;
 - (id)initWithBundleIdentifier:(id)bundleIdentifier roleIdentifier:(id)identifier path:(id)path bundle:(id)bundle infoDictionary:(id)dictionary isSystemApplication:(BOOL)application signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated;
 - (void)VOIPDaemonRequestedResumeForConnectionUpdate;
 - (void)_addInternalDebugVariablesToEnvironment;
@@ -133,7 +136,6 @@
 - (id)_lastLocalNotificationFireDate;
 - (id)_localizedGenreFromDictionary:(id)dictionary;
 - (id)_localizedGenreNameForID:(int)anId;
-- (void)_markWatchdogCPUTimes;
 - (id)_pathIfFileExistsAtPath:(id)path;
 - (void)_purgeRemoteApplication;
 - (void)_relaunchAfterExitIfNecessary;
@@ -197,12 +199,13 @@
 - (void)decrementInstallationAssertionCount;
 - (id)defaultImage:(BOOL *)image;
 - (id)defaultImage:(BOOL *)image preferredScale:(float)scale originalOrientation:(int *)orientation currentOrientation:(int *)orientation4;
+- (id)defaultImage:(BOOL *)image preferredScale:(float)scale originalOrientation:(int *)orientation currentOrientation:(int *)orientation4 canUseIOSurface:(BOOL)surface;
+- (id)defaultImage:(BOOL *)image preferredScale:(float)scale originalOrientation:(int *)orientation currentOrientation:(int *)orientation4 launchingInterfaceOrientation:(int)orientation5 canUseIOSurface:(BOOL)surface;
 - (BOOL)defaultStatusBarHidden;
 - (int)defaultStatusBarStyle;
 - (id)displayIdentifier;
 - (id)displayName;
 - (int)effectiveBackgroundJetsamPriority;
-- (double)elapsedCPUTime;
 - (BOOL)enabled;
 - (void)exitedAbnormally;
 - (void)exitedCommon;
@@ -213,20 +216,22 @@
 - (id)folderNames;
 - (id)getPendingLocalNotification;
 - (BOOL)hasBeenFrontmost;
+- (BOOL)hasGameCenterData;
 - (BOOL)hasMiniAlerts;
 - (BOOL)hasShownDataPlanAlertSinceLock;
 - (void)hideContextHostView;
 - (Class)iconClass;
 - (void)incrementInstallationAssertionCount;
-- (BOOL)isBeingDebugged;
 - (BOOL)isClassic;
 - (BOOL)isDefaultRole;
 - (BOOL)isInstallationAssertionHeld;
 - (BOOL)isNowRecordingApplication;
 - (BOOL)isRevealable;
 - (BOOL)isSameExecutableAsApplication:(id)application;
+- (BOOL)isSnapshotPresentForLaunchingInterfaceOrientation:(int)launchingInterfaceOrientation;
 - (BOOL)isSystemApplication;
 - (BOOL)isSystemProvisioningApplication;
+- (BOOL)isUnsupportediBooks;
 - (BOOL)isUserRatable;
 - (BOOL)isWidgetApplication;
 - (void)kill;
@@ -238,11 +243,12 @@
 - (id)loggingIdentifier;
 - (id)longDisplayName;
 - (void)markApplicationIdentityAsTrusted;
-- (void)markLaunchTime;
+- (void)markUserLaunchInitiationTime;
 - (double)modificationDate;
 - (void)notifyOfImminentProcessAssertionExpiration;
 - (void)notifyOfTaskResume;
 - (void)notifyTaskSwitcherEntered:(BOOL)entered;
+- (void)overrideDefaultInterfaceOrientation:(int)orientation;
 - (id)path;
 - (int)prefererredBackgroundJetsamPriority;
 - (void)prepareForUninstallation;
@@ -252,11 +258,11 @@
 - (id)remoteApplication;
 - (void)remoteLocalNotificationAlertShouldLaunch:(id)remoteLocalNotificationAlert forApplication:(id)application;
 - (void)remoteLocalNotificationAlertShouldSnooze:(id)remoteLocalNotificationAlert forApplication:(id)application;
+- (void)removeDefaultInterfaceOrientationOverride;
 - (void)removeWatchdogAssertionWithToken:(unsigned)token;
 - (void)renewWatchdogAssertionWithToken:(unsigned)token timeout:(double *)timeout;
 - (void)resetLaunchAlertForType:(int)type;
 - (void)resetSuspendSettings;
-- (void)resumeForMemoryWarning;
 - (void)resumeToQuit;
 - (id)roleIdentifier;
 - (void)scheduleLocalNotification:(id)notification;
@@ -272,6 +278,7 @@
 - (void)setHasMiniAlerts:(BOOL)alerts;
 - (void)setHasShownDataPlanAlertSinceLock:(BOOL)lock;
 - (void)setIsDefaultRole:(BOOL)role;
+- (void)setIsUnsupportediBooks:(BOOL)books;
 - (void)setNowPlayingWithAudio:(BOOL)audio;
 - (void)setSeatbeltEnvironmentVariables:(id)variables;
 - (void)setSuspendType:(int)type;
@@ -281,7 +288,6 @@
 - (void)setUsesEdgeNetwork:(BOOL)network;
 - (void)setUsesWiFiNetwork:(BOOL)network;
 - (BOOL)shouldLaunchPNGless;
-- (BOOL)shouldWatchdog;
 - (BOOL)showLaunchAlertForType:(int)type;
 - (id)signerIdentity;
 - (id)snapshotsDirectory;

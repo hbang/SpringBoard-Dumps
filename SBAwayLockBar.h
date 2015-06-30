@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <TelephonyUI/TPBottomLockBar.h>
 #import "SpringBoard-Structs.h"
+#import <TelephonyUI/TPBottomLockBar.h>
 
 
 @interface SBAwayLockBar : TPBottomLockBar {

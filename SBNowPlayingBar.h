@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SBIconDelegate.h"
+#import <Foundation/NSObject.h>
 
 
 @interface SBNowPlayingBar : NSObject <SBIconDelegate> {

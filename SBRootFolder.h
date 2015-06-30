@@ -25,7 +25,7 @@
 - (Class)listModelClass;
 - (Class)listViewClass;
 - (void)markIconStateClean;
-- (void)placeIconOnFirstPage:(id)page;
+- (void)placeIconsOnFirstPage:(id)page;
 - (void)removeEmptyList:(id)list;
 - (id)representation;
 - (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id *)added;

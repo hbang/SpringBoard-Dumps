@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <Foundation/NSString.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface NSString (Formatting)

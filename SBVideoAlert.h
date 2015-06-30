@@ -16,7 +16,6 @@
 	NSString *_conferenceID;
 }
 - (id)initWithConferenceController:(id)conferenceController inviter:(id)inviter conferenceID:(id)anId;
-- (BOOL)_tearDownFencedWindowWithObserver;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (id)conferenceController;
 - (id)conferenceID;
