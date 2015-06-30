@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import "SBAppToAppTransitionView.h"
 
 
-@interface SBRotationLockHUDController : NSObject {
+@interface SBAppShuffleView : SBAppToAppTransitionView {
 }
-+ (void)activateWithLocked:(BOOL)locked;
+- (void)_beginTransition;
 @end
 

@@ -21,6 +21,7 @@
 + (float)volumeStep;
 - (id)init;
 - (BOOL)_HUDIsDisplayableForCategory:(id)category;
+- (BOOL)_allowVolumeAdjust;
 - (float)_calcButtonRepeatDelay;
 - (void)_changeVolumeBy:(float)by;
 - (void)_effectiveVolumeChanged:(id)changed;
@@ -29,6 +30,7 @@
 - (void)_registerForAVSystemControllerNotifications;
 - (void)_serverConnectionDied:(id)died;
 - (void)_unregisterForAVSystemControllerNotifications;
+- (id)_volumeHUDViewWithMode:(int)mode volume:(float)volume;
 - (int)_volumeModeForCategory:(id)category;
 - (void)addAlwaysHiddenCategory:(id)category;
 - (void)cancelVolumeEvent;
@@ -41,5 +43,6 @@
 - (void)removeAlwaysHiddenCategory:(id)category;
 - (void)toggleMute;
 - (float)volume;
+- (id)volumeHUDForCurrentCategory;
 @end
 

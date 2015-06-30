@@ -33,7 +33,7 @@
 + (id)alertMatchingContext:(id)context;
 + (BOOL)isPlayingRingtone;
 + (id)localizedStringFromKey:(id)key defaultValue:(id)value inBundle:(id)bundle arguments:(id)arguments;
-+ (void)playAlertSound:(BOOL)sound soundName:(id)name inBundle:(id)bundle isRingtone:(BOOL)ringtone;
++ (void)playAlertSound:(BOOL)sound soundName:(id)name inBundle:(id)bundle isRingtone:(BOOL)ringtone sandboxPath:(id)path;
 + (id)presentWithLocalNotification:(id)localNotification application:(id)application;
 + (void)stopPlayingAlertSoundOrRingtone;
 - (id)initWithApplication:(id)application body:(id)body showActionButton:(BOOL)button actionLabel:(id)label;
@@ -44,6 +44,7 @@
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
+- (void)dismiss:(int)dismiss;
 - (id)lockLabel;
 - (float)lockLabelFontSize;
 - (void)performUnlockAction;

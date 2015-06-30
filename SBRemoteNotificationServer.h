@@ -6,8 +6,8 @@
  */
 
 #import <Foundation/NSObject.h>
-#import "SBRemoteLocalNotificationAlertDelegate.h"
 #import "APSConnectionDelegate.h"
+#import "SBRemoteLocalNotificationAlertDelegate.h"
 
 
 @interface SBRemoteNotificationServer : NSObject <APSConnectionDelegate, SBRemoteLocalNotificationAlertDelegate> {

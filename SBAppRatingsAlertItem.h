@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "UIAlertViewDelegate.h"
 #import "SBAlertItem.h"
+#import "UIAlertViewDelegate.h"
 
 
 @interface SBAppRatingsAlertItem : SBAlertItem <UIAlertViewDelegate> {

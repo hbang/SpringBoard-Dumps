@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBRemoteLocalNotificationAlertDelegate.h"
 #import "SBDisplay.h"
-#import "SpringBoard-Structs.h"
 
 
 @interface SBApplication : SBDisplay <SBRemoteLocalNotificationAlertDelegate> {
@@ -68,7 +68,10 @@
 	unsigned _supportsPushResumptionBackgroundMode : 1;
 	unsigned _supportsContinuousBackgroundMode : 1;
 	unsigned _wantsUnboundedTaskCompletionAssertions : 1;
+	unsigned _prefersSavedSnapshots : 1;
 	unsigned _hasBeenFrontmost : 1;
+	unsigned _requiresHiDPI : 1;
+	unsigned _hasWatchdogAssertions : 1;
 	unsigned _supportsPortraitOrientation : 1;
 	unsigned _supportsPortraitUpsideDownOrientation : 1;
 	unsigned _supportsLandscapeLeftOrientation : 1;
@@ -85,7 +88,7 @@
 	unsigned _launchAlerts : 8;
 	unsigned _suspendType : 8;
 	unsigned _uninstalled : 1;
-	int _prefererredBackgroundJetsamPriority;
+	int _preferredBackgroundJetsamPriority;
 	int _ratingRank;
 	Class _iconClass;
 	NSArray *_customMachServices;
@@ -107,13 +110,12 @@
 	SBProcessAssertion *_continuousBackgroundProcessAssertion;
 	SBProcessAssertion *_simpleRemoteActionProcessAssertion;
 }
-@property(retain) SBProcess *process;
+@property(retain, nonatomic) SBProcess *process;
 @property(assign, getter=isUsingLocation) BOOL usingLocation;
 + (BOOL)allowAllInBackground;
 + (void)flushLaunchAlertsOfType:(int)type;
 + (id)systemSnapshotsDirectory;
 - (id)initWithBundleIdentifier:(id)bundleIdentifier roleIdentifier:(id)identifier path:(id)path bundle:(id)bundle infoDictionary:(id)dictionary isSystemApplication:(BOOL)application signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated;
-- (void)VOIPDaemonRequestedResumeForConnectionUpdate;
 - (void)_addInternalDebugVariablesToEnvironment;
 - (id)_additionalDisplayQualification;
 - (void)_cancelAutoRelaunch;
@@ -141,7 +143,7 @@
 - (void)_relaunchAfterExitIfNecessary;
 - (void)_resetDataUsage;
 - (double)_resumeDurationForTransientType:(int)transientType;
-- (void)_resumeForPeriodicWake;
+- (void)_resumeForPeriodicWakeWithReason:(id)reason;
 - (void)_scheduleWatchdogAssertionWithTimeout:(double *)timeout token:(unsigned)token;
 - (id)_scheduledLocalNotifications;
 - (void)_sendApplicationStateChangedNotification:(unsigned)notification;
@@ -157,7 +159,6 @@
 - (BOOL)_signatureNeedsExplicitUserTrust;
 - (void)_startWatchdogTimerType:(int)type;
 - (void)_suspendForPeriodicWakeTimerFired:(id)periodicWakeTimerFired;
-- (int)_suspensionType;
 - (void)_takeResumeProcessAssertion;
 - (void)_takeSuspendingProcessAssertion;
 - (id)_transientIdentifier;
@@ -173,6 +174,8 @@
 - (void)activate;
 - (unsigned)activationEventSequenceNumber;
 - (unsigned)addWatchdogAssertionWithTimeout:(double *)timeout;
+- (id)appSnapshotDirectoryWithoutDisplayIdentifier;
+- (id)appSnapshotPath;
 - (id)applicationNextWakeDate;
 - (int)applicationSignatureState;
 - (unsigned)applicationState;
@@ -187,8 +190,10 @@
 - (id)bundleIdentifier;
 - (id)bundleVersion;
 - (unsigned)cachedApplicationState;
-- (void)cancelAllLocalNotifications;
 - (void)cancelLocalNotification:(id)notification;
+- (BOOL)classicAppRequiresHiDPI;
+- (BOOL)classicAppZoomedIn;
+- (BOOL)classicAppZoomedInOrRequiresHiDPI;
 - (BOOL)classicDefaultStatusBarHidden;
 - (id)contextHostView;
 - (id)customSpotlightIconPathsForKey:(id)key;
@@ -250,7 +255,7 @@
 - (void)notifyTaskSwitcherEntered:(BOOL)entered;
 - (void)overrideDefaultInterfaceOrientation:(int)orientation;
 - (id)path;
-- (int)prefererredBackgroundJetsamPriority;
+- (int)preferredBackgroundJetsamPriority;
 - (void)prepareForUninstallation;
 - (BOOL)provisioningProfileValidated;
 - (void)purgeBundleCaches;
@@ -265,7 +270,8 @@
 - (void)resetSuspendSettings;
 - (void)resumeToQuit;
 - (id)roleIdentifier;
-- (void)scheduleLocalNotification:(id)notification;
+- (id)sandboxPath;
+- (void)scheduleLocalNotifications:(id)notifications replaceExistingNotifications:(BOOL)notifications2;
 - (id)scheduledLocalNotifications;
 - (id)seatbeltEnvironmentVariables;
 - (void)sendOpenURL:(id)url;
@@ -290,7 +296,7 @@
 - (BOOL)shouldLaunchPNGless;
 - (BOOL)showLaunchAlertForType:(int)type;
 - (id)signerIdentity;
-- (id)snapshotsDirectory;
+- (void)spdResumeForTrafficRequested;
 - (void)startWatchdogTimerForPhoneSlideIfNecessary;
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
@@ -300,6 +306,7 @@
 - (BOOL)supportsPushResumptionBackgroundMode;
 - (BOOL)supportsVOIPBackgroundMode;
 - (BOOL)suspendedEventsOnly;
+- (int)suspensionType;
 - (BOOL)switcherManagedHostView;
 - (id)tags;
 - (void)takeAssertionWithTimeoutForSimpleRemoteAction;

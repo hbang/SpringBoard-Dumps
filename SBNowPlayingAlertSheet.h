@@ -10,18 +10,16 @@
 
 
 @interface SBNowPlayingAlertSheet : UIAlertView {
-	CGRect normalSliderFrame;
-	CGRect narrowSliderFrame;
+	CGRect volumeSliderFrame;
 	BOOL showingSliderOrLabel;
 	UIButton *routeButton;
 	UISlider *volumeSlider;
 	UILabel *routeLabel;
 }
-@property(assign, nonatomic) CGRect narrowSliderFrame;
-@property(assign, nonatomic) CGRect normalSliderFrame;
 @property(retain, nonatomic) UIButton *routeButton;
 @property(retain, nonatomic) UILabel *routeLabel;
 @property(retain, nonatomic) UISlider *volumeSlider;
+@property(assign, nonatomic) CGRect volumeSliderFrame;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_positionControlButton:(int)button withFloor:(float)floor;
 - (void)dealloc;

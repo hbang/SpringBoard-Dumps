@@ -11,7 +11,7 @@
 
 @interface SBStatusBarDataManager : NSObject <RadiosPreferencesDelegate> {
 	struct {
-		BOOL itemIsEnabled[20];
+		BOOL itemIsEnabled[22];
 		BOOL timeString[64];
 		int gsmSignalStrengthRaw;
 		int gsmSignalStrengthBars;
@@ -25,17 +25,19 @@
 		unsigned dataNetworkType;
 		int batteryCapacity;
 		unsigned batteryState;
+		BOOL notChargingString[150];
 		int bluetoothBatteryCapacity;
 		int thermalColor;
 		unsigned slowActivity : 1;
 		BOOL activityDisplayId[256];
 		unsigned bluetoothConnected : 1;
+		BOOL recordingAppString[100];
 		unsigned displayRawGSMSignal : 1;
 		unsigned displayRawWifiSignal : 1;
 	} _data;
 	int _actions;
-	BOOL _itemIsEnabled[20];
-	BOOL _itemIsCloaked[20];
+	BOOL _itemIsEnabled[22];
+	BOOL _itemIsCloaked[22];
 	int _updateBlockDepth;
 	BOOL _dataChangedSinceLastPost;
 	NSDateFormatter *_timeItemDateFormatter;
@@ -52,6 +54,9 @@
 	NSString *_operatorDirectory;
 	BOOL _showsActivityIndicatorOnHomeScreen;
 	int _thermalColor;
+	NSString *_recordingAppString;
+	BOOL _showingNotChargingItem;
+	NSString *_notChargingString;
 }
 + (id)sharedDataManager;
 - (id)init;
@@ -69,16 +74,17 @@
 - (BOOL)_getBlackImageName:(id *)name silverImageName:(id *)name2 directory:(id *)directory forOperator:(id)anOperator statusBarCarrierName:(id *)name5;
 - (void)_initializeData;
 - (void)_locationStatusChange;
+- (void)_notChargingStatusChange;
 - (void)_operatorChange;
 - (void)_postData;
 - (void)_registerForNotifications;
 - (void)_restartTimeItemTimer;
 - (void)_rotationLockChange;
+- (BOOL)_shouldShowNotChargingItem;
 - (void)_signalStrengthChange;
 - (void)_significantTimeOrLocaleChange;
 - (void)_stopTimeItemTimer;
 - (void)_ttyChange;
-- (void)_unregisterForNotifications;
 - (void)_updateActivityItem;
 - (void)_updateAirplaneMode;
 - (void)_updateBatteryItem;
@@ -88,7 +94,10 @@
 - (void)_updateCallForwardingItem;
 - (void)_updateDataNetworkItem;
 - (void)_updateLocationItem;
+- (void)_updateNotChargingItem;
+- (void)_updateNotChargingItemAfterDelay;
 - (void)_updatePlayItem;
+- (void)_updateRecordingAppName;
 - (void)_updateRotationLockItem;
 - (void)_updateServiceItem;
 - (void)_updateSignalStrengthItem;

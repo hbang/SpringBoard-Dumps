@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface SBProcess : NSObject {
@@ -42,7 +42,7 @@
 	SBProcessTimes _times;
 }
 @property(copy) NSSet *allowedLockedFilePaths;
-@property(assign) int backgroundJetsamPriority;
+@property(readonly, assign) int backgroundJetsamPriority;
 @property(readonly, assign, getter=isBeingDebugged) BOOL beingDebugged;
 @property(readonly, assign, getter=isBeingPtraced) BOOL beingPtraced;
 @property(readonly, assign) int currentJetsamPriority;

@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "ABPredicateDelegate.h"
 #import "SBSlidingAlertDisplay.h"
+#import "ABPredicateDelegate.h"
 
 
 @interface SBVideoAlertDisplay : SBSlidingAlertDisplay <ABPredicateDelegate> {
@@ -27,7 +27,6 @@
 - (void)_acceptAnimationDidStop;
 - (void)_ringIfNecessary;
 - (BOOL)_shouldAutoAnswerConference;
-- (void)_videoAlertAnimationDidStop;
 - (void)accept;
 - (void)alertDisplayBecameVisible;
 - (void)alertDisplayWillBecomeVisible;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBSlidingAlertDisplay.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBCallAlertDisplay : SBSlidingAlertDisplay {
@@ -17,6 +17,7 @@
 }
 + (id)newBottomBarForInstance:(id)instance;
 + (id)newBottomLockBarForDisplay:(id)display;
++ (id)newTopBarForInstance:(id)instance;
 - (void)_ringIfNecessary;
 - (id)additionalURLParameter;
 - (void)alertDisplayBecameVisible;

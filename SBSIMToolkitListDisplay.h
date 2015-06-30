@@ -6,9 +6,9 @@
  */
 
 #import "SpringBoard-Structs.h"
+#import "SBSlidingAlertDisplay.h"
 #import "UITableViewDelegate.h"
 #import "UITableViewDataSource.h"
-#import "SBSlidingAlertDisplay.h"
 
 
 @interface SBSIMToolkitListDisplay : SBSlidingAlertDisplay <UITableViewDelegate, UITableViewDataSource> {
@@ -21,7 +21,6 @@
 - (id)_simToolkitListItems;
 - (void)alertDisplayWillBecomeVisible;
 - (void)dealloc;
-- (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)leftNavigationButtonPressed;
 - (void)rightNavigationButtonPressed;
 - (void)setMiddleContentAlpha:(float)alpha;

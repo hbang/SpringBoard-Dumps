@@ -11,10 +11,12 @@
 @interface SBAlertItemsController : NSObject {
 	NSMutableArray *_lockedAlertItems;
 	NSMutableArray *_unlockedAlertItems;
+	NSMutableArray *_pendingAlertItems;
 	NSTimer *_autoDismissTimer;
 	CPDistributedNotificationCenter *_notificationCenter;
 	unsigned _notificationClientCount;
 	BOOL _systemShuttingDown;
+	BOOL _forceAlertsToPend;
 }
 + (id)sharedInstance;
 - (id)init;
@@ -24,25 +26,29 @@
 - (id)alertItemOfClass:(Class)aClass;
 - (id)alertItemsOfClass:(Class)aClass;
 - (void)autoDismissAlertItem:(id)item;
+- (BOOL)canDeactivateAlertForMenuClick;
 - (void)convertAnimatingUnlockedAlertsToLockedAlerts;
-- (BOOL)deactivateAlertForMenuClick;
+- (BOOL)deactivateAlertForMenuClickWithAnimation:(BOOL)animation;
 - (void)deactivateAlertItem:(id)item;
 - (void)deactivateAlertItem:(id)item reason:(int)reason;
+- (void)deactivateAlertItem:(id)item reason:(int)reason animated:(BOOL)animated;
 - (void)deactivateAlertItemsForAlertActivation;
 - (id)deactivateAlertItemsForLock;
 - (void)deactivateAlertItemsOfClass:(Class)aClass;
 - (void)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason;
-- (void)deactivateAllAlertItems;
+- (void)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason animated:(BOOL)animated;
 - (void)deactivateVisibleAlertItemOfClass:(Class)aClass reason:(int)reason;
 - (void)dealloc;
 - (BOOL)dontLockOverAlertItems;
-- (BOOL)isShowingAlert:(id)alert;
-- (BOOL)isShowingAlertOfClass:(Class)aClass;
-- (BOOL)isShowingAlerts;
+- (void)forceAlertsToPendAndMoveActiveAlertsToPendingWithAnimation:(BOOL)animation;
+- (BOOL)hasAlertOfClass:(Class)aClass;
+- (BOOL)hasAlerts;
+- (BOOL)hasVisibleAlert;
 - (void)noteSystemShuttingDown;
 - (void)noteVolumeOrLockPressedOverLockedAlerts;
 - (void)notifySystemOfAlertItemActivation:(id)alertItemActivation;
 - (void)resetAutoDismissTimer;
+- (void)setForceAlertsToPend:(BOOL)pend;
 - (id)visibleAlertItem;
 @end
 

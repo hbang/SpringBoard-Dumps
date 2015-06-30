@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAlert.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBAwayController : SBAlert {
@@ -33,8 +33,8 @@
 	unsigned _performingAutoUnlock : 1;
 	unsigned _springBoardIdleTimerScheduled : 1;
 	unsigned _validPhotoCountCheck : 1;
-	unsigned _nowPlayingAppIsThirdParty : 1;
 	NSDictionary *_nowPlayingInfo;
+	SBApplication *_nowPlayingApp;
 	NSNumber *_iPodNowPlayingPID;
 	BOOL _iPodIsPlaying;
 	SBSlidingAlertDisplay *_deviceUnlockDisplay;
@@ -50,6 +50,7 @@
 	SBAlertItem *_currentAlertItem;
 	NSMutableDictionary *_awayViewPluginControllers;
 	NSString *_alwaysFullscreenAwayPluginName;
+	NSMutableArray *_lockScreenBundlesToDisableAfterUnlock;
 	PCPersistentTimer *_smsSoundWakeTimers[2];
 	int _gracePeriodWhenLocked;
 }
@@ -59,6 +60,7 @@
 + (id)sharedAwayController;
 + (id)sharedAwayControllerIfExists;
 - (id)initWithUIController:(id)uicontroller;
+- (void)_awayViewFinishedAnimatingOut:(id)anOut;
 - (void)_batteryStatusChanged;
 - (void)_clearBlockedState;
 - (void)_disablePluginControllersForLock;
@@ -70,6 +72,7 @@
 - (void)_iapExtendedModeChanged:(id)changed;
 - (void)_markLockTime;
 - (void)_nowPlayingAppChanged:(id)changed;
+- (void)_nowPlayingStateChanged:(id)changed;
 - (void)_pendAlertItem:(id)item;
 - (void)_photoLibraryChanged;
 - (void)_releaseAwayView;
@@ -135,6 +138,7 @@
 - (id)highestPriorityAwayPluginController;
 - (double)idleDimDuration;
 - (id)interfaceControllingAwayPluginController;
+- (int)interfaceOrientationForActivation;
 - (BOOL)isAlwaysFullscreenAwayPluginEnabled;
 - (BOOL)isAttemptingUnlock;
 - (BOOL)isAwayPluginViewVisible;
@@ -181,6 +185,7 @@
 - (BOOL)shouldShowLockStatusBarTime;
 - (BOOL)shouldShowSlideshowButton;
 - (BOOL)showOverheatUI;
+- (BOOL)showsSpringBoardStatusBar;
 - (void)smsMessageReceived;
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
@@ -198,7 +203,7 @@
 - (void)updateClockFormat;
 - (void)updateInCallUI;
 - (void)updateInterfaceIfNecessary;
-- (void)updateNowPlayingInfo:(id)info fromiPod:(BOOL)pod;
+- (void)updateNowPlayingInfo:(id)info app:(id)app;
 - (void)updateiPodNowPlayingInfo:(id)info;
 - (void)updateiPodPlaybackState:(id)state;
 - (void)userEventOccurred;

@@ -10,15 +10,18 @@
 
 @interface SBSMSManager : NSObject {
 }
++ (BOOL)carrierSMSReceiveOnlyEnabled;
 + (id)sharedSMSManager;
 - (id)init;
 - (id)badgeNumberOrString;
 - (void)dealloc;
+- (void)deleteMessage:(id)message deleteConversationIfEmpty:(BOOL)empty;
 - (BOOL)isShowingSendFailure;
 - (void)markMessageAsRead:(id)read;
 - (void)messageReceived:(id)received;
 - (void)messageSendError:(id)error;
 - (void)messageSent:(id)sent;
+- (void)redisplayAllMessagesForCarrierSMSReceiveOnlyMode;
 - (void)setBadgeNumberOrString:(id)string;
 - (void)updateSMSBadges;
 @end

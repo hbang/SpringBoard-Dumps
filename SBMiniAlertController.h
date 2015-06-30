@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface SBMiniAlertController : NSObject {
@@ -15,11 +15,16 @@
 	unsigned _miniAlertVisible : 1;
 	unsigned _showDimmingWindowAfterAlertsDismissed : 1;
 	UIView *_hiddenAlertWindow;
-	CGAffineTransform _dimmingWindowTransform;
+	CGAffineTransform _dimmingWindowTranslation;
+	int _dimmingWindowOrientation;
+	UIView *_overrideDimmingParent;
+	UIView *_dimmingContentView;
+	CGAffineTransform _dimmingViewTranslation;
 }
 + (id)sharedInstance;
 - (id)init;
-- (void)applyTransformToDimmingWindow:(CGAffineTransform)dimmingWindow;
+- (void)applyTranslationToDimmingView:(CGAffineTransform)dimmingView;
+- (void)applyTranslationToDimmingWindow:(CGAffineTransform)dimmingWindow;
 - (BOOL)canShowAlerts;
 - (void)cancelHideDimmingWindow;
 - (void)deactivateAlertItemsForDisplay:(id)display;
@@ -37,6 +42,9 @@
 - (BOOL)miniAlertVisible;
 - (void)noteFullscreenAlertsDismissed;
 - (void)noteMiniAlertStateChanged;
+- (void)replaceDimmingWindowWithParent:(id)parent;
+- (void)restoreDimmingViewToDimmingWindow;
+- (void)rotateDimmingWindowToOrientation:(int)orientation;
 - (void)showApplicationMiniAlertsIfNeeded;
 - (void)showDimmingWindow;
 @end

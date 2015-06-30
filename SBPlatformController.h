@@ -18,7 +18,9 @@
 + (id)sharedInstance;
 - (id)init;
 - (void)_addConfigurationNamed:(id)named toCompositeDictionary:(id)compositeDictionary;
+- (void)_addDefaultConfigurationToCompositeDictionary:(id)compositeDictionary;
 - (void)_addIconListIdentifiers:(id)identifiers toSet:(id)set;
+- (id)_copyConfigInfoWithName:(id)name;
 - (void)_mergeDictionary:(id)dictionary intoDictionary:(id)dictionary2;
 - (void)addCapabilities:(id)capabilities resetCapabilites:(id)capabilites;
 - (BOOL)allowSensitiveUI:(BOOL)ui hasInternalBundle:(BOOL)bundle;

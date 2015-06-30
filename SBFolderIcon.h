@@ -13,18 +13,25 @@
 	SBFolder *_folder;
 	UIImageView *_iconBorderView;
 	UIImageView *_scrollingIconImageView;
-	int _iconScrollPosition;
 	SBDownloadingProgressBar *_progressBar;
 	NSMutableSet *_animatingIcons;
+	unsigned _currentScrollRow;
+	BOOL _skippingGridIcons;
 }
++ (id)homeScreenIconOverlayImage;
 - (id)initWithFolder:(id)folder;
-- (float)_contentsRectYForScrollPosition:(int)scrollPosition scaledHeight:(float)height;
 - (void)_delegateCloseFolderAnimated:(BOOL)animated;
 - (void)_delegateOpenFolder:(id)folder animated:(BOOL)animated;
-- (id)_miniIconGridOfType:(int)type;
-- (CGRect)_rectForMiniIconAtIndex:(unsigned)index forGridType:(int)gridType;
+- (unsigned)_firstIconIndexForRow:(unsigned)row;
+- (unsigned)_firstSkippedIconIndex;
+- (unsigned)_maxIcons;
+- (id)_miniIconGrid;
+- (id)_miniIconGridFromRow:(unsigned)row toRow:(unsigned)row2;
+- (unsigned)_numberOfExcessIcons;
+- (CGRect)_rectForMiniIconAtIndex:(unsigned)index firstRow:(unsigned)row;
 - (void)_scrollAnimationDidStop:(id)_scrollAnimation finished:(id)finished context:(void *)context;
-- (CGSize)_sizeOfMiniIconGridOfType:(int)type;
+- (CGSize)_sizeOfMiniIconGrid;
+- (CGSize)_sizeOfMiniIconGridWithRows:(unsigned)rows;
 - (void)_updateBadgeValue;
 - (void)_updateProgressBar;
 - (BOOL)allowsTapWhileEditing;
@@ -35,11 +42,10 @@
 - (id)description;
 - (id)displayName;
 - (id)folder;
+- (CGRect)frameForIconOverlay;
 - (id)generateIconImage:(int)image;
 - (double)grabDurationForEvent:(id)event;
 - (id)iconBorderView;
-- (CGPoint)iconOverlayPosition;
-- (int)iconScrollPosition;
 - (id)imageForReflection;
 - (void)launch;
 - (BOOL)matchesRepresentation:(id)representation;
@@ -55,10 +61,9 @@
 - (id)representation;
 - (void)setDisplayedIconImage:(id)image;
 - (void)setGhostly:(BOOL)ghostly requester:(int)requester;
-- (void)setIconScrollPosition:(int)position duration:(double)duration;
+- (void)setIconScrollPosition:(int)position animated:(BOOL)animated;
 - (void)setIsOverlapping:(BOOL)overlapping;
 - (void)showDropGlow:(BOOL)glow;
-- (id)snapshotOfSubview:(id)subview positionedForSuperview:(id)superview;
 - (CGAffineTransform)transformToMakeIconBorderExpandToSizeOfDropGlow;
 @end
 

@@ -22,6 +22,8 @@
 }
 + (void)_addActiveItem:(id)item;
 + (CFDateFormatterRef)_customFormatter;
++ (void)_invalidateFormatters;
++ (void)_localeChanged;
 + (void)_removeActiveItem:(id)item;
 + (void)_significantTimeChange;
 + (id)activeInvitationAlertItems;

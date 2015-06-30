@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface SBAppContextHostView : UIView {
@@ -27,6 +27,7 @@
 - (void)didOrderOutContextWithId:(unsigned)anId;
 - (BOOL)isContextIdHidden:(unsigned)hidden;
 - (void)setContextId:(unsigned)anId hidden:(BOOL)hidden;
+- (void)setHostingEnabled:(BOOL)enabled resetOnDisable:(BOOL)disable;
 - (void)setOrderOutPending:(BOOL)pending forContextId:(unsigned)contextId;
 - (void)willOrderInContextWithId:(unsigned)anId windowLevel:(float)level windowOutput:(int)output;
 @end

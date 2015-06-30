@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBAlert.h"
 #import "SBSIMToolkitAlert.h"
+#import "SBAlert.h"
 
 
 @interface SBSIMToolkitAlert : SBAlert {

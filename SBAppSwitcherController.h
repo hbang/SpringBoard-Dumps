@@ -5,17 +5,18 @@
  * Source: (null)
  */
 
+#import <Foundation/NSObject.h>
 #import "SBAppSwitcherBarViewDelegate.h"
 #import "SBIconDelegate.h"
-#import <Foundation/NSObject.h>
 
 
 @interface SBAppSwitcherController : NSObject <SBIconDelegate, SBAppSwitcherBarViewDelegate> {
 	SBAppSwitcherModel *_model;
-	SBNowPlayingBar *_nowPlaying;
+	SBNowPlayingBar *_nowPlayingBar;
 	SBAppSwitcherBarView *_bottomBar;
-	SBApplicationIcon *_pushedIcon;
+	SBApplicationIcon *_pressedIcon;
 	BOOL _editing;
+	SBPrintStatusController *_printStatusController;
 }
 @property(readonly, assign, nonatomic) SBAppSwitcherModel *model;
 + (id)sharedInstance;
@@ -27,9 +28,13 @@
 - (id)_currentIcons;
 - (id)_iconForApplication:(id)application;
 - (id)_iconForDownload:(id)download;
+- (id)_iconForPrinting;
 - (BOOL)_inEditMode;
 - (void)_removeApplicationFromRecents:(id)recents;
 - (void)_stopEditing;
+- (BOOL)airPlayControlsVisible;
+- (void)appSwitcherBar:(id)bar pageAtIndexDidAppear:(int)pageAtIndex;
+- (void)appSwitcherBar:(id)bar pageAtIndexDidDisappear:(int)pageAtIndex;
 - (BOOL)appSwitcherBar:(id)bar scrollShouldCancelInContentForView:(id)scroll;
 - (void)appSwitcherBarRemovedFromSuperview:(id)superview;
 - (void)applicationDied:(id)died;
@@ -39,18 +44,25 @@
 - (void)applicationsRemoved:(id)removed andAdded:(id)added;
 - (int)closeBoxTypeForIcon:(id)icon;
 - (void)dealloc;
+- (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
+- (void)dismissPrintView;
 - (void)downloadItemUpdatingStatusChanged:(id)changed;
 - (void)downloadsChanged:(id)changed withRemovals:(id)removals;
 - (BOOL)handleMenuButtonTap;
 - (void)iconCloseBoxTapped:(id)tapped;
 - (void)iconHandleLongPress:(id)press;
-- (float)iconScale:(id)scale;
 - (BOOL)iconShouldAllowTap:(id)icon;
 - (void)iconTapped:(id)tapped;
 - (void)iconTouchBegan:(id)began;
+- (BOOL)isScrolling;
 - (BOOL)nowPlayingControlsVisible;
+- (id)printIcon;
+- (BOOL)printViewIsShowing;
+- (void)removePrintStatusIconBadge;
+- (void)setNeedsPrintStatusIcon:(BOOL)icon;
 - (id)switcherViewForApp:(id)app orientation:(int)orientation;
-- (void)viewDidDisappear;
 - (void)viewWillAppear;
+- (void)viewWillDisappearWithAnimationDuration:(double)view;
+- (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

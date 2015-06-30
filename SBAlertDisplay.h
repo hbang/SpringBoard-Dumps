@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBAlertDisplay.h"
 #import <UIKit/UIView.h>
+#import "SBAlertDisplay.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBAlertDisplay : UIView {

@@ -5,17 +5,17 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface SBWallpaperNotchView : UIView {
 	XXStruct_9ihRqB _notchInfo;
-	UIImage *_wallpaper;
+	SBWallpaperClipView *_clipView;
 }
-- (id)initWithFrame:(CGRect)frame notchInfo:(XXStruct_9ihRqB)info wallpaper:(id)wallpaper;
+- (id)initWithFrame:(CGRect)frame wallpaperView:(id)view notchInfo:(XXStruct_9ihRqB)info;
 - (void)dealloc;
 - (void)drawRect:(CGRect)rect;
-- (void)setWallpaper:(id)wallpaper;
+- (void)setNotchInfo:(XXStruct_9ihRqB)info;
 @end
 

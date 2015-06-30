@@ -13,11 +13,9 @@
 	NSArray *_iconSnapshots;
 	NSArray *_miniSnapshots;
 	NSArray *_addedIcons;
-	BOOL _fadeOutOnFinish;
 	BOOL _openFolderOnFinish;
 }
 @property(retain, nonatomic) NSArray *addedIcons;
-@property(assign, nonatomic) BOOL fadeOutOnFinish;
 @property(retain, nonatomic) SBFolderIcon *folderIcon;
 @property(retain, nonatomic) NSArray *iconSnapshots;
 @property(retain, nonatomic) NSArray *miniSnapshots;

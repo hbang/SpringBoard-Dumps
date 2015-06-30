@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import "SBSlidingAlertDisplay.h"
 #import "SpringBoard-Structs.h"
 #import "VSSpeechSynthesizerDelegate.h"
 #import "VSRecognitionSessionDelegate.h"
-#import "SBSlidingAlertDisplay.h"
 
 
 @interface SBVoiceControlAlertDisplay : SBSlidingAlertDisplay <VSRecognitionSessionDelegate, VSSpeechSynthesizerDelegate> {
@@ -64,6 +64,7 @@
 - (void)_mediaPlayerDied;
 - (void)_notifyDeviceTermination;
 - (id)_openTelURL:(id)url;
+- (id)_openVideoURL:(id)url;
 - (void)_performConfirmationAction;
 - (void)_performNoMatchFound;
 - (void)_performSoundCompletionAction;

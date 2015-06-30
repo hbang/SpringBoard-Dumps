@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <Foundation/NSObject.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface SBCalendarController : NSObject {

@@ -11,8 +11,8 @@
 
 @interface SBFolderIconListView : SBIconListView {
 }
-+ (int)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
-+ (int)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
++ (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
++ (unsigned)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
 - (float)bottomIconInset;
 - (CGRect)nineIconRectForScrollPosition:(int)scrollPosition;
 - (float)topIconInset;

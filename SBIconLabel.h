@@ -18,6 +18,7 @@
 	unsigned _onWallpaper : 1;
 }
 - (void)dealloc;
+- (id)description;
 - (void)drawRect:(CGRect)rect;
 - (void)setDisplaysOnWallpaper:(BOOL)wallpaper;
 - (void)setEllipsizesText:(BOOL)text;

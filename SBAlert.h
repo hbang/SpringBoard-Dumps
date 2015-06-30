@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBDisplay.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBAlert : SBDisplay {
@@ -34,11 +34,13 @@
 - (int)effectiveStatusBarStyle;
 - (float)finalAlpha;
 - (BOOL)handleMenuButtonTap;
+- (int)interfaceOrientationForActivation;
 - (id)objectForKey:(id)key;
 - (void)removeFromView;
 - (void)removeObjectForKey:(id)key;
 - (void)setDisplay:(id)display;
 - (void)setObject:(id)object forKey:(id)key;
+- (BOOL)showsSpringBoardStatusBar;
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
 - (void)tearDownAlertWindow:(id)window;

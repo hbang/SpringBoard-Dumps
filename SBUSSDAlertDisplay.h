@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "UITextFieldDelegate.h"
 #import "SBAlertDisplay.h"
+#import "UITextFieldDelegate.h"
 
 
 @interface SBUSSDAlertDisplay : SBAlertDisplay <UITextFieldDelegate> {

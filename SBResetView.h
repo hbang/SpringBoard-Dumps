@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <UIKit/UIView.h>
+#import "SpringBoard-Structs.h"
 
 
 @interface SBResetView : UIView {
