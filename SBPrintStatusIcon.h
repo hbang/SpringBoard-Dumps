@@ -9,7 +9,6 @@
 
 @interface SBPrintStatusIcon : SBLeafIcon {
 }
-- (id)init;
 - (id)applicationBundleID;
 - (BOOL)delaysUnhighlightWhenTapped;
 - (id)displayName;

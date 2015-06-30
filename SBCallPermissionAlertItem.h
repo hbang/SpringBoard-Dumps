@@ -7,10 +7,12 @@
 
 
 
-@interface SBCallPermissionAlertItem : SBAlertItem {
+@interface SBCallPermissionAlertItem : XXUnknownSuperclass {
 	NSURL *_url;
+	SBApplication *_sender;
 }
 - (id)initWithURL:(id)url;
+- (id)initWithURL:(id)url sender:(id)sender;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowMenuButtonDismissal;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

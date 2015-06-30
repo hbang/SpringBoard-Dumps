@@ -8,12 +8,12 @@
 
 
 @interface SBSlidingViewHighlight : XXUnknownSuperclass {
-	UIImage *_highlightImage;
 	UIImageView *_leftHighlight;
 	UIImageView *_rightHighlight;
 	CGRect _notchRect;
 }
 + (float)defaultHeight;
++ (id)highlightImage;
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame notchRect:(CGRect)rect;
 - (void)dealloc;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBBackgroundContinuationPermissionAlertItem : SBAlertItem {
+@interface SBBackgroundContinuationPermissionAlertItem : XXUnknownSuperclass {
 	SBApplication *_app;
 }
 - (id)initWithApplication:(id)application;

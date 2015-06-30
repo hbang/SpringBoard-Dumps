@@ -18,9 +18,7 @@
 	unsigned m_bottomRightVertex;
 }
 @property(assign, nonatomic) CGPoint centroid;
-@property(readonly, assign, nonatomic) unsigned innermostPathID;
 @property(readonly, assign, nonatomic) BOOL isLeftHanded;
-@property(readonly, assign, nonatomic) unsigned outermostPathID;
 @property(readonly, assign, nonatomic) int pointCount;
 @property(assign, nonatomic) CGPoint weightedCentroid;
 + (BOOL)candidate:(id)candidate matchesTemplate:(id)aTemplate transforms:(int)transforms acceptFactor:(float)factor;

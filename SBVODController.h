@@ -13,7 +13,5 @@
 - (id)init;
 - (void)_launchIPodIfNecessary;
 - (void)dealloc;
-- (void)iTunesSyncHasCompleted:(int)completed;
-- (void)iTunesSyncRequestedStart;
 @end
 

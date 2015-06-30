@@ -8,15 +8,11 @@
 
 
 @interface SBCalendarApplicationIcon : SBApplicationIcon {
-	SBCalendarIconContentsView *_dateContents;
 }
 - (id)initWithApplication:(id)application;
-- (CGImageRef)createComposedIconImageUsingContext:(CGContextRef)context;
+- (BOOL)canGenerateGhostlyImageInBackground;
 - (void)dealloc;
 - (id)generateIconImage:(int)image;
 - (void)localeChanged;
-- (void)prepareIconImageViewForRecycling;
-- (void)setShowsImages:(BOOL)images;
-- (void)updateInvitationBadge;
 @end
 

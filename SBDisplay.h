@@ -8,29 +8,31 @@
 
 
 @interface SBDisplay : XXUnknownSuperclass {
-	NSMutableDictionary *_displayValues;
-	NSMutableDictionary *_activationValues;
-	NSMutableDictionary *_deactivationValues;
-	unsigned _displaySettings;
-	unsigned _activationSettings;
-	unsigned _deactivationSettings;
+	NSMapTable *_displayValues;
+	NSMapTable *_activationValues;
+	NSMapTable *_deactivationValues;
+	NSHashTable *_displayFlags;
+	NSHashTable *_activationFlags;
+	NSHashTable *_deactivationFlags;
 	NSMutableSet *_suppressVolumeHudCategories;
 	float _accelerometerSampleInterval;
 	unsigned _disableIdleTimer;
 	unsigned _expectsFaceContact : 1;
+	unsigned _expectsFaceContactInLandscape : 1;
 	unsigned _accelerometerDeviceOrientationChangedEventsEnabled : 1;
 	unsigned _proximityEventsEnabled : 1;
-	unsigned _suppressHardwareVolumeControl : 1;
 	unsigned _showsProgress;
 }
 + (id)_defaultDisplayState;
 + (id)defaultValueForKey:(id)key displayIdentifier:(id)identifier urlScheme:(id)scheme;
 + (void)setDefaultValue:(id)value forKey:(id)key displayIdentifier:(id)identifier;
 - (void)_exitedCommon;
+- (id)_newFlagTable;
+- (id)_newValueTable;
 - (BOOL)accelerometerDeviceOrientationChangedEventsEnabled;
 - (double)accelerometerSampleInterval;
 - (void)activate;
-- (BOOL)activationSetting:(unsigned)setting;
+- (BOOL)activationFlag:(unsigned)flag;
 - (id)activationSettingsDescription;
 - (id)activationValue:(unsigned)value;
 - (BOOL)allowsEventOnlySuspension;
@@ -43,32 +45,33 @@
 - (void)deactivate;
 - (void)deactivateAfterLocking;
 - (void)deactivated;
-- (BOOL)deactivationSetting:(unsigned)setting;
+- (BOOL)deactivationFlag:(unsigned)flag;
 - (id)deactivationSettingsDescription;
 - (id)deactivationValue:(unsigned)value;
 - (void)dealloc;
 - (BOOL)defaultStatusBarHidden;
 - (int)defaultStatusBarStyle;
 - (id)description;
-- (id)descriptionForActivationSettings:(unsigned)activationSettings;
-- (id)descriptionForDeactivationSettings:(unsigned)deactivationSettings;
-- (id)descriptionForDisplaySettings:(unsigned)displaySettings;
+- (id)descriptionForActivationSetting:(unsigned)activationSetting;
+- (id)descriptionForDeactivationSetting:(unsigned)deactivationSetting;
+- (id)descriptionForDisplaySetting:(unsigned)displaySetting;
 - (BOOL)disableIdleTimer;
+- (BOOL)displayFlag:(unsigned)flag;
 - (id)displayIdentifier;
-- (BOOL)displaySetting:(unsigned)setting;
 - (id)displaySettingsDescription;
 - (id)displayValue:(unsigned)value;
 - (int)effectiveStatusBarStyle;
 - (void)exitedAbnormally;
 - (void)exitedNormally;
 - (BOOL)expectsFaceContact;
+- (BOOL)expectsFaceContactInLandscape;
 - (void)handleLock:(BOOL)lock;
-- (BOOL)hardwareVolumeControlEnabled;
 - (BOOL)isNowRecordingApplication;
 - (void)kill;
 - (void)launchSucceeded:(BOOL)succeeded;
 - (int)launchingInterfaceOrientationForCurrentOrientation;
 - (int)launchingInterfaceOrientationForCurrentOrientation:(int)currentOrientation;
+- (void)prepareForActivationOfDisplay:(id)display toHandleURL:(id)handleURL;
 - (BOOL)proximityEventsEnabled;
 - (void)setAccelerometerDeviceOrientationChangedEventsEnabled:(BOOL)enabled;
 - (void)setAccelerometerSampleInterval:(double)interval;
@@ -80,15 +83,17 @@
 - (void)setDisplaySetting:(unsigned)setting flag:(BOOL)flag;
 - (void)setDisplaySetting:(unsigned)setting value:(id)value;
 - (void)setExpectsFaceContact:(BOOL)contact;
-- (void)setHardwareVolumeControlEnabled:(BOOL)enabled;
+- (void)setExpectsFaceContact:(BOOL)contact inLandscape:(BOOL)landscape;
 - (void)setProximityEventsEnabled:(BOOL)enabled;
 - (void)setShowsProgress:(BOOL)progress;
 - (void)setSystemVolumeHUDEnabled:(BOOL)enabled forCategory:(id)category;
 - (BOOL)showSystemVolumeHUDForCategory:(id)category;
 - (BOOL)showsProgress;
 - (BOOL)statusBarHidden;
+- (int)statusBarOrientation;
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
+- (BOOL)suppressesNotifications;
 - (id)urlScheme;
 @end
 

@@ -9,9 +9,13 @@
 
 @interface SBSMSClass0Alert : SBUSSDAlert {
 }
++ (void)defaultAlertTonePrefChanged;
++ (void)playMessageReceived;
 + (void)registerForAlerts;
++ (BOOL)shouldPlayMessageReceived;
 - (id)initWithString:(id)string;
 - (void)_registerForNotifications;
 - (void)_unregisterForNotifications;
+- (void)deactivate;
 @end
 

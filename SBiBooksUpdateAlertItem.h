@@ -7,7 +7,7 @@
 
 
 
-@interface SBiBooksUpdateAlertItem : SBAlertItem {
+@interface SBiBooksUpdateAlertItem : XXUnknownSuperclass {
 }
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

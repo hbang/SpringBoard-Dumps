@@ -18,8 +18,10 @@
 - (void)_handleKeyEvent:(GSEventRef)event;
 - (id)_style;
 - (void)attachFieldEditor:(id)editor;
+- (BOOL)becomeFirstResponder;
 - (CGRect)clearButtonRectForBounds:(CGRect)bounds;
 - (id)createTextLabelWithTextColor:(id)textColor;
 - (void)dealloc;
+- (BOOL)resignFirstResponder;
 @end
 

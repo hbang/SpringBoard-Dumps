@@ -15,13 +15,11 @@
 	SBLinenView *_backgroundView;
 	NSMutableArray *_auxViews;
 	SBAppSwitcherScrollView *_scrollView;
-	UIImageView *_topShadowView;
-	UIImageView *_bottomShadowView;
-	CGRect _topShadowBaseFrame;
 	BOOL _animateContentReflow;
 	BOOL _animatedScrolling;
 	int _lastPageIndex;
 	BOOL _isVisible;
+	CGPoint _savedPositionForSuspendGesture;
 }
 @property(assign, nonatomic) id<SBAppSwitcherBarViewDelegate> delegate;
 + (float)edgePaddingForWidth:(float)width;
@@ -43,18 +41,17 @@
 - (void)addAuxiliaryViews:(id)views;
 - (void)addIcon:(id)icon;
 - (BOOL)airPlayControlsVisible;
-- (id)appIcons;
-- (id)applicationIconForDisplayIdentifier:(id)displayIdentifier;
 - (void)dealloc;
 - (void)didMoveToSuperview;
+- (id)iconViews;
 - (BOOL)isScrolling;
 - (void)layoutSubviews;
 - (BOOL)nowPlayingControlsVisible;
-- (void)positionForHidden;
-- (void)positionForRevealed;
-- (void)prepareForDisplay:(id)display;
+- (void)prepareIconViewsForDisplay:(id)display showFirstPage:(BOOL)page;
 - (void)removeIcon:(id)icon;
 - (void)replaceIcons:(id)icons with:(id)with;
+- (void)restoreScrollPositionAfterSuspendGesture;
+- (void)saveScrollPositionBeforeSuspendGesture;
 - (BOOL)scrollView:(id)view shouldCancelInContentForView:(id)view2;
 - (void)scrollViewDidEndDecelerating:(id)scrollView;
 - (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;

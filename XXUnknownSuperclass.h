@@ -22,10 +22,6 @@
 - (void)centerToContentView;
 @end
 
-@interface XXUnknownSuperclass (PhonePad)
-+ (id)phonePadCharacterSet;
-@end
-
 @interface XXUnknownSuperclass (PrefsNotifications)
 - (id)_alertStringForPref:(id)pref;
 - (id)_callBarringString:(id)string;
@@ -65,10 +61,6 @@
 - (id)objectOfClass:(Class)aClass;
 @end
 
-@interface XXUnknownSuperclass (SBWiFiAdditions)
-- (int)compareNetworkDictionaryAscending:(id)ascending;
-@end
-
 @interface XXUnknownSuperclass (Formatting)
 - (id)ICCID;
 - (id)IMEI;
@@ -77,6 +69,14 @@
 @interface XXUnknownSuperclass (SBIconListNumberOffset)
 - (void)setCurrentPageWithIconListNumber:(int)iconListNumber;
 - (void)setNumberOfPagesWithIconListCount:(int)iconListCount;
+@end
+
+@interface XXUnknownSuperclass (SpringBoardMetadata)
+- (id)cachedApplicationIdentifier;
+- (BOOL)cachedArtworkIsPrerendered;
+- (id)cachedBundleIdentifier;
+- (id)cachedSoftwareType;
+- (id)cachedTitle;
 @end
 
 @interface XXUnknownSuperclass (SBOptimizedCombination)
@@ -94,5 +94,9 @@
 
 @interface XXUnknownSuperclass (SBTypeSafety)
 - (id)objectForKey:(id)key ofClass:(Class)aClass;
+@end
+
+@interface XXUnknownSuperclass (SBAssistantUtilities)
+- (BOOL)isAssistantTelephonyURL;
 @end
 

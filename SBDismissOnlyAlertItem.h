@@ -7,7 +7,7 @@
 
 
 
-@interface SBDismissOnlyAlertItem : SBAlertItem {
+@interface SBDismissOnlyAlertItem : XXUnknownSuperclass {
 	NSString *_title;
 	NSString *_body;
 	double _autoDismissInterval;

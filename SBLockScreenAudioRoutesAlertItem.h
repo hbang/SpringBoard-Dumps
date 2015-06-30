@@ -7,7 +7,7 @@
 
 
 
-@interface SBLockScreenAudioRoutesAlertItem : SBAlertItem {
+@interface SBLockScreenAudioRoutesAlertItem : XXUnknownSuperclass {
 }
 - (id)alertSheet;
 - (Class)alertSheetClass;

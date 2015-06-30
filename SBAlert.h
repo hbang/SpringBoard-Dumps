@@ -12,7 +12,11 @@
 	NSMutableDictionary *_dictionary;
 	SBAlertWindow *_deferredAlertWindow;
 }
++ (id)_adapterForController:(id)controller;
++ (void)activateAlertForController:(id)controller animated:(BOOL)animated animateCurrentDisplayOut:(BOOL)anOut withDelay:(BOOL)delay isSlidingDisplay:(BOOL)display;
++ (void)alertAdapterDisplayDidDisappear:(id)alertAdapterDisplay;
 + (id)alertWindow;
++ (void)deactivateAlertForController:(id)controller animated:(BOOL)animated animateOldDisplayInWithStyle:(int)style isSlidingDisplay:(BOOL)display;
 + (void)registerForAlerts;
 + (void)test;
 - (void)_updateStatusBarLockAndTime;
@@ -31,16 +35,23 @@
 - (id)display;
 - (int)effectiveStatusBarStyle;
 - (float)finalAlpha;
+- (BOOL)handleHeadsetButtonPressed:(BOOL)pressed;
+- (BOOL)handleLockButtonPressed;
 - (BOOL)handleMenuButtonTap;
+- (BOOL)handleVolumeDownButtonPressed;
+- (BOOL)handleVolumeUpButtonPressed;
+- (BOOL)hasTranslucentBackground;
 - (int)interfaceOrientationForActivation;
 - (id)objectForKey:(id)key;
 - (void)removeFromView;
 - (void)removeObjectForKey:(id)key;
 - (void)setDisplay:(id)display;
 - (void)setObject:(id)object forKey:(id)key;
+- (BOOL)shouldDeactivateAlertItemsOnActivation;
 - (BOOL)showsSpringBoardStatusBar;
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
+- (BOOL)suppressesNotifications;
 - (void)tearDownAlertWindow:(id)window;
 - (BOOL)undimsDisplay;
 @end

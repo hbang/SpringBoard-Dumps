@@ -8,19 +8,20 @@
 
 
 @interface SBHandMotionExtractor : XXUnknownSuperclass {
-	UIEdgeInsets _pixel_deltas;
-	UIEdgeInsets _smoothed_deltas;
-	UIEdgeInsets _all_pixel_deltas;
-	float _smoothed_translation_speed;
-	float _nondominant_axes_ratio;
-	float _farthest_finger_separation;
-	int _num_non_edge_touches;
+	UIEdgeInsets _pixelDeltas;
+	UIEdgeInsets _smoothedDeltas;
+	UIEdgeInsets _allPixelDeltas;
+	float _averageTranslation;
+	float _farthestFingerSeparation;
+	CGPoint _movementVelocityInPointsPerSecond;
 }
 @property(readonly, assign, nonatomic) UIEdgeInsets allPixelDeltas;
+@property(readonly, assign, nonatomic) float averageTranslation;
 @property(readonly, assign, nonatomic) UIEdgeInsets averageVelocities;
 @property(readonly, assign, nonatomic) float farthestFingerSeparation;
+@property(readonly, assign, nonatomic) CGPoint movementVelocityInPointsPerSecond;
 @property(readonly, assign, nonatomic) UIEdgeInsets pixelDeltas;
 - (void)clear;
-- (void)extractHandMotionForInnermostPath:(XXStruct_YrWplC *)innermostPath outermostPath:(XXStruct_YrWplC *)path activeTouchesCount:(unsigned)count;
+- (void)extractHandMotionForActiveTouches:(XXStruct_DSYOgA *)activeTouches count:(unsigned)count centroid:(CGPoint)centroid;
 @end
 

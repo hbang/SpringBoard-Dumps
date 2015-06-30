@@ -16,11 +16,15 @@
 + (Class)viewClass;
 - (id)initWithFolder:(id)folder;
 - (BOOL)addIcon:(id)icon;
+- (BOOL)addIcon:(id)icon asDirty:(BOOL)dirty;
+- (BOOL)allowsAddingIcon:(id)icon;
 - (void)compactIcons;
 - (BOOL)containsIcon:(id)icon;
 - (BOOL)containsLeafIconWithIdentifier:(id)identifier;
 - (void)dealloc;
+- (id)description;
 - (unsigned)firstFreeSlotIndex;
+- (unsigned)firstFreeSlotIndexForType:(int)type;
 - (id)folder;
 - (id)iconAtIndex:(unsigned)index;
 - (id)icons;
@@ -36,10 +40,12 @@
 - (void)markIconStateClean;
 - (BOOL)matchesRepresentation:(id)representation;
 - (BOOL)needsCompacting;
+- (void)notifyAdded:(id)added;
 - (id)placeIcon:(id)icon atIndex:(unsigned *)index;
+- (id)placeIcon:(id)icon atIndex:(unsigned *)index notify:(BOOL)notify;
 - (void)removeIcon:(id)icon;
 - (void)removeIconAtIndex:(unsigned)index;
 - (id)representation;
-- (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id *)added;
+- (BOOL)resetWithRepresentation:(id)representation leafIdentifiersAdded:(id)added;
 @end
 

@@ -15,12 +15,13 @@
 - (id)initForOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
 - (float)_additionalSideInsetToCenterIcons;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_updateForOrientation:(int)orientation duration:(double)duration;
 - (void)_updateForOrientationAnimationStopped;
-- (int)columnAtPoint:(CGPoint)point;
-- (int)iconsInRowForSpacingCalculation;
+- (unsigned)columnAtPoint:(CGPoint)point;
+- (unsigned)iconsInRowForSpacingCalculation;
 - (CGPoint)originForIconAtX:(unsigned)x Y:(unsigned)y;
-- (int)rowAtPoint:(CGPoint)point;
+- (unsigned)rowAtPoint:(CGPoint)point;
 - (void)setOrientation:(int)orientation;
 - (void)setOrientation:(int)orientation duration:(double)duration;
 - (float)sideIconInset;

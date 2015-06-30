@@ -15,5 +15,6 @@
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (id)lockLabel;
 - (void)performUnlockAction;
+- (id)shortLockLabel;
 @end
 

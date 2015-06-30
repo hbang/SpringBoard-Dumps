@@ -7,15 +7,17 @@
 
 
 
-@interface SBRemoteNotificationServer : XXUnknownSuperclass <APSConnectionDelegate, SBRemoteLocalNotificationAlertDelegate> {
+@interface SBRemoteNotificationServer : XXUnknownSuperclass <APSConnectionDelegate> {
 	NSMutableDictionary *_bundleIdentifiersToClients;
 	NSMutableDictionary *_environmentsToConnections;
 	NSString *_lastNotificationReceivedBundleIdentifier;
 }
 + (id)sharedInstance;
 - (id)init;
+- (id)_allPushRegisteredThirdPartyBundleIDs;
 - (id)allAppEnabledTypeValues;
 - (id)allSettingsEnabledTypeValues;
+- (int)appEnabledTypesForBundleIdentifier:(id)bundleIdentifier;
 - (void)calculateTopics;
 - (void)connection:(id)connection didReceiveMessageForTopic:(id)topic userInfo:(id)info;
 - (void)connection:(id)connection didReceivePublicToken:(id)token;
@@ -26,11 +28,14 @@
 - (BOOL)isSystemwideEnabled;
 - (id)lastNotificationReceivedBundleIdentifier;
 - (void)noteApplicationFinishedLaunching:(id)launching;
+- (void)notePermissionAlertAcceptedTypes:(int)types forBundleIdentifier:(id)bundleIdentifier;
+- (void)postSettingsChangedNotificationForBundleIdentifier:(id)bundleIdentifier;
 - (void)registerApplication:(id)application forEnvironment:(id)environment withTypes:(int)types;
-- (void)remoteLocalNotificationAlertShouldLaunch:(id)remoteLocalNotificationAlert forApplication:(id)application;
 - (void)run;
+- (void)setMessageUserInfo:(id)info forBundleIdentifier:(id)bundleIdentifier;
 - (void)setSettingsTypes:(int)types forBundleIdentifier:(id)bundleIdentifier;
 - (void)setSystemwideEnabled:(BOOL)enabled;
+- (int)settingsEnabledTypesForBundleIdentifier:(id)bundleIdentifier;
 - (void)unregisterApplication:(id)application;
 @end
 

@@ -7,7 +7,7 @@
 
 
 
-@interface WhiteBorderedTextField : XXUnknownSuperclass {
+@interface WhiteBorderedTextField : SBManualKeyboardTextField {
 }
 - (void)drawBorder:(CGRect)border;
 - (void)drawRect:(CGRect)rect;

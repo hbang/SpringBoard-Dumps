@@ -9,6 +9,7 @@
 
 @protocol UIApplicationDelegate <NSObject>
 @optional
+@property(retain, nonatomic) UIWindow *window;
 - (void)application:(id)application didChangeStatusBarFrame:(CGRect)frame;
 - (void)application:(id)application didChangeStatusBarOrientation:(int)orientation;
 - (void)application:(id)application didFailToRegisterForRemoteNotificationsWithError:(id)error;

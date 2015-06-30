@@ -9,6 +9,7 @@
 
 @interface SBAppShuffleView : SBAppToAppTransitionView {
 }
-- (void)_beginTransition;
+- (void)beginTransition;
+- (void)endTransition;
 @end
 

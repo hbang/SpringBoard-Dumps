@@ -7,11 +7,10 @@
 
 
 
-__attribute__((visibility("hidden")))
 @interface SBNullIcon : SBIcon {
 }
 + (id)nullIcon;
-- (void)setDisplayedIconImage:(id)image;
+- (id)generateIconImage:(int)image;
 - (BOOL)shouldCacheImageForFormat:(int)format;
 @end
 

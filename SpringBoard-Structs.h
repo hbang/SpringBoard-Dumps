@@ -26,10 +26,10 @@ typedef struct {
 	BOOL _field1;
 	BOOL _field2;
 	BOOL _field3;
-	float _field4;
-	int _field5;
-	float _field6;
-} XXStruct_3B_lsC;
+	BOOL _field4;
+	float _field5;
+	int _field6;
+} XXStruct_3uUjXA;
 
 typedef struct _NSRange {
 	unsigned _field1;
@@ -48,6 +48,8 @@ typedef struct _opaque_pthread_t {
 	BOOL _field3[596];
 } opaque_pthread_t;
 
+typedef struct __IOHIDEvent *IOHIDEventRef;
+
 typedef struct CGAffineTransform {
 	float a;
 	float b;
@@ -56,8 +58,6 @@ typedef struct CGAffineTransform {
 	float tx;
 	float ty;
 } CGAffineTransform;
-
-typedef struct __CTCall *CTCallRef;
 
 typedef struct _opaque_pthread_mutex_t {
 	long __sig;
@@ -77,9 +77,26 @@ typedef struct {
 
 typedef struct __CTServerConnection *CTServerConnectionRef;
 
-typedef struct CGImage *CGImageRef;
+typedef struct CATransform3D {
+	float _field1;
+	float _field2;
+	float _field3;
+	float _field4;
+	float _field5;
+	float _field6;
+	float _field7;
+	float _field8;
+	float _field9;
+	float _field10;
+	float _field11;
+	float _field12;
+	float _field13;
+	float _field14;
+	float _field15;
+	float _field16;
+} CATransform3D;
 
-typedef struct CGContext *CGContextRef;
+typedef struct __CTCall *CTCallRef;
 
 typedef struct __CFString *CFStringRef;
 
@@ -87,67 +104,27 @@ typedef struct __WiFiManagerClient WiFiManagerClient;
 
 typedef struct __WiFiDeviceClient WiFiDeviceClient;
 
-typedef struct __CFRunLoop *CFRunLoopRef;
-
 typedef struct __WiFiNetwork WiFiNetwork;
 
 typedef struct __SCDynamicStore *SCDynamicStoreRef;
 
 typedef struct dispatch_source_s dispatch_source_s;
 
-typedef struct __CFArray *CFArrayRef;
-
-typedef struct {
-	unsigned char voicemailAvailable;
-	int voicemailCount;
-	long long voicemailID;
-} XXStruct_EX3dgA;
-
 typedef struct __CFBoolean *CFBooleanRef;
 
-typedef struct UIEdgeInsets {
-	float _field1;
-	float _field2;
-	float _field3;
-	float _field4;
-} UIEdgeInsets;
+typedef struct CGImage *CGImageRef;
 
-typedef struct __CFDateFormatter *CFDateFormatterRef;
-
-typedef struct {
-	int _field1;
-	BOOL _field2;
-	BOOL _field3;
-	BOOL _field4;
-	BOOL _field5;
-	double _field6;
-} XXStruct_fhKmAA;
-
-typedef struct __CFTimeZone *CFTimeZoneRef;
-
-typedef struct CalEventExpirationMonitor CalEventExpirationMonitor;
-
-typedef struct CalAlarmEngine CalAlarmEngine;
-
-typedef struct CalDatabase CalDatabase;
+typedef struct dispatch_queue_s dispatch_queue_s;
 
 typedef struct __CFBundle *CFBundleRef;
 
 typedef struct __CFMachPort *CFMachPortRef;
 
-typedef struct UIPeripheralAnimationGeometry {
-	CGPoint _field1;
-	CGPoint _field2;
-	CGRect _field3;
-	CGAffineTransform _field4;
-	float _field5;
-} UIPeripheralAnimationGeometry;
-
 typedef struct CGPath *CGPathRef;
 
 typedef struct __CFCharacterSet *CFCharacterSetRef;
 
-typedef struct dispatch_queue_s dispatch_queue_s;
+typedef struct dispatch_group_s dispatch_group_s;
 
 typedef struct SBProcessTimes {
 	double execTime;
@@ -162,17 +139,25 @@ typedef struct {
 	CGRect rect;
 } XXStruct_9ihRqB;
 
+typedef struct UIEdgeInsets {
+	float _field1;
+	float _field2;
+	float _field3;
+	float _field4;
+} UIEdgeInsets;
+
 typedef struct {
 	int type;
-	unsigned char pathIndex;
-	unsigned char pindex;
-	unsigned char pcount;
-	struct {
-		double timestamp;
-		CGPoint point;
-	} points[15];
-} XXStruct_YrWplC;
+	unsigned pathIndex;
+	CGPoint location;
+	CGPoint previousLocation;
+	float totalDistanceTraveled;
+	int interfaceOrientation;
+	int previousInterfaceOrientation;
+} XXStruct_DSYOgA;
 
 typedef struct __SBGestureContext *SBGestureContextRef;
+
+typedef struct CGContext *CGContextRef;
 
 

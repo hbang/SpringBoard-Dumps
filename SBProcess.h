@@ -19,13 +19,16 @@
 	unsigned _recordingAudio : 1;
 	unsigned _usesSocketMonitoring : 1;
 	unsigned _supportsBackgroundTaskAssertions : 1;
+	unsigned _supportsSuspendOnLock : 1;
 	unsigned _hasWatchdogAssertionsOut : 1;
+	unsigned _receivingPacketsFromAccessory : 1;
 	int _backgroundJetsamPriority;
 	int _currentJetsamPriority;
 	int _activationDecounter;
 	int _suspendCount;
 	dispatch_queue_s *_suspendQueue;
-	double _lastUnlimitedAssertionRemovedAbsoluteTime;
+	double _timedAssertionReferenceTime;
+	dispatch_group_s *_timerLifecycleGroup;
 	dispatch_source_s *_backgroundPermissionCheckTimer;
 	dispatch_source_s *_backgroundPermissionExpirationWarningTimer;
 	dispatch_source_s *_taskCompletionAllowIdleSleepTimer;
@@ -38,6 +41,8 @@
 	unsigned _eventPort;
 	unsigned _taskNamePort;
 	SBProcessTimes _times;
+	double _unsuspendLimitStart;
+	int _unsuspendLimitCount;
 }
 @property(copy) NSSet *allowedLockedFilePaths;
 @property(readonly, assign) int backgroundJetsamPriority;
@@ -56,10 +61,12 @@
 @property(assign, getter=isNowPlayingWithAudio) BOOL nowPlayingWithAudio;
 @property(readonly, assign) int pid;
 @property(readonly, assign) int priority;
+@property(assign, getter=isReceivingPacketsFromAccessory) BOOL receivingPacketsFromAccessory;
 @property(assign, getter=isRecordingAudio) BOOL recordingAudio;
 @property(readonly, assign) double remainingAllowedAssertionDuration;
 @property(assign, getter=isRunning) BOOL running;
 @property(assign) BOOL supportsBackgroundTaskAssertions;
+@property(assign) BOOL supportsSuspendOnLock;
 @property(readonly, assign) int suspendCount;
 @property(readonly, assign) unsigned taskNamePort;
 @property(readonly, assign) BOOL terminateOnSuspension;
@@ -67,10 +74,10 @@
 @property(readonly, assign) int throttleUpUICount;
 @property(assign) BOOL usesSocketMonitoring;
 + (id)_allProcesses;
-+ (void)_enumerateAllProcessesWithBlock:(id)block;
 + (void)_logJetsamPriorities;
 + (void)cancelTaskCompletionAllowIdleSleep;
 + (int)defaultBackgroundJetsamPriority;
++ (void)enumerateAllProcessesWithBlock:(id)block;
 + (void)hostwideUserElapsedCPUTime:(double *)time systemElapsedCPUTime:(double *)time2 idleElapsedCPUTime:(double *)time3;
 + (void)initialize;
 + (id)launchedProcessWithBundleIdentifier:(id)bundleIdentifier path:(id)path arguments:(id)arguments environment:(id)environment standardOutputPath:(id)path5 standardErrorPath:(id)path6 machServices:(id)services threadPriority:(long long)priority frontmost:(BOOL)frontmost backgroundJetsamPriority:(int)priority10 waitForDebugger:(BOOL)debugger disableASLR:(BOOL)aslr allowedLockedFilePaths:(id)paths terminateOnSuspension:(BOOL)suspension;
@@ -78,6 +85,7 @@
 + (void)scheduleTaskCompletionAllowIdleSleep;
 + (void)shutdownSuspendedProcessSockets;
 - (id)initWithPid:(int)pid frontmost:(BOOL)frontmost backgroundJetsamPriority:(int)priority jobLabel:(id)label eventPortName:(id)name allowedLockedFilePaths:(id)paths terminateOnSuspension:(BOOL)suspension execTime:(double)time;
+- (void)_cancelTimers;
 - (id)_crashReportCPUUsageInfo;
 - (id)_crashReportThermalsInfo;
 - (void)_forceCrashReportWithReason:(int)reason description:(id)description;
