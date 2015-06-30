@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBIconViewMapDelegate, SBIconViewDelegate;
+@protocol SBIconViewDelegate, SBIconViewMapDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBIconViewMap : SBReusableViewMap <SBIconObserver, SBIconIndexNodeObserver, SBIconViewObserver> {
@@ -20,8 +20,12 @@ __attribute__((visibility("hidden")))
 	NSMapTable *_accessoryImagesForIcons;
 	_UILegibilitySettings *_legibilitySettings;
 }
-@property(readonly, assign, nonatomic) SBIconModel *iconModel;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) SBIconModel *iconModel;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, assign) Class superclass;
 + (id)homescreenMap;
 - (id)initWithIconModel:(id)iconModel delegate:(id)delegate viewDelegate:(id)delegate3;
 - (void)_addIconView:(id)view forIcon:(id)icon;

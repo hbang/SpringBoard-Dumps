@@ -7,12 +7,13 @@
 
 
 
-@protocol SBLockScreenNotificationViewDelegate <SBUnlockActionHandler>
+@protocol SBLockScreenNotificationViewDelegate <SBLockScreenActionHandler>
 - (void)listView:(id)view cellDidBeginScrolling:(id)cell;
 - (void)listView:(id)view cellDidEndScrolling:(id)cell;
 - (void)listViewDidBeginScrolling:(id)listView;
 - (void)listViewDidEndScrolling:(id)listView;
 - (id)lockScreenScrollView;
+- (void)noteListViewReadyForModelUpdate;
 - (void)noteUnlockActionChanged:(id)changed;
 @end
 

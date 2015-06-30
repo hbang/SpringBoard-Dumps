@@ -12,8 +12,12 @@ __attribute__((visibility("hidden")))
 @interface SBControlCenterSectionViewController : XXUnknownSuperclass <SBControlCenterObserver> {
 	id<SBControlCenterSectionViewControllerDelegate> _delegate;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBControlCenterSectionViewControllerDelegate> delegate;
-@property(readonly, assign, nonatomic) NSString *sectionIdentifier;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, copy, nonatomic) NSString *sectionIdentifier;
+@property(readonly, assign) Class superclass;
 + (Class)viewClass;
 - (CGSize)contentSizeForOrientation:(int)orientation;
 - (void)controlCenterDidDismiss;

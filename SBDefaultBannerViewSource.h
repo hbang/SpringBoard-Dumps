@@ -8,12 +8,13 @@
 
 
 @protocol SBDefaultBannerViewSource <NSObject>
+- (id)accessoryIconMask;
 - (id)attachmentImage;
 - (id)attachmentText;
 - (id)iconImage;
-- (BOOL)isVIP;
 - (id)message;
 - (id)sourceDate;
+- (id)suppressedMessage;
 - (id)title;
 @end
 

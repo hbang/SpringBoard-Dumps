@@ -15,5 +15,6 @@ __attribute__((visibility("hidden")))
 - (unsigned)_depth;
 - (id)_statusBarColor;
 - (id)legibilitySettings;
+- (UIEdgeInsets)statusBarInsetsForOrientation:(int)orientation;
 @end
 

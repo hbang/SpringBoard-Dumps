@@ -13,5 +13,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) NSString *originalSectionIdentifier;
 @property(readonly, assign, nonatomic) BBBulletin *representedBulletin;
 - (id)identifier;
+- (void)prepareWithCompletion:(id)completion;
 @end
 

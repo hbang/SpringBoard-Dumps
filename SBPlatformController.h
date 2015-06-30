@@ -9,7 +9,6 @@
 
 __attribute__((visibility("hidden")))
 @interface SBPlatformController : XXUnknownSuperclass {
-	NSString *_currentConfigurationName;
 	long _defaultIconInfoOnce;
 	NSDictionary *_defaultStarkIconState;
 	NSDictionary *_defaultIconState;
@@ -30,7 +29,6 @@ __attribute__((visibility("hidden")))
 + (id)systemBuildVersion;
 + (id)uniqueDeviceIdentifier;
 - (id)init;
-- (id)_currentConfigurationName;
 - (void)_loadDefaultIconInfoIfNecessary;
 - (void)_visibleIdentifiersChanged:(id)changed;
 - (void)dealloc;
@@ -40,8 +38,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasGasGauge;
 - (id)iconStateDisplayIdentifiers;
 - (BOOL)isCarrierInstall;
+- (BOOL)isDeveloperInstall;
 - (BOOL)isInternalInstall;
-- (BOOL)isN90Like;
 - (BOOL)isSingleCoreDevice;
 - (id)localizedPlatformName;
 - (void)registerForIconVisibilityChanges;

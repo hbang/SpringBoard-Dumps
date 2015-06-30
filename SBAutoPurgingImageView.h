@@ -11,8 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBAutoPurgingImageView : XXUnknownSuperclass {
 	id _block;
 }
-- (id)initWithImageNamed:(id)imageNamed;
-- (id)_initWithImageBlock:(id)imageBlock andInitialLoadBlock:(id)block;
+- (id)initWithImageGenerationBlock:(id)imageGenerationBlock;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)setImage:(id)image;

@@ -11,11 +11,9 @@ __attribute__((visibility("hidden")))
 @interface SBFolderSettings : XXUnknownSuperclass {
 	BOOL _allowNestedFolders;
 	BOOL _pinchToClose;
-	BOOL _blurFolderBackground;
 	BOOL _oneColumnAtATime;
 }
 @property(assign, nonatomic) BOOL allowNestedFolders;
-@property(assign, nonatomic) BOOL blurFolderBackground;
 @property(assign, nonatomic) BOOL oneColumnAtATime;
 @property(assign, nonatomic) BOOL pinchToClose;
 + (id)settingsControllerModule;

@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomUpAppFromHome : SBUIAnimationZoomUpApp <SBIconAnimatorDelegate> {
 	SBIconAnimator *_iconAnimator;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (void)animateZoomWithCompletion:(id)completion;
 - (void)cleanupZoom;
 - (void)dealloc;

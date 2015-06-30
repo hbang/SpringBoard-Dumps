@@ -15,7 +15,11 @@ __attribute__((visibility("hidden")))
 	SBFolderSettings *_folderSettings;
 	_UILegibilitySettings *_legibilitySettings;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, assign) Class superclass;
 + (float)cornerRadiusToInsetContent;
 + (CGSize)folderBackgroundSize;
 + (void)warmupIfNecessary;

@@ -6,13 +6,12 @@
  */
 
 
-@protocol SBWindowContextAppearance;
+@protocol FBWindowContextAppearance;
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationPhoneToLockScreenBase : SBUIMainScreenAnimationController {
-	SBWindow *_transitionWindow;
 	SBLockScreenViewControllerBase *_lockScreenViewController;
-	UIView<SBWindowContextAppearance> *_contextHostView;
+	UIView<FBWindowContextAppearance> *_contextHostView;
 	BOOL _needsScreenDim;
 }
 @property(retain, nonatomic, getter=_contextHostView, setter=_setContextHostView:) UIView *contextHostView;

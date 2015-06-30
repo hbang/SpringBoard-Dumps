@@ -12,17 +12,14 @@ __attribute__((visibility("hidden")))
 	SBAlert *_fromAlert;
 	SBAlert *_toAlert;
 	SBApplication *_toApplication;
-	SBUIAnimationController *_animation;
 }
-- (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller alert:(id)alert toApplication:(id)application;
+- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller alert:(id)alert toApplication:(id)application;
 - (void)_activateAlert;
+- (void)_alertDidDeactivate;
 - (void)_beginAnimation;
-- (int)_setupMilestonesFrom:(id)from to:(id)to;
+- (void)_setupMilestonesFrom:(id)from to:(id)to;
 - (BOOL)_shouldDisallowSuspension;
 - (void)dealloc;
 - (id)debugDescription;
-- (BOOL)selfStarkAlertDidActivate:(id)selfStarkAlert overAlerts:(id)alerts;
-- (BOOL)selfStarkAlertDidDeactivate:(id)selfStarkAlert;
-- (BOOL)selfStarkAlertWillActivate:(id)selfStarkAlert overAlerts:(id)alerts;
 @end
 

@@ -11,5 +11,6 @@
 @optional
 - (void)routingController:(id)controller didFailToPickRouteWithError:(id)error;
 - (void)routingControllerAvailableRoutesDidChange:(id)routingControllerAvailableRoutes;
+- (void)routingControllerExternalScreenTypeDidChange:(id)routingControllerExternalScreenType;
 @end
 

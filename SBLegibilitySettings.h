@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 	float _timeLightShadowStrength;
 	float _dateDarkShadowStrength;
 	float _dateLightShadowStrength;
-	float _legalDarkShadowStrength;
-	float _legalLightShadowStrength;
+	float _statusTextDarkShadowStrength;
+	float _statusTextLightShadowStrength;
 	float _iconLabelDarkShadowStrength;
 	float _iconLabelLightShadowStrength;
 	float _folderTitleDarkShadowStrength;
@@ -36,10 +36,10 @@ __attribute__((visibility("hidden")))
 @property(assign) float folderTitleLightShadowStrength;
 @property(assign) float iconLabelDarkShadowStrength;
 @property(assign) float iconLabelLightShadowStrength;
-@property(assign) float legalDarkShadowStrength;
-@property(assign) float legalLightShadowStrength;
 @property(assign) float slideToUnlockDarkShadowStrength;
 @property(assign) float slideToUnlockLightShadowStrength;
+@property(assign) float statusTextDarkShadowStrength;
+@property(assign) float statusTextLightShadowStrength;
 @property(assign) float timeDarkShadowStrength;
 @property(assign) float timeLightShadowStrength;
 @property(assign) float timerDialDarkShadowStrength;
@@ -51,9 +51,9 @@ __attribute__((visibility("hidden")))
 - (float)dateStrengthForStyle:(int)style;
 - (float)folderTitleStrengthForStyle:(int)style;
 - (float)iconLabelStrengthForStyle:(int)style;
-- (float)legalStrengthForStyle:(int)style;
 - (void)setDefaultValues;
 - (float)slideToUnlockStrengthForStyle:(int)style;
+- (float)statusTextStrengthForStyle:(int)style;
 - (float)timeStrengthForStyle:(int)style;
 - (float)timerDialStrengthForStyle:(int)style;
 - (float)timerTextStrengthForStyle:(int)style;

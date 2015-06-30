@@ -6,26 +6,11 @@
  */
 
 
-@protocol SBFileLoggerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBFileLogger : XXUnknownSuperclass {
-	id<SBFileLoggerDelegate> _delegate;
-	int _logLevel;
 }
-@property(assign, nonatomic) id<SBFileLoggerDelegate> delegate;
-@property(readonly, assign, nonatomic, getter=isEnabled) BOOL enabled;
-@property(readonly, assign, nonatomic) BOOL includeConsole;
-@property(readonly, assign, nonatomic) int logLevel;
-@property(readonly, assign, nonatomic) NSString *logPath;
-@property(readonly, assign, nonatomic) int maxLogCount;
-@property(readonly, assign, nonatomic) int maxLogSize;
-@property(readonly, assign, nonatomic) NSString *name;
-- (id)init;
-- (id)consoleFormat:(id)format withArguments:(char *)arguments;
-- (void)dealloc;
-- (id)fileFormat:(id)format withArguments:(char *)arguments;
-- (void)reloadFromDefaults;
-- (void)willBeginLoggingToPath:(id)path;
+- (id)logPreferenceDomain;
+- (id)logPreferenceName;
 @end
 

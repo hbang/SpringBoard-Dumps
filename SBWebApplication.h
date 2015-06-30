@@ -9,33 +9,23 @@
 
 __attribute__((visibility("hidden")))
 @interface SBWebApplication : SBApplication {
-	UIWebClip *_webClip;
-	BOOL _isLastWebApplication;
+	SBBookmarkIcon *_bookmarkIcon;
 }
-@property(retain) UIWebClip *webClip;
-+ (id)displayIdentifierForWebClip:(id)webClip;
-+ (id)displayIdentifierForWebClipIdentifier:(id)webClipIdentifier;
-- (id)initWithBundleIdentifier:(id)bundleIdentifier webClip:(id)clip path:(id)path bundle:(id)bundle infoDictionary:(id)dictionary isSystemApplication:(BOOL)application signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated entitlements:(id)entitlements;
-- (void)_addContextHostManager:(id)manager;
-- (void)_addContextHostManagerWithoutLooping:(id)looping;
-- (id)_customStartupImageForScreen:(id)screen launchingOrientation:(int)orientation;
-- (id)_defaultImageInfoForScreen:(id)screen launchingOrientation:(int)orientation;
-- (void)_removeContextHostManager:(id)manager;
-- (void)_removeContextHostManagerWithoutLooping:(id)looping;
-- (void)_setActivationState:(int)state;
-- (id)_urlForLaunch;
-- (id)activationSettings;
+@property(retain, nonatomic) SBBookmarkIcon *bookmarkIcon;
++ (id)_dataContainerURL;
++ (id)_snapshotDirectory;
++ (id)_webAppIdentifierFromWebClipIdentifier:(id)webClipIdentifier;
++ (id)_webClipIdentifierFromWebAppIdentifier:(id)webAppIdentifier;
+- (id)_customStartupImageForLaunchingOrientation:(int)launchingOrientation;
+- (id)_defaultImageInfoForSceneID:(id)sceneID size:(CGSize)size scale:(float)scale launchingOrientation:(int)orientation;
+- (BOOL)_isSnapshotPresentForLaunchingInterfaceOrientation:(int)launchingInterfaceOrientation;
+- (id)_snapshotContainerName;
+- (id)_snapshotSceneContainerNameForSceneID:(id)sceneID;
 - (void)dealloc;
-- (void)didExitWithInfo:(id)info type:(int)type;
-- (id)icon:(id)icon imageWithFormat:(int)format;
-- (BOOL)iconAllowsUninstall:(id)uninstall;
-- (BOOL)iconCanEllipsizeLabel:(id)label;
-- (BOOL)isSnapshotPresentForLaunchingInterfaceOrientation:(int)launchingInterfaceOrientation;
+- (Class)iconClass;
 - (BOOL)isWebApplication;
-- (void)setProcessInfo:(id)info;
-- (void)setRunning:(BOOL)running;
-- (void)willActivateOtherWebApplication:(id)application;
-- (id)windowContextHostManager:(id)manager overrideRequester:(id)requester;
-- (BOOL)windowContextHostManager:(id)manager shouldEnableContextHostingForRequester:(id)requester priority:(int)priority;
+- (id)objectForActivationSetting:(unsigned)activationSetting;
+- (id)objectForDeactivationSetting:(unsigned)deactivationSetting;
+- (id)sandboxPath;
 @end
 

@@ -49,6 +49,9 @@ __attribute__((visibility("hidden")))
 	int _alternateButtonIndex;
 	int _otherButtonIndex;
 	NSString *_defaultResponseLaunchBundleID;
+	NSString *_remoteViewControllerClassName;
+	NSString *_remoteServiceBundleIdentifier;
+	_SBRemoteAlertContentHostViewController *_contentViewControllerForAlertController;
 	unsigned _cancel : 1;
 	unsigned _isActivated : 1;
 	unsigned _aboveLock : 1;
@@ -61,11 +64,13 @@ __attribute__((visibility("hidden")))
 	unsigned _oneButtonPerLine : 1;
 	unsigned _groupsTextFields : 1;
 	unsigned _usesUndoStyle : 1;
+	unsigned _dismissesOverlaysOnLockScreen : 1;
 	unsigned _configuredLocked : 1;
 	unsigned _configuredNeedsPasscode : 1;
 	unsigned _defaultResponseAppLaunchWaitingForPasscode : 1;
 	SBUISound *_sound;
 	BKSProcessAssertion *_processAssertion;
+	unsigned _dismissesAutomatically : 1;
 }
 @property(retain) NSString *alertHeader;
 @property(retain) NSString *alertMessage;
@@ -75,10 +80,13 @@ __attribute__((visibility("hidden")))
 @property(retain) id autocorrectionTypes;
 @property(retain) NSDictionary *avControllerAttributes;
 @property(retain) NSDictionary *avItemAttributes;
+@property(retain) UIViewController *contentViewControllerForAlertController;
 @property(retain) NSString *defaultButtonTitle;
 @property(retain) NSString *defaultResponseLaunchBundleID;
 @property(retain) id keyboardTypes;
 @property(retain) NSString *otherButtonTitle;
+@property(retain) NSString *remoteServiceBundleIdentifier;
+@property(retain) NSString *remoteViewControllerClassName;
 @property(assign) unsigned long soundID;
 @property(assign) unsigned long soundIDBehavior;
 @property(retain) NSString *soundPath;
@@ -91,6 +99,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSDictionary *vibrationPattern;
 - (id)initWithMessage:(id)message replyPort:(unsigned)port requestFlags:(int)flags auditToken:(XXStruct_kUSYWB)token;
 - (void)_cleanup;
+- (BOOL)_dismissesOverlaysOnLockScreen;
 - (BOOL)_needsDismissalWithClickedButtonIndex:(int)clickedButtonIndex;
 - (id)_safeLocalizedValue:(id)value withBundle:(id)bundle;
 - (void)_sendResponse:(int)response;
@@ -108,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (void)didDeactivateForReason:(int)reason;
 - (void)didFailToActivate;
 - (BOOL)dismissOnLock;
+- (BOOL)dismissesAutomatically;
 - (BOOL)displayActionButtonOnLockScreen;
 - (BOOL)forcesModalAlertAppearance;
 - (void)noteVolumeOrLockPressed;

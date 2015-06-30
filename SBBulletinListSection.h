@@ -58,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasBulletinWithID:(id)anId;
 - (BOOL)hasClearableBulletins;
 - (unsigned)indexOfBulletinID:(id)bulletinID;
-- (unsigned)indexOfBulletinWithLocalNotification:(id)localNotification;
 - (BOOL)isBulletinSection;
 - (BOOL)isWidgetSection;
 - (id)lastSortDate;

@@ -6,27 +6,30 @@
  */
 
 
-@protocol SBUIAnimationControllerGroupDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBUIAnimationControllerGroup : SBUIAnimationController <SBUIAnimationControllerDelegate> {
+@interface SBUIAnimationControllerGroup : SBUIAnimationController <SBUIAnimationControllerObserver> {
 	NSMutableArray *_animations;
 	BOOL _finished;
 }
 @property(readonly, assign, nonatomic) NSArray *animations;
-@property(assign, nonatomic) id<SBUIAnimationControllerGroupDelegate> delegate;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (id)initWithAnimations:(id)animations;
 - (void)_forEachAnimation:(id)eachAnimation;
 - (void)_startAnimation;
 - (BOOL)_willAnimate;
 - (void)addAnimation:(id)animation;
+- (void)addObserver:(id)observer;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)beginAnimation;
 - (void)dealloc;
-- (id)description;
 - (void)endAnimation;
+- (void)removeObserver:(id)observer;
 - (BOOL)waitingToStart;
 @end
 

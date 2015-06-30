@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomDownApp : SBUIMainScreenAnimationController {
 	UIView *_viewToAnimate;
 	SBAppStatusBarTransitionInfo *_appStatusBarTransitionInfo;
+	FBWindowContextHostManager *_deactivatingContextHostManager;
 }
 - (id)initWithDeactivatingApp:(id)deactivatingApp;
 - (void)_cleanupAnimation;
@@ -20,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)animateZoomWithCompletion:(id)completion;
 - (double)animationDelay;
 - (double)animationDuration;
-- (id)appContext;
+- (id)appSettings;
 - (id)appStatusBarTransitionInfoWithStartEffectivelyHidden:(BOOL)startEffectivelyHidden endStyleRequest:(id)request endOrientation:(int)orientation;
 - (void)cleanupZoom;
 - (void)dealloc;

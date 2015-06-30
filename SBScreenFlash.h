@@ -9,19 +9,21 @@
 
 __attribute__((visibility("hidden")))
 @interface SBScreenFlash : XXUnknownSuperclass {
+	NSMutableArray *_flashCompletionBlocks;
+	UIScreen *_screen;
 	UIWindow *_flashWindow;
 	UIView *_flashView;
 	BOOL _windowVisible;
 }
-+ (id)sharedInstance;
++ (id)mainScreenFlasher;
+- (id)initWithScreen:(id)screen;
+- (void)_animationDidStop:(id)_animation finished:(id)finished context:(void *)context;
 - (void)_createUIWithColor:(id)color;
 - (void)_orderWindowFront:(id)front withColor:(id)color;
 - (void)_orderWindowOut:(id)anOut;
 - (void)_tearDown;
-- (void)animationDidStop:(id)animation finished:(id)finished context:(void *)context;
 - (void)dealloc;
-- (void)flash;
-- (void)flashColor:(id)color;
-- (void)stopFlash;
+- (void)flashColor:(id)color withCompletion:(id)completion;
+- (void)flashWhiteWithCompletion:(id)completion;
 @end
 

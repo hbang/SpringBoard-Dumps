@@ -34,15 +34,16 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_adjustViewsForCurrentOrientation;
 - (void)_assistantVisibilityChanged;
-- (void)_blankScreenStateChanged;
 - (void)_cleanupAnimationWhenInterruptingFadeIn:(BOOL)anIn;
 - (void)_createFadeWindowForFadeIn:(BOOL)anIn;
 - (void)_handleAnimationCompletionIfNecessaryForFadeIn:(BOOL)anIn;
+- (void)_invertColorsChanged;
 - (void)_mediaControlsDidShow;
 - (void)_runCompletionHandlerForFadeIn:(BOOL)anIn;
 - (void)_setRelevantLockScreenViewsHidden:(BOOL)hidden;
 - (void)_startFadeAnimationsForFadeIn:(BOOL)anIn;
 - (void)_startFadeInIfNecessary;
+- (void)_uiLockStateChanged:(id)changed;
 - (void)abortAnimatedDateFrameChange;
 - (void)dealloc;
 - (double)fadeInAnimationDuration;

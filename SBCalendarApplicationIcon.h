@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 + (id)countriesRequiringBlackDayOfWeek;
 - (id)initWithApplication:(id)application;
 - (void)_drawIconIntoCurrentContextWithImageSize:(CGSize)imageSize iconBase:(id)base;
-- (BOOL)canGenerateImageInBackgroundForFormat:(int)format;
 - (id)colorForDayOfWeek;
 - (void)dealloc;
 - (id)generateIconImage:(int)image;

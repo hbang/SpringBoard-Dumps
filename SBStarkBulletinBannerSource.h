@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 @interface SBStarkBulletinBannerSource : SBStarkBannerSource <BBObserverDelegate, SBVolumePressBandit> {
 	BBObserver *_bbObserver;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithAllowedTargetIdentifier:(void *)allowedTargetIdentifier;
 - (void)_reloadVolumePressBanditPreference;
 - (void)_showTestBanner:(id)banner;

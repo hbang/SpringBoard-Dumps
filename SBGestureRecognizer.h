@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)addTouchTemplate:(id)aTemplate;
 - (void)dealloc;
 - (id)description;
+- (void)invalidate;
 - (BOOL)isRecognized;
 - (void)reset;
 - (BOOL)shouldReceiveTouches;
@@ -43,5 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)touchesCancelled:(SBGestureContextRef)cancelled;
 - (void)touchesEnded:(SBGestureContextRef)ended;
 - (void)touchesMoved:(SBGestureContextRef)moved;
+- (void)updateActiveTouches:(SBGestureContextRef)touches;
 @end
 

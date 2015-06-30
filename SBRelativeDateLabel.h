@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
 	int _resolution;
 	int _comparedToNow;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)constructLabelString;
 - (void)dealloc;
 - (void)prepareForReuse;

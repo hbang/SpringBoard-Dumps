@@ -10,6 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkAlertWindow : SBAlertWindow {
 }
-+ (int)jailBehavior;
++ (float)windowLevel;
 @end
 

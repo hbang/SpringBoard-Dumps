@@ -20,6 +20,10 @@ __attribute__((visibility("hidden")))
 	UITextView *_responseMessageView;
 	BOOL _allowsResponse;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_cancelClicked;
 - (void)_centerTextView:(id)view inRect:(CGRect)rect;

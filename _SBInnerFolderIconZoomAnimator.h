@@ -13,13 +13,17 @@ __attribute__((visibility("hidden")))
 	SBFolderIconView *_folderIconView;
 	CGAffineTransform _folderIconViewScaleTransform;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) SBFolderZoomSettings *settings;
-- (id)initWithFolderController:(id)folderController iconView:(id)view iconZoomScale:(float)scale;
+@property(readonly, assign) Class superclass;
+- (id)initWithFolderController:(id)folderController iconView:(id)view iconZoomScaleDimension:(CGPoint)dimension;
 - (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (void)_applyFolderFadeForZoomFraction:(float)zoomFraction;
 - (void)_applyIconCrossfadeForZoomFraction:(float)zoomFraction;
 - (void)_applyIconTransformForZoomFraction:(float)zoomFraction;
-- (void)_calculateZoomedOffset:(CGPoint *)offset scale:(float *)scale forIcon:(id)icon withView:(id)view;
+- (void)_calculateZoomedOffset:(CGPoint *)offset scale:(CGPoint *)scale forIcon:(id)icon withView:(id)view;
 - (void)_cleanupAnimation;
 - (unsigned)_numberOfSignificantAnimations;
 - (void)_prepareAnimation;

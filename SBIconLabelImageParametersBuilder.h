@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *text;
 @property(assign, nonatomic) BOOL wantsFocusHighlight;
 - (BOOL)_canEllipsizeLabel;
+- (BOOL)_canTightenLabel;
 - (BOOL)_canUseMemoryPool;
 - (id)_focusHighlightColor;
 - (id)_font;

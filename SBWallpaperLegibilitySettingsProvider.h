@@ -13,8 +13,12 @@ __attribute__((visibility("hidden")))
 	id<SBFLegibilitySettingsProviderDelegate> _delegate;
 	int _variant;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBFLegibilitySettingsProviderDelegate> delegate;
-@property(readonly, assign, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, assign) Class superclass;
 - (id)initWithVariant:(int)variant;
 - (void)dealloc;
 - (void)wallpaperDidChangeForVariant:(int)wallpaper;

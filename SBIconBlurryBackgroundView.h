@@ -17,8 +17,12 @@ __attribute__((visibility("hidden")))
 	id _wantsBlurEvaluator;
 	CGPoint _wallpaperRelativeCenter;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) BOOL isBlurring;
 @property(assign, nonatomic) id<SBIconBlurryBackgroundViewObserver> observer;
+@property(readonly, assign) Class superclass;
 @property(assign, nonatomic, getter=isSuppressingExternalUpdates) BOOL suppressesExternalUpdates;
 @property(assign, nonatomic) CGPoint wallpaperRelativeCenter;
 @property(copy, nonatomic) id wantsBlurEvaluator;

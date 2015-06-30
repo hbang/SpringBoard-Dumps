@@ -10,9 +10,13 @@
 __attribute__((visibility("hidden")))
 @interface SBScreenShotter : XXUnknownSuperclass {
 	BOOL _writingScreenshot;
+	unsigned _screenshotWriteCount;
 }
-@property(assign) BOOL writingScreenshot;
 + (id)sharedInstance;
+- (void)_decrementWriteCount;
+- (void)_incrementWriteCount;
+- (BOOL)_isWritingSnapshot;
+- (void)finishedWritingCarScreenshot:(id)screenshot didFinishSavingWithError:(id)error context:(void *)context;
 - (void)finishedWritingScreenshot:(id)screenshot didFinishSavingWithError:(id)error context:(void *)context;
 - (void)saveScreenshot:(BOOL)screenshot;
 @end

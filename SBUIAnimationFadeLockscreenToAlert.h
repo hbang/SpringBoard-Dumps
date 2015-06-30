@@ -12,8 +12,6 @@ __attribute__((visibility("hidden")))
 	SBLockScreenViewController *_lockScreenViewController;
 	SBAlertManager *_alertManager;
 	SBUIFullscreenAlertAdapter *_toAlert;
-	UIView *_cameraSnapshotView;
-	BOOL _animatingFromCamera;
 	BOOL _alertViewIsAnimatingItself;
 	BOOL _alertIsTransparent;
 	BOOL _finishedPrimaryFadeAnimation;

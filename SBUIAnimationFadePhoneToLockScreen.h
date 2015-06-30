@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 	int _launchingOrientation;
 }
 - (void)_prepareAnimation;
-- (void)_showLockStatusBar:(id)bar;
 - (void)_startAnimation;
 - (void)dealloc;
 @end

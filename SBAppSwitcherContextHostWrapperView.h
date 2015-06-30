@@ -6,18 +6,22 @@
  */
 
 
-@protocol SBWindowContextAppearance;
+@protocol FBWindowContextAppearance;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherContextHostWrapperView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {
-	SBWindowContextHostManager *_contextHostManager;
+	FBWindowContextHostManager *_contextHostManager;
 	UIView *_containerView;
-	UIView<SBWindowContextAppearance> *_contextHostView;
+	UIView<FBWindowContextAppearance> *_contextHostView;
 	UIView *_snapshotView;
 	SBWallpaperEffectView *_wallpaperEffectView;
 	int _orientation;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) int orientation;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame application:(id)application;
 - (CGAffineTransform)_rotationTransformForOrientation:(int)orientation;

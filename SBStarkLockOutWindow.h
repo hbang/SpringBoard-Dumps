@@ -10,5 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutWindow : SBWindow {
 }
++ (BOOL)_isSecure;
 @end
 

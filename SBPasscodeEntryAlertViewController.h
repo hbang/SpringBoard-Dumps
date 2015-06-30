@@ -11,13 +11,19 @@ __attribute__((visibility("hidden")))
 @interface SBPasscodeEntryAlertViewController : SBAlert <SBUIPasscodeLockViewDelegate> {
 	BOOL _attemptingUnlock;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (void)_passcodeLockViewPasscodeEntered:(id)entered viaMesa:(BOOL)mesa;
 - (id)alertDisplayViewWithSize:(CGSize)size;
+- (void)animatePasscodeViewsToVisible:(BOOL)visible completion:(id)completion;
 - (void)deactivate;
 - (BOOL)hasTranslucentBackground;
 - (void)passcodeLockViewCancelButtonPressed:(id)pressed;
 - (void)passcodeLockViewPasscodeDidChange:(id)passcodeLockViewPasscode;
 - (void)passcodeLockViewPasscodeEntered:(id)entered;
 - (void)passcodeLockViewPasscodeEnteredViaMesa:(id)mesa;
+- (unsigned)supportedInterfaceOrientations;
 @end
 

@@ -9,38 +9,55 @@
 @protocol SBAlertManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBAlertManager : XXUnknownSuperclass <SBAlertDelegate, SBWindowContextManagerDelegate, SBWindowContextHostManagerDelegate> {
+@interface SBAlertManager : XXUnknownSuperclass <SBAlertDelegate, FBWindowContextManagerDelegate, FBWindowContextManagerObserver> {
 	UIScreen *_screen;
+	CGRect _windowFrame;
+	FBScene *_alertScene;
 	SBAlertWindow *_alertWindow;
 	SBAlertWindow *_deferredAlertWindow;
-	SBAlertWindow *_lockAlertWindow;
 	NSMutableArray *_alerts;
 	NSMapTable *_observers;
 	NSMutableSet *_removalPendingAlerts;
+	NSMapTable *_alertToAccessoryWrappersMap;
 	BOOL _deactivatingAllAlerts;
 	id<SBAlertManagerDelegate> _delegate;
-	SBWindowContextManager *_contextManager;
-	SBWindowContextHostManager *_contextHostManager;
+	SBDisableActiveInterfaceOrientationChangeAssertion *_orientationLockAssertion;
 	struct {
-		unsigned delegateOverrideRequester : 1;
-		unsigned delegateShouldEnableContextHostingForRequester : 1;
+		unsigned deactivateDismissed : 1;
+		unsigned newWindow : 1;
 	} _delegateFlags;
 }
+@property(readonly, assign, nonatomic) SBAlertWindow *alertWindow;
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBAlertManagerDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
-- (id)initWithScreen:(id)screen;
+- (id)initWithScreen:(id)screen delegate:(id)delegate;
+- (id)_accessoryWrapperForAlert:(id)alert withWindow:(id)window hostRequester:(id)requester;
 - (void)_activate:(id)activate;
+- (id)_createAlertWindowForAlert:(id)alert;
 - (void)_deactivate:(id)deactivate;
+- (void)_disablePortraitOrientationLock;
+- (void)_disablePortraitOrientationLockIfPossibleForAlert:(id)alert;
+- (void)_enablePortraitOrientationLock;
+- (void)_hideHostedAccessoryViewsForAlert:(id)alert;
+- (void)_hostAccessoryWindowsForActivatingAlert:(id)activatingAlert;
+- (id)_hostedAccessoryViewsForAlert:(id)alert;
 - (void)_makeAlertWindowOpaque:(BOOL)opaque;
-- (void)_removeFromView:(id)view;
+- (BOOL)_needsPortraitOrientationLockForAlert:(id)alert;
+- (void)_removeFromView:(id)view oldAlertIndex:(unsigned)index;
 - (void)_resetAlertWindowOpacity;
+- (void)_stopHostingAccessoryWindowsForDeactivatingAlert:(id)deactivatingAlert;
 - (void)activate:(id)activate;
 - (id)activeAlert;
-- (id)activeAlertWindow;
 - (void)addObserver:(id)observer;
 - (void)alert:(id)alert requestsBackgroundStyleChangeWithAnimationFactory:(id)animationFactory;
 - (void)alertIsReadyToBeDeactivated:(id)beDeactivated;
 - (void)alertIsReadyToBeRemovedFromView:(id)view;
+- (void)alertWantsToForceWallpaperTunnelUpdate:(id)forceWallpaperTunnelUpdate;
+- (void)alertWillDismiss:(id)alert;
 - (id)allAlerts;
 - (void)applicationFinishedAnimatingBeneathAlert;
 - (void)applicationWillAnimateActivation;
@@ -50,18 +67,13 @@ __attribute__((visibility("hidden")))
 - (void)deactivateAlertsAfterLaunch;
 - (void)deactivateAll;
 - (void)dealloc;
-- (id)debugDescription;
-- (id)description;
 - (BOOL)hasStackedAlerts;
 - (void)removeObserver:(id)observer;
 - (id)screen;
 - (void)setAlertsShouldDeactivateAfterLaunch;
 - (id)stackedAlertsIncludingActiveAlert:(BOOL)alert;
-- (id)topMostWindow;
-- (void)windowContextManager:(id)manager didStopTrackingContextsForScreen:(id)screen;
 - (BOOL)windowContextManager:(id)manager shouldAddContext:(id)context;
-- (void)windowContextManager:(id)manager willStartTrackingContextsForScreen:(id)screen;
-- (id)windowForAlert:(id)alert;
-- (id)windows;
+- (void)windowContextManagerDidStopTrackingContexts:(id)windowContextManager;
+- (void)windowContextManagerWillStartTrackingContexts:(id)windowContextManager;
 @end
 

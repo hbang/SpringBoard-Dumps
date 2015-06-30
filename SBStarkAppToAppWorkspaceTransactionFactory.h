@@ -10,6 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkAppToAppWorkspaceTransactionFactory : XXUnknownSuperclass {
 }
-+ (id)newTransactionWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller from:(id)from to:(id)to;
++ (id)newTransactionWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
 @end
 

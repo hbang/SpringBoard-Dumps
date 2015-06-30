@@ -10,19 +10,35 @@
 
 __attribute__((visibility("hidden")))
 @interface SBSearchHeader : XXUnknownSuperclass <SBSearchGestureObserver> {
-	SBWallpaperEffectView *_blurView;
-	UIView *_container;
 	UIButton *_cancelButton;
+	UIEdgeInsets _cancelMargins;
+	UIEdgeInsets _margins;
 	UITextField *_searchField;
 	id<SBSearchHeaderDelegate> _delegate;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBSearchHeaderDelegate> delegate;
-@property(readonly, assign, nonatomic) UITextField *searchField;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) UITextField *searchField;
+@property(readonly, assign) Class superclass;
++ (id)barTintColor;
++ (id)keyPathsForValuesAffectingLeftCancelMargin;
++ (id)keyPathsForValuesAffectingLeftMargin;
++ (id)keyPathsForValuesAffectingRightCancelMargin;
++ (id)keyPathsForValuesAffectingRightMargin;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_cancelButtonPressed;
 - (void)dealloc;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
 - (void)layoutSubviews;
+- (float)leftCancelMargin;
+- (float)leftMargin;
+- (float)rightCancelMargin;
+- (float)rightMargin;
 - (void)searchGesture:(id)gesture changedPercentComplete:(float)complete;
+- (CGSize)sizeThatFits:(CGSize)fits;
+- (void)updateMargins;
+- (void)updatePlaceholder;
 @end
 

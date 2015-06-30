@@ -20,9 +20,13 @@ __attribute__((visibility("hidden")))
 	float _overlayAlpha;
 }
 @property(assign, nonatomic) float brightness;
-@property(readonly, assign, nonatomic) SBIcon *icon;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) SBIcon *icon;
 @property(assign, nonatomic) float overlayAlpha;
 @property(assign, nonatomic) BOOL showsSquareCorners;
+@property(readonly, assign) Class superclass;
 + (float)cornerRadius;
 + (id)dequeueRecycledIconImageViewOfClass:(Class)aClass;
 + (void)recycleIconImageView:(id)view;

@@ -9,7 +9,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBCarDosidoAnimator : SBDosidoAnimator {
+	SBStarkScreenController *_screenController;
 }
+- (id)initWithParentView:(id)parentView fromOrientation:(int)orientation starkScreenController:(id)controller;
 - (void)_doRealDosido:(id)dosido withSpacingBetween:(float)spacingBetween completion:(id)completion;
+- (void)dealloc;
 @end
 

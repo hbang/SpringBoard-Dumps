@@ -8,7 +8,7 @@
 
 
 @protocol SBApplicationTerminationAssertion <NSObject>
-@property(readonly, assign, nonatomic) NSString *displayId;
+@property(readonly, copy, nonatomic) NSString *displayId;
 @property(readonly, assign, nonatomic) unsigned char reason;
 @end
 

@@ -10,6 +10,7 @@
 @protocol SBLockScreenNotificationListDelegate <NSObject>
 - (void)addCoordinatedPresentingController:(id)controller;
 - (void)attemptToUnlockUIFromNotification;
+- (void)authenticateForNotificationActionWithCompletion:(id)completion;
 - (void)bannerEnablementChanged;
 - (void)dismissFullscreenBulletinAlertWithItem:(id)item;
 - (id)lockScreenScrollView;

@@ -10,6 +10,10 @@
 __attribute__((visibility("hidden")))
 @interface SBControlCenterKnockoutView : XXUnknownSuperclass <SBUIControlCenterControl> {
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)controlAppearanceDidChangeForState:(int)controlAppearance;

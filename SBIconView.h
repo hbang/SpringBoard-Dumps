@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBIconViewDelegate, SBIconAccessoryView, SBIconViewObserver;
+@protocol SBIconViewDelegate, SBIconViewObserver, SBIconAccessoryView;
 
 __attribute__((visibility("hidden")))
 @interface SBIconView : XXUnknownSuperclass <_UISettingsKeyObserver, SBIconObserver, SBReusableView> {
@@ -20,7 +20,8 @@ __attribute__((visibility("hidden")))
 	SBFParallaxSettings *_closeBoxParallaxSettings;
 	CGPoint _wallpaperRelativeCloseBoxCenter;
 	SBIconLabelView *_labelView;
-	UIView *_updatedMark;
+	UIView<SBReusableView> *_labelAccessoryView;
+	int _currentLabelAccessoryType;
 	SBFolderIconBackgroundView *_dropGlow;
 	unsigned _drawsLabel : 1;
 	unsigned _isEditing : 1;
@@ -34,7 +35,7 @@ __attribute__((visibility("hidden")))
 	unsigned _allowJitter : 1;
 	unsigned _touchDownInIcon : 1;
 	unsigned _hideLabel : 1;
-	unsigned _hideUpdatedMark;
+	unsigned _hideLabelAccessoryView;
 	CGPoint _unjitterPoint;
 	CGPoint _grabPoint;
 	NSTimer *_longPressTimer;
@@ -47,7 +48,11 @@ __attribute__((visibility("hidden")))
 	float _iconLabelAlpha;
 	CGPoint _wallpaperRelativeImageCenter;
 }
+@property(readonly, assign, nonatomic) int currentLabelAccessoryType;
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBIconViewDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) SBIcon *icon;
 @property(assign, nonatomic) float iconAccessoryAlpha;
 @property(assign, nonatomic) float iconImageAlpha;
@@ -56,19 +61,21 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(assign, nonatomic) int location;
 @property(assign, nonatomic) id<SBIconViewObserver> observer;
+@property(readonly, assign, nonatomic) BOOL shouldShowLabelAccessoryView;
+@property(readonly, assign) Class superclass;
 @property(assign, nonatomic) CGPoint wallpaperRelativeImageCenter;
 + (int)_defaultIconFormat;
 + (id)_jitterPositionAnimation;
 + (id)_jitterTransformAnimation;
 + (float)_labelHeight;
 + (CGRect)_rectForLayoutMetric:(int)layoutMetric;
-+ (BOOL)canShowUpdatedMark;
++ (BOOL)canShowLabelAccessoryView;
 + (CGPoint)defaultIconImageCenter;
 + (CGSize)defaultIconImageSize;
 + (CGSize)defaultIconSize;
 + (CGSize)defaultVisibleIconImageSize;
++ (float)labelAccessoryViewRightMargin;
 + (CGSize)maxLabelSize;
-+ (float)updatedMarkRightMargin;
 - (id)initWithDefaultSize;
 - (void)_applyEditingStateAnimated:(BOOL)animated;
 - (void)_applyIconAccessoryAlpha:(float)alpha;
@@ -79,13 +86,14 @@ __attribute__((visibility("hidden")))
 - (CGPoint)_centerForCloseBox;
 - (CGPoint)_centerForCloseBoxRelativeToVisibleImageFrame:(CGRect)visibleImageFrame;
 - (void)_closeBoxTapped;
+- (void)_configureLabelAccessoryViewForType:(int)type;
 - (void)_createAccessoryViewIfNecessary;
 - (BOOL)_delegateTapAllowed;
 - (void)_delegateTouchEnded:(BOOL)ended;
 - (CGRect)_frameForAccessoryView;
 - (CGRect)_frameForImageView;
 - (CGRect)_frameForLabel;
-- (CGRect)_frameForUpdatedMarkWithLabelFrame:(CGRect)labelFrame;
+- (CGRect)_frameForLabelAccessoryViewWithLabelFrame:(CGRect)labelFrame;
 - (CGRect)_frameForVisibleImage;
 - (id)_iconImageView;
 - (BOOL)_isShowingCloseBox;
@@ -106,8 +114,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateIconImageViewAnimated:(BOOL)animated;
 - (void)_updateJitter;
 - (void)_updateLabel;
+- (void)_updateLabelAccessoryView;
 - (void)_updateProgressAnimated:(BOOL)animated;
-- (void)_updateUpdatedMark;
 - (BOOL)allowsTapWhileEditing;
 - (BOOL)canReceiveGrabbedIcon:(id)icon;
 - (void)cancelLongPressTimer;
@@ -147,13 +155,13 @@ __attribute__((visibility("hidden")))
 - (void)setIsEditing:(BOOL)editing animated:(BOOL)animated;
 - (void)setIsGrabbed:(BOOL)grabbed;
 - (void)setIsOverlapping:(BOOL)overlapping;
+- (void)setLabelAccessoryViewHidden:(BOOL)hidden;
 - (void)setLabelHidden:(BOOL)hidden;
 - (void)setPaused:(BOOL)paused;
 - (void)setRefusesRecipientStatus:(BOOL)status;
 - (void)setShouldRasterizeImageView:(BOOL)rasterizeImageView;
 - (void)setSuppressesBlurryBackgroundChanges:(BOOL)changes;
 - (void)setTouchDownInIcon:(BOOL)icon;
-- (void)setUpdatedMarkHidden:(BOOL)hidden;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)showDropGlow:(BOOL)glow;
 - (UIEdgeInsets)snapshotEdgeInsets;

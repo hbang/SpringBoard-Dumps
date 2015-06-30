@@ -14,11 +14,12 @@ __attribute__((visibility("hidden")))
 	_SBInnerFolderIconZoomAnimator *_innerZoomAnimator;
 }
 @property(retain, nonatomic) SBFolderZoomSettings *settings;
-@property(readonly, assign, nonatomic) SBFolderIcon *targetIcon;
-@property(readonly, assign, nonatomic) SBFolderIconView *targetIconView;
+@property(readonly, retain, nonatomic) SBFolderIcon *targetIcon;
+@property(readonly, retain, nonatomic) SBFolderIconView *targetIconView;
 - (id)initWithOuterController:(id)outerController innerController:(id)controller folderIcon:(id)icon;
 - (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (void)_cleanupAnimation;
+- (BOOL)_forceSquareZoomDimension;
 - (unsigned)_numberOfSignificantAnimations;
 - (void)_prepareAnimation;
 - (void)_setAnimationFraction:(float)fraction;

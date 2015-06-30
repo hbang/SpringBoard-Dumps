@@ -11,5 +11,7 @@
 - (void)alert:(id)alert requestsBackgroundStyleChangeWithAnimationFactory:(id)animationFactory;
 - (void)alertIsReadyToBeDeactivated:(id)beDeactivated;
 - (void)alertIsReadyToBeRemovedFromView:(id)view;
+- (void)alertWantsToForceWallpaperTunnelUpdate:(id)forceWallpaperTunnelUpdate;
+- (void)alertWillDismiss:(id)alert;
 @end
 

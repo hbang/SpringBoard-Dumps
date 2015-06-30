@@ -9,18 +9,16 @@
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationsBulletinCell : SBNotificationCell {
-	SBNotificationCenterSeparatorView *_separator;
+	SBNotificationSeparatorView *_separator;
+	BOOL _showsSeparator;
 	BOOL _missed;
 }
 @property(assign, nonatomic, getter=isMissed) BOOL missed;
 @property(assign, nonatomic) BOOL showsSeparator;
 + (CGSize)_preferredSizeForRelevanceDateLabel:(id)relevanceDateLabel;
 + (id)defaultColorForRelevanceDate;
-+ (float)iconPaddingLeft;
 - (id)initWithStyle:(int)style reuseIdentifier:(id)identifier;
-- (CGRect)_separatorFrame;
 - (void)dealloc;
-- (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setEventDateLabel:(id)label;
 - (void)setRelevanceDateLabel:(id)label;

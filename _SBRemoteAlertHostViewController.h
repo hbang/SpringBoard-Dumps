@@ -17,9 +17,24 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *serviceClassName;
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
+- (void)dealloc;
 - (id)description;
 - (void)dismiss;
+- (void)dismissAndLockUIIfNecessary;
+- (void)setAllowsAlertStacking:(BOOL)stacking;
 - (void)setAllowsBanners:(BOOL)banners;
+- (void)setAllowsMenuButtonDismissal:(BOOL)dismissal;
+- (void)setBackgroundStyle:(int)style withDuration:(double)duration;
+- (void)setDesiredAutoLockDuration:(double)duration;
+- (void)setDesiredHardwareButtonEvents:(int)events;
+- (void)setDesiredStatusBarStyleOverrides:(int)overrides;
+- (void)setDismissalAnimationStyle:(int)style;
+- (void)setIdleTimerDisabled:(BOOL)disabled forReason:(id)reason;
+- (void)setShouldDisableFadeInAnimation:(BOOL)disableFadeInAnimation;
+- (void)setShouldDismissOnUILock:(BOOL)dismissOnUILock;
+- (void)setStatusBarHidden:(BOOL)hidden withDuration:(double)duration;
+- (void)setSupportedInterfaceOrientationOverride:(unsigned)override;
+- (void)setWallpaperTunnelActive:(BOOL)active;
 - (void)viewServiceDidTerminateWithError:(id)viewService;
 @end
 

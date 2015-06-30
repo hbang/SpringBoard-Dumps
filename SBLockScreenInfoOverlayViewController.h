@@ -13,7 +13,11 @@ __attribute__((visibility("hidden")))
 	SBLockScreenInfoOverlayView *_overlayView;
 	NSString *_title;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBLockScreenInfoOverlayDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithTitle:(id)title;
 - (void)dealloc;
 - (void)handleTapGestureFromView:(id)view;

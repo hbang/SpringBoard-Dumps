@@ -12,6 +12,10 @@ __attribute__((visibility("hidden")))
 	SBBannerContextView *_contextView;
 	UIView *_darkeningOverlayView;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (id)bannerContext;
 - (void)dealloc;
@@ -21,5 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)noteWillDismissWithReason:(int)note;
 - (void)prepareForReuse;
 - (void)setBannerContext:(id)context;
+- (BOOL)shouldBorrowScreen;
 @end
 

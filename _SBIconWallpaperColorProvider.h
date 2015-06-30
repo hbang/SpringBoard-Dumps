@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
 	CGColorRef _blurColor;
 	CGColorRef _solidColor;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
 - (void)_updateAllClients;

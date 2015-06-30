@@ -9,6 +9,6 @@
 
 @protocol SBApplicationRestrictionDataSource <NSObject>
 - (id)allApplications;
-- (id)applicationWithDisplayIdentifier:(id)displayIdentifier;
+- (id)applicationWithBundleIdentifier:(id)bundleIdentifier;
 @end
 

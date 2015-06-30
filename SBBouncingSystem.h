@@ -12,5 +12,9 @@ __attribute__((visibility("hidden")))
 	CGRect _bounds;
 }
 @property(assign) CGRect bounds;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 @end
 

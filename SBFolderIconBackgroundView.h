@@ -12,6 +12,5 @@ __attribute__((visibility("hidden")))
 }
 - (id)initWithDefaultSize;
 - (id)_contentsImageForColor:(CGColorRef)color;
-- (void)setWallpaperColor:(CGColorRef)color phase:(CGSize)phase;
 @end
 

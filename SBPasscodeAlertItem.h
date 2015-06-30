@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
 	NSString *_errorString;
 	BOOL _hasEmergencyCall;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithPasscodeMode:(int)passcodeMode unlockScreenType:(int)type;
 - (void)_setErrorString:(id)string;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;

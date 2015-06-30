@@ -10,9 +10,9 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkAppExitedWorkspaceTransaction : SBStarkAppToAppWorkspaceTransaction {
 }
-- (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller exitedApp:(id)app;
+- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller exitedApp:(id)app;
+- (void)_begin;
 - (id)_setupAnimationFrom:(id)from to:(id)to;
-- (int)_setupMilestonesFrom:(id)from to:(id)to;
-- (BOOL)_shouldDisallowSuspension;
+- (void)_setupMilestonesFrom:(id)from to:(id)to;
 @end
 
