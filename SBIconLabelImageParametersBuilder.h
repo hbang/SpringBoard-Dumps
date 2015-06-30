@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 	NSString *_text;
 }
 @property(assign, nonatomic) BOOL accessibilityIncreaseContrastEnabled;
-@property(retain, nonatomic) SBIcon *icon;
-@property(assign, nonatomic) int iconLocation;
+@property(readonly, retain, nonatomic) SBIcon *icon;
+@property(readonly, assign, nonatomic) int iconLocation;
 @property(retain, nonatomic) SBIconView *iconView;
 @property(retain, nonatomic) Class iconViewClass;
 @property(retain, nonatomic) id<SBIconViewDelegate> iconViewDelegate;
@@ -39,5 +39,7 @@ __attribute__((visibility("hidden")))
 - (float)_scale;
 - (id)buildParameters;
 - (void)dealloc;
+- (void)setIcon:(id)icon;
+- (void)setIcon:(id)icon forLocation:(int)location;
 @end
 

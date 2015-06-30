@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 	BOOL _needsTransitionFromFakeLogoToWelcomeStrings;
 	BOOL _cyclingLabels;
 	BOOL _viewVisible;
+	WiFiManagerClient *_wifiManager;
+	WiFiDeviceClient *_wifiDevice;
 	BOOL _showingBootLogo;
 	BOOL _startsWithBlackBackground;
 	BOOL _hasResultsFromWifiScan;

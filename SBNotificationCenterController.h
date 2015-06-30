@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 	BOOL _didCoalesceWidgetsConnections;
 	NSTimer *_widgetConnectionsTimer;
 	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
+	NCLaunchStats *_launchStats;
 	NSMutableSet *_bulletinWindowClients;
 }
 @property(readonly, assign, nonatomic, getter=isAvailableWhileLocked) BOOL availableWhileLocked;
@@ -68,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleActionContextRequiringAuthentication:(id)authentication;
 - (void)_handleActionContextRequiringUIUnlock:(id)unlock;
 - (BOOL)_handleActionOrRequestWithDefaultAction:(id)defaultAction lockedAction:(id)action;
+- (void)_handleWidgetLaunchRecommendation:(id)recommendation completion:(id)completion;
 - (void)_insertCoveredContentSnapshotIfNecessary:(id)necessary;
 - (void)_invalidateCoveredContentSnapshot;
 - (BOOL)_isNotificationCenterViewAvailableWhileLockedWithProfileBlock:(id)profileBlock counterpartBlock:(id)block;

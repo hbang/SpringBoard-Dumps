@@ -6,7 +6,7 @@
  */
 
 
-@protocol FBWindowContextAppearance, SBAppSwitcherCacheVended;
+@protocol SBAppSwitcherCacheVended, FBWindowContextAppearance;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherRemoteAlertContextHostWrapperView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {

@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 	id _workBlock;
 	NSDate *_creationDate;
 }
-@property(readonly, assign, nonatomic) NSDate *creationDate;
-@property(readonly, assign, nonatomic) id work;
+@property(readonly, retain, nonatomic) NSDate *creationDate;
+@property(readonly, copy, nonatomic) id work;
 - (id)initWithWork:(id)work;
 - (void)dealloc;
 @end

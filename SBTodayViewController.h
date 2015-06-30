@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (id)_bulletinOrderStringForBulletinInfo:(id)bulletinInfo;
 - (void)_enableWidgetsPassingTest:(id)test completion:(id)completion;
+- (int)_nextSequenceNumber;
+- (void)_refreshWidget:(id)widget launchStats:(id)stats completion:(id)completion;
 - (void)_sortBulletinsForSectionWithIdentifier:(id)identifier referencingOrder:(id)order;
 - (id)_todaySnippetBulletinOrder;
 - (id)_tomorrowSnippetBulletinOrder;

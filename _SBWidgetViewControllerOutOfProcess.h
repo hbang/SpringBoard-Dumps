@@ -6,7 +6,7 @@
  */
 
 
-@protocol OS_dispatch_semaphore, NSCopying, OS_dispatch_queue;
+@protocol OS_dispatch_queue, NSCopying, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
 @interface _SBWidgetViewControllerOutOfProcess : SBWidgetViewController {

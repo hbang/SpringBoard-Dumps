@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconCanTightenLabel:(id)label;
 - (void)iconChanged;
 - (BOOL)iconCompleteUninstall:(id)uninstall;
-- (id)iconDisplayName:(id)name;
+- (id)iconDisplayName:(id)name forLocation:(int)location;
 - (id)iconFormattedAccessoryString:(id)string;
 - (BOOL)iconIsBeta:(id)beta;
 - (BOOL)iconIsRecentlyUpdated:(id)updated;

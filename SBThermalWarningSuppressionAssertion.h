@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBThermalWarningSuppressionAssertionDelegate, OS_dispatch_source;
+@protocol OS_dispatch_source, SBThermalWarningSuppressionAssertionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBThermalWarningSuppressionAssertion : XXUnknownSuperclass {

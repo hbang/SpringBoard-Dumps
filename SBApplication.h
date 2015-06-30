@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 	FBProcessState *_processState;
 	FBApplicationProcess *_process;
 	NSString *_displayName;
+	NSString *_carDisplayName;
 	NSArray *_tags;
 	UIRemoteApplication *_remoteApplication;
 	unsigned _monitoringLocaleAndTimeChanges : 1;
@@ -179,7 +180,7 @@ __attribute__((visibility("hidden")))
 - (void)_calculateSupportedTypesLazilyIfNecessary;
 - (int)_classicModeFromStateOverrides;
 - (int)_classicModeFromSupportedTypes;
-- (void)_configureDisplayNameForBundleAtPath:(id)path;
+- (void)_configureNameForBundleAtPath:(id)path infoDictionary:(id)dictionary;
 - (id)_copyApplicationMetadata;
 - (id)_copyUnexpiredScheduledLocalNotifications;
 - (BOOL)_currentClassicModeShouldAllowLandscapeLaunching;
@@ -333,6 +334,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canAccessDisplay:(id)display;
 - (BOOL)canAccessScreen:(id)screen;
 - (void)cancelLocalNotification:(id)notification;
+- (id)carDisplayName;
 - (id)carScene;
 - (id)carSceneID;
 - (BOOL)classicAppFullScreen;
@@ -404,7 +406,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconCanTightenLabel:(id)label;
 - (Class)iconClass;
 - (BOOL)iconCompleteUninstall:(id)uninstall;
-- (id)iconDisplayName:(id)name;
+- (id)iconDisplayName:(id)name forLocation:(int)location;
 - (id)iconFormattedAccessoryString:(id)string;
 - (BOOL)iconIsBeta:(id)beta;
 - (BOOL)iconIsRecentlyUpdated:(id)updated;
@@ -490,7 +492,6 @@ __attribute__((visibility("hidden")))
 - (void)setApplicationState:(unsigned)state;
 - (void)setBadge:(id)badge;
 - (void)setBeingDebugged:(BOOL)debugged;
-- (void)setDisplayName:(id)name;
 - (void)setFlag:(int)flag forActivationSetting:(unsigned)activationSetting;
 - (void)setFlag:(int)flag forDeactivationSetting:(unsigned)deactivationSetting;
 - (void)setFlag:(int)flag forStateSetting:(unsigned)stateSetting;

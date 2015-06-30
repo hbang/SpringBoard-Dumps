@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
 - (id)description;
-- (id)displayName;
+- (id)displayNameForLocation:(int)location;
 - (id)generateIconImage:(int)image;
 - (id)getGenericIconImage:(int)image;
 - (unsigned)hash;

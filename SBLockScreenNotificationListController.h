@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBLockScreenNotificationListDelegate, SBUIBannerTarget;
+@protocol SBUIBannerTarget, SBLockScreenNotificationListDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenNotificationListController : XXUnknownSuperclass <SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel, BBObserverDelegate, SBVolumePressBandit, SBUIBannerSource, SBUIBannerTargetManagerObserver, SBLockScreenActionHandler, SBLockScreenNotificationBannerItemDelegate, SBPresentingDelegate, SBCoordinatedPresenting, SBMotionGestureObserver> {

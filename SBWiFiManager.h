@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface SBWiFiManager : XXUnknownSuperclass {
 	NSRecursiveLock *_lock;
-	void *_manager;
-	void *_device;
+	WiFiManagerClient *_manager;
+	WiFiDeviceClient *_device;
 	NSString *_deviceInterfaceName;
 	BOOL _devicePresent;
-	void *_currentNetwork;
-	void *_previousNetwork;
+	WiFiNetwork *_currentNetwork;
+	WiFiNetwork *_previousNetwork;
 	BOOL _currentNetworkHasBeenSet;
 	BOOL _currentNetworkIsIOSHotspot;
 	BOOL _currentNetworkIsIOSHotspotHasBeenSet;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 	BOOL _signalStrengthHasBeenSet;
 	SCDynamicStoreRef _SCDynamicStoreNetworkState;
 	NSObject<OS_dispatch_source> *_SCUpdateTimeoutSource;
-	void *_primaryInterface;
+	WiFiNetwork *_primaryInterface;
 	BOOL _primaryInterfaceHasBeenSet;
 	BOOL _isPrimaryInterface;
 	BOOL _isPrimaryInterfaceChanging;
@@ -39,11 +39,11 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (BOOL)_cachedIsAssociated;
 - (void)_linkDidChange;
-- (void *)_manager;
+- (WiFiManagerClient *)_manager;
 - (void)_powerStateDidChange;
 - (void)_primaryInterfaceChanged:(BOOL)changed;
 - (void)_setPrimaryInterfaceHasBeenSet;
-- (void)_setWiFiDevice:(void *)device;
+- (void)_setWiFiDevice:(WiFiDeviceClient *)device;
 - (void)_updateCurrentNetwork;
 - (void)_updateWiFiDevice:(id)device;
 - (void)_updateWiFiState;

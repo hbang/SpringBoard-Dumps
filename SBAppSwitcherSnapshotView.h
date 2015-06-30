@@ -6,7 +6,7 @@
  */
 
 
-@protocol OS_dispatch_queue, SBAppSwitcherCacheVended;
+@protocol SBAppSwitcherCacheVended, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherSnapshotView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {

@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBUIPasscodeLockView, SBPasscodeEntryAlertViewDelegate;
+@protocol SBPasscodeEntryAlertViewDelegate, SBUIPasscodeLockView;
 
 __attribute__((visibility("hidden")))
 @interface SBPasscodeEntryAlertView : SBAlertView {
