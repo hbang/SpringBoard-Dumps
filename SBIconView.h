@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBIconViewObserver, SBIconViewDelegate;
 

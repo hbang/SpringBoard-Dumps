@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBAppSwitcherScrollViewDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBAppSwitcherScrollViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBAppSwitcherBarViewDelegate;
 

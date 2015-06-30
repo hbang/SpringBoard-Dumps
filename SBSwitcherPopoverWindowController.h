@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIWindowDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBSwitcherPopoverWindowControllerDelegate;
 

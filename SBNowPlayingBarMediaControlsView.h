@@ -46,6 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)setLabelWidth:(float)width;
 - (void)setTrackString:(id)string;
-- (void)updateImages:(BOOL)images enabled:(BOOL)enabled currentTrackSupportsSkip:(BOOL)skip;
+- (void)updateImages:(BOOL)images enabled:(BOOL)enabled;
 @end
 

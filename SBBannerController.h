@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "UIGestureRecognizerDelegate.h"
 #import "SBBulletinWindowClient.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBulletinBusyClient.h"
-#import "SpringBoard-Structs.h"
 #import "SBUIBannerSourceManager.h"
 
 

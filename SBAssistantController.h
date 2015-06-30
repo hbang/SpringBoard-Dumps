@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)dismissAssistantForAlertActivation:(id)alertActivation;
 - (void)dismissAssistantWithFade;
 - (void)dismissAssistantWithFadeOfDuration:(double)duration;
+- (void)dismissPluginForEvent:(int)event;
 - (void)homeCentricPopoverDidDismissView:(id)homeCentricPopover;
 - (void)homeCentricPopoverDidPresentView:(id)homeCentricPopover;
 - (void)homeCentricPopoverWillDismissView:(id)homeCentricPopover animated:(BOOL)animated;

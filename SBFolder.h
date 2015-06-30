@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexNode.h"
 #import "SBIconIndexMutableListObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (unsigned)indexOfList:(id)list;
 - (id)indexPathForFirstFreeSlotAvoidingFirstList:(BOOL)firstFreeSlotAvoidingFirstList;
 - (id)indexPathForIcon:(id)icon;
+- (id)indexPathForIcon:(id)icon includingPlaceholders:(BOOL)placeholders;
 - (id)indexPathForIconWithIdentifier:(id)identifier;
 - (id)indexPathForNodeIdentifier:(id)nodeIdentifier;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconViewDelegate.h"
-#import "SpringBoard-Structs.h"
 #import "UIPopoverControllerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBSwitcherPopoverWindowControllerDelegate.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 	UIButton *_airPlayButton;
 	SBApplication *_nowPlayingApp;
 	int _scanDirection;
-	MPAudioDeviceController *_audioDeviceController;
 	MPAudioVideoRoutingPopoverController *_audioRoutingPopoverController;
 	BOOL _audioRoutingPopoverVisible;
 	BOOL _showPopoverWhenRotationComplete;
@@ -50,8 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateNowPlayingApp;
 - (void)_updateNowPlayingButtonImages;
 - (void)_updateNowPlayingInfo;
-- (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
-- (void)audioDeviceControllerMediaServerDied:(id)died;
+- (void)audioRoutesChanged:(id)changed;
 - (void)backlightLevelChanged;
 - (void)dealloc;
 - (BOOL)iconShouldAllowTap:(id)icon;

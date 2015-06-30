@@ -13,6 +13,7 @@
 - (void)activateModalBulletinAlert:(id)alert;
 - (int)activeInterfaceOrientation;
 - (void)addActiveInterfaceOrientationObserver:(id)observer;
+- (BOOL)alertIsActive;
 - (BOOL)applicationInstalledForDisplayID:(id)displayID;
 - (BOOL)canLaunchFromAwayViewPluginWithURL:(id)url bundleID:(id)anId;
 - (BOOL)canLaunchFromBulletinWithURL:(id)url bundleID:(id)anId;

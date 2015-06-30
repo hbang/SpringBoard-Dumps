@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBFolderScrollOffset.h"
 #import "SpringBoard-Structs.h"
+#import "SBFolderScrollOffset.h"
 
 
 __attribute__((visibility("hidden")))

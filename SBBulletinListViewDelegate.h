@@ -6,8 +6,8 @@
  */
 
 #import "UITableViewDataSource.h"
-#import "SpringBoard-Structs.h"
 #import "UITableViewDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "NSObject.h"
 #import "UIGestureRecognizerDelegate.h"
 

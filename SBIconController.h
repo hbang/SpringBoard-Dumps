@@ -5,6 +5,7 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "BBObserverDelegate.h"
 #import "SBIconListPageControlDelegate.h"
@@ -13,7 +14,6 @@
 #import "SBIconIndexNodeObserver.h"
 #import "SBIconModelDelegate.h"
 #import "SBIconViewMapDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol OS_dispatch_queue;
 
@@ -114,7 +114,7 @@ __attribute__((visibility("hidden")))
 - (void)_dropIcon:(id)icon withInsertionPath:(id)insertionPath;
 - (void)_dropIconIntoOpenFolder:(id)folder withInsertionPath:(id)insertionPath;
 - (void)_dropIconOutOfClosingFolder:(id)closingFolder withInsertionPath:(id)insertionPath;
-- (void)_finishedUnscattering;
+- (void)_finishedUnscatteringWithIconScroll:(BOOL)iconScroll;
 - (void)_folderRotationIconFadeAnimationDidStop:(id)_folderRotationIconFadeAnimation finished:(id)finished context:(id)context;
 - (unsigned)_folderRowsForFolder:(id)folder;
 - (unsigned)_folderRowsForFolder:(id)folder inOrientation:(int)orientation;

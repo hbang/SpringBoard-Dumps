@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBDeviceLockViewOwner.h"
 #import "SpringBoard-Structs.h"
+#import "SBDeviceLockViewOwner.h"
 #import "SBAlertView.h"
 
 @protocol SBSlidingAlertDisplayDelegate;

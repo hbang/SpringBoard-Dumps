@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBPanGestureRecognizer.h"
 #import "SpringBoard-Structs.h"
+#import "SBPanGestureRecognizer.h"
 
 
 __attribute__((visibility("hidden")))

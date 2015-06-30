@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBLeafIcon.h"
 #import "SpringBoard-Structs.h"
+#import "SBLeafIcon.h"
 
 
 __attribute__((visibility("hidden")))

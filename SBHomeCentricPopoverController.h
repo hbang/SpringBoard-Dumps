@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "UIPopoverControllerDelegatePrivate.h"
 #import "SBUIActiveOrientationObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIPopoverControllerDelegate.h"
 
 @protocol SBHomeCentricPopoverControllerDelegate;

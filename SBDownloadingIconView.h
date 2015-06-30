@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBDownloadingIconObserver.h"
 #import "SpringBoard-Structs.h"
+#import "SBDownloadingIconObserver.h"
 #import "SBIconView.h"
 
 

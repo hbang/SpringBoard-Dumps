@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBThermalWarningAlertItemDelegate.h"
 #import "SBThermalWarningSuppressionAssertionDelegate.h"
+#import "SBThermalWarningAlertItemDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -24,9 +24,15 @@ __attribute__((visibility("hidden")))
 + (void)logThermalEvent:(id)event;
 + (id)sharedInstance;
 - (id)init;
+- (void)_beginThermalJetsamCPUSampling;
+- (void)_calculateAppsCPUTimesWithCompletion:(id)completion;
 - (void)_didReceiveWarningAction:(int)action;
+- (void)_killThermallyActiveApplication;
+- (void)_killThermallyActiveApplicationGivenCPUTimes:(id)times;
 - (BOOL)captureWarningSuppressionAssertionWithPort:(unsigned)port reason:(id)reason;
 - (void)dealloc;
+- (void)respondToCurrentThermalCondition;
+- (void)showThermalAlertIfNecessary;
 - (void)startListeningForThermalEvents;
 - (void)thermalWarningAlert:(id)alert didTriggerAction:(int)action;
 - (void)thermalWarningAssertionExpired:(id)expired;

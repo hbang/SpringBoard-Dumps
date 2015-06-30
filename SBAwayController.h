@@ -6,11 +6,11 @@
  */
 
 #import "SBShowcaseControllerOwner.h"
-#import "SpringBoard-Structs.h"
 #import "SBSlidingAlertDisplayDelegate.h"
 #import "SBAlert.h"
+#import "SpringBoard-Structs.h"
 
-@protocol SBDeviceLockViewOwner, OS_dispatch_queue;
+@protocol OS_dispatch_queue, SBDeviceLockViewOwner;
 
 __attribute__((visibility("hidden")))
 @interface SBAwayController : SBAlert <SBSlidingAlertDisplayDelegate, SBShowcaseControllerOwner> {
@@ -106,7 +106,6 @@ __attribute__((visibility("hidden")))
 - (void)_finishUnlockWithSound:(BOOL)sound unlockSource:(int)source isAutoUnlock:(BOOL)unlock;
 - (void)_finishedUnlockAttemptWithStatus:(BOOL)status;
 - (void)_handleCameraPanGestureEndedWithVelocity:(float)velocity;
-- (void)_iapExtendedModeChanged:(id)changed;
 - (void)_idleTimerDisabledReasonsChanged:(id)changed;
 - (void)_irisOpened;
 - (BOOL)_isAccessoryActive;

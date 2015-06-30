@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "UIGestureRecognizerDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "UIGestureRecognizerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBAwayBulletinListViewDelegate;
 

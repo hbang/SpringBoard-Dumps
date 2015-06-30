@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBSlidingAlertDisplay.h"
 #import "SpringBoard-Structs.h"
+#import "SBSlidingAlertDisplay.h"
 #import "SBAwayDateViewDelegate.h"
 
 @protocol SBAwayHeaderPluginView;

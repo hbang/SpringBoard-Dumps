@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)init;
 - (void)addObserverWithToken:(unsigned long long)token forEvent:(id)event;
-- (void)handleEvent:(id)event token:(unsigned long long)token action:(void *)action;
+- (void)handleEvent:(id)event token:(unsigned long long)token action:(long)action;
 - (void)postEventToInterestedObservers:(CFStringRef)interestedObservers;
 - (void)removeObserverWithToken:(unsigned long long)token forEvent:(id)event;
 - (void)setValue:(BOOL)value forState:(CFStringRef)state;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexNodeObserver.h"
 #import "SBIconObserver.h"
 #import "SBIconViewObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBIconViewDelegate, SBIconViewMapDelegate;
 

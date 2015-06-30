@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBBulletinLinenSegmentView.h"
 #import "SBBulletinClearButtonDelegate.h"
-#import "SpringBoard-Structs.h"
 
 @protocol SBBulletinHeaderViewDelegate;
 

@@ -7,9 +7,9 @@
 
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBAwayBulletinListViewDelegate.h"
 #import "SpringBoard-Structs.h"
+#import "SBAwayBulletinListViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "BBObserverDelegate.h"
 
 
