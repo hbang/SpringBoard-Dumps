@@ -231,6 +231,7 @@ __attribute__((visibility("hidden")))
 - (id)_lastLocalNotificationFireDate;
 - (id)_launchNibName;
 - (id)_launchStoryboardName;
+- (int)_launchingInterfaceOrientationForOrientation:(int)orientation ignoringClassicMode:(BOOL)mode;
 - (id)_loadImageForSnapshotAtPath:(id)path fileOrientation:(int *)orientation;
 - (id)_localizedGenreFromDictionary:(id)dictionary;
 - (id)_localizedGenreNameForID:(int)anId;
@@ -439,6 +440,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isWebApplication;
 - (double)lastBadgeClearTime;
 - (int)launchingInterfaceOrientationForCurrentOrientation;
+- (int)launchingInterfaceOrientationForCurrentOrientationIgnoringClassicMode;
 - (int)launchingInterfaceOrientationForOrientation:(int)orientation;
 - (void)localNotificationTimerFired;
 - (void)locationManager:(id)manager didEnterRegion:(id)region;

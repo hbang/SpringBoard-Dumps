@@ -95,7 +95,6 @@ __attribute__((visibility("hidden")))
 - (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
 - (id)bounceAnimator;
 - (void)cancelGestureRecognizer:(id)recognizer;
-- (void)cleanupFromGesture;
 - (id)customSlideToUnlockText;
 - (void)deactivate;
 - (void)dealloc;
@@ -111,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (void)passcodeLockViewPasscodeDidChange:(id)passcodeLockViewPasscode;
 - (void)passcodeLockViewPasscodeEntered:(id)entered;
 - (void)passcodeLockViewPasscodeEnteredViaMesa:(id)mesa;
+- (void)performGeneralCleanupForUserAction:(BOOL)userAction;
 - (void)prepareForSlideUpAnimation;
 - (void)presentTargetAppAnimated:(BOOL)animated;
 - (BOOL)presentingController:(id)controller gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;

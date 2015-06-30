@@ -8,7 +8,7 @@
 #import "SBAppSwitcherPeopleDataSource.h"
 #import "SBAppSwitcherPeopleAbstractDataSource.h"
 
-@protocol OS_dispatch_queue, SBAppSwitcherPeopleDataSourceConsumer, OS_dispatch_group;
+@protocol OS_dispatch_group, OS_dispatch_queue, SBAppSwitcherPeopleDataSourceConsumer;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherPeopleRecentsPlusFavoritesDataSource : SBAppSwitcherPeopleAbstractDataSource <SBAppSwitcherPeopleDataSource> {

@@ -70,7 +70,8 @@ __attribute__((visibility("hidden")))
 - (void)_captureLayerTree:(id)tree;
 - (float)_contentWidth;
 - (void)_disconnectRemoteViewController:(id)controller;
-- (void)_disconnectRemoteViewControllerAndCoalesce:(id)coalesce;
+- (void)_disconnectRemoteViewControllerAndCoalesce:(BOOL)coalesce completionHandler:(id)handler;
+- (void)_disconnectRemoteViewControllerImmediatelyWithCompletionHandler:(id)completionHandler;
 - (void)_disconnectionTimerDidFire:(id)_disconnectionTimer;
 - (BOOL)_effectiveHasContent;
 - (void)_endRemoteViewControllerAppearanceTransitionIfNecessary;

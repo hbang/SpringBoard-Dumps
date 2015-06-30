@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)_setEnabled:(BOOL)enabled;
 - (BOOL)isEnabled;
 - (id)logPreferenceName;
+- (id)logPrefixForCategory:(id)category destination:(unsigned)destination;
 - (id)name;
 @end
 

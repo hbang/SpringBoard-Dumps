@@ -8,7 +8,7 @@
 #import "SBAlertView.h"
 #import "SpringBoard-Structs.h"
 
-@protocol SBPasscodeEntryAlertViewDelegate, SBUIPasscodeLockView;
+@protocol SBUIPasscodeLockView, SBPasscodeEntryAlertViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBPasscodeEntryAlertView : SBAlertView {
