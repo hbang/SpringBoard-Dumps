@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconZoomSettings : SBIconAnimationSettings {
+@interface SBReducedMotionFadeSettings : SBIconAnimationSettings {
 }
 + (id)settingsControllerModule;
 @end

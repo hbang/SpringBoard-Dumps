@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 		unsigned isContentLayoutValid : 1;
 		unsigned isSegmentLayoutValid : 1;
 		unsigned isRequestHandlingEnabled : 1;
-		unsigned hasViewEverAppeared : 1;
+		unsigned shouldLoadAllChildViews : 1;
 	} _notificationsModeViewControllerDelegateFlags;
 	NSMutableArray *_orderedSectionIDs;
 	NSMutableDictionary *_sectionIDsToOrderedBulletins;

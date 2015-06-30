@@ -7,9 +7,7 @@
 
 
 
-__attribute__((visibility("hidden")))
-@interface SBIconZoomSettings : SBIconAnimationSettings {
-}
-+ (id)settingsControllerModule;
+@protocol SBIconAnimatorDelegate <NSObject>
+- (void)iconAnimatorWasInvalidated:(id)invalidated;
 @end
 

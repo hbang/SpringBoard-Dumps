@@ -17,10 +17,17 @@ __attribute__((visibility("hidden")))
 	SBBannerViewCallbackManager *_wrapperCallbacks;
 	_UIBackdropView *_backdropView;
 	UIImageView *_backgroundImageView;
+	struct {
+		unsigned delegateOverrideRequester : 1;
+		unsigned delegateShouldEnableContextHostingForRequester : 1;
+	} _contentViewFlags;
 }
 @property(readonly, assign, nonatomic) _UIBackdropView *backdrop;
 @property(retain, nonatomic) UIImage *backgroundImage;
 @property(assign, nonatomic) UIEdgeInsets clippingInsets;
+@property(readonly, assign, nonatomic) UIColor *defaultGrabberColor;
+@property(copy, nonatomic) UIColor *grabberColor;
++ (id)defaultGrabberColor;
 - (id)initWithFrame:(CGRect)frame;
 - (CGRect)_contentFrame;
 - (CGRect)_frameInClippingViewForFrame:(CGRect)frame;

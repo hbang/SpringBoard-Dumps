@@ -8,8 +8,10 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconZoomSettings : SBIconAnimationSettings {
+@interface SBThermalTrapRecipe : XXUnknownSuperclass <SBTestRecipe> {
 }
-+ (id)settingsControllerModule;
++ (id)title;
+- (void)handleVolumeDecrease;
+- (void)handleVolumeIncrease;
 @end
 

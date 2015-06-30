@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 	NSHashTable *_observers;
 	SBSearchScrollView *_scrollView;
 	BOOL _suppressObserverCallbacks;
-	BOOL _animatingReset;
+	BOOL _animatingResetOrReveal;
 	BOOL _enabled;
 	UIView *_targetView;
 }
-@property(readonly, assign, nonatomic, getter=isAnimatingReset) BOOL animatingReset;
+@property(readonly, assign, nonatomic, getter=isAnimatingResetOrReveal) BOOL animatingResetOrReveal;
 @property(assign, nonatomic) BOOL enabled;
 @property(retain, nonatomic) UIView *targetView;
 + (id)sharedInstance;
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)removeObserver:(id)observer;
 - (void)resetAnimated:(BOOL)animated;
+- (void)revealAnimated:(BOOL)animated;
 - (void)scrollViewDidEndDecelerating:(id)scrollView;
 - (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidEndScrollingAnimation:(id)scrollView;

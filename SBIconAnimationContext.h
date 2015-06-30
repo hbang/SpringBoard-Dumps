@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconZoomContext : XXUnknownSuperclass {
+@interface SBIconAnimationContext : XXUnknownSuperclass {
 	float _fraction;
 	id _completion;
 	double _delay;

@@ -8,8 +8,9 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconZoomSettings : SBIconAnimationSettings {
+@interface SBLockScreenNotificationTableView : XXUnknownSuperclass {
 }
-+ (id)settingsControllerModule;
+- (int)_separatorBackdropOverlayBlendMode;
+- (void)_setSeparatorBackdropOverlayBlendMode:(int)mode;
 @end
 

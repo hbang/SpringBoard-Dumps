@@ -261,6 +261,7 @@ __attribute__((visibility("hidden")))
 - (void)wallpaperLegibilitySettingsDidChange:(id)wallpaperLegibilitySettings forVariant:(int)variant;
 - (BOOL)wantsPasscodeLockForUIUnlockFromSource:(int)source withOptions:(id)options;
 - (BOOL)wantsToHandleAlert:(id)handleAlert;
+- (BOOL)wantsToShowStatusBarTime;
 - (BOOL)wasAutoUnlocked;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;

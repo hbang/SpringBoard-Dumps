@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)setFloatyFolderCrossfadeFraction:(float)fraction;
 - (void)setIcon:(id)icon;
 - (void)setIconGridImageAlpha:(float)alpha;
+- (void)setSuppressesBlurryBackgroundChanges:(BOOL)changes;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)showDropGlow:(BOOL)glow;
 - (CGRect)visibleImageRelativeFrameForMiniIconAtIndex:(unsigned)index;
