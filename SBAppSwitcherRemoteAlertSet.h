@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)alertAtIndex:(unsigned)index;
 - (id)alertForBundleIdentifier:(id)bundleIdentifier;
 - (id)alertForDisplayLayout:(id)displayLayout;
+- (BOOL)containsAlert:(id)alert;
 - (id)copyWithZone:(NSZone *)zone;
 - (unsigned)count;
 - (void)dealloc;

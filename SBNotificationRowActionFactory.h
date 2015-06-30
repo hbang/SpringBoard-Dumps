@@ -30,5 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)rowActionsForAlertItem:(id)alertItem isFirst:(BOOL)first isLast:(BOOL)last handler:(id)handler;
 - (id)rowActionsForBulletin:(id)bulletin isFirst:(BOOL)first isLast:(BOOL)last handler:(id)handler;
+- (BOOL)shouldSuppressSupplementaryActionsForPrivacy:(id)privacy;
 @end
 

@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didDeactivateAlert:(id)alert reason:(int)reason;
 - (id)effectiveUserNotificationSettings;
+- (unsigned)enabledTypesForAdditionalTypes:(unsigned)additionalTypes supportedTypes:(unsigned)types enabledTypes:(unsigned)types3;
 - (void)enqueueAction:(id)action;
 - (BOOL)haveRegisteredBefore;
 - (void)installedApplicationsChanged:(id)changed;

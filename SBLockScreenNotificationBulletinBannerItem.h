@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)message;
 - (id)sound;
 - (id)sourceDate;
+- (id)subtitle;
 - (id)title;
 @end
 

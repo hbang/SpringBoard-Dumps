@@ -6,7 +6,7 @@
  */
 
 
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, NSCopying;
+@protocol OS_dispatch_semaphore, NSCopying, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _SBWidgetViewControllerOutOfProcess : SBWidgetViewController {
@@ -85,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateSnapshotWithForce:(BOOL)force completionHandler:(id)handler;
 - (BOOL)_isRemoteViewVisible;
 - (void)_loadSnapshotViewFromDiskIfNecessary:(id)diskIfNecessary;
-- (UIEdgeInsets)_marginInset;
+- (UIEdgeInsets)_marginInsets;
 - (void)_packageViewFromURL:(id)url reply:(id)reply;
 - (void)_packageViewWithBlock:(id)block reply:(id)reply;
 - (void)_packageViewWithData:(id)data reply:(id)reply;

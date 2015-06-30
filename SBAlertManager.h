@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithScreen:(id)screen delegate:(id)delegate;
 - (id)_accessoryWrapperForAlert:(id)alert withWindow:(id)window hostRequester:(id)requester;
 - (void)_activate:(id)activate;
+- (void)_assistantVisibilityDidChange:(id)_assistantVisibility;
+- (void)_controlCenterDidDeactivate:(id)_controlCenter;
 - (id)_createAlertWindowForAlert:(id)alert;
 - (void)_deactivate:(id)deactivate;
 - (void)_disablePortraitOrientationLock;
@@ -47,13 +49,17 @@ __attribute__((visibility("hidden")))
 - (id)_hostedAccessoryViewsForAlert:(id)alert;
 - (void)_makeAlertWindowOpaque:(BOOL)opaque;
 - (BOOL)_needsPortraitOrientationLockForAlert:(id)alert;
+- (void)_notificationCenterDidDeactivate:(id)_notificationCenter;
 - (void)_removeFromView:(id)view oldAlertIndex:(unsigned)index;
+- (void)_removeHostedAccessoryViewsForRequester:(id)requester;
 - (void)_resetAlertWindowOpacity;
 - (void)_stopHostingAccessoryWindowsForDeactivatingAlert:(id)deactivatingAlert;
+- (void)_stopHostingAccessoryWindowsForWrapper:(id)wrapper;
 - (void)activate:(id)activate;
 - (id)activeAlert;
 - (void)addObserver:(id)observer;
 - (void)alert:(id)alert requestsBackgroundStyleChangeWithAnimationFactory:(id)animationFactory;
+- (BOOL)alertCanAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (void)alertIsReadyToBeDeactivated:(id)beDeactivated;
 - (void)alertIsReadyToBeRemovedFromView:(id)view;
 - (void)alertWantsToForceWallpaperTunnelUpdate:(id)forceWallpaperTunnelUpdate;

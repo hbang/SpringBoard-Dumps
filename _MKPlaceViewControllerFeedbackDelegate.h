@@ -7,9 +7,7 @@
 
 
 
-__attribute__((visibility("hidden")))
-@interface SBCarDisplaySceneManager : SBSceneManager {
-}
-- (id)_newLayoutManager;
+@protocol _MKPlaceViewControllerFeedbackDelegate <NSObject>
+- (void)placeViewController:(id)controller shouldLogFeedbackOfType:(int)type;
 @end
 

@@ -14,6 +14,6 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) UIEdgeInsets layoutInsets;
 @property(readonly, assign, nonatomic) BOOL preservesCurrentListOrigin;
-- (id)initWithFullscreenOverrideStrategy:(id)fullscreenOverrideStrategy;
+- (id)initWithFullscreenOverrideStrategyForConfiguration:(id)configuration;
 @end
 

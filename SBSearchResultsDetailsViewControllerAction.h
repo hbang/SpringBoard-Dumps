@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelAnimated:(BOOL)animated withCompletionBlock:(id)completionBlock;
 - (void)dealloc;
 - (id)performWithCompletionBlock:(id)completionBlock;
-- (void)searchResultDetailsViewController:(id)controller openURLs:(id)urls;
+- (void)searchResultDetailsViewController:(id)controller openURLs:(id)urls fromCardType:(id)cardType;
 - (void)updateConstraintConstants;
 @end
 

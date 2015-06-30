@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBBulletinActionHandler, SBModeViewControllerContentProviding;
+@protocol SBModeViewControllerContentProviding, SBBulletinActionHandler;
 
 __attribute__((visibility("hidden")))
 @interface SBModeViewController : XXUnknownSuperclass <SBUISizeObservingViewDelegate, _UISettingsKeyPathObserver> {

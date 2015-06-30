@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)defaultFontColor;
 + (id)defaultTextAttributes;
 + (float)interCellSpacingInLayoutMode:(int)layoutMode;
++ (float)snippetLineHeight;
 - (id)initWithStyle:(int)style reuseIdentifier:(id)identifier;
 - (void)dealloc;
 - (void)layoutSubviews;

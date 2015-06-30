@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSearchViewController : XXUnknownSuperclass <UITableViewDelegate, UITableViewDataSource, SPSearchAgentDelegate, SBSearchGestureObserver, UISearchBarDelegate, SBSearchResultsActionManagerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, SBUIActiveOrientationObserver, SBReachabilityObserver, SBSearchHeaderDelegate> {
+@interface SBSearchViewController : XXUnknownSuperclass <UITableViewDelegate, UITableViewDataSource, SPSearchAgentDelegate, SBSearchGestureObserver, UISearchBarDelegate, SBSearchResultsActionManagerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, SBUIActiveOrientationObserver, SBReachabilityObserver, UITextFieldDelegate, SBSearchHeaderDelegate> {
 	UINavigationController *_navigationController;
 	UIViewController *_mainViewController;
 	SBSearchFirstTimeViewController *_firstTimeViewController;
@@ -63,10 +63,11 @@ __attribute__((visibility("hidden")))
 - (void)_rotatePresentingWindowIfNecessaryTo:(int)to withDuration:(double)duration;
 - (void)_searchFieldEditingChanged;
 - (void)_searchFieldReturnPressed;
-- (void)_sendAbandonmentFeedback;
+- (void)_sendAbandonmentFeedbackForReason:(unsigned)reason;
 - (void)_sendFeedback:(id)feedback;
 - (void)_setFirstTimeViewVisible:(BOOL)visible;
 - (void)_setShowingKeyboard:(BOOL)keyboard;
+- (void)_setVisibility:(int)visibility;
 - (BOOL)_showFirstTimeView;
 - (BOOL)_showingKeyboard;
 - (void)_updateCellClipping:(id)clipping;
@@ -76,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)actionManager:(id)manager dismissAnimated:(BOOL)animated completionBlock:(id)block;
 - (void)actionManager:(id)manager dismissViewController:(id)controller completion:(id)completion animated:(BOOL)animated;
 - (void)actionManager:(id)manager presentViewController:(id)controller completion:(id)completion modally:(BOOL)modally;
+- (void)actionManager:(id)manager sendFeedback:(id)feedback;
 - (UIEdgeInsets)actionManagerDetailsViewEdgeInsets:(id)insets;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(int)activeInterfaceOrientation willAnimateWithDuration:(double)duration fromOrientation:(int)orientation;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(int)activeInterfaceOrientation;
@@ -90,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)handleReachabilityModeDeactivated;
 - (void)loadView;
 - (void)navigationController:(id)controller didShowViewController:(id)controller2 animated:(BOOL)animated;
+- (void)navigationController:(id)controller willShowViewController:(id)controller2 animated:(BOOL)animated;
 - (int)numberOfSectionsInTableView:(id)tableView;
 - (void)scrollViewDidScroll:(id)scrollView;
 - (void)scrollViewWillBeginDragging:(id)scrollView;
@@ -108,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)view viewForFooterInSection:(int)section;
 - (id)tableView:(id)view viewForHeaderInSection:(int)section;
 - (void)tableView:(id)view willDisplayCell:(id)cell forRowAtIndexPath:(id)indexPath;
+- (BOOL)textFieldShouldClear:(id)textField;
 - (void)traitCollectionDidChange:(id)traitCollection;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)view;

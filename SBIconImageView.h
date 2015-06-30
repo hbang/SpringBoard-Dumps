@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_clearCachedImages;
 - (void)_clearProgressView;
 - (id)_currentOverlayImage;
+- (void)_didReceiveLowMemoryWarning:(id)warning;
 - (id)_generateIconBasicOverlayImageForFormat:(int)format;
 - (id)_generateIconSquareOverlayImageForFormat:(int)format;
 - (id)_generateSquareContentsImage;

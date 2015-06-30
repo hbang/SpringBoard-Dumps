@@ -30,5 +30,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)matchesContext:(id)context;
 - (void)reloadDisplayProperties;
 - (void)removeObserver:(id)observer;
+- (BOOL)shouldShowModalSubActions;
 @end
 

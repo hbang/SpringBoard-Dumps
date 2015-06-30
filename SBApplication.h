@@ -109,6 +109,7 @@ __attribute__((visibility("hidden")))
 	float _minimumBrightnessLevel;
 	NSArray *_domainsToPreheat;
 	int _starkLaunchModes;
+	NSSet *_starkProtocols;
 	int _defaultStarkStatusBarStyle;
 	NSMutableDictionary *_alertImpersonatorsByWorkspaceType;
 	unsigned _isRecentlyUpdated : 3;
@@ -208,6 +209,7 @@ __attribute__((visibility("hidden")))
 - (void)_fireNotification:(id)notification;
 - (id)_getLocalNotificationFromBulletin:(id)bulletin;
 - (BOOL)_hasAnyAlertImpersonator;
+- (BOOL)_hasBooleanYesEntitlement:(id)entitlement;
 - (BOOL)_hasDefaultPNGForApplicationSupportedType:(int)applicationSupportedType;
 - (id)_imageNamesFromInfoDictionary:(id)infoDictionary;
 - (void)_imageOrientationParametersForLaunchingOrientation:(int)launchingOrientation imageTag:(id *)tag fallbackImageTag:(id *)tag3 fallbackOrientation:(int *)orientation;
@@ -334,6 +336,7 @@ __attribute__((visibility("hidden")))
 - (id)carScene;
 - (id)carSceneID;
 - (BOOL)classicAppFullScreen;
+- (BOOL)classicAppLegacyStatusBar;
 - (BOOL)classicAppRequiresHiDPI;
 - (BOOL)classicAppScaled;
 - (BOOL)classicAppZoomedIn;
@@ -391,7 +394,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasStartedLaunching;
 - (id)icon:(id)icon defaultImageWithFormat:(int)format;
 - (id)icon:(id)icon imageWithFormat:(int)format;
-- (BOOL)icon:(id)icon launchFromLocation:(int)location;
+- (BOOL)icon:(id)icon launchFromLocation:(int)location context:(id)context;
 - (int)iconAccessoryType:(id)type;
 - (BOOL)iconAllowsLaunch:(id)launch;
 - (BOOL)iconAllowsUninstall:(id)uninstall;
@@ -536,7 +539,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsLocationBackgroundMode;
 - (BOOL)supportsRemoteNotificationBackgroundMode;
 - (BOOL)supportsStarkAudio;
-- (BOOL)supportsStarkFullScreen;
+- (BOOL)supportsStarkFullScreenForConfiguration:(id)configuration;
 - (BOOL)supportsStarkGateKeeper;
 - (BOOL)supportsVOIPBackgroundMode;
 - (BOOL)suppressesBanners;

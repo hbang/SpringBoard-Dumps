@@ -18,6 +18,6 @@ __attribute__((visibility("hidden")))
 - (id)getUnmaskedIconImage:(int)image;
 - (BOOL)hasFolderIconView;
 - (BOOL)isNewsstandIcon;
-- (void)launchFromLocation:(int)location;
+- (void)launchFromLocation:(int)location context:(id)context;
 @end
 

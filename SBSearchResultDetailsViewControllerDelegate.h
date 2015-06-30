@@ -8,6 +8,6 @@
 
 
 @protocol SBSearchResultDetailsViewControllerDelegate <NSObject>
-- (void)searchResultDetailsViewController:(id)controller openURLs:(id)urls;
+- (void)searchResultDetailsViewController:(id)controller openURLs:(id)urls fromCardType:(id)cardType;
 @end
 

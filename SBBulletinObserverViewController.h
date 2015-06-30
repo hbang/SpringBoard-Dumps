@@ -78,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeBulletinViewControllerView;
 - (void)_setSection:(id)section enabled:(BOOL)enabled;
 - (void)_setSection:(id)section visible:(BOOL)visible;
-- (void)_setSectionOrder:(id)order forCategory:(int)category;
+- (void)_setSectionOrder:(id)order forCategory:(int)category andSortSections:(BOOL)sections;
 - (void)_setSectionOrderRule:(int)rule;
 - (void)_setupQueue:(id *)queue withLabel:(const char *)label;
 - (void)_setupRequestQueues;

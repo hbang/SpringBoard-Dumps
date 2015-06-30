@@ -22,6 +22,5 @@ __attribute__((visibility("hidden")))
 - (id)serviceAtIndex:(unsigned)index;
 - (id)serviceBundleIdentifiers;
 - (id)serviceForBundleIdentifier:(id)bundleIdentifier;
-- (id)serviceForIdentifier:(id)identifier;
 @end
 

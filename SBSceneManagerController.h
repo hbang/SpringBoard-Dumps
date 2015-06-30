@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)_clientSettingsDiffInspector;
 - (void)_destroySceneManagerIfNecessary:(id)necessary;
-- (Class)_sceneManagerClassForDisplay:(id)display;
+- (void)_handleUnhandledBackButtonForScene:(id)scene;
 - (id)_sceneManagerForDisplay:(id)display creatingIfNecessary:(BOOL)necessary;
 - (void)_updateExternalDisplayScenesIfNecessaryForMainDisplayScene:(id)mainDisplayScene forTransitionToState:(unsigned)state;
 - (void)dealloc;

@@ -10,7 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBMainDisplaySceneManager : SBSceneManager {
 }
-+ (Class)_layoutManagerClass;
+- (id)_newLayoutManager;
 - (id)layoutManager;
 @end
 

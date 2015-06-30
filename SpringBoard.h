@@ -6,7 +6,7 @@
  */
 
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_source, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface SpringBoard : XXUnknownSuperclass <SBPowerDownControllerDelegate, MCProfileConnectionObserver, UIApplicationDelegate> {
@@ -93,6 +93,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 @property(assign, nonatomic, getter=isTypingActive) BOOL typingActive;
 @property(retain, nonatomic) UIWindow *window;
++ (void)preFrontBoardInitializationHook;
 + (BOOL)shouldFixMainThreadPriority;
 - (id)init;
 - (BOOL)_URLIsHandledBySpringBoard:(id)board;
@@ -370,6 +371,7 @@ __attribute__((visibility("hidden")))
 - (void)startedTest:(id)test;
 - (int)statusBar:(id)bar styleForRequestedStyle:(int)requestedStyle overrides:(int)overrides;
 - (int)statusBarOrientation;
+- (BOOL)supportsPortraitUpsideDownOrientation;
 - (void)tearDown;
 - (BOOL)underMemoryPressure;
 - (void)updateMirroredDisplayOrientation;

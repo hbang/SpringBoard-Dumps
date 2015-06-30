@@ -6,7 +6,7 @@
  */
 
 
-@protocol SBIconModelApplicationDataSource, SBIconModelStore, SBIconModelDelegate;
+@protocol SBIconModelDelegate, SBIconModelApplicationDataSource, SBIconModelStore;
 
 __attribute__((visibility("hidden")))
 @interface SBIconModel : XXUnknownSuperclass {

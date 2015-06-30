@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) int statusBarStyleOverrides;
 @property(readonly, assign) Class superclass;
 @property(retain, nonatomic) NSXPCListener *xpcListener;
-+ (id)_separateStatusBarStyleOverrides;
 + (id)sharedInstance;
 - (id)init;
 - (id)_internalQueue_addAssertionByStyleOverrides:(id)overrides returningAddedStyleOverrides:(int *)overrides2;

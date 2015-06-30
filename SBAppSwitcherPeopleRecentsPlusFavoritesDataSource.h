@@ -6,7 +6,7 @@
  */
 
 
-@protocol OS_dispatch_group, OS_dispatch_queue, SBAppSwitcherPeopleDataSourceConsumer;
+@protocol SBAppSwitcherPeopleDataSourceConsumer, OS_dispatch_queue, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherPeopleRecentsPlusFavoritesDataSource : SBAppSwitcherPeopleAbstractDataSource <SBAppSwitcherPeopleDataSource> {
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 	NSMutableDictionary *_monogramKeyLRUSets;
 	NSMutableDictionary *_monogramImageSourceDates;
 	NSMutableDictionary *_recalculation_queue_recordIDsToContactItems;
+	unsigned _abPreferencesNameFormatHash;
 }
 @property(assign, nonatomic) id<SBAppSwitcherPeopleDataSourceConsumer> consumer;
 @property(readonly, copy) NSString *debugDescription;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 + (id)_peopleMappedImageCache;
 - (id)init;
 - (void)_addressBookChangedExternally;
+- (void)_addressBookPreferencesChanged;
 - (id)_contactItemForIndexPath:(id)indexPath;
 - (void)_favoritesDidChange:(id)_favorites;
 - (void)_individualPeopleChanged:(id)changed;

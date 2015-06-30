@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 	BOOL _didCoalesceWidgetsConnections;
 	NSTimer *_widgetConnectionsTimer;
 	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
+	NSMutableSet *_bulletinWindowClients;
 }
 @property(readonly, assign, nonatomic, getter=isAvailableWhileLocked) BOOL availableWhileLocked;
 @property(assign, nonatomic) BOOL blursBackground;
@@ -77,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)_present:(BOOL)present stepper:(id)stepper;
 - (void)_present:(BOOL)present withStandardAnimation:(BOOL)standardAnimation stepper:(id)stepper completion:(id)completion fromCurrentState:(BOOL)currentState;
 - (void)_presentAnimated:(BOOL)animated setupPrelude:(id)prelude setupPostlude:(id)postlude animationPrelude:(id)prelude4 animationPostlude:(id)postlude5 completion:(id)completion;
+- (void)_registerNotificationCenterBulletinWindowClient:(id)client;
 - (void)_removeCoveredContentSnapshot;
 - (BOOL)_requiresAuthenticationForActionContext:(id)actionContext;
 - (BOOL)_requiresUIUnlockForActionContext:(id)actionContext;
@@ -86,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupForPresentationWithTouchLocation:(CGPoint)touchLocation;
 - (void)_setupForViewPresentation;
 - (BOOL)_shouldSelectViewControllerAtTouchLocation;
+- (void)_unregisterNotificationCenterBulletinWindowClient:(id)client;
 - (void)_updateCoveredContentSnapshot;
 - (void)_updateForChangeInMessagePrivacy;
 - (void)abortAnimatedTransition;
@@ -121,6 +124,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareLayoutForPresentationFromBanner;
 - (void)presentAnimated:(BOOL)animated;
 - (void)presentAnimated:(BOOL)animated completion:(id)completion;
+- (void)registerPresentedViewController:(id)controller;
 - (void)registerSharedGrabberView:(id)view withWillPresentBlock:(id)with hideBlock:(id)block andCompletion:(id)completion;
 - (void)reloadAllWidgets;
 - (void)remoteViewControllerDidConnectForWidget:(id)remoteViewController;
@@ -129,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (BOOL)shouldRequestWidgetRemoteViewControllers;
 - (void)showGrabberAnimated:(BOOL)animated;
+- (void)unregisterPresentedViewController:(id)controller;
 - (void)unregisterSharedGrabberView;
 - (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
 - (void)widget:(id)widget requestsLaunchOfURL:(id)url;

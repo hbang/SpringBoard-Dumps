@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (unsigned)_countOfAdditionalPagesToKeepVisibleInOneDirection;
 + (Class)_scrollViewClass;
-- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map context:(id)context;
 - (void)_addIconListView:(id)view;
 - (void)_configureGestures;
 - (void)_convertToMultipleIconListsAnimated:(BOOL)multipleIconListsAnimated;
@@ -78,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)setLegibilitySettings:(id)settings;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (CGPoint)visibleFolderRelativeImageCenterForIcon:(id)icon;
-- (void)willAnimate;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (void)willAnimateWithSettings:(id)settings;
 @end
 
