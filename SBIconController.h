@@ -26,7 +26,9 @@ __attribute__((visibility("hidden")))
 	SBIconModel *_iconModel;
 	SBIconContentView *_contentView;
 	BOOL _needsRelayout;
+@private
 	BOOL _sendITunesNotification;
+@protected
 	BBObserver *_bbObserver;
 	NSMutableSet *_displayIDsWithBadgingDisabled;
 	SBRootFolderController *_rootFolderController;

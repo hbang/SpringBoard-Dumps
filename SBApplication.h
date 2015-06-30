@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 	NSArray *_tags;
 	UIRemoteApplication *_remoteApplication;
 	unsigned _monitoringLocaleAndTimeChanges : 1;
-	NSSet *_alertSuppressionContexts;
+	NSDictionary *_alertSuppressionContextsBySectionIdentifier;
 	unsigned _doingBackgroundNetworking : 16;
 	unsigned _failedLaunchCount : 8;
 	unsigned _isSystemProvisioningApplication : 1;
@@ -131,6 +131,7 @@ __attribute__((visibility("hidden")))
 	BOOL _shouldShowUserNotificationPermissionAlert;
 	BOOL _useLaunchStoryboardOrNib;
 	BOOL _alwaysLaunchesFullScreen;
+	BOOL _isWatchApp;
 	BOOL _reachabilitySupported;
 }
 @property(copy, nonatomic, setter=_setActivationSettings:) SBActivationSettings *_activationSettings;
@@ -313,7 +314,6 @@ __attribute__((visibility("hidden")))
 - (int)_workspaceTypeFromSceneID:(id)sceneID;
 - (void)activate;
 - (int)activationState;
-- (id)alertSuppressionContexts;
 - (BOOL)allowsEventOnlySuspension;
 - (BOOL)appIsAuthorizedForRegionMonitoring;
 - (id)appSnapshotPathForSceneID:(id)sceneID downscaled:(BOOL)downscaled;
@@ -489,7 +489,7 @@ __attribute__((visibility("hidden")))
 - (void)scheduleSnoozeNotification:(id)notification;
 - (void)scheduleSnoozeNotificationForLocalNotification:(id)localNotification;
 - (id)scheduledLocalNotifications;
-- (void)setAlertSuppressionContexts:(id)contexts;
+- (void)setAlertSuppressionContextsBySectionIdentifier:(id)identifier;
 - (void)setApplicationNextWakeDate:(id)date;
 - (void)setApplicationState:(unsigned)state;
 - (void)setBadge:(id)badge;
@@ -517,6 +517,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldLaunchPNGless;
 - (BOOL)shouldLaunchSuspendedAlways;
 - (BOOL)shouldShowUserNotificationPermissionAlert;
+- (BOOL)shouldSuppressAlertForSuppressionContexts:(id)suppressionContexts sectionIdentifier:(id)identifier;
 - (BOOL)showLaunchAlertForType:(int)type;
 - (BOOL)showSystemVolumeHUDForCategory:(id)category;
 - (BOOL)showsProgress;

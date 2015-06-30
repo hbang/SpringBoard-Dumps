@@ -15,6 +15,7 @@
 - (void)handleLockButtonPressed;
 - (void)handleVolumeDownButtonPressed;
 - (void)handleVolumeUpButtonPressed;
+- (void)noteActivatedForActivityContinuationWithIdentifier:(id)identifier;
 - (void)noteActivatedForCustomReason:(id)customReason;
 - (void)setUserInfo:(id)info;
 @end

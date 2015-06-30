@@ -52,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)_publishAlarmsWithScheduledNotifications:(id)scheduledNotifications;
 - (void)_publishBulletinForLocalNotification:(id)localNotification;
 - (void)_publishTimerInScheduledNotifications:(id)scheduledNotifications;
-- (id)_publisherBulletinIDFromNotification:(id)notification;
+- (id)_recordIDFromNotification:(id)notification;
 - (void)_removeBulletinWithPublisherBulletinID:(id)publisherBulletinID;
 - (id)_ringtoneSoundFromSoundName:(id)soundName;
 - (id)_scheduledNotifications;

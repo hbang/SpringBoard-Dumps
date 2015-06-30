@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)bulletinWindowStoppedBeingBusy;
 - (void)destroyingAlert:(id)alert withBulletin:(id)bulletin;
 - (void)handleEvent:(int)event withBulletin:(id)bulletin forRegistry:(id)registry;
-- (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
+- (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed playLightsAndSirens:(BOOL)sirens withReply:(id)reply;
 - (id)observer:(id)observer composedAttachmentImageForType:(int)type thumbnailData:(id)data key:(id)key;
 - (void)observer:(id)observer modifyBulletin:(id)bulletin;
 - (void)observer:(id)observer noteAlertBehaviorOverridesChanged:(unsigned)changed;

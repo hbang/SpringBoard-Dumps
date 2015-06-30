@@ -18,7 +18,6 @@
 - (void)prepareForSlideUpAppLaunchAnimated:(BOOL)slideUpAppLaunchAnimated;
 - (int)presentingControllerIdentifierForController:(id)controller;
 - (void)setUnlockActionContext:(id)context;
-- (void)updateSlideToUnlockTextForController:(id)controller;
 - (id)viewControllerToUseAsParent;
 @end
 

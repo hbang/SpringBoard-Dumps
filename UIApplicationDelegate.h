@@ -29,6 +29,7 @@
 - (void)application:(id)application handleActionWithIdentifier:(id)identifier forRemoteNotification:(id)remoteNotification completionHandler:(id)handler;
 - (void)application:(id)application handleEventsForBackgroundURLSession:(id)backgroundURLSession completionHandler:(id)handler;
 - (BOOL)application:(id)application handleOpenURL:(id)url;
+- (void)application:(id)application handleWatchKitExtensionRequest:(id)request reply:(id)reply;
 - (BOOL)application:(id)application openURL:(id)url sourceApplication:(id)application3 annotation:(id)annotation;
 - (void)application:(id)application performFetchWithCompletionHandler:(id)completionHandler;
 - (BOOL)application:(id)application shouldAllowExtensionPointIdentifier:(id)identifier;

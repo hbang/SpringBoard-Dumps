@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 	id _scrollDoneBlock;
 	BOOL _isMoving;
 	BOOL _isLayingOutForReachability;
+	SBDisplayItem *_displayItemForWhichRemovalIsBeingCancelled;
 	id<SBAppSwitcherScrollingViewDelegate> _delegate;
 }
 @property(readonly, copy) NSString *debugDescription;

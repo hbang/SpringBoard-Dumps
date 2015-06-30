@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)shakeSlideToUnlockTextWithCustomText:(id)customText;
 - (BOOL)shouldShowLockStatusBarTime;
 - (BOOL)shouldShowSlideshowButton;
+- (BOOL)shouldShowStatusBarOnDeactivation;
 - (void)startLockScreenFadeInAnimationForSource:(int)source;
 - (void)updateCardItem:(id)item;
 - (void)updateCustomSubtitleTextForAwayViewPlugin:(id)awayViewPlugin;

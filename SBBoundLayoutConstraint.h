@@ -10,16 +10,16 @@
 
 __attribute__((visibility("hidden")))
 @interface SBBoundLayoutConstraint : XXUnknownSuperclass {
-@private
 	id _object;
 	NSString *_keyPath;
 }
 @property(copy, nonatomic) NSString *keyPath;
-@property(retain, nonatomic) id object;
+@property(assign, nonatomic) id object;
 + (id)constraintWithItem:(id)item attribute:(int)attribute relatedBy:(int)by toItem:(id)item4 attribute:(int)attribute5 multiplier:(float)multiplier constantObject:(id)object keyPath:(id)path;
 - (void)_boundValueDidChange;
 - (void)bindConstantToObject:(id)object keyPath:(id)path;
 - (void)dealloc;
 - (void)observeValueForKeyPath:(id)keyPath ofObject:(id)object change:(id)change context:(void *)context;
+- (void)unbind;
 @end
 

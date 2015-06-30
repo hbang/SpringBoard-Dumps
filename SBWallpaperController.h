@@ -41,10 +41,8 @@ __attribute__((visibility("hidden")))
 	int _disallowRasterizationBlockCount;
 	NSMutableSet *_disallowRasterizationReasonsHomeVariant;
 	NSMutableSet *_disallowRasterizationReasonsLockVariant;
-	UIImage *_homescreenLightForegroundBlurImage;
 	CGColorRef _homescreenLightForegroundBlurColor;
 	CGRect _homescreenLightForegroundBlurColorRect;
-	NSMutableSet *_homescreenLightForegroundBlurCachedKeys;
 	BOOL _creatingHomescreenLightForegroundBlurColor;
 	BOOL _isSuspendingMotionEffectsForBlur;
 	SBWallpaperPreviewSnapshotCache *_previewCache;
