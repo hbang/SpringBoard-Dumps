@@ -7,7 +7,7 @@
 
 
 
-@interface SBEmergencyCallButton : UIPushButton {
+@interface SBEmergencyCallButton : XXUnknownSuperclass {
 }
 + (id)defaultFont;
 - (void)drawButtonPart:(int)part inRect:(CGRect)rect;

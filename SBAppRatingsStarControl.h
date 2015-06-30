@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppRatingsStarControl : UIControl {
+@interface SBAppRatingsStarControl : XXUnknownSuperclass {
 	NSMutableArray *_stars;
 	int _currentIndex;
 }

@@ -7,7 +7,7 @@
 
 
 
-@interface MMSBevelView : UIView {
+@interface MMSBevelView : XXUnknownSuperclass {
 }
 - (void)drawRect:(CGRect)rect;
 @end

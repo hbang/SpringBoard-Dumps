@@ -7,7 +7,7 @@
 
 
 
-@interface SBSwitcherSlider : UISlider {
+@interface SBSwitcherSlider : XXUnknownSuperclass {
 }
 - (id)initWithFrame:(CGRect)frame;
 - (UIEdgeInsets)_thumbHitEdgeInsets;

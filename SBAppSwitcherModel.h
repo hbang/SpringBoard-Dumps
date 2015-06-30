@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppSwitcherModel : NSObject {
+@interface SBAppSwitcherModel : XXUnknownSuperclass {
 	NSMutableArray *_recentDisplayIdentifiers;
 }
 + (id)sharedInstance;

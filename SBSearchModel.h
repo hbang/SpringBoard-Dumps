@@ -7,7 +7,7 @@
 
 
 
-@interface SBSearchModel : NSObject <SPDaemonQueryDelegate> {
+@interface SBSearchModel : XXUnknownSuperclass <SPDaemonQueryDelegate> {
 	NSString *_queryString;
 	NSString *_firstNoResultsQuery;
 	CPSearchMatcher *_queryMatcher;

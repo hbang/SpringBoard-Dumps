@@ -7,7 +7,7 @@
 
 
 
-@interface SBFolderRotationAnimationContext : NSObject {
+@interface SBFolderRotationAnimationContext : XXUnknownSuperclass {
 	NSSet *_icons;
 	XXStruct_9ihRqB _notchInfo;
 	double _duration;

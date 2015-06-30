@@ -7,7 +7,7 @@
 
 
 
-@interface SBDeviceLockTitle : UIView {
+@interface SBDeviceLockTitle : XXUnknownSuperclass {
 	int _style;
 	int _interfaceOrientation;
 }

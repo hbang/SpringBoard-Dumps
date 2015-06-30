@@ -7,7 +7,7 @@
 
 
 
-@interface SBAlertWindow : UIWindow {
+@interface SBAlertWindow : XXUnknownSuperclass {
 	UIView *_contentLayer;
 	unsigned _isAnimating : 1;
 	unsigned _isInvalid : 1;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBHUDWindow : UIWindow {
+@interface SBHUDWindow : XXUnknownSuperclass {
 }
 - (BOOL)_ignoresHitTest;
 @end

@@ -7,13 +7,10 @@
 
 
 
-@interface SBWiFiCell : _UIAlertTableViewCell {
-	id _userInfo;
+@interface SBWiFiCell : SBWirelessCell {
 }
-- (id)initWithFrame:(CGRect)frame networkDictionary:(id)dictionary;
+- (id)initWithDictionary:(id)dictionary;
+- (void)dealloc;
 - (void)layoutSubviews;
-- (void)setUserInfo:(id)info;
-- (void)updateHighlightColors;
-- (id)userInfo;
 @end
 

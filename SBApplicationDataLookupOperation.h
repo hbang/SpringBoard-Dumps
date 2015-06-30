@@ -7,7 +7,7 @@
 
 
 
-@interface SBApplicationDataLookupOperation : NSOperation {
+@interface SBApplicationDataLookupOperation : XXUnknownSuperclass {
 }
 - (void)main;
 @end

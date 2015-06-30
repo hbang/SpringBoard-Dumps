@@ -7,7 +7,8 @@
 
 
 
-@interface NSCharacterSet (PhonePad)
-+ (id)phonePadCharacterSet;
+@interface SBRotationLockHUDController : XXUnknownSuperclass {
+}
++ (void)activateWithLocked:(BOOL)locked;
 @end
 

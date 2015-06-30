@@ -7,7 +7,7 @@
 
 
 
-@interface SBMediaController : NSObject {
+@interface SBMediaController : XXUnknownSuperclass {
 	int _manualVolumeChangeCount;
 	NSDictionary *_nowPlayingInfo;
 	float _pendingVolumeChange;
@@ -17,7 +17,9 @@
 	int _lastNowPlayingAppPID;
 	BOOL _lastNowPlayingAppIsPlaying;
 	BOOL _suppressHUD;
+	BOOL _ringerMuted;
 }
+@property(assign, nonatomic, getter=isRingerMuted) BOOL ringerMuted;
 @property(assign) BOOL suppressHUD;
 + (BOOL)applicationCanBeConsideredNowPlaying:(id)playing;
 + (id)sharedInstance;
@@ -49,6 +51,7 @@
 - (BOOL)isMovie;
 - (BOOL)isPlaying;
 - (BOOL)isTVOut;
+- (BOOL)lastSavedRingerMutedState;
 - (id)mediaControlsDestinationApp;
 - (BOOL)muted;
 - (id)nowPlayingAlbum;

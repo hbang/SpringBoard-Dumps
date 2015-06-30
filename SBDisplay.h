@@ -7,7 +7,7 @@
 
 
 
-@interface SBDisplay : NSObject {
+@interface SBDisplay : XXUnknownSuperclass {
 	NSMutableDictionary *_displayValues;
 	NSMutableDictionary *_activationValues;
 	NSMutableDictionary *_deactivationValues;

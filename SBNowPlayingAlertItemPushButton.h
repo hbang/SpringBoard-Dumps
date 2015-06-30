@@ -7,7 +7,7 @@
 
 
 
-@interface SBNowPlayingAlertItemPushButton : UIButton {
+@interface SBNowPlayingAlertItemPushButton : XXUnknownSuperclass {
 	float _yOffset;
 	float _xOffset;
 }

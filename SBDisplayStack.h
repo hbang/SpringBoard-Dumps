@@ -7,7 +7,7 @@
 
 
 
-@interface SBDisplayStack : NSObject {
+@interface SBDisplayStack : XXUnknownSuperclass {
 	NSMutableArray *_displayStack;
 	/*function-pointer*/ void *_pushCallback;
 	/*function-pointer*/ void *_popCallback;

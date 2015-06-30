@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconRotationContainer : UIView {
+@interface SBIconRotationContainer : XXUnknownSuperclass {
 	UIView *_startSnapshot;
 	UIView *_endSnapshot;
 	SBIcon *_icon;

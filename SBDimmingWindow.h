@@ -7,7 +7,7 @@
 
 
 
-@interface SBDimmingWindow : UIWindow {
+@interface SBDimmingWindow : XXUnknownSuperclass {
 }
 + (CGRect)constrainFrameToScreen:(CGRect)screen;
 - (id)initWithContentRect:(CGRect)contentRect;

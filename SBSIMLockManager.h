@@ -7,15 +7,17 @@
 
 
 
-@interface SBSIMLockManager : NSObject {
+@interface SBSIMLockManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
 	BOOL _isInitialUpdate;
 	BOOL _isBrickedDevice;
 	int _status;
 	SBSIMLockAlertItem *_currentAlert;
 	SBSIMLockEntryAlert *_lockEntryAlert;
 	NSString *_languageCode;
+	RadiosPreferences *_radiosPrefs;
 }
 + (id)sharedInstance;
+- (id)init;
 - (int)_CTToSBSIMStatus:(CFStringRef)sbsimstatus;
 - (BOOL)_hopelesslyPUKLocked;
 - (void)_initialUpdate;
@@ -25,6 +27,7 @@
 - (void)_tryToUpdateStatus;
 - (void)_updateSIMStatus:(CFStringRef)status withOptions:(CFDictionaryRef)options;
 - (void)_updateToStatus:(int)status;
+- (void)airplaneModeChanged;
 - (void)alertItemDismissed:(id)dismissed;
 - (void)attemptUnlock;
 - (void)dealloc;

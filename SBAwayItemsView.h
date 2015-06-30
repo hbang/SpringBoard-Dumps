@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwayItemsView : UIAlertView {
+@interface SBAwayItemsView : XXUnknownSuperclass {
 	UIView *_itemView;
 	NSArray *_displayedItems;
 	float _widestLabel;

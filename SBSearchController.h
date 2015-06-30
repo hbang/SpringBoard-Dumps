@@ -7,7 +7,7 @@
 
 
 
-@interface SBSearchController : NSObject <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface SBSearchController : XXUnknownSuperclass <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
 	SBSearchView *_searchView;
 	NSTimeZone *_calTimeZone;
 	NSDateFormatter *_calDayDateFormatter;

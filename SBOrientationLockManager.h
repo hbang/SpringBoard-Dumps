@@ -7,7 +7,7 @@
 
 
 
-@interface SBOrientationLockManager : NSObject {
+@interface SBOrientationLockManager : XXUnknownSuperclass {
 	int _override;
 	int _lockedOrientation;
 	int _overrideOrientation;

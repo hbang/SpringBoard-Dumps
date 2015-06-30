@@ -7,7 +7,7 @@
 
 
 
-@interface SBRemoteNotificationServer : NSObject <APSConnectionDelegate, SBRemoteLocalNotificationAlertDelegate> {
+@interface SBRemoteNotificationServer : XXUnknownSuperclass <APSConnectionDelegate, SBRemoteLocalNotificationAlertDelegate> {
 	NSMutableDictionary *_bundleIdentifiersToClients;
 	NSMutableDictionary *_environmentsToConnections;
 	NSString *_lastNotificationReceivedBundleIdentifier;

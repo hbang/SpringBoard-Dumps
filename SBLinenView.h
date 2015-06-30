@@ -7,7 +7,7 @@
 
 
 
-@interface SBLinenView : UIView {
+@interface SBLinenView : XXUnknownSuperclass {
 	int _type;
 	NSMutableArray *_strips;
 }

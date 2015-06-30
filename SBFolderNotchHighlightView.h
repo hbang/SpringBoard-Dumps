@@ -7,7 +7,7 @@
 
 
 
-@interface SBFolderNotchHighlightView : UIView {
+@interface SBFolderNotchHighlightView : XXUnknownSuperclass {
 	XXStruct_9ihRqB _notchInfo;
 }
 - (id)initWithNotchInfo:(XXStruct_9ihRqB)notchInfo;

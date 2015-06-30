@@ -7,7 +7,7 @@
 
 
 
-@interface SBRingerHUDController : NSObject {
+@interface SBRingerHUDController : XXUnknownSuperclass {
 }
 + (void)activate:(int)activate;
 @end

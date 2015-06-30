@@ -7,7 +7,7 @@
 
 
 
-@interface SBDeviceLockEntryField : UIView <UIKeyInput> {
+@interface SBDeviceLockEntryField : XXUnknownSuperclass <UIKeyInput> {
 	int _style;
 	int _interfaceOrientation;
 	UIPasscodeField *_passcodeField;

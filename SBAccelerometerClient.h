@@ -7,7 +7,7 @@
 
 
 
-@interface SBAccelerometerClient : NSObject {
+@interface SBAccelerometerClient : XXUnknownSuperclass {
 	CFMachPortRef _cfMachPort;
 	unsigned _port;
 	double _updateInterval;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBHUDView : UIView {
+@interface SBHUDView : XXUnknownSuperclass {
 	int _level;
 	UILabel *_titleLabel;
 	UILabel *_subtitleLabel;

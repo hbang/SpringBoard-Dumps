@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconListView : UIView {
+@interface SBIconListView : XXUnknownSuperclass {
 	SBIconListModel *_model;
 	int _orientation;
 	SBIcon *_bouncedIcon;

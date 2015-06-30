@@ -7,7 +7,7 @@
 
 
 
-@interface SBBrightnessController : NSObject {
+@interface SBBrightnessController : XXUnknownSuperclass {
 	BOOL _debounce;
 }
 + (id)sharedBrightnessController;

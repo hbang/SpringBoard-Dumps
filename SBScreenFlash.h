@@ -7,7 +7,7 @@
 
 
 
-@interface SBScreenFlash : NSObject {
+@interface SBScreenFlash : XXUnknownSuperclass {
 	UIWindow *_flashWindow;
 	UIView *_flashView;
 	BOOL _windowVisible;

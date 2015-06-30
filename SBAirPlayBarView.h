@@ -7,7 +7,7 @@
 
 
 
-@interface SBAirPlayBarView : UIView {
+@interface SBAirPlayBarView : XXUnknownSuperclass {
 	UIView *_speakerIcon;
 	UIButton *_airPlayButton;
 	UISlider *_volumeSlider;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBTextDisplayView : UIView {
+@interface SBTextDisplayView : XXUnknownSuperclass {
 	NSString *_text;
 	UIFont *_font;
 	UIColor *_fontColor;

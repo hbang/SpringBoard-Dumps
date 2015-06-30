@@ -7,7 +7,7 @@
 
 
 
-@interface SBRemoteViewInfo : NSObject {
+@interface SBRemoteViewInfo : XXUnknownSuperclass {
 	NSString *_remoteViewIdentifier;
 	SBProxyRemoteView *_proxyRemoteView;
 	unsigned _contextID;

@@ -7,7 +7,7 @@
 
 
 
-@interface SMSAlertSheet : UIAlertView {
+@interface SMSAlertSheet : XXUnknownSuperclass {
 	BOOL _showingTagline;
 	BOOL _showingImage;
 }

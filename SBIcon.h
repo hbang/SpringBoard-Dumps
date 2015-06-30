@@ -8,7 +8,7 @@
 
 @protocol SBIconDelegate;
 
-@interface SBIcon : UIView {
+@interface SBIcon : XXUnknownSuperclass {
 	id<SBIconDelegate> _delegate;
 	SBIconImageContainerView *_iconImageContainer;
 	SBIconImageView *_iconImageView;
@@ -152,6 +152,7 @@
 - (void)setIsOverlapping:(BOOL)overlapping;
 - (void)setIsRevealable:(BOOL)revealable;
 - (void)setLabelDisplaysOnWallpaper:(BOOL)wallpaper;
+- (void)setPartialGhostly:(float)ghostly requester:(int)requester;
 - (void)setRefusesRecipientStatus:(BOOL)status;
 - (void)setShadowsHidden:(BOOL)hidden;
 - (void)setShowsCloseBox:(BOOL)box;

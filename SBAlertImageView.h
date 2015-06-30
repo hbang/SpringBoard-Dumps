@@ -7,7 +7,7 @@
 
 
 
-@interface SBAlertImageView : UIView {
+@interface SBAlertImageView : XXUnknownSuperclass {
 	UIImageView *_imageView;
 	UILabel *_labelView;
 }

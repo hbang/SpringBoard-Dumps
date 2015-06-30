@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconsIntoFolderAnimationContext : NSObject {
+@interface SBIconsIntoFolderAnimationContext : XXUnknownSuperclass {
 	SBFolderIcon *_folderIcon;
 	NSArray *_iconSnapshots;
 	NSArray *_miniSnapshots;

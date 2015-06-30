@@ -7,7 +7,7 @@
 
 
 
-@interface SBPasscodeTextField : UITextField {
+@interface SBPasscodeTextField : XXUnknownSuperclass {
 	float _letterSpacing;
 	BOOL _usesLargeClearButton;
 	UILabel *_hiddenLabel;

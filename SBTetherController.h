@@ -7,7 +7,7 @@
 
 
 
-@interface SBTetherController : NSObject {
+@interface SBTetherController : XXUnknownSuperclass {
 	int _tetherState;
 	unsigned _demoCardConnection;
 	int _lastOrientationCode;
@@ -19,6 +19,8 @@
 - (unsigned)_demoCardConnection;
 - (void)_handleDemoModeChanged;
 - (void)_postDisplayPortNotificationCode:(int)code;
+- (BOOL)_reverseTetheringActive;
+- (BOOL)_serviceExists:(CFStringRef)exists;
 - (void)_setTetherState:(int)state;
 - (void)dealloc;
 - (BOOL)isTethered;

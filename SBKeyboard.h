@@ -7,7 +7,7 @@
 
 
 
-@interface SBKeyboard : UIKeyboard {
+@interface SBKeyboard : XXUnknownSuperclass {
 }
 - (UIPeripheralAnimationGeometry)geometryForMinimize:(BOOL)minimize;
 @end

@@ -7,7 +7,7 @@
 
 
 
-@interface SBProxyRemoteView : UIView {
+@interface SBProxyRemoteView : XXUnknownSuperclass {
 	id _delegate;
 	SBApplication *_app;
 	NSString *_remoteViewIdentifier;

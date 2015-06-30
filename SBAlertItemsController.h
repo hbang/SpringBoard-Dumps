@@ -7,7 +7,7 @@
 
 
 
-@interface SBAlertItemsController : NSObject {
+@interface SBAlertItemsController : XXUnknownSuperclass {
 	NSMutableArray *_lockedAlertItems;
 	NSMutableArray *_unlockedAlertItems;
 	NSMutableArray *_pendingAlertItems;

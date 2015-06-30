@@ -8,7 +8,7 @@
 
 @protocol SBIconListPageControlDelegate;
 
-@interface SBIconListPageControl : UIPageControl {
+@interface SBIconListPageControl : XXUnknownSuperclass {
 	id _delegate;
 }
 @property(assign, nonatomic) id<SBIconListPageControlDelegate> delegate;

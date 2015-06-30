@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppToAppTransitionController : NSObject {
+@interface SBAppToAppTransitionController : XXUnknownSuperclass {
 	UIWindow *_transitionWindow;
 	SBAppToAppTransitionView *_transitionView;
 }

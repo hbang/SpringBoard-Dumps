@@ -7,7 +7,7 @@
 
 
 
-@interface SBCornerViewFactory : NSObject {
+@interface SBCornerViewFactory : XXUnknownSuperclass {
 }
 + (id)createCornerWindowForCorner:(int)corner windowLevel:(float)level cornersFrame:(CGRect)frame;
 + (id)newCornerViewForCorner:(int)corner cornersFrame:(CGRect)frame;

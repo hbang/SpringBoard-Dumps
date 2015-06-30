@@ -7,7 +7,7 @@
 
 
 
-@interface SBSheetController : NSObject {
+@interface SBSheetController : XXUnknownSuperclass {
 	NSMutableDictionary *_appToSheetMap;
 	UIWindow *_presentationWindow;
 }

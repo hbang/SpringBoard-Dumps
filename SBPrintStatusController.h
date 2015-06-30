@@ -7,7 +7,7 @@
 
 
 
-@interface SBPrintStatusController : NSObject <UIPrintStatusDelegate, UINavigationControllerDelegate, UIStatusBarStyleDelegate, SBSwitcherPopoverWindowControllerDelegate> {
+@interface SBPrintStatusController : XXUnknownSuperclass <UIPrintStatusDelegate, UINavigationControllerDelegate, UIStatusBarStyleDelegate, SBSwitcherPopoverWindowControllerDelegate> {
 	SBAppSwitcherController *_switcherController;
 	UIPrintStatusViewController *_printStatusController;
 	int _numPrintJobs;

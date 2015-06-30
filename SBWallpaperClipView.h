@@ -7,7 +7,7 @@
 
 
 
-@interface SBWallpaperClipView : UIImageView {
+@interface SBWallpaperClipView : XXUnknownSuperclass {
 	SBWallpaperView *_wallpaperView;
 	UIImageView *_gradientView;
 	int _orientation;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBNowPlayingAlertSheet : UIAlertView {
+@interface SBNowPlayingAlertSheet : XXUnknownSuperclass {
 	CGRect volumeSliderFrame;
 	BOOL showingSliderOrLabel;
 	UIButton *routeButton;

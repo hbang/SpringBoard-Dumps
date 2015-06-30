@@ -7,7 +7,7 @@
 
 
 
-@interface SBCompassRecalibrationController : NSObject {
+@interface SBCompassRecalibrationController : XXUnknownSuperclass {
 	NSMutableArray *_assertionPorts;
 }
 + (id)sharedInstance;

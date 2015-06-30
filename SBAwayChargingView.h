@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwayChargingView : UIView {
+@interface SBAwayChargingView : XXUnknownSuperclass {
 	SBBatteryChargingView *_chargingView;
 	SBBatteryChargingView *_headsetChargingView;
 	UIImageView *_backgroundView;

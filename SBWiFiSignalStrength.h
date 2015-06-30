@@ -7,7 +7,7 @@
 
 
 
-@interface SBWiFiSignalStrength : UIImageView {
+@interface SBWiFiSignalStrength : XXUnknownSuperclass {
 	int _bars;
 	float _rawStrength;
 	BOOL _hilited;
@@ -17,16 +17,15 @@
 	BOOL _joining;
 	UIImageView *_icon;
 }
+@property(assign, nonatomic, getter=isHighlighted) BOOL highlighted;
 + (void)hideSpinner;
 - (id)initWithFrame:(CGRect)frame inView:(id)view;
 - (void)dealloc;
 - (void)hide;
-- (BOOL)hilited;
 - (BOOL)joining;
 - (BOOL)requiresPassword;
 - (BOOL)secure;
 - (BOOL)selected;
-- (void)setHilited:(BOOL)hilited;
 - (void)setJoining:(BOOL)joining;
 - (void)setRequiresPassword:(BOOL)password;
 - (void)setSecure:(BOOL)secure;

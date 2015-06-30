@@ -7,7 +7,7 @@
 
 
 
-@interface SBApplicationPersistence : NSObject {
+@interface SBApplicationPersistence : XXUnknownSuperclass {
 	NSMutableDictionary *_state;
 	BOOL _dirty;
 	dispatch_queue_s *_stateQueue;

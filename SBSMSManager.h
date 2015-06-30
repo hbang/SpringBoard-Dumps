@@ -7,7 +7,7 @@
 
 
 
-@interface SBSMSManager : NSObject {
+@interface SBSMSManager : XXUnknownSuperclass {
 }
 + (BOOL)carrierSMSReceiveOnlyEnabled;
 + (id)sharedSMSManager;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBZoomView : UIView {
+@interface SBZoomView : XXUnknownSuperclass {
 	BOOL _hasImage;
 	BOOL _hasFullSizedImage;
 	BOOL _usesRoundedCorners;

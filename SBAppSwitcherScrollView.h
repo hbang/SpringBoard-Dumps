@@ -8,7 +8,7 @@
 
 @protocol SBAppSwitcherScrollViewDelegate;
 
-@interface SBAppSwitcherScrollView : UIScrollView {
+@interface SBAppSwitcherScrollView : XXUnknownSuperclass {
 }
 @property(assign, nonatomic) id<SBAppSwitcherScrollViewDelegate> delegate;
 - (BOOL)touchesShouldCancelInContentView:(id)touches;

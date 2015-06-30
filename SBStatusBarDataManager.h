@@ -7,7 +7,7 @@
 
 
 
-@interface SBStatusBarDataManager : NSObject <RadiosPreferencesDelegate> {
+@interface SBStatusBarDataManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
 	struct {
 		BOOL itemIsEnabled[22];
 		BOOL timeString[64];
@@ -26,10 +26,10 @@
 		BOOL notChargingString[150];
 		int bluetoothBatteryCapacity;
 		int thermalColor;
+		unsigned thermalSunlightMode : 1;
 		unsigned slowActivity : 1;
 		BOOL activityDisplayId[256];
 		unsigned bluetoothConnected : 1;
-		BOOL recordingAppString[100];
 		unsigned displayRawGSMSignal : 1;
 		unsigned displayRawWifiSignal : 1;
 	} _data;
@@ -52,6 +52,7 @@
 	NSString *_operatorDirectory;
 	BOOL _showsActivityIndicatorOnHomeScreen;
 	int _thermalColor;
+	BOOL _thermalSunlightMode;
 	NSString *_recordingAppString;
 	BOOL _showingNotChargingItem;
 	NSString *_notChargingString;
@@ -95,7 +96,6 @@
 - (void)_updateNotChargingItem;
 - (void)_updateNotChargingItemAfterDelay;
 - (void)_updatePlayItem;
-- (void)_updateRecordingAppName;
 - (void)_updateRotationLockItem;
 - (void)_updateServiceItem;
 - (void)_updateSignalStrengthItem;
@@ -117,7 +117,7 @@
 - (void)setStatusBarItem:(int)item cloaked:(BOOL)cloaked;
 - (void)setStatusBarItem:(int)item enabled:(BOOL)enabled;
 - (void)setTelephonyAndBluetoothItemsCloaked:(BOOL)cloaked;
-- (void)setThermalColor:(int)color;
+- (void)setThermalColor:(int)color sunlightMode:(BOOL)mode;
 - (void)toggleSimulatesInCallStatusBar;
 - (void)updateStatusBarItem:(int)item;
 @end

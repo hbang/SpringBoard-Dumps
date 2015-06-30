@@ -7,7 +7,7 @@
 
 
 
-@interface SBCalendarController : NSObject {
+@interface SBCalendarController : XXUnknownSuperclass {
 	CFDateFormatterRef _dayFormatter;
 	CFDateFormatterRef _timeFormatter;
 	int _unreadInvitationCount;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBDeviceLockKeyboard : UIKeyboard {
+@interface SBDeviceLockKeyboard : XXUnknownSuperclass {
 	SBDeviceLockViewWithKeyboard *_deviceLockView;
 }
 - (id)initWithFrame:(CGRect)frame deviceLockView:(id)view;

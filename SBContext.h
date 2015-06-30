@@ -7,7 +7,7 @@
 
 
 
-@interface SBContext : NSObject {
+@interface SBContext : XXUnknownSuperclass {
 	unsigned _contextId;
 	float _windowLevel;
 	BOOL _hidden;

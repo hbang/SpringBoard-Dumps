@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconController : NSObject <UIScrollViewDelegate, SBIconListPageControlDelegate, SBIconDelegate> {
+@interface SBIconController : XXUnknownSuperclass <UIScrollViewDelegate, SBIconListPageControlDelegate, SBIconDelegate> {
 	SBIconModel *_iconModel;
 	SBRootFolder *_rootFolder;
 	UIView *_contentView;
@@ -280,6 +280,7 @@
 - (void)rotateFolderAndSlidingViewsWithDuration:(double)duration;
 - (void)saveFolderToReopenWhenSwitcherCloses;
 - (void)setCurrentPageIconsGhostly:(BOOL)ghostly forRequester:(int)requester skipIcon:(id)icon;
+- (void)setCurrentPageIconsPartialGhostly:(float)ghostly forRequester:(int)requester skipIcon:(id)icon;
 - (void)setOpenFolder:(id)folder;
 - (void)shiftFolderViewsForKeyboardAppearing:(BOOL)keyboardAppearing keyboardHeight:(float)height;
 @end

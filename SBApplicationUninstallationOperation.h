@@ -7,7 +7,7 @@
 
 
 
-@interface SBApplicationUninstallationOperation : NSOperation {
+@interface SBApplicationUninstallationOperation : XXUnknownSuperclass {
 	NSString *_bundleIdentifier;
 }
 - (id)initWithBundleIdentifier:(id)bundleIdentifier;

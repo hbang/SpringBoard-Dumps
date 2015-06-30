@@ -7,7 +7,7 @@
 
 
 
-@interface SBCalendarIconContentsView : UIView {
+@interface SBCalendarIconContentsView : XXUnknownSuperclass {
 	NSDateFormatter *_dateFormatter;
 	NSString *_dayNumberFormat;
 }

@@ -7,7 +7,7 @@
 
 
 
-@interface SBRemoteNotificationClient : NSObject <NSCoding> {
+@interface SBRemoteNotificationClient : XXUnknownSuperclass <NSCoding> {
 	NSString *_bundleIdentifier;
 	NSString *_environment;
 	int _appEnabledTypes;

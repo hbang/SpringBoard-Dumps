@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppWindow : UIWindow {
+@interface SBAppWindow : XXUnknownSuperclass {
 }
 + (CGRect)constrainFrameToScreen:(CGRect)screen;
 @end

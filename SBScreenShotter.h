@@ -7,7 +7,7 @@
 
 
 
-@interface SBScreenShotter : NSObject {
+@interface SBScreenShotter : XXUnknownSuperclass {
 	BOOL _writingScreenshot;
 }
 @property(assign) BOOL writingScreenshot;

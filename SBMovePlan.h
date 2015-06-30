@@ -7,7 +7,7 @@
 
 
 
-@interface SBMovePlan : NSObject {
+@interface SBMovePlan : XXUnknownSuperclass {
 	SBIcon *_icon;
 	SBIconListView *_source;
 	SBIconListView *_destination;
