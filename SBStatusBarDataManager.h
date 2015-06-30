@@ -7,7 +7,7 @@
 
 
 
-@interface SBStatusBarDataManager : NSObject {
+@interface SBStatusBarDataManager : NSObject <RadiosPreferencesDelegate> {
 	struct {
 		BOOL itemIsEnabled[20];
 		BOOL timeString[64];
@@ -39,6 +39,7 @@
 	NSDateFormatter *_timeItemDateFormatter;
 	NSTimer *_timeItemTimer;
 	NSString *_timeItemTimeString;
+	RadiosPreferences *_radiosPrefs;
 	BOOL _cellRadio;
 	BOOL _registered;
 	BOOL _simError;
@@ -52,7 +53,6 @@
 }
 + (id)sharedDataManager;
 - (id)init;
-- (void)_airplaneModeChange;
 - (void)_batteryStatusChange;
 - (void)_bluetoothBatteryChange;
 - (void)_bluetoothChange;
@@ -97,6 +97,7 @@
 - (void)_updateTimeString;
 - (void)_updateVPNItem;
 - (void)_vpnChange;
+- (void)airplaneModeChanged;
 - (void)beginUpdateBlock;
 - (void)dealloc;
 - (void)enableLock:(BOOL)lock time:(BOOL)time;

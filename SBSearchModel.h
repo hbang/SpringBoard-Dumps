@@ -13,6 +13,7 @@
 	CPSearchMatcher *_queryMatcher;
 	unsigned *_domainOrdering;
 	NSArray *_querySearchDomains;
+	unsigned *_nakedQuerySearchDomains;
 	BOOL _querySearchDomainsIncludesApplications;
 	int *_sectionToGroupMap;
 	BOOL _sectionToGroupMapIsValid;
@@ -22,7 +23,8 @@
 	SPSearchResultDeserializer **_accumulatingResultGroups;
 	BOOL *_resultGroupsIsCurrent;
 	SPDaemonQueryToken *_currentToken;
-	NSMutableArray *_matchingLaunchingIcons;
+	NSArray *_matchingLaunchingIcons;
+	NSMutableArray *_accumulatingLaunchingIcons;
 	NSTimer *_clearSearchTimer;
 	NSDate *_clearSearchDate;
 	BOOL _hasResults;
@@ -35,7 +37,6 @@
 }
 @property(readonly, assign, nonatomic) NSString *firstNoResultsQuery;
 @property(readonly, assign, nonatomic) BOOL hasResults;
-@property(readonly, assign, nonatomic) NSArray *matchingLaunchingIcons;
 @property(readonly, assign, nonatomic) BOOL queryFinished;
 + (id)sharedInstance;
 - (id)init;
@@ -45,6 +46,7 @@
 - (void)_freeArrays;
 - (int)_groupIndexForSection:(int)section;
 - (void)_makeArrays;
+- (void)_promoteAccumulatedApplicationResults;
 - (void)_promoteAccumulatedResults;
 - (void)_pruneTopHitFromAccumulatingResuts;
 - (void)_releaseAccumulatingResultGroups;
@@ -62,6 +64,7 @@
 - (id)groupForSection:(int)section;
 - (BOOL)hasQueryString;
 - (BOOL)hasSearchResults;
+- (id)iconForAppIndex:(int)appIndex;
 - (id)imageForDisplayIdentifier:(id)displayIdentifier spotlightKey:(id)key;
 - (id)imageForDomain:(unsigned)domain andDisplayID:(id)anId;
 - (id)imageForWebSearch;

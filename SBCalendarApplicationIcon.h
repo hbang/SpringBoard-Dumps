@@ -13,6 +13,8 @@
 - (id)initWithApplication:(id)application;
 - (CGImageRef)createComposedIconImageUsingContext:(CGContextRef)context;
 - (void)dealloc;
+- (id)generateIconImage:(int)image;
+- (void)localeChanged;
 - (void)prepareIconImageViewForRecycling;
 - (void)setShowsImages:(BOOL)images;
 - (void)updateInvitationBadge;

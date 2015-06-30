@@ -14,6 +14,7 @@
 	BOOL _highlighted;
 	float _brightness;
 }
++ (float)badgeLabelVerticalOffset;
 + (id)iconBadgeWithBadgeString:(id)badgeString;
 - (id)initWithBadgeString:(id)badgeString;
 - (id)initWithFrame:(CGRect)frame;

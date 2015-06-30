@@ -48,6 +48,8 @@ typedef struct _opaque_pthread_t {
 	BOOL _field3[596];
 } opaque_pthread_t;
 
+typedef struct __CFData *CFDataRef;
+
 typedef struct CGAffineTransform {
 	float a;
 	float b;
@@ -58,16 +60,6 @@ typedef struct CGAffineTransform {
 } CGAffineTransform;
 
 typedef struct __CTCall *CTCallRef;
-
-typedef struct SBApplicationTimes {
-	double _field1;
-	double _field2;
-	double _field3;
-	double _field4;
-	double _field5;
-	double _field6;
-	double _field7;
-} SBApplicationTimes;
 
 typedef struct _opaque_pthread_mutex_t {
 	long __sig;
@@ -154,6 +146,14 @@ typedef struct __CFCharacterSet *CFCharacterSetRef;
 typedef struct dispatch_queue_s dispatch_queue_s;
 
 typedef struct dispatch_source_s dispatch_source_s;
+
+typedef struct SBProcessTimes {
+	double execTime;
+	double beginUserCPUElapsedTime;
+	double beginSystemCPUElapsedTime;
+	double beginIdleCPUElapsedTime;
+	double beginApplicationCPUElapsedTime;
+} SBProcessTimes;
 
 typedef struct {
 	int direction;

@@ -47,6 +47,7 @@
 - (void)reportNANDUsage;
 - (void)reportScreenHasDimmed;
 - (void)reportScreenHasUndimmed;
+- (void)reportSpringBoardDidLaunch;
 - (void)reportVPNStatusChanged;
 - (void)synchronousCommit;
 @end

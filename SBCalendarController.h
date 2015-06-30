@@ -9,6 +9,7 @@
 
 @interface SBCalendarController : NSObject {
 	CFDateFormatterRef _dayFormatter;
+	CFDateFormatterRef _timeFormatter;
 	int _unreadInvitationCount;
 	CalEventExpirationMonitor *_expirationMonitor;
 	CalAlarmEngine *_alarmEngine;

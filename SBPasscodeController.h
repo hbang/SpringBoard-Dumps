@@ -18,7 +18,10 @@
 }
 + (id)sharedInstance;
 - (void)_abort;
+- (void)_didEndCall;
 - (void)_passwordEntered:(id)entered;
+- (void)_startListeningToTelephonyNotifications;
+- (void)_stopListeningToTelephonyNotifications;
 - (void)_userWantsToComplyNow:(BOOL)complyNow;
 - (void)checkPasscodeCompliance;
 - (void)dealloc;
