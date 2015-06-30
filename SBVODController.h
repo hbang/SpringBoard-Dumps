@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBVODController : NSObject {
+@interface SBVODController : XXUnknownSuperclass {
 }
 + (id)sharedInstance;
 - (id)init;

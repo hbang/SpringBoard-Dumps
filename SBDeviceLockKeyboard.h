@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIKeyboard.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBDeviceLockKeyboard : UIKeyboard {
+@interface SBDeviceLockKeyboard : XXUnknownSuperclass {
 	SBDeviceLockViewWithKeyboard *_deviceLockView;
 }
 - (id)initWithFrame:(CGRect)frame deviceLockView:(id)view;

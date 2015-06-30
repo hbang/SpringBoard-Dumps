@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
 
 
-@interface SBBrightnessController : NSObject {
+@interface SBBrightnessController : XXUnknownSuperclass {
 	BOOL _debounce;
 }
 + (id)sharedBrightnessController;

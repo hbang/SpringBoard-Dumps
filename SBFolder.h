@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBFolder : NSObject {
+@interface SBFolder : XXUnknownSuperclass {
 	NSString *_displayName;
 	NSString *_defaultDisplayName;
 	NSMutableArray *_lists;

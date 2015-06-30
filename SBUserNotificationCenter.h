@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBUserNotificationCenter : NSObject {
+@interface SBUserNotificationCenter : XXUnknownSuperclass {
 }
 + (void)_userNotificationDone:(id)done;
 + (void)startUserNotificationCenter;

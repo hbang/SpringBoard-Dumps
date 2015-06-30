@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBRemoteViewInfo : NSObject {
+@interface SBRemoteViewInfo : XXUnknownSuperclass {
 	NSString *_remoteViewIdentifier;
 	SBProxyRemoteView *_proxyRemoteView;
 	unsigned _contextID;

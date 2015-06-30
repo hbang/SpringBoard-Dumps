@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBHUDView.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBRingerHUDView : SBHUDView {

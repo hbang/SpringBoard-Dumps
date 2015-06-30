@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBLaunchdUtilities : NSObject {
+@interface SBLaunchdUtilities : XXUnknownSuperclass {
 }
 + (id)allJobLabels;
-+ (BOOL)createJobWithLabel:(id)label path:(id)path arguments:(id)arguments environment:(id)environment standardOutputPath:(id)path5 standardErrorPath:(id)path6 machServices:(id)services threadPriority:(long long)priority waitForDebugger:(BOOL)debugger denyCreatingOtherJobs:(BOOL)jobs runAtLoad:(BOOL)load;
++ (BOOL)createJobWithLabel:(id)label path:(id)path arguments:(id)arguments environment:(id)environment standardOutputPath:(id)path5 standardErrorPath:(id)path6 machServices:(id)services threadPriority:(long long)priority waitForDebugger:(BOOL)debugger denyCreatingOtherJobs:(BOOL)jobs runAtLoad:(BOOL)load disableASLR:(BOOL)aslr;
 + (void)deleteJobWithLabel:(id)label;
 + (int)lastExitStatusForLabel:(id)label;
 + (int)pidForLabel:(id)label;

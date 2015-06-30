@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SBAppSwitcherBarViewDelegate.h"
 #import "SBIconDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAppSwitcherController : NSObject <SBIconDelegate, SBAppSwitcherBarViewDelegate> {
+@interface SBAppSwitcherController : XXUnknownSuperclass <SBIconDelegate, SBAppSwitcherBarViewDelegate> {
 	SBAppSwitcherModel *_model;
 	SBNowPlayingBar *_nowPlayingBar;
 	SBAppSwitcherBarView *_bottomBar;

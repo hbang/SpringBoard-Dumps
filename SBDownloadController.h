@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SSDownloadQueueObserver.h"
 
 
-@interface SBDownloadController : NSObject <SSDownloadQueueObserver> {
+@interface SBDownloadController : XXUnknownSuperclass <SSDownloadQueueObserver> {
 	SSDownloadQueue *_downloadQueue;
 	NSMutableSet *_pendingDownloadRemovals;
 }

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBSoundPreferences.h"
-#import <Foundation/NSObject.h>
 
 
-@interface SBSoundPreferences : NSObject {
+@interface SBSoundPreferences : XXUnknownSuperclass {
 }
 + (id)calendarAlarmPath;
 + (BOOL)playLockSound;

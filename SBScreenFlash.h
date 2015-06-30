@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBScreenFlash : NSObject {
+@interface SBScreenFlash : XXUnknownSuperclass {
 	UIWindow *_flashWindow;
 	UIView *_flashView;
 	BOOL _windowVisible;

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBZoomView : UIView {
+@interface SBZoomView : XXUnknownSuperclass {
 	BOOL _hasImage;
 	BOOL _hasFullSizedImage;
 	BOOL _usesRoundedCorners;

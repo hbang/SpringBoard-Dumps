@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBContext : NSObject {
+@interface SBContext : XXUnknownSuperclass {
 	unsigned _contextId;
 	float _windowLevel;
 	BOOL _hidden;

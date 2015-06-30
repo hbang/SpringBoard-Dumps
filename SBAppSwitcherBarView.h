@@ -6,12 +6,12 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBAppSwitcherScrollViewDelegate.h"
 
 @protocol SBAppSwitcherBarViewDelegate;
 
-@interface SBAppSwitcherBarView : UIView <SBAppSwitcherScrollViewDelegate> {
+@interface SBAppSwitcherBarView : XXUnknownSuperclass <SBAppSwitcherScrollViewDelegate> {
 	id<SBAppSwitcherBarViewDelegate> _delegate;
 	NSMutableArray *_appIcons;
 	UIView *_contentView;
@@ -20,6 +20,7 @@
 	SBAppSwitcherScrollView *_scrollView;
 	UIImageView *_topShadowView;
 	UIImageView *_bottomShadowView;
+	CGRect _topShadowBaseFrame;
 	BOOL _animateContentReflow;
 	BOOL _animatedScrolling;
 	int _lastPageIndex;

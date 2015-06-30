@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIWindow.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBHUDWindow : UIWindow {
+@interface SBHUDWindow : XXUnknownSuperclass {
 }
 - (BOOL)_ignoresHitTest;
 @end

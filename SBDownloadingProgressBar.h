@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIImageView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBDownloadingProgressBar : UIImageView {
+@interface SBDownloadingProgressBar : XXUnknownSuperclass {
 	UIImageView *_clipView;
 	UIImageView *_fillView;
 	float _progress;

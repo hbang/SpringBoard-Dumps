@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
 
 
-@interface SBProcessAssertionManager : NSObject {
+@interface SBProcessAssertionManager : XXUnknownSuperclass {
 	NSMutableArray *_clients;
 	CPDistributedNotificationCenter *_notificationCenter;
 	opaque_pthread_mutex_t _clientMutex;

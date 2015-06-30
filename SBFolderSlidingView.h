@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBFolderSlidingView : UIView {
+@interface SBFolderSlidingView : XXUnknownSuperclass {
 	int _position;
 	SBFolderView *_folderView;
 	int _orientation;

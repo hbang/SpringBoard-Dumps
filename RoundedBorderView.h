@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface RoundedBorderView : UIView {
+@interface RoundedBorderView : XXUnknownSuperclass {
 	UIColor *_color;
 }
 - (id)initWithFrame:(CGRect)frame color:(id)color;

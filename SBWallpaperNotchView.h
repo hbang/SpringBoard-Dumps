@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBWallpaperNotchView : UIView {
+@interface SBWallpaperNotchView : XXUnknownSuperclass {
 	XXStruct_9ihRqB _notchInfo;
 	SBWallpaperClipView *_clipView;
 }

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBSIMToolkitGetInputDisplay.h"
 #import "SpringBoard-Structs.h"
+#import "SBSIMToolkitGetInputDisplay.h"
 
 
 @interface SBSIMToolkitOneShotGetInputDisplay : SBSIMToolkitGetInputDisplay {

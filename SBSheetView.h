@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBSheetView : UIView {
+@interface SBSheetView : XXUnknownSuperclass {
 	SBProxyRemoteView *_remoteProxyView;
 	SBApplication *_app;
 	BOOL _wasPresentedAnimated;

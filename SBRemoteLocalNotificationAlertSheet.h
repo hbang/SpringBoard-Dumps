@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIAlertView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBRemoteLocalNotificationAlertSheet : UIAlertView {
+@interface SBRemoteLocalNotificationAlertSheet : XXUnknownSuperclass {
 	BOOL _lockToPortrait;
 }
 - (BOOL)requiresPortraitOrientation;

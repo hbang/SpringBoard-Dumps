@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBDeviceLockView.h"
+#import "SpringBoard-Structs.h"
 
 
 @interface SBDeviceLockViewWithKeyboard : SBDeviceLockView {

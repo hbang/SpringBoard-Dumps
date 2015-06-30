@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBDisplayStack : NSObject {
+@interface SBDisplayStack : XXUnknownSuperclass {
 	NSMutableArray *_displayStack;
 	/*function-pointer*/ void *_pushCallback;
 	/*function-pointer*/ void *_popCallback;

@@ -5,21 +5,22 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBNowPlayingBarMediaControlsView : UIView {
+@interface SBNowPlayingBarMediaControlsView : XXUnknownSuperclass {
 	UIButton *_prevButton;
 	UIButton *_playButton;
 	UIButton *_nextButton;
 	UIButton *_airPlayButton;
 	SBIconLabel *_trackLabel;
-	SBIconLabel *_orientationLabel;
+	int _toggleType;
+	SBIconLabel *_toggleLabel;
 	BOOL _isAirPlayVisible;
 	BOOL _isPlaying;
 	BOOL _isEnabled;
-	BOOL _showingOrientationLabel;
+	BOOL _showingToggleLabel;
 }
 @property(readonly, assign, nonatomic) UIButton *airPlayButton;
 @property(assign, nonatomic) BOOL airPlayButtonVisible;
@@ -30,7 +31,10 @@
 - (id)_descriptionLabel;
 - (void)_layoutForiPad;
 - (void)_layoutForiPhone;
+- (void)_muteChanged:(id)changed;
 - (void)_orientationLockChanged:(id)changed;
+- (void)_setToggleType:(int)type;
+- (id)_toggleLabelText;
 - (void)_toggleStatus:(id)status;
 - (void)dealloc;
 - (void)layoutSubviews;

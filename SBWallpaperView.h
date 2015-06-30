@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIImageView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBWallpaperView : UIImageView {
+@interface SBWallpaperView : XXUnknownSuperclass {
 	int _orientation;
 	int _variant;
 	UIImageView *_topGradient;
@@ -40,7 +40,9 @@
 - (void)replaceWallpaperWithImage:(id)image;
 - (void)resetCurrentImageToWallpaper;
 - (void)setAlpha:(float)alpha;
+- (void)setImage:(id)image;
 - (void)setOrientation:(int)orientation duration:(double)duration;
+- (void)setViewAlpha:(float)alpha;
 - (CGRect)wallpaperContentsRect;
 @end
 

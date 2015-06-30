@@ -11,7 +11,6 @@
 
 
 @interface SBVideoAlertDisplay : SBSlidingAlertDisplay <ABPredicateDelegate> {
-	TPBottomBar *newBottomBar;
 	NSString *_contactDisplayName;
 	BOOL _answered;
 	unsigned _isAccepting;
@@ -23,10 +22,10 @@
 + (id)newBottomBarForInstance:(id)instance;
 + (id)newBottomLockBarForDisplay:(id)display;
 + (id)newTopBarForInstance:(id)instance;
-- (id)initWithSize:(CGSize)size;
-- (void)_acceptAnimationDidStop;
+- (id)initWithFrame:(CGRect)frame;
 - (void)_ringIfNecessary;
 - (BOOL)_shouldAutoAnswerConference;
+- (void)_updateDisplayControllerForOrientation:(int)orientation;
 - (void)accept;
 - (void)alertDisplayBecameVisible;
 - (void)alertDisplayWillBecomeVisible;
@@ -40,6 +39,7 @@
 - (void)finishedAnimatingIn;
 - (void)handleVolumeEvent:(GSEventRef)event;
 - (void)inviterCanceledConference;
+- (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)lockBarUnlocked:(id)unlocked;
 - (BOOL)predicateShouldContinue:(id)predicate;
 - (BOOL)predicateShouldContinue:(id)predicate afterFindingRecord:(void *)record;

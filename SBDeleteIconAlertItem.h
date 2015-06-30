@@ -17,6 +17,7 @@
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (BOOL)dismissOnLock;
+- (id)icon;
 - (BOOL)shouldShowInLockScreen;
 @end
 

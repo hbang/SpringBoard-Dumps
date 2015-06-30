@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBSyncController : NSObject {
+@interface SBSyncController : XXUnknownSuperclass {
 	int _syncState;
 	int _restoreState;
 	int _resetState;

@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBVoicemailManager : NSObject {
+@interface SBVoicemailManager : XXUnknownSuperclass {
 	XXStruct_EX3dgA _alertMark;
 	XXStruct_EX3dgA _awayItemMark;
 	BOOL _hasVisualVoicemail;

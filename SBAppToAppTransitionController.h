@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAppToAppTransitionController : NSObject {
+@interface SBAppToAppTransitionController : XXUnknownSuperclass {
 	UIWindow *_transitionWindow;
 	SBAppToAppTransitionView *_transitionView;
 }

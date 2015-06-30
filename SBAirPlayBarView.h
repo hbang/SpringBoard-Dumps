@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAirPlayBarView : UIView {
+@interface SBAirPlayBarView : XXUnknownSuperclass {
 	UIView *_speakerIcon;
 	UIButton *_airPlayButton;
 	UISlider *_volumeSlider;

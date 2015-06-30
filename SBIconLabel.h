@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIControl.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBIconLabel : UIControl {
+@interface SBIconLabel : XXUnknownSuperclass {
 	NSString *_label;
 	unsigned _drawMoreLegibly : 1;
 	unsigned _inDock : 1;

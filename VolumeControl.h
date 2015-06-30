@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
 
 
-@interface VolumeControl : NSObject {
+@interface VolumeControl : XXUnknownSuperclass {
 	BOOL _debounce;
 	int _numberOfVolumeDecreasesSinceDownButtonDown;
 	int _mode;

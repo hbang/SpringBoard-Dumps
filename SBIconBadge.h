@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBIconBadge : UIView {
+@interface SBIconBadge : XXUnknownSuperclass {
 	NSString *_badge;
 	CGSize _badgeContentSize;
 	BOOL _highlighted;

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAppContextHostView : UIView {
+@interface SBAppContextHostView : XXUnknownSuperclass {
 	NSMutableArray *_contexts;
 	BOOL _hostingEnabled;
 }

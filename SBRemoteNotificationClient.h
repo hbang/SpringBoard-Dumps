@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "NSCoding.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBRemoteNotificationClient : NSObject <NSCoding> {
+@interface SBRemoteNotificationClient : XXUnknownSuperclass <NSCoding> {
 	NSString *_bundleIdentifier;
 	NSString *_environment;
 	int _appEnabledTypes;

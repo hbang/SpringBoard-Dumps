@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
 
 
-@interface SBIconRotationContainer : UIView {
+@interface SBIconRotationContainer : XXUnknownSuperclass {
 	UIView *_startSnapshot;
 	UIView *_endSnapshot;
 	SBIcon *_icon;

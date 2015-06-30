@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBProcess : NSObject {
+@interface SBProcess : XXUnknownSuperclass {
 	NSMutableSet *_assertions;
 	NSMutableSet *_limitlessAssertions;
 	dispatch_queue_s *_assertionsQueue;
@@ -75,7 +75,7 @@
 + (int)defaultBackgroundJetsamPriority;
 + (void)hostwideUserElapsedCPUTime:(double *)time systemElapsedCPUTime:(double *)time2 idleElapsedCPUTime:(double *)time3;
 + (void)initialize;
-+ (id)launchedProcessWithBundleIdentifier:(id)bundleIdentifier path:(id)path arguments:(id)arguments environment:(id)environment standardOutputPath:(id)path5 standardErrorPath:(id)path6 machServices:(id)services threadPriority:(long long)priority frontmost:(BOOL)frontmost backgroundJetsamPriority:(int)priority10 waitForDebugger:(BOOL)debugger allowedLockedFilePaths:(id)paths terminateOnSuspension:(BOOL)suspension;
++ (id)launchedProcessWithBundleIdentifier:(id)bundleIdentifier path:(id)path arguments:(id)arguments environment:(id)environment standardOutputPath:(id)path5 standardErrorPath:(id)path6 machServices:(id)services threadPriority:(long long)priority frontmost:(BOOL)frontmost backgroundJetsamPriority:(int)priority10 waitForDebugger:(BOOL)debugger disableASLR:(BOOL)aslr allowedLockedFilePaths:(id)paths terminateOnSuspension:(BOOL)suspension;
 + (id)processForPid:(int)pid;
 + (void)scheduleTaskCompletionAllowIdleSleep;
 + (void)shutdownSuspendedProcessSockets;

@@ -6,11 +6,11 @@
  */
 
 #import "UIKeyInput.h"
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBDeviceLockEntryField : UIView <UIKeyInput> {
+@interface SBDeviceLockEntryField : XXUnknownSuperclass <UIKeyInput> {
 	int _style;
 	int _interfaceOrientation;
 	UIPasscodeField *_passcodeField;

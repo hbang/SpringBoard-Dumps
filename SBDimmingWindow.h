@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIWindow.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBDimmingWindow : UIWindow {
+@interface SBDimmingWindow : XXUnknownSuperclass {
 }
 + (CGRect)constrainFrameToScreen:(CGRect)screen;
 - (id)initWithContentRect:(CGRect)contentRect;

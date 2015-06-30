@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "APSConnectionDelegate.h"
 #import "SBRemoteLocalNotificationAlertDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBRemoteNotificationServer : NSObject <APSConnectionDelegate, SBRemoteLocalNotificationAlertDelegate> {
+@interface SBRemoteNotificationServer : XXUnknownSuperclass <APSConnectionDelegate, SBRemoteLocalNotificationAlertDelegate> {
 	NSMutableDictionary *_bundleIdentifiersToClients;
 	NSMutableDictionary *_environmentsToConnections;
 	NSString *_lastNotificationReceivedBundleIdentifier;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBIconListModel : NSObject {
+@interface SBIconListModel : XXUnknownSuperclass {
 	NSMutableArray *_icons;
 	BOOL _iconStateIsDirty;
 	SBFolder *_folder;

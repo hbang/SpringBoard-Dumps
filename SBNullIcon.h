@@ -8,6 +8,7 @@
 #import "SBIcon.h"
 
 
+__attribute__((visibility("hidden")))
 @interface SBNullIcon : SBIcon {
 }
 + (id)nullIcon;

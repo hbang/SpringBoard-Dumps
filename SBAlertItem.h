@@ -5,17 +5,19 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "UIAlertViewDelegate.h"
-#import <Foundation/NSObject.h>
 
 
-@interface SBAlertItem : NSObject <UIAlertViewDelegate> {
+@interface SBAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	UIAlertView *_alertSheet;
 	BOOL _disallowUnlockAction;
 	BOOL _orderOverSBAlert;
 	BOOL _preventLockOver;
 	BOOL _didEverActivate;
+	BOOL _didPlayPresentationSound;
 }
+- (void)_playPresentationSound;
 - (id)alertItemNotificationDate;
 - (id)alertItemNotificationSender;
 - (int)alertItemNotificationType;
@@ -32,6 +34,7 @@
 - (void)dealloc;
 - (void)didActivate;
 - (void)didDeactivateForReason:(int)reason;
+- (BOOL)didPlayPresentationSound;
 - (BOOL)disallowsUnlockAction;
 - (void)dismiss;
 - (void)dismiss:(int)dismiss;
@@ -41,6 +44,7 @@
 - (float)lockLabelFontSize;
 - (void)noteVolumeOrLockPressed;
 - (void)performUnlockAction;
+- (void)playPresentationSound;
 - (BOOL)preventLockOver;
 - (void)screenWillUndim;
 - (void)setDisallowsUnlockAction:(BOOL)action;

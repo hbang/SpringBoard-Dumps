@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "UITextFieldDelegate.h"
 #import "SBAlertItem.h"
 #import "SpringBoard-Structs.h"
-#import "UITextFieldDelegate.h"
 
 
 @interface SBPasscodeAlertItem : SBAlertItem <UITextFieldDelegate> {

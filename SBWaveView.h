@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBWaveView : UIView {
+@interface SBWaveView : XXUnknownSuperclass {
 	float _phaseWidth;
 	float _phaseShift;
 	float _minAmplitude;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBIconIndexPath : NSObject {
+@interface SBIconIndexPath : XXUnknownSuperclass {
 	NSIndexPath *_listIndexes;
 	NSIndexPath *_iconIndexes;
 }

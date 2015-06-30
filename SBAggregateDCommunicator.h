@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAggregateDCommunicator : NSObject {
+@interface SBAggregateDCommunicator : XXUnknownSuperclass {
 	NSTimer *_periodicFlushTimer;
 	NSMutableDictionary *_applicationLastStateTime;
 	double _backlightOnStartTime;

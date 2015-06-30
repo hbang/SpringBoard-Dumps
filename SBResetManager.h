@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBResetManager : NSObject {
+@interface SBResetManager : XXUnknownSuperclass {
 	BOOL _threadRunning;
 	NSLock *_lock;
 	int _mode;

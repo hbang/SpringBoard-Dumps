@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIControl.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAppRatingsStarControl : UIControl {
+@interface SBAppRatingsStarControl : XXUnknownSuperclass {
 	NSMutableArray *_stars;
 	int _currentIndex;
 }

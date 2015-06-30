@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIImageView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBWallpaperClipView : UIImageView {
+@interface SBWallpaperClipView : XXUnknownSuperclass {
 	SBWallpaperView *_wallpaperView;
 	UIImageView *_gradientView;
 	int _orientation;

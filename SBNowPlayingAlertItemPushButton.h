@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIButton.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBNowPlayingAlertItemPushButton : UIButton {
+@interface SBNowPlayingAlertItemPushButton : XXUnknownSuperclass {
 	float _yOffset;
 	float _xOffset;
 }

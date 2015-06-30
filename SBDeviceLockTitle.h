@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBDeviceLockTitle : UIView {
+@interface SBDeviceLockTitle : XXUnknownSuperclass {
 	int _style;
 	int _interfaceOrientation;
 }

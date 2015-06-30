@@ -22,11 +22,11 @@
 + (id)leafIdentifierForDownloadUniqueID:(id)downloadUniqueID;
 - (id)initWithDownload:(id)download;
 - (id)initWithLeafIdentifier:(id)leafIdentifier;
+- (id)_realDisplayName;
 - (void)_showAlertForError:(id)error;
 - (void)_thumbnailAvailableNotification:(id)notification;
 - (BOOL)allowsUninstall;
 - (id)applicationBundleID;
-- (void)closeBoxTapped;
 - (void)completeUninstall;
 - (void)dealloc;
 - (id)description;
@@ -45,11 +45,13 @@
 - (void)setDownload:(id)download;
 - (void)setGhostly:(BOOL)ghostly requester:(int)requester;
 - (void)setLeafIdentifier:(id)identifier;
+- (void)setUninstalledByUser:(BOOL)user;
 - (BOOL)shouldEllipsizeLabel;
 - (id)uninstallAlertBody;
 - (id)uninstallAlertCancelTitle;
 - (id)uninstallAlertConfirmTitle;
 - (id)uninstallAlertTitle;
+- (BOOL)uninstalledByUser;
 - (void)updateDisplayName;
 @end
 

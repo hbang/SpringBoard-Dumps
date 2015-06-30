@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import <UIKit/UIView.h>
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBTextDisplayView : UIView {
+@interface SBTextDisplayView : XXUnknownSuperclass {
 	NSString *_text;
 	UIFont *_font;
 	UIColor *_fontColor;

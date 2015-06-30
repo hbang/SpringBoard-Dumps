@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAlertItemsController : NSObject {
+@interface SBAlertItemsController : XXUnknownSuperclass {
 	NSMutableArray *_lockedAlertItems;
 	NSMutableArray *_unlockedAlertItems;
 	NSMutableArray *_pendingAlertItems;

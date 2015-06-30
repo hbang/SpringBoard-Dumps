@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIView.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface MMSBevelView : UIView {
+@interface MMSBevelView : XXUnknownSuperclass {
 }
 - (void)drawRect:(CGRect)rect;
 @end

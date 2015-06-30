@@ -66,6 +66,7 @@
 - (void)_hideMediaControls;
 - (void)_initializeLegalTextOverlay;
 - (void)_layoutLegalTextOverlay;
+- (void)_networkTetheringStateChanged:(id)changed;
 - (void)_pluginFadeInAnimationDidStop:(id)_pluginFadeInAnimation finished:(id)finished context:(void *)context;
 - (void)_positionAwayItemsView;
 - (void)_postLockCompletedNotification;
@@ -76,7 +77,6 @@
 - (id)_topBarLCDControlsImage;
 - (void)_updateBlockedStatus;
 - (void)_updateBlockedStatusLabel;
-- (void)_wirelessModemStateChanged:(id)changed;
 - (void)addDateView;
 - (void)addFirewireWarningView;
 - (void)alertDisplayWillBecomeVisible;

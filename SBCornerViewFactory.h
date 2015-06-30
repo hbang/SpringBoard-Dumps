@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBCornerViewFactory : NSObject {
+@interface SBCornerViewFactory : XXUnknownSuperclass {
 }
 + (id)createCornerWindowForCorner:(int)corner windowLevel:(float)level cornersFrame:(CGRect)frame;
 + (id)newCornerViewForCorner:(int)corner cornersFrame:(CGRect)frame;

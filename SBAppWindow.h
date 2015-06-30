@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UIWindow.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBAppWindow : UIWindow {
+@interface SBAppWindow : XXUnknownSuperclass {
 }
 + (CGRect)constrainFrameToScreen:(CGRect)screen;
 @end

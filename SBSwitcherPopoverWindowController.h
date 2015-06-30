@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import <Foundation/NSObject.h>
 #import "SpringBoard-Structs.h"
 #import "UIWindowDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBSwitcherPopoverWindowControllerDelegate;
 
-@interface SBSwitcherPopoverWindowController : NSObject <UIWindowDelegate> {
+@interface SBSwitcherPopoverWindowController : XXUnknownSuperclass <UIWindowDelegate> {
 	UIWindow *_popoverWindow;
 	UIView *_popoverRootView;
 	BOOL _popoverVisible;

@@ -6,10 +6,10 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <UIKit/UITableViewCell.h>
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
-@interface SBSearchTableViewCell : UITableViewCell {
+@interface SBSearchTableViewCell : XXUnknownSuperclass {
 	UIFont *_titleFont;
 	UIFont *_subtitleFont;
 	UIFont *_topHitFont;

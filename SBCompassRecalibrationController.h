@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
 
 
-@interface SBCompassRecalibrationController : NSObject {
+@interface SBCompassRecalibrationController : XXUnknownSuperclass {
 	NSMutableArray *_assertionPorts;
 }
 + (id)sharedInstance;

@@ -63,6 +63,7 @@
 - (void)setGhostly:(BOOL)ghostly requester:(int)requester;
 - (void)setIconScrollPosition:(int)position animated:(BOOL)animated;
 - (void)setIsOverlapping:(BOOL)overlapping;
+- (void)setPartialGhostly:(float)ghostly requester:(int)requester;
 - (void)showDropGlow:(BOOL)glow;
 - (CGAffineTransform)transformToMakeIconBorderExpandToSizeOfDropGlow;
 @end

@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import <Foundation/NSObject.h>
 
 
-@interface SBPlatformController : NSObject {
+@interface SBPlatformController : XXUnknownSuperclass {
 	NSString *_currentConfigurationName;
 	NSMutableDictionary *_currentConfiguration;
 	NSMutableDictionary *_currentCapabilities;
@@ -17,11 +17,10 @@
 }
 + (id)sharedInstance;
 - (id)init;
-- (void)_addConfigurationNamed:(id)named toCompositeDictionary:(id)compositeDictionary;
-- (void)_addDefaultConfigurationToCompositeDictionary:(id)compositeDictionary;
 - (void)_addIconListIdentifiers:(id)identifiers toSet:(id)set;
 - (id)_copyConfigInfoWithName:(id)name;
-- (void)_mergeDictionary:(id)dictionary intoDictionary:(id)dictionary2;
+- (id)_copyDefaultConfigInfo;
+- (void)addAndPostTelephonyCapabilities;
 - (void)addCapabilities:(id)capabilities resetCapabilites:(id)capabilites;
 - (BOOL)allowSensitiveUI:(BOOL)ui hasInternalBundle:(BOOL)bundle;
 - (BOOL)allowYouTube;
