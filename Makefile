@@ -9,7 +9,8 @@ CDFLAGS = -RbSzH
 CURRENTBINARY = $(BINARYNAME)$(subst .,,$(FIRMWARE))
 
 all:
-	git checkout master
+	-git branch -D master
+	git checkout --orphan master
 
 	echo $(CURRENTBINARY)
 	@for i in $(FIRMWARES); do \
