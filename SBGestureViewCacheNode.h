@@ -12,7 +12,9 @@
 	int m_viewType;
 	NSString *m_contextHostViewRequester;
 	int m_orientation;
+	NSString *m_bundleIdentifier;
 }
+@property(copy, nonatomic) NSString *bundleIdentifier;
 @property(copy, nonatomic) NSString *contextHostViewRequester;
 @property(assign, nonatomic) int orientation;
 @property(retain, nonatomic) UIView *view;

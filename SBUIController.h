@@ -49,6 +49,9 @@
 	BOOL _switcherAnimationInProgress;
 	BOOL _switcherGestureRevealedOrDismissedSwitcher;
 	SBSwitchAppGestureView *_switchAppGestureView;
+	float _switchAppGesturePreviousPercentage;
+	float _switchAppGestureEffectivePercentage;
+	unsigned _switchAppGestureChangedFrames;
 	UIView *_systemGestureBackdrop;
 	UIView *_pendingGestureLaunchView;
 	SBApplication *_pendingAppActivatedByGesture;
@@ -84,6 +87,7 @@
 - (BOOL)_canActivateShowcaseIgnoringTouches:(BOOL)touches;
 - (void)_clearAllInstalledSystemGestureViews;
 - (void)_clearAppToAppTransition;
+- (void)_clearGestureViewVendorCacheForAppWithDisplayIdenitifier:(id)displayIdenitifier;
 - (void)_clearInstalledSystemGestureViewForKey:(id)key;
 - (void)_clearSwitchAppList;
 - (void)_clearTempAudioDeviceController;
@@ -97,6 +101,7 @@
 - (void)_dismissShowcase:(double)showcase;
 - (void)_dismissShowcase:(double)showcase unhost:(BOOL)unhost;
 - (void)_displayDidLaunch:(id)_display;
+- (void)_getSwitchAppPrefetchApps:(id)apps initialApp:(id)app outLeftwardAppIdentifier:(id *)identifier outRightwardAppIdentifier:(id *)identifier4;
 - (BOOL)_handleButtonEventToSuspendDisplays:(BOOL)suspendDisplays displayWasSuspendedOut:(BOOL *)anOut;
 - (void)_hideKeyboard;
 - (void)_hideNotificationCenterTabControl;
@@ -114,7 +119,10 @@
 - (void)_lockOrientationForSystemGesture;
 - (void)_lockOrientationForTransition;
 - (id)_makeSwitchAppFilteredList:(id)list initialApp:(id)app;
+- (void)_makeSwitchAppGestureFakeStatusBarVisible;
+- (id)_makeSwitchAppValidList:(id)list;
 - (CGAffineTransform)_portraitViewTransformForSwitcherSize:(CGSize)switcherSize orientation:(int)orientation;
+- (void)_prefetchAdjacentAppsAndEvictRemotes:(id)remotes;
 - (void)_prepareShowcaseAndHierarchy:(id)hierarchy withContext:(id)context ghostly:(BOOL)ghostly hostApp:(id)app;
 - (void)_releaseSystemGestureOrientationLock;
 - (void)_releaseTransitionOrientationLock;
@@ -136,7 +144,7 @@
 - (void)_suspendGestureCancelled;
 - (void)_suspendGestureChanged:(float)changed;
 - (void)_suspendGestureEndedWithCompletionType:(int)completionType;
-- (void)_switchAppGestureBegan;
+- (void)_switchAppGestureBegan:(float)began;
 - (void)_switchAppGestureCancelled;
 - (void)_switchAppGestureChanged:(float)changed;
 - (void)_switchAppGestureEndedWithCompletionType:(int)completionType cumulativePercentage:(float)percentage;
@@ -153,7 +161,7 @@
 - (void)_unhostSwitcherAppImmediatelyAndHideForSuspend:(BOOL)suspend;
 - (void)_updateWallpaperImageAndShow:(BOOL)show;
 - (id)_zoomViewForAppDosado:(id)appDosado includeStatusBar:(BOOL)bar includeBanner:(BOOL)banner;
-- (id)_zoomViewForApplication:(id)application includeStatusBar:(BOOL)bar includeBanner:(BOOL)banner snapshotFrame:(CGRect *)frame canUseIOSurface:(BOOL)surface;
+- (id)_zoomViewForApplication:(id)application includeStatusBar:(BOOL)bar includeBanner:(BOOL)banner snapshotFrame:(CGRect *)frame canUseIOSurface:(BOOL)surface decodeImage:(BOOL)image;
 - (id)_zoomViewWithIOSurfaceSnapshotOfApp:(id)app includeStatusBar:(BOOL)bar includeBanner:(BOOL)banner;
 - (void)activateApplicationAnimated:(id)animated;
 - (void)activateApplicationFromSwitcher:(id)switcher;
@@ -273,7 +281,7 @@
 - (CGRect)snapshotRectForOrientation:(int)orientation statusBarStyle:(int)style hidden:(BOOL)hidden;
 - (void)stopRestoringIconList;
 - (void)systemControllerRouteChanged:(id)changed;
-- (id)systemGestureSnapshotForApp:(id)app forRequester:(id)requester includeStatusBar:(BOOL)bar;
+- (id)systemGestureSnapshotForApp:(id)app forRequester:(id)requester includeStatusBar:(BOOL)bar decodeImage:(BOOL)image;
 - (id)systemGestureSnapshotOfSwitcher;
 - (id)systemGestureSnapshotWithIOSurfaceSnapshotOfApp:(id)app forRequester:(id)requester includeStatusBar:(BOOL)bar;
 - (void)tearDownIconListAndBar;

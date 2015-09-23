@@ -33,6 +33,7 @@
 		unsigned bluetoothConnected : 1;
 		unsigned displayRawGSMSignal : 1;
 		unsigned displayRawWifiSignal : 1;
+		unsigned locationIconType : 1;
 	} _data;
 	int _actions;
 	BOOL _itemIsEnabled[23];

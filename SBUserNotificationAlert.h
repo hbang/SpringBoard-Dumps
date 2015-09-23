@@ -7,7 +7,6 @@
 
 
 
-__attribute__((visibility("hidden")))
 @interface SBUserNotificationAlert : XXUnknownSuperclass {
 	unsigned _replyPort;
 	int _token;

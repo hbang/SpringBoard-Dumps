@@ -9,6 +9,7 @@
 
 @protocol SBAssistantViewDelegate <NSObject>
 - (void)assistantView:(id)view madeRequest:(id)request;
+- (BOOL)assistantViewAffectsMagicPocket:(int)pocket;
 - (void)assistantViewAnimatedIn:(id)anIn;
 - (void)assistantViewAnimatedOut:(id)anOut;
 - (float)assistantViewAudioLevel:(id)level;

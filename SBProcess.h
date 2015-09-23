@@ -28,6 +28,7 @@
 	int _suspendCount;
 	dispatch_queue_s *_suspendQueue;
 	double _timedAssertionReferenceTime;
+	double _allowIdleSleepReferenceTime;
 	dispatch_group_s *_timerLifecycleGroup;
 	dispatch_source_s *_backgroundPermissionCheckTimer;
 	dispatch_source_s *_backgroundPermissionExpirationWarningTimer;
@@ -119,6 +120,7 @@
 - (BOOL)suspendQueue_taskShutdownSockets:(int)sockets;
 - (BOOL)suspendQueue_taskSuspend;
 - (void)suspendQueue_updateJetsamPriority;
+- (BOOL)taskCompletionShouldPreventIdleSleep;
 - (BOOL)throttleDownCPU;
 - (BOOL)throttleDownUI;
 - (BOOL)throttleUpCPU;

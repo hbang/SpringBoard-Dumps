@@ -10,8 +10,9 @@
 @interface SBAwayBulletinListView : XXUnknownSuperclass {
 	UITableView *_tableView;
 	UIView *_tableContainerView;
-	UIView *_tableMaskView;
 	UIView *_tableBackgroundView;
+	UIView *_tableTopFadeOverlay;
+	UIView *_tableBottomFadeOverlay;
 	UITableView *_firstAlertTableView;
 	UIView *_firstAlertBGView;
 	float _firstAlertTableHeight;
@@ -34,7 +35,6 @@
 - (CGAffineTransform)_slideOutTransform;
 - (id)_tableFooterView;
 - (id)_tableHeaderView;
-- (id)_tableMaskView;
 - (float)_translationDistanceForGrabber;
 - (void)clearFloatingAlertButtonHandler;
 - (void)dealloc;
