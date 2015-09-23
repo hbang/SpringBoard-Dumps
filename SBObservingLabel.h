@@ -17,5 +17,6 @@ __attribute__((visibility("hidden")))
 - (void)bindAttributesToObject:(id)object keyPath:(id)path;
 - (void)dealloc;
 - (void)observeValueForKeyPath:(id)keyPath ofObject:(id)object change:(id)change context:(void *)context;
+- (void)unbind;
 @end
 

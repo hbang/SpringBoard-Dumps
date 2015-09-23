@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)_observersForBundleID:(id)bundleID;
 - (BOOL)_removeNotificationsForBundleID:(id)bundleID;
 - (BOOL)_saveNotificationList:(id)list toPath:(id)path;
-- (void)_saveNotificationWithMessage:(id)message soundName:(id)name actionText:(id)text badge:(id)badge userInfo:(id)info launchImage:(id)image fullDetails:(id)details soundIsRingtone:(BOOL)ringtone isRemoteNotification:(BOOL)notification category:(id)category forBundleID:(id)bundleID;
+- (void)_saveNotificationWithTitle:(id)title message:(id)message soundName:(id)name actionText:(id)text badge:(id)badge userInfo:(id)info launchImage:(id)image fullDetails:(id)details soundIsRingtone:(BOOL)ringtone isRemoteNotification:(BOOL)notification category:(id)category forBundleID:(id)bundleID;
 - (BOOL)_setUserNotificationSettings:(id)settings forBundeID:(id)bundeID;
 - (unsigned)_supportedNotificationTypesForBundleID:(id)bundleID;
 - (void)addObserver:(id)observer forBundleID:(id)bundleID;
@@ -52,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)removeNotificationsPassingTest:(id)test forBundleID:(id)bundleID;
 - (void)removeObserver:(id)observer forBundleID:(id)bundleID;
 - (void)saveLocalNotification:(id)notification forBundleID:(id)bundleID;
-- (void)saveRemoteNotificationWithMessage:(id)message soundName:(id)name actionText:(id)text badge:(id)badge userInfo:(id)info launchImage:(id)image category:(id)category forBundleID:(id)bundleID;
+- (void)saveRemoteNotificationWithTitle:(id)title message:(id)message soundName:(id)name actionText:(id)text badge:(id)badge userInfo:(id)info launchImage:(id)image category:(id)category forBundleID:(id)bundleID;
 - (id)savedNotificationDataForBundleID:(id)bundleID;
 - (id)savedNotificationsForBundleID:(id)bundleID;
 - (void)setDesiredSystemNotificationTypes:(unsigned)types forBundleID:(id)bundleID;

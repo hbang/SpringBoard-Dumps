@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_activateModule:(id)module;
 - (void)_addButtonModule:(id)module;
+- (id)_allButtonControllers;
 - (id)_allButtonModules;
 - (id)_controllerForModule:(id)module;
 - (void)_deactivateModule:(id)module;

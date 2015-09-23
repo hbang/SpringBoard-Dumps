@@ -23,6 +23,7 @@
 - (void)handleBulletinActionResponse:(id)response;
 - (BOOL)migrateSectionInfo:(id)info oldSectionInfo:(id)info2;
 - (void)noteSectionInfoDidChange:(id)noteSectionInfo;
+- (id)primaryAttachmentDataForRecordID:(id)recordID;
 - (void)receiveMessageWithName:(id)name userInfo:(id)info;
 - (id)sectionParameters;
 @required

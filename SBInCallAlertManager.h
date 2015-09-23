@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)init;
 - (void)maybeLockUIAfterCallEnded;
+- (void)reactivateAlertForActivityContinuationWithActivityIdentifier:(id)activityIdentifier fromAppSwitcher:(BOOL)appSwitcher;
 - (void)reactivateAlertForLockButtonPress;
 - (void)reactivateAlertFromLockScreenWithUIUnlock:(BOOL)uiunlock disableAnimatedTransition:(BOOL)transition;
 - (void)reactivateAlertFromStatusBarTap;

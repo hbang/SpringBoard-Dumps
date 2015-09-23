@@ -9,6 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBCCButtonController : XXUnknownSuperclass <SBCCButtonModuleDelegate, SBUIControlCenterButtonDelegate> {
+	UIAlertController *_alertController;
 	id<SBCCButtonControllerDelegate> _delegate;
 	SBCCButtonModule *_module;
 }
@@ -19,13 +20,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) SBCCButtonModule *module;
 @property(readonly, assign) Class superclass;
 - (id)initWithModule:(id)module;
+- (void)_buttonTapped;
 - (void)_updateButtonProperties;
 - (void)_updateButtonState;
 - (void)buttonModulePropertiesDidChange:(id)buttonModuleProperties;
 - (void)buttonModuleStateDidChange:(id)buttonModuleState;
 - (void)buttonTapped:(id)tapped;
+- (void)controlCenterDidDismiss;
 - (void)dealloc;
 - (id)glyphImageForState:(int)state;
+- (BOOL)presentConfirmationAlert;
 - (id)view;
 - (void)viewDidLoad;
 @end

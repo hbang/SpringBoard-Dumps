@@ -48,7 +48,9 @@ __attribute__((visibility("hidden")))
 	unsigned _switchAppGestureChangedFrames;
 	UIView *_pendingGestureLaunchView;
 	SBApplication *_pendingAppActivatedByGesture;
+@private
 	SBApplication *_appCurrentlyActivatingByGesture;
+@protected
 	NSMutableArray *_switchAppFullyOrderedList;
 	NSArray *_switchAppFilteredList;
 @private
@@ -57,7 +59,6 @@ __attribute__((visibility("hidden")))
 	float _ambiguousCCActivationMargin;
 	NSMutableSet *_rotationPreventionReasons;
 	BOOL _disableAnimationForNextIconRotation;
-@private
 	BOOL _handlingHomePress;
 }
 @property(readonly, copy) NSString *debugDescription;

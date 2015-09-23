@@ -165,6 +165,8 @@
 @property(readonly, assign) Class superclass;
 - (BOOL)isCritical;
 - (BOOL)overridesQuietMode;
+- (id)sb_applicationDisplayName;
+- (id)sb_defaultTitle;
 - (id)sectionIconImageWithFormat:(int)format;
 @end
 

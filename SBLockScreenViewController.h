@@ -24,8 +24,6 @@ __attribute__((visibility("hidden")))
 	BOOL _attemptingPasscodeUnlock;
 	BOOL _chargingViewControllerVisible;
 	BOOL _wasAutoUnlocked;
-	BOOL _slideToUnlockTextShouldUpdateWithAnimation;
-	BOOL _ignoreStatusBarUpdatesForBottomCornerController;
 	BOOL _forcePasscodeWhileInCall;
 	BOOL _isHidingPasscodeWhileInCall;
 	BOOL _nextUnlockShouldReturnToCall;
@@ -289,6 +287,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldPendAlertItemsWhileActive;
 - (BOOL)shouldShowLockStatusBarTime;
 - (BOOL)shouldShowSlideToUnlockTextImmediately;
+- (BOOL)shouldShowStatusBarOnDeactivation;
 - (BOOL)showsSpringBoardStatusBar;
 - (void)startLockScreenFadeInAnimationForSource:(int)source;
 - (int)statusBarStyle;
@@ -302,7 +301,6 @@ __attribute__((visibility("hidden")))
 - (void)updateCardItem:(id)item;
 - (void)updateCustomSubtitleTextForAwayViewPlugin:(id)awayViewPlugin;
 - (void)updateLegibility;
-- (void)updateSlideToUnlockTextForController:(id)controller;
 - (id)viewControllerToUseAsParent;
 - (void)viewDidAppear:(BOOL)view;
 - (void)viewDidDisappear:(BOOL)view;
