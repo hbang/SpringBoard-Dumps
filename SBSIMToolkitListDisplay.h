@@ -17,7 +17,6 @@
 - (id)_simToolkitListItems;
 - (void)alertDisplayWillBecomeVisible;
 - (void)dealloc;
-- (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 - (void)leftNavigationButtonPressed;
 - (void)rightNavigationButtonPressed;
 - (void)setMiddleContentAlpha:(float)alpha;

@@ -10,13 +10,12 @@
 @interface SBAwayMediaControlsView : UIView {
 	unsigned _beganSeeking : 1;
 	int _seekingDirection;
+	MPAudioDeviceController *_audioDeviceController;
 	UIButton *_prevButton;
 	UIButton *_nextButton;
 	UIButton *_playPauseButton;
-	UISlider *_slider;
-	UIButton *_routeButton;
-	UILabel *_routeLabel;
-	MPAudioDeviceController *_audioDeviceController;
+	MPVolumeView *_volumeView;
+	MPVolumeView *_iPhoneRouteButtonVolumeView;
 	int _orientation;
 }
 @property(assign, nonatomic) int orientation;
@@ -25,24 +24,21 @@
 - (void)_changeTrackButtonEndSeek:(id)seek;
 - (void)_changeTrackButtonTouchPause:(id)pause;
 - (void)_changeTrackButtonUp:(id)up;
+- (void)_didPresentRoutePicker;
 - (id)_newButtonWithImage:(id)image action:(SEL)action tag:(int)tag;
 - (void)_nowPlayingChanged:(id)changed;
 - (void)_playPauseButtonAction:(id)action;
 - (void)_registerForNowPlayingNotifications;
-- (void)_registerForVolumeNotifications;
-- (void)_showAudioRoutes:(id)routes;
-- (void)_showRouteButton:(BOOL)button volumeSlider:(BOOL)slider animated:(BOOL)animated;
-- (CGRect)_sliderFrameWithRouteButton:(BOOL)routeButton;
-- (void)_systemVolumeChanged:(id)changed;
 - (void)_unregisterForNowPlayingNotifications;
-- (void)_unregisterForVolumeNotifications;
 - (void)_updateInformation;
 - (void)_volumeChange:(id)change;
-- (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
-- (void)audioDeviceControllerMediaServerDied:(id)died;
+- (void)_volumeViewVisibilityChanged;
 - (void)dealloc;
+- (void)dismissMediaControlsOverlaysAnimated:(BOOL)animated;
+- (BOOL)isMediaControlsShowingOverlays;
 - (void)layoutSubviews;
 - (void)removeFromSuperview;
+- (id)routeButtonVolumeView;
 - (void)setAlpha:(float)alpha;
 @end
 

@@ -8,26 +8,31 @@
 
 
 @interface SBFolderSlidingView : UIView {
-	XXStruct_9ihRqB _notchInfo;
-	CGRect _wallpaperContentRect;
-	CGRect _wallpaperFrame;
-	UIView *_rasterizationView;
-	UIImageView *_wallpaperView;
-	SBSlidingViewHighlight *_highlightView;
+	int _position;
 	SBFolderView *_folderView;
+	int _orientation;
+	XXStruct_9ihRqB _notchInfo;
+	CGRect _wallpaperRect;
+	UIView *_rasterizationView;
+	UIView *_wallpaperContainerView;
+	SBWallpaperView *_wallpaperView;
 	SBLinenNotchView *_linenNotchView;
+	SBSlidingViewHighlight *_highlightView;
 	SBFolderNotchHighlightView *_notchHighlightView;
+	UIImageView *_dockView;
+	UIImageView *_outgoingDockView;
 	BOOL _touchDownInWallpaper;
 }
-- (id)initWithWallpaperRect:(CGRect)wallpaperRect notchInfo:(XXStruct_9ihRqB)info highlightEdge:(int)edge folderView:(id)view;
-- (void)_addNotchAndHighlightOnEdge:(int)edge;
-- (void)_addWallpaper:(id)wallpaper;
+- (id)initWithPosition:(int)position folderView:(id)view;
+- (id)_newDockViewForOrientation:(int)orientation;
+- (void)_placeNotchAndHighlights;
 - (CGRect)_rectByAddingOverlapToRect:(CGRect)rect;
-- (void)addDock:(id)dock;
+- (void)cleanUpAfterDockOrientationChange;
 - (void)dealloc;
+- (void)prepareToSetDockOrientation:(int)setDockOrientation;
+- (void)setOrientation:(int)orientation wallpaperRect:(CGRect)rect notchInfo:(XXStruct_9ihRqB)info;
 - (void)setShouldRasterize:(BOOL)rasterize;
 - (void)setShowsHighlight:(BOOL)highlight;
-- (void)setWallpaper:(id)wallpaper;
 - (void)touchesBegan:(id)began withEvent:(id)event;
 - (void)touchesCancelled:(id)cancelled withEvent:(id)event;
 - (void)touchesEnded:(id)ended withEvent:(id)event;

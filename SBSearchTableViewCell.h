@@ -10,6 +10,7 @@
 @interface SBSearchTableViewCell : UITableViewCell {
 	UIFont *_titleFont;
 	UIFont *_subtitleFont;
+	UIFont *_topHitFont;
 	NSString *_title;
 	NSString *_subtitle;
 	NSArray *_subtitleComponents;

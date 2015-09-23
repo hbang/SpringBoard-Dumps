@@ -25,6 +25,7 @@
 - (void)didOrderOutContextWithId:(unsigned)anId;
 - (BOOL)isContextIdHidden:(unsigned)hidden;
 - (void)setContextId:(unsigned)anId hidden:(BOOL)hidden;
+- (void)setHostingEnabled:(BOOL)enabled resetOnDisable:(BOOL)disable;
 - (void)setOrderOutPending:(BOOL)pending forContextId:(unsigned)contextId;
 - (void)willOrderInContextWithId:(unsigned)anId windowLevel:(float)level windowOutput:(int)output;
 @end

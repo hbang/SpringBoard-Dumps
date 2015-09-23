@@ -7,7 +7,7 @@
 
 
 
-@interface SBWiFiCell : UIAlertSheetTableCell {
+@interface SBWiFiCell : _UIAlertTableViewCell {
 	id _userInfo;
 }
 - (id)initWithFrame:(CGRect)frame networkDictionary:(id)dictionary;

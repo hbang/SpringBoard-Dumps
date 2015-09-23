@@ -8,6 +8,8 @@
 
 
 @protocol SBAppSwitcherBarViewDelegate <NSObject>
+- (void)appSwitcherBar:(id)bar pageAtIndexDidAppear:(int)pageAtIndex;
+- (void)appSwitcherBar:(id)bar pageAtIndexDidDisappear:(int)pageAtIndex;
 - (BOOL)appSwitcherBar:(id)bar scrollShouldCancelInContentForView:(id)scroll;
 - (void)appSwitcherBarRemovedFromSuperview:(id)superview;
 @end

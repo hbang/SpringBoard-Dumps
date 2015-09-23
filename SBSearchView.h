@@ -13,12 +13,14 @@
 	UITableView *_tableView;
 	SBKeyboard *_keyboard;
 	UILabel *_noResultsLabel;
+	SBNoResultsView *_noResultsView;
 	UIView *_rootView;
 	UIView *_contentView;
 	BOOL _isKeyboardVisible;
 	BOOL _isKeyboardAnimatingRotation;
 	BOOL _showSearchKeyWhenAnimatingKeyboard;
 	BOOL _keyboardWasMinimizedWhenAnimationStarted;
+	BOOL _hidesEmptyTableFooter;
 }
 @property(retain, nonatomic) UIView *contentView;
 @property(retain, nonatomic) UIView *rootView;
@@ -33,6 +35,7 @@
 - (BOOL)_initializeKeyboardIfNotBricked;
 - (void)_keyboardDidHide:(id)_keyboard;
 - (void)_keyboardWillShow:(id)_keyboard;
+- (void)_layoutNoResultsView;
 - (void)_resetContentViewTransform;
 - (void)_setDistantContentViewTransform;
 - (void)dealloc;
@@ -48,8 +51,10 @@
 - (void)scrollViewIsScrollingHorizontally;
 - (Class)searchBarClass;
 - (void)setFrame:(CGRect)frame;
+- (void)setHidesEmptyTableFooter:(BOOL)footer;
 - (void)setShowingNoResultsText:(BOOL)text;
 - (void)setShowsKeyboard:(BOOL)keyboard animated:(BOOL)animated;
+- (void)setShowsNoResultsView:(BOOL)view;
 - (void)setShowsSearchKeyWhenAnimatingKeyboard:(BOOL)keyboard;
 - (Class)tableViewClass;
 - (void)unscatter:(BOOL)unscatter startTime:(double)time;

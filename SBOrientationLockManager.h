@@ -23,6 +23,7 @@
 - (void)lock:(int)lock;
 - (int)lockOrientation;
 - (int)lockOverride;
+- (int)overrideOrientation;
 - (void)restoreStateFromPrefs;
 - (void)setLockOverride:(int)override orientation:(int)orientation;
 - (void)unlock;

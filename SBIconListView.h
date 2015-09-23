@@ -19,11 +19,11 @@
 	unsigned _onWallpaper : 1;
 	UIView *_fadeView;
 	BOOL _iconsAreElsewhere;
+	NSMutableArray *_rasterizedIcons;
 }
-+ (int)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
-+ (int)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
-+ (int)maxIcons;
-+ (float)sideIconInset;
++ (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
++ (unsigned)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
++ (unsigned)maxIcons;
 - (id)initWithFrame:(CGRect)frame;
 - (float)bottomIconInset;
 - (id)bouncedIcon;
@@ -35,6 +35,7 @@
 - (unsigned)firstFreeSlotOrLastSlotIndex;
 - (void)getX:(unsigned *)x Y:(unsigned *)y forIndex:(unsigned)index forOrientation:(int)orientation;
 - (void)hideCloseBoxes;
+- (float)horizontalBumpForColumn:(unsigned)column;
 - (float)horizontalIconPadding;
 - (id)iconAtPoint:(CGPoint)point index:(int *)index;
 - (id)iconAtPoint:(CGPoint)point index:(int *)index proposedOrder:(int *)order grabbedIcon:(id)icon;
@@ -51,6 +52,7 @@
 - (BOOL)isScattered;
 - (float)layoutIconsIfNeeded:(float)needed domino:(BOOL)domino;
 - (void)layoutIconsNow;
+- (void)makeIconsPerformBlock:(id)block;
 - (void)makeIconsPerformSelector:(SEL)selector;
 - (id)model;
 - (Class)modelClass;
@@ -77,7 +79,7 @@
 - (void)setIconsNeedLayout;
 - (void)setModel:(id)model;
 - (void)setOrientation:(int)orientation;
-- (void)setShouldRasterizeAndFreezeAllIcons:(BOOL)rasterizeAndFreezeAllIcons;
+- (void)setShouldRasterizeAllIcons:(BOOL)rasterizeAllIcons;
 - (void)showCloseBoxes;
 - (void)showIconAnimationDidStop:(id)showIconAnimation didFinish:(id)finish icon:(id)icon;
 - (void)showIconImagesFromColumn:(int)column toColumn:(int)column2 totalColumns:(int)columns visibleIconsJitter:(BOOL)jitter;

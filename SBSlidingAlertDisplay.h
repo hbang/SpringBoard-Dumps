@@ -8,7 +8,7 @@
 
 
 @interface SBSlidingAlertDisplay : SBAlertDisplay {
-	UIImageView *_backgroundView;
+	SBWallpaperView *_backgroundView;
 	UIImage *_defaultDesktopImage;
 	UIView *_topBar;
 	UIView *_bottomBar;
@@ -25,6 +25,7 @@
 	unsigned _showingDeviceUnlockFailure : 1;
 	unsigned _isDisplayingWallpaper : 1;
 	int _currentOrientation;
+	UIStatusBar *_fakeStatusBarForSlideToDeviceLock;
 	CGAffineTransform _originalStatusBarTransform;
 }
 + (id)newBottomBarForInstance:(id)instance;

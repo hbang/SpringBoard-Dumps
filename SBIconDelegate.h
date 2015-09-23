@@ -20,7 +20,6 @@
 - (void)iconDownloadStateChanged:(id)changed;
 - (void)iconHandleLongPress:(id)press;
 - (BOOL)iconPositionIsEditable:(id)editable;
-- (float)iconScale:(id)scale;
 - (BOOL)iconShouldAllowTap:(id)icon;
 - (void)iconTapped:(id)tapped;
 - (void)iconTouchBegan:(id)began;

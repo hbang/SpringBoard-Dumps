@@ -9,36 +9,36 @@
 
 @interface SBWallpaperView : UIImageView {
 	int _orientation;
+	int _variant;
 	UIImageView *_topGradient;
 	UIImageView *_bottomGradient;
 	BOOL _usesFilter;
-	float _filterAlpha;
 	float _gradientAlpha;
 	CGRect _wallpaperContentsRect;
-	UIImage *_uncomposedImage;
-	UIImage *_portraitComposedImage;
-	UIImage *_landscapeComposedImage;
+	BOOL _postsNotifications;
+	BOOL _flushWallpaperAutomatically;
 }
+@property(assign, nonatomic) float filterAlpha;
+@property(assign, nonatomic) BOOL flushWallpaperAutomatically;
 @property(assign, nonatomic) float gradientAlpha;
 @property(assign, nonatomic) int orientation;
-+ (int)_desktopVariant;
-+ (void)initialize;
-+ (BOOL)lockScreenAndHomeScreenShareWallpaper;
-+ (void)noteWallpaperPreferencesChanged;
-- (id)initWithOrientation:(int)orientation;
+@property(assign, nonatomic) BOOL postsNotifications;
+@property(assign, nonatomic) BOOL usesFilter;
+@property(readonly, assign, nonatomic) int variant;
+- (id)initWithOrientation:(int)orientation variant:(int)variant;
 - (void)_resetImage;
+- (void)_setGradientImagesWithOrientation:(int)orientation;
 - (void)_setOrientation:(int)orientation duration:(double)duration force:(BOOL)force;
-- (void)_setOrientationAnimationFinished;
-- (void)_setUsesComposedImage:(BOOL)image createGradientsIfNeeded:(BOOL)needed;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_wallpaperChanged;
 - (float)alpha;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (id)gradientImageForInterfaceOrientation:(int)interfaceOrientation;
 - (void)replaceWallpaperWithImage:(id)image;
 - (void)resetCurrentImageToWallpaper;
 - (void)setAlpha:(float)alpha;
-- (id)uncomposedImage;
+- (void)setOrientation:(int)orientation duration:(double)duration;
 - (CGRect)wallpaperContentsRect;
 @end
 

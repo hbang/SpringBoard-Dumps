@@ -7,8 +7,9 @@
 
 
 
-@interface SBRotationLockHUDController : NSObject {
+@interface SBAwayItemContentView : UIView {
 }
-+ (void)activateWithLocked:(BOOL)locked;
+- (void)drawItems;
+- (void)drawRect:(CGRect)rect;
 @end
 

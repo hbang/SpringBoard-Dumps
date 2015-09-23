@@ -24,7 +24,6 @@
 - (void)_acceptAnimationDidStop;
 - (void)_ringIfNecessary;
 - (BOOL)_shouldAutoAnswerConference;
-- (void)_videoAlertAnimationDidStop;
 - (void)accept;
 - (void)alertDisplayBecameVisible;
 - (void)alertDisplayWillBecomeVisible;

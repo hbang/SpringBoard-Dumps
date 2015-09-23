@@ -12,7 +12,7 @@
 	BOOL _iconStateIsDirty;
 	SBFolder *_folder;
 }
-+ (int)maxIcons;
++ (unsigned)maxIcons;
 + (Class)viewClass;
 - (id)initWithFolder:(id)folder;
 - (BOOL)addIcon:(id)icon;

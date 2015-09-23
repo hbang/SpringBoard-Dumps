@@ -21,6 +21,7 @@
 + (void)initialize;
 + (id)sharedInstance;
 - (id)init;
+- (void)_conferenceAvailabilityChanged:(id)changed;
 - (void)_conferenceStateChanged:(id)changed;
 - (void)_handleInvitation:(id)invitation;
 - (void)_handleMissedInvitation:(id)invitation;

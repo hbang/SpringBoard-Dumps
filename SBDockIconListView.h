@@ -10,13 +10,11 @@
 @interface SBDockIconListView : SBIconListView {
 }
 + (id)backgroundImageForOrientation:(int)orientation;
-+ (int)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
-+ (int)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
-+ (BOOL)shouldShowNewDock;
++ (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
++ (unsigned)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
 - (id)initForOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
 - (float)_additionalSideInsetToCenterIcons;
-- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_updateForOrientation:(int)orientation duration:(double)duration;
 - (void)_updateForOrientationAnimationStopped;
 - (int)columnAtPoint:(CGPoint)point;
@@ -25,6 +23,7 @@
 - (int)rowAtPoint:(CGPoint)point;
 - (void)setOrientation:(int)orientation;
 - (void)setOrientation:(int)orientation duration:(double)duration;
+- (float)sideIconInset;
 - (float)topIconInset;
 - (int)visibleIconsInDock;
 @end
