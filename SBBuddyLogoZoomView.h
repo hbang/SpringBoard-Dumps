@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBBuddyLogoZoomView : XXUnknownSuperclass {
 	CALayer *_contentLayer;
 	id _animationCompleteBlock;

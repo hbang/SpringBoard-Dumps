@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBBaseSoftwareUpdateAlertItem : XXUnknownSuperclass {
 	SUDescriptor *_descriptor;
 }

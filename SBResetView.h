@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBResetView : XXUnknownSuperclass {
 	SBResetProgressView *_progressView;
 	NSTimer *_progressTimer;

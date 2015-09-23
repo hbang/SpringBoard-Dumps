@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBVoiceDisabledBundles : XXUnknownSuperclass {
 }
 + (void)setAppDisabledVoiceControl:(BOOL)control bundleIdentifier:(id)identifier;

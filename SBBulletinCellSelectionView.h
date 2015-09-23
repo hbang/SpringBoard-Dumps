@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinCellSelectionView : XXUnknownSuperclass {
 	UIImageView *_gradientView;
 	float _cellSeparatorHeight;

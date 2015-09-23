@@ -11,7 +11,9 @@
 - (id)autorelease;
 - (Class)class;
 - (BOOL)conformsToProtocol:(id)protocol;
+@optional
 - (id)debugDescription;
+@required
 - (id)description;
 - (unsigned)hash;
 - (BOOL)isEqual:(id)equal;

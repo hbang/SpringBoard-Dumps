@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBFluidSlideGestureRecognizer : SBGestureRecognizer {
 	int m_degreeOfFreedom;
 	unsigned m_minTouches;

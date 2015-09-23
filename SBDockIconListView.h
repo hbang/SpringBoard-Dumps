@@ -7,13 +7,14 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBDockIconListView : SBIconListView {
 }
 + (id)backgroundImageForOrientation:(int)orientation;
 + (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
 + (unsigned)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
-- (id)initForOrientation:(int)orientation;
-- (id)initWithFrame:(CGRect)frame;
+- (id)initForOrientation:(int)orientation viewMap:(id)map;
+- (id)initWithFrame:(CGRect)frame viewMap:(id)map;
 - (float)_additionalSideInsetToCenterIcons;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_updateForOrientation:(int)orientation duration:(double)duration;

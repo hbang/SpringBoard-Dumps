@@ -7,21 +7,28 @@
 
 
 
-@interface SBBulletinHeaderView : SBBulletinLinenSegmentView {
+__attribute__((visibility("hidden")))
+@interface SBBulletinHeaderView : SBBulletinLinenSegmentView <SBBulletinClearButtonDelegate> {
 	UIView *_translucentOverlay;
 	UIView *_iconView;
 	SBBulletinBlurredShadowLabel *_sectionLabel;
+	SBBulletinBlurredShadowLabel *_sectionAltLabel;
 	SBBulletinClearButton *_clearButton;
 	id<SBBulletinHeaderViewDelegate> _delegate;
 	NSString *_sectionID;
 }
 @property(readonly, assign, nonatomic) SBBulletinClearButton *clearButton;
 @property(assign, nonatomic) id<SBBulletinHeaderViewDelegate> delegate;
-@property(retain, nonatomic) NSString *sectionID;
+@property(readonly, assign, nonatomic) NSString *sectionID;
 + (float)headerHeight;
 - (id)initWithFrame:(CGRect)frame linenView:(id)view;
-- (id)_newIconViewForSectionID:(id)sectionID;
-- (id)_sectionNameForSectionID:(id)sectionID;
+- (BOOL)_configureAltTextInAvailableWidth:(float)availableWidth;
+- (void)_dateOrLocaleChanged:(id)changed;
+- (CGRect)_positionAltLabel;
+- (BOOL)_showingAltLabel;
+- (void)clearButton:(id)button willTransitionWithDuration:(double)duration;
+- (void)clearButtonWasPressed:(id)pressed;
+- (void)configureWithSection:(id)section;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)setShowsClearButton:(BOOL)button animated:(BOOL)animated;

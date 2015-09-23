@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBFolderTitleLabel : XXUnknownSuperclass {
 }
 + (float)labelFontSize;

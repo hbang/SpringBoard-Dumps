@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandShelfFrameView : XXUnknownSuperclass {
 	CGSize _borderSize;
 	SBNewsstandShelfHeaderView *_headerView;
@@ -14,7 +15,6 @@
 	SBNewsstandTilingImageView *_rightBorder;
 	int _orientation;
 }
-+ (void)setupCache;
 - (id)initWithFrame:(CGRect)frame;
 - (void)configureForOrientation:(int)orientation;
 - (void)dealloc;

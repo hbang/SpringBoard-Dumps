@@ -7,9 +7,11 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwayInCallController : XXUnknownSuperclass {
 	TPLCDView *_lcdView;
-	BOOL _showsInCallInfo;
+	BOOL _shouldShowInCallInfo;
+	BOOL _isShowingInCallInfo;
 	NSTimer *_durationTimer;
 	CTCallRef _displayedCall;
 	NSString *_localizedLabel;
@@ -17,12 +19,14 @@
 	BOOL _isFullScreen;
 }
 - (id)initWithLCDView:(id)lcdview;
+- (void)_setShowingInCallInfo:(BOOL)callInfo;
 - (id)callerImage;
 - (BOOL)callerImageIsFullScreen;
 - (void)dealloc;
 - (void)fetchCallInformation:(id *)information name:(id *)name label:(id *)label image:(id *)image isFullScreen:(BOOL *)screen wantsHighResolution:(BOOL)resolution;
+- (BOOL)isShowingInCallInfo;
 - (void)reload;
-- (void)setShowsInCallInfo:(BOOL)callInfo;
+- (void)setShouldShowInCallInfo:(BOOL)showInCallInfo;
 - (void)updateDuration;
 @end
 

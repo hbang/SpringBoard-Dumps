@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandIconRotationContainer : SBIconRotationContainer {
 }
 - (void)crossfadeWithDuration:(double)duration inIconList:(id)iconList;

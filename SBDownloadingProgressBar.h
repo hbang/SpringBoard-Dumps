@@ -7,8 +7,9 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBDownloadingProgressBar : XXUnknownSuperclass {
-	UIImageView *_clipView;
+	UIView *_clipView;
 	UIImageView *_fillView;
 	float _progress;
 }

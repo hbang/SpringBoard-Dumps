@@ -7,52 +7,85 @@
 
 
 
-@interface SBIcon : XXUnknownSuperclass {
+__attribute__((visibility("hidden")))
+@interface SBIcon : XXUnknownSuperclass <SBIconIndexNode> {
 	NSHashTable *_observers;
 	id _badgeNumberOrString;
-	unsigned _isRevealable : 1;
 	unsigned _uninstalled : 1;
 	UIImage *_cachedIconImages[12];
-	id<SBIconDelegate> _delegate;
 }
-@property(assign, nonatomic) id<SBIconDelegate> delegate;
 @property(readonly, assign, nonatomic) BOOL shouldWarmUp;
++ (id)_memoryMappedIconImageOfSize:(CGSize)size scale:(float)scale withDrawing:(id)drawing fallbackImage:(id)image;
++ (id)memoryMappedIconImageForIconImage:(id)iconImage;
++ (id)memoryMappedIconImageOfSize:(CGSize)size scale:(float)scale withDrawing:(id)drawing;
 - (id)init;
+- (void)_notifyAccessoriesDidUpdate;
+- (void)_notifyImageDidUpdate;
+- (void)_notifyLaunchEnabledDidChange;
+- (int)accessoryTypeForLocation:(int)location;
+- (void)addNodeObserver:(id)observer;
 - (void)addObserver:(id)observer;
 - (BOOL)allowsUninstall;
+- (id)application;
+- (id)applicationBundleID;
 - (id)automationID;
 - (id)badgeNumberOrString;
+- (id)badgeTextForLocation:(int)location;
 - (int)badgeValue;
 - (BOOL)canEllipsizeLabel;
 - (void)completeUninstall;
+- (id)containedNodeIdentifiers;
+- (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
 - (id)displayName;
+- (id)download;
+- (id)folder;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
 - (id)generateIconImage:(int)image;
 - (id)getGenericIconImage:(int)image;
 - (id)getIconImage:(int)image;
 - (id)getStandardIconImageForLocation:(int)location;
+- (id)gridCellImage;
+- (BOOL)hasCachedImageForLocation:(int)location;
 - (BOOL)hasObserver:(id)observer;
+- (BOOL)iconAppearsInNewsstand;
 - (int)iconFormatForLocation:(int)location;
 - (id)iconOverlayImageForLocation:(int)location;
-- (BOOL)isRevealable;
+- (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
+- (BOOL)isApplicationIcon;
+- (BOOL)isBookmarkIcon;
+- (BOOL)isDownloadingIcon;
+- (BOOL)isEmptyPlaceholder;
+- (BOOL)isFolderIcon;
+- (BOOL)isGrabbedIconPlaceholder;
+- (BOOL)isLeafIcon;
+- (BOOL)isNewsstandApplicationIcon;
+- (BOOL)isNewsstandIcon;
+- (BOOL)isPlaceholder;
+- (BOOL)isPrintStatusIcon;
 - (BOOL)isUninstalled;
+- (BOOL)isUserInstalledApplicationIcon;
+- (BOOL)isWebApplicationIcon;
 - (void)launch;
 - (BOOL)launchEnabled;
 - (void)launchFromViewSwitcher;
+- (id)leafIdentifier;
 - (void)localeChanged;
 - (int)localizedCompareDisplayNames:(id)names;
 - (BOOL)matchesEntity:(id)entity;
 - (BOOL)matchesRepresentation:(id)representation;
+- (id)nodeDescriptionWithPrefix:(id)prefix;
+- (id)nodeIdentifier;
+- (id)nodesAlongIndexPath:(id)path consumedIndexes:(unsigned)indexes;
 - (void)noteBadgeDidChange;
 - (void)purgeCachedImages;
 - (void)reloadIconImage;
 - (void)reloadIconImagePurgingImageCache:(BOOL)cache;
+- (void)removeNodeObserver:(id)observer;
 - (void)removeObserver:(id)observer;
 - (id)representation;
 - (void)setBadge:(id)badge;
-- (void)setIsRevealable:(BOOL)revealable;
 - (void)setUninstalled;
 - (BOOL)shouldCacheImageForFormat:(int)format;
 - (id)tags;
@@ -64,67 +97,6 @@
 - (id)uninstallAlertTitle;
 - (id)uninstallAlertTitleForAppWithDocumentUpdatesPending;
 - (id)uninstallAlertTitleForAppWithDocumentsInCloud;
-@end
-
-@interface SBIcon (SBApplicationIcon)
-- (id)application;
-- (BOOL)isApplicationIcon;
-@end
-
-@interface SBIcon (SBBookmarkIcon)
-- (BOOL)isBookmarkIcon;
-@end
-
-@interface SBIcon (SBDownloadingIcon)
-- (id)download;
-- (BOOL)isDownloadingIcon;
-@end
-
-@interface SBIcon (SBUserInstalledApplicationIcon)
-- (BOOL)isUserInstalledApplicationIcon;
-@end
-
-@interface SBIcon (SBWebApplicationIcon)
-- (BOOL)isWebApplicationIcon;
-@end
-
-@interface SBIcon (SBFolderIcon)
-- (id)enclosingFolder;
-- (id)folder;
-- (BOOL)isFolderIcon;
-@end
-
-@interface SBIcon (SBLeafIcon)
-- (id)applicationBundleID;
-- (BOOL)isLeafIcon;
-- (id)leafIdentifier;
 - (id)webClip;
-@end
-
-@interface SBIcon (SBPrintStatusIcon)
-- (BOOL)isPrintStatusIcon;
-@end
-
-@interface SBIcon (SBDestinationHole)
-- (BOOL)isDestinationHole;
-@end
-
-@interface SBIcon (SBNullIcon)
-- (BOOL)isNullIcon;
-@end
-
-@interface SBIcon (Internal)
-- (void)_notifyAccessoriesDidUpdate;
-- (void)_notifyImageDidUpdate;
-- (void)_notifyLaunchEnabledDidChange;
-@end
-
-@interface SBIcon (SBNewsstandApplicationIcon)
-- (BOOL)iconAppearsInNewsstand;
-- (BOOL)isNewsstandApplicationIcon;
-@end
-
-@interface SBIcon (SBNewsstandIcon)
-- (BOOL)isNewsstandIcon;
 @end
 

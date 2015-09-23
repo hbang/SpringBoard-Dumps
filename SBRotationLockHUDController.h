@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBRotationLockHUDController : XXUnknownSuperclass {
 }
 + (void)activateWithLocked:(BOOL)locked;

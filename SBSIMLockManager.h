@@ -7,14 +7,14 @@
 
 
 
-@interface SBSIMLockManager : XXUnknownSuperclass <RadiosPreferencesDelegate> {
+__attribute__((visibility("hidden")))
+@interface SBSIMLockManager : XXUnknownSuperclass {
 	BOOL _isInitialUpdate;
 	BOOL _isBrickedDevice;
 	int _status;
 	SBSIMLockAlertItem *_currentAlert;
 	SBSIMLockEntryAlert *_lockEntryAlert;
 	NSString *_languageCode;
-	RadiosPreferences *_radiosPrefs;
 	BOOL _hasHadSIMWhileNotBricked;
 	BOOL _wasActivated;
 	BOOL _neededUIM;
@@ -23,11 +23,12 @@
 - (id)init;
 - (int)_CTToSBSIMStatus:(CFStringRef)sbsimstatus;
 - (void)_activationDidChange;
-- (void)_displayLaunched:(id)launched;
+- (void)_externalSIMStatusChanged:(id)changed;
 - (void)_handlePromptForUnlock;
 - (BOOL)_hopelesslyPUKLocked;
 - (void)_initialUpdate;
 - (void)_postponementDidChange;
+- (void)_setupAppActivationStateDidChange:(id)_setupAppActivationState;
 - (BOOL)_shouldSuppressAlert;
 - (int)_statusFromCT;
 - (void)_tearDownAlertAndUpdateStatus;

@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBFolderTextField : XXUnknownSuperclass {
 }
 @property(readonly, assign, nonatomic) UITextInteractionAssistant *interactionAssistant;

@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAlertImageView : XXUnknownSuperclass {
 	UIImageView *_imageView;
 	UILabel *_labelView;

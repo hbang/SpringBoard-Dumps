@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBGameDeletionAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBUserInstalledApplicationIcon *_icon;
 }

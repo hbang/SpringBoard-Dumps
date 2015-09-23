@@ -7,8 +7,9 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBGestureRecognizer : XXUnknownSuperclass {
-	int m_types;
+	unsigned m_types;
 	int m_state;
 	id m_handler;
 	unsigned m_activeTouchesCount;
@@ -25,7 +26,7 @@
 @property(assign, nonatomic) BOOL includedInGestureRecognitionIsPossibleTest;
 @property(assign, nonatomic) BOOL sendsTouchesCancelledToApplication;
 @property(assign, nonatomic) int state;
-@property(assign, nonatomic) int types;
+@property(assign, nonatomic) unsigned types;
 - (id)init;
 - (void)addTouchTemplate:(id)aTemplate;
 - (void)dealloc;

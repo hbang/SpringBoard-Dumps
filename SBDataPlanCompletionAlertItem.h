@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBDataPlanCompletionAlertItem : SBDataPlanAlertItem {
 	NSString *_carrierName;
 	BOOL _newAccount;

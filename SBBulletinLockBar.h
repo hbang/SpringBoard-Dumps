@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinLockBar : XXUnknownSuperclass {
 }
 - (id)initWithFrame:(CGRect)frame knobImage:(id)image;
@@ -17,8 +18,6 @@
 - (void)dealloc;
 - (float)defaultWellWidth;
 - (void)hideKnob;
-- (void)knobDragged:(float)dragged;
-- (float)knobTrackInsetLeft;
 - (float)knobTrackInsetRight;
 - (void)setAlpha:(float)alpha;
 - (void)setWellWidth:(float)width;

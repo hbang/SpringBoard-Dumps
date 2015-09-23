@@ -7,19 +7,17 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBDismissOnlyAlertItem : XXUnknownSuperclass {
 	NSString *_title;
 	NSString *_body;
-	NSString *_buttonTitle;
 	double _autoDismissInterval;
 }
-@property(copy, nonatomic) NSString *buttonTitle;
 - (id)initWithTitle:(id)title body:(id)body;
 - (double)autoDismissInterval;
 - (id)bodyText;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (id)lockLabel;
 - (void)performUnlockAction;
 - (void)setAutoDismissInterval:(double)interval;
 - (void)setBodyText:(id)text;

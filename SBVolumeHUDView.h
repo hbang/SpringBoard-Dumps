@@ -7,15 +7,22 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBVolumeHUDView : SBHUDView {
 	int _mode;
 	BOOL _headphonesPresent;
+	float _euVolumeLimit;
 }
+@property(assign, nonatomic) float EUVolumeLimit;
 @property(assign, nonatomic) BOOL headphonesPresent;
 @property(assign, nonatomic) int mode;
++ (float)volumeStepDownForCurrentVolume:(float)currentVolume euVolumeLimit:(float)limit;
++ (float)volumeStepUpForCurrentVolume:(float)currentVolume euVolumeLimit:(float)limit;
++ (BOOL)wouldShowAtLeastAYellowBlockForVolume:(float)volume euVolumeLimit:(float)limit;
 - (id)init;
 - (void)_updateImage;
 - (void)_updateLabels;
+- (void)drawBlockForValue:(float)value point:(CGPoint)point;
 - (void)setProgress:(float)progress;
 @end
 

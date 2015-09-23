@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBBulletinListTouchEater : XXUnknownSuperclass <UIGestureRecognizerDelegate> {
 }
 - (BOOL)canBePreventedByGestureRecognizer:(id)recognizer;

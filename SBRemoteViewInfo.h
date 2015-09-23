@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBRemoteViewInfo : XXUnknownSuperclass {
 	NSString *_remoteViewIdentifier;
 	SBProxyRemoteView *_proxyRemoteView;

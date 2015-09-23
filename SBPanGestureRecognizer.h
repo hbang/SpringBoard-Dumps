@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBPanGestureRecognizer : SBFluidSlideGestureRecognizer {
 	float _arcCenter;
 	float _arcSize;

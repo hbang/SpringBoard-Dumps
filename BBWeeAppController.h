@@ -9,6 +9,7 @@
 
 @protocol BBWeeAppController <NSObject>
 @optional
+@property(assign, nonatomic) id<BBWeeAppControllerHost> host;
 - (void)clearShapshotImage;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (id)launchURL;
@@ -16,6 +17,10 @@
 - (void)loadFullView;
 - (void)loadPlaceholderView;
 - (void)loadView;
+- (id)presentationControllerForMode:(int)mode;
+- (float)presentationHeight;
+- (void)setPresentationView:(id)view;
+- (void)unloadPresentationController;
 - (void)unloadView;
 @required
 - (id)view;

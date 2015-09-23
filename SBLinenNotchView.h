@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBLinenNotchView : SBFolderNotchView {
 }
 + (id)_squareImageForNotchInfo:(XXStruct_9ihRqB)notchInfo orientation:(int)orientation;

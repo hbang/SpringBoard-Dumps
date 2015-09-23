@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandShelfTableView : XXUnknownSuperclass {
 	UIView *_backView;
 }

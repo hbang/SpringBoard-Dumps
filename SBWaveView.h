@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBWaveView : XXUnknownSuperclass {
 	float _phaseWidth;
 	float _phaseShift;

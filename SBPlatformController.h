@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBPlatformController : XXUnknownSuperclass {
 	NSString *_currentConfigurationName;
 	NSMutableDictionary *_currentConfiguration;
@@ -16,7 +17,10 @@
 	int _currentLockdownState;
 	BOOL _saveLocalePostActivation;
 }
++ (id)hardwareModel;
++ (id)productType;
 + (id)sharedInstance;
++ (id)systemBuildVersion;
 - (id)init;
 - (void)_addIconListIdentifiers:(id)identifiers toSet:(id)set;
 - (id)_copyConfigInfoWithName:(id)name;
@@ -27,7 +31,6 @@
 - (BOOL)allowSensitiveUI:(BOOL)ui hasInternalBundle:(BOOL)bundle;
 - (BOOL)allowYouTube;
 - (BOOL)allowYouTubePlugin;
-- (BOOL)canDisplayHomescreenWallpaper;
 - (BOOL)capabililtyOverrideEnabledByPreference:(id)preference;
 - (id)currentConfigurationName;
 - (CFBooleanRef)currentITunesStoreCapability;
@@ -56,10 +59,11 @@
 - (id)platformName;
 - (void)postCurrentConfiguration;
 - (id)regionalOverrideSoftwareBehaviorForKey:(id)key;
+- (void)registerForIconVisibilityChanges;
 - (void)resetDefaultSoftwareBehaviorsAndPost:(BOOL)post;
 - (void)setOriginalRegionFormatCountryCodeAndResetSoftwareBehaviorsIfNecessary;
 - (void)setSoftwareBehavior:(id)behavior forKey:(id)key;
 - (void)setValue:(id)value forCapability:(id)capability;
-- (id)systemBuildVersion;
+- (void)visibleIdentifiersChanged:(id)changed;
 @end
 

@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwayChargingView : XXUnknownSuperclass {
 	SBBatteryChargingView *_chargingView;
 	SBBatteryChargingView *_headsetChargingView;

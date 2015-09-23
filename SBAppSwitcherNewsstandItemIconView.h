@@ -7,17 +7,16 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAppSwitcherNewsstandItemIconView : SBNewsstandItemIconViewBase {
 }
-+ (float)_badgeLabelFontSize;
-+ (BOOL)allowsRecycling;
-+ (CGPoint)badgeLabelCenterPoint;
-+ (id)createBadgeLabelImageAndGetTextCenterPoint:(CGPoint *)point;
-- (float)_badgeHorizontalPadding;
-- (float)_badgeVerticalPadding;
-- (id)_overriddenBadgeTextForText:(id)text;
-- (id)_superviewForBadge;
++ (Class)_labelImageParametersClassForIcon:(id)icon location:(int)location;
+- (id)initWithFrame:(CGRect)frame;
+- (id)_superviewForAccessoryView;
+- (void)_updateLabelVisibility;
+- (CGRect)defaultFrameForProgressBar;
 - (void)positionCloseBoxOfType:(int)type;
 - (void)positionIconImageView;
+- (void)setShadowsHidden:(BOOL)hidden;
 @end
 

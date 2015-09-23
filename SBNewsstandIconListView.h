@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandIconListView : SBFolderIconListView {
 	unsigned _firstVisibleRow;
 	unsigned _lastVisibleRow;
@@ -14,7 +15,6 @@
 	unsigned _postRotationFirstVisibleRow;
 	unsigned _rotationPlacementRow;
 	NSMutableArray *_visibleIcons;
-	BOOL _compactingIcons;
 }
 + (unsigned)iconColumnsForInterfaceOrientation:(int)interfaceOrientation;
 + (unsigned)iconRowsForInterfaceOrientation:(int)interfaceOrientation;
@@ -29,7 +29,6 @@
 - (void)_updateVisibleIconsFromRow:(unsigned)row toRow:(unsigned)row2 includeIcon:(id)icon layoutIfNeeded:(BOOL)needed;
 - (float)bottomIconInset;
 - (void)cleanupAfterRotation;
-- (BOOL)compactIcons:(BOOL)icons;
 - (void)dealloc;
 - (CGSize)defaultIconSize;
 - (Class)iconRotationContainerClass;

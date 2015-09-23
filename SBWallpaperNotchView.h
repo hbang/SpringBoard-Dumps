@@ -7,9 +7,10 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBWallpaperNotchView : XXUnknownSuperclass {
+	SBWallpaperView *_wallpaperView;
 	XXStruct_9ihRqB _notchInfo;
-	SBWallpaperClipView *_clipView;
 }
 - (id)initWithFrame:(CGRect)frame wallpaperView:(id)view notchInfo:(XXStruct_9ihRqB)info;
 - (void)dealloc;

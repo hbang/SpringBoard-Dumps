@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBIconRotationContainer : XXUnknownSuperclass {
 	UIView *_startSnapshot;
 	UIView *_endSnapshot;

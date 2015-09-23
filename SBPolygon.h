@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBPolygon : XXUnknownSuperclass {
 	int m_pointCount;
 	CGPoint m_points[5];

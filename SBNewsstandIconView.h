@@ -7,13 +7,12 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBNewsstandIconView : SBFolderIconView {
 }
 - (id)_folderBackgroundImage;
 - (id)_folderForegroundImage;
-- (void)_positionMiniGrid;
 - (void)placeIconOverlayView;
 - (void)positionIconImageView;
-- (void)setIconScrollPosition:(int)position animated:(BOOL)animated;
 @end
 

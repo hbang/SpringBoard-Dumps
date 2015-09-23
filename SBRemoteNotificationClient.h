@@ -7,32 +7,35 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBRemoteNotificationClient : XXUnknownSuperclass <NSCoding> {
 	NSString *_bundleIdentifier;
 	NSString *_environment;
-	int _appEnabledTypes;
-	int _settingsEnabledTypes;
-	int _settingsPresentedTypes;
+	unsigned _appEnabledTypes;
+	unsigned _settingsEnabledTypes;
+	unsigned _settingsPresentedTypes;
 	NSData *_lastKnownDeviceToken;
 	NSDate *_missingDate;
-	NSDate *_contentPushDisallowedBeforeDate;
+	int _dayOfLastContentPush;
+	unsigned _dailyCountOfContentPushes;
 	BOOL _hasShownSystemwideEnableAlert;
 	NSDictionary *_lastUserInfo;
 }
-@property(assign, nonatomic) int appEnabledTypes;
-@property(readonly, retain, nonatomic) NSString *bundleIdentifier;
-@property(retain, nonatomic) NSDate *contentPushDisallowedBeforeDate;
+@property(assign, nonatomic) unsigned appEnabledTypes;
+@property(readonly, assign, nonatomic) NSString *bundleIdentifier;
+@property(assign, nonatomic) unsigned dailyCountOfContentPushes;
+@property(assign, nonatomic) int dayOfLastContentPush;
 @property(retain, nonatomic) NSString *environment;
 @property(assign, nonatomic) BOOL hasShownSystemwideEnableAlert;
 @property(retain, nonatomic) NSData *lastKnownDeviceToken;
 @property(retain, nonatomic) NSDictionary *lastUserInfo;
 @property(retain, nonatomic) NSDate *missingDate;
-@property(assign, nonatomic) int settingsEnabledTypes;
-@property(assign, nonatomic) int settingsPresentedTypes;
+@property(assign, nonatomic) unsigned settingsEnabledTypes;
+@property(assign, nonatomic) unsigned settingsPresentedTypes;
 - (id)initWithBundleIdentifier:(id)bundleIdentifier;
 - (id)initWithCoder:(id)coder;
 - (void)dealloc;
-- (int)effectivelyEnabledTypes;
+- (unsigned)effectivelyEnabledTypes;
 - (void)encodeWithCoder:(id)coder;
 @end
 

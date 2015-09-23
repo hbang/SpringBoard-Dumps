@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBModelessSyncController : XXUnknownSuperclass {
 	BOOL _isAppSyncing;
 	BOOL _isSyncing;
@@ -15,7 +16,6 @@
 	BOOL _restoringFromICloud;
 	BOOL _isAutoSyncing;
 	BOOL _isWirelessSyncing;
-	ATConnection *_airTrafficConnection;
 }
 @property(readonly, assign, nonatomic) BOOL isAppSyncing;
 @property(readonly, assign, nonatomic) BOOL isAutoSyncing;
@@ -31,11 +31,8 @@
 - (void)_setAppSyncState:(BOOL)state;
 - (void)_updateIconsForStateChange;
 - (void)beginMonitoring;
-- (void)connection:(id)connection updatedProgress:(id)progress;
-- (void)connectionWasInterrupted:(id)interrupted;
 - (void)dealloc;
 - (void)endMonitoring;
 - (void)gotLowBatteryWarning;
-- (void)setIsSyncing:(BOOL)syncing;
 @end
 

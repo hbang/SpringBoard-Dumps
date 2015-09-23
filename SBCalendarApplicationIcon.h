@@ -7,10 +7,11 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBCalendarApplicationIcon : SBApplicationIcon {
 }
 - (id)initWithApplication:(id)application;
-- (BOOL)canGenerateGhostlyImageInBackground;
+- (BOOL)canGenerateImageInBackgroundForFormat:(int)format;
 - (void)dealloc;
 - (id)generateIconImage:(int)image;
 - (void)localeChanged;

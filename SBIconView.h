@@ -7,26 +7,24 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBIconView : XXUnknownSuperclass <SBIconObserver> {
 	SBIcon *_icon;
 	id<SBIconViewDelegate> _delegate;
-	id<SBIconViewLocker> _locker;
+	id<SBIconViewObserver> _observer;
 	SBIconImageContainerView *_iconImageContainer;
 	SBIconImageView *_iconImageView;
 	UIImageView *_iconDarkeningOverlay;
 	UIImageView *_ghostlyImageView;
 	UIImageView *_reflection;
 	UIImageView *_shadow;
-	SBIconBadgeImage *_badgeImage;
-	UIImageView *_badgeView;
-	SBIconLabel *_label;
+	SBIconAccessoryImageView *_accessoryView;
+	SBIconLabelImageView *_labelView;
 	BOOL _labelHidden;
-	BOOL _labelOnWallpaper;
 	UIView *_closeBox;
 	int _closeBoxType;
 	UIImageView *_dropGlow;
 	unsigned _drawsLabel : 1;
-	unsigned _isHidden : 1;
 	unsigned _isGrabbed : 1;
 	unsigned _isOverlapping : 1;
 	unsigned _refusesRecipientStatus : 1;
@@ -37,7 +35,6 @@
 	unsigned _touchDownInIcon : 1;
 	unsigned _hideShadow : 1;
 	NSTimer *_delayedUnhighlightTimer;
-	unsigned _onWallpaper : 1;
 	unsigned _ghostlyRequesters;
 	int _iconLocation;
 	float _iconImageAlpha;
@@ -52,11 +49,13 @@
 	BOOL _ghostlyPending;
 }
 @property(assign) id<SBIconViewDelegate> delegate;
-@property(readonly, retain) SBIcon *icon;
-@property(assign) id<SBIconViewLocker> locker;
+@property(readonly, assign) SBIcon *icon;
+@property(assign) id<SBIconViewObserver> observer;
 + (id)_jitterPositionAnimation;
 + (id)_jitterTransformAnimation;
-+ (BOOL)allowsRecycling;
++ (Class)_labelImageParametersClassForIcon:(id)icon location:(int)location;
++ (id)_labelImageParametersForIcon:(id)icon location:(int)location;
++ (CGSize)_maxLabelSize;
 + (CGSize)defaultIconImageSize;
 + (CGSize)defaultIconSize;
 - (id)initWithDefaultSize;
@@ -66,18 +65,19 @@
 - (BOOL)_delegatePositionIsEditable;
 - (BOOL)_delegateTapAllowed;
 - (void)_delegateTouchEnded:(BOOL)ended;
+- (CGRect)_frameForAccessoryView;
 - (id)_genGhostlyImage:(id)image;
-- (Class)_labelClass;
-- (CGSize)_labelSize;
+- (id)_iconBoundsForAccessory:(CGRect *)accessory;
 - (id)_newCloseBoxOfType:(int)type;
-- (id)_overriddenBadgeTextForText:(id)text;
 - (float)_reflectionImageOffset;
 - (id)_shadowImage;
-- (void)_updateBadgePosition;
+- (id)_superviewForAccessoryView;
+- (void)_updateAccessoryPosition;
 - (void)_updateIconBrightness;
 - (void)_updateShadow;
 - (void)_updateShadowFrame;
 - (void)_updateShadowFrameForShadow:(id)shadow;
+- (UIEdgeInsets)_viewInsetsForAccessoryType:(int)accessoryType;
 - (BOOL)allowJitter;
 - (BOOL)allowsTapWhileEditing;
 - (void)applyIconImageTransform:(CATransform3D)transform duration:(float)duration delay:(float)delay;
@@ -100,10 +100,8 @@
 - (void)iconLaunchEnabledDidChange:(id)iconLaunchEnabled;
 - (BOOL)isGhostly;
 - (BOOL)isGrabbed;
-- (BOOL)isHidden;
 - (BOOL)isHighlighted;
 - (BOOL)isInDock;
-- (BOOL)isRevealable;
 - (BOOL)isShowingCloseBox;
 - (BOOL)isShowingDropGlow;
 - (BOOL)isTouchDownInIcon;
@@ -127,7 +125,6 @@
 - (void)removeGhostlyImageView;
 - (void)setAllowJitter:(BOOL)jitter;
 - (void)setDisplayedIconImage:(id)image;
-- (void)setDisplaysOnWallpaper:(BOOL)wallpaper;
 - (void)setFrame:(CGRect)frame;
 - (void)setGhostly:(BOOL)ghostly requester:(int)requester;
 - (void)setHighlighted:(BOOL)highlighted;
@@ -137,10 +134,8 @@
 - (void)setIconLabelAlpha:(float)alpha;
 - (void)setIconPosition:(CGPoint)position;
 - (void)setIsGrabbed:(BOOL)grabbed;
-- (void)setIsHidden:(BOOL)hidden animate:(BOOL)animate;
 - (void)setIsJittering:(BOOL)jittering;
 - (void)setIsOverlapping:(BOOL)overlapping;
-- (void)setLabelDisplaysOnWallpaper:(BOOL)wallpaper;
 - (void)setLabelHidden:(BOOL)hidden;
 - (void)setLocation:(int)location;
 - (void)setPartialGhostly:(float)ghostly requester:(int)requester;
@@ -150,7 +145,6 @@
 - (void)setShowsCloseBox:(BOOL)box animated:(BOOL)animated;
 - (void)setTouchDownInIcon:(BOOL)icon;
 - (void)showDropGlow:(BOOL)glow;
-- (void)showIconAnimationDidStop:(id)showIconAnimation didFinish:(id)finish icon:(id)icon;
 - (BOOL)showsReflection;
 - (UIEdgeInsets)snapshotEdgeInsets;
 - (id)snapshotSettings;

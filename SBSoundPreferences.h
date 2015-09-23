@@ -7,20 +7,19 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBSoundPreferences : XXUnknownSuperclass {
 }
++ (void)_loadDefaultsIfNeeded;
 + (id)calendarAlarmPath;
 + (BOOL)playLockSound;
 + (id)ringtoneIdentifier;
 + (id)ringtonePath;
 + (BOOL)shouldVibrateForCurrentRingerState;
++ (BOOL)shouldVibrateForCurrentRingerStateWithAudioCategory:(id)audioCategory;
 + (void)userDefaultsDidChanged:(id)userDefaults;
 + (id)vibratePattern;
 + (BOOL)vibrateWhenRinging;
 + (BOOL)vibrateWhenSilent;
-@end
-
-@interface SBSoundPreferences (Private)
-+ (void)_loadDefaultsIfNeeded;
 @end
 

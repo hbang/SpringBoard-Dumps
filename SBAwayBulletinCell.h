@@ -7,15 +7,18 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAwayBulletinCell : SBAwayListItemCell {
 	SBBulletinLockBar *_lockBar;
-	SBAwayListUnlockActionContext *_actionContext;
+	SBAwayListActionContext *_actionContext;
 	BOOL _disableUnlockSound;
 }
-@property(readonly, assign, nonatomic) SBAwayListUnlockActionContext *actionContext;
+@property(readonly, assign, nonatomic) SBAwayListActionContext *actionContext;
 + (float)rowHeightForSubtitle:(id)subtitle imageHeight:(float)height;
 + (float)rowHeightForSubtitle:(id)subtitle message:(id)message maxLines:(unsigned)lines rowWidth:(float)width;
 - (void)_createContentView;
+- (void)_createLockBar;
+- (BOOL)_createsLockBarEarly;
 - (void)_lockBarSlidBackToOrigin:(id)origin withDuration:(double)duration;
 - (void)dealloc;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
@@ -32,5 +35,6 @@
 - (void)setStartDate:(id)date endDate:(id)date2 timeZone:(id)zone allDay:(BOOL)day formatStyle:(int)style;
 - (void)setSubtitle:(id)subtitle;
 - (void)setUnlockActionContext:(id)context;
+- (void)setVIP:(BOOL)vip;
 @end
 

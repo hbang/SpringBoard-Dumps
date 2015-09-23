@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBPasscodeAlertItem : XXUnknownSuperclass <UITextFieldDelegate> {
 	int _mode;
 	int _unlockScreenType;

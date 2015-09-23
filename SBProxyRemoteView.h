@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBProxyRemoteView : XXUnknownSuperclass {
 	id _delegate;
 	SBApplication *_app;

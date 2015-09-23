@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAppSwitcherScrollView : XXUnknownSuperclass {
 }
 @property(assign, nonatomic) id<SBAppSwitcherScrollViewDelegate> delegate;

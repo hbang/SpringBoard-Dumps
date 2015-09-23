@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBMediaController : XXUnknownSuperclass {
 	int _manualVolumeChangeCount;
 	NSDictionary *_nowPlayingInfo;
@@ -18,6 +19,10 @@
 	BOOL _lastNowPlayingAppIsPlaying;
 	BOOL _suppressHUD;
 	BOOL _ringerMuted;
+	BOOL _screenSharing;
+	BOOL _screenSharingSetsStatusBarOverride;
+	NSTimer *_screenSharingStatusBarOverrideTimer;
+	NSTimer *_videoOutStatusBarOverrideTimer;
 }
 @property(assign, nonatomic, getter=isRingerMuted) BOOL ringerMuted;
 @property(assign) BOOL suppressHUD;
@@ -27,18 +32,24 @@
 - (float)_calcButtonRepeatDelay;
 - (void)_cancelPendingVolumeChange;
 - (void)_changeVolumeBy:(float)by;
+- (void)_clearScreenSharingStatusBarStyleOverride;
+- (void)_clearVideoOutStatusBarStyleOverride;
 - (void)_commitVolumeChange:(id)change;
 - (void)_delayedExtendSleepTimer;
+- (void)_externalScreenChanged:(id)changed;
 - (void)_nowPlayingAppIsPlayingDidChange;
 - (id)_nowPlayingInfo;
 - (void)_nowPlayingInfoChanged;
 - (void)_nowPlayingPIDChanged;
 - (void)_registerForNotifications;
+- (BOOL)_sendMediaCommand:(unsigned)command;
 - (void)_serverConnectionDied:(id)died;
 - (void)_softMuteChanged:(id)changed;
+- (void)_startVideoOutStatusBarStyleOverride;
 - (void)_systemMuteChanged:(id)changed;
 - (void)_systemVolumeChanged:(id)changed;
 - (void)_unregisterForNotifications;
+- (void)_updateAVRoutes;
 - (BOOL)beginSeek:(int)seek;
 - (void)cancelVolumeEvent;
 - (BOOL)changeTrack:(int)track;
@@ -60,9 +71,20 @@
 - (id)nowPlayingApplication;
 - (id)nowPlayingArtist;
 - (id)nowPlayingTitle;
+- (BOOL)pause;
+- (BOOL)play;
 - (void)setNowPlayingInfo:(id)info;
+- (BOOL)setPlaybackSpeed:(int)speed;
 - (void)setVolume:(float)volume;
+- (BOOL)skipFifteenSeconds:(int)seconds;
+- (BOOL)stop;
 - (BOOL)togglePlayPause;
+- (BOOL)toggleRepeat;
+- (BOOL)toggleShuffle;
+- (BOOL)trackSupports15SecondFF;
+- (BOOL)trackSupports15SecondRewind;
+- (void)updateScreenSharingStatusBarStyleOverride;
+- (void)updateScreenSharingStatusBarStyleOverrideSuppressionPreference;
 - (float)volume;
 @end
 

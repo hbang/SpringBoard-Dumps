@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBResetManager : XXUnknownSuperclass {
 	BOOL _threadRunning;
 	NSLock *_lock;

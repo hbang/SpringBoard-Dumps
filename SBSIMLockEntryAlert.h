@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBSIMLockEntryAlert : SBAlert {
 	int _status;
 }

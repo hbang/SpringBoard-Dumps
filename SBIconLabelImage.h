@@ -7,13 +7,23 @@
 
 
 
-@interface SBIconLabelImage : XXUnknownSuperclass {
-	SBIconLabelProperties *_properties;
-	int _referenceCount;
+__attribute__((visibility("hidden")))
+@interface SBIconLabelImage : XXUnknownSuperclass <SBCountedMapValue> {
+	SBIconLabelImageParameters *_parameters;
+	CGPoint _maxSizeOffset;
 }
-@property(readonly, retain, nonatomic) SBIconLabelProperties *properties;
-@property(assign, nonatomic) int referenceCount;
-- (id)initWithCGImage:(CGImageRef)cgimage scale:(float)scale orientation:(int)orientation properties:(id)properties;
+@property(readonly, assign, nonatomic) id<NSCopying> countedMapKey;
+@property(readonly, assign, nonatomic) CGPoint maxSizeOffset;
+@property(readonly, assign, nonatomic) SBIconLabelImageParameters *parameters;
++ (id)_drawLabelImageForParameters:(id)parameters;
++ (id)_labelImageCountedMap;
++ (CGRect)_rectIncludingShadow:(BOOL)shadow withDrawing:(BOOL)drawing inRect:(CGRect)rect fromParameters:(id)parameters;
++ (void)checkinLabelImage:(id)image;
++ (id)checkoutLabelImageForParameters:(id)parameters;
++ (void)drawImageInRect:(CGRect)rect fromParameters:(id)parameters;
++ (CGRect)rectIncludingShadow:(BOOL)shadow fromParameters:(id)parameters constrainedToRect:(CGRect)rect;
+- (id)initWithCGImage:(CGImageRef)cgimage scale:(float)scale orientation:(int)orientation;
+- (id)_initWithCGImage:(CGImageRef)cgimage scale:(float)scale orientation:(int)orientation parameters:(id)parameters maxSizeOffset:(CGPoint)offset;
 - (void)dealloc;
 @end
 

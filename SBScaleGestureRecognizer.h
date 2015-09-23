@@ -7,6 +7,7 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBScaleGestureRecognizer : SBFluidSlideGestureRecognizer {
 }
 - (float)computeIncrementalGestureMotion:(SBGestureContextRef)motion;

@@ -7,8 +7,10 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBAppWindow : XXUnknownSuperclass {
 }
 + (CGRect)constrainFrameToScreen:(CGRect)screen;
+- (void)becomeKeyWindow;
 @end
 

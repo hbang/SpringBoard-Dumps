@@ -7,8 +7,8 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBSearchView : XXUnknownSuperclass {
-	SBRoundedCornersView *_roundedCornersView;
 	UISearchBar *_searchBar;
 	UITableView *_tableView;
 	UILabel *_noResultsLabel;
@@ -18,39 +18,59 @@
 	BOOL _isKeyboardAnimatingRotation;
 	BOOL _hidesEmptyTableFooter;
 	BOOL _translatedKbForScatter;
+	BOOL _deferredFirstResponder;
+	BOOL _observingForKeyboardOnScreen;
+	BOOL _observingForKeyboardOffScreen;
+	BOOL _removeView;
+	NSMutableArray *_keyboardCompletionBlocks;
 }
 @property(retain, nonatomic) UIView *contentView;
 @property(retain, nonatomic) UIView *rootView;
-@property(readonly, assign, nonatomic) UIView *roundedCornersView;
 @property(readonly, assign, nonatomic) UISearchBar *searchBar;
 @property(readonly, assign, nonatomic) UITableView *tableView;
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame withContent:(id)content onWallpaper:(id)wallpaper;
+- (void)__becomeFirstResponder;
+- (BOOL)__isFirstResponder;
+- (void)__searchFieldDidResignFirstResponder;
 - (float)_footerHeight;
 - (id)_keyboard;
 - (void)_layoutNoResultsView;
 - (void)_resetContentViewTransform;
 - (void)_resetKeyboardTransformForScatter;
+- (void)_resetLastCellInTableView;
 - (void)_setDistantContentViewTransform;
+- (void)_startObservingForKeyboardOffScreen;
+- (void)_startObservingForKeyboardOnScreen;
+- (void)_stopObservingForKeyboardOffScreen;
+- (void)_stopObservingForKeyboardOnScreen;
+- (void)addTableView;
 - (void)cleanupKeyboardForScatterIfNecessary;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
+- (void)finishBecomingFirstResponderIfNecessary;
+- (void)hideAllSubviewsOfTableView;
 - (BOOL)isKeyboardMinimized;
 - (BOOL)isKeyboardVisible;
+- (void)keyboardDidHide:(id)keyboard;
 - (void)keyboardDidShow:(id)keyboard;
 - (void)layoutCornerView;
 - (void)layoutFooterView;
-- (void)scatter:(BOOL)scatter startTime:(double)time;
+- (void)removeTableView;
+- (void)scatter:(BOOL)scatter delay:(double)delay;
 - (void)scrollViewIsScrollingHorizontally;
 - (Class)searchBarClass;
 - (void)setFrame:(CGRect)frame;
 - (void)setHidesEmptyTableFooter:(BOOL)footer;
 - (void)setShowingNoResultsText:(BOOL)text;
 - (void)setShowsKeyboard:(BOOL)keyboard animated:(BOOL)animated;
+- (void)setShowsKeyboard:(BOOL)keyboard animated:(BOOL)animated shouldDeferResponderStatus:(BOOL)status;
+- (void)setShowsKeyboard:(BOOL)keyboard animated:(BOOL)animated shouldDeferResponderStatus:(BOOL)status completionBlock:(id)block;
+- (void)setShowsKeyboardAnimated:(BOOL)animated completionBlock:(id)block;
 - (void)setShowsNoResultsView:(BOOL)view;
 - (Class)tableViewClass;
-- (void)unscatter:(BOOL)unscatter startTime:(double)time;
+- (void)unscatter:(BOOL)unscatter delay:(double)delay;
 - (void)unscatterAnimationDidStop;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;

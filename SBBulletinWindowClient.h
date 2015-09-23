@@ -8,8 +8,14 @@
 
 
 @protocol SBBulletinWindowClient <NSObject>
+@optional
+- (void)bulletinWindowDidBecomeKey;
+- (void)bulletinWindowDidResignKey;
+@required
 - (void)bulletinWindowDidRotateFromOrientation:(int)bulletinWindow;
 - (void)bulletinWindowIsAnimatingRotationToOrientation:(int)orientation;
 - (void)bulletinWindowWillRotateToOrientation:(int)bulletinWindow;
+@optional
+- (BOOL)requiresKeyWindow;
 @end
 

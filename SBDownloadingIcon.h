@@ -7,8 +7,8 @@
 
 
 
+__attribute__((visibility("hidden")))
 @interface SBDownloadingIcon : SBLeafIcon {
-	NSString *_leafIdentifier;
 	NSString *_applicationBundleID;
 	SSDownload *_download;
 	float _progress;
@@ -24,12 +24,14 @@
 + (id)__darkenedIconImageForImage:(id)image;
 + (id)__iconImageFromData:(id)data format:(int)format scale:(float)scale options:(int)options darken:(BOOL)darken;
 + (id)__imageCacheDirectoryPath;
-+ (dispatch_queue_s *)backgroundQueue;
++ (id)backgroundQueue;
 + (id)leafIdentifierForDownload:(id)download;
 + (id)leafIdentifierForDownloadUniqueID:(id)downloadUniqueID;
 + (void)setupDownloadingIconImageCache;
 - (id)initWithDownload:(id)download;
+- (id)initWithDownload:(id)download tryLoadImageImmediately:(BOOL)immediately;
 - (id)initWithLeafIdentifier:(id)leafIdentifier;
+- (id)_downloadingLabel;
 - (int)_iconImageOptions;
 - (void)_reloadThumbnailImage;
 - (void)_removeImageCacheFileAtPath:(id)path;
@@ -38,6 +40,7 @@
 - (id)applicationBundleID;
 - (BOOL)canEllipsizeLabel;
 - (void)completeUninstall;
+- (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
 - (id)description;
 - (id)displayName;
@@ -45,23 +48,20 @@
 - (id)generateIconImage:(int)image;
 - (id)getGenericIconImage:(int)image;
 - (BOOL)iconAppearsInNewsstand;
-- (int)iconFormatForLocation:(int)location;
 - (id)identifierForCorrespondingApplicationIcon;
 - (BOOL)isDone;
 - (BOOL)isNewsstandDownload;
 - (void)launch;
-- (id)leafIdentifier;
 - (void)loadAndDarkenHomeScreenIconImageInBackground;
 - (BOOL)matchesRepresentation:(id)representation;
 - (float)progress;
 - (id)realDisplayName;
 - (void)reloadForStatusChange;
-- (void)remove;
 - (id)representation;
 - (void)retry;
 - (void)setApplicationBundleID:(id)anId;
 - (void)setDownload:(id)download;
-- (void)setLeafIdentifier:(id)identifier;
+- (void)setDownload:(id)download allowReloadImage:(BOOL)image;
 - (void)setNewsstandDownload:(BOOL)download;
 - (void)setUninstalledByUser:(BOOL)user;
 - (BOOL)shouldCacheImageForFormat:(int)format;
