@@ -9,6 +9,7 @@
 
 @protocol NCBannerAccessoryHostViewControllerDelegate <NSObject>
 @optional
+- (void)hostViewController:(id)controller didRequestSticky:(BOOL)sticky;
 - (void)hostViewControllerDidRequestDismissal:(id)hostViewController;
 - (void)hostViewControllerDidRequestSticky:(id)hostViewController;
 @end

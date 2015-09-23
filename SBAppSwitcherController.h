@@ -81,7 +81,7 @@ __attribute__((visibility("hidden")))
 - (id)_flattenedArrayOfDisplayItemsFromDisplayLayouts:(id)displayLayouts;
 - (float)_frameScaleValueForAnimation;
 - (id)_generateCellViewForDisplayLayout:(id)displayLayout;
-- (void)_getRotationContentSettings:(XXStruct_3uUjXA *)settings;
+- (void)_getRotationContentSettings:(XXStruct_ykCi7C *)settings;
 - (BOOL)_inMode:(int)mode;
 - (void)_insertApp:(id)app atIndex:(unsigned)index completion:(id)completion;
 - (void)_insertDisplayLayout:(id)layout atIndex:(unsigned)index completion:(id)completion;

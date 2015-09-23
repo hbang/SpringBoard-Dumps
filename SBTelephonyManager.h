@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 	NSString *_inCallStatusPreamble;
 	NSString *_inCallDurationString;
 	NSTimer *_inCallTimer;
+	NSTimer *_inCallStyleDelayTimer;
 	RadiosPreferences *_radioPrefs;
 	int _needsUserIdentificationModule;
 	NSString *_simStatus;
@@ -82,6 +83,8 @@ __attribute__((visibility("hidden")))
 - (void)_headphoneChanged:(id)changed;
 - (BOOL)_isTTYEnabled;
 - (BOOL)_lteConnectionShows4G;
+- (void)_noteInCallAlertDidActivate;
+- (void)_noteInCallStyleDelayExpired;
 - (void)_operatorBundleChanged;
 - (void)_performQueryInBackground:(id)background withMainQueueResultHandler:(id)mainQueueResultHandler;
 - (id)_phoneApp;

@@ -93,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didReceiveRaiseGesture;
 - (void)hostViewController:(id)controller didRequestDismissalWithContext:(id)context;
+- (void)hostViewController:(id)controller didRequestSticky:(BOOL)sticky;
 - (void)hostViewControllerDidChangePreferredContentSize:(id)hostViewController;
 - (void)hostViewControllerDidRequestDismissal:(id)hostViewController;
 - (void)hostViewControllerDidRequestSticky:(id)hostViewController;

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)widgetViewControllerWithIdentifier:(id)identifier bundlePath:(id)path;
 - (id)initWithWidgetIdentifier:(id)widgetIdentifier bundlePath:(id)path;
 - (id)_cancelTouches;
+- (void)_disconnectRemoteViewControllerImmediatelyWithCompletionHandler:(id)completionHandler;
 - (void)_requestLaunchOfURL:(id)url;
 - (void)_requestPresentationOfViewController:(id)viewController presentationStyle:(int)style context:(id)context completion:(id)completion;
 - (void)captureSnapshotWithCompletionHandler:(id)completionHandler;

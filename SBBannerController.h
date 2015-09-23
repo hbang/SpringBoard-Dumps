@@ -96,6 +96,7 @@ __attribute__((visibility("hidden")))
 - (void)assistant:(id)assistant viewDidDisappear:(int)view;
 - (void)assistant:(id)assistant viewWillAppear:(int)view;
 - (void)assistant:(id)assistant viewWillDisappear:(int)view;
+- (void)bannerViewController:(id)controller didRequestSticky:(BOOL)sticky;
 - (void)bannerViewController:(id)controller willSelectActionWithContext:(id)context;
 - (void)bannerViewControllerDidPullDown:(id)bannerViewController;
 - (void)bannerViewControllerDidReceiveRaiseGesture:(id)bannerViewController;
