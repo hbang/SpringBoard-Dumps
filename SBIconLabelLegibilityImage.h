@@ -27,5 +27,6 @@ __attribute__((visibility("hidden")))
 - (id)_initWithCGImage:(CGImageRef)cgimage scale:(float)scale orientation:(int)orientation parameters:(id)parameters;
 - (id)countedMapKey;
 - (void)dealloc;
+- (BOOL)isIconLabelLegibilityImage;
 @end
 

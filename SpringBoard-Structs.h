@@ -134,6 +134,12 @@ typedef struct NSString {
 	Class _field1;
 } NSString;
 
+typedef struct __WiFiManagerClient WiFiManagerClient;
+
+typedef struct __WiFiDeviceClient WiFiDeviceClient;
+
+typedef struct __WiFiNetwork WiFiNetwork;
+
 typedef struct __CFArray *CFArrayRef;
 
 typedef struct {
@@ -174,6 +180,8 @@ typedef struct {
 } XXStruct_pqIg_A;
 
 typedef struct __SBGestureContext *SBGestureContextRef;
+
+typedef struct __IOSurface *IOSurfaceRef;
 
 typedef struct _CARenderImage *CARenderImageRef;
 

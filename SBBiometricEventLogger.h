@@ -9,6 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBBiometricEventLogger : XXUnknownSuperclass {
+	BiometricKit *_biometricKit;
 	BOOL _fingerOnWithScreenOn;
 	unsigned long long _fingerOnTime;
 	unsigned long long _keybagUnlockTime;

@@ -14,9 +14,7 @@ __attribute__((visibility("hidden")))
 	int _mode;
 	NSMutableSet *_alwaysHiddenCategories;
 	NSString *_lastDisplayedCategory;
-@private
 	NSString *_lastEventCategory;
-@protected
 	BOOL _hudHandledLastVolumeChange;
 	BOOL _euDevice;
 	float _euVolumeLimit;

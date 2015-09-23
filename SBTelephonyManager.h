@@ -93,6 +93,8 @@ __attribute__((visibility("hidden")))
 - (void)_prepareToAnswerCall;
 - (BOOL)_pretendingToSearch;
 - (void)_provisioningUpdateWithStatus:(int)status;
+- (void)_proximityChanged:(id)changed;
+- (void)_queue_noteWirelessModemDynamicStoreChanged;
 - (void)_reallySetOperatorName:(id)name;
 - (void)_resetCTMMode;
 - (void)_resetModemConnectionType;

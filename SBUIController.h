@@ -23,13 +23,13 @@ __attribute__((visibility("hidden")))
 	unsigned _isBatteryCharging : 1;
 	unsigned _isOnAC : 1;
 	unsigned _isConnectedToUnsupportedChargingAccessory : 1;
-@private
 	unsigned _isConnectedToChargeIncapablePowerSource : 1;
-@protected
 	unsigned _allowAlertWindowRotation : 1;
 	id _volumeHandler;
 	float _batteryCapacity;
+@private
 	BOOL _supportsDetailedBatteryCapacity;
+@protected
 	int _batteryLoggingStartCapacity;
 	SBDismissOnlyAlertItem *_unsupportedChargerAlert;
 	NSMutableDictionary *_installedSystemGestureViews;

@@ -145,6 +145,10 @@
 - (id)subpathFromPosition:(unsigned)position;
 @end
 
+@interface XXUnknownSuperclass (SBIconLabelLegibilityImage)
+- (BOOL)isIconLabelLegibilityImage;
+@end
+
 @interface XXUnknownSuperclass (WidgetsSettings)
 - (id)sb_iconImage;
 @end
