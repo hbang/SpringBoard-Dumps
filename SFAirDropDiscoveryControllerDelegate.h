@@ -8,6 +8,8 @@
 
 
 @protocol SFAirDropDiscoveryControllerDelegate <NSObject>
+@optional
+- (void)discoveryControllerLegacyModePropertiesDidChange:(id)discoveryControllerLegacyModeProperties;
 - (void)discoveryControllerSettingsDidChange:(id)discoveryControllerSettings;
 - (void)discoveryControllerVisibilityDidChange:(id)discoveryControllerVisibility;
 @end

@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareViewToAnimateIn;
 - (void)prepareViewToAnimateOut;
 - (void)setDisplay:(id)display;
-- (void)setDisplaySetting:(unsigned)setting flag:(BOOL)flag;
+- (void)setFlag:(int)flag forStateSetting:(unsigned)stateSetting;
 - (void)setViewShouldAnimateIn:(BOOL)animateIn;
 - (BOOL)viewIsReadyToBeRemoved;
 - (void)viewWillAppear:(BOOL)view;

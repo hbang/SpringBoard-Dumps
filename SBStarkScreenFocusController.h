@@ -21,6 +21,6 @@ __attribute__((visibility("hidden")))
 - (void)dropReason:(id)reason;
 - (id)focusWindow;
 - (void)invalidate;
-- (void)takeWithPriority:(float)priority reason:(id)reason forWindow:(id)window bundleIdentifier:(id)identifier;
+- (void)takeWithPriority:(float)priority reason:(id)reason forWindow:(id)window bundleIdentifier:(id)identifier pid:(int)pid;
 @end
 

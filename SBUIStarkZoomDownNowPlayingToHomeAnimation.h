@@ -10,7 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBUIStarkZoomDownNowPlayingToHomeAnimation : SBUIStarkZoomDownAppToHomeAnimation {
 }
-- (BOOL)_animationShouldStart;
 - (void)_cleanupAnimation;
 - (void)_startAnimation;
 - (id)_viewToAnimate;

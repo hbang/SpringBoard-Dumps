@@ -19,13 +19,19 @@ __attribute__((visibility("hidden")))
 	BOOL _transitioning;
 	id<SBControlCenterViewControllerDelegate> _delegate;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBControlCenterViewControllerDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic, getter=isPresented) BOOL presented;
 @property(assign, nonatomic) float revealPercentage;
+@property(readonly, assign) Class superclass;
 @property(assign, nonatomic, getter=isTransitioning) BOOL transitioning;
 - (id)init;
 - (void)_handlePan:(id)pan;
 - (void)_handleTap:(id)tap;
+- (void)_noteControlCenterControlDidActivate:(id)_noteControlCenterControl;
+- (void)_noteControlCenterControlDidDeactivate:(id)_noteControlCenterControl;
 - (void)abortAnimatedTransition;
 - (void)backdropViewDidChange:(id)backdropView;
 - (id)chevronView;

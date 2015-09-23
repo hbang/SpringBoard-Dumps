@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 @interface SBPasscodeAlertRecipe : XXUnknownSuperclass <SBTestRecipe> {
 	SBPasscodeEntryAlertViewController *_alert;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)title;
 - (void)dealloc;
 - (void)handleVolumeDecrease;

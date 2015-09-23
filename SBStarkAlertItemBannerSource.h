@@ -10,6 +10,10 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkAlertItemBannerSource : SBStarkBannerSource <SBAlertItemsControllerObserver> {
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithAllowedTargetIdentifier:(void *)allowedTargetIdentifier;
 - (void)alertItemsController:(id)controller didActivateAlertItem:(id)item;
 - (void)alertItemsController:(id)controller didDeactivateAlertItem:(id)item forReason:(int)reason;

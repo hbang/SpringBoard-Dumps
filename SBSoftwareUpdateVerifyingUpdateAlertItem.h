@@ -9,7 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBSoftwareUpdateVerifyingUpdateAlertItem : SBBaseSoftwareUpdateAlertItem {
-	UIView *_activityAccessoryView;
+	SBSoftwareUpdateVerifyingUpdateAlertViewController *_activityViewController;
 }
 - (id)initWithDescriptor:(id)descriptor;
 - (BOOL)allowMenuButtonDismissal;
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (BOOL)dismissOnLock;
+- (BOOL)dismissesAutomatically;
 - (BOOL)reappearsAfterLock;
 - (BOOL)reappearsAfterUnlock;
 - (BOOL)shouldShowInLockScreen;

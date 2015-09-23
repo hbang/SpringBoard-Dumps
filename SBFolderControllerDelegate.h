@@ -14,6 +14,9 @@
 - (BOOL)folderController:(id)controller draggedIconMightDropFromListView:(id)listView;
 - (void)folderController:(id)controller draggedIconShouldDropFromListView:(id)draggedIcon;
 - (void)folderControllerDidEndScrolling:(id)folderController;
+@optional
+- (void)folderControllerDidReceiveCancelReachabilityAction:(id)folderController;
+@required
 - (void)folderControllerShouldBeginEditing:(id)folderController;
 - (void)folderControllerShouldClose:(id)folderController;
 @end

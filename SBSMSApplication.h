@@ -10,6 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBSMSApplication : SBApplication {
 }
-- (id)activationValue:(unsigned)value;
+- (id)objectForActivationSetting:(unsigned)activationSetting;
 @end
 

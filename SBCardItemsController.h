@@ -8,20 +8,24 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBCardItemsController : XXUnknownSuperclass <SBCardItemsControllerRemoteInterface, XPCProxyTarget> {
-	NSMutableArray *_remoteControllers;
+@interface SBCardItemsController : XXUnknownSuperclass <SBCardItemsControllerRemoteInterface, NSXPCListenerDelegate> {
 	NSMutableDictionary *_cardItems;
+	NSMutableArray *_connections;
+	NSXPCListener *_listener;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (void)_activateAllCardItems;
-- (void)_addControllerWithConnection:(id)connection;
 - (void)_updateThumbnailForCardItem:(id)cardItem withSnapshotter:(id)snapshotter completion:(id)completion;
 - (void)addCardItems:(id)items forControllerWithIdentifier:(id)identifier;
 - (void)cardItemsDidChange:(id)cardItems forControllerWithIdentifier:(id)identifier;
 - (void)clearCardItemsForControllerWithIdentifier:(id)identifier;
 - (void)dealloc;
 - (void)getCardItemsForControllerWithIdentifier:(id)identifier withHandler:(id)handler;
-- (id)proxy:(id)proxy detailedSignatureForSelector:(SEL)selector;
+- (BOOL)listener:(id)listener shouldAcceptNewConnection:(id)connection;
 - (void)removeCardItems:(id)items forControllerWithIdentifier:(id)identifier;
 - (void)setCardItems:(id)items forControllerWithIdentifier:(id)identifier;
 @end

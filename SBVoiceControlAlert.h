@@ -10,9 +10,9 @@
 __attribute__((visibility("hidden")))
 @interface SBVoiceControlAlert : SBAlert {
 	struct {
-		unsigned shouldBeActivated : 1;
-		unsigned isReadyToBeActivated : 1;
-		unsigned hasBeenActivated : 1;
+		unsigned isRePushingUpdates : 1;
+		unsigned scrollsToTop : 1;
+		unsigned isLayoutValid : 1;
 	} _voiceControlFlags;
 	BOOL _expectsFaceContact;
 	BOOL _expectsFaceContactInLandscape;
@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (id)initFromMenuButton;
 - (id)initFromWiredHeadsetButton;
 - (void)_makeActive;
-- (void)_prime;
 - (void)_resign;
 - (void)_setRoutingAttributesForWiredHeadset:(BOOL)wiredHeadset;
 - (void)activateWhenReady;

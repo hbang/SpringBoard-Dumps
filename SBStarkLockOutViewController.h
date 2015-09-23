@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 	SBUIStarkStartupAnimation *_startupAnimation;
 }
 @property(assign, nonatomic) int lockOutMode;
-@property(readonly, assign, nonatomic) SBStarkLockOutView *lockoutView;
+@property(readonly, retain, nonatomic) SBStarkLockOutView *lockoutView;
 @property(retain, nonatomic) SBStarkScreenController *screenController;
 - (id)_newModeViewForMode:(int)mode;
 - (void)_updateLockOutModeIfPending;

@@ -20,9 +20,14 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_busyReasons;
 	SBBulletinRootViewController *_rootVC;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) UIViewController *rootViewController;
+@property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic) UIWindow *window;
 @property(assign, nonatomic, getter=isWindowAboveAssistant) BOOL windowAboveAssistant;
++ (BOOL)_isSecure;
 + (id)sharedInstance;
 + (BOOL)shouldSuppressAlertForBulletin:(id)bulletin;
 - (id)init;
@@ -52,6 +57,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowsShowNotificationsGesture;
 - (BOOL)allowsShowNotificationsSystemGesture;
 - (BOOL)allowsShowNotificationsSystemGestureFromBanner;
+- (void)bulletinWindowControllerDismissViewControllerAnimated:(BOOL)animated completion:(id)completion;
+- (void)bulletinWindowControllerPresentViewController:(id)controller animated:(BOOL)animated completion:(id)completion;
 - (void)clearOverrideWindowOrientation;
 - (void)dealloc;
 - (BOOL)isBusy;

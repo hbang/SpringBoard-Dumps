@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 @interface SBSIMLockPasscodeRecipe : XXUnknownSuperclass <SBTestRecipe> {
 	SBSIMLockEntryAlert *_alert;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)title;
 - (void)handleVolumeDecrease;
 - (void)handleVolumeIncrease;

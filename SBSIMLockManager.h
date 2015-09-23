@@ -9,7 +9,6 @@
 
 __attribute__((visibility("hidden")))
 @interface SBSIMLockManager : XXUnknownSuperclass {
-	BOOL _isInitialUpdate;
 	BOOL _isBrickedDevice;
 	int _status;
 	SBSIMLockAlertItem *_currentAlert;
@@ -25,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)_activationDidChange;
 - (void)_externalSIMStatusChanged:(id)changed;
 - (void)_handlePromptForUnlock;
-- (void)_initialUpdate;
 - (void)_postponementDidChange;
 - (void)_setupAppActivationStateDidChange:(id)_setupAppActivationState;
 - (BOOL)_shouldSuppressAlert;

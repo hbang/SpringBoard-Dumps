@@ -10,6 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBSMSClass0Alert : SBUSSDAlert {
 }
++ (void)alertWithString:(id)string address:(id)address;
 + (void)playMessageReceived;
 + (void)registerForAlerts;
 - (id)_initWithString:(id)string;

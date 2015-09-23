@@ -26,10 +26,11 @@
 @optional
 - (void)cancelGestureRecognizer:(id)recognizer;
 @required
-- (void)endTransitionWithVelocity:(CGPoint)velocity completion:(id)completion;
+- (void)endTransitionWithVelocity:(CGPoint)velocity wasCancelled:(BOOL)cancelled completion:(id)completion;
 - (BOOL)isPresentingControllerTransitioning;
 @optional
 - (void)reenableGestureRecognizer:(id)recognizer;
+- (BOOL)shouldBeginHintForGesture:(id)gesture;
 - (void)treatCurrentPositionAsBoundaryforGesture:(id)gesture;
 @required
 - (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;

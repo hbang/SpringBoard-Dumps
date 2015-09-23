@@ -10,13 +10,16 @@
 @protocol SBLockScreenViewDelegate <NSObject>
 - (void)addCoordinatedPresentingController:(id)controller;
 - (id)effectiveCustomSlideToUnlockText;
+- (BOOL)isAllowingWallpaperBlurUpdates;
 - (void)lockScreenView:(id)view didEndScrollingOnPage:(int)page;
 - (void)lockScreenView:(id)view didScrollToPage:(int)page;
 - (void)lockScreenViewDidBeginScrolling:(id)lockScreenView;
 - (void)lockScreenViewDidScrollWithNewScrollPercentage:(float)lockScreenView tracking:(BOOL)tracking;
+- (BOOL)lockScreenViewIsCurrentlyBeingDisplayed;
 - (BOOL)lockScreenViewPhonePluginIsActive;
 - (void)lockScreenViewWillEndDraggingWithPercentScrolled:(float)lockScreenView percentScrolledVelocity:(float)velocity targetScrollPercentage:(float)percentage;
 - (void)removeCoordinatedPresentingController:(id)controller;
+- (BOOL)shouldShowSlideToUnlockTextImmediately;
 - (BOOL)wantsToShowStatusBarTime;
 @end
 

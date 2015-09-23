@@ -11,11 +11,15 @@ __attribute__((visibility("hidden")))
 @interface SBSIMLockEntryAlert : SBAlert {
 	int _status;
 }
+- (BOOL)_forcesPortraitOrientation;
 - (void)activate;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)deactivate;
 - (BOOL)hasTranslucentBackground;
+- (int)interfaceOrientationForActivation;
 - (id)lockEntryView;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (int)status;
+- (unsigned)supportedInterfaceOrientations;
 @end
 

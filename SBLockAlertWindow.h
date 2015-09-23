@@ -10,6 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBLockAlertWindow : SBAlertWindow {
 }
-- (id)initWithScreen:(id)screen rootViewController:(id)controller;
++ (float)windowLevel;
 @end
 

@@ -8,6 +8,6 @@
 
 
 @protocol SBBulletinActionHandler <NSObject>
-- (BOOL)handleActionForBulletin:(id)bulletin;
+- (BOOL)handleAction:(id)action forBulletin:(id)bulletin withCompletion:(id)completion;
 @end
 

@@ -19,6 +19,10 @@ __attribute__((visibility("hidden")))
 	BOOL _settingsResetPrefsBadgedFlag;
 	BOOL _downloadWasQueuedRemotely;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 + (id)stringFromReasons:(int)reasons;
 - (id)init;

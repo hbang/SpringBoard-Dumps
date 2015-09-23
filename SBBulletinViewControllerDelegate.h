@@ -9,6 +9,7 @@
 
 @protocol SBBulletinViewControllerDelegate <NSObject>
 @optional
+- (BOOL)bulletinViewController:(id)controller didSelectAction:(id)action forBulletin:(id)bulletin inSection:(id)section;
 - (BOOL)bulletinViewController:(id)controller didSelectBulletin:(id)bulletin inSection:(id)section;
 - (int)bulletinViewController:(id)controller insertionAnimationForBulletin:(id)bulletin inSection:(id)section;
 - (int)bulletinViewController:(id)controller removalAnimationForBulletin:(id)bulletin inSection:(id)section;

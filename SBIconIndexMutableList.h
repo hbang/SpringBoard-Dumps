@@ -13,7 +13,11 @@ __attribute__((visibility("hidden")))
 	NSMapTable *_index;
 	id<SBIconIndexMutableListObserver> _observer;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) id<SBIconIndexMutableListObserver> observer;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (void)addNode:(id)node;
 - (id)containedNodeIdentifiers;

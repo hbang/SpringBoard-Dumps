@@ -21,7 +21,9 @@ __attribute__((visibility("hidden")))
 - (void)_updateVisibleIconsFromRow:(unsigned)row toRow:(unsigned)row2 includeIcon:(id)icon layoutIfNeeded:(BOOL)needed;
 - (Class)baseIconViewClass;
 - (float)bottomIconInset;
+- (void)cleanupAfterRotation;
 - (void)dealloc;
+- (void)prepareToRotateToInterfaceOrientation:(int)interfaceOrientation;
 - (float)sideIconInset;
 - (float)topIconInset;
 - (float)verticalIconPadding;

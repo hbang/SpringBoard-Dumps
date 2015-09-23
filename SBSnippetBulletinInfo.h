@@ -12,12 +12,14 @@ __attribute__((visibility("hidden")))
 	CGRect _textRect;
 	UIImage *_icon;
 	SBItemInfoLayoutCache *_layoutCache;
+	int _location;
 }
 @property(retain, nonatomic) UIImage *icon;
+@property(readonly, assign, nonatomic) float lastSnippetPadding;
 + (float)topBaselineToCellTopInLayoutMode:(int)layoutMode;
 - (id)_representedBulletin;
 - (void)dealloc;
-- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode bulletinLocation:(int)location;
 - (id)identifier;
 - (void)invalidateCachedLayoutData;
 - (void)populateReusableView:(id)view;

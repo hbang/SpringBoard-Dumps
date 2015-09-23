@@ -10,13 +10,10 @@
 __attribute__((visibility("hidden")))
 @interface SBLockScreenNotificationCell : SBNotificationCell {
 	BOOL _isTopCell;
-	BOOL _drawsSeparators;
 	float _currentContentAlpha;
-	UIView *_topSeparatorView;
-	UIView *_bottomSeparatorView;
 	id<SBAwayListCellButtonHandler> _actionButtonHandler;
 	SBLockScreenNotificationScrollView *_contentScrollView;
-	SBUnlockActionContext *_unlockActionContext;
+	SBLockScreenActionContext *_lockScreenActionContext;
 	UILabel *_unlockTextLabel;
 	id<UIScrollViewDelegate> _delegate;
 	BOOL _resetsScrollOnPluginWillDisable;
@@ -26,30 +23,26 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) UIScrollView *contentScrollView;
 @property(assign, nonatomic) float contentScrollViewWidth;
 @property(assign, nonatomic) id<UIScrollViewDelegate> delegate;
-@property(assign, nonatomic) BOOL drawsSeparators;
 @property(assign, nonatomic) BOOL isTopCell;
+@property(retain, nonatomic) SBLockScreenActionContext *lockScreenActionContext;
 @property(assign, nonatomic) BOOL resetsScrollOnPluginWillDisable;
-@property(retain, nonatomic) SBUnlockActionContext *unlockActionContext;
 + (id)defaultColorForEventDate;
 + (id)defaultColorForPrimaryText;
 + (id)defaultColorForRelevanceDate;
 + (id)defaultColorForSecondaryText;
 + (id)defaultColorForSubtitleText;
-+ (id)defaultFontForEventDate;
-+ (id)defaultFontForPrimaryText;
-+ (id)defaultFontForRelevanceDate;
-+ (id)defaultFontForSecondaryText;
-+ (id)defaultFontForSubtitleText;
-+ (float)primaryPaddingLeft;
-+ (float)rowHeightForTitle:(id)title subtitle:(id)subtitle body:(id)body maxLines:(unsigned)lines attachmentSize:(CGSize)size datesVisible:(BOOL)visible rowWidth:(float)width includeUnlockActionText:(BOOL)text;
++ (float)lastLineBottomPadding;
++ (float)rowHeightForTitle:(id)title subtitle:(id)subtitle body:(id)body maxLines:(unsigned)lines attachmentSize:(CGSize)size secondaryContentSize:(CGSize)size6 datesVisible:(BOOL)visible rowWidth:(float)width includeUnlockActionText:(BOOL)text;
++ (float)unlockLineBaselineOffsetFromPreviousLine;
 + (BOOL)wantsUnlockActionText;
 - (id)initWithStyle:(int)style reuseIdentifier:(id)identifier;
 - (id)_buttonWithLabel:(id)label;
 - (void)_handleActionButtonPress:(id)press;
 - (void)_notePluginWillDisable:(id)_notePlugin;
+- (id)_secondaryContentView;
 - (int)_separatorBackdropOverlayBlendMode;
-- (id)_separatorColor;
 - (void)_setSeparatorBackdropOverlayBlendMode:(int)mode;
+- (float)_unlockTextOriginY;
 - (void)_updateUnlockText:(id)text;
 - (id)_vibrantTextColor;
 - (void)dealloc;
@@ -60,5 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)setButtonLabel:(id)label handler:(id)handler;
 - (void)setContentAlpha:(float)alpha;
 - (void)setRelevanceDateLabel:(id)label;
+- (BOOL)shouldAnimateHintForTouchInCell:(CGPoint)cell;
+- (BOOL)shouldVerticallyCenterContent;
 @end
 

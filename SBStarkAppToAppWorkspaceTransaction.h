@@ -8,24 +8,29 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBStarkAppToAppWorkspaceTransaction : SBStarkToAppWorkspaceTransaction <SBUIAnimationControllerDelegate> {
+@interface SBStarkAppToAppWorkspaceTransaction : SBStarkToAppWorkspaceTransaction <SBUIAnimationControllerObserver> {
 	SBApplication *_fromApp;
 	SBUIAnimationController *_animationController;
-	BKSApplicationActivationAssertion *_suspendingAppAssertion;
 	BOOL _animatedActivation;
 	BOOL _animatedDeactivation;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, assign, nonatomic) SBApplication *fromApp;
-- (id)initWithWorkspace:(id)workspace mainScreenAlertManager:(id)manager starkScreenController:(id)controller from:(id)from to:(id)to;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
+- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
 - (id)_animation;
+- (void)_begin;
 - (void)_beginAnimation;
 - (BOOL)_canBeInterrupted;
-- (void)_commit;
 - (id)_defaultAnimationFactory;
+- (void)_didComplete;
+- (void)_didInterruptWithReason:(id)reason;
 - (void)_doCommit;
 - (void)_endAnimation;
+- (void)_fixupSettingsAndCommit;
 - (void)_handleAppDidNotChange;
-- (void)_interruptWithReason:(int)reason;
 - (id)_newAnimationFromAppToApp;
 - (id)_newAnimationFromAppToLauncher;
 - (id)_newAnimationFromAppToNowPlaying;
@@ -36,20 +41,12 @@ __attribute__((visibility("hidden")))
 - (id)_newAnimationFromNowPlayingToNowPlaying;
 - (void)_noteWillActivateApplicationOnMainScreen:(id)_note underLock:(BOOL)lock;
 - (id)_setupAnimationFrom:(id)from to:(id)to;
-- (int)_setupMilestonesFrom:(id)from to:(id)to;
-- (void)_transactionComplete;
+- (void)_setupMilestonesFrom:(id)from to:(id)to;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
-- (id)debugDescription;
-- (BOOL)selfAlertDidDeactivate:(id)selfAlert;
-- (BOOL)selfApplicationActivated:(id)activated;
-- (BOOL)selfApplicationDidBecomeReceiver:(id)selfApplication fromApplication:(id)application;
-- (BOOL)selfApplicationDidFinishLaunching:(id)selfApplication withInfo:(id)info;
-- (BOOL)selfApplicationExited:(id)exited;
-- (BOOL)selfApplicationLaunchDidFail:(id)selfApplicationLaunch;
-- (BOOL)selfApplicationWillBecomeReceiver:(id)selfApplication fromApplication:(id)application;
-- (BOOL)selfStarkAlertDidDeactivate:(id)selfStarkAlert;
+- (void)mainScreenApplicationSceneWillCommit:(id)mainScreenApplicationScene;
+- (void)mainScreenApplicationUpdateScenesTransactionCompleted:(id)completed;
 - (id)swizzledToDisplayIfNecessary;
 @end
 

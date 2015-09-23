@@ -12,7 +12,11 @@ __attribute__((visibility("hidden")))
 	int _variant;
 	id<_SBFakeBlurObserver> _observer;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) id<_SBFakeBlurObserver> observer;
+@property(readonly, assign) Class superclass;
 - (id)initWithVariant:(int)variant;
 - (void)_updateBackgroundColor;
 - (void)dealloc;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 + (int)_defaultIconFormat;
 + (float)_labelHeight;
 + (CGRect)_rectForLayoutMetric:(int)layoutMetric;
-+ (BOOL)canShowUpdatedMark;
++ (BOOL)canShowLabelAccessoryView;
 + (CGSize)defaultIconSize;
 + (UIEdgeInsets)iconImagePaddingInsets;
 + (CGSize)maxLabelSize;

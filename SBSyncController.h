@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSyncController : XXUnknownSuperclass {
+@interface SBSyncController : XXUnknownSuperclass <FBApplicationLibraryObserver> {
 	int _restoreState;
 	int _resetState;
 	int _restoreTimerState;
@@ -19,11 +19,20 @@ __attribute__((visibility("hidden")))
 	int _restoreStartedNotifyToken;
 	int _restoreEndedNotifyToken;
 	SBPasscodeLockDisableAssertion *_disableDeviceLockAssertion;
+	BOOL _isAppSyncing;
+	BOOL _inExtendedAppSyncCoalescePeriod;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (void)_appInstallationNotification;
 - (void)_delayedBeginReset;
 - (void)_delayedQuitApplications;
+- (void)_didEndResetting;
+- (void)_didEndRestoring:(int)restoring;
+- (void)_finishEndRestoring;
 - (void)_invalidateRestoreTimer;
 - (BOOL)_isBackupAgentRunning;
 - (void)_killApplications;
@@ -34,15 +43,18 @@ __attribute__((visibility("hidden")))
 - (void)_restoreTimerFired:(id)fired;
 - (void)_setRestoreState:(int)state;
 - (void)_setupRestoreTimer;
+- (void)_syncSessionDidBegin;
+- (void)_syncSessionDidEnd;
 - (void)_updateProgress;
+- (void)_wirelessSyncBegan:(id)began;
 - (void)_wirelessSyncEnded:(id)ended;
+- (void)applicationLibrary:(id)library didAddApplications:(id)applications;
+- (void)applicationLibrary:(id)library didRemoveApplications:(id)applications;
+- (void)applicationLibrary:(id)library didReplaceApplications:(id)applications withApplications:(id)applications3;
 - (void)beginResetting:(BOOL)resetting;
 - (void)beginRestoring;
 - (void)cancelRestoring;
 - (void)dealloc;
-- (void)didEndResetting;
-- (void)didEndRestoring:(int)restoring;
-- (void)finishEndRestoring;
 - (void)finishedTerminatingApplications;
 - (BOOL)isInUse;
 - (BOOL)isResetting;
@@ -51,6 +63,5 @@ __attribute__((visibility("hidden")))
 - (int)restoreState;
 - (void)startObserving;
 - (void)stopObserving;
-- (void)syncSessionDidEnd;
 @end
 

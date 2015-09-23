@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)sound;
 - (id)sourceDate;
 - (id)subActionLabels;
-- (id)subActionWithIndex:(unsigned)index;
+- (id)subActions;
 - (id)title;
 @end
 

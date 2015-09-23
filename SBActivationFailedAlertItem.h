@@ -12,6 +12,10 @@ __attribute__((visibility("hidden")))
 	BOOL _showRetryButton;
 	BOOL _showSupportNumber;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFailureCount:(int)failureCount;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

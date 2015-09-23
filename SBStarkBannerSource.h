@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 	id<SBUIBannerTarget> _target;
 	NSMutableArray *_enqueuedItems;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (id)initWithAllowedTargetIdentifier:(void *)allowedTargetIdentifier;
 - (void)bannerTargetManager:(id)manager didAddTarget:(id)target;

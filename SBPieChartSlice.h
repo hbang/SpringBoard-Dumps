@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 	float _value;
 	UIColor *_fillColor;
 }
-@property(readonly, assign) UIColor *fillColor;
+@property(readonly, retain) UIColor *fillColor;
 @property(readonly, assign) float value;
 + (id)sliceWithValue:(float)value fillColor:(id)color;
 - (id)initWithValue:(float)value fillColor:(id)color;

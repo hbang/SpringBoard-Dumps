@@ -17,6 +17,10 @@ __attribute__((visibility("hidden")))
 	SBAlertItemsSettings *_settings;
 	BOOL _disabled;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (void)addAlertHandler:(id)handler forSection:(id)section;
 - (id)alertHandlersForSection:(id)section;

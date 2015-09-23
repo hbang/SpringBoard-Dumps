@@ -10,13 +10,18 @@
 __attribute__((visibility("hidden")))
 @interface SBLockScreenNotificationBannerItem : XXUnknownSuperclass <SBDefaultBannerViewSource, SBUIQuietModePlayability> {
 	SBAwayListItem *_listItem;
-	id<SBUnlockActionHandler> _unlockActionHandler;
+	id<SBLockScreenActionHandler> _lockedActionHandler;
 	id<SBLockScreenNotificationBannerItemDelegate> _delegate;
 }
+@property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBLockScreenNotificationBannerItemDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) SBAwayListItem *listItem;
-@property(retain, nonatomic) id<SBUnlockActionHandler> unlockActionHandler;
+@property(readonly, assign) Class superclass;
+@property(retain, nonatomic) id<SBLockScreenActionHandler> unlockActionHandler;
 - (id)initWithListItem:(id)listItem;
+- (id)accessoryIconMask;
 - (id)action;
 - (id)attachmentImage;
 - (id)attachmentText;
@@ -25,12 +30,12 @@ __attribute__((visibility("hidden")))
 - (id)iconImage;
 - (BOOL)inertWhenLocked;
 - (BOOL)isCritical;
-- (BOOL)isVIP;
+- (id)lockScreenActionContext;
 - (id)message;
 - (BOOL)overridesQuietMode;
 - (id)sortDate;
 - (id)sourceDate;
+- (id)suppressedMessage;
 - (id)title;
-- (id)unlockActionContext;
 @end
 

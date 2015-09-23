@@ -28,7 +28,10 @@ __attribute__((visibility("hidden")))
 }
 @property(retain, nonatomic) SBActivationInfoViewController *activationInfoViewController;
 @property(assign, nonatomic) unsigned currentStringIndex;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(assign, nonatomic) BOOL hasResultsFromWifiScan;
+@property(readonly, assign) unsigned hash;
 @property(copy, nonatomic) NSDictionary *localizedStrings;
 @property(assign, nonatomic) SBLockScreenViewController *lockScreenViewController;
 @property(assign, nonatomic) BOOL shouldResetOrderingOnNextCycle;
@@ -37,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) BOOL startsWithBlackBackground;
 @property(retain, nonatomic) NSTimer *stringCycleTimer;
 @property(copy, nonatomic) NSArray *stringsOrdering;
+@property(readonly, assign) Class superclass;
 @property(copy, nonatomic) NSString *telephonyPrimaryLanguage;
 @property(copy, nonatomic) NSString *wifiPrimaryLanguage;
 - (id)initWithLockScreenViewController:(id)lockScreenViewController;

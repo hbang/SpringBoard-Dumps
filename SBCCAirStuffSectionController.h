@@ -18,13 +18,19 @@ __attribute__((visibility("hidden")))
 	SFAirDropDiscoveryController *_airDropDiscoveryController;
 	BOOL _isVisible;
 	BOOL _airPlayWasPreviouslyEnabled;
-	BKSTimer *_resetTimer;
-	BKSTimer *_airPlayTimer;
+	BSTimer *_resetTimer;
+	BSTimer *_airPlayTimer;
 	BOOL _airPlayEnabled;
 	BOOL _airDropEnabled;
 }
 @property(assign, nonatomic) BOOL airDropEnabled;
 @property(assign, nonatomic) BOOL airPlayEnabled;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
++ (id)defaultFont;
++ (id)defaultFontTight;
 + (Class)viewClass;
 - (id)init;
 - (void)_airDropTapped:(id)tapped;
@@ -39,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateAirPlayControlAsEnabled:(BOOL)enabled;
 - (void)_updateForAirDropStateChange;
 - (void)_updateForAirPlayStateChange;
+- (void)_updateLayoutForSizeCategoryChange;
 - (void)_updateSubsectionVisibilityAnimated:(BOOL)animated;
 - (CGSize)contentSizeForOrientation:(int)orientation;
 - (void)controlCenterDidDismiss;

@@ -8,29 +8,28 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAlertToAlertWorkspaceTransaction : SBWorkspaceTransaction <SBUIAnimationControllerDelegate> {
+@interface SBAlertToAlertWorkspaceTransaction : SBWorkspaceTransaction <SBUIAnimationControllerObserver> {
 	SBAlert *_activatingAlert;
 	SBAlert *_deactivatingAlert;
 	BOOL _activation;
 	SBUIAnimationController *_animation;
 	BOOL _animatingAlertDeactivation;
 }
-- (id)initActivationWithWorkspace:(id)workspace alertManager:(id)manager from:(id)from to:(id)to;
-- (id)initDeactivationWithWorkspace:(id)workspace alertManager:(id)manager from:(id)from to:(id)to;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
+- (id)initActivationWithAlertManager:(id)alertManager from:(id)from to:(id)to;
+- (id)initDeactivationWithAlertManager:(id)alertManager from:(id)from to:(id)to;
 - (void)_alertAnimationComplete:(id)complete;
-- (void)_commit;
+- (void)_begin;
 - (void)_deactivateAlertIfNecessary;
+- (void)_didComplete;
+- (void)_doAlertTransition;
 - (void)_endAnimation;
-- (void)_handleFailure;
-- (id)_initWithWorkspace:(id)workspace alertManager:(id)manager activatingAlert:(id)alert deactivatingAlert:(id)alert4 activation:(BOOL)activation;
-- (void)_transactionComplete;
+- (id)_initWithAlertManager:(id)alertManager activatingAlert:(id)alert deactivatingAlert:(id)alert3 activation:(BOOL)activation;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
-- (id)debugDescription;
-- (BOOL)selfAlertDidActivate:(id)selfAlert overAlerts:(id)alerts;
-- (BOOL)selfAlertDidDeactivate:(id)selfAlert;
-- (BOOL)selfAlertWillActivate:(id)selfAlert overAlerts:(id)alerts;
-- (BOOL)selfAlertWillDeactivate:(id)selfAlert;
 @end
 

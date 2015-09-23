@@ -15,7 +15,11 @@ __attribute__((visibility("hidden")))
 	SBFWallpaperView *_wallpaperView;
 	UIImageView *_imageView;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) id<_SBFakeBlurObserver> observer;
+@property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic) int variant;
 + (id)_imageForStyle:(inout int *)style withSource:(id)source;
 - (id)initWithVariant:(int)variant;

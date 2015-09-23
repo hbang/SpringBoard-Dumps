@@ -10,13 +10,11 @@
 __attribute__((visibility("hidden")))
 @interface SBPowerDownController : SBAlert <SBPowerDownViewDelegate> {
 	id _delegate;
-	BOOL _isFront;
 	SBAlertView<SBPowerDownViewInterface> *_powerDownView;
 	id _orderOutCompletion;
 }
 @property(assign, nonatomic) id<SBPowerDownControllerDelegate> delegate;
 @property(copy, nonatomic) id orderOutCompletion;
-+ (id)sharedInstance;
 - (id)init;
 - (void)_lockedOnTop;
 - (void)_restoreIconListIfNecessary;
@@ -24,10 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (double)autoLockTime;
 - (void)cancel;
-- (void)deactivate;
 - (void)dealloc;
 - (BOOL)hasTranslucentBackground;
-- (BOOL)isOrderedFront;
 - (BOOL)managesOwnStatusBarAtActivation;
 - (void)orderFront;
 - (void)orderOutWithCompletion:(id)completion;
@@ -36,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)powerDownViewRequestCancel:(id)cancel;
 - (void)powerDownViewRequestPowerDown:(id)down;
 - (BOOL)powerDownViewShouldHideStatusBar:(id)powerDownView;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (BOOL)showsSpringBoardStatusBar;
 @end
 

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (void)_addTerminationAssertion:(id)assertion;
 - (BOOL)_canAcquireTerminationAssertionForDisplayId:(id)displayId reason:(unsigned char)reason error:(char *)error;
 - (void)_removeTerminationAssertion:(id)assertion;
+- (id)_requestPluginHoldForAppInfo:(id)appInfo;
 - (id)acquireTerminationAssertionForDisplayId:(id)displayId withReason:(unsigned char)reason error:(char *)error;
 - (void)dealloc;
 - (id)terminationAssertionsForDisplayId:(id)displayId;

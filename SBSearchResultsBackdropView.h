@@ -9,12 +9,16 @@
 
 __attribute__((visibility("hidden")))
 @interface SBSearchResultsBackdropView : XXUnknownSuperclass {
-	_UIBackdropView *_backdropView;
+	_SBSearchBackdropView *_backdropView;
 	SBWallpaperEffectView *_effectView;
 	UIView *_tintView;
 }
 - (id)initWithFrame:(CGRect)frame;
 - (void)dealloc;
 - (void)layoutSubviews;
+- (void)prepareForTransition;
+- (void)setTransitionProgress:(float)progress;
+- (void)transitionCompleted;
+- (BOOL)useHighQualityGraphics;
 @end
 

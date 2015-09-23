@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)applicationBundleID;
 - (id)badgeNumberOrString;
 - (BOOL)canEllipsizeLabel;
+- (BOOL)canTightenLabel;
 - (void)completeUninstall;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)getGenericIconImage:(int)image;
 - (unsigned)hash;
 - (BOOL)iconAppearsInNewsstand;
+- (BOOL)isBeta;
 - (BOOL)isEqual:(id)equal;
 - (BOOL)isRecentlyUpdated;
 - (BOOL)launchEnabled;

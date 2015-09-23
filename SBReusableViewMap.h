@@ -10,12 +10,14 @@
 __attribute__((visibility("hidden")))
 @interface SBReusableViewMap : XXUnknownSuperclass {
 	NSMapTable *_recycledViewsByClass;
+	BOOL _invalidated;
 	id<SBReusableViewMapDelegate> _delegate;
 }
 @property(assign, nonatomic) id<SBReusableViewMapDelegate> delegate;
 - (id)init;
 - (id)initWithDelegate:(id)delegate;
 - (void)dealloc;
+- (void)invalidate;
 - (id)newViewOfClass:(Class)aClass;
 - (void)purgeAllViews;
 - (void)purgeViewsForClass:(Class)aClass;

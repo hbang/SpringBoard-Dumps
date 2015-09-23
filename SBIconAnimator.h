@@ -10,7 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBIconAnimator : XXUnknownSuperclass {
 	float _fraction;
-	BOOL _startedAnimation;
 	BOOL _startAnimationAfterRotationEnds;
 	BOOL _windowIsRotating;
 	BOOL _cleanedUp;
@@ -18,15 +17,17 @@ __attribute__((visibility("hidden")))
 	SBFolderControllerAnimationContext *_animationContext;
 	NSString *_instanceIdentifier;
 	BOOL _invalidated;
+	BOOL _animatesInnerFolderViews;
 	id<SBIconAnimatorDelegate> _delegate;
 	SBIconAnimationSettings *_settings;
 	SBFolderController *_folderController;
 }
-@property(readonly, assign, nonatomic) SBFolderControllerAnimationContext *animationContext;
+@property(assign, nonatomic) BOOL animatesInnerFolderViews;
+@property(readonly, retain, nonatomic) SBFolderControllerAnimationContext *animationContext;
 @property(assign, nonatomic) id<SBIconAnimatorDelegate> delegate;
-@property(readonly, assign, nonatomic) SBFolderController *folderController;
+@property(readonly, retain, nonatomic) SBFolderController *folderController;
 @property(assign, nonatomic) BOOL invalidated;
-@property(readonly, assign, nonatomic) UIView *referenceView;
+@property(readonly, retain, nonatomic) UIView *referenceView;
 @property(retain, nonatomic) SBIconAnimationSettings *settings;
 - (id)initWithFolderController:(id)folderController;
 - (void)_allowRotationOnMainWindowIfNecessary:(BOOL)necessary;

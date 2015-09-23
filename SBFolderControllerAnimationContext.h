@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
 	SBWindow *_animationWindow;
 	UIView *_fallbackIconContainer;
 }
-@property(readonly, assign, nonatomic) SBWindow *animationWindow;
-@property(readonly, assign, nonatomic) UIView *fallbackIconContainer;
-@property(readonly, assign, nonatomic) UIScreen *screen;
+@property(readonly, retain, nonatomic) SBWindow *animationWindow;
+@property(readonly, retain, nonatomic) UIView *fallbackIconContainer;
+@property(readonly, retain, nonatomic) UIScreen *screen;
 + (id)contextWithScreen:(id)screen animationWindow:(id)window fallbackIconContainer:(id)container;
 - (id)initWithScreen:(id)screen animationWindow:(id)window fallbackIconContainer:(id)container;
 - (void)dealloc;

@@ -7,36 +7,15 @@
 
 
 
-@protocol SBDisplayProtocol <NSObject>
-- (double)accelerometerSampleInterval;
+@protocol SBDisplayProtocol <NSObject, SBActivationSettings, SBDeactivationSettings, SBStateSettings>
 - (void)activate;
-- (BOOL)activationFlag:(unsigned)flag;
-- (id)activationValue:(unsigned)value;
 - (BOOL)allowsEventOnlySuspension;
-- (double)autoDimTime;
-- (double)autoLockTime;
 - (void)clearActivationSettings;
 - (void)clearDeactivationSettings;
-- (void)clearDisplaySettings;
+- (void)clearStateSettings;
+- (id)copyDisplaySettings;
 - (void)deactivate;
-- (BOOL)deactivationFlag:(unsigned)flag;
-- (id)deactivationValue:(unsigned)value;
-- (BOOL)displayFlag:(unsigned)flag;
-- (id)displayValue:(unsigned)value;
 - (id)effectiveStatusBarStyleRequest;
-- (BOOL)expectsFaceContact;
-- (BOOL)expectsFaceContactInLandscape;
-- (BOOL)orientationChangedEventsEnabled;
-- (void)setAccelerometerSampleInterval:(double)interval;
-- (void)setActivationSetting:(unsigned)setting flag:(BOOL)flag;
-- (void)setActivationSetting:(unsigned)setting value:(id)value;
-- (void)setDeactivationSetting:(unsigned)setting flag:(BOOL)flag;
-- (void)setDeactivationSetting:(unsigned)setting value:(id)value;
-- (void)setDisplaySetting:(unsigned)setting flag:(BOOL)flag;
-- (void)setDisplaySetting:(unsigned)setting value:(id)value;
-- (void)setExpectsFaceContact:(BOOL)contact;
-- (void)setExpectsFaceContact:(BOOL)contact inLandscape:(BOOL)landscape;
-- (void)setOrientationChangedEventsEnabled:(BOOL)enabled;
 - (int)starkStatusBarStyle;
 - (int)statusBarStyle;
 - (id)statusBarStyleRequest;

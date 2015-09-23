@@ -20,7 +20,8 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)_allNotificationDataFromPath:(id)path;
 - (id)_allNotificationsFromPath:(id)path;
-- (unsigned)_effectivePushSettingsForBundleID:(id)bundleID;
+- (unsigned)_effectiveNotificationTypesForBundleID:(id)bundleID;
+- (id)_effectiveUserNotificationSettingsForBundleID:(id)bundleID;
 - (void)_enumerateObserversForBundleID:(id)bundleID usingBlock:(id)block;
 - (BOOL)_notificationDataExistsAtPath:(id)path;
 - (id)_notificationStoreFilenameForBundleID:(id)bundleID;
@@ -28,20 +29,22 @@ __attribute__((visibility("hidden")))
 - (id)_observersForBundleID:(id)bundleID;
 - (BOOL)_removeNotificationsForBundleID:(id)bundleID;
 - (BOOL)_saveNotificationList:(id)list toPath:(id)path;
-- (void)_saveNotificationWithMessage:(id)message soundName:(id)name actionText:(id)text badge:(id)badge userInfo:(id)info launchImage:(id)image fullDetails:(id)details soundIsRingtone:(BOOL)ringtone isRemoteNotification:(BOOL)notification forBundleID:(id)bundleID;
+- (void)_saveNotificationWithMessage:(id)message soundName:(id)name actionText:(id)text badge:(id)badge userInfo:(id)info launchImage:(id)image fullDetails:(id)details soundIsRingtone:(BOOL)ringtone isRemoteNotification:(BOOL)notification category:(id)category forBundleID:(id)bundleID;
+- (BOOL)_setUserNotificationSettings:(id)settings forBundeID:(id)bundeID;
+- (unsigned)_supportedNotificationTypesForBundleID:(id)bundleID;
 - (void)addObserver:(id)observer forBundleID:(id)bundleID;
-- (id)allLocalNotificationEnabledBundleIDs;
-- (id)allNotificationEnabledBundleIDs;
 - (id)bundleIDsWithUpdatesSince:(id)updatesSince;
 - (void)clearNotificationsForBundleID:(id)bundleID;
 - (void)dealloc;
-- (unsigned)effectivePushSettingsForBundleID:(id)bundleID;
+- (unsigned)desiredSystemNotificationTypesForBundleID:(id)bundleID;
+- (unsigned)effectiveNotificationTypesForBundleID:(id)bundleID;
+- (id)effectiveUserNotificationSettingsForBundleID:(id)bundleID;
 - (id)lastUpdateDateForBundleID:(id)bundleID;
 - (void)makeTestNotificationStores;
 - (void)notePushAcceptedForBundleID:(id)bundleID;
 - (void)notePushDeclinedForBundleID:(id)bundleID;
 - (void)notePushSettingsChangedForBundleID:(id)bundleID;
-- (BOOL)prepareToSupportLocalNotificationsTypes:(unsigned)supportLocalNotificationsTypes forBundleID:(id)bundleID;
+- (id)pathForSoundName:(id)soundName inApp:(id)app;
 - (void)registerAppForNotificationsWithBundleID:(id)bundleID;
 - (void)removeAllLocalNotificationsForBundleID:(id)bundleID;
 - (void)removeAllNotificationsForBundleID:(id)bundleID;
@@ -49,10 +52,16 @@ __attribute__((visibility("hidden")))
 - (id)removeNotificationsPassingTest:(id)test forBundleID:(id)bundleID;
 - (void)removeObserver:(id)observer forBundleID:(id)bundleID;
 - (void)saveLocalNotification:(id)notification forBundleID:(id)bundleID;
-- (void)saveRemoteNotificationWithMessage:(id)message soundName:(id)name actionText:(id)text badge:(id)badge userInfo:(id)info launchImage:(id)image forBundleID:(id)bundleID;
+- (void)saveRemoteNotificationWithMessage:(id)message soundName:(id)name actionText:(id)text badge:(id)badge userInfo:(id)info launchImage:(id)image category:(id)category forBundleID:(id)bundleID;
 - (id)savedNotificationDataForBundleID:(id)bundleID;
 - (id)savedNotificationsForBundleID:(id)bundleID;
-- (void)setEffectivePushSettings:(unsigned)settings forBundleID:(id)bundleID;
+- (void)setDesiredSystemNotificationTypes:(unsigned)types forBundleID:(id)bundleID;
+- (void)setEffectiveNotificationTypes:(unsigned)types forBundleID:(id)bundleID;
+- (void)setSupportedNotificationTypes:(unsigned)types forBundleID:(id)bundleID;
+- (void)setUserDeniedNotifications:(BOOL)notifications forBundeID:(id)bundeID;
+- (void)setUserNotificationSettings:(id)settings forBundeID:(id)bundeID;
+- (unsigned)supportedNotificationTypesForBundleID:(id)bundleID;
 - (void)unregisterAppForNotificationsWithBundleID:(id)bundleID;
+- (BOOL)userDeniedNotificationsForBundleID:(id)bundleID;
 @end
 

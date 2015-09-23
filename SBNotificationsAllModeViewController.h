@@ -10,8 +10,12 @@
 __attribute__((visibility("hidden")))
 @interface SBNotificationsAllModeViewController : SBNotificationsModeViewController <UIGestureRecognizerDelegatePrivate> {
 	SBNotificationCenterTouchEater *_clearButtonTouchEater;
-	SBNotificationsSectionHeaderView *_headerViewCurrentlyInClearState;
+	SBNotificationCenterHeaderView *_headerViewCurrentlyInClearState;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (void)_handleEatenTouch:(id)touch;
 - (id)_headerViewCurrentlyInClearState;
@@ -22,11 +26,10 @@ __attribute__((visibility("hidden")))
 - (id)contentUnavailableText;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
-- (id)infoForBulletin:(id)bulletin inSection:(id)section;
+- (id)infoForBulletin:(id)bulletin inSection:(id)section forFeed:(unsigned)feed;
 - (id)infoForBulletinSection:(id)bulletinSection;
 - (void)viewDidAppear:(BOOL)view;
 - (void)viewWillAppear:(BOOL)view;
 - (void)viewWillDisappear:(BOOL)view;
-- (int)widgetIdiomForCategory:(int)category;
 @end
 

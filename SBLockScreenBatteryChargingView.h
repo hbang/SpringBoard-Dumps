@@ -13,14 +13,18 @@ __attribute__((visibility("hidden")))
 	_UIBackdropView *_batteryBlurView;
 	SBLockScreenBatteryFillView *_batteryFillView;
 	_UILegibilityLabel *_chargePercentLabel;
+	NSArray *_batteryConstraints;
+	NSLayoutConstraint *_batteryTopOffset;
 	_UILegibilitySettings *_legibilitySettings;
 }
 @property(assign, nonatomic) BOOL batteryVisible;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 - (id)initWithFrame:(CGRect)frame;
-- (CGPoint)_batteryOrigin;
+- (float)_batteryBaseline;
+- (float)_batteryNoseOffset;
 - (id)_chargePercentFont;
 - (float)_chargingTextBaselineOffset;
+- (void)_prepareConstraints;
 - (void)_setChargeString:(id)string;
 - (void)dealloc;
 - (void)layoutSubviews;

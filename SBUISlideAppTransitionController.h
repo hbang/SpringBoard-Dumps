@@ -15,11 +15,10 @@ __attribute__((visibility("hidden")))
 	double _initiationTime;
 }
 - (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
-- (id)_animationProgressDependency;
-- (BOOL)_animationShouldStart;
 - (void)_cleanupAnimation;
 - (void)_prepareAnimation;
 - (void)_startAnimation;
+- (BOOL)_waitsForApplicationActivationIfNecessary;
 - (void)appTransitionView:(id)view animationWillStartWithDuration:(double)animation afterDelay:(double)delay;
 - (void)appTransitionViewAnimationDidStop:(id)appTransitionViewAnimation;
 - (void)dealloc;

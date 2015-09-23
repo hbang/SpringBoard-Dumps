@@ -59,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (void)touchesCancelled:(SBGestureContextRef)cancelled;
 - (void)touchesEnded:(SBGestureContextRef)ended;
 - (void)touchesMoved:(SBGestureContextRef)moved;
-- (void)updateActiveTouches:(SBGestureContextRef)touches;
 - (void)updateForBeganOrMovedTouches:(SBGestureContextRef)beganOrMovedTouches;
 - (void)updateForEndedOrCancelledTouches:(SBGestureContextRef)endedOrCancelledTouches;
 @end

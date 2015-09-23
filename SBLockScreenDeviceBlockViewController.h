@@ -9,11 +9,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenDeviceBlockViewController : SBLockOverlayViewController {
-	NSTimer *_updateTimer;
+	SBFDeviceBlockTimer *_blockTimer;
 }
+@property(retain, nonatomic) SBFDeviceBlockTimer *blockTimer;
 @property(readonly, assign, nonatomic) NSString *slideToUnlockText;
-- (void)_clearTimer;
-- (void)_scheduleTimerIfNecessaryAndUpdateSubtitle;
 - (void)dealloc;
 - (void)loadView;
 - (void)viewDidDisappear:(BOOL)view;

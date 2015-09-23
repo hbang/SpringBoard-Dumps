@@ -7,7 +7,6 @@
 
 
 
-@protocol SBLockOverlayViewDelegate <NSObject>
-- (void)handleTapGestureFromView:(id)view;
+@protocol SBLockOverlayViewDelegate <SBUILockOverlayViewDelegate, NSObject>
 @end
 

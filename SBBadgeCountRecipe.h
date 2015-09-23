@@ -10,6 +10,10 @@
 __attribute__((visibility("hidden")))
 @interface SBBadgeCountRecipe : XXUnknownSuperclass <SBTestRecipe> {
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)title;
 - (void)_changeBadge:(int)badge;
 - (void)handleVolumeDecrease;

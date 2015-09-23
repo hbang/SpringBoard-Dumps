@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
 	BOOL _primaryInterfaceHasBeenSet;
 	BOOL _isPrimaryInterface;
 	BOOL _isPrimaryInterfaceChanging;
+	int linkToken;
+	int powerToken;
 }
 + (id)sharedInstance;
 - (id)init;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void *)_manager;
 - (void)_powerStateDidChange;
 - (void)_primaryInterfaceChanged:(BOOL)changed;
+- (void)_setPrimaryInterfaceHasBeenSet;
 - (void)_setWiFiDevice:(void *)device;
 - (void)_updateCurrentNetwork;
 - (void)_updateWiFiDevice:(id)device;

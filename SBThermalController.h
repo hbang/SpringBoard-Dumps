@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 	double _samplingStartTime;
 	NSDictionary *_samplingStartCPUTimesByApp;
 	int _sunlightStateToken;
+	int _coldTempToken;
 	int _warningAssertionToken;
 	int _warningResponseToken;
 	NSMutableSet *_warningSuppressionAssertions;
@@ -20,8 +21,12 @@ __attribute__((visibility("hidden")))
 	int _level;
 	BOOL _inSunlight;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic, getter=isInSunlight) BOOL inSunlight;
 @property(readonly, assign, nonatomic) int level;
+@property(readonly, assign) Class superclass;
 + (void)logThermalEvent:(id)event;
 + (id)sharedInstance;
 - (id)init;

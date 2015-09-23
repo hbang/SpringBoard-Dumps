@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 	NSMapTable *_hiderToHideeMap;
 	NSMutableSet *_hiddenAlerts;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (void)registerAlertManager:(id)manager forScreen:(id)screen;
 + (id)sharedInstance;
 - (id)init;

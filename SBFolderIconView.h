@@ -11,7 +11,11 @@ __attribute__((visibility("hidden")))
 @interface SBFolderIconView : SBIconView <_UISettingsKeyObserver> {
 	SBFolderSettings *_folderSettings;
 }
-+ (BOOL)canShowUpdatedMark;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
++ (BOOL)canShowLabelAccessoryView;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_applyEditingStateAnimated:(BOOL)animated;
 - (id)_folderIconImageView;
@@ -20,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (unsigned)centerVisibleMiniIconIndex;
 - (void)cleanupAfterFloatyFolderCrossfade;
 - (void)dealloc;
-- (id)description;
 - (id)dropGlow;
 - (unsigned)firstVisibleMiniIconIndex;
 - (id)folder;

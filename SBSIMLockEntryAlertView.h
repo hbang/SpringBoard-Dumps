@@ -12,13 +12,16 @@ __attribute__((visibility("hidden")))
 	NSString *_languageCode;
 	NSString *_code;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame languageCode:(id)code;
-- (id)_buildPasscodeView;
-- (void)_dismissAnimationCompleted;
 - (void)_doUnlock;
 - (id)_failureLabel;
 - (id)_failureTitle;
 - (id)_passcodeView;
+- (id)_passcodeViewGenerator;
 - (id)_pinAttemptsRemainingLabel;
 - (void)_unlock;
 - (void)alertDisplayWillBecomeVisible;

@@ -7,7 +7,7 @@
 
 
 
-@protocol SBNotificationCenterViewControllerDelegate <SBWidgetViewControllerHostDelegate, SBBulletinActionHandler>
+@protocol SBNotificationCenterViewControllerDelegate <SBWidgetViewControllerDelegate, SBBulletinActionHandler>
 @optional
 - (id)widgetViewControllerHostDelegate:(id)delegate;
 @end

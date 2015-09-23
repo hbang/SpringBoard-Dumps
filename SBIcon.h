@@ -12,9 +12,13 @@ __attribute__((visibility("hidden")))
 	NSHashTable *_observers;
 	id _badgeNumberOrString;
 	unsigned _uninstalled : 1;
-	UIImage *_cachedIconImages[14];
+	UIImage *_cachedIconImages[13];
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) BOOL shouldWarmUp;
+@property(readonly, assign) Class superclass;
 + (id)_iconImageOfSize:(CGSize)size scale:(float)scale failGracefully:(BOOL)gracefully drawing:(id)drawing;
 + (id)_iconImagesMemoryPool;
 + (id)memoryMappedIconImageForIconImage:(id)iconImage;
@@ -36,11 +40,11 @@ __attribute__((visibility("hidden")))
 - (int)badgeValue;
 - (BOOL)canEllipsizeLabel;
 - (BOOL)canReceiveGrabbedIcon;
+- (BOOL)canTightenLabel;
 - (void)completeUninstall;
 - (id)containedNodeIdentifiers;
 - (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
-- (id)description;
 - (id)displayName;
 - (id)folder;
 - (id)folderFallbackTitle;
@@ -58,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (Class)iconImageViewClassForLocation:(int)location;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
 - (BOOL)isApplicationIcon;
+- (BOOL)isBeta;
 - (BOOL)isBookmarkIcon;
 - (BOOL)isDownloadingIcon;
 - (BOOL)isEmptyPlaceholder;
@@ -70,7 +75,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isRecentlyUpdated;
 - (BOOL)isUninstalled;
 - (BOOL)isUserInstalledApplicationIcon;
-- (BOOL)isWebApplicationIcon;
 - (BOOL)launchEnabled;
 - (void)launchFromLocation:(int)location;
 - (id)leafIdentifier;
@@ -102,6 +106,5 @@ __attribute__((visibility("hidden")))
 - (id)uninstallAlertTitle;
 - (id)uninstallAlertTitleForAppWithDocumentUpdatesPending;
 - (id)uninstallAlertTitleForAppWithDocumentsInCloud;
-- (id)webClip;
 @end
 

@@ -18,6 +18,10 @@ __attribute__((visibility("hidden")))
 	BOOL _hasPreviousSettings;
 }
 @property(retain, nonatomic) id<SBTestRecipe> activeTestRecipe;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (void)migrateSettings;
 + (void)reloadDefaults;
 + (id)sharedInstance;

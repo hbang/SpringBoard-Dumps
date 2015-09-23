@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBMediaController : XXUnknownSuperclass {
+@interface SBMediaController : XXUnknownSuperclass <MPAVRoutingControllerDelegate> {
 	int _manualVolumeChangeCount;
 	NSDictionary *_nowPlayingInfo;
 	float _pendingVolumeChange;
@@ -24,11 +24,17 @@ __attribute__((visibility("hidden")))
 	NSTimer *_screenSharingStatusBarOverrideTimer;
 	NSTimer *_videoOutStatusBarOverrideTimer;
 	MPAVRoutingController *_routingController;
+	int _nowPlayingProcessPID;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign, nonatomic) SBApplication *nowPlayingApplication;
+@property(assign, nonatomic) int nowPlayingProcessPID;
 @property(assign, nonatomic, getter=isRingerMuted) BOOL ringerMuted;
+@property(readonly, assign) Class superclass;
 @property(assign) BOOL suppressHUD;
 + (BOOL)applicationCanBeConsideredNowPlaying:(id)playing;
-+ (void)interrupt;
 + (void)sendResetPlaybackTimeoutCommand;
 + (id)sharedInstance;
 - (id)init;
@@ -38,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)_clearScreenSharingStatusBarStyleOverride;
 - (void)_clearVideoOutStatusBarStyleOverride;
 - (void)_commitVolumeChange:(id)change;
-- (void)_delayedExtendSleepTimer;
 - (void)_externalScreenChanged:(id)changed;
 - (void)_nowPlayingAppIsPlayingDidChange;
 - (id)_nowPlayingInfo;
@@ -54,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (void)_unregisterForNotifications;
 - (void)_updateAVRoutes;
 - (BOOL)addTrackToWishList;
-- (id)artwork;
 - (BOOL)banTrack;
 - (BOOL)beginSeek:(int)seek;
 - (void)cancelVolumeEvent;
@@ -66,51 +70,27 @@ __attribute__((visibility("hidden")))
 - (BOOL)handsetRouteIsSelected;
 - (BOOL)hasTrack;
 - (void)increaseVolume;
-- (BOOL)isAdvertisement;
 - (BOOL)isFirstTrack;
 - (BOOL)isLastTrack;
-- (BOOL)isMovie;
 - (BOOL)isPaused;
 - (BOOL)isPlaying;
-- (BOOL)isRadioTrack;
 - (BOOL)isScreenSharing;
-- (BOOL)isTVOut;
 - (BOOL)lastSavedRingerMutedState;
 - (BOOL)likeTrack;
-- (id)mediaControlsDestinationApp;
 - (BOOL)muted;
 - (id)nameOfPickedRoute;
-- (id)nowPlayingAlbum;
-- (id)nowPlayingApplication;
-- (id)nowPlayingArtist;
-- (id)nowPlayingTitle;
 - (BOOL)pause;
 - (BOOL)play;
-- (int)repeatMode;
 - (BOOL)routeOtherThanHandsetIsAvailable;
 - (void)routingControllerAvailableRoutesDidChange:(id)routingControllerAvailableRoutes;
-- (void)setCurrentTrackTime:(float)time;
 - (void)setNowPlayingInfo:(id)info;
 - (BOOL)setPlaybackSpeed:(int)speed;
 - (void)setVolume:(float)volume;
-- (int)shuffleMode;
 - (BOOL)skipFifteenSeconds:(int)seconds;
 - (BOOL)stop;
 - (BOOL)togglePlayPause;
 - (BOOL)toggleRepeat;
 - (BOOL)toggleShuffle;
-- (double)trackDuration;
-- (double)trackElapsedTime;
-- (BOOL)trackIsBanned;
-- (BOOL)trackIsBeingPlayedByMusicApp;
-- (BOOL)trackIsLiked;
-- (BOOL)trackIsOnWishList;
-- (BOOL)trackProhibitsSkip;
-- (BOOL)trackSupports15SecondFF;
-- (BOOL)trackSupports15SecondRewind;
-- (BOOL)trackSupportsIsBanned;
-- (BOOL)trackSupportsIsLiked;
-- (unsigned long long)trackUniqueIdentifier;
 - (void)updateScreenSharingStatusBarStyleOverride;
 - (void)updateScreenSharingStatusBarStyleOverrideSuppressionPreference;
 - (float)volume;

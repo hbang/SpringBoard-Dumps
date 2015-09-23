@@ -21,6 +21,10 @@ __attribute__((visibility("hidden")))
 	BOOL _posting;
 	NSHashTable *_stylesWithDetailUpdates;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)init;
 - (void)_composePostActionsFromAggregatorActions:(int *)aggregatorActions;
 - (void)_composePostDataFromAggregatorData:(XXStruct_8iXKhD *)aggregatorData;

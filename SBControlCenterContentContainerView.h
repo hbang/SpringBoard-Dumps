@@ -10,6 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBControlCenterContentContainerView : XXUnknownSuperclass <SBControlCenterObserver> {
 	UIView *_accessibilityBackgroundView;
+	UIView *_lighteningView;
 	_UIBackdropView *_backdropView;
 	SBControlCenterContentView *_contentView;
 	float _contentHeight;
@@ -17,6 +18,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIBackdropView *backdropView;
 @property(assign) float contentHeight;
 @property(retain, nonatomic) SBControlCenterContentView *contentView;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_accessibilityBackgroundContrastDidChange:(id)_accessibilityBackgroundContrast;
 - (void)_updateBackground;
