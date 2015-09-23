@@ -25,7 +25,6 @@
 - (id)_iconForApplication:(id)application;
 - (id)_iconForDownload:(id)download;
 - (BOOL)_inEditMode;
-- (void)_quitButtonHit:(id)hit;
 - (void)_removeApplicationFromRecents:(id)recents;
 - (void)_stopEditing;
 - (BOOL)appSwitcherBar:(id)bar scrollShouldCancelInContentForView:(id)scroll;
@@ -35,10 +34,12 @@
 - (void)applicationLaunched:(id)launched;
 - (void)applicationSuspended:(id)suspended;
 - (void)applicationsRemoved:(id)removed andAdded:(id)added;
+- (int)closeBoxTypeForIcon:(id)icon;
 - (void)dealloc;
 - (void)downloadItemUpdatingStatusChanged:(id)changed;
 - (void)downloadsChanged:(id)changed withRemovals:(id)removals;
 - (BOOL)handleMenuButtonTap;
+- (void)iconCloseBoxTapped:(id)tapped;
 - (void)iconHandleLongPress:(id)press;
 - (float)iconScale:(id)scale;
 - (BOOL)iconShouldAllowTap:(id)icon;

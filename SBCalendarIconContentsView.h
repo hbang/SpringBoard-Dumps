@@ -8,9 +8,12 @@
 
 
 @interface SBCalendarIconContentsView : UIView {
+	NSDateFormatter *_dateFormatter;
+	NSString *_dayNumberFormat;
 }
 - (id)initWithFrame:(CGRect)frame;
 - (void)dealloc;
 - (void)drawRect:(CGRect)rect;
+- (void)updateLocale;
 @end
 

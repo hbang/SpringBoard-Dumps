@@ -8,18 +8,17 @@
 
 
 @interface SBSMSManager : NSObject {
-	int _badgeState;
 }
-@property(assign, nonatomic) int badgeState;
 + (id)sharedSMSManager;
 - (id)init;
 - (id)badgeNumberOrString;
+- (void)dealloc;
+- (BOOL)isShowingSendFailure;
 - (void)markMessageAsRead:(id)read;
 - (void)messageReceived:(id)received;
 - (void)messageSendError:(id)error;
 - (void)messageSent:(id)sent;
-- (void)setBadge:(id)badge badgeState:(int)state;
-- (void)updateSMSBadgeToState:(int)state;
+- (void)setBadgeNumberOrString:(id)string;
 - (void)updateSMSBadges;
 @end
 

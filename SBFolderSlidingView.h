@@ -12,15 +12,17 @@
 	CGRect _wallpaperContentRect;
 	CGRect _wallpaperFrame;
 	UIView *_rasterizationView;
-	UIImageView *_wallpaperPiece;
-	SBNotchedWallpaperSlice *_notchedWallpaperSlice;
+	UIImageView *_wallpaperView;
 	SBSlidingViewHighlight *_highlightView;
 	SBFolderView *_folderView;
+	SBLinenNotchView *_linenNotchView;
+	SBFolderNotchHighlightView *_notchHighlightView;
 	BOOL _touchDownInWallpaper;
 }
 - (id)initWithWallpaperRect:(CGRect)wallpaperRect notchInfo:(XXStruct_9ihRqB)info highlightEdge:(int)edge folderView:(id)view;
-- (void)_addHighlightOnEdge:(int)edge;
+- (void)_addNotchAndHighlightOnEdge:(int)edge;
 - (void)_addWallpaper:(id)wallpaper;
+- (CGRect)_rectByAddingOverlapToRect:(CGRect)rect;
 - (void)addDock:(id)dock;
 - (void)dealloc;
 - (void)setShouldRasterize:(BOOL)rasterize;

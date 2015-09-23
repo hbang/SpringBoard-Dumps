@@ -9,6 +9,7 @@
 
 @interface SBNetworkReselectionAlert : SBAlert {
 }
++ (void)_serviceAvailabilityChanged:(id)changed;
 + (void)registerForAlerts;
 + (void)test;
 @end

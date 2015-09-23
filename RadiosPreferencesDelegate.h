@@ -7,10 +7,7 @@
 
 
 
-@interface SBAppIconQuitButton : UIButton {
-	SBApplicationIcon *_appIcon;
-}
-@property(retain, nonatomic) SBApplicationIcon *appIcon;
-- (void)dealloc;
+@protocol RadiosPreferencesDelegate
+- (void)airplaneModeChanged;
 @end
 
