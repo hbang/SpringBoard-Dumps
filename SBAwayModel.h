@@ -12,6 +12,7 @@
 	NSMutableArray *_standardVMs;
 	NSMutableArray *_calls;
 	NSMutableArray *_SMSs;
+	NSMutableArray *_videoConferences;
 	NSMutableArray *_otherAwayItems;
 }
 + (BOOL)shouldHideSMSSender;
@@ -19,12 +20,15 @@
 - (void)addCall:(CTCallRef)call;
 - (void)addOtherAwayItem:(id)item;
 - (void)addSMSMessage:(id)message;
+- (void)addVideoConferenceWithInviter:(id)inviter atDate:(id)date;
+- (void)clearAwayItems;
 - (void)dealloc;
 - (void)markAwayTime;
 - (id)missedItems;
 - (void)populateWithMissedCalls:(id)missedCalls;
 - (void)populateWithMissedEnhancedVoiceMails:(id)missedEnhancedVoiceMails;
 - (void)populateWithMissedSMS:(id)missedSMS;
+- (void)populateWithMissedVideoConferences:(id)missedVideoConferences;
 - (void)setStandardVoiceMailCount:(int)count;
 - (int)uncoalescedMissedItemCount;
 @end

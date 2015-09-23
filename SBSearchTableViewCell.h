@@ -17,6 +17,8 @@
 	NSString *_auxiliarySubtitle;
 	BOOL _badged;
 	BOOL _usesAlternateBackgroundColor;
+	BOOL _isTopHit;
+	BOOL _isBelowTopHit;
 	BOOL _isFirstInTableView;
 	BOOL _isFirstInSection;
 	float _sectionHeaderWidth;
@@ -25,6 +27,7 @@
 @property(retain, nonatomic) NSString *auxiliarySubtitle;
 @property(retain, nonatomic) NSString *auxiliaryTitle;
 @property(assign, nonatomic, getter=isBadged) BOOL badged;
+@property(assign, nonatomic, getter=isBelowTopHit) BOOL belowTopHit;
 @property(assign, nonatomic) float edgeInset;
 @property(assign, nonatomic, getter=isFirstInSection) BOOL firstInSection;
 @property(assign, nonatomic, getter=isFirstInTableView) BOOL firstInTableView;
@@ -32,6 +35,7 @@
 @property(retain, nonatomic) NSString *subtitle;
 @property(retain, nonatomic) NSArray *subtitleComponents;
 @property(retain, nonatomic) NSString *title;
+@property(assign, nonatomic, getter=isTopHit) BOOL topHit;
 @property(assign, nonatomic) BOOL usesAlternateBackgroundColor;
 + (id)alternateBackgroundColor;
 + (id)alternateLineColor;

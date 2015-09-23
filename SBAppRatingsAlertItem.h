@@ -7,15 +7,15 @@
 
 
 
-@interface SBAppRatingsAlertItem : SBAlertItem <UIModalViewDelegate> {
-	SBInstalledApplicationIcon *_icon;
+@interface SBAppRatingsAlertItem : SBAlertItem <UIAlertViewDelegate> {
+	SBUserInstalledApplicationIcon *_icon;
 	UIPushButton *_rateButton;
 	BOOL _uninstallOnDismiss;
 }
 - (id)initWithIcon:(id)icon uninstallOnDismiss:(BOOL)dismiss;
 - (void)_starsControlValueChanged:(id)changed;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
 - (Class)alertSheetClass;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (BOOL)dismissOnLock;

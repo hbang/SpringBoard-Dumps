@@ -9,13 +9,13 @@
 
 @interface SBCallAlert : SBAlert {
 	BOOL _causedSuspension;
+	void *_addressBook;
 }
 + (void)registerForAlerts;
 - (id)initWithCall:(CTCallRef)call;
 - (void)_handleCallEvent:(CTCallRef)event;
 - (void)_handleCallerIDEvent:(CTCallRef)event;
 - (id)alertDisplayViewWithSize:(CGSize)size;
-- (BOOL)allowsDoubleHeightStatusBar:(BOOL)bar;
 - (void)dealloc;
 @end
 

@@ -11,15 +11,15 @@
 	UITextField *_inputTextField;
 	UIKeyboard *_keyboard;
 	SBTextDisplayView *_textDisplay;
-	UIScroller *_scroller;
+	UIScrollView *_scroller;
 	UINavigationBar *_bar;
 	BOOL _digitsOnly;
 	id _delegate;
 	int _minLength;
 	int _maxLength;
 }
-+ (id)createBottomBarForInstance:(id)instance;
-+ (id)createTopBarForInstance:(id)instance;
++ (id)newBottomBarForInstance:(id)instance;
++ (id)newTopBarForInstance:(id)instance;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_sendClicked:(id)clicked;
 - (void)_setInputTextField:(id)field;

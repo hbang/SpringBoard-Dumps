@@ -31,3 +31,7 @@
 - (id)dictionaryByAddingEntriesFromDictionary:(id)dictionary;
 @end
 
+@interface NSDictionary (SBTypeSafety)
+- (id)objectForKey:(id)key ofClass:(Class)aClass;
+@end
+

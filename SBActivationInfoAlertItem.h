@@ -17,7 +17,7 @@
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;
-- (void)didPresentAlertSheet:(id)sheet;
+- (void)didPresentAlertView:(id)view;
 - (void)willActivate;
 - (BOOL)willShowInAwayItems;
 @end

@@ -9,9 +9,10 @@
 
 @interface SBDeviceLockViewWithKeyboardWildcat : SBDeviceLockViewWithKeyboard {
 }
-- (id)initWithStyle:(int)style interfaceOrientation:(int)orientation;
 - (void)_centerStatusView;
+- (id)_initWithStyle:(int)style interfaceOrientation:(int)orientation showsEmergencyCall:(BOOL)call;
 - (void)_layoutForCurrentOrientation;
+- (void)hardwareReturnKeyPressed:(id)pressed;
 - (void)returnKeyPressed:(id)pressed;
 - (void)setInterfaceOrientation:(int)orientation;
 - (void)setMinimized:(BOOL)minimized;

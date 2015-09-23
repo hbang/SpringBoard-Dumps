@@ -7,7 +7,7 @@
 
 
 
-@interface SMSAlertSheet : UIModalView {
+@interface SMSAlertSheet : UIAlertView {
 	BOOL _showingTagline;
 	BOOL _showingImage;
 }

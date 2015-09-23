@@ -9,8 +9,8 @@
 
 @interface SBTTYPromptAlertDisplay : SBSlidingAlertDisplay {
 }
-+ (id)createBottomBarForInstance:(id)instance;
-+ (id)createTopBarForInstance:(id)instance;
++ (id)newBottomBarForInstance:(id)instance;
++ (id)newTopBarForInstance:(id)instance;
 - (id)initWithSize:(CGSize)size;
 - (void)_chooseTTYMode:(id)mode;
 - (void)_chooseVoiceMode:(id)mode;

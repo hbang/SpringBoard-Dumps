@@ -23,16 +23,9 @@
 	unsigned _proximityEventsEnabled : 1;
 	unsigned _showsProgress;
 }
-+ (id)_applicationStateIDForDisplayIdentifier:(id)displayIdentifier urlScheme:(id)scheme;
-+ (id)_defaultValueForKey:(id)key applicationStateID:(id)anId;
-+ (id)_displayStatePath;
++ (id)_defaultDisplayState;
 + (id)defaultValueForKey:(id)key displayIdentifier:(id)identifier urlScheme:(id)scheme;
-+ (void)loadDisplayStates;
-+ (void)performDelayedSaveDisplayStates;
-+ (void)purgeOrphanedDisplayStates;
-+ (void)resetDefaultValuesForDisplayIdentifier:(id)displayIdentifier urlScheme:(id)scheme;
-+ (void)saveDisplayStates;
-+ (void)setDefaultValue:(id)value forKey:(id)key displayIdentifier:(id)identifier urlScheme:(id)scheme;
++ (void)setDefaultValue:(id)value forKey:(id)key displayIdentifier:(id)identifier;
 - (void)_exitedCommon;
 - (BOOL)accelerometerDeviceOrientationChangedEventsEnabled;
 - (double)accelerometerSampleInterval;
@@ -40,7 +33,6 @@
 - (BOOL)activationSetting:(unsigned)setting;
 - (id)activationSettingsDescription;
 - (id)activationValue:(unsigned)value;
-- (BOOL)allowsDoubleHeightStatusBar:(BOOL)bar;
 - (BOOL)allowsEventOnlySuspension;
 - (double)autoDimTime;
 - (double)autoLockTime;
@@ -57,7 +49,8 @@
 - (id)deactivationValue:(unsigned)value;
 - (void)dealloc;
 - (BOOL)defaultClassicAppZoomedIn;
-- (int)defaultStatusBarMode;
+- (BOOL)defaultStatusBarHidden;
+- (int)defaultStatusBarStyle;
 - (id)description;
 - (id)descriptionForActivationSettings:(unsigned)activationSettings;
 - (id)descriptionForDeactivationSettings:(unsigned)deactivationSettings;
@@ -66,13 +59,15 @@
 - (BOOL)displaySetting:(unsigned)setting;
 - (id)displaySettingsDescription;
 - (id)displayValue:(unsigned)value;
+- (int)effectiveStatusBarStyle;
 - (void)exitedAbnormally;
 - (void)exitedNormally;
 - (BOOL)expectsFaceContact;
+- (BOOL)isNowRecordingApplication;
 - (void)kill;
-- (int)launchInterfaceOrientationForCurrentOrientation;
-- (int)launchInterfaceOrientationForCurrentOrientation:(int)currentOrientation;
 - (void)launchSucceeded:(BOOL)succeeded;
+- (int)launchingInterfaceOrientationForCurrentOrientation;
+- (int)launchingInterfaceOrientationForCurrentOrientation:(int)currentOrientation;
 - (BOOL)proximityEventsEnabled;
 - (void)setAccelerometerDeviceOrientationChangedEventsEnabled:(BOOL)enabled;
 - (void)setAccelerometerSampleInterval:(double)interval;
@@ -90,10 +85,9 @@
 - (void)setSystemVolumeHUDEnabled:(BOOL)enabled forCategory:(id)category;
 - (BOOL)showSystemVolumeHUDForCategory:(id)category;
 - (BOOL)showsProgress;
-- (int)statusBarMode;
-- (void)updateStatusBar:(double)bar;
-- (void)updateStatusBar:(double)bar orientation:(int)orientation;
-- (void)updateStatusBar:(double)bar orientation:(int)orientation fence:(int)fence animation:(int)animation startTime:(double)time;
+- (BOOL)statusBarHidden;
+- (int)statusBarStyle;
+- (int)statusBarStyleOverridesToCancel;
 - (id)urlScheme;
 @end
 

@@ -7,11 +7,11 @@
 
 
 
-@interface SBDeleteIconAlertItem : SBAlertItem <UIModalViewDelegate> {
+@interface SBDeleteIconAlertItem : SBAlertItem <UIAlertViewDelegate> {
 	SBIcon *_icon;
 }
 - (id)initWithIcon:(id)icon;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (BOOL)dismissOnLock;

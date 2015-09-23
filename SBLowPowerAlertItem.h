@@ -12,15 +12,15 @@
 }
 + (BOOL)_shouldIgnoreChangeToBatteryLevel:(unsigned)batteryLevel;
 + (unsigned)_thresholdForLevel:(unsigned)level;
-+ (void)saveLowBatteryLogWithCapacity:(int)capacity;
++ (void)saveLowBatteryLogWithCapacity:(int)capacity voltage:(int)voltage;
 + (void)setBatteryLevel:(unsigned)level;
 + (id)systemVersionDescription;
 - (id)initWithLevel:(unsigned)level;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (BOOL)shouldShowInEmergencyCall;
 - (BOOL)shouldShowInLockScreen;
 - (BOOL)undimsScreen;
-- (void)willPresentAlertSheet:(id)sheet;
+- (void)willPresentAlertView:(id)view;
 @end
 

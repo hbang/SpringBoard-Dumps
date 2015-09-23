@@ -12,7 +12,7 @@
 }
 - (id)initWithApplication:(id)application;
 - (void)_showNotificationsPrefs;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (BOOL)shouldShowInLockScreen;

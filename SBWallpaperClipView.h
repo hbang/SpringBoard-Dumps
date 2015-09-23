@@ -12,6 +12,8 @@
 	UIImageView *_gradientView;
 	int _orientation;
 	CGPoint _contentOffset;
+	UIView *_maskView;
+	BOOL _usesFilter;
 }
 @property(assign, nonatomic) CGPoint contentOffset;
 @property(retain, nonatomic) SBWallpaperView *wallpaperView;
@@ -19,12 +21,14 @@
 - (void)_gradientAlphaChanged:(id)changed;
 - (void)_recomputeGeometry;
 - (void)_setWallpaperAlpha:(float)alpha;
+- (void)_updateMask;
 - (void)_updateWallpaperImage;
 - (void)_wallpaperAlphaChanged:(id)changed;
 - (void)_wallpaperFrameChanged:(id)changed;
 - (void)_wallpaperImageChanged:(id)changed;
 - (void)dealloc;
 - (void)setFrame:(CGRect)frame;
+- (void)setMaskView:(id)view;
 - (void)setWallpaperView:(id)view force:(BOOL)force;
 @end
 

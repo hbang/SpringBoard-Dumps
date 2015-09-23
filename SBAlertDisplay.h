@@ -16,6 +16,7 @@
 - (id)alert;
 - (void)alertDisplayBecameVisible;
 - (void)alertDisplayWillBecomeVisible;
+- (void)alertWindowResizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame2;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)dismiss;
 - (BOOL)displaysAboveStatusBar;

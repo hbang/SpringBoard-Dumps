@@ -7,7 +7,13 @@
 
 
 
-@interface SBUserNotificationAlertSheet : UIModalView {
+@interface SBUserNotificationAlertSheet : UIAlertView {
+	UIImage *_alertImage;
 }
+@property(retain, nonatomic) UIImage *alertImage;
+- (id)_maskedAlertImage;
+- (void)dealloc;
+- (void)dismissWithClickedButtonIndex:(int)clickedButtonIndex animated:(BOOL)animated;
+- (void)layout;
 @end
 

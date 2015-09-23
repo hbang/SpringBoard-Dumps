@@ -14,10 +14,9 @@
 }
 - (id)initWithCauseCode:(long)causeCode call:(CTCallRef)call;
 - (void)_callback;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (BOOL)isCallFailureAlertItem;
 - (id)lockLabel;
 - (void)performUnlockAction;
 @end

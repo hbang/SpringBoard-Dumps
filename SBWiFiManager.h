@@ -17,6 +17,7 @@
 	int _rssiThreshold;
 	BOOL _joining;
 	int _signalStrengthBars;
+	int _signalStrengthRSSI;
 	BOOL _signalStrengthHasBeenSet;
 	NSTimer *_signalStrengthTimer;
 	int _shouldPollSignalStrength;
@@ -57,6 +58,7 @@
 - (void)setDevice:(WiFiDeviceClient *)device;
 - (void)setWiFiEnabled:(BOOL)enabled;
 - (int)signalStrengthBars;
+- (int)signalStrengthRSSI;
 - (void)updateSignalStrength;
 - (void)userChoseNetwork:(id)network;
 - (BOOL)wiFiEnabled;

@@ -8,11 +8,9 @@
 
 
 @interface SBCalendarIconContentsView : UIView {
-	unsigned _highlighted : 1;
 }
 - (id)initWithFrame:(CGRect)frame;
 - (void)dealloc;
 - (void)drawRect:(CGRect)rect;
-- (void)setHighlighted:(BOOL)highlighted;
 @end
 

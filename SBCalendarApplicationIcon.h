@@ -11,8 +11,10 @@
 	SBCalendarIconContentsView *_dateContents;
 }
 - (id)initWithApplication:(id)application;
+- (CGImageRef)createComposedIconImageUsingContext:(CGContextRef)context;
 - (void)dealloc;
-- (void)setHighlighted:(BOOL)highlighted delayUnhighlight:(BOOL)unhighlight;
+- (void)prepareIconImageViewForRecycling;
+- (void)setShowsImages:(BOOL)images;
 - (void)updateInvitationBadge;
 @end
 

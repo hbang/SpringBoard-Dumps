@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppRatingsAlertSheet : UIModalView {
+@interface SBAppRatingsAlertSheet : UIAlertView {
 }
 - (void)layout;
 @end

@@ -9,10 +9,9 @@
 
 @interface SBDestinationHole : SBIcon {
 }
-+ (id)sharedInstance;
++ (id)destinationHole;
 - (id)_automationID;
-- (id)displayIdentifier;
-- (id)icon;
-- (void)setDisplayedIcon:(id)icon;
+- (void)setDisplayedIconImage:(id)image;
+- (BOOL)shouldCacheImageForFormat:(int)format;
 @end
 

@@ -7,11 +7,10 @@
 
 
 
-@interface SBAwayItemsView : UIModalView {
+@interface SBAwayItemsView : UIAlertView {
 	NSArray *_displayedItems;
 	float _widestLabel;
 }
-- (id)init;
 - (id)_labelForAwayItem:(id)awayItem count:(int)count;
 - (id)_titleForAwayItem:(id)awayItem count:(int)count;
 - (void)dealloc;

@@ -9,10 +9,10 @@
 
 @interface SBSIMToolkitTextAlertDisplay : SBSlidingAlertDisplay {
 	SBTextDisplayView *_contentView;
-	UIScroller *_scroller;
+	UIScrollView *_scroller;
 }
-+ (id)createBottomBarForInstance:(id)instance;
-+ (id)createTopBarForInstance:(id)instance;
++ (id)newBottomBarForInstance:(id)instance;
++ (id)newTopBarForInstance:(id)instance;
 - (id)initWithFrame:(CGRect)frame;
 - (void)accept:(id)accept;
 - (void)adjustScrollerFrame;
@@ -22,7 +22,8 @@
 - (void)dismiss;
 - (void)dismiss:(id)dismiss;
 - (void)displayDidTimeout;
-- (void)navigationBar:(id)bar buttonClicked:(int)clicked;
+- (void)leftNavigationButtonPressed;
+- (void)rightNavigationButtonPressed;
 - (void)setMiddleContentAlpha:(float)alpha;
 - (BOOL)showsDesktopImage;
 @end

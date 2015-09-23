@@ -22,19 +22,20 @@
 	BOOL _sentResponse;
 }
 - (id)init;
+- (void)_alertViewDismissed:(id)dismissed automatically:(BOOL)automatically;
 - (void)_dismissCurrentChildAlert;
 - (void)_enableTable;
 - (int)_joinRow;
 - (void)_setDelegateForAlert:(id)alert delegate:(id)delegate;
-- (void)alertSheet:(id)sheet buttonClicked:(int)clicked;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowMenuButtonDismissal;
 - (void)childAlertDismissed:(id)dismissed;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (id)deletionSetForLostNetworks:(id)lostNetworks originalNetworks:(id)networks;
 - (void)didDeactivateForReason:(int)reason;
-- (void)didPresentAlertSheet:(id)sheet;
-- (void)dismiss;
+- (void)didPresentAlertView:(id)view;
+- (void)dismiss:(int)dismiss;
 - (void)dismissAlertsForApplicationTransition;
 - (BOOL)dismissOnLock;
 - (id)insertionsForNewNetworks:(id)newNetworks;

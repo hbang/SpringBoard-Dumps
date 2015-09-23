@@ -11,11 +11,17 @@
 	NSMutableArray *_lockedAlertItems;
 	NSMutableArray *_unlockedAlertItems;
 	NSTimer *_autoDismissTimer;
+	CPDistributedNotificationCenter *_notificationCenter;
+	unsigned _notificationClientCount;
+	BOOL _systemShuttingDown;
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_notificationClientEnded:(id)ended;
+- (void)_notificationClientStarted:(id)started;
 - (void)activateAlertItem:(id)item;
 - (id)alertItemOfClass:(Class)aClass;
+- (id)alertItemsOfClass:(Class)aClass;
 - (void)autoDismissAlertItem:(id)item;
 - (void)convertAnimatingUnlockedAlertsToLockedAlerts;
 - (BOOL)deactivateAlertForMenuClick;
@@ -25,14 +31,16 @@
 - (id)deactivateAlertItemsForLock;
 - (void)deactivateAlertItemsOfClass:(Class)aClass;
 - (void)deactivateAlertItemsOfClass:(Class)aClass reason:(int)reason;
-- (void)deactivateAlertItemsUsingSelector:(SEL)selector reason:(int)reason;
 - (void)deactivateAllAlertItems;
+- (void)deactivateVisibleAlertItemOfClass:(Class)aClass reason:(int)reason;
 - (void)dealloc;
 - (BOOL)dontLockOverAlertItems;
 - (BOOL)isShowingAlert:(id)alert;
 - (BOOL)isShowingAlertOfClass:(Class)aClass;
 - (BOOL)isShowingAlerts;
+- (void)noteSystemShuttingDown;
 - (void)noteVolumeOrLockPressedOverLockedAlerts;
+- (void)notifySystemOfAlertItemActivation:(id)alertItemActivation;
 - (void)resetAutoDismissTimer;
 - (id)visibleAlertItem;
 @end
