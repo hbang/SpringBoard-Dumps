@@ -8,7 +8,14 @@
 
 
 @protocol APSConnectionDelegate <NSObject>
+@optional
+- (void)connection:(id)connection didChangeConnectedStatus:(BOOL)status;
+- (void)connection:(id)connection didFailToSendOutgoingMessage:(id)sendOutgoingMessage error:(id)error;
+@required
 - (void)connection:(id)connection didReceiveMessageForTopic:(id)topic userInfo:(id)info;
 - (void)connection:(id)connection didReceivePublicToken:(id)token;
+@optional
+- (void)connection:(id)connection didSendOutgoingMessage:(id)message;
+- (void)connectionDidReconnect:(id)connection;
 @end
 

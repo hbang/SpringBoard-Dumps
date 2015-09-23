@@ -12,13 +12,17 @@
 	UIView *_endSnapshot;
 	SBIcon *_icon;
 	BOOL _shouldCrossfade;
+	int _toOrientation;
+	int _fromOrientation;
+	unsigned _startIndex;
+	unsigned _endIndex;
 }
 @property(retain, nonatomic) SBIcon *icon;
-- (void)crossfadeWithDuration:(double)duration;
+- (void)crossfadeWithDuration:(double)duration inIconList:(id)iconList;
 - (void)dealloc;
 - (id)newSnapshot:(id)snapshot includingShadows:(BOOL)shadows;
 - (void)prepareToCrossfade;
 - (void)setOrigin:(CGPoint)origin;
-- (void)setStartIcon:(id)icon endIcon:(id)icon2;
+- (void)setStartIcon:(id)icon endIcon:(id)icon2 inIconList:(id)iconList fromOrientation:(int)orientation toOrientation:(int)orientation5;
 @end
 

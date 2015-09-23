@@ -7,8 +7,11 @@
 
 
 
-@interface SBDiskSpaceAlertItem : SBAlertItem {
+@interface SBDiskSpaceAlertItem : XXUnknownSuperclass {
+	int _usageButtonIndex;
 }
+- (void)_showUsagePrefs;
+- (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)performUnlockAction;
 - (BOOL)shouldShowInEmergencyCall;

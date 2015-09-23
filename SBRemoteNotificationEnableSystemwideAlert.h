@@ -7,7 +7,7 @@
 
 
 
-@interface SBRemoteNotificationEnableSystemwideAlert : SBAlertItem {
+@interface SBRemoteNotificationEnableSystemwideAlert : XXUnknownSuperclass {
 	SBApplication *_app;
 }
 - (id)initWithApplication:(id)application;

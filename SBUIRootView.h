@@ -8,10 +8,11 @@
 
 
 @interface SBUIRootView : XXUnknownSuperclass {
+	BOOL _animatingAlpha;
 }
 - (id)initWithFrame:(CGRect)frame;
+- (void)_actuallySetAlpha:(float)alpha;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
-- (void)dealloc;
 - (void)setAlpha:(float)alpha;
 @end
 

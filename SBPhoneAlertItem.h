@@ -7,7 +7,7 @@
 
 
 
-@interface SBPhoneAlertItem : SBAlertItem {
+@interface SBPhoneAlertItem : XXUnknownSuperclass {
 	NSString *_bodyText;
 	NSString *_title;
 }

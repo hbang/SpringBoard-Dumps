@@ -7,7 +7,7 @@
 
 
 
-@interface SBSIMLockAlertItem : SBAlertItem {
+@interface SBSIMLockAlertItem : XXUnknownSuperclass {
 	int _status;
 	int _okButtonIndex;
 	int _unlockButtonIndex;
@@ -15,15 +15,21 @@
 + (id)alertTitleForStatus:(int)status;
 + (id)alertTitleForStatus:(int)status languageCode:(id)code;
 - (id)initWithStatus:(int)status;
+- (void)_resetButtonIndexes;
 - (id)alertTextForLanguageCode:(id)languageCode;
 - (id)alertTitleForLanguageCode:(id)languageCode;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (BOOL)allowInSetup;
 - (BOOL)canUnlock;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)didDeactivateForReason:(int)reason;
+- (BOOL)forcesModalAlertAppearance;
 - (id)lockLabel;
+- (BOOL)pendInSetupIfNotAllowed;
 - (void)performUnlockAction;
+- (BOOL)reappearsAfterLock;
+- (BOOL)reappearsAfterUnlock;
 - (int)status;
 - (void)unlock;
 @end

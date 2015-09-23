@@ -8,25 +8,12 @@
 
 
 @interface SBAppContextHostView : XXUnknownSuperclass {
-	NSMutableArray *_contexts;
-	BOOL _hostingEnabled;
+	SBAppContextHostManager *_manager;
 }
-@property(readonly, assign, nonatomic) unsigned count;
-@property(assign, nonatomic, getter=isHostingEnabled) BOOL hostingEnabled;
+@property(assign, nonatomic) SBAppContextHostManager *manager;
 - (id)initWithDefaultSize;
 - (id)initWithFrame:(CGRect)frame;
-- (void)_setLayerFrameAndTransform:(id)transform;
-- (void *)createIOSurfaceForFrame:(CGRect)frame;
-- (void *)createIOSurfaceForFrame:(CGRect)frame includeAdditionalContext:(unsigned)context outTransform:(CGAffineTransform *)transform;
-- (void *)createIOSurfaceForFrame:(CGRect)frame includeAdditionalContext:(unsigned)context usePurpleGfx:(BOOL)gfx outTransform:(CGAffineTransform *)transform;
-- (void *)createIOSurfaceForFrame:(CGRect)frame outTransform:(CGAffineTransform *)transform;
-- (void)dealloc;
 - (id)description;
-- (void)didOrderOutContextWithId:(unsigned)anId;
-- (BOOL)isContextIdHidden:(unsigned)hidden;
-- (void)setContextId:(unsigned)anId hidden:(BOOL)hidden;
-- (void)setHostingEnabled:(BOOL)enabled resetOnDisable:(BOOL)disable;
-- (void)setOrderOutPending:(BOOL)pending forContextId:(unsigned)contextId;
-- (void)willOrderInContextWithId:(unsigned)anId windowLevel:(float)level windowOutput:(int)output;
+- (id)hitTest:(CGPoint)test withEvent:(id)event;
 @end
 

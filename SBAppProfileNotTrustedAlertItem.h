@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppProfileNotTrustedAlertItem : SBAlertItem <UIAlertViewDelegate> {
+@interface SBAppProfileNotTrustedAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBApplicationIcon *_icon;
 	BOOL _launchApp;
 }

@@ -7,7 +7,7 @@
 
 
 
-@interface SBVideoPermissionAlertItem : SBAlertItem {
+@interface SBVideoPermissionAlertItem : XXUnknownSuperclass {
 	NSURL *_url;
 }
 - (id)initWithURL:(id)url;

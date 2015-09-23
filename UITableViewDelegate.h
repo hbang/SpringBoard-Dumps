@@ -11,6 +11,7 @@
 @optional
 - (void)tableView:(id)view accessoryButtonTappedForRowWithIndexPath:(id)indexPath;
 - (int)tableView:(id)view accessoryTypeForRowWithIndexPath:(id)indexPath;
+- (BOOL)tableView:(id)view canPerformAction:(SEL)action forRowAtIndexPath:(id)indexPath withSender:(id)sender;
 - (void)tableView:(id)view didDeselectRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didEndEditingRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didSelectRowAtIndexPath:(id)indexPath;
@@ -19,7 +20,9 @@
 - (float)tableView:(id)view heightForHeaderInSection:(int)section;
 - (float)tableView:(id)view heightForRowAtIndexPath:(id)indexPath;
 - (int)tableView:(id)view indentationLevelForRowAtIndexPath:(id)indexPath;
+- (void)tableView:(id)view performAction:(SEL)action forRowAtIndexPath:(id)indexPath withSender:(id)sender;
 - (BOOL)tableView:(id)view shouldIndentWhileEditingRowAtIndexPath:(id)indexPath;
+- (BOOL)tableView:(id)view shouldShowMenuForRowAtIndexPath:(id)indexPath;
 - (id)tableView:(id)view targetIndexPathForMoveFromRowAtIndexPath:(id)indexPath toProposedIndexPath:(id)proposedIndexPath;
 - (id)tableView:(id)view titleForDeleteConfirmationButtonForRowAtIndexPath:(id)indexPath;
 - (id)tableView:(id)view viewForFooterInSection:(int)section;

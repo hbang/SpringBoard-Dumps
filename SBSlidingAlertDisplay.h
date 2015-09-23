@@ -7,7 +7,7 @@
 
 
 
-@interface SBSlidingAlertDisplay : SBAlertDisplay {
+@interface SBSlidingAlertDisplay : SBAlertDisplay <SBDeviceLockViewOwner> {
 	SBWallpaperView *_backgroundView;
 	UIImage *_defaultDesktopImage;
 	UIView *_topBar;
@@ -26,7 +26,7 @@
 	unsigned _isDisplayingWallpaper : 1;
 	int _currentOrientation;
 	UIStatusBar *_fakeStatusBarForSlideToDeviceLock;
-	CGAffineTransform _originalStatusBarTransform;
+	id _lockAnimationCompletionHandler;
 }
 + (id)newBottomBarForInstance:(id)instance;
 + (id)newTopBarForInstance:(id)instance;
@@ -59,11 +59,13 @@
 - (void)animateToHidingDeviceLockFinished;
 - (void)animateToShowingDeviceLock:(BOOL)showingDeviceLock duration:(float)duration;
 - (void)animateToShowingDeviceLockFinished;
+- (id)backgroundView;
 - (void)beginAnimatingDisplayIn:(BOOL)anIn;
 - (id)bottomBar;
 - (BOOL)bottomBarIsVisible;
 - (int)currentOrientation;
 - (void)dealloc;
+- (id)deviceLockView;
 - (void)deviceLockViewCancelButtonPressed:(id)pressed;
 - (void)deviceLockViewEmergencyCallButtonPressed:(id)pressed;
 - (void)deviceLockViewPasscodeDidChange:(id)deviceLockViewPasscode;
@@ -91,6 +93,7 @@
 - (void)leftNavigationButtonPressed;
 - (id)lockBar;
 - (CGRect)middleFrame;
+- (void)performAdditionalDismissAnimations;
 - (void)performAnimateDisplayIn;
 - (void)removeBlockedStatus;
 - (int)requiredUnlockStyle;
@@ -98,7 +101,7 @@
 - (void)setMiddleContentAlpha:(float)alpha;
 - (void)setShowingDeviceLock:(BOOL)lock;
 - (void)setShowingDeviceLock:(BOOL)lock animated:(BOOL)animated;
-- (void)setShowingDeviceLock:(BOOL)lock duration:(float)duration;
+- (void)setShowingDeviceLock:(BOOL)lock duration:(float)duration completion:(id)completion;
 - (BOOL)shouldAddClippingViewDuringRotation;
 - (BOOL)shouldAnimateIconsIn;
 - (BOOL)shouldAnimateIconsOut;
@@ -109,6 +112,8 @@
 - (BOOL)shouldUseTransparentStatusBar;
 - (void)showBlockedStatus;
 - (BOOL)showsDesktopImage;
+- (CGAffineTransform)slideBottomBarToVisible:(BOOL)visible;
+- (CGAffineTransform)slideTopBarToVisible:(BOOL)visible;
 - (id)topBar;
 - (BOOL)topBarIsVisible;
 - (void)updateDesktopImage:(id)image;

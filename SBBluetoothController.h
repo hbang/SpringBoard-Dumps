@@ -9,12 +9,13 @@
 
 @interface SBBluetoothController : XXUnknownSuperclass {
 	NSMutableArray *_devices;
-	BOOL _tetheringSupported;
 }
 + (id)sharedInstance;
 - (void)addDeviceNotification:(id)notification;
 - (void)batteryChanged:(id)changed;
 - (int)batteryLevel;
+- (void)bluetoothDeviceEndedVoiceControl:(id)control;
+- (void)bluetoothDeviceInitiatedVoiceControl:(id)control;
 - (BOOL)canReportBatteryLevel;
 - (void)connectionChanged:(id)changed;
 - (void)dealloc;
@@ -22,13 +23,10 @@
 - (id)firstBTDeviceToReportBatteryLevel;
 - (void)iapDeviceChanged:(id)changed;
 - (void)noteDevicesChanged;
-- (void)powerChangedNotification:(id)notification;
 - (void)removeDeviceNotification:(id)notification;
 - (void)startWatchingForDevices;
 - (void)stopWatchingForDevices;
 - (BOOL)tetheringConnected;
-- (BOOL)tetheringPaired;
-- (BOOL)tetheringSupported;
 - (void)updateBattery;
 @end
 

@@ -16,22 +16,15 @@
 	float m;
 	float dm;
 	float minm;
-	float phi;
-	float b;
-	float psi0;
-	float gamma;
-	float psi1;
+	float psi_n;
+	float psi_d;
+	float zeta;
 }
-@property(readonly, assign, nonatomic) float dampedFrequency;
-@property(readonly, assign, nonatomic) float dampingFactor;
-@property(assign, nonatomic) float dragCoefficient;
 @property(assign, nonatomic) float endingAmplitude;
 @property(assign, nonatomic) float mass;
 @property(assign, nonatomic) float massDecay;
 @property(assign, nonatomic) float minimumMass;
 @property(assign, nonatomic) float minimumSpringStrength;
-@property(readonly, assign, nonatomic) float naturalFrequency;
-@property(assign, nonatomic) float phase;
 @property(assign, nonatomic) float springDecay;
 @property(assign, nonatomic) float springStrength;
 @property(assign, nonatomic) float startingAmplitude;

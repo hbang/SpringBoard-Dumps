@@ -7,7 +7,7 @@
 
 
 
-@interface SBDataPlanAlertItem : SBAlertItem {
+@interface SBDataPlanAlertItem : XXUnknownSuperclass {
 }
 - (void)didDeactivateForReason:(int)reason;
 @end

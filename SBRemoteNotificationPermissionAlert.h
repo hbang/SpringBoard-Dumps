@@ -7,10 +7,11 @@
 
 
 
-@interface SBRemoteNotificationPermissionAlert : SBAlertItem {
+@interface SBRemoteNotificationPermissionAlert : XXUnknownSuperclass {
 	SBApplication *_app;
+	int _types;
 }
-- (id)initWithApplication:(id)application;
+- (id)initWithApplication:(id)application notificationTypes:(int)types;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;

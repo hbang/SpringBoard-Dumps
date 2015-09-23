@@ -7,7 +7,7 @@
 
 
 
-@interface SBGameDeletionAlertItem : SBAlertItem <UIAlertViewDelegate> {
+@interface SBGameDeletionAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBUserInstalledApplicationIcon *_icon;
 }
 - (id)initWithIcon:(id)icon;

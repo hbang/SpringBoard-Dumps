@@ -19,7 +19,6 @@
 	int _currentClipNo;
 	BOOL _voiceTranscription;
 	UITextField *_textField;
-	UIKeyboard *_keyboard;
 	NSMutableArray *_transcripts;
 	NSMutableArray *_voiceClips;
 	AVController *_avController;

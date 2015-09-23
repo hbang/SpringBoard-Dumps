@@ -7,12 +7,8 @@
 
 
 
-@interface SBLinenNotchView : XXUnknownSuperclass {
+@interface SBLinenNotchView : SBFolderNotchView {
 }
-+ (id)_imageForNotchInfo:(XXStruct_9ihRqB)notchInfo;
-+ (id)_keyForNotchInfo:(XXStruct_9ihRqB)notchInfo;
-+ (id)notchForNotchInfo:(XXStruct_9ihRqB)notchInfo;
-- (id)initWithFrame:(CGRect)frame notchInfo:(XXStruct_9ihRqB)info;
-- (void)setNotchInfo:(XXStruct_9ihRqB)info;
++ (id)_squareImageForNotchInfo:(XXStruct_9ihRqB)notchInfo orientation:(int)orientation;
 @end
 

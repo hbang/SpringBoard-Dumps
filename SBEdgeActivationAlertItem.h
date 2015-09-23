@@ -7,7 +7,7 @@
 
 
 
-@interface SBEdgeActivationAlertItem : SBAlertItem {
+@interface SBEdgeActivationAlertItem : XXUnknownSuperclass {
 	int _error;
 	NSString *_reason;
 	BOOL _suggestWiFi;

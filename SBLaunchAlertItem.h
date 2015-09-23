@@ -7,7 +7,7 @@
 
 
 
-@interface SBLaunchAlertItem : SBAlertItem {
+@interface SBLaunchAlertItem : XXUnknownSuperclass {
 	SBDisplay *_associatedDisplay;
 	int _type;
 	NSString *_bundleID;

@@ -7,9 +7,9 @@
 
 
 
-@interface SBAppRatingsAlertItem : SBAlertItem <UIAlertViewDelegate> {
+@interface SBAppRatingsAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBUserInstalledApplicationIcon *_icon;
-	UIPushButton *_rateButton;
+	UIButton *_rateButton;
 	BOOL _uninstallOnDismiss;
 }
 - (id)initWithIcon:(id)icon uninstallOnDismiss:(BOOL)dismiss;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppProfileExpiredAlertItem : SBAlertItem <UIAlertViewDelegate> {
+@interface SBAppProfileExpiredAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	SBApplicationIcon *_icon;
 }
 - (id)initWithIcon:(id)icon;

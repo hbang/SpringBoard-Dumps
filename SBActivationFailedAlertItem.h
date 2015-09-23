@@ -7,7 +7,7 @@
 
 
 
-@interface SBActivationFailedAlertItem : SBAlertItem <UIAlertViewDelegate> {
+@interface SBActivationFailedAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
 	BOOL _showRetryButton;
 	BOOL _showSupportNumber;
 }

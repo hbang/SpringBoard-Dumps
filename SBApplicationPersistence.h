@@ -14,6 +14,7 @@
 	dispatch_queue_s *_writeQueue;
 }
 + (id)_statePath;
++ (void)migrateSystemLocalNotifications;
 + (id)sharedInstance;
 - (id)init;
 - (void)_flushSynchronously;

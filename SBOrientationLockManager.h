@@ -8,25 +8,26 @@
 
 
 @interface SBOrientationLockManager : XXUnknownSuperclass {
-	int _override;
-	int _lockedOrientation;
-	int _overrideOrientation;
+	NSMutableSet *_lockOverrideReasons;
+	int _userLockedOrientation;
 }
 + (id)sharedInstance;
-- (void)_changeLockState:(id)state;
-- (int)_deviceOrientationFromInterfaceOrientation:(int)interfaceOrientation;
-- (int)_effectiveOrientation;
+- (id)init;
 - (BOOL)_effectivelyLocked;
+- (void)_updateLockStateWithChanges:(id)changes;
+- (void)_updateLockStateWithOrientation:(int)orientation changes:(id)changes;
+- (void)_updateLockStateWithOrientation:(int)orientation forceUpdateHID:(BOOL)hid changes:(id)changes;
 - (void)dealloc;
+- (void)enableLockOverrideForReason:(id)reason forceOrientation:(int)orientation;
+- (void)enableLockOverrideForReason:(id)reason suggestOrientation:(int)orientation;
 - (BOOL)isLocked;
 - (void)lock;
 - (void)lock:(int)lock;
-- (int)lockOrientation;
-- (int)lockOverride;
-- (int)overrideOrientation;
+- (BOOL)lockOverrideEnabled;
 - (void)restoreStateFromPrefs;
-- (void)setLockOverride:(int)override orientation:(int)orientation;
+- (void)setLockOverrideEnabled:(BOOL)enabled forReason:(id)reason;
 - (void)unlock;
 - (void)updateLockOverrideForCurrentDeviceOrientation;
+- (int)userLockOrientation;
 @end
 
