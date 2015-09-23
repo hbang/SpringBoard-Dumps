@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 	int _mode;
 	SBStarkLockOutView *_modeView;
 	SBStarkLockOutView *_previousModeView;
+	FBSceneHostManager *_layoutWindowHostManager;
+	NSString *_layoutWindowHostRequester;
 	BOOL _inDealloc;
 	BOOL _pendingAnimated;
 	int _pendingMode;

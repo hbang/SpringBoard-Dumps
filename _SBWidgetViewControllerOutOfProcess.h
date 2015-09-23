@@ -39,15 +39,15 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic, getter=_didUpdate, setter=_setDidUpdate:) BOOL didUpdate;
 @property(assign, nonatomic, getter=_isDisconnectingRemoteViewController, setter=_setDisconnectingRemoteViewController:) BOOL disconnectingRemoteViewController;
 @property(assign, nonatomic, getter=_disconnectionTimer, setter=_setDisconnectionTimer:) NSTimer *disconnectionTimer;
-@property(readonly, assign, nonatomic, getter=_diskWriteQueue) NSObject<OS_dispatch_queue> *diskWriteQueue;
+@property(readonly, retain, nonatomic, getter=_diskWriteQueue) NSObject<OS_dispatch_queue> *diskWriteQueue;
 @property(assign, nonatomic, getter=_isEncodingLayerTree, setter=_setEncodingLayerTree:) BOOL encodingLayerTree;
 @property(copy, nonatomic, getter=_extensionRequest, setter=_setExtensionRequest:) id<NSCopying> extensionRequest;
 @property(assign, nonatomic, setter=_setImplementsPerformUpdate:) BOOL implementsPerformUpdate;
 @property(retain, nonatomic, getter=_lastUnanticipatedDisconnectionDate, setter=_setLastUnanticipatedDisconnectionDate:) NSDate *lastUnanticipatedDisconnectionDate;
-@property(readonly, assign, nonatomic, getter=_openAppearanceTransactions) NSMapTable *openAppearanceTransactions;
-@property(readonly, assign, nonatomic, getter=_proxyConnectionQueue) NSObject<OS_dispatch_queue> *proxyConnectionQueue;
-@property(readonly, assign, nonatomic, getter=_proxyDisconnectionQueue) NSObject<OS_dispatch_queue> *proxyDisconnectionQueue;
-@property(readonly, assign, nonatomic, getter=_proxyRequestQueue) NSObject<OS_dispatch_queue> *proxyRequestQueue;
+@property(readonly, retain, nonatomic, getter=_openAppearanceTransactions) NSMapTable *openAppearanceTransactions;
+@property(readonly, retain, nonatomic, getter=_proxyConnectionQueue) NSObject<OS_dispatch_queue> *proxyConnectionQueue;
+@property(readonly, retain, nonatomic, getter=_proxyDisconnectionQueue) NSObject<OS_dispatch_queue> *proxyDisconnectionQueue;
+@property(readonly, retain, nonatomic, getter=_proxyRequestQueue) NSObject<OS_dispatch_queue> *proxyRequestQueue;
 @property(retain, nonatomic, getter=_remoteViewController, setter=_setRemoteViewController:) _SBWidgetRemoteViewController *remoteViewController;
 @property(copy, nonatomic, getter=_remoteViewControllerDisconnectionHandler, setter=_setRemoteViewControllerDisconnectionHandler:) id remoteViewControllerDisconnectionHandler;
 @property(assign, nonatomic, getter=_isRequestingRemoteViewController, setter=_setRequestingRemoteViewController:) BOOL requestingRemoteViewController;
@@ -85,10 +85,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isRemoteViewVisible;
 - (void)_loadSnapshotViewFromDiskIfNecessary:(id)diskIfNecessary;
 - (UIEdgeInsets)_marginInsets;
+- (CGSize)_maxSize;
+- (void)_moveSnapshotsToCache;
 - (void)_packageViewFromURL:(id)url reply:(id)reply;
 - (void)_packageViewWithBlock:(id)block reply:(id)reply;
 - (void)_packageViewWithData:(id)data reply:(id)reply;
 - (void)_removeAllSnapshots;
+- (void)_removeAllSnapshotsAndCache:(BOOL)cache;
 - (void)_removeSnapshotAtURL:(id)url;
 - (id)_request:(id)request withDescription:(id)description forQueue:(id)queue trampolinedToMainQueue:(BOOL)mainQueue;
 - (void)_requestRemoteViewController:(id)controller;
@@ -97,7 +100,6 @@ __attribute__((visibility("hidden")))
 - (void)_setupRequestQueue;
 - (id)_snapshotIdentifierForLayoutMode:(int)layoutMode;
 - (void)_synchronizeCachedState;
-- (CGSize)_todayContentMaxSize;
 - (float)_updatePreferredContentSizeWithHeight:(float)height;
 - (id)_valueForCachedStateKey:(id)cachedStateKey;
 - (id)_widgetSnapshotURLForLayoutMode:(int)layoutMode ensuringDirectoryExists:(BOOL)exists;
@@ -122,6 +124,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)view;
 - (void)viewWillDisappear:(BOOL)view;
-- (void)widgetDidTerminateWithError:(id)widget;
+- (void)widget:(id)widget didTerminateWithError:(id)error;
 @end
 

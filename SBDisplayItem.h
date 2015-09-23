@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 	NSString *_type;
 	NSString *_displayIdentifier;
 }
-@property(readonly, assign, nonatomic) NSString *displayIdentifier;
-@property(readonly, assign, nonatomic) NSString *type;
+@property(readonly, copy, nonatomic) NSString *displayIdentifier;
+@property(readonly, copy, nonatomic) NSString *type;
 + (id)displayItemWithType:(NSString *)type displayIdentifier:(id)identifier;
-- (id)initWithPlistRepresentation:(id)plistRepresentation;
++ (id)homeScreenDisplayItem;
++ (id)sideSwitcherDisplayItem;
+- (id)init;
 - (id)initWithType:(NSString *)type displayIdentifier:(id)identifier;
 - (id)_calculateUniqueStringRepresentation;
 - (id)copyWithZone:(NSZone *)zone;
@@ -24,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (unsigned)hash;
 - (BOOL)isEqual:(id)equal;
-- (id)plistRepresentation;
 - (id)uniqueStringRepresentation;
 @end
 

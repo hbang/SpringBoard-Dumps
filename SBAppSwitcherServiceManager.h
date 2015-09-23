@@ -9,7 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherServiceManager : XXUnknownSuperclass {
-	SBAppSwitcherServices *_services;
+	SBAppSwitcherServiceSet *_services;
 }
 + (id)sharedInstance;
 - (void)dealloc;

@@ -12,7 +12,9 @@ __attribute__((visibility("hidden")))
 	SBStarkScreenController *_screenController;
 }
 - (id)initWithParentView:(id)parentView fromOrientation:(int)orientation starkScreenController:(id)controller;
-- (void)_doRealDosido:(id)dosido withSpacingBetween:(float)spacingBetween completion:(id)completion;
+- (void)_animateDosidoWithFactory:(id)factory completion:(id)completion;
+- (void)_cleanupDosido;
+- (void)_prepareDosido;
 - (void)dealloc;
 @end
 

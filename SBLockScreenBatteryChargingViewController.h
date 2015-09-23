@@ -9,15 +9,15 @@
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenBatteryChargingViewController : XXUnknownSuperclass {
+	BOOL _shouldDisplayBattery;
 	SBLockScreenBatteryChargingView *_chargingView;
 	NSTimer *_visibilityTimer;
 	BOOL _displayDetailedCharge;
-	int _chargePercentage;
+	NSMutableArray *_connectedDevices;
 	id<SBLockScreenBatteryChargingViewControllerDelegate> _delegate;
 }
 @property(assign, nonatomic) id<SBLockScreenBatteryChargingViewControllerDelegate> delegate;
-- (id)initWithNibName:(id)nibName bundle:(id)bundle;
-- (void)_batteryStatusChanged:(id)changed;
+- (id)initForDisplayOfBattery:(BOOL)battery;
 - (void)_clearVisibilityTimer;
 - (void)_visibilityTimerFired:(id)fired;
 - (BOOL)batteryVisible;

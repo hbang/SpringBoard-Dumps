@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
 	SBAlertItem *_currentAlertItem;
 	SBUIBiometricEventMonitor *_bioEventMonitor;
 }
-@property(readonly, assign, nonatomic) SBAlertItem *currentAlertItem;
-@property(readonly, assign, nonatomic) NSArray *presentedAlertItems;
+@property(readonly, retain, nonatomic) SBAlertItem *currentAlertItem;
+@property(readonly, retain, nonatomic) NSArray *presentedAlertItems;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (void)_addPresentedAlertItem:(id)item;
 - (void)_pendAlertItem:(id)item;
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)dequeueAllPendingAlertItems;
 - (id)dequeueAllPendingSuperModalAlertItems;
+- (BOOL)hasAlertItem:(id)item;
 - (BOOL)hasSuperModalAlertItems;
 - (void)pendOrDeactivateCurrentAlertItem;
 @end

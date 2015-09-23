@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 	NSMapTable *_controllersToGuestGestures;
 	NSMapTable *_controllersToConflictingGuestGestures;
 	int _gestureState;
+	id<SBCoordinatedPresenting> _previousActiveController;
 	id<SBCoordinatedPresenting> _activeController;
 	unsigned _activeHintEdge;
 	NSDate *_initialTouchTimeStamp;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) SBLockScreenView *lockScreenView;
 @property(retain, nonatomic) SBLockScreenHintLongPressGestureRecognizer *longPressGesture;
 @property(retain, nonatomic) SBLockScreenHintPanGestureRecognizer *panGesture;
+@property(retain, nonatomic) id<SBCoordinatedPresenting> previousActiveController;
 @property(readonly, assign) Class superclass;
 @property(retain, nonatomic) SBLockScreenHintTapGestureRecognizer *tapGesture;
 - (id)init;
@@ -58,7 +60,8 @@ __attribute__((visibility("hidden")))
 - (id)_controller:(id)controller managedGestureLikeGesture:(id)gesture;
 - (id)_controllerForGesture:(id)gesture;
 - (id)_coordinatedPresentingControllerWithIdentifier:(int)identifier;
-- (void)_dismissControllerForPress:(BOOL)press;
+- (BOOL)_didActiveControllerChange;
+- (void)_dismissControllerForPress:(id)press abortingCurrentAnimation:(BOOL)animation;
 - (BOOL)_doesController:(id)controller manageGestureLikeGesture:(id)gesture;
 - (double)_elapsedTapPeriod;
 - (void)_endControllerPresentationForPanInState:(int)state;
@@ -67,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleTap:(id)tap;
 - (BOOL)_hasCoordinatedPresentingController:(id)controller;
 - (BOOL)_hasTapPeriodElapsed;
+- (unsigned)_hintEdgeForController:(id)controller;
 - (BOOL)_hintGestureShouldBegin:(id)_hintGesture;
 - (void)_initializeInitialTouchTimeStamp;
 - (void)_installLocalGestures;
@@ -83,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)_presentingController:(id)controller willHandleTap:(id)tap;
 - (void)_reenableGestures;
 - (void)_removeAllGestures;
+- (void)_removeTapGestureFailureRequirementFromGuestGestures:(id)guestGestures;
 - (void)_resetGesture:(id)gesture;
 - (void)_resetGesture:(id)gesture forController:(id)controller;
 - (void)_resetGestureSequence;
@@ -92,8 +97,8 @@ __attribute__((visibility("hidden")))
 - (id)_tapGestureForActiveController;
 - (void)_tapPeriodElapsed;
 - (CGRect)_topGrabberZone;
+- (void)_updateActiveControllerPresentationForPress:(BOOL)press;
 - (void)_updateControllerPresentationForPan;
-- (void)_updateControllerPresentationForPress:(BOOL)press;
 - (void)_updateControllerPresentationForTap;
 - (void)_updateControllerPresentationForTapOrPress:(id)tapOrPress withAnimation:(id)animation abortingCurrentAnimation:(BOOL)animation3;
 - (void)_updateGrabberStateForControllerIfNecessary:(id)controllerIfNecessary;

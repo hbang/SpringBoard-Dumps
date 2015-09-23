@@ -8,14 +8,20 @@
 
 
 @protocol SBAppSwitcherPageContentView <NSObject>
-- (int)orientation;
+- (float)cornerRadius;
+@optional
+- (void)interactionDidEnd:(BOOL)interaction;
+@required
+- (void)invalidate;
 @optional
 - (void)prepareToBecomeVisibleIfNecessary;
 - (void)respondToBecomingInvisibleIfNecessary;
 @required
-- (void)setOrientation:(int)orientation;
+- (void)setCornerRadius:(float)radius;
 @optional
-- (void)simplifyForMotion;
-- (void)unsimplifyAfterMotion;
+- (void)transitionDidEnd:(BOOL)transition forPresentation:(BOOL)presentation;
+- (void)updateTransitionProgress:(float)progress;
+- (void)viewDismissing:(id)dismissing withInteraction:(BOOL)interaction andInitialProgress:(float)progress forTransitionRequest:(id)transitionRequest;
+- (void)viewPresenting:(id)presenting withInteraction:(BOOL)interaction andInitialProgress:(float)progress forTransitionRequest:(id)transitionRequest;
 @end
 

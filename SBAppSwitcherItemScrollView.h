@@ -9,10 +9,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherItemScrollView : XXUnknownSuperclass {
-	SBAppSwitcherPageView *_item;
+	SBMainAppSwitcherPageView *_item;
 	int _layoutOrientation;
 }
-@property(retain, nonatomic) SBAppSwitcherPageView *item;
+@property(retain, nonatomic) SBMainAppSwitcherPageView *item;
 @property(assign, nonatomic) int layoutOrientation;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_disableScrolling;

@@ -7,25 +7,53 @@
 
 
 
+@protocol SBDosidoAnimator <SBUIAnimationStepping>
+- (void)animateDosidoWithFactory:(id)factory completion:(id)completion;
+- (void)cancelDosido;
+@end
+
 __attribute__((visibility("hidden")))
-@interface SBDosidoAnimator : XXUnknownSuperclass {
-	int _fromOrientation;
+@interface SBDosidoAnimator : XXUnknownSuperclass <SBDosidoAnimator> {
 	UIView *_parentView;
 	UIView *_transformContainer;
 	UIView *_transformedContent;
+	SBAnimationStepper *_stepper;
+	id _completion;
+	BOOL _animationCompleted;
+	BOOL _stepped;
+	BOOL _cleanedUp;
+	BOOL _hidden;
+	int _fromOrientation;
+	float _spacingBetweenViews;
+	unsigned _direction;
 	UIView *_fromView;
 	UIView *_toView;
 }
-@property(readonly, assign, nonatomic) UIView *animationContainerView;
-@property(readonly, assign, nonatomic) float defaultDuration;
-@property(retain, nonatomic, getter=_fromView, setter=_setFromView:) UIView *fromView;
-@property(retain, nonatomic, getter=_toView, setter=_setToView:) UIView *toView;
+@property(readonly, retain, nonatomic) UIView *animationContainerView;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(assign, nonatomic) unsigned direction;
+@property(readonly, assign, nonatomic) int fromOrientation;
+@property(retain, nonatomic) UIView *fromView;
+@property(readonly, assign) unsigned hash;
+@property(assign, nonatomic, getter=isHidden) BOOL hidden;
+@property(assign, nonatomic) float spacingBetweenViews;
+@property(assign, nonatomic) float stepPercentage;
+@property(assign, nonatomic, getter=isStepped) BOOL stepped;
+@property(readonly, assign) Class superclass;
+@property(retain, nonatomic) UIView *toView;
++ (float)defaultDuration;
+- (id)init;
 - (id)initWithParentView:(id)parentView fromOrientation:(int)orientation;
-- (void)_doRealDosido:(id)dosido withSpacingBetween:(float)spacingBetween completion:(id)completion;
-- (void)_doReducedMotionDosido:(id)dosido completion:(id)completion;
-- (void)_rotateViewIfNecessary:(id)necessary inverted:(BOOL)inverted;
+- (void)_animateDosidoWithFactory:(id)factory completion:(id)completion;
+- (void)_cleanupDosido;
+- (void)_noteAnimationCompleted:(BOOL)completed;
+- (void)_prepareDosido;
 - (id)_transformedContentView;
-- (void)animateFromView:(id)view toView:(id)view2 withSpacingBetween:(float)spacingBetween outAnimationFactory:(id *)factory completion:(id)completion;
+- (void)animateDosidoWithFactory:(id)factory completion:(id)completion;
+- (void)cancelDosido;
 - (void)dealloc;
+- (void)finishSteppingBackwardToStart;
+- (void)finishSteppingForwardToEnd;
 @end
 

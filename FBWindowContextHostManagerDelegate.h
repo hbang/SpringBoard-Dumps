@@ -7,7 +7,7 @@
 
 
 
-@protocol FBWindowContextHostManagerDelegate <NSObject>
+@protocol FBWindowContextHostManagerDelegate <FBSceneHostManagerDelegate>
 @optional
 - (id)windowContextHostManager:(id)manager overrideRequester:(id)requester;
 - (BOOL)windowContextHostManager:(id)manager shouldEnableContextHostingForRequester:(id)requester priority:(int)priority;

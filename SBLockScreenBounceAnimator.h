@@ -10,6 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBLockScreenBounceAnimator : XXUnknownSuperclass <UIDynamicAnimatorDelegate, _UISettingsKeyObserver, UIGestureRecognizerDelegate> {
 	NSMutableSet *_tapExcludedViews;
+	NSMutableSet *_tapExcludedZones;
 	BOOL _isAnimating;
 	BOOL _bounceEnabled;
 	UIView *_view;
@@ -50,6 +51,8 @@ __attribute__((visibility("hidden")))
 - (void)_resetAnimator;
 - (void)_updateSettings;
 - (void)addTapExcludedView:(id)view;
+- (void)addTapExcludedZone:(CGRect)zone;
+- (BOOL)allowTapForGestureRecognizer:(id)gestureRecognizer;
 - (void)cancelAnimation;
 - (void)cancelGestureRecognizer:(id)recognizer;
 - (void)dealloc;

@@ -11,9 +11,11 @@ __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadeRemoteAlertToHome : SBUIMainScreenAnimationController {
 	SBAlertManager *_alertManager;
 	SBRemoteAlertAdapter *_alert;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
+	SBWindowSelfHostWrapper *_appHostWrapper;
 	int _targetStatusBarStyle;
 }
-- (id)initWithDeactivatingAlert:(id)deactivatingAlert alertManager:(id)manager;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_cleanupAnimation;
 - (void)_prepareAnimation;
 - (void)_startAnimation;

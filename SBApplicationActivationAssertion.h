@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 	SBApplication *_app;
 	NSString *_name;
 }
-@property(readonly, assign, nonatomic) SBApplication *application;
+@property(readonly, retain, nonatomic) SBApplication *application;
 @property(copy, nonatomic) NSString *name;
 - (id)initWithApplication:(id)application name:(id)name;
 - (void)dealloc;

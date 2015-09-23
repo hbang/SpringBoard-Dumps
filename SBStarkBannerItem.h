@@ -9,10 +9,12 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBannerItem : XXUnknownSuperclass {
+	id<SBStarkSessionConfiguring> _configuration;
 	NSHashTable *_observers;
 	NSMutableSet *_displayReasons;
 }
 @property(readonly, retain, nonatomic) UIImage *categoryImage;
+@property(readonly, retain, nonatomic) id<SBStarkSessionConfiguring> configuration;
 @property(readonly, assign, nonatomic) int defaultActionType;
 @property(readonly, assign, nonatomic) int effectiveDefaultActionType;
 @property(readonly, copy, nonatomic) NSString *message;
@@ -21,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *subTitle;
 @property(readonly, copy, nonatomic) NSString *title;
 - (id)init;
+- (id)initWithConfiguration:(id)configuration;
 - (void)_callOrFaceTimeStateChanged;
 - (BOOL)_inCallOrFaceTime;
 - (void)addObserver:(id)observer;

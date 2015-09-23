@@ -13,7 +13,8 @@ __attribute__((visibility("hidden")))
 	unsigned _customDestinations;
 }
 - (void)_setEnabled:(BOOL)enabled;
-- (BOOL)isEnabled;
+- (void)_setLevel:(int)level;
+- (int)level;
 - (unsigned)logDestinations;
 - (id)logPreferenceName;
 - (id)logPrefixForCategory:(id)category destination:(unsigned)destination;

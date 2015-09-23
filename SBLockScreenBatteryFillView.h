@@ -10,7 +10,10 @@
 __attribute__((visibility("hidden")))
 @interface SBLockScreenBatteryFillView : XXUnknownSuperclass {
 	int _chargePercentage;
+	int _lowBatteryLevel;
+	BOOL _isInternalBattery;
 }
+- (id)initWithFrame:(CGRect)frame isInternalBattery:(BOOL)battery lowBatteryLevel:(int)level;
 - (void)drawRect:(CGRect)rect;
 - (void)setChargePercentage:(int)percentage;
 @end

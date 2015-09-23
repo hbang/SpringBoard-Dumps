@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (unsigned)count;
 - (unsigned)countByEnumeratingWithState:(XXStruct_kFm5bA *)state objects:(id *)objects count:(unsigned)count;
 - (void)dealloc;
+- (void)enumerateNodesUsingBlock:(id)block;
 - (id)indexDescriptionWithPrefix:(id)prefix;
 - (unsigned)indexOfNode:(id)node;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;

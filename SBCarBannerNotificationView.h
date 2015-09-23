@@ -11,6 +11,5 @@ __attribute__((visibility("hidden")))
 @interface SBCarBannerNotificationView : XXUnknownSuperclass {
 }
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
-- (void)setFrame:(CGRect)frame;
 @end
 

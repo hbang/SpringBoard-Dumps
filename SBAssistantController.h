@@ -20,8 +20,10 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_dismissingReasons;
 	int _pendingDismissViewType;
 	NSHashTable *_observers;
-	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
+	FBUIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
 	UIViewController<SBUIPluginViewControllerInterface> *_mainScreenViewController;
+	FBDisplayLayoutElement *_mainDisplayLayoutElement;
+	FBDisplayLayoutElement *_starkDisplayLayoutElement;
 }
 @property(assign, nonatomic) BOOL unlockedDevice;
 + (BOOL)isAssistantRunningHidden;

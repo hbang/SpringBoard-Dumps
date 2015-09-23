@@ -37,12 +37,21 @@ typedef struct _NSRange {
 	unsigned length;
 } NSRange;
 
+typedef struct UIEdgeInsets {
+	float top;
+	float left;
+	float bottom;
+	float right;
+} UIEdgeInsets;
+
 typedef struct {
 	unsigned long _field1;
 	id *_field2;
 	unsigned long *_field3;
 	unsigned long _field4[5];
 } XXStruct_kFm5bA;
+
+typedef struct __CFRunLoop *CFRunLoopRef;
 
 typedef struct CGAffineTransform {
 	float a;
@@ -53,17 +62,14 @@ typedef struct CGAffineTransform {
 	float ty;
 } CGAffineTransform;
 
-typedef struct UIEdgeInsets {
-	float top;
-	float left;
-	float bottom;
-	float right;
-} UIEdgeInsets;
+typedef struct FBSceneLayer {
+	Class _field1;
+} FBSceneLayer;
 
 typedef struct CGColor *CGColorRef;
 
 typedef struct {
-	BOOL itemIsEnabled[26];
+	BOOL itemIsEnabled[27];
 	BOOL timeString[64];
 	int gsmSignalStrengthRaw;
 	int gsmSignalStrengthBars;
@@ -90,7 +96,10 @@ typedef struct {
 	unsigned locationIconType : 1;
 	unsigned quietModeInactive : 1;
 	unsigned tetheringConnectionCount;
-} XXStruct_gly1hD;
+	unsigned batterySaverModeActive : 1;
+	BOOL breadcrumbTitle[256];
+	BOOL breadcrumbSecondaryTitle[256];
+} XXStruct_bjgjSD;
 
 typedef struct __IOHIDEvent *IOHIDEventRef;
 
@@ -103,8 +112,6 @@ typedef struct _opaque_pthread_t {
 } opaque_pthread_t;
 
 typedef struct __CFBoolean *CFBooleanRef;
-
-typedef struct __GSEvent *GSEventRef;
 
 typedef struct SBIconCoordinate {
 	int row;
@@ -128,17 +135,31 @@ typedef struct __CFString *CFStringRef;
 
 typedef struct tcp_connection_fallback_watch_s tcp_connection_fallback_watch_s;
 
-typedef struct __CFDictionary *CFDictionaryRef;
-
 typedef struct NSString {
 	Class _field1;
 } NSString;
 
-typedef struct __WiFiManagerClient WiFiManagerClient;
+typedef struct {
+	struct {
+		unsigned _field1;
+		unsigned _field2;
+		unsigned _field3;
+		unsigned _field4;
+		unsigned _field5;
+		int _field6;
+	} _field1;
+	struct {
+		unsigned _field1;
+	} _field2;
+} XXStruct__nJsEB;
 
-typedef struct __WiFiDeviceClient WiFiDeviceClient;
+typedef struct {
+	int startStyle;
+	int endStyle;
+	float transitionFraction;
+} XXStruct_S5WqmA;
 
-typedef struct __WiFiNetwork WiFiNetwork;
+typedef struct __CFDictionary *CFDictionaryRef;
 
 typedef struct __CFArray *CFArrayRef;
 
@@ -148,42 +169,50 @@ typedef struct {
 	float _field3;
 } XXStruct_qXnNTD;
 
+typedef struct {
+	id _field1;
+	id _field2;
+	id _field3;
+	id _field4;
+} XXStruct_Xx1ZfA;
+
+typedef struct {
+	unsigned _field1;
+	unsigned _field2;
+	float _field3;
+} XXStruct_4Kv2bB;
+
 typedef struct BKSDisplayBrightnessTransaction *BKSDisplayBrightnessTransactionRef;
 
 typedef struct MGNotificationTokenStruct *MGNotificationTokenStructRef;
-
-typedef struct {
-	int startStyle;
-	int endStyle;
-	float transitionFraction;
-} XXStruct_S5WqmA;
 
 typedef struct {
 	BOOL valid;
 	XXStruct_S5WqmA styleTransitionState;
 } XXStruct_Dov64B;
 
-typedef struct {
-	int type;
-	int modifier;
-	unsigned pathIndex;
-	unsigned pathIdentity;
-	CGPoint location;
-	CGPoint previousLocation;
-	CGPoint unrotatedLocation;
-	CGPoint previousUnrotatedLocation;
-	float totalDistanceTraveled;
-	int interfaceOrientation;
-	int previousInterfaceOrientation;
-	double timestamp;
-	BOOL isValid;
-} XXStruct_pqIg_A;
+typedef struct NSNumber {
+	Class _field1;
+} NSNumber;
 
-typedef struct __SBGestureContext *SBGestureContextRef;
+typedef struct NSMutableSet {
+	Class _field1;
+} NSMutableSet;
 
-typedef struct __IOSurface *IOSurfaceRef;
+typedef struct SBNormalizedTransitionInterval {
+	float start;
+	float duration;
+} SBNormalizedTransitionInterval;
 
 typedef struct _CARenderImage *CARenderImageRef;
+
+typedef struct NSSet {
+	Class _field1;
+} NSSet;
+
+typedef struct NSDictionary {
+	Class _field1;
+} NSDictionary;
 
 typedef struct {
 	unsigned willActivate : 1;
@@ -192,20 +221,19 @@ typedef struct {
 	unsigned didDeactivate : 1;
 	unsigned didChangeTop : 1;
 	unsigned topBgStyleChange : 1;
+	unsigned topStatusBarVisibile : 1;
+	unsigned topOrientationEnable : 1;
 	unsigned didCreateWindow : 1;
 	unsigned willTearDownWindow : 1;
 	unsigned didTearDownWindow : 1;
 	unsigned didRemoveFromWindow : 1;
-} XXStruct_scX9uA;
+} XXStruct_cAKydB;
 
 typedef struct CGImage *CGImageRef;
 
-typedef struct {
-	id _field1;
-	id _field2;
-	id _field3;
-	id _field4;
-} XXStruct_Xx1ZfA;
+typedef struct NSMutableDictionary {
+	Class _field1;
+} NSMutableDictionary;
 
 typedef struct SBWindowLevelRange_struct {
 	float start;
@@ -213,6 +241,8 @@ typedef struct SBWindowLevelRange_struct {
 } SBWindowLevelRange_struct;
 
 typedef struct CGImageSource *CGImageSourceRef;
+
+typedef struct USet USet;
 
 typedef struct CGContext *CGContextRef;
 

@@ -11,6 +11,5 @@
 - (void)powerDownViewAnimateOutCompleted:(id)completed;
 - (void)powerDownViewRequestCancel:(id)cancel;
 - (void)powerDownViewRequestPowerDown:(id)down;
-- (BOOL)powerDownViewShouldShowStatusBarWhenAnimatingOut:(id)powerDownView;
 @end
 

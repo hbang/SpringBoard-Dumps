@@ -69,9 +69,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)activePluginHidesNotificationList;
 - (void)dealloc;
 - (CGRect)defaultContentRegionForPluginController:(id)pluginController withOrientation:(int)orientation;
-- (BOOL)disableLockScreenBundleWithName:(id)name deactivationContext:(id)context;
+- (BOOL)disableLockScreenBundleWithName:(id)name deactivationContext:(id)context auxiliaryDeactivationAnimationBlock:(id)block;
 - (id)displayedPlugin;
-- (BOOL)enableLockScreenBundleWithName:(id)name activationContext:(id)context;
+- (BOOL)enableLockScreenBundleWithName:(id)name activationContext:(id)context auxiliaryActivationAnimationBlock:(id)block;
 - (BOOL)handleHeadsetButtonPressed:(BOOL)pressed;
 - (BOOL)handleLockButtonPressed;
 - (void)handleLockScreenTemporarilyDismissed;

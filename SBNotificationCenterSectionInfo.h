@@ -8,20 +8,16 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBNotificationCenterSectionInfo : SBBBSectionInfo {
+@interface SBNotificationCenterSectionInfo : SBSectionInfo {
 	SBItemInfoLayoutCache *_layoutCache;
 	id _clearPossibleAction;
-	id _clearAction;
+	id _clearFinalAction;
 }
 @property(copy, nonatomic) id clearAction;
 @property(copy, nonatomic) id clearPossibleAction;
-@property(readonly, assign, nonatomic) SBBulletinListSection *representedListSection;
 - (void)dealloc;
-- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode bulletinLocation:(int)location;
-- (id)identifier;
+- (float)heightForReusableViewForNotificationCenterTableViewController:(id)notificationCenterTableViewController layoutMode:(int)mode sectionLocation:(int)location;
 - (void)invalidateCachedLayoutData;
-- (void)populateReusableView:(id)view;
 - (Class)reusableViewClass;
-- (BOOL)shouldSuppressBulletinMessageForPrivacy:(id)privacy;
 @end
 

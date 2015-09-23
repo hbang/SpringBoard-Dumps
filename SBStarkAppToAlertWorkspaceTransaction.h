@@ -9,18 +9,18 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkAppToAlertWorkspaceTransaction : SBStarkWorkspaceTransaction <SBUIAnimationControllerObserver> {
-	SBAlert *_activatingAlert;
-	SBApplication *_topApplication;
+	SBWorkspaceAlert *_activatingAlert;
+	SBWorkspaceApplication *_topApplication;
 	SBUIAnimationController *_animation;
 	BOOL _animatedAppDeactivation;
 	BOOL _fromStarkLauncher;
 }
-@property(readonly, assign, nonatomic) SBAlert *alert;
+@property(readonly, retain, nonatomic) SBWorkspaceAlert *alert;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller alert:(id)alert overTopApplication:(id)application;
+- (id)initWithTransitionRequest:(id)transitionRequest;
 - (void)_begin;
 - (void)_didComplete;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;

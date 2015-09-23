@@ -8,14 +8,13 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppsToAlertWorkspaceTransaction : SBWorkspaceTransaction <SBUIAnimationControllerObserver> {
+@interface SBAppsToAlertWorkspaceTransaction : SBMainWorkspaceTransaction <SBUIAnimationControllerObserver> {
 	NSArray *_topApplications;
-	SBAlert *_activatingAlert;
-	SBAlertManager *_alertManager;
+	SBWorkspaceAlert *_activatingAlert;
 	SBUIAnimationController *_animation;
 	id _alertActivationBlock;
 	BOOL _animatedAppDeactivation;
-	BOOL _suspendWorkspace;
+	FBDisplayLayoutTransition *_layoutTransition;
 	BOOL _deferAlertActivationForAnimationCompletion;
 }
 @property(copy, nonatomic) id alertActivationBlock;
@@ -23,11 +22,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-- (id)initWithAlertManager:(id)alertManager alert:(id)alert overTopApplications:(id)applications;
+- (id)initWithTransitionRequest:(id)transitionRequest;
 - (void)_activateAlert;
 - (void)_begin;
 - (void)_didComplete;
-- (void)_switcherToAlertAnimationFinished;
+- (BOOL)_isFromMainSwitcher;
+- (void)_updateSceneLayout;
+- (void)_willBegin;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;

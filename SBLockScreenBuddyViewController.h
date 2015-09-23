@@ -13,8 +13,7 @@ __attribute__((visibility("hidden")))
 	BOOL _needsTransitionFromFakeLogoToWelcomeStrings;
 	BOOL _cyclingLabels;
 	BOOL _viewVisible;
-	WiFiManagerClient *_wifiManager;
-	WiFiDeviceClient *_wifiDevice;
+	BOOL _canShowActivationInfo;
 	BOOL _showingBootLogo;
 	BOOL _startsWithBlackBackground;
 	BOOL _hasResultsFromWifiScan;
@@ -27,6 +26,7 @@ __attribute__((visibility("hidden")))
 	SBActivationInfoViewController *_activationInfoViewController;
 	NSString *_telephonyPrimaryLanguage;
 	NSString *_wifiPrimaryLanguage;
+	SBBuddyRegulatoryInfoViewController *_regulatoryInfoViewController;
 }
 @property(retain, nonatomic) SBActivationInfoViewController *activationInfoViewController;
 @property(assign, nonatomic) unsigned currentStringIndex;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(copy, nonatomic) NSDictionary *localizedStrings;
 @property(assign, nonatomic) SBLockScreenViewController *lockScreenViewController;
+@property(retain, nonatomic) SBBuddyRegulatoryInfoViewController *regulatoryInfoViewController;
 @property(assign, nonatomic) BOOL shouldResetOrderingOnNextCycle;
 @property(assign, nonatomic, getter=isShowingBootLogo) BOOL showingBootLogo;
 @property(readonly, assign, nonatomic) NSString *slideToUnlockText;
@@ -46,7 +47,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *telephonyPrimaryLanguage;
 @property(copy, nonatomic) NSString *wifiPrimaryLanguage;
 - (id)initWithLockScreenViewController:(id)lockScreenViewController;
-- (void)_closeWifiConnection;
+- (void)_cancelWifiScan;
 - (id)_currentLanguageIdentifier;
 - (id)_currentStringsDictionary;
 - (void)_cycleTimerDidFire:(id)_cycleTimer;
@@ -54,17 +55,17 @@ __attribute__((visibility("hidden")))
 - (void)_didShowBootSetupLogo:(id)logo;
 - (void)_fetchLanguageFromTelephony;
 - (id)_importantLanguageIdentifiers;
+- (void)_infoButtonTapped:(id)tapped;
 - (void)_noteLogoVisible:(BOOL)visible;
+- (void)_regulatoryInfoButtonTapped:(id)tapped;
 - (void)_removeAllHiddenReasons;
 - (void)_resetDisplayedLocalizedStringsImmediately:(BOOL)immediately;
 - (void)_startCyclingLocalizedStrings;
 - (void)_startCyclingLocalizedStringsWithDelay:(double)delay;
 - (void)_startWifiScan;
-- (void)_toggleShowsIMEIandICCID:(id)iccid;
 - (void)_transitionFromFakeBootLogoToWelcomeStrings;
 - (void)_updateDisplayedStrings;
 - (void)_updateWifiPrimaryLanguageFromGuessedCountries:(id)guessedCountries;
-- (void)_wifiScanComplete:(CFArrayRef)complete error:(BOOL)error;
 - (id)buddyView;
 - (void)buddyView:(id)view didChangeToStyle:(unsigned)style;
 - (void)dealloc;

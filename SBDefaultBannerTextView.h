@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
 	NSAttributedString *_subtitleTextAttributedString;
 	NSAttributedString *_secondaryTextAttributedString;
 	NSAttributedString *_alternateSecondaryTextAttributedString;
-	UILabel<SBBulletinDateLabel> *_relevanceDateLabel;
+	UILabel<NCNotificationDateLabel> *_relevanceDateLabel;
 	float _secondaryTextAlpha;
 	float _alternateSecondaryTextAlpha;
 }
 @property(copy, nonatomic) NSString *alternateSecondaryText;
 @property(copy, nonatomic) NSString *primaryText;
 @property(retain, nonatomic) UIImage *primaryTextAccessoryImage;
-@property(readonly, assign, nonatomic) UILabel *relevanceDateLabel;
+@property(readonly, retain, nonatomic) UILabel *relevanceDateLabel;
 @property(copy, nonatomic) NSString *secondaryText;
 @property(copy, nonatomic) NSString *subtitleText;
 + (id)_defaultRelevanceDateFont;

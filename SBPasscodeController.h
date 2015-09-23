@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
 	NSString *_previousPasscode;
 	NSString *_newPasscode;
 	int _unlockScreenType;
+	int _simplePasscodeType;
 	SBPasscodeComplianceAlertItem *_complianceAlertItem;
 	NSDate *_forcedComplianceDate;
+	id _manageConfigurationEffectiveSettingsObserver;
 	id _telephonyNotificationObserver;
 	int _restoreCompletedAlertStateChangedToken;
 	BOOL _delayedComplianceAlertUntilAfterRestoreCompletedAlert;
@@ -25,10 +27,14 @@ __attribute__((visibility("hidden")))
 - (void)_abort;
 - (void)_activateComplianceAlert;
 - (void)_didEndCall;
+- (void)_fetchAndSetUnlockScreenTypeForNewPasscode:(BOOL)newPasscode;
 - (BOOL)_isRestoreCompletedAlertActive;
 - (void)_passwordEntered:(id)entered;
+- (void)_presentPasscodeAlertItemWithMode:(int)mode alertItemErrorString:(id)string unlockScreenType:(int)type;
+- (void)_startListeningToManagedConfigurationNotification;
 - (void)_startListeningToRestoreCompletedAlertStateChangedNotifications;
 - (void)_startListeningToTelephonyNotifications;
+- (void)_stopListeningToManagedConfigurationNotification;
 - (void)_stopListeningToRestoreCompletedAlertStateChangedNotifications;
 - (void)_stopListeningToTelephonyNotifications;
 - (void)_userWantsToComplyNow:(BOOL)complyNow;

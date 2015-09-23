@@ -12,11 +12,14 @@ __attribute__((visibility("hidden")))
 	SBAlertManager *_alertManager;
 	SBAlert *_toAlert;
 	SBAlert *_fromAlert;
+	id<SBAlertChangeTransactionDelegate> _delegate;
 	BOOL _deactivateAll;
+	BOOL _suppressingActivationOcclusion;
 	SBAlert *_alert;
 }
 @property(readonly, retain, nonatomic) SBAlertManager *alertManager;
 @property(readonly, copy) NSString *debugDescription;
+@property(assign, nonatomic) id<SBAlertChangeTransactionDelegate> delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly, retain, nonatomic) SBAlert *fromAlert;
 @property(readonly, assign) unsigned hash;
@@ -29,7 +32,9 @@ __attribute__((visibility("hidden")))
 - (void)_addDeactivationMilestones;
 - (void)_begin;
 - (BOOL)_canBeInterrupted;
+- (void)_didComplete;
 - (id)_initWithAlertManager:(id)alertManager;
+- (void)_updateForegroundScenesUnderLock:(BOOL)lock;
 - (void)alertManager:(id)manager didActivateAlert:(id)alert overAlerts:(id)alerts;
 - (void)alertManager:(id)manager didDeactivateAlert:(id)alert top:(BOOL)top;
 - (void)alertManager:(id)manager willActivateAlert:(id)alert overAlerts:(id)alerts;

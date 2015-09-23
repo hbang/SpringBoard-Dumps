@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) SBAssistantRootViewController *assistantRootViewController;
 + (BOOL)_isSecure;
++ (BOOL)sb_autorotates;
 - (id)initWithScreen:(id)screen layoutStrategy:(id)strategy debugName:(id)name scene:(id)scene;
 - (void)dealloc;
 - (BOOL)isOpaque;

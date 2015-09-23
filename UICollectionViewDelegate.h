@@ -9,6 +9,7 @@
 
 @protocol UICollectionViewDelegate <UIScrollViewDelegate>
 @optional
+- (BOOL)collectionView:(id)view canFocusItemAtIndexPath:(id)indexPath;
 - (BOOL)collectionView:(id)view canPerformAction:(SEL)action forItemAtIndexPath:(id)indexPath withSender:(id)sender;
 - (void)collectionView:(id)view didDeselectItemAtIndexPath:(id)indexPath;
 - (void)collectionView:(id)view didEndDisplayingCell:(id)cell forItemAtIndexPath:(id)indexPath;
@@ -16,13 +17,18 @@
 - (void)collectionView:(id)view didHighlightItemAtIndexPath:(id)indexPath;
 - (void)collectionView:(id)view didSelectItemAtIndexPath:(id)indexPath;
 - (void)collectionView:(id)view didUnhighlightItemAtIndexPath:(id)indexPath;
+- (void)collectionView:(id)view didUpdateFocusInContext:(id)context withAnimationCoordinator:(id)animationCoordinator;
 - (void)collectionView:(id)view performAction:(SEL)action forItemAtIndexPath:(id)indexPath withSender:(id)sender;
 - (BOOL)collectionView:(id)view shouldDeselectItemAtIndexPath:(id)indexPath;
 - (BOOL)collectionView:(id)view shouldHighlightItemAtIndexPath:(id)indexPath;
 - (BOOL)collectionView:(id)view shouldSelectItemAtIndexPath:(id)indexPath;
 - (BOOL)collectionView:(id)view shouldShowMenuForItemAtIndexPath:(id)indexPath;
+- (BOOL)collectionView:(id)view shouldUpdateFocusInContext:(id)context;
+- (CGPoint)collectionView:(id)view targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset;
+- (id)collectionView:(id)view targetIndexPathForMoveFromItemAtIndexPath:(id)indexPath toProposedIndexPath:(id)proposedIndexPath;
 - (id)collectionView:(id)view transitionLayoutForOldLayout:(id)oldLayout newLayout:(id)layout;
 - (void)collectionView:(id)view willDisplayCell:(id)cell forItemAtIndexPath:(id)indexPath;
 - (void)collectionView:(id)view willDisplaySupplementaryView:(id)view2 forElementKind:(id)elementKind atIndexPath:(id)indexPath;
+- (id)indexPathForPreferredFocusedViewInCollectionView:(id)collectionView;
 @end
 

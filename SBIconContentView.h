@@ -11,9 +11,11 @@ __attribute__((visibility("hidden")))
 @interface SBIconContentView : XXUnknownSuperclass {
 	int _orientation;
 	NSMutableArray *_folderContentViews;
+	float _statusBarHeight;
 }
 @property(assign, nonatomic) int orientation;
-- (id)initWithOrientation:(int)orientation;
+@property(assign, nonatomic) float statusBarHeight;
+- (id)initWithOrientation:(int)orientation statusBarHeight:(float)height;
 - (id)_folderViews;
 - (CGRect)_frameForFolderView:(id)folderView;
 - (void)clearAllFolderContentViews;
@@ -22,6 +24,5 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)popFolderContentView:(id)view;
 - (void)pushFolderContentView:(id)view;
-- (void)updateLayoutWithDuration:(double)duration;
 @end
 

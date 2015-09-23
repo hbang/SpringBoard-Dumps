@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
 + (id)title;
+- (void)_sendRequestWithType:(unsigned)type;
 - (void)handleVolumeDecrease;
 - (void)handleVolumeIncrease;
 @end

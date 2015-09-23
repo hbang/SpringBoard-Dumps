@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 	NSObject<OS_dispatch_queue> *_managingHostQueue;
 }
 @property(assign, nonatomic) _SBWidgetViewControllerOutOfProcess *managingHost;
-@property(readonly, assign, nonatomic) NSObject<OS_dispatch_queue> *managingHostQueue;
+@property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *managingHostQueue;
 @property(assign, nonatomic, getter=_isValid, setter=_setValid:) BOOL valid;
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;

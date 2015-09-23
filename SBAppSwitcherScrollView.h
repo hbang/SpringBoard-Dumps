@@ -9,7 +9,11 @@
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherScrollView : XXUnknownSuperclass {
+	CGPoint _previousContentOffset;
+	double _previousScrollTime;
+	CGPoint _rawContentOffsetVelocity;
 }
-- (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;
+- (CGPoint)contentOffsetVelocity;
+- (void)setContentOffset:(CGPoint)offset;
 @end
 

@@ -14,13 +14,12 @@ __attribute__((visibility("hidden")))
 	UIStatusBar *_fakeStatusBar;
 	BOOL _finished;
 }
-- (id)_animationProgressDependency;
+- (id)_animationProgressDependencies;
 - (void)_applicationDependencyStateChanged;
 - (void)_cancelAnimation;
 - (void)_cleanupAnimation;
 - (id)_createViewToAnimate;
 - (void)_finishedAnimation:(BOOL)animation;
-- (void)_prepareAnimation;
 - (void)_reallyPrepareAnimation;
 - (void)_setupStartDependencies;
 - (void)_startAnimation;

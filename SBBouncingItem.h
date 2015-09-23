@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) CGRect bounds;
 @property(assign, nonatomic) CGPoint center;
+@property(readonly, assign, nonatomic) UIBezierPath *collisionBoundingPath;
+@property(readonly, assign, nonatomic) unsigned collisionBoundsType;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;

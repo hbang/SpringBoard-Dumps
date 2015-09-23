@@ -23,11 +23,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 @property(retain, nonatomic) NSDate *timestamp;
 - (void)buttonPressed;
-- (BOOL)canBeClearedByNotificationCenter;
+- (BOOL)canBeRemovedByNotificationCenterPresentation;
+- (BOOL)canBeRemovedByUnlock;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
 - (BOOL)inertWhenLocked;
 - (BOOL)isCritical;
+- (BOOL)overridesPocketMode;
 - (BOOL)overridesQuietMode;
 - (void)prepareWithCompletion:(id)completion;
 - (BOOL)wantsHighlightOnInsert;

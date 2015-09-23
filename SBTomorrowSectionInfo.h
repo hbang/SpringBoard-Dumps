@@ -8,9 +8,11 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBTomorrowSectionInfo : SBNotificationCenterSectionInfo {
+@interface SBTomorrowSectionInfo : SBSnippetSectionInfo {
 }
-- (id)identifier;
+- (id)displayName;
 - (void)populateReusableView:(id)view;
+- (Class)reusableViewClass;
+- (id)settingsDisplayName;
 @end
 

@@ -8,24 +8,37 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIAnimationZoomDownApp : SBUIMainScreenAnimationController {
+@interface SBUIAnimationZoomDownApp : SBUIMainScreenAnimationController <SBUIAnimationZoomUpDown> {
 	UIView *_viewToAnimate;
 	SBAppStatusBarTransitionInfo *_appStatusBarTransitionInfo;
+	BSAnimationSettings *_animationSettings;
 	FBWindowContextHostManager *_deactivatingContextHostManager;
+	SBSceneLayoutAnimationWrapperView *_wrapperView;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
+	BOOL _zoomFullLayoutBounds;
 }
-- (id)initWithDeactivatingApp:(id)deactivatingApp;
+@property(copy, nonatomic) BSAnimationSettings *animationSettings;
+@property(readonly, assign) SBAppStatusBarTransitionInfo *appStatusBarTransitionInfo;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider zoomFullLayoutBounds:(BOOL)bounds;
+- (void)_animateWallpaperWithFactory:(id)factory;
+- (double)_animationDelay;
+- (double)_animationDuration;
 - (void)_cleanupAnimation;
 - (void)_prepareAnimation;
 - (void)_startAnimation;
-- (void)animateFakeStatusBarWithParameters:(id)parameters;
+- (id)_viewsForAnimationStepping;
 - (void)animateZoomWithCompletion:(id)completion;
-- (double)animationDelay;
-- (double)animationDuration;
-- (id)appSettings;
 - (id)appStatusBarTransitionInfoWithStartEffectivelyHidden:(BOOL)startEffectivelyHidden endStyleRequest:(id)request endOrientation:(int)orientation;
 - (void)cleanupZoom;
+- (id)deactivatingApp;
 - (void)dealloc;
 - (BOOL)prefersLayerHostSnapshot;
 - (void)prepareZoom;
+- (void)setAnimatableWrapperView:(id)view;
 @end
 

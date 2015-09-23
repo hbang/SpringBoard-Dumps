@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
+- (id)initWithCoder:(id)coder;
+- (id)initWithFrame:(CGRect)frame;
 - (id)initWithLabelAccessoryType:(int)labelAccessoryType;
 - (void)prepareForReuse;
 @end

@@ -19,5 +19,6 @@ __attribute__((visibility("hidden")))
 - (void)finishedWritingCarScreenshot:(id)screenshot didFinishSavingWithError:(id)error context:(void *)context;
 - (void)finishedWritingScreenshot:(id)screenshot didFinishSavingWithError:(id)error context:(void *)context;
 - (void)saveScreenshot:(BOOL)screenshot;
+- (void)saveScreenshotsShowingFlash:(BOOL)flash completion:(id)completion;
 @end
 

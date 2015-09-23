@@ -19,12 +19,15 @@ __attribute__((visibility("hidden")))
 	unsigned _style;
 	UIView *_activationInfoView;
 	UIButton *_infoButton;
+	UIView *_regulatoryInfoView;
 }
 @property(retain, nonatomic) UIView *activationInfoView;
 @property(assign, nonatomic) id<SBLockScreenBuddyViewDelegate> delegate;
 @property(retain, nonatomic) UIButton *infoButton;
+@property(retain, nonatomic) UIView *regulatoryInfoView;
 @property(assign, nonatomic) unsigned style;
 - (id)initWithFrame:(CGRect)frame useWhiteLogo:(BOOL)logo;
+- (void)_adjustTitleVisibilityForInfoViews;
 - (void)_toggleViewState;
 - (void)configureOverlayPropertiesForStyle:(unsigned)style;
 - (void)dealloc;

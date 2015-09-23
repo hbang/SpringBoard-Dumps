@@ -11,6 +11,9 @@ __attribute__((visibility("hidden")))
 @interface SBSpuriousScreenUndimmingAssertion : XXUnknownSuperclass {
 	NSString *_identifier;
 }
++ (void)_accessListWithBlock:(id)block;
++ (id)debugDescription;
++ (BOOL)isAnyActive;
 - (id)initWithIdentifier:(id)identifier;
 - (void)dealloc;
 - (id)description;

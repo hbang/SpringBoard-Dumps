@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) int iconLocation;
 @property(retain, nonatomic) SBIconView *iconView;
 @property(retain, nonatomic) Class iconViewClass;
-@property(retain, nonatomic) id<SBIconViewDelegate> iconViewDelegate;
+@property(assign, nonatomic) id<SBIconViewDelegate> iconViewDelegate;
 @property(retain, nonatomic) _UILegibilitySettings *settings;
 @property(retain, nonatomic) NSString *text;
 @property(assign, nonatomic) BOOL wantsFocusHighlight;

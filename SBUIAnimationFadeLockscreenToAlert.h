@@ -12,12 +12,13 @@ __attribute__((visibility("hidden")))
 	SBLockScreenViewController *_lockScreenViewController;
 	SBAlertManager *_alertManager;
 	SBUIFullscreenAlertAdapter *_toAlert;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	BOOL _alertViewIsAnimatingItself;
 	BOOL _alertIsTransparent;
 	BOOL _finishedPrimaryFadeAnimation;
 	BOOL _needsLockScreenAlphaRestoredOnCompletion;
 }
-- (id)initWithLockScreenController:(id)lockScreenController toAlert:(id)alert alertManager:(id)manager;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_alertViewFinishedAnimatingItself;
 - (void)_animationFinished;
 - (void)_cleanupAnimation;

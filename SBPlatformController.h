@@ -21,6 +21,10 @@ __attribute__((visibility("hidden")))
 	BOOL _internalInstall;
 	BOOL _carrierInstall;
 	BOOL _singleCoreDevice;
+	BOOL _isH4Device;
+	BOOL _starkDevice;
+	BOOL _medusaDevice;
+	BOOL _supportsAllMedusaFeatures;
 }
 + (id)deviceClass;
 + (id)hardwareModel;
@@ -39,10 +43,14 @@ __attribute__((visibility("hidden")))
 - (id)iconStateDisplayIdentifiers;
 - (BOOL)isCarrierInstall;
 - (BOOL)isDeveloperInstall;
+- (BOOL)isH4Device;
 - (BOOL)isInternalInstall;
+- (BOOL)isMedusaDevice;
 - (BOOL)isSingleCoreDevice;
+- (BOOL)isStarkDevice;
 - (id)localizedPlatformName;
 - (void)registerForIconVisibilityChanges;
+- (BOOL)supportsAllMedusaFeatures;
 - (BOOL)supportsOpenGLES2;
 @end
 

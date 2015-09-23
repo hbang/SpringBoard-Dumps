@@ -13,5 +13,6 @@ __attribute__((visibility("hidden")))
 }
 @property(retain, nonatomic) SBStarkIconLayoutOverrideStrategy *iconLayoutOverrideStrategy;
 - (CGRect)_frameForFolderView:(id)folderView;
+- (void)dealloc;
 @end
 

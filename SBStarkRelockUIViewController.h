@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 	CGSize _labelSize;
 }
 - (void)dealloc;
+- (unsigned)supportedInterfaceOrientations;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 @end

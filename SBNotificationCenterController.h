@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBNotificationCenterController : XXUnknownSuperclass <SBBulletinWindowClient, SBNotificationCenterViewControllerDelegate, SBWidgetViewControllerDelegate, _UISettingsKeyObserver, UIGestureRecognizerDelegate, SBExtensionHandling, SBReachabilityObserver, SBCoordinatedPresenting> {
+@interface SBNotificationCenterController : XXUnknownSuperclass <SBBulletinWindowClient, SBNotificationCenterViewControllerDelegate, SBWidgetViewControllerDelegate, _UISettingsKeyObserver, UIGestureRecognizerDelegate, SBExtensionHandling, SBReachabilityObserver, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, SBSystemGestureRecognizerDelegate, SBCoordinatedPresenting> {
 	SBNotificationCenterViewController *_viewController;
 	UIView *_coveredContentSnapshot;
 	SBChevronView *_borrowedGrabberView;
@@ -24,9 +24,14 @@ __attribute__((visibility("hidden")))
 	BOOL _grabberEnabled;
 	BOOL _didCoalesceWidgetsConnections;
 	NSTimer *_widgetConnectionsTimer;
-	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
-	NCLaunchStats *_launchStats;
+	FBUIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
+	FBDisplayLayoutElement *_displayLayoutElement;
+	SBScreenEdgePanGestureRecognizer *_showSystemGestureRecognizer;
+	UIScreenEdgePanGestureRecognizer *_dismissGestureRecognizer;
+	SBNotificationCenterBounceAnimator *_currentBounceAnimator;
 	NSMutableSet *_bulletinWindowClients;
+	id<UIViewControllerContextTransitioning> _activeTransitionContext;
+	_SBNotificationCenterTransitionContext *_activeNCTransitionContext;
 }
 @property(readonly, assign, nonatomic, getter=isAvailableWhileLocked) BOOL availableWhileLocked;
 @property(assign, nonatomic) BOOL blursBackground;
@@ -41,15 +46,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) float hintDisplacement;
 @property(readonly, assign, nonatomic) unsigned hintEdge;
 @property(readonly, assign, nonatomic) int layoutMode;
-@property(readonly, assign, nonatomic) SBLockScreenActionContext *lockScreenActionContext;
+@property(readonly, retain, nonatomic) SBLockScreenActionContext *lockScreenActionContext;
 @property(readonly, assign, nonatomic, getter=isNotificationsViewAvailableWhileLocked) BOOL notificationsViewAvailableWhileLocked;
 @property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
-@property(readonly, assign, nonatomic, getter=isPresentingWidgetContent) BOOL presentingWidgetContent;
-@property(readonly, assign, nonatomic) SBNotificationCenterSettings *settings;
+@property(readonly, retain, nonatomic) SBNotificationCenterSettings *settings;
 @property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic) NSSet *tapExcludedViews;
-@property(readonly, assign, nonatomic) UIEdgeInsets todayContentEdgeInsets;
-@property(readonly, assign, nonatomic) CGSize todayContentMaxSize;
 @property(readonly, assign, nonatomic, getter=isTodayViewAvailableWhileLocked) BOOL todayViewAvailableWhileLocked;
 @property(readonly, assign, nonatomic, getter=isTransitioning) BOOL transitioning;
 @property(readonly, retain, nonatomic) SBNotificationCenterViewController *viewController;
@@ -61,14 +63,18 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstanceIfExists;
 + (double)transitionAnimationDuration;
 - (id)init;
-- (void)_beginPresentationWithTouchLocation:(CGPoint)touchLocation setupPrelude:(id)prelude setupPostlude:(id)postlude animationPrelude:(id)prelude4;
+- (void)_beginDismissalWithTouchLocation:(CGPoint)touchLocation;
+- (void)_beginPresentationWithTouchLocation:(CGPoint)touchLocation setupPrelude:(id)prelude setupPostlude:(id)postlude presentationBegunHandler:(id)handler animationPrelude:(id)prelude5;
+- (void)_cancelTransition;
 - (void)_cleanupAfterTransition:(BOOL)transition;
 - (void)_didCoalesceWidgetsConnections:(id)connections;
 - (void)_endTransitionWithVelocity:(CGPoint)velocity additionalValueApplier:(id)applier animationPostlude:(id)postlude completion:(id)completion;
 - (void)_handleActionContextRequiringAuthentication:(id)authentication;
 - (void)_handleActionContextRequiringUIUnlock:(id)unlock;
 - (BOOL)_handleActionOrRequestWithDefaultAction:(id)defaultAction lockedAction:(id)action;
-- (void)_handleWidgetLaunchRecommendation:(id)recommendation completion:(id)completion;
+- (void)_handleDismissGesture:(id)gesture;
+- (void)_handleShowNotificationCenterGesture:(id)gesture;
+- (void)_hideGrabberForSystemGesture;
 - (void)_insertCoveredContentSnapshotIfNecessary:(id)necessary;
 - (void)_invalidateCoveredContentSnapshot;
 - (BOOL)_isNotificationCenterViewAvailableWhileLockedWithProfileBlock:(id)profileBlock counterpartBlock:(id)block;
@@ -77,8 +83,8 @@ __attribute__((visibility("hidden")))
 - (id)_lockScreenViewController;
 - (void)_makeVisibleWidgetWithIdentifier:(id)identifier completion:(id)completion;
 - (void)_present:(BOOL)present stepper:(id)stepper;
-- (void)_present:(BOOL)present withStandardAnimation:(BOOL)standardAnimation stepper:(id)stepper completion:(id)completion fromCurrentState:(BOOL)currentState;
-- (void)_presentAnimated:(BOOL)animated setupPrelude:(id)prelude setupPostlude:(id)postlude animationPrelude:(id)prelude4 animationPostlude:(id)postlude5 completion:(id)completion;
+- (void)_present:(BOOL)present withStandardAnimation:(BOOL)standardAnimation stepper:(id)stepper fromCurrentState:(BOOL)currentState;
+- (void)_presentAnimated:(BOOL)animated setupPrelude:(id)prelude setupPostlude:(id)postlude animationPrelude:(id)prelude4 animationPostlude:(id)postlude5;
 - (void)_registerNotificationCenterBulletinWindowClient:(id)client;
 - (void)_removeCoveredContentSnapshot;
 - (BOOL)_requiresAuthenticationForActionContext:(id)actionContext;
@@ -89,29 +95,34 @@ __attribute__((visibility("hidden")))
 - (void)_setupForPresentationWithTouchLocation:(CGPoint)touchLocation;
 - (void)_setupForViewPresentation;
 - (BOOL)_shouldSelectViewControllerAtTouchLocation;
+- (BOOL)_shouldShowGrabberOnFirstSwipe;
+- (void)_showNotificationCenterGestureBeganWithGestureRecognizer:(id)gestureRecognizer;
+- (void)_showNotificationCenterGestureCancelled;
+- (void)_showNotificationCenterGestureChangedWithGestureRecognizer:(id)gestureRecognizer duration:(double)duration;
+- (void)_showNotificationCenterGestureEndedWithGestureRecognizer:(id)gestureRecognizer;
+- (void)_showNotificationCenterGestureFailed;
 - (void)_unregisterNotificationCenterBulletinWindowClient:(id)client;
 - (void)_updateCoveredContentSnapshot;
 - (void)_updateForChangeInMessagePrivacy;
+- (void)_updateShouldShowGrabberOnFirstSwipe;
 - (void)abortAnimatedTransition;
-- (void)beginDismissalWithTouchLocation:(CGPoint)touchLocation;
-- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
+- (void)animateTransition:(id)transition;
+- (id)animationControllerForDismissedController:(id)dismissedController;
+- (id)animationControllerForPresentedController:(id)presentedController presentingController:(id)controller sourceController:(id)controller3;
+- (void)animationEnded:(BOOL)ended;
+- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation presentationBegunHandler:(id)handler;
 - (void)biometricEventMonitorDidAuthenticate:(id)biometricEventMonitor;
-- (void)bulletinWindowDidRotateFromOrientation:(int)bulletinWindow;
-- (void)bulletinWindowIsAnimatingRotationToOrientation:(int)orientation duration:(double)duration;
-- (void)bulletinWindowWillRotateToOrientation:(int)bulletinWindow duration:(double)duration;
 - (BOOL)canShowHideGrabberView;
-- (void)cancelTransition;
 - (void)dealloc;
 - (void)dismissAnimated:(BOOL)animated;
 - (void)dismissAnimated:(BOOL)animated completion:(id)completion;
 - (void)dismissAnimated:(BOOL)animated withStepper:(id)stepper completion:(id)completion fromCurrentState:(BOOL)currentState;
-- (void)dismissPresentedWidgetContentAnimated:(BOOL)animated;
-- (BOOL)doesSectionWithIdentifierUpdateMessagePrivacyViaSectionParameters:(id)identifierUpdateMessagePrivacyViaSectionParameters;
 - (void)enableAllWidgets:(id)widgets;
 - (void)endTransitionWithVelocity:(CGPoint)velocity additionalValueApplier:(id)applier completion:(id)completion;
-- (void)endTransitionWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)endTransitionWithVelocity:(CGPoint)velocity wasCancelled:(BOOL)cancelled completion:(id)completion;
 - (void)finishedScrollTest;
+- (BOOL)gestureRecognizer:(id)recognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)gestureRecognizer;
+- (BOOL)gestureRecognizer:(id)recognizer shouldRequireFailureOfGestureRecognizer:(id)gestureRecognizer;
 - (BOOL)gestureRecognizerShouldBegin:(id)gestureRecognizer;
 - (BOOL)handleAction:(id)action forBulletin:(id)bulletin withCompletion:(id)completion;
 - (void)handleGrabberPress:(id)press;
@@ -119,26 +130,30 @@ __attribute__((visibility("hidden")))
 - (void)handleReachabilityModeActivated;
 - (void)handleReachabilityModeDeactivated;
 - (void)hideGrabberAnimated:(BOOL)animated completion:(id)completion;
+- (id)interactionControllerForDismissal:(id)dismissal;
+- (id)interactionControllerForPresentation:(id)presentation;
 - (void)invalidateLockScreenActionContext;
 - (BOOL)isPresentingControllerTransitioning;
 - (void)launchExtensionWithBundleID:(id)bundleID options:(id)options completion:(id)completion;
 - (void)prepareLayoutForPresentationFromBanner;
 - (void)presentAnimated:(BOOL)animated;
 - (void)presentAnimated:(BOOL)animated completion:(id)completion;
+- (void)presentAnimated:(BOOL)animated setupPrelude:(id)prelude setupPostlude:(id)postlude animationPrelude:(id)prelude4 animationPostlude:(id)postlude5 completion:(id)completion;
+- (id)presentationControllerForPresentedViewController:(id)presentedViewController presentingViewController:(id)controller sourceViewController:(id)controller3;
 - (void)registerPresentedViewController:(id)controller;
 - (void)registerSharedGrabberView:(id)view withWillPresentBlock:(id)with hideBlock:(id)block andCompletion:(id)completion;
-- (void)reloadAllWidgets;
 - (void)remoteViewControllerDidConnectForWidget:(id)remoteViewController;
 - (void)runScrollTest:(id)test iterations:(int)iterations delta:(int)delta useAAGView:(BOOL)view;
 - (void)runWidgetLaunchTestWithWidgetWithIdentifier:(id)identifier prelude:(id)prelude completion:(id)completion;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (BOOL)shouldRequestWidgetRemoteViewControllers;
-- (void)showGrabberAnimated:(BOOL)animated;
+- (void)startInteractiveTransition:(id)transition;
+- (double)transitionDuration:(id)duration;
 - (void)unregisterPresentedViewController:(id)controller;
 - (void)unregisterSharedGrabberView;
 - (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
+- (id)viewForSystemGestureRecognizer:(id)systemGestureRecognizer;
 - (void)widget:(id)widget requestsLaunchOfURL:(id)url;
-- (void)widget:(id)widget requestsPresentationOfViewController:(id)viewController presentationStyle:(int)style context:(id)context completion:(id)completion;
 - (id)widgetViewControllerHostDelegate:(id)delegate;
 @end
 

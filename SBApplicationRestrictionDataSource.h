@@ -10,5 +10,7 @@
 @protocol SBApplicationRestrictionDataSource <NSObject>
 - (id)allApplications;
 - (id)applicationWithBundleIdentifier:(id)bundleIdentifier;
+- (id)bundleIdentifiersWithVisibilityOverrideHidden;
+- (void)noteNeedsToRefreshVisiblityOverrides;
 @end
 

@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppSwitcherContinuityAppPageView : SBAppSwitcherPageView {
+@interface SBAppSwitcherContinuityAppPageView : SBMainAppSwitcherPageView {
 	UIView *_infoView;
 	UIView *_iconTintView;
 	SBSaturatedIconView *_saturatedIconView;

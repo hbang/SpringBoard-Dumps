@@ -15,5 +15,6 @@ __attribute__((visibility("hidden")))
 @property(assign) BOOL currentlyVisible;
 @property(readonly, assign) BOOL defaultVisible;
 - (id)initWithDefaultVisible:(BOOL)defaultVisible;
+- (id)description;
 @end
 

@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
 	SBCCButtonLikeSectionView *_leftSection;
 	SBCCButtonLikeSectionView *_rightSection;
 }
-@property(assign, nonatomic) SBCCButtonLikeSectionView *leftSection;
-@property(assign, nonatomic) SBCCButtonLikeSectionView *rightSection;
+@property(retain, nonatomic) SBCCButtonLikeSectionView *leftSection;
+@property(retain, nonatomic) SBCCButtonLikeSectionView *rightSection;
 - (id)initWithFrame:(CGRect)frame;
 - (CGRect)_frameForSectionSlot:(int)sectionSlot;
 - (UIEdgeInsets)_landscapeInsetsForSection;

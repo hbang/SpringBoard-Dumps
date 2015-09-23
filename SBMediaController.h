@@ -24,6 +24,10 @@ __attribute__((visibility("hidden")))
 	NSTimer *_screenSharingStatusBarOverrideTimer;
 	NSTimer *_videoOutStatusBarOverrideTimer;
 	MPAVRoutingController *_routingController;
+	void *_currentApplicationActivity;
+	NSDate *_currentApplicationActivityLastChangedDate;
+	SBSStatusBarStyleOverridesAssertion *_screenSharingStatusBarStyleOverrideAssertion;
+	SBSStatusBarStyleOverridesAssertion *_videoOutStatusBarStyleOverrideAssertion;
 	int _nowPlayingProcessPID;
 }
 @property(readonly, copy) NSString *debugDescription;
@@ -38,6 +42,7 @@ __attribute__((visibility("hidden")))
 + (void)sendResetPlaybackTimeoutCommand;
 + (id)sharedInstance;
 - (id)init;
+- (void)_applicationActivityStatusDidChange:(id)_applicationActivityStatus;
 - (float)_calcButtonRepeatDelay;
 - (void)_cancelPendingVolumeChange;
 - (void)_changeVolumeBy:(float)by;
@@ -58,11 +63,15 @@ __attribute__((visibility("hidden")))
 - (void)_systemVolumeChanged:(id)changed;
 - (void)_unregisterForNotifications;
 - (void)_updateAVRoutes;
+- (void)_updateCurrentApplicationActivityLastChangedDate;
 - (BOOL)addTrackToWishList;
+- (BOOL)applicationActivityIsActive;
+- (BOOL)applicationActivityRecentlyEnded;
 - (BOOL)banTrack;
 - (BOOL)beginSeek:(int)seek;
 - (void)cancelVolumeEvent;
 - (BOOL)changeTrack:(int)track;
+- (void *)copyCurrentApplicationActivity;
 - (void)dealloc;
 - (void)decreaseVolume;
 - (BOOL)endSeek:(int)seek;
@@ -83,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)play;
 - (BOOL)routeOtherThanHandsetIsAvailable;
 - (void)routingControllerAvailableRoutesDidChange:(id)routingControllerAvailableRoutes;
+- (void)setCurrentApplicationActivity:(void *)activity;
 - (void)setNowPlayingInfo:(id)info;
 - (BOOL)setPlaybackSpeed:(int)speed;
 - (void)setVolume:(float)volume;

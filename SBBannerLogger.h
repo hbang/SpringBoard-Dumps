@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 @interface SBBannerLogger : SBFileLogger {
 }
 - (void)_setEnabled:(BOOL)enabled;
-- (BOOL)isEnabled;
+- (void)_setLevel:(int)level;
+- (int)level;
 - (id)logPreferenceName;
 - (id)logPrefixForCategory:(id)category destination:(unsigned)destination;
 - (id)name;

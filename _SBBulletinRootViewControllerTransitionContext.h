@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface _SBBulletinRootViewControllerTransitionContext : XXUnknownSuperclass <UIViewControllerContextTransitioning> {
+@interface _SBBulletinRootViewControllerTransitionContext : XXUnknownSuperclass {
 	BOOL _animated;
 	BOOL _presenting;
 	UIView *_containerView;
@@ -19,27 +19,11 @@ __attribute__((visibility("hidden")))
 }
 @property(assign, nonatomic, getter=isAnimated) BOOL animated;
 @property(retain, nonatomic) UIView *containerView;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(copy, nonatomic) id dismissalCompletion;
-@property(readonly, assign) unsigned hash;
 @property(copy, nonatomic) id presentationCompletion;
 @property(retain, nonatomic) UIViewController *presentedViewController;
 @property(assign, nonatomic, getter=isPresenting) BOOL presenting;
 @property(retain, nonatomic) UIViewController *presentingViewController;
-@property(readonly, assign) Class superclass;
-- (void)cancelInteractiveTransition;
-- (void)completeTransition:(BOOL)transition;
 - (void)dealloc;
-- (CGRect)finalFrameForViewController:(id)viewController;
-- (void)finishInteractiveTransition;
-- (CGRect)initialFrameForViewController:(id)viewController;
-- (BOOL)isInteractive;
-- (int)presentationStyle;
-- (CGAffineTransform)targetTransform;
-- (BOOL)transitionWasCancelled;
-- (void)updateInteractiveTransition:(float)transition;
-- (id)viewControllerForKey:(id)key;
-- (id)viewForKey:(id)key;
 @end
 

@@ -9,24 +9,22 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkAppToImpersonatedAppWorkspaceTransaction : SBStarkAppToAppWorkspaceTransaction {
-	SBAlert *_activatingAlert;
+	SBWorkspaceAlert *_activatingAlert;
 	BOOL _animatedAppDeactivation;
-	SBApplication *_mainScreenAppThatWillBeActivated;
+	SBWorkspaceApplication *_mainScreenAppThatWillBeActivated;
 	id _mainScreenAppThatWillBeActivatedObserver;
 }
-- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
+- (id)initWithTransitionRequest:(id)transitionRequest;
 - (void)_doCommit;
+- (id)_effectiveTopEntity;
 - (void)_finishCommit;
 - (id)_newAnimationFromAppToApp;
 - (id)_newAnimationFromAppToNowPlaying;
 - (id)_newAnimationFromLauncherToApp;
 - (id)_newAnimationFromNowPlayingToApp;
 - (void)_noteWillActivateApplicationOnMainScreen:(id)_note underLock:(BOOL)lock;
-- (void)_setupMilestonesFrom:(id)from to:(id)to;
-- (BOOL)_shouldDisallowSuspension;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
-- (id)swizzledToDisplayIfNecessary;
 @end
 

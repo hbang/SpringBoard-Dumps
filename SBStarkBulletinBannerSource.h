@@ -10,12 +10,13 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkBulletinBannerSource : SBStarkBannerSource <BBObserverDelegate, SBVolumePressBandit> {
 	BBObserver *_bbObserver;
+	BOOL _quietModeEnabled;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-- (id)initWithAllowedTargetIdentifier:(void *)allowedTargetIdentifier;
+- (id)initWithConfiguration:(id)configuration allowedTargetIdentifier:(void *)identifier;
 - (void)_reloadVolumePressBanditPreference;
 - (void)_showTestBanner:(id)banner;
 - (void)dealloc;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)handleVolumeIncrease;
 - (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
 - (void)observer:(id)observer modifyBulletin:(id)bulletin;
+- (void)observer:(id)observer noteAlertBehaviorOverridesChanged:(unsigned)changed;
 - (void)observer:(id)observer noteServerReceivedResponseForBulletin:(id)bulletin;
 - (void)observer:(id)observer removeBulletin:(id)bulletin;
 @end

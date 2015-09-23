@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)deactivate;
 - (BOOL)hasTranslucentBackground;
-- (int)interfaceOrientationForActivation;
 - (id)lockEntryView;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
+- (int)preferredInterfaceOrientationForPresentation;
+- (BOOL)shouldAutorotate;
 - (int)status;
 - (unsigned)supportedInterfaceOrientations;
 @end

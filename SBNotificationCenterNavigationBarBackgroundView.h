@@ -9,12 +9,18 @@
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationCenterNavigationBarBackgroundView : XXUnknownSuperclass {
+	int _layoutMode;
+	_UIBackdropView *_backdropView;
+	UIView *_backgroundView;
 }
 - (id)initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame forLayoutMode:(int)layoutMode;
 - (void)_setFrame:(CGRect)frame forceUpdateBackgroundImage:(BOOL)image;
 - (void)_setIsContainedInPopover:(BOOL)popover;
 - (id)appearanceStorage;
+- (id)backgroundColor;
 - (void)setAppearanceStorage:(id)storage;
+- (void)setBackgroundColor:(id)color;
 - (void)setBarStyle:(int)style;
 - (void)setBarTintColor:(id)color;
 - (void)setBarWantsAdaptiveBackdrop:(BOOL)backdrop;

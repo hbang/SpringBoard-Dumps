@@ -9,10 +9,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationControllerGroup : SBUIAnimationController <SBUIAnimationControllerObserver> {
-	NSMutableArray *_animations;
 	BOOL _finished;
+	NSMutableArray *_animations;
 }
-@property(readonly, assign, nonatomic) NSArray *animations;
+@property(readonly, retain, nonatomic) NSArray *animations;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
@@ -23,13 +23,9 @@ __attribute__((visibility("hidden")))
 - (void)_startAnimation;
 - (BOOL)_willAnimate;
 - (void)addAnimation:(id)animation;
-- (void)addObserver:(id)observer;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
-- (void)beginAnimation;
 - (void)dealloc;
-- (void)endAnimation;
-- (void)removeObserver:(id)observer;
 - (BOOL)waitingToStart;
 @end
 

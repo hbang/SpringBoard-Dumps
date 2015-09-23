@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 	SBLockScreenViewController *_viewController;
 	SBMediaController *_mediaController;
 	PCPersistentTimer *_disableTimer;
+	BOOL _enabled;
 }
 - (id)initWithLockScreenViewController:(id)lockScreenViewController mediaController:(id)controller;
 - (void)_addObservers;
 - (void)_disableNowPlayingPlugin;
+- (void)_enableNowPlayingPlugin;
 - (void)_startDisableTimer;
 - (void)_updateNowPlayingPlugin;
 - (void)dealloc;

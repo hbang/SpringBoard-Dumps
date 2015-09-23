@@ -15,16 +15,10 @@ __attribute__((visibility("hidden")))
 }
 - (id)initWithBulletinWindowController:(id)bulletinWindowController;
 - (void)_getRotationContentSettings:(XXStruct_ykCi7C *)settings;
-- (void)bulletinWindowControllerDismissViewControllerAnimated:(BOOL)animated completion:(id)completion;
-- (void)bulletinWindowControllerPresentViewController:(id)controller animated:(BOOL)animated completion:(id)completion;
 - (void)dealloc;
-- (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)loadView;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (BOOL)wantsFullScreenLayout;
-- (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
-- (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

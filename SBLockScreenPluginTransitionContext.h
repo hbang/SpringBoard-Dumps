@@ -10,15 +10,12 @@
 __attribute__((visibility("hidden")))
 @interface SBLockScreenPluginTransitionContext : XXUnknownSuperclass {
 	SBLockScreenViewController *_lockScreenViewController;
-	SBAwayViewPluginController *_fromController;
-	SBLockOverlayContext *_fromOverlay;
-	SBAwayViewPluginController *_toController;
-	SBLockOverlayContext *_toOverlay;
+	SBLockScreenPlugin *_fromPlugin;
+	SBLockScreenPlugin *_toPlugin;
 }
-@property(assign) SBAwayViewPluginController *fromController;
-@property(assign) SBLockOverlayContext *fromOverlay;
-@property(assign) SBLockScreenViewController *lockScreenViewController;
-@property(assign) SBAwayViewPluginController *toController;
-@property(assign) SBLockOverlayContext *toOverlay;
+@property(retain, nonatomic) SBLockScreenPlugin *fromPlugin;
+@property(retain, nonatomic) SBLockScreenViewController *lockScreenViewController;
+@property(retain, nonatomic) SBLockScreenPlugin *toPlugin;
+- (void)dealloc;
 @end
 

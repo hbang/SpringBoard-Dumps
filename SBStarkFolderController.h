@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 	unsigned _interactionAffordances;
 	BOOL _supportsKnobEvents;
 	BOOL _supportsTouchEvents;
+	BOOL _pageAnimating;
 }
 @property(retain, nonatomic) SBIcon *focusedIcon;
 @property(retain, nonatomic) NSIndexPath *focusedIndex;

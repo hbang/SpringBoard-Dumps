@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppSwitcherServiceCellView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {
+@interface SBAppSwitcherServiceCellView : XXUnknownSuperclass <SBMainAppSwitcherPageContentView> {
 	int _orientation;
 }
 @property(readonly, copy) NSString *debugDescription;
@@ -16,6 +16,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) int orientation;
 @property(readonly, assign) Class superclass;
+- (id)initWithFrame:(CGRect)frame;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
+- (float)cornerRadius;
+- (void)invalidate;
+- (void)setCornerRadius:(float)radius;
 - (CGSize)sizeThatFits:(CGSize)fits;
 @end
 

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) id<SBLockScreenNotificationBannerItemDelegate> delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
-@property(readonly, assign, nonatomic) SBAwayListItem *listItem;
+@property(readonly, retain, nonatomic) SBAwayListItem *listItem;
 @property(readonly, assign) Class superclass;
 @property(retain, nonatomic) id<SBLockScreenActionHandler> unlockActionHandler;
 - (id)initWithListItem:(id)listItem;
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isCritical;
 - (id)lockScreenActionContext;
 - (id)message;
+- (BOOL)overridesPocketMode;
 - (BOOL)overridesQuietMode;
 - (BOOL)shouldPlayLightsAndSirens;
 - (BOOL)showMessagePreview;

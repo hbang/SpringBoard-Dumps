@@ -10,15 +10,13 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkAlertToImpersonatedAppWorkspaceTransaction : SBStarkAlertToAppWorkspaceTransaction {
 	SBAlert *_fromAlert;
-	SBAlert *_toAlert;
-	SBApplication *_toApplication;
+	SBWorkspaceAlert *_toAlert;
 }
-- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller alert:(id)alert toApplication:(id)application;
+- (id)initWithTransitionRequest:(id)transitionRequest;
 - (void)_activateAlert;
 - (void)_alertDidDeactivate;
 - (void)_beginAnimation;
-- (void)_setupMilestonesFrom:(id)from to:(id)to;
-- (BOOL)_shouldDisallowSuspension;
+- (id)_effectiveTopEntity;
 - (void)dealloc;
 - (id)debugDescription;
 @end

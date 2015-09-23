@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 @interface SBBulletinListSection : XXUnknownSuperclass {
 	NSString *_sectionID;
 	int _sectionType;
-	int _sectionCategory;
 	id _widget;
 	NSMutableArray *_bulletins;
 	NSMutableSet *_bulletinIDs;
@@ -27,12 +26,11 @@ __attribute__((visibility("hidden")))
 	UIImage *_largeIconImage;
 	BBSectionInfo *_sectionInfo;
 }
-@property(readonly, assign, nonatomic) NSArray *bulletins;
+@property(readonly, retain, nonatomic) NSArray *bulletins;
 @property(copy, nonatomic) NSString *displayName;
 @property(retain, nonatomic) UIImage *iconImage;
 @property(retain, nonatomic) UIImage *largeIconImage;
 @property(assign, nonatomic) unsigned messageNumberOfLines;
-@property(assign, nonatomic) int sectionCategory;
 @property(copy, nonatomic) NSString *sectionID;
 @property(retain, nonatomic) BBSectionInfo *sectionInfo;
 @property(assign, nonatomic) BOOL showsInLockScreen;

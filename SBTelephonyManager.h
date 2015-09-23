@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 	BOOL _containsCellularRadio;
 	BOOL _hasCellularTelephony;
 	BOOL _hasCellularData;
-	BOOL _hasAnyTelephony;
 	NSString *_cachedCTRegistrationCellStatus;
 	NSString *_cachedCTRegistrationDisplayStatus;
 	int _cachedCTRegistrationIsForcedHome;
@@ -41,10 +40,6 @@ __attribute__((visibility("hidden")))
 	int _numActivationFailures;
 	int _inEmergencyCallbackMode;
 	unsigned _loggingCallAudio : 1;
-	NSString *_inCallStatusPreamble;
-	NSString *_inCallDurationString;
-	NSTimer *_inCallTimer;
-	NSTimer *_inCallStyleDelayTimer;
 	RadiosPreferences *_radioPrefs;
 	int _needsUserIdentificationModule;
 	NSString *_simStatus;
@@ -65,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) TUCall *heldCall;
 @property(retain, nonatomic) TUCall *incomingCall;
 @property(retain, nonatomic) TUCall *outgoingCall;
++ (CTServerConnectionRef)defaultTelephonyCenter;
 + (id)sharedTelephonyManager;
 + (id)sharedTelephonyManagerCreatingIfNecessary:(BOOL)necessary;
 - (id)init;
@@ -83,8 +79,6 @@ __attribute__((visibility("hidden")))
 - (void)_headphoneChanged:(id)changed;
 - (BOOL)_isTTYEnabled;
 - (BOOL)_lteConnectionShows4G;
-- (void)_noteInCallAlertDidActivate;
-- (void)_noteInCallStyleDelayExpired;
 - (void)_operatorBundleChanged;
 - (void)_performQueryInBackground:(id)background withMainQueueResultHandler:(id)mainQueueResultHandler;
 - (id)_phoneApp;
@@ -93,8 +87,6 @@ __attribute__((visibility("hidden")))
 - (void)_prepareToAnswerCall;
 - (BOOL)_pretendingToSearch;
 - (void)_provisioningUpdateWithStatus:(int)status;
-- (void)_proximityChanged:(id)changed;
-- (void)_queue_noteWirelessModemDynamicStoreChanged;
 - (void)_reallySetOperatorName:(id)name;
 - (void)_resetCTMMode;
 - (void)_resetModemConnectionType;
@@ -110,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)_setRegistrationStatus:(int)status;
 - (void)_setSIMStatus:(id)status;
 - (void)_setSignalStrength:(long)strength andBars:(long)bars;
+- (void)_setSuppressesCellDataIndicator:(int)indicator;
 - (void)_setSuppressesCellIndicators:(int)indicators;
 - (void)_setVPNConnectionStatus:(int)status;
 - (void)_startFakeServiceIfNecessary;
@@ -122,14 +115,12 @@ __attribute__((visibility("hidden")))
 - (void)_updateNetworkLocale;
 - (void)_updateRegistrationNow;
 - (void)_updateState;
-- (void)_updateStatusBarCallStateForCall:(id)call;
 - (BOOL)activeCallExists;
 - (void)airplaneModeChanged;
-- (int)callCount;
+- (unsigned)callCount;
 - (void)callEventHandler:(id)handler;
 - (int)callForwardingIndicator;
 - (BOOL)callWouldUseReceiver:(BOOL)receiver;
-- (BOOL)cellDataIsOn;
 - (int)cellRegistrationStatus;
 - (BOOL)cellularRadioCapabilityIsActive;
 - (void)configureForTTY:(BOOL)tty;
@@ -138,27 +129,21 @@ __attribute__((visibility("hidden")))
 - (id)copyTelephonyCapabilities;
 - (int)dataConnectionType;
 - (void)disconnectAllCalls;
-- (void)disconnectCall;
 - (void)disconnectCallAndActivateHeld;
 - (void)disconnectIncomingCall;
 - (id)displayedCall;
 - (void)dumpBasebandState:(id)state;
 - (BOOL)emergencyCallSupported;
-- (void)exitEmergencyCallbackMode;
 - (unsigned)faceTimeAudioCallCount;
-- (void)handleCallAudioFinished:(id)finished;
 - (void)handleCallControlFailure:(id)failure;
-- (BOOL)hasAnyTelephony;
 - (BOOL)hasCellularData;
 - (BOOL)hasCellularTelephony;
 - (BOOL)heldCallExists;
 - (BOOL)inCall;
 - (double)inCallDuration;
-- (id)inCallDurationString;
 - (BOOL)inCallUsingSpeakerOrReceiver;
 - (BOOL)incomingCallExists;
 - (BOOL)isEmergencyCallActive;
-- (BOOL)isEmergencyCallScheme:(id)scheme;
 - (BOOL)isInAirplaneMode;
 - (BOOL)isInEmergencyCallbackMode;
 - (BOOL)isLoggingCallAudio;
@@ -174,7 +159,6 @@ __attribute__((visibility("hidden")))
 - (id)operatorName;
 - (BOOL)outgoingCallExists;
 - (void)postponementStatusChanged;
-- (id)preambleStringForKey:(id)key;
 - (void)queue_setFastDormancySuspended:(BOOL)suspended withConnection:(CTServerConnectionRef)connection;
 - (BOOL)registeredWithoutCellular;
 - (int)registrationCauseCode;
@@ -199,7 +183,6 @@ __attribute__((visibility("hidden")))
 - (void)updateDisplaySettings:(id)settings forOutgoingCallURL:(id)outgoingCallURL outURL:(id *)url;
 - (BOOL)updateLocale;
 - (void)updateSpringBoard;
-- (void)updateStatusBarCallDuration;
 - (void)updateTTYIndicator;
 @end
 

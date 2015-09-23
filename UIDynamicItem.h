@@ -10,6 +10,10 @@
 @protocol UIDynamicItem <NSObject>
 @property(readonly, assign, nonatomic) CGRect bounds;
 @property(assign, nonatomic) CGPoint center;
+@optional
+@property(readonly, assign, nonatomic) UIBezierPath *collisionBoundingPath;
+@property(readonly, assign, nonatomic) unsigned collisionBoundsType;
+@required
 @property(assign, nonatomic) CGAffineTransform transform;
 @end
 

@@ -10,12 +10,12 @@
 __attribute__((visibility("hidden")))
 @interface SBScaleZoomSettings : SBIconZoomSettings {
 	BOOL _crossfadeWithZoom;
-	SBFAnimationSettings *_outerFolderFadeSettings;
-	SBFAnimationSettings *_crossfadeSettings;
+	SBAnimationSettings *_outerFolderFadeSettings;
+	SBAnimationSettings *_crossfadeSettings;
 }
-@property(retain) SBFAnimationSettings *crossfadeSettings;
+@property(retain) SBAnimationSettings *crossfadeSettings;
 @property(assign) BOOL crossfadeWithZoom;
-@property(retain) SBFAnimationSettings *outerFolderFadeSettings;
+@property(retain) SBAnimationSettings *outerFolderFadeSettings;
 + (id)settingsControllerModule;
 - (id)effectiveCrossfadeAnimationSettings;
 - (void)setDefaultValues;

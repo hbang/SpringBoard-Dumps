@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAlert : XXUnknownSuperclass <SBDisplayProtocol> {
+@interface SBAlert : XXUnknownSuperclass <SBDisplay> {
 	id<SBAlertDelegate> _alertDelegate;
 	SBAlertView *_display;
 	NSMutableDictionary *_dictionary;
@@ -17,15 +17,19 @@ __attribute__((visibility("hidden")))
 	int _backgroundStyle;
 	BOOL _isForcingBackgroundStyleUpdate;
 	BOOL _suppressesBanners;
+	BOOL _occluding;
 	SBActivationSettings *_activationSettings;
 	SBDeactivationSettings *_deactivationSettings;
 	SBStateSettings *_stateSettings;
+	SBProcessSettings *_processSettings;
 	int _orientationChangedEventsEnabled;
 	BOOL _requestedDismissal;
 	UIScreen *_targetScreen;
+	FBDisplayLayoutElement *_displayLayoutElement;
 	NSHashTable *_observers;
 	SBAlertManager *_alertManager;
 }
+@property(assign, nonatomic, getter=_isOccluding, setter=_setOccluding:) BOOL _occluding;
 @property(retain, nonatomic) SBAlertManager *alertManager;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -36,12 +40,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) BOOL suppressesControlCenter;
 @property(readonly, assign, nonatomic) BOOL suppressesNotificationCenter;
 @property(readonly, assign, nonatomic) BOOL suppressesSiri;
-@property(readonly, assign, nonatomic) UIViewController *viewControllerForSupportedInterfaceOrientations;
-@property(readonly, assign, nonatomic) BOOL wantsSupportedInterfaceOrientationsIgnoredDuringDeactivation;
 + (void)registerForAlerts;
 + (void)test;
 - (id)init;
-- (id)_basicDescription;
+- (void)_deactivateLayoutElement;
+- (id)_displayLayoutElementIdentifier;
 - (id)_impersonatesApplicationWithBundleID;
 - (BOOL)_isLockAlert;
 - (void)_removeFromImpersonatedAppIfNecessary;
@@ -58,21 +61,29 @@ __attribute__((visibility("hidden")))
 - (void)animateDeactivation;
 - (void)applyActivationSettings:(id)settings;
 - (void)applyDeactivationSettings:(id)settings;
+- (void)applyProcessSettings:(id)settings;
 - (void)applyStateSettings:(id)settings;
 - (double)autoDimTime;
 - (double)autoLockTime;
 - (BOOL)boolForActivationSetting:(unsigned)activationSetting;
 - (BOOL)boolForDeactivationSetting:(unsigned)deactivationSetting;
+- (BOOL)boolForProcessSetting:(int)processSetting;
 - (BOOL)boolForStateSetting:(unsigned)stateSetting;
 - (void)clearActivationSettings;
 - (void)clearDeactivationSettings;
 - (void)clearDisplay;
+- (void)clearProcessSettings;
 - (void)clearStateSettings;
+- (id)copyActivationSettings;
+- (id)copyDeactivationSettings;
 - (id)copyDisplaySettings;
+- (id)copyProcessSettings;
+- (id)copyStateSettings;
 - (BOOL)currentlyAnimatingDeactivation;
 - (int)customBackgroundStyle;
 - (void)deactivate;
 - (void)dealloc;
+- (id)descriptionWithMultilinePrefix:(id)multilinePrefix;
 - (void)didFinishAnimatingIn;
 - (void)didFinishAnimatingOut;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
@@ -87,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (float)finalAlpha;
 - (int)flagForActivationSetting:(unsigned)activationSetting;
 - (int)flagForDeactivationSetting:(unsigned)deactivationSetting;
+- (int)flagForProcessSetting:(int)processSetting;
 - (int)flagForStateSetting:(unsigned)stateSetting;
 - (void)handleAutoLock;
 - (BOOL)handleHeadsetButtonPressed:(BOOL)pressed;
@@ -98,7 +110,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)handleVolumeDownButtonPressed;
 - (BOOL)handleVolumeUpButtonPressed;
 - (BOOL)hasTranslucentBackground;
-- (int)interfaceOrientationForActivation;
 - (BOOL)isRemote;
 - (BOOL)isWallpaperTunnelActive;
 - (id)legibilitySettings;
@@ -110,8 +121,10 @@ __attribute__((visibility("hidden")))
 - (id)objectForActivationSetting:(unsigned)activationSetting;
 - (id)objectForDeactivationSetting:(unsigned)deactivationSetting;
 - (id)objectForKey:(id)key;
+- (id)objectForProcessSetting:(int)processSetting;
 - (id)objectForStateSetting:(unsigned)stateSetting;
 - (BOOL)orientationChangedEventsEnabled;
+- (int)preferredInterfaceOrientationForPresentation;
 - (void)removeBackgroundStyleWithAnimationFactory:(id)animationFactory;
 - (void)removeFromView;
 - (void)removeObjectForKey:(id)key;
@@ -124,20 +137,23 @@ __attribute__((visibility("hidden")))
 - (void)setExpectsFaceContact:(BOOL)contact inLandscape:(BOOL)landscape;
 - (void)setFlag:(int)flag forActivationSetting:(unsigned)activationSetting;
 - (void)setFlag:(int)flag forDeactivationSetting:(unsigned)deactivationSetting;
+- (void)setFlag:(int)flag forProcessSetting:(int)processSetting;
 - (void)setFlag:(int)flag forStateSetting:(unsigned)stateSetting;
 - (void)setObject:(id)object forActivationSetting:(unsigned)activationSetting;
 - (void)setObject:(id)object forDeactivationSetting:(unsigned)deactivationSetting;
 - (void)setObject:(id)object forKey:(id)key;
+- (void)setObject:(id)object forProcessSetting:(int)processSetting;
 - (void)setObject:(id)object forStateSetting:(unsigned)stateSetting;
 - (void)setOrientationChangedEventsEnabled:(BOOL)enabled;
 - (void)setWallpaperTunnelActive:(BOOL)active;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
+- (BOOL)shouldAutorotate;
 - (BOOL)shouldPendAlertItemsWhileActive;
 - (BOOL)showsSpringBoardStatusBar;
 - (int)starkStatusBarStyle;
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
 - (id)statusBarStyleRequest;
+- (unsigned)supportedInterfaceOrientations;
 - (BOOL)undimsDisplay;
 - (void)viewDidAppear:(BOOL)view;
 - (void)viewDidDisappear:(BOOL)view;

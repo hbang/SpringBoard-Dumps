@@ -8,18 +8,8 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBTouchTemplate : XXUnknownSuperclass {
-	SBPolygon *m_template;
-	SBPolygon *m_candidate;
-	unsigned m_transformType;
-	float m_acceptFactor;
+@interface SBTouchTemplate : SBPolygon {
 }
-@property(assign, nonatomic) float acceptFactor;
-@property(readonly, assign, nonatomic) unsigned pointCount;
-@property(assign, nonatomic) unsigned transformType;
-- (id)initWithPoints:(CGPoint *)points count:(unsigned)count;
-- (BOOL)acceptPoints:(CGPoint *)points count:(unsigned)count;
-- (BOOL)acceptPolygon:(id)polygon;
-- (void)dealloc;
+- (unsigned)matchesPolygon:(id)polygon matchTransformsAllowed:(unsigned)allowed acceptanceFactor:(float)factor outMorphedCandidate:(id *)candidate;
 @end
 

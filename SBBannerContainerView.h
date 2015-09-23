@@ -10,6 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBBannerContainerView : XXUnknownSuperclass {
 	BOOL _modal;
+	BOOL _highlighted;
 	SBBannerContextView *_bannerView;
 	UIView *_backgroundView;
 	UIView *_inlayView;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 @property(assign, nonatomic) UIView *backgroundView;
 @property(assign, nonatomic) SBBannerContextView *bannerView;
+@property(assign, nonatomic) BOOL highlighted;
 @property(assign, nonatomic) UIView *inlayContainerView;
 @property(assign, nonatomic) UIView *inlayView;
 @property(assign, nonatomic) float maximumHeight;

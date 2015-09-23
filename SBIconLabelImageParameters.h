@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
 	BOOL _containsEmoji;
 	BOOL _canEllipsize;
 	BOOL _canTighten;
+	BOOL _recalculateHash;
+	BOOL _canUseMemoryPool;
+	BOOL _accessibilityIncreaseContrastEnabled;
 	float _scale;
 	CGSize _maxSize;
 	int _style;
 	UIColor *_textColor;
-	BOOL _recalculateHash;
-	BOOL _canUseMemoryPool;
-	BOOL _accessibilityIncreaseContrastEnabled;
 	UIColor *_focusHighlightColor;
 	UIEdgeInsets _textInsets;
 	UIEdgeInsets _fontLanguageInsets;

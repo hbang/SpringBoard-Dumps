@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)containingBundleIdentifierForWidgetWithBundleIdentifer:(id)bundleIdentifer;
++ (id)containingBundleProxyForWidgetWithBundleIdentifer:(id)bundleIdentifer;
 + (id)defaultWidgetController;
++ (BOOL)isInternalWidgetBundleIdentifier:(id)identifier;
 - (id)init;
 - (void)__setHasContent:(BOOL)content forWidgetWithBundleIdentifier:(id)bundleIdentifier;
 - (void)dealloc;

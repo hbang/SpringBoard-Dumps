@@ -12,7 +12,7 @@
 @optional
 - (id)doubleHeightStatusStringForStyle:(int)style;
 @required
-- (void)getStatusBarData:(XXStruct_gly1hD *)data;
+- (void)getStatusBarData:(XXStruct_bjgjSD *)data;
 - (void)removeStatusBarStateObserver:(id)observer;
 @end
 

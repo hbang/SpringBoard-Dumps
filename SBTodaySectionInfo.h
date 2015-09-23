@@ -8,9 +8,9 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBTodaySectionInfo : SBBBSectionInfo {
+@interface SBTodaySectionInfo : SBSnippetSectionInfo {
 }
-- (id)identifier;
 - (Class)reusableViewClass;
+- (id)settingsDisplayName;
 @end
 

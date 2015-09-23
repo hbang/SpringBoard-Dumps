@@ -9,10 +9,15 @@
 
 __attribute__((visibility("hidden")))
 @interface SBWidgetSectionInfo : SBNotificationCenterSectionInfo {
-	SBBBWidgetBulletinInfo *_widgetBulletinInfo;
+	NSString *_identifier;
+	SBWidgetRowInfo *_widgetRowInfo;
 }
-@property(retain, nonatomic) SBBBWidgetBulletinInfo *widgetBulletinInfo;
+@property(copy, nonatomic) NSString *identifier;
+@property(retain, nonatomic) SBWidgetRowInfo *widgetRowInfo;
++ (id)sectionInfoWithIdentifier:(id)identifier;
 - (void)dealloc;
-- (BOOL)isWidgetSection;
+- (id)description;
+- (void)populateReusableView:(id)view;
+- (Class)reusableViewClass;
 @end
 

@@ -9,7 +9,6 @@
 
 __attribute__((visibility("hidden")))
 @interface SBBiometricEventLogger : XXUnknownSuperclass {
-	BiometricKit *_biometricKit;
 	BOOL _fingerOnWithScreenOn;
 	unsigned long long _fingerOnTime;
 	unsigned long long _keybagUnlockTime;
@@ -22,7 +21,9 @@ __attribute__((visibility("hidden")))
 - (void)_clearEverything;
 - (void)_fingerOn:(id)on;
 - (void)_keybagBioUnlock:(id)unlock;
+- (void)_prearmMatch:(id)match;
 - (void)_screenTurnedOn:(id)on;
+- (BOOL)_shouldSignpost;
 - (BOOL)_shouldSyslogTimestamps;
 - (void)_tryAgain:(id)again;
 - (void)_unlockAnimationWillStart:(id)_unlockAnimation;

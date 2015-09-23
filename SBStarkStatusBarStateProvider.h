@@ -8,29 +8,26 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBStarkStatusBarStateProvider : SBStatusBarStateProvider <SBStarkScreenManagerObserver> {
+@interface SBStarkStatusBarStateProvider : SBStatusBarStateProvider {
+	id<SBStarkSessionConfiguring> _sessionConfiguration;
 	BOOL _oldAggregatorTimeCString[64];
 	BOOL _timeCString[64];
 	NSDateFormatter *_timeFormatter;
 	BOOL _showOptimalCellData;
+	BOOL _showTapToRadar;
 	BOOL _disableBattery;
-	int _deviceTransportType;
 	NSString *_inCallDetail;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
 + (BOOL)_itemIsIgnored:(int)ignored;
-- (id)init;
+- (id)initWithConfiguration:(id)configuration;
 - (void)_callDurationChanged;
-- (void)_composePostDataFromAggregatorData:(XXStruct_gly1hD *)aggregatorData;
+- (void)_composePostDataFromAggregatorData:(XXStruct_bjgjSD *)aggregatorData;
 - (void)_resetTimeItemFormatter;
-- (BOOL)_shouldPostForUpdatesToNonItemData:(const XXStruct_gly1hD *)nonItemData;
-- (BOOL)_shouldPostForVisitedItem:(int)visitedItem withUpdates:(BOOL)updates toAggregatorData:(const XXStruct_gly1hD *)aggregatorData;
+- (BOOL)_shouldPostForUpdatesToNonItemData:(const XXStruct_bjgjSD *)nonItemData;
+- (BOOL)_shouldPostForVisitedItem:(int)visitedItem withUpdates:(BOOL)updates toAggregatorData:(const XXStruct_bjgjSD *)aggregatorData;
+- (BOOL)_shouldShowRadarItem;
 - (id)_timeFormatter;
 - (void)dealloc;
 - (id)doubleHeightStatusStringForStyle:(int)style;
-- (void)starkScreenManagerDidChangeActiveController:(id)starkScreenManager;
 @end
 

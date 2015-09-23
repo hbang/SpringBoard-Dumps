@@ -14,7 +14,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)alertWindow:(id)window canAnimateInAlert:(id)alert;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)noteAlertWindow:(id)window didDisplayAlert:(id)alert;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
+- (void)performEndAppearanceToController:(id)controller withTransitionBlock:(id)transitionBlock;
+- (BOOL)shouldAutorotate;
+- (unsigned)supportedInterfaceOrientations;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

@@ -11,21 +11,22 @@ __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadeAlertToHostedApp : SBUIMainScreenAnimationController {
 	SBWindow *_transitionWindow;
 	SBAlert *_deactivatingAlert;
-	UIView<FBWindowContextAppearance> *_viewToAnimate;
+	UIView<FBSceneHostView> *_viewToAnimate;
 	BOOL _reallyFinishedAnimating;
 	SBDisableAppStatusBarAlphaChangesAssertion *_disableStatusBarAlphaChangeAssertion;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	int _launchingOrientation;
 	UIView *_fakeStatusBarViewContainer;
 	BOOL _appIsTranslucent;
 }
 @property(retain, nonatomic, getter=_viewToAnimate, setter=_setViewToAnimate:) UIView *viewToAnimate;
-- (id)initWithAlert:(id)alert activatingApp:(id)app;
-- (id)_animationProgressDependency;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
+- (id)_animationProgressDependencies;
 - (void)_applicationDependencyStateChanged;
+- (BOOL)_areApplicationLaunchesFinished;
 - (void)_cleanupAnimation;
 - (id)_deactivatingAlert;
 - (id)_getTransitionWindow;
-- (BOOL)_isApplicationLaunchFinished;
 - (void)_maybeReportAnimationFinished;
 - (void)_noteAnimationDidFinish;
 - (void)_prepareAnimation;

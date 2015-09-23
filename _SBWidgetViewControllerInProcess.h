@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)invalidatePreferredViewSize;
 - (void)requestLaunchOfURL:(id)url;
 - (void)requestPreferredViewHeightWithHandler:(id)handler;
-- (void)requestPresentationOfViewController:(id)viewController presentationStyle:(int)style context:(id)context completion:(id)completion;
 - (void)updateContentWidth:(float)width;
 - (void)viewDidLoad;
 @end

@@ -13,8 +13,7 @@ __attribute__((visibility("hidden")))
 	SBAlert *_deactivatingAlert;
 	BOOL _animatedAppActivation;
 }
-- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from impersonated:(id)impersonated to:(id)to;
-- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
+- (id)initWithTransitionRequest:(id)transitionRequest;
 - (void)_deactivateAlertIfPossible;
 - (void)_didComplete;
 - (void)_doCommit;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (id)_newAnimationFromAppToApp;
 - (id)_newAnimationFromAppToLauncher;
 - (id)_newAnimationFromAppToNowPlaying;
-- (void)_setupMilestonesFrom:(id)from to:(id)to;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;

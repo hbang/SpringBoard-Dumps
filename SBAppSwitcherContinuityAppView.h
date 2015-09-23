@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppSwitcherContinuityAppView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {
+@interface SBAppSwitcherContinuityAppView : XXUnknownSuperclass <SBMainAppSwitcherPageContentView> {
 	UIView *_containerView;
 	SBWallpaperEffectView *_wallpaperView;
 	UIView<SBAppSwitcherCacheVended> *_fakeStatusBarView;
@@ -24,10 +24,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame bundleIdentifier:(id)identifier;
 - (CGAffineTransform)_rotationTransformForOrientation:(int)orientation;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_viewDismissing:(id)dismissing;
 - (void)_willAnimateDismiss:(id)dismiss;
+- (float)cornerRadius;
 - (void)dealloc;
+- (void)invalidate;
 - (void)layoutSubviews;
+- (void)setCornerRadius:(float)radius;
 - (CGSize)sizeThatFits:(CGSize)fits;
 @end
 

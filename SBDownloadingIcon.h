@@ -10,7 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBDownloadingIcon : SBLeafIcon {
 	BOOL _wasUninstalledByUser;
-	BOOL _isNewsstandDownload;
 	SBApplicationPlaceholder *_appPlaceholder;
 }
 + (id)leafIdentifierForApplicationPlaceholderBundleID:(id)applicationPlaceholderBundleID;
@@ -24,13 +23,10 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)gridCellImage;
 - (id)homescreenIconImage;
-- (BOOL)iconAppearsInNewsstand;
 - (BOOL)isDownloadingIcon;
-- (BOOL)isNewsstandDownload;
 - (id)realDisplayName;
 - (void)reloadForStatusChange;
 - (void)setApplicationPlaceholder:(id)placeholder;
-- (void)setNewsstandDownload:(BOOL)download;
 - (void)setUninstalledByUser:(BOOL)user;
 - (id)uninstallAlertBody;
 - (id)uninstallAlertCancelTitle;

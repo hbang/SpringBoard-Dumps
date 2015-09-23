@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 	NSHashTable *_observers;
 	id _badgeNumberOrString;
 	unsigned _uninstalled : 1;
-	UIImage *_cachedIconImages[13];
+	UIImage *_cachedIconImages[14];
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
 - (id)generateIconImage:(int)image;
+- (id)getCachedIconImage:(int)image;
 - (id)getGenericIconImage:(int)image;
 - (id)getIconImage:(int)image;
 - (id)getStandardIconImageForLocation:(int)location;
@@ -57,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (id)gridCellImage;
 - (BOOL)hasFolderIconView;
 - (BOOL)hasObserver:(id)observer;
-- (BOOL)iconAppearsInNewsstand;
 - (int)iconFormatForLocation:(int)location;
 - (Class)iconImageViewClassForLocation:(int)location;
 - (id)indexPathsForContainedNodeIdentifier:(id)containedNodeIdentifier prefixPath:(id)path;
@@ -69,8 +69,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isFolderIcon;
 - (BOOL)isGrabbedIconPlaceholder;
 - (BOOL)isLeafIcon;
-- (BOOL)isNewsstandApplicationIcon;
-- (BOOL)isNewsstandIcon;
 - (BOOL)isPlaceholder;
 - (BOOL)isRecentlyUpdated;
 - (BOOL)isUninstalled;

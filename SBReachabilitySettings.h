@@ -10,8 +10,9 @@
 __attribute__((visibility("hidden")))
 @interface SBReachabilitySettings : XXUnknownSuperclass {
 	BOOL _allowOnAllDevices;
-	unsigned _triggerMethod;
 	unsigned _numberOfTapsForTapTrigger;
+	float _debounceFingerOff;
+	float _debounceHomeButtonPress;
 	float _yOffsetFactor;
 	float _mass;
 	float _stiffness;
@@ -25,6 +26,8 @@ __attribute__((visibility("hidden")))
 }
 @property(assign, nonatomic) BOOL allowOnAllDevices;
 @property(assign, nonatomic) float damping;
+@property(assign, nonatomic) float debounceFingerOff;
+@property(assign, nonatomic) float debounceHomeButtonPress;
 @property(assign, nonatomic) float epsilon;
 @property(assign, nonatomic) double fingerOnMesaRequiredDuration;
 @property(assign, nonatomic) float mass;
@@ -34,7 +37,6 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) double reducedMotionSlideDuration;
 @property(assign, nonatomic) float stiffness;
 @property(assign, nonatomic) double tapToTapMaxInterval;
-@property(assign, nonatomic) unsigned triggerMethod;
 @property(assign, nonatomic) float yOffsetFactor;
 + (id)settingsControllerModule;
 - (id)animationFactory;

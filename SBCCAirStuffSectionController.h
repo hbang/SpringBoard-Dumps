@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBCCAirStuffSectionController : SBControlCenterSectionViewController <MPAVRoutingControllerDelegate, UIPopoverControllerDelegate, SFAirDropDiscoveryControllerDelegate, SFAirDropDiscoveryActionSheetDelegate, UIActionSheetDelegate> {
+@interface SBCCAirStuffSectionController : SBControlCenterSectionViewController <MPAVRoutingControllerDelegate, UIPopoverControllerDelegate, SFAirDropDiscoveryControllerDelegate, SFAirDropDiscoveryAlertControllerDelegate> {
 	SBCCButtonLikeSectionView *_airPlaySection;
 	SBCCButtonLikeSectionView *_airDropSection;
 	MPAVRoutingController *_airPlayController;
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 	MPAVRoutingViewController *_airPlayViewController;
 	MPAudioVideoRoutingPopoverController *_airPlayPopoverController;
 	SFAirDropDiscoveryController *_airDropDiscoveryController;
+	UIAlertController *_airDropAlertController;
 	BOOL _isVisible;
 	BOOL _airPlayWasPreviouslyEnabled;
 	BSTimer *_resetTimer;
@@ -51,8 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)controlCenterDidDismiss;
 - (void)controlCenterWillPresent;
 - (void)dealloc;
-- (void)discoveryController:(id)controller actionSheetDidDismiss:(id)actionSheet;
-- (void)discoveryController:(id)controller actionSheetWillDismiss:(id)actionSheet;
+- (void)discoveryController:(id)controller alertControllerDidDismiss:(id)alertController;
 - (void)discoveryControllerSettingsDidChange:(id)discoveryControllerSettings;
 - (void)discoveryControllerVisibilityDidChange:(id)discoveryControllerVisibility;
 - (BOOL)enabledForOrientation:(int)orientation;

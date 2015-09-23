@@ -9,7 +9,6 @@
 
 __attribute__((visibility("hidden")))
 @interface SBCCRecordScreenShortcut : SBCCShortcutModule {
-	unsigned long long _sessionToken;
 	NSString *_lastRecordingPath;
 	NSDateFormatter *_dateFormatter;
 }

@@ -10,26 +10,26 @@
 __attribute__((visibility("hidden")))
 @interface SBFadeAnimationSettings : XXUnknownSuperclass {
 	float _backlightFadeDuration;
-	SBFAnimationSettings *_dateInSettings;
-	SBFAnimationSettings *_overlayInSettings;
-	SBFAnimationSettings *_contentInSettings;
-	SBFAnimationSettings *_wallpaperInSettings;
-	SBFAnimationSettings *_dateOutSettings;
-	SBFAnimationSettings *_overlayOutSettings;
-	SBFAnimationSettings *_wallpaperOutSettings;
+	SBAnimationSettings *_dateInSettings;
+	SBAnimationSettings *_overlayInSettings;
+	SBAnimationSettings *_contentInSettings;
+	SBAnimationSettings *_wallpaperInSettings;
+	SBAnimationSettings *_dateOutSettings;
+	SBAnimationSettings *_overlayOutSettings;
+	SBAnimationSettings *_wallpaperOutSettings;
 	CGRect _wallpaperInContentsRect;
 	CGRect _wallpaperOutContentsRect;
 }
 @property(assign, nonatomic) float backlightFadeDuration;
-@property(retain, nonatomic) SBFAnimationSettings *contentInSettings;
-@property(retain, nonatomic) SBFAnimationSettings *dateInSettings;
-@property(retain, nonatomic) SBFAnimationSettings *dateOutSettings;
-@property(retain, nonatomic) SBFAnimationSettings *overlayInSettings;
-@property(retain, nonatomic) SBFAnimationSettings *overlayOutSettings;
+@property(retain, nonatomic) SBAnimationSettings *contentInSettings;
+@property(retain, nonatomic) SBAnimationSettings *dateInSettings;
+@property(retain, nonatomic) SBAnimationSettings *dateOutSettings;
+@property(retain, nonatomic) SBAnimationSettings *overlayInSettings;
+@property(retain, nonatomic) SBAnimationSettings *overlayOutSettings;
 @property(assign, nonatomic) CGRect wallpaperInContentsRect;
-@property(retain, nonatomic) SBFAnimationSettings *wallpaperInSettings;
+@property(retain, nonatomic) SBAnimationSettings *wallpaperInSettings;
 @property(assign, nonatomic) CGRect wallpaperOutContentsRect;
-@property(retain, nonatomic) SBFAnimationSettings *wallpaperOutSettings;
+@property(retain, nonatomic) SBAnimationSettings *wallpaperOutSettings;
 + (id)settingsControllerModule;
 - (void)setDefaultValues;
 @end

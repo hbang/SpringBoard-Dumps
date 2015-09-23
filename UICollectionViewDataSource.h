@@ -8,7 +8,13 @@
 
 
 @protocol UICollectionViewDataSource <NSObject>
+@optional
+- (BOOL)collectionView:(id)view canMoveItemAtIndexPath:(id)indexPath;
+@required
 - (id)collectionView:(id)view cellForItemAtIndexPath:(id)indexPath;
+@optional
+- (void)collectionView:(id)view moveItemAtIndexPath:(id)indexPath toIndexPath:(id)indexPath3;
+@required
 - (int)collectionView:(id)view numberOfItemsInSection:(int)section;
 @optional
 - (id)collectionView:(id)view viewForSupplementaryElementOfKind:(id)kind atIndexPath:(id)indexPath;

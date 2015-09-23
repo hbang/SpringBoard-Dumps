@@ -9,8 +9,10 @@
 
 @protocol FBUIApplicationServiceDelegate <NSObject>
 @optional
+- (void)applicationService:(id)service deleteAllSnapshotsForBundleIdentifier:(id)bundleIdentifier;
 - (void)applicationService:(id)service getBadgeValueForBundleIdentifier:(id)bundleIdentifier withCompletion:(id)completion;
 - (void)applicationService:(id)service setBadgeValue:(id)value forBundleIdentifier:(id)bundleIdentifier;
 - (void)applicationService:(id)service setNextWakeDate:(id)date forBundleIdentifier:(id)bundleIdentifier;
+- (void)applicationService:(id)service suspendApplicationWithBundleIdentifier:(id)bundleIdentifier;
 @end
 

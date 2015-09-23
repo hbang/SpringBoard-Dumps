@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 @interface SBActivityContinuationAction : XXUnknownSuperclass {
 	NSDictionary *_settings;
 	int launchSource;
-	LSBestAppSuggestion *_appSuggestion;
+	SBBestAppSuggestion *_appSuggestion;
 }
-@property(retain, nonatomic) LSBestAppSuggestion *appSuggestion;
+@property(retain, nonatomic) SBBestAppSuggestion *appSuggestion;
 @property(assign, nonatomic) int launchSource;
 @property(readonly, assign, nonatomic) NSDictionary *settings;
 - (id)initWithIdentifier:(id)identifier activityTypeIdentifier:(id)identifier2 appSuggestion:(id)suggestion launchSource:(int)source;

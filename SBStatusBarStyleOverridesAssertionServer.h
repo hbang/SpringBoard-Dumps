@@ -10,5 +10,6 @@
 @protocol SBStatusBarStyleOverridesAssertionServer <NSObject>
 - (void)activateStatusBarStyleOverridesAssertions:(id)assertions reply:(id)reply;
 - (void)deactivateStatusBarStyleOverridesAssertionsWithIdentifiers:(id)identifiers;
+- (void)setStatusString:(id)string forAssertionWithIdentifier:(id)identifier;
 @end
 

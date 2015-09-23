@@ -32,9 +32,9 @@ __attribute__((visibility("hidden")))
 	SBFolderController *_outerFolderController;
 	SBFolderController *_innerFolderController;
 	SBFolderControllerAnimationContext *_animationContext;
+	id _postScrollingAction;
 	SBIcon *_grabbedIcon;
 	SBFolderContext *_lastContext;
-	id _postScrollingAction;
 }
 @property(readonly, assign, nonatomic) CGRect _autoscrollExclusionRegion;
 @property(assign, nonatomic, getter=isActive) BOOL active;
@@ -70,7 +70,6 @@ __attribute__((visibility("hidden")))
 - (id)_addEmptyListForce:(BOOL)force;
 - (BOOL)_allowUserInteraction;
 - (void)_animateFloatyFolderOpen:(BOOL)open settings:(id)settings completion:(id)completion;
-- (void)_animateNewsstandFolderOpen:(BOOL)open settings:(id)settings completion:(id)completion;
 - (BOOL)_canDropIconInListView:(id)listView;
 - (void)_cancelAllInteractionTimers;
 - (void)_cancelAutoScroll;

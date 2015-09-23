@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBUserNotificationCenter : XXUnknownSuperclass {
 }
 + (void)_userNotificationDone:(id)done;
++ (void)dispatchUserNotificationFromMachMessage:(XXStruct__nJsEB *)machMessage auditToken:(const XXStruct_kUSYWB *)token;
 + (void)startUserNotificationCenter;
 @end
 

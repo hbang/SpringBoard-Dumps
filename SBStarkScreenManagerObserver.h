@@ -9,7 +9,7 @@
 
 @protocol SBStarkScreenManagerObserver <NSObject>
 @optional
-- (void)starkScreenManagerDidChangeActiveController:(id)starkScreenManager;
-- (void)starkScreenManagerWillChangeActiveController:(id)starkScreenManager;
+- (void)starkScreenManagerDidChangeCurrentController:(id)starkScreenManager;
+- (void)starkScreenManagerWillChangeCurrentController:(id)starkScreenManager;
 @end
 

@@ -9,11 +9,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBReachabilityManager : XXUnknownSuperclass <SBReachabilityTriggerDelegate> {
-	NSMutableSet *_observers;
-	BOOL _keepAliveForEndedInteraction;
+	NSHashTable *_observers;
 	BOOL _reachabilityModeActive;
+	unsigned _reachabilityExtensionGenerationCount;
 	BOOL _reachabilityModeEnabled;
-	NSTimer *_keepAliveTimer;
 	NSMutableSet *_temporaryDisabledReasons;
 	SBReachabilityTrigger *_trigger;
 }
@@ -26,21 +25,17 @@ __attribute__((visibility("hidden")))
 + (BOOL)reachabilitySupported;
 + (id)sharedInstance;
 - (id)init;
-- (void)_clearKeepAliveTimer;
 - (void)_handleReachabilityActivated;
 - (void)_handleReachabilityDeactivated;
 - (void)_handleSignificantTimeChanged;
-- (void)_keepAliveTimerFired:(id)fired;
 - (void)_notifyObserversReachabilityModeActive:(BOOL)active excludingObserver:(id)observer;
-- (void)_setKeepAliveTimerForDuration:(double)duration;
+- (void)_setKeepAliveTimer;
 - (void)_toggleReachabilityModeWithRequestingObserver:(id)requestingObserver;
 - (void)_updateReachabilityModeActive:(BOOL)active withRequestingObserver:(id)requestingObserver;
 - (void)addObserver:(id)observer;
 - (void)cancelPendingReachabilityRequests;
 - (void)deactivateReachabilityModeForObserver:(id)observer;
 - (void)dealloc;
-- (void)disableExpirationTimerForInteraction;
-- (void)enableExpirationTimerForEndedInteraction;
 - (void)removeObserver:(id)observer;
 - (void)setReachabilityTemporarilyDisabled:(BOOL)disabled forReason:(id)reason;
 - (void)triggerDidTriggerReachability:(id)trigger;

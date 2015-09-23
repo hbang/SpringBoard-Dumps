@@ -9,6 +9,6 @@
 
 @protocol SBWindowLayoutStrategy <NSObject>
 - (CGRect)frameForWindow:(id)window;
-- (int)jailBehavior;
+- (BOOL)shouldClipForWindow:(id)window;
 @end
 

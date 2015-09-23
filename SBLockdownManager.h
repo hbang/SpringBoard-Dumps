@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 	int _state;
 	BOOL _settingUpActivationState;
 	BOOL _isBricked;
-	BOOL _isDeveloperDevice;
 	BOOL _hasShownMismatchedSIM;
 	SBDismissOnlyAlertItem *_activatingAlertItem;
 	NSString *_unqiueDeviceIdentifier;
@@ -31,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldShowTelephonyAlerts;
 - (BOOL)brickedDevice;
 - (void)dealloc;
-- (id)developerBuildExpirationDate;
 - (BOOL)isDeveloperDevice;
 - (int)lockdownState;
 @end

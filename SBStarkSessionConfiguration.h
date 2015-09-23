@@ -9,26 +9,42 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkSessionConfiguration : XXUnknownSuperclass <SBStarkSessionConfiguring> {
+	CRVehicleInformation *_vehicleInformation;
 	AVExternalDevice *_device;
 	unsigned _interactionAffordances;
 	int _layoutJustification;
+	FBSDisplay *_display;
 	UIScreen *_screen;
+	float _screenScale;
 	UITraitCollection *_traitCollection;
+	BOOL _connectedWirelessly;
 	BOOL _geoSupported;
+	BOOL _knownVehicle;
+	BOOL _OEMIconVisible;
+	BOOL _pairedVehicle;
 	NSSet *_protocols;
 }
+@property(readonly, assign, nonatomic, getter=isOEMIconVisible) BOOL OEMIconVisible;
+@property(readonly, assign, nonatomic, getter=isAmbientBrightnessNighttime) BOOL ambientBrightnessNighttime;
+@property(readonly, assign, nonatomic, getter=isConnectedWirelessly) BOOL connectedWirelessly;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, retain, nonatomic) AVExternalDevice *device;
+@property(readonly, retain, nonatomic) FBSDisplay *display;
 @property(assign, nonatomic, getter=isGeoSupported) BOOL geoSupported;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) unsigned interactionAffordances;
+@property(assign, nonatomic, getter=isKnownVehicle) BOOL knownVehicle;
 @property(readonly, assign, nonatomic) int layoutJustification;
+@property(assign, nonatomic, getter=isPairedVehicle) BOOL pairedVehicle;
 @property(readonly, retain, nonatomic) UIScreen *screen;
+@property(readonly, assign, nonatomic) float screenScale;
 @property(copy, nonatomic) NSSet *sessionProtocols;
 @property(readonly, assign) Class superclass;
 @property(readonly, copy, nonatomic) UITraitCollection *traitCollection;
-- (id)initWithDevice:(id)device screen:(id)screen;
++ (id)configurationForSettingsLayout;
+- (id)initWithVehicleInformation:(id)vehicleInformation device:(id)device screen:(id)screen;
+- (id)_init;
 - (void)dealloc;
 @end
 

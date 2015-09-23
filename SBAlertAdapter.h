@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 	UIViewController *_effectiveViewController;
 }
 - (id)initWithViewController:(id)viewController;
-- (id)_basicDescription;
 - (id)alertDisplayViewWithSize:(CGSize)size;
 - (void)alertWindow:(id)window resizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame3;
 - (void)dealloc;
@@ -23,8 +22,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
 - (BOOL)shouldAutorotate;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (unsigned)supportedInterfaceOrientations;
-- (id)viewControllerForSupportedInterfaceOrientations;
 @end
 

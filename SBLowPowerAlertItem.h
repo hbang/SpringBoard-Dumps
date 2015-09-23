@@ -10,6 +10,8 @@
 __attribute__((visibility("hidden")))
 @interface SBLowPowerAlertItem : XXUnknownSuperclass {
 	unsigned _talkLevel;
+	int _lowPowerButtonIndex;
+	int _closeButtonIndex;
 }
 + (BOOL)_shouldIgnoreChangeToBatteryLevel:(unsigned)batteryLevel;
 + (unsigned)_thresholdForLevel:(unsigned)level;
@@ -21,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithLevel:(unsigned)level;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
+- (BOOL)isLowPowerModeSupported;
 - (BOOL)shouldShowInEmergencyCall;
 - (BOOL)shouldShowInLockScreen;
 - (BOOL)undimsScreen;

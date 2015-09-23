@@ -9,27 +9,22 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkAppToAppWorkspaceTransaction : SBStarkToAppWorkspaceTransaction <SBUIAnimationControllerObserver> {
-	SBApplication *_fromApp;
 	SBUIAnimationController *_animationController;
 	BOOL _animatedActivation;
 	BOOL _animatedDeactivation;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, assign, nonatomic) SBApplication *fromApp;
+@property(readonly, retain, nonatomic) SBWorkspaceEntity *fromEntity;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
+- (id)initWithTransitionRequest:(id)transitionRequest;
 - (id)_animation;
-- (void)_begin;
 - (void)_beginAnimation;
 - (BOOL)_canBeInterrupted;
-- (id)_defaultAnimationFactory;
+- (void)_cleanUpAnimation;
 - (void)_didComplete;
-- (void)_didInterruptWithReason:(id)reason;
 - (void)_doCommit;
-- (void)_endAnimation;
-- (void)_fixupSettingsAndCommit;
 - (void)_handleAppDidNotChange;
 - (id)_newAnimationFromAppToApp;
 - (id)_newAnimationFromAppToLauncher;
@@ -40,13 +35,12 @@ __attribute__((visibility("hidden")))
 - (id)_newAnimationFromNowPlayingToLauncher;
 - (id)_newAnimationFromNowPlayingToNowPlaying;
 - (void)_noteWillActivateApplicationOnMainScreen:(id)_note underLock:(BOOL)lock;
+- (void)_performTransition;
 - (id)_setupAnimationFrom:(id)from to:(id)to;
-- (void)_setupMilestonesFrom:(id)from to:(id)to;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
 - (void)mainScreenApplicationSceneWillCommit:(id)mainScreenApplicationScene;
 - (void)mainScreenApplicationUpdateScenesTransactionCompleted:(id)completed;
-- (id)swizzledToDisplayIfNecessary;
 @end
 

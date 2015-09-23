@@ -9,31 +9,49 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationDosidoTransitionController : SBUIMainScreenAnimationController {
-	UIView *_fromAppContextHostView;
 	UIView *_fromView;
 	UIView *_toView;
+	SBWindowSelfHostWrapper *_homeScreenHostWrapper;
 	SBDosidoAnimator *_dosidoAnimator;
-	FBWindowContextHostManager *_toAppContextHostManager;
-	FBWindowContextHostManager *_fromAppContextHostManager;
 	int _fromOrientation;
-	BOOL _fromNC;
-	BOOL _fromCC;
-	BOOL _fromAssistant;
 	BOOL _requiresHostView;
+	BOOL _fromAppWantsLiveContent;
+	BOOL _dosidoDidComplete;
+	BOOL _crossfadeDidComplete;
+	BOOL _activationFailed;
+	BOOL _finishedActivating;
+	unsigned _direction;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 }
-- (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
+@property(assign, nonatomic) unsigned direction;
+@property(assign, nonatomic) BOOL fromAppWantsLiveContent;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
+- (id)_animationFactory;
+- (id)_animationProgressDependencies;
+- (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
-- (void)_cleanupFromContextHostView;
 - (id)_getTransitionWindow;
+- (void)_invalidateWrapperView:(id)view;
+- (BOOL)_isTransitionFromSpotlight;
+- (BOOL)_isTransitionToSpotlight;
 - (void)_kickOffAnimation;
+- (id)_mainScreenSnapshot;
+- (void)_maybeReportAnimationFinished;
+- (void)_maybeStartCrossfade;
+- (void)_performCrossfadeIfNeeded;
 - (void)_performDosido;
 - (void)_prepareAnimation;
 - (void)_setFromView:(id)view;
 - (void)_setHidden:(BOOL)hidden;
+- (void)_setupDisplayModeForActivatingAppView:(id)activatingAppView;
+- (void)_setupDisplayModeForAppView:(id)appView displayMode:(int)mode;
+- (void)_setupDisplayModeForDeactivatingAppView:(id)deactivatingAppView;
 - (void)_startAnimation;
 - (BOOL)_waitsForApplicationActivationIfNecessary;
 - (void)captureFlagsForActivatingApp:(id)activatingApp;
 - (void)dealloc;
+- (void)enableSteppingWithAnimationSettings:(id)animationSettings;
+- (BOOL)isReasonableMomentToInterrupt;
 - (int)orientationAtLaunch;
 - (void)setToView:(id)view;
 @end

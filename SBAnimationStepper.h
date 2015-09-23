@@ -8,28 +8,57 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAnimationStepper : XXUnknownSuperclass {
-	id m_delegate;
-	UIView *m_view;
-	NSArray *m_animatingSubviews;
-	double m_duration;
-	float m_percentage;
-	CADisplayLink *m_displayLink;
-	double m_finishBackwardTimestamp;
-	double m_finishBackwardDuration;
-	float m_finishBackwardPercentage;
+@interface SBAnimationStepper : XXUnknownSuperclass <SBUIAnimationStepping> {
+	BSAnimationSettings *_animationSettings;
+	NSMutableSet *_views;
+	NSMutableSet *_finishedAnimatingViews;
+	CADisplayLink *_displayLink;
+	id _completion;
+	float _percentage;
+	BOOL _invalidated;
+	BOOL _completed;
+	BOOL _finishingForward;
+	BOOL _finishingBackward;
+	float _finishSpeed;
+	BOOL _animatingToStepPercent;
+	double _animatedSteppingTimestamp;
+	double _animatedSteppingStartPercent;
+	double _animatedSteppingTargetPercent;
+	double _finishBackwardTimestamp;
+	double _finishBackwardDuration;
+	float _finishBackwardPercentage;
+	double _beganFinishingTimestamp;
+	double _duration;
 }
-@property(copy, nonatomic) NSArray *animatingSubviews;
-@property(assign, nonatomic) id delegate;
-@property(assign, nonatomic) double duration;
-@property(assign, nonatomic) float percentage;
-@property(retain, nonatomic) UIView *view;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign, nonatomic) double duration;
+@property(assign, nonatomic) float finishSpeed;
+@property(readonly, assign) unsigned hash;
+@property(assign, nonatomic) float stepPercentage;
+@property(readonly, assign, nonatomic, getter=isStepped) BOOL stepped;
+@property(readonly, assign) Class superclass;
+@property(readonly, retain, nonatomic) NSArray *views;
 - (id)init;
+- (id)initWithAnimationSettings:(id)animationSettings;
+- (void)_checkForCompletion;
+- (void)_displayLinkFired:(id)fired;
+- (void)_displayLinkFiredForBackwardToStart:(id)start;
+- (void)_interruptFinish;
+- (void)_setStepPercentage:(float)percentage;
+- (void)_updateAnimationSteppingTarget:(float)target;
+- (void)animateToStepPercentage:(float)stepPercentage;
+- (void)animationDidStop:(id)animation finished:(BOOL)finished;
 - (void)dealloc;
-- (void)didFinishBackwardToStart;
-- (void)finishBackwardToStart;
-- (void)finishForwardToEnd;
-- (void)stepAnimationsInView:(id)view animatingSubviews:(id)subviews duration:(double)duration;
-- (void)updateFinishBackwardToStart:(id)start;
+- (id)descriptionBuilderWithMultilinePrefix:(id)multilinePrefix;
+- (id)descriptionWithMultilinePrefix:(id)multilinePrefix;
+- (void)finishSteppingBackwardToStart;
+- (void)finishSteppingBackwardToStartWithCompletion:(id)completion;
+- (void)finishSteppingForwardToEnd;
+- (void)finishSteppingForwardToEndWithCompletion:(id)completion;
+- (void)invalidate;
+- (void)startSteppingAnimationsInView:(id)view;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 @end
 

@@ -12,6 +12,7 @@
 - (BOOL)_gestureRecognizer:(id)recognizer canBePreventedByGestureRecognizer:(id)recognizer2;
 - (BOOL)_gestureRecognizer:(id)recognizer canPreventGestureRecognizer:(id)recognizer2;
 - (BOOL)_gestureRecognizer:(id)recognizer shouldBeRequiredToFailByGestureRecognizer:(id)failByGestureRecognizer;
+- (BOOL)_gestureRecognizer:(id)recognizer shouldReceivePress:(id)press;
 - (BOOL)_gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
 - (BOOL)_gestureRecognizer:(id)recognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)gestureRecognizer;
 - (BOOL)_gestureRecognizer:(id)recognizer shouldRequireFailureOfGestureRecognizer:(id)gestureRecognizer;

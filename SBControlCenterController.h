@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBControlCenterController : XXUnknownSuperclass <SBControlCenterViewControllerDelegate, SBCoordinatedPresenting> {
+@interface SBControlCenterController : XXUnknownSuperclass <SBControlCenterViewControllerDelegate, UIGestureRecognizerDelegate, SBSystemGestureRecognizerDelegate, SBCoordinatedPresenting> {
 	SBWindow *_window;
 	SBControlCenterRootView *_rootView;
 	SBControlCenterViewController *_viewController;
@@ -16,7 +16,10 @@ __attribute__((visibility("hidden")))
 	UIView *_fullScreenGrabberContainer;
 	_UIBackdropView *_fullScreenGrabberBackdrop;
 	SBChevronView *_fullScreenChevron;
-	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
+	SBScreenEdgePanGestureRecognizer *_controlCenterGestureRecognizer;
+	double _controlCenterGestureStartTime;
+	FBUIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
+	FBDisplayLayoutElement *_displayLayoutElement;
 	NSMutableSet *_preventDismissalOnLockReasons;
 	BOOL _uiLocked;
 	NSHashTable *_observers;
@@ -28,13 +31,15 @@ __attribute__((visibility("hidden")))
 	UIDynamicAnimator *_animator;
 	unsigned _animatorStopCount;
 	CGRect _animatorStopFrame;
-	BOOL _inGrabberOnlyMode;
 	BOOL _presented;
+	BOOL _inGrabberOnlyMode;
 	BOOL _transitioning;
 	BOOL _fullyRevealed;
 	float _backgroundBrightness;
+	float _ambiguousActivationMargin;
 }
 @property(assign, nonatomic, getter=isUILocked) BOOL UILocked;
+@property(assign, nonatomic, getter=_ambiguousActivationMargin) float ambiguousActivationMargin;
 @property(assign, nonatomic) float backgroundBrightness;
 @property(readonly, assign, nonatomic) NSSet *conflictingGestures;
 @property(readonly, assign, nonatomic) int coordinatedPresentingControllerIdentifier;
@@ -55,28 +60,48 @@ __attribute__((visibility("hidden")))
 + (void)notifyControlCenterControl:(id)control didActivate:(BOOL)activate;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
++ (double)transitionAnimationDuration;
 - (id)init;
 - (BOOL)_allowShowTransitionSystemGesture;
 - (void)_beginPresentation;
+- (void)_beginSystemGesturePresentationWithGestureRecognizer:(id)gestureRecognizer;
+- (void)_beginTransitionWithTouchLocation:(CGPoint)touchLocation;
+- (void)_cancelTransition;
 - (void)_cleanupAnimator;
 - (void)_clearCoveredContentSnapshot;
 - (float)_controlCenterHeightForTouchLocation:(CGPoint)touchLocation;
+- (id)_controlCenterWindow;
 - (void)_dismissOnLock;
 - (void)_dismissWithDuration:(double)duration additionalAnimations:(id)animations completion:(id)completion;
+- (void)_doSetupBeforeBeginTransition;
 - (void)_endPresentation;
+- (void)_endTransitionWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)_enumerateObservers:(id)observers;
 - (void)_finishPresenting:(BOOL)presenting completion:(id)completion;
+- (void)_handleShowControlCenterGesture:(id)gesture;
+- (void)_hideGrabberForSystemGesture;
 - (void)_lockStateChangedNotification:(id)notification;
 - (id)_newDynamicAnimationForShow:(BOOL)show currentValue:(double)value velocity:(double)velocity unitSize:(double)size;
 - (void)_presentWithDuration:(double)duration completion:(id)completion;
+- (void)_resetControlAlpha;
 - (void)_revealSlidingViewToHeight:(float)height;
 - (void)_setLockHUDHidden:(BOOL)hidden;
+- (void)_setupViewForPresentation;
+- (BOOL)_shouldShowGrabberOnFirstSwipe;
+- (BOOL)_shouldUseControlCenterRevealConfirmation;
+- (void)_showControlCenterGestureBeganWithGestureRecognizer:(id)gestureRecognizer;
+- (void)_showControlCenterGestureCancelled;
+- (void)_showControlCenterGestureChangedWithGestureRecognizer:(id)gestureRecognizer;
+- (void)_showControlCenterGestureEndedWithGestureRecognizer:(id)gestureRecognizer;
+- (void)_showControlCenterGestureFailed;
 - (void)_uiRelockedNotification:(id)notification;
+- (void)_updateControlAlphaForBrightness:(float)brightness;
 - (void)_updateCoveredContentSnapshot;
 - (void)_updateGrabberVisibility;
 - (void)_updateRevealPercentage:(float)percentage;
+- (void)_updateShouldShowGrabberOnFirstSwipe;
+- (void)_updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
 - (float)_verticalPercentageMovedOnScreenForY:(float)y stopY:(float)y2;
-- (id)_window;
 - (float)_yValueForClosed;
 - (float)_yValueForOpen;
 - (void)abortAnimatedTransition;
@@ -84,9 +109,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowHideTransition;
 - (BOOL)allowShowTransition;
 - (BOOL)allowShowTransitionSystemGesture;
-- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
+- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation presentationBegunHandler:(id)handler;
 - (void)beginTransitionWithTouchLocation:(CGPoint)touchLocation;
-- (void)cancelTransition;
 - (void)controlCenterViewController:(id)controller backdropViewDidUpdate:(id)backdropView;
 - (BOOL)controlCenterViewController:(id)controller canHandleGestureRecognizer:(id)recognizer;
 - (void)controlCenterViewController:(id)controller handlePan:(id)pan;
@@ -98,6 +122,7 @@ __attribute__((visibility("hidden")))
 - (void)dismissAnimated:(BOOL)animated withAdditionalAnimations:(id)additionalAnimations completion:(id)completion;
 - (void)endTransitionWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)endTransitionWithVelocity:(CGPoint)velocity wasCancelled:(BOOL)cancelled completion:(id)completion;
+- (BOOL)gestureRecognizerShouldBegin:(id)gestureRecognizer;
 - (BOOL)handleMenuButtonTap;
 - (void)hideGrabberAnimated:(BOOL)animated;
 - (void)hideGrabberAnimated:(BOOL)animated completion:(id)completion;
@@ -110,13 +135,13 @@ __attribute__((visibility("hidden")))
 - (void)presentAnimated:(BOOL)animated completion:(id)completion;
 - (void)preventDismissalOnLock:(BOOL)lock forReason:(id)reason;
 - (void)removeObserver:(id)observer;
-- (void)resetControlAlpha;
+- (void)setAmbiguousActivationMargin:(float)margin forApp:(id)app;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
+- (BOOL)shouldAutorotate;
 - (void)showGrabberAnimated:(BOOL)animated;
-- (void)updateControlAlphaForBrightness:(float)brightness;
 - (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
+- (id)viewForSystemGestureRecognizer:(id)systemGestureRecognizer;
 - (BOOL)wantsFullScreenLayout;
 @end
 

@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBWallpaperController : XXUnknownSuperclass <SBFWallpaperViewLegibilityObserver, SBFWallpaperViewInternalObserver, SBUIActiveOrientationObserver, UIWindowDelegate> {
+@interface SBWallpaperController : XXUnknownSuperclass <SBFLegibilitySettingsProviderDelegate, SBFWallpaperViewInternalObserver, SBUIActiveOrientationObserver, UIWindowDelegate> {
 	UIWindow *_wallpaperWindow;
 	UIView *_wallpaperContainerView;
 	int _orientation;
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 	NSHashTable *_lockscreenObservers;
 	NSHashTable *_homescreenObservers;
 	XXStruct_Dov64B _lockscreenPriorityInfo[3];
-	XXStruct_Dov64B _homescreenPriorityInfo[7];
+	XXStruct_Dov64B _homescreenPriorityInfo[11];
 	XXStruct_S5WqmA _lockscreenStyleTransitionState;
 	XXStruct_S5WqmA _homescreenStyleTransitionState;
 	SBWallpaperEffectView *_lockscreenEffectView;
@@ -43,9 +43,12 @@ __attribute__((visibility("hidden")))
 	int _activeOrientationSource;
 	BOOL _coalescingGeometryChanges;
 	int _locationsWithCoalescedGeometryChanges;
+	SBWallpaperControllerCoordinator *_coordinator;
+	NSMutableSet *_homescreenStyleChangeDelayReasons;
 	float _homescreenWallpaperScale;
 	float _lockscreenWallpaperScale;
 }
+@property(readonly, assign, nonatomic) int activeOrientationSource;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
@@ -57,7 +60,9 @@ __attribute__((visibility("hidden")))
 + (id)_homescreenLightForegroundBlurMappedImageCache;
 + (id)sharedInstance;
 - (id)initWithOrientation:(int)orientation variant:(int)variant;
-- (void)_accessibilityEnhanceBackgroundContrastChanged:(id)changed;
+- (void)_accessibilityReduceTransparencyChanged:(id)changed;
+- (id)_activeWallpaperView;
+- (void)_batterySaverModeChanged:(id)changed;
 - (void)_beginDisallowRasterizationBlock;
 - (void)_beginSuspendingMotionEffectsForBlurIfNeeded;
 - (id)_blurViewsForVariant:(int)variant;
@@ -67,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)_createHomescreenLightForegroundBlurColorIfNecessary;
 - (void)_endDisallowRasterizationBlock;
 - (void)_endSuspendingMotionEffectsForBlurIfNeeded;
+- (void)_forceUpdateToSpringBoardInterfaceOrientationWithAnimationDuration:(double)animationDuration;
 - (id)_getImageInRect:(CGRect)rect withZoomFactor:(float)zoomFactor forVariant:(int)variant style:(inout int *)style;
 - (void)_handleWallpaperChangedForVariant:(int)variant;
 - (void)_handleWallpaperGeometryChangedForVariant:(int)variant;
@@ -76,13 +82,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isWallpaperHiddenForVariant:(int)variant;
 - (BOOL)_isWallpaperView:(id)view displayingWallpaper:(id)wallpaper forVariant:(int)variant;
 - (void)_motionEffectsChanged;
-- (id)_newFakeBlurViewForVariant:(int)variant;
+- (id)_newFakeBlurViewForVariant:(int)variant style:(int)style;
 - (id)_newWallpaperEffectViewForVariant:(int)variant transitionState:(XXStruct_S5WqmA)state;
-- (id)_newWallpaperViewForProcedural:(id)procedural orImage:(id)image forVariant:(int)variant;
+- (id)_newWallpaperViewForProcedural:(id)procedural orImage:(id)image withVideo:(id)video forVariant:(int)variant;
 - (id)_observersForVariant:(int)variant;
 - (void)_reconfigureBlurViewsForVariant:(int)variant;
 - (void)_registerFakeBlurView:(id)view;
 - (BOOL)_setDisallowRasterization:(BOOL)rasterization withReason:(id)reason reasons:(id)reasons;
+- (void)_setWallpaperAggdKeysForLocations:(int)locations withVideo:(id)video procedural:(id)procedural;
 - (void)_setWallpaperHidden:(BOOL)hidden variant:(int)variant reason:(id)reason;
 - (BOOL)_shouldSuspendMotionEffectsForState:(XXStruct_S5WqmA)state;
 - (id)_sourceForFakeBlurView:(id)fakeBlurView;
@@ -93,7 +100,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateBlurImagesForVariant:(int)variant;
 - (BOOL)_updateEffectViewForVariant:(int)variant oldState:(XXStruct_S5WqmA *)state newState:(XXStruct_S5WqmA *)state3 oldEffectView:(id *)view newEffectView:(id *)view5;
 - (BOOL)_updateEffectViewForVariant:(int)variant withFactory:(id)factory;
-- (id)_updateEffectViewViaAnimationStepperForVariant:(int)variant homescreenPriority:(int)priority;
 - (void)_updateMotionEffectsForState:(XXStruct_S5WqmA)state;
 - (void)_updateRasterizationState;
 - (void)_updateScreenBlanked;
@@ -110,45 +116,51 @@ __attribute__((visibility("hidden")))
 - (id)averageColorForVariant:(int)variant;
 - (id)averageColorInRect:(CGRect)rect forVariant:(int)variant;
 - (id)averageColorInRect:(CGRect)rect forVariant:(int)variant withSmudgeRadius:(float)smudgeRadius;
+- (void)beginDelayingHomescreenStyleChangesForReason:(id)reason;
 - (void)beginRequiringWithReason:(id)reason;
+- (float)contrastForVariant:(int)variant;
 - (float)contrastInRect:(CGRect)rect contrastWithinBoxes:(float *)boxes contrastBetweenBoxes:(float *)boxes3 forVariant:(int)variant;
+- (float)contrastInRect:(CGRect)rect forVariant:(int)variant;
 - (XXStruct_S5WqmA)currentHomescreenStyleTransitionState;
 - (void)dealloc;
-- (id)debuggingDescription;
-- (void)didFinishWallpaperStepAnimation:(id)animation;
+- (void)endDelayingHomescreenStyleChangesForReason:(id)reason animationFactory:(id)factory;
 - (void)endRequiringWithReason:(id)reason;
 - (CGColorRef)homescreenLightForegroundBlurColor;
 - (CGSize)homescreenLightForegroundBlurColorPhaseForRect:(CGRect)rect;
+- (id)irisGestureRecognizer;
 - (id)legibilitySettingsForVariant:(int)variant;
 - (void)orientationSource:(int)source didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)orientationSource:(int)source willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)orientationSource:(int)source willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (id)playerView;
 - (id)previewCache;
+- (void)providerLegibilitySettingsChanged:(id)changed;
+- (BOOL)removeHomescreenStyleForBundleIdentifier:(id)bundleIdentifier withPriority:(int)priority animationFactory:(id)factory;
 - (void)removeHomescreenStyleForGuidedAccessPriorityWithAnimationFactory:(id)animationFactory;
 - (BOOL)removeHomescreenStyleForPriority:(int)priority withAnimationFactory:(id)animationFactory;
-- (id)removeHomescreenStyleViaAnimationStepperForPriority:(int)priority;
 - (BOOL)removeLockscreenStyleForPriority:(int)priority withAnimationFactory:(id)animationFactory;
 - (void)removeObserver:(id)observer forVariant:(int)variant;
 - (void)resumeColorSamplingForReason:(id)reason;
 - (void)resumeWallpaperAnimationForReason:(id)reason;
 - (void)setActiveOrientationSource:(int)source andUpdateToOrientation:(int)orientation usingCrossfadeToBlack:(BOOL)black;
 - (void)setDisallowsRasterization:(BOOL)rasterization forVariant:(int)variant withReason:(id)reason;
+- (BOOL)setHomescreenStyle:(int)style forBundleIdentifier:(id)bundleIdentifier withPriority:(int)priority animationFactory:(id)factory;
 - (BOOL)setHomescreenStyle:(int)style forPriority:(int)priority withAnimationFactory:(id)animationFactory;
-- (id)setHomescreenStyle:(int)style viaAnimationStepperForPriority:(int)priority;
 - (void)setHomescreenStyleForGuidedAccessPriorityWithAnimationFactory:(id)animationFactory;
+- (BOOL)setHomescreenStyleTransitionState:(XXStruct_S5WqmA)state forBundleIdentifier:(id)bundleIdentifier withPriority:(int)priority animationFactory:(id)factory;
 - (BOOL)setHomescreenStyleTransitionState:(XXStruct_S5WqmA)state forPriority:(int)priority withAnimationFactory:(id)animationFactory;
-- (id)setHomescreenStyleTransitionState:(XXStruct_S5WqmA)state viaAnimationStepperForPriority:(int)priority;
 - (void)setLockscreenOnlyWallpaperAlpha:(float)alpha;
 - (BOOL)setLockscreenStyle:(int)style forPriority:(int)priority withAnimationFactory:(id)animationFactory;
 - (BOOL)setLockscreenStyleTransitionState:(XXStruct_S5WqmA)state forPriority:(int)priority withAnimationFactory:(id)animationFactory;
 - (void)setLockscreenWallpaperContentsRect:(CGRect)rect;
 - (BOOL)setStyleTransitionState:(XXStruct_S5WqmA)state forVariant:(int)variant priority:(int)priority withAnimationFactory:(id)animationFactory;
 - (void)setVariant:(int)variant withOutAnimationFactory:(id)outAnimationFactory inAnimationFactory:(id)animationFactory completion:(id)completion;
+- (BOOL)shouldDelayHomescreenStyleUpdates;
 - (void)suspendColorSamplingForReason:(id)reason;
 - (void)suspendWallpaperAnimationForReason:(id)reason;
 - (BOOL)variantsShareWallpaper;
+- (id)vendWallpaperViewForVariant:(int)variant;
 - (void)wallpaperView:(id)view didChangeZoomFactor:(float)factor;
-- (void)wallpaperView:(id)view legibilitySettingsDidChange:(id)legibilitySettings;
 - (void)wallpaperViewDidChangeWantsRasterization:(id)wallpaperView;
 - (void)wallpaperViewDidInvalidateBlurs:(id)wallpaperView;
 - (void)wallpaperViewDidInvalidateGeometry:(id)wallpaperView;

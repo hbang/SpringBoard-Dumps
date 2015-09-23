@@ -11,11 +11,13 @@ __attribute__((visibility("hidden")))
 @interface SBIconPageIndicatorImageSetCache : XXUnknownSuperclass {
 	_UILegibilitySettings *_legibilitySettings;
 	SBIconPageIndicatorImageSetResult *_indicatorImageSetResults;
+	SBIconPageIndicatorImageSetResult *_searchImageSetResults;
 }
 + (id)homescreenPageIndicatorImageSetCache;
 - (id)_emptyPageIndicatorSet;
 - (void)dealloc;
 - (id)pageIndicatorImageSetForLegibilitySettings:(id)legibilitySettings;
+- (id)searchIndicatorImageSetForLegibilitySettings:(id)legibilitySettings;
 - (void)setLegibilitySettings:(id)settings;
 @end
 

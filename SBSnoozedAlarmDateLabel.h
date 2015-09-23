@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSnoozedAlarmDateLabel : XXUnknownSuperclass <SBBulletinDateLabel> {
+@interface SBSnoozedAlarmDateLabel : XXUnknownSuperclass <NCNotificationDateLabel> {
 	double _fireTime;
 	NSTimer *_tickTimer;
 	BOOL _allDay;

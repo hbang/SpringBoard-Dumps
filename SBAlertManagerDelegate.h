@@ -9,6 +9,9 @@
 
 @protocol SBAlertManagerDelegate <NSObject>
 @optional
+- (int)alertManager:(id)manager defaultInterfaceOrientationForPresentationOfAlert:(id)alert;
+- (BOOL)alertManager:(id)manager defaultShouldAutorotateForAlert:(id)aDefault;
+- (unsigned)alertManager:(id)manager defaultSupportedInterfaceOrientationsForAlert:(id)alert;
 - (id)alertManager:(id)manager newAlertWindowForScene:(id)scene;
 - (BOOL)alertManager:(id)manager shouldDeactivateDismissedAlert:(id)alert;
 @required

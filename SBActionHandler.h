@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 + (id)sharedInstance;
 - (void)_reportAndKillInsecureProcesses:(id)processes;
-- (void)_snapshotWithAction:(id)action;
 - (void)handleActions:(id)actions origin:(id)origin withResult:(id)result;
 @end
 

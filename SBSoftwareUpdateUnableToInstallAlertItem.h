@@ -8,7 +8,8 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSoftwareUpdateUnableToInstallAlertItem : SBBaseSoftwareUpdateAlertItem {
+@interface SBSoftwareUpdateUnableToInstallAlertItem : SBBaseSoftwareUpdateInstallFailureAlertItem {
+	BOOL _unableToInstallDueToInsufficientDiskSpace;
 	NSError *_error;
 }
 @property(retain, nonatomic) NSError *error;
@@ -21,6 +22,5 @@ __attribute__((visibility("hidden")))
 - (BOOL)dismissOnLock;
 - (BOOL)reappearsAfterLock;
 - (BOOL)shouldShowInLockScreen;
-- (BOOL)undimsScreen;
 @end
 

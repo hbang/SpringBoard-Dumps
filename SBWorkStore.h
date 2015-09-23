@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
 	double _defaultWorkExpirationPeriod;
 }
 @property(assign, nonatomic) double defaultWorkExpirationPeriod;
-@property(readonly, assign, nonatomic) NSArray *keysWithWork;
+@property(readonly, retain, nonatomic) NSArray *keysWithWork;
 @property(readonly, assign, nonatomic) unsigned maxWorkPerKey;
-@property(readonly, assign, nonatomic) NSMutableArray *observers;
-@property(readonly, assign, nonatomic) NSMutableDictionary *workItemsPerKey;
+@property(readonly, retain, nonatomic) NSMutableArray *observers;
+@property(readonly, retain, nonatomic) NSMutableDictionary *workItemsPerKey;
 - (id)initWithMaximumNumberOfWorkItemsPerKey:(unsigned)workItemsPerKey;
 - (void)_notifyObserversWorkDidChange;
 - (void)_workQueue_expireWorkForKey:(id)key;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_appStateChanged:(int)changed;
 - (void)_begin;
 - (void)_didComplete;
+- (id)application;
 - (void)dealloc;
 - (void)noteActivationStateChanged:(int)changed;
 @end

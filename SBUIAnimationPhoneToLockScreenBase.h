@@ -10,11 +10,11 @@
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationPhoneToLockScreenBase : SBUIMainScreenAnimationController {
 	SBLockScreenViewControllerBase *_lockScreenViewController;
-	UIView<FBWindowContextAppearance> *_contextHostView;
+	UIView<FBSceneHostView> *_contextHostView;
 	BOOL _needsScreenDim;
 }
 @property(retain, nonatomic, getter=_contextHostView, setter=_setContextHostView:) UIView *contextHostView;
-- (id)initWithLockScreenController:(id)lockScreenController deactivatingApp:(id)app;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_cleanupAnimation;
 - (id)_getTransitionWindow;
 - (id)_lockScreenViewController;

@@ -10,36 +10,35 @@
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationLockScreenToAppZoomIn : SBUIMainScreenAnimationController {
 	SBAlert *_fromAlert;
+	SBWindowSelfHostWrapper *_layoutViewControllerHostWrapper;
+	SBWindowSelfHostWrapper *_pipWindowWrapper;
 	UIView *_viewToAnimate;
-	UIView *_contextHostView;
-	UIView *_fakeStatusBarViewContainer;
-	int _launchingOrientation;
-	BOOL _requiresHostView;
-	BOOL _activateBeforeHosting;
-	BOOL _fromAssistant;
+	NSMutableArray *_appsRequiringHostView;
 	BOOL _finishedZooming;
 	BOOL _finishedActivating;
 	BOOL _finishedCrossfadingToHostView;
-	SBDisableAppStatusBarAlphaChangesAssertion *_disableStatusBarAlphaChangeAssertion;
+	BOOL _finishedNotificationAnimations;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
+	SBUILockScreenNotificationAnimationHandler *_notificationAnimationHandler;
 }
-- (id)initWithActivatingApp:(id)activatingApp fromAlert:(id)alert;
-- (id)_animationProgressDependency;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
+- (id)_animationProgressDependencies;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
-- (void)_doAnimation;
+- (void)_doAnimation:(id)animation;
 - (void)_finishedZooming;
 - (id)_getTransitionWindow;
+- (id)_lockScreenViewController;
 - (void)_maybeReportAnimationFinished;
 - (void)_maybeStartCrossfade;
 - (void)_noteContextHostCrossfadeDidFinish;
+- (void)_noteNotificationAnimationsDidFinish;
 - (void)_prepareAnimation;
-- (void)_removeFakeStatusBarIfNecessary;
 - (void)_setHidden:(BOOL)hidden;
-- (void)_setupFakeStatusBarIfNecessary;
 - (BOOL)_shouldDismissBanner;
-- (void)_showFakeStatusBarIfNecessary;
 - (void)_startAnimation;
 - (BOOL)_waitsForApplicationActivationIfNecessary;
+- (void)_willSetupStartDependencies;
 - (void)dealloc;
 - (BOOL)isReasonableMomentToInterrupt;
 @end

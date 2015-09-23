@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (int)iconAccessoryType:(id)type;
 - (BOOL)iconAllowsLaunch:(id)launch;
 - (BOOL)iconAllowsUninstall:(id)uninstall;
-- (BOOL)iconAppearsInNewsstand:(id)newsstand;
 - (id)iconBadgeNumberOrString:(id)string;
 - (BOOL)iconCanEllipsizeLabel:(id)label;
 - (BOOL)iconCanTightenLabel:(id)label;

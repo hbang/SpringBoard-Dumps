@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 @property(copy, nonatomic) NSString *identifier;
 @property(copy, nonatomic) NSNumber *sortKey;
+- (void)_updateForStateChange;
 - (void)dealloc;
 @end
 

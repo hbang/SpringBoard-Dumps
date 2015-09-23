@@ -31,12 +31,14 @@ __attribute__((visibility("hidden")))
 - (id)_lazyLegibilityView;
 - (BOOL)_shouldUseVibrancy;
 - (void)dealloc;
+- (void)layoutSubviews;
 - (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;
 - (void)setAppStyleGrabberImage:(id)image;
 - (void)setBackgroundColor:(id)color;
 - (void)setBackgroundView:(id)view;
 - (void)setGrabberImage:(id)image;
 - (void)setGrabberImageFromApp:(id)app;
+- (void)setGrabberImageFromApp:(id)app withIconFormat:(int)iconFormat;
 - (void)setStrength:(float)strength;
 - (CGSize)sizeThatFits:(CGSize)fits;
 - (void)touchesBegan:(id)began withEvent:(id)event;

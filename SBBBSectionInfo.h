@@ -8,13 +8,12 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBBBSectionInfo : SBBBItemInfo {
-	int _sectionCategory;
+@interface SBBBSectionInfo : SBNotificationCenterSectionInfo {
 }
-@property(readonly, assign, nonatomic) NSString *listSectionIdentifier;
 @property(readonly, assign, nonatomic) SBBulletinListSection *representedListSection;
-@property(readonly, assign, nonatomic) int sectionCategory;
-@property(readonly, assign, nonatomic, getter=isWidgetSection) BOOL widgetSection;
 - (id)identifier;
+- (id)listSectionIdentifier;
+- (void)populateReusableView:(id)view;
+- (BOOL)shouldSuppressBulletinMessageForPrivacy:(id)privacy;
 @end
 

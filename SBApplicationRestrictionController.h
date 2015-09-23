@@ -22,10 +22,8 @@ __attribute__((visibility("hidden")))
 	BOOL _hasHideNonDefaultSystemAppsCapability;
 	BOOL _showAllSystemApps;
 	BOOL _canPostRestrictionState;
-	id<SBApplicationRestrictionControllerDelegate> _delegate;
 }
 @property(readonly, copy) NSString *debugDescription;
-@property(assign, nonatomic) id<SBApplicationRestrictionControllerDelegate> delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
@@ -39,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)isApplicationIdentifierRestricted:(id)restricted;
 - (void)noteApplicationIdentifiersDidChangeWithAdded:(id)noteApplicationIdentifiers modified:(id)modified removed:(id)removed;
-- (void)noteVisibilityStateDidChange;
+- (void)noteVisibilityOverridesDidChange;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)profileConnection userInfo:(id)info;
 - (void)profileConnectionDidReceiveProfileListChangedNotification:(id)profileConnection userInfo:(id)info;
 - (void)removeObserver:(id)observer;

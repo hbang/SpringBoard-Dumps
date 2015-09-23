@@ -8,14 +8,18 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenDateViewController : XXUnknownSuperclass {
-	NSTimer *_updateTimer;
+@interface SBLockScreenDateViewController : XXUnknownSuperclass <SBDateTimeOverrideObserver> {
+	NSNumber *_timerToken;
 	BOOL _disablesUpdates;
 	_UILegibilitySettings *_legibilitySettings;
 }
 @property(assign, nonatomic, getter=isDateHidden) BOOL dateHidden;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(assign, nonatomic) BOOL disablesUpdates;
+@property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, assign) Class superclass;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (void)_addObservers;
 - (void)_backlightChanged;
@@ -23,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_stopUpdateTimer;
 - (void)_updateFormat;
 - (void)_updateView;
+- (void)controller:(id)controller didChangeOverrideDateFromDate:(id)date;
 - (id)dateView;
 - (id)dateViewIfExists;
 - (void)dealloc;

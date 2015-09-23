@@ -9,18 +9,18 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUIMainScreenAnimationController : SBUIAnimationController {
-	BOOL _needsToClearBulletinWindowOrientation;
 }
-- (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
+@property(readonly, retain, nonatomic) SBWorkspaceTransitionRequest *transitionRequest;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)__startAnimation;
+- (void)_begin;
 - (void)_cleanupAnimation;
-- (void)_clearBulletinWindowOverrideOrientationIfNecessary;
 - (void)_dismissBannerAnimated:(BOOL)animated;
 - (id)_getTransitionWindow;
-- (void)_noteAnimationDidCommit:(BOOL)_noteAnimation withDuration:(double)duration afterDelay:(double)delay;
+- (id)_primaryAppOrAnyAppFromSet:(id)set;
 - (void)_removeWallpaperAnimationPriorityWithFactory:(id)factory;
 - (BOOL)_shouldDismissBanner;
-- (void)beginAnimation;
-- (void)dealloc;
+- (id)activatingApp;
+- (id)deactivatingApp;
 @end
 

@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithActivatingApp:(id)activatingApp fromLockoutView:(id)lockoutView starkScreenController:(id)controller;
 - (void)_cleanupAnimation;
 - (id)_createViewToAnimate;
-- (void)_prepareAnimation;
 - (void)_setupStartDependencies;
 - (void)_startAnimation;
+- (void)_willSetupStartDependencies;
 - (void)dealloc;
 @end
 

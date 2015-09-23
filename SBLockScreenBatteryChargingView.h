@@ -9,25 +9,21 @@
 
 __attribute__((visibility("hidden")))
 @interface SBLockScreenBatteryChargingView : XXUnknownSuperclass {
-	UIView *_batteryContainerView;
-	_UIBackdropView *_batteryBlurView;
-	SBLockScreenBatteryFillView *_batteryFillView;
-	_UILegibilityLabel *_chargePercentLabel;
-	NSArray *_batteryConstraints;
-	NSLayoutConstraint *_batteryTopOffset;
 	_UILegibilitySettings *_legibilitySettings;
 }
 @property(assign, nonatomic) BOOL batteryVisible;
+@property(readonly, assign, nonatomic) double desiredVisibilityDuration;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
++ (id)batteryChargingViewWithDoubleBattery;
++ (id)batteryChargingViewWithSingleBattery;
++ (id)maskImageNameForChargingBattery;
++ (id)maskImageNameForExternalChargingBattery;
++ (id)maskImageNameForInternalChargingBattery;
 - (id)initWithFrame:(CGRect)frame;
-- (float)_batteryBaseline;
-- (float)_batteryNoseOffset;
 - (id)_chargePercentFont;
-- (float)_chargingTextBaselineOffset;
-- (void)_prepareConstraints;
-- (void)_setChargeString:(id)string;
+- (void)_setChargeString:(id)string toLabel:(id *)label;
 - (void)dealloc;
-- (void)layoutSubviews;
-- (void)setChargePercentage:(int)percentage detailed:(BOOL)detailed;
+- (void)setPrimaryChargePercentage:(int)percentage isCharging:(BOOL)charging detailed:(BOOL)detailed;
+- (void)setSecondaryChargePercentage:(int)percentage isCharging:(BOOL)charging deviceName:(id)name;
 @end
 

@@ -10,6 +10,5 @@
 @protocol _SBUIWidgetHost <NSObject>
 - (void)invalidatePreferredViewSize;
 - (void)requestLaunchOfURL:(id)url;
-- (void)requestPresentationOfViewController:(id)viewController presentationStyle:(int)style context:(id)context completion:(id)completion;
 @end
 

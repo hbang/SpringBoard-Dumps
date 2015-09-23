@@ -9,13 +9,17 @@
 
 __attribute__((visibility("hidden")))
 @interface SBZoomableCrossfadeView : XXUnknownSuperclass {
-	SBFAnimationFactory *_animationFactory;
+	BSUIAnimationFactory *_animationFactory;
 	UIView *_startView;
 	UIView *_endView;
 	BOOL _translucent;
 	BOOL _crossfaded;
+	BOOL _allowsGroupOpacityDuringCrossfade;
+	BOOL _adaptsAnimationFactoryTimingFunction;
 }
-@property(retain, nonatomic) SBFAnimationFactory *animationFactory;
+@property(assign, nonatomic) BOOL adaptsAnimationFactoryTimingFunction;
+@property(assign, nonatomic) BOOL allowsGroupOpacityDuringCrossfade;
+@property(retain, nonatomic) BSUIAnimationFactory *animationFactory;
 + (id)crossfadeViewWithStartView:(id)startView endView:(id)view translucent:(BOOL)translucent;
 - (id)_initWithStartView:(id)startView endView:(id)view translucent:(BOOL)translucent;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;

@@ -8,6 +8,7 @@
 
 
 @protocol _SBRemoteAlertHostViewControllerDelegate <NSObject>
+- (void)remoteAlertDidRequestDismissal;
 - (void)remoteAlertDidTerminateWithError:(id)remoteAlert;
 - (void)remoteAlertWantsMenuButtonDismissal:(BOOL)dismissal;
 - (void)remoteAlertWantsToAllowAlertStacking:(BOOL)allowAlertStacking;
@@ -23,6 +24,5 @@
 - (void)remoteAlertWantsToUpdateAllowedHardwareButtonEvents:(int)updateAllowedHardwareButtonEvents;
 - (void)remoteAlertWantsWallpaperTunnelActive:(BOOL)active;
 - (void)remoteAlertWantstoSetDismissalAnimationStyle:(int)style;
-- (void)remoteAlertWantstoSetSupportedInterfaceOrientationOverride:(unsigned)override;
 @end
 

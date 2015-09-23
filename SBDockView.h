@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 	SBWallpaperEffectView *_backgroundView;
 	UIImageView *_backgroundImageView;
 	UIView *_accessibilityBackgroundView;
+	BOOL _forSnapshot;
 	_UILegibilitySettings *_legibilitySettings;
 	unsigned _dockEdge;
 }

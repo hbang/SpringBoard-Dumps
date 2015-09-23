@@ -8,10 +8,8 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBBulletinWindowController : XXUnknownSuperclass <SBUIActiveOrientationObserver> {
+@interface SBBulletinWindowController : XXUnknownSuperclass {
 	UIWindow *_bulletinWindow;
-	int _trueBulletinWindowOrientation;
-	int _overrideBulletinWindowOrientation;
 	BOOL _rotatingKeyboard;
 	BOOL _aboveAssistant;
 	NSMutableSet *_windowClients;
@@ -19,13 +17,11 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_busyClients;
 	NSMutableSet *_busyReasons;
 	SBBulletinRootViewController *_rootVC;
+	BOOL _wantsKeyWindow;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign, nonatomic) UIViewController *rootViewController;
-@property(readonly, assign) Class superclass;
-@property(readonly, assign, nonatomic) UIWindow *window;
+@property(readonly, retain, nonatomic) UIViewController *rootViewController;
+@property(assign, nonatomic, getter=_wantsKeyWindow, setter=_setWantsKeyWindow:) BOOL wantsKeyWindow;
+@property(readonly, retain, nonatomic) UIWindow *window;
 @property(assign, nonatomic, getter=isWindowAboveAssistant) BOOL windowAboveAssistant;
 + (BOOL)_isSecure;
 + (id)sharedInstance;
@@ -34,21 +30,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)_allowsShowNotificationsGestureFromBanner:(BOOL)banner;
 - (BOOL)_allowsShowNotificationsSystemGestureFromBanner:(BOOL)banner;
 - (void)_becomeKeyWindow;
-- (void)_cleanUpAfterRotatingFromOrientation:(int)orientation;
 - (void)_didBecomeKeyWindow:(id)window;
 - (void)_didResignKeyWindow:(id)window;
-- (void)_doRotationToOrientation:(int)orientation duration:(double)duration;
 - (BOOL)_hasKeyWindowClients;
-- (BOOL)_hasOrientationOverride;
 - (BOOL)_isBusyForReason:(id)reason;
-- (void)_prepareToRotateToOrientation:(int)orientation duration:(double)duration;
 - (void)_resignAsKeyWindow;
-- (void)_rotateIfNecessaryTo:(int)to withDuration:(double)duration forOverride:(BOOL)override;
-- (void)_setOverrideWindowOrientation:(int)orientation;
-- (void)_setTrueWindowOrientation:(int)orientation;
-- (BOOL)_shouldAllowRotation:(BOOL)rotation;
-- (void)activeInterfaceOrientationDidChangeToOrientation:(int)activeInterfaceOrientation willAnimateWithDuration:(double)duration fromOrientation:(int)orientation;
-- (void)activeInterfaceOrientationWillChangeToOrientation:(int)activeInterfaceOrientation;
 - (void)addBusyClient:(id)client;
 - (void)addWindowClient:(id)client;
 - (void)addWindowClient:(id)client withChildViewController:(id)childViewController;
@@ -57,18 +43,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowsShowNotificationsGesture;
 - (BOOL)allowsShowNotificationsSystemGesture;
 - (BOOL)allowsShowNotificationsSystemGestureFromBanner;
-- (void)bulletinWindowControllerDismissViewControllerAnimated:(BOOL)animated completion:(id)completion;
-- (void)bulletinWindowControllerPresentViewController:(id)controller animated:(BOOL)animated completion:(id)completion;
-- (void)clearOverrideWindowOrientation;
 - (void)dealloc;
 - (BOOL)isBusy;
-- (void)overrideWindowOrientation:(int)orientation;
 - (void)removeBusyClient:(id)client;
 - (void)removeWindowClient:(id)client;
 - (void)removeWindowClient:(id)client withChildViewController:(id)childViewController;
 - (void)setBusy:(BOOL)busy forReason:(id)reason;
-- (void)updateBulletinWindowOrientation;
-- (int)windowOrientation;
-- (int)windowOrientationWithoutOverrides;
+- (void)updateKeyWindowStatusIfNecessary;
 @end
 

@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 @interface SBAlarmLogger : SBFileLogger {
 }
 - (void)_setEnabled:(BOOL)enabled;
-- (BOOL)isEnabled;
+- (void)_setLevel:(int)level;
+- (int)level;
 - (id)logPreferenceName;
 - (id)name;
-- (void)willBeginLoggingToPath:(id)path;
 @end
 

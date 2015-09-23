@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 	UIButton *_cancelButton;
 	UILabel *_cancelLabel;
 	BOOL _hiddenLockScreenForeground;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	BOOL _canAlterScreenBrightness;
 }
 @property(assign, nonatomic) BOOL canAlterScreenBrightness;

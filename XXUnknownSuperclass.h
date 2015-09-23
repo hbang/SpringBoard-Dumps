@@ -59,6 +59,10 @@
 - (id)prefsNotificationsAlertString;
 @end
 
+@interface XXUnknownSuperclass (SBAdditions)
+- (id)sb_imageName;
+@end
+
 @interface XXUnknownSuperclass (SpringBoard)
 - (void)_sb_safeAddObject:(id)object;
 @end
@@ -83,14 +87,8 @@
 - (void)sbf_updateTextAttributesForKey:(id)key;
 @end
 
-@interface XXUnknownSuperclass (SBSearchText) <SBSearchText>
-@property(copy, nonatomic) NSAttributedString *attributedText;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(assign) unsigned numberOfLines;
-@property(readonly, assign) Class superclass;
-@property(copy, nonatomic) NSString *text;
+@interface XXUnknownSuperclass (SBAutoLayoutUtils)
+- (void)setHiddenForAutoLayout:(BOOL)autoLayout;
 @end
 
 @interface XXUnknownSuperclass (UIViewController_SpringBoard)
@@ -98,13 +96,40 @@
 - (BOOL)sb_childViewControllerEndAppearanceTransitionIfNecessary:(id)necessary;
 @end
 
+@interface XXUnknownSuperclass (SBClientSideAnimationAdditions)
++ (id)_functionWithAnimationCurve:(int)animationCurve;
+@end
+
 @interface XXUnknownSuperclass (SpringBoardAdditions)
 @property(assign, nonatomic, setter=sb_setShowsDebugLabel:) BOOL sb_showsDebugLabel;
 - (id)sb_debugLabel;
 @end
 
-@interface XXUnknownSuperclass (SBAdditions)
-- (void)logStateOperationCountGreaterThan:(int)than;
+@interface XXUnknownSuperclass (Capture)
+- (id)createSnapshotForSceneSnapshot:(id)sceneSnapshot withName:(id)name;
+@end
+
+@interface XXUnknownSuperclass (SB)
+- (id)_getForecastDateCache;
+- (id)description;
+- (BOOL)sb_isForecastLogicallyExpired;
+- (BOOL)sb_isScheduled;
+- (BOOL)sb_isValid;
+- (id)sb_roundedTimeIntervalString;
+- (unsigned)sb_scheduleType;
+@end
+
+@interface XXUnknownSuperclass (SBSceneDebugColors)
++ (id)_nextSceneDebugColor;
+@end
+
+@interface XXUnknownSuperclass (SB20086499Workaround)
+@property(readonly, assign, nonatomic) id<UIViewControllerTransitionCoordinator> sb_transitionCoordinator;
+@end
+
+@interface XXUnknownSuperclass (NotificationCenter)
+- (BOOL)nc_parentViewControllerViewNeedsLayout;
+- (BOOL)nc_shouldReverseLayoutDirection;
 @end
 
 @interface XXUnknownSuperclass (SBGraphics)
@@ -149,10 +174,6 @@
 - (BOOL)isIconLabelLegibilityImage;
 @end
 
-@interface XXUnknownSuperclass (WidgetsSettings)
-- (id)sb_iconImage;
-@end
-
 @interface XXUnknownSuperclass (SBUtilities)
 + (id)soundWithBBSound:(id)bbsound;
 @end
@@ -168,6 +189,7 @@
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
 - (BOOL)isCritical;
+- (BOOL)overridesPocketMode;
 - (BOOL)overridesQuietMode;
 - (id)sb_applicationDisplayName;
 - (id)sb_defaultTitle;
@@ -182,22 +204,16 @@
 @property(copy, nonatomic) NSString *bulletinID;
 @end
 
+@interface XXUnknownSuperclass (SpringBoard)
++ (BOOL)_sb_isScreenObscuredInPocketState:(int)pocketState;
+@end
+
 @interface XXUnknownSuperclass (SBAdditions)
 - (BOOL)sb_containsEmoji;
 - (BOOL)sb_containsNonLatinLikeCharacters;
-@end
-
-@interface XXUnknownSuperclass (SpringBoardSupport)
-- (id)sb_description;
-- (BOOL)sb_hasExplicitUserElectionState;
-@end
-
-@interface XXUnknownSuperclass (SBWidgetSectionComparisonSupport)
-- (int)sb_compareWidget:(id)widget;
-- (int)sb_compareWidgetConsideringIsNew:(id)aNew;
-- (int)sb_compareWidgetConsideringShowsInNotificationCenter:(id)notificationCenter;
-- (BOOL)sb_isNewWidget;
-- (id)sb_localizedDisplayName;
+- (BOOL)sb_isEntirelyArabicCharacters;
+- (BOOL)sb_isEntirelyCharactersInSet:(USet *)set;
+- (BOOL)sb_isEntirelyHebrewCharacters;
 @end
 
 @interface XXUnknownSuperclass (SBStringDrawing)
@@ -206,10 +222,16 @@
 @end
 
 @interface XXUnknownSuperclass (SpringBoardAdditions)
+@property(assign, nonatomic) CGPoint anchorPoint;
++ (id)sb_firstDescendantOfViews:(id)views passingTest:(id)test;
 - (void)_printLayer:(id)layer level:(int)level;
 - (BOOL)hasActiveKeyboardOnScreen;
+- (id)sb_firstDescendantOfClass:(Class)aClass;
+- (id)sb_firstDescendantOfClassNamed:(id)classNamed;
+- (id)sb_firstDescendantPassingTest:(id)test;
 - (void)sb_removeAllSubviews;
 - (void)sb_removeAnimationsForKeys:(id)keys update:(id)update;
+- (void)sb_removeAnimationsIncludingSubviews:(BOOL)subviews predicate:(id)predicate;
 - (id)sb_snapshotImage;
 - (void)sbs_printLayerHierarchy;
 @end
@@ -220,22 +242,15 @@
 
 @interface XXUnknownSuperclass (UIGestureRecognizer_SpringBoard)
 - (id)sb_briefDescription;
+- (id)sb_stringForState;
 @end
 
 @interface XXUnknownSuperclass (SBSnapshotExtensions)
 - (id)sb_snapshotViewImmediatelyFramedForPortrait;
 @end
 
-@interface XXUnknownSuperclass (SpringBoard)
-- (void)sbf_each:(id)each;
-- (id)sbf_filter:(id)filter;
-- (id)sbf_first:(unsigned)first;
-- (id)sbf_firstObjectOfClass:(Class)aClass;
-- (id)sbf_firstObjectOfClassNamed:(id)classNamed;
-- (id)sbf_firstObjectPassingTest:(id)test;
-- (id)sbf_foldWithInitialValue:(id)initialValue block:(id)block;
-- (id)sbf_map:(id)map;
-- (id)sbf_mapNoNulls:(id)nulls;
-- (id)sbf_reverse;
+@interface XXUnknownSuperclass (SBAsynchronousSnapshot)
+- (void)sb_generateSnapshotAsynchronouslyOnQueue:(id)queue completionHandler:(id)handler;
+- (void)sb_generateSnapshotViewAsynchronouslyOnQueue:(id)queue completionHandler:(id)handler;
 @end
 

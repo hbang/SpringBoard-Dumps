@@ -8,12 +8,20 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBCalendarApplicationIcon : SBApplicationIcon {
+@interface SBCalendarApplicationIcon : SBApplicationIcon <SBDateTimeOverrideObserver> {
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)countriesRequiringBlackDayOfWeek;
 - (id)initWithApplication:(id)application;
+- (id)_compositedIconImageForFormat:(int)format withBaseImageProvider:(id)baseImageProvider;
 - (void)_drawIconIntoCurrentContextWithImageSize:(CGSize)imageSize iconBase:(id)base;
+- (void)_startListeningForSignificantTimeChanges;
+- (void)_stopListeningForSignificantTimeChanges;
 - (id)colorForDayOfWeek;
+- (void)controller:(id)controller didChangeOverrideDateFromDate:(id)date;
 - (void)dealloc;
 - (id)generateIconImage:(int)image;
 - (id)getUnmaskedIconImage:(int)image;

@@ -10,6 +10,8 @@
 @protocol SBActivationSettings <NSObject>
 - (void)applyActivationSettings:(id)settings;
 - (BOOL)boolForActivationSetting:(unsigned)activationSetting;
+- (void)clearActivationSettings;
+- (id)copyActivationSettings;
 - (int)flagForActivationSetting:(unsigned)activationSetting;
 - (id)objectForActivationSetting:(unsigned)activationSetting;
 - (void)setFlag:(int)flag forActivationSetting:(unsigned)activationSetting;
@@ -17,24 +19,30 @@
 @end
 
 __attribute__((visibility("hidden")))
-@interface SBActivationSettings : XXUnknownSuperclass <BSSettingDescriptionProvider, SBActivationSettings, NSCopying> {
+@interface SBActivationSettings : XXUnknownSuperclass <BSSettingDescriptionProvider, SBActivationSettings, NSCopying, BSDescriptionProviding> {
 	BSMutableSettings *_settings;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, assign, nonatomic, getter=isEmpty) BOOL empty;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
 - (id)init;
 - (void)applyActivationSettings:(id)settings;
-- (id)basicDescriptionWithPrefix:(id)prefix;
 - (BOOL)boolForActivationSetting:(unsigned)activationSetting;
+- (void)clearActivationSettings;
+- (id)copyActivationSettings;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
+- (id)descriptionBuilderWithMultilinePrefix:(id)multilinePrefix;
+- (id)descriptionWithMultilinePrefix:(id)multilinePrefix;
 - (int)flagForActivationSetting:(unsigned)activationSetting;
 - (id)keyDescriptionForSetting:(unsigned)setting;
 - (id)objectForActivationSetting:(unsigned)activationSetting;
 - (void)setFlag:(int)flag forActivationSetting:(unsigned)activationSetting;
 - (void)setObject:(id)object forActivationSetting:(unsigned)activationSetting;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 - (id)valueDescriptionForFlag:(int)flag object:(id)object ofSetting:(unsigned)setting;
 @end
 

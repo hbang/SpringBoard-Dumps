@@ -9,31 +9,50 @@
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherPageView : XXUnknownSuperclass {
-	UIView *_shadowView;
 	UIView *_hitTestBlocker;
 	UIView<SBAppSwitcherPageContentView> *_view;
 	UIView *_overlayView;
-	int _orientation;
+	SBDisplayItem *_displayItem;
+	UIView *_contentDarkeningView;
+	int _shadowStyle;
+	float _shadowAlpha;
+	float _cornerRadius;
+	UIImageView *_shadowView;
 	UIView *auxiliaryView;
+	id<SBAppSwitcherPageViewDelegate> _delegate;
 }
 @property(readonly, assign, nonatomic) UIView *auxiliaryView;
-@property(assign, nonatomic) int orientation;
+@property(assign, nonatomic) float contentAlpha;
+@property(assign, nonatomic) float cornerRadius;
+@property(assign, nonatomic) float darkeningAlpha;
+@property(assign, nonatomic) id<SBAppSwitcherPageViewDelegate> delegate;
+@property(retain, nonatomic) SBDisplayItem *displayItem;
 @property(retain, nonatomic) UIView *overlay;
+@property(assign, nonatomic) float overlayAlpha;
 @property(assign, nonatomic) float shadowAlpha;
+@property(assign, nonatomic) int shadowStyle;
 @property(retain, nonatomic) UIView<SBAppSwitcherPageContentView> *view;
-+ (float)_horizontalEdgeBorderForOrientation:(int)orientation;
-+ (CGSize)sizeForOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
-- (CGAffineTransform)_transformForOrientation:(int)orientation;
-- (CGAffineTransform)_transformForScale;
+- (CGPoint)_centerForSubviewLayout;
+- (void)_orderSubviews;
+- (CGAffineTransform)_overlayTransform;
+- (CGAffineTransform)_scaleTransform;
+- (void)_setupShadowImage;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
+- (void)_updateCornerRadius;
+- (void)_updateShadow;
 - (CGRect)_viewFrame;
 - (void)dealloc;
-- (id)description;
+- (void)interactionDidEnd:(BOOL)interaction;
 - (void)invalidate;
 - (void)layoutSubviews;
+- (void)prepareToBecomeVisibleIfNecessary;
+- (void)respondToBecomingInvisibleIfNecessary;
 - (void)setBlocksTouches:(BOOL)touches;
-- (void)setShadowEnabled:(BOOL)enabled;
 - (void)setView:(id)view animated:(BOOL)animated;
-- (CGSize)sizeThatFits:(CGSize)fits;
+- (void)transitionDidEnd:(BOOL)transition forPresentation:(BOOL)presentation;
+- (void)updateTransitionProgress:(float)progress;
+- (void)viewDismissing:(id)dismissing withInteraction:(BOOL)interaction andInitialProgress:(float)progress forTransitionRequest:(id)transitionRequest;
+- (void)viewPresenting:(id)presenting withInteraction:(BOOL)interaction andInitialProgress:(float)progress forTransitionRequest:(id)transitionRequest;
 @end
 

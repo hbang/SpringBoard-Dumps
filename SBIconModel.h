@@ -31,8 +31,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_canAddDownloadingIconForBundleID:(id)bundleID;
 - (id)_iconState;
 - (id)_indexPathInRootFolder:(id)rootFolder forNewIcon:(id)newIcon isDesignatedLocation:(BOOL *)location replaceExistingIconAtIndexPath:(id *)indexPath;
-- (id)_newsstandIconInFolder:(id)folder outIndexPath:(id *)path;
-- (void)_postIconVisibilityChangedNotificationShowing:(id)showing hiding:(id)hiding;
 - (void)_replaceAppIconsWithDownloadingIcons;
 - (void)_replaceAppIconsWithDownloadingIcons:(id)downloadingIcons;
 - (void)_saveDesiredIconState;
@@ -67,7 +65,6 @@ __attribute__((visibility("hidden")))
 - (id)leafIcons;
 - (void)loadAllIcons;
 - (void)localeChanged;
-- (id)newsstandIcon;
 - (void)removeIcon:(id)icon;
 - (void)removeIconForIdentifier:(id)identifier;
 - (id)rootFolder;

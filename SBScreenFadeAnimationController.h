@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 	BOOL _preparingToAnimateFadeIn;
 	BOOL _animatingForFadeIn;
 	BOOL _animatingForFadeOut;
+	BOOL _insideFadeInCompletionBlock;
+	BOOL _insideFadeOutCompletionBlock;
 	int _animationToken;
 	id _fadeInCompletionBlock;
 	id _fadeOutCompletionBlock;
@@ -38,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (void)_createFadeWindowForFadeIn:(BOOL)anIn;
 - (void)_handleAnimationCompletionIfNecessaryForFadeIn:(BOOL)anIn;
 - (void)_invertColorsChanged;
-- (void)_mediaControlsDidShow;
 - (void)_runCompletionHandlerForFadeIn:(BOOL)anIn;
 - (void)_setRelevantLockScreenViewsHidden:(BOOL)hidden;
 - (void)_startFadeAnimationsForFadeIn:(BOOL)anIn;

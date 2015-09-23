@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBFloatyFolderBackgroundClipView : XXUnknownSuperclass {
 	SBFolderBackgroundView *_backgroundView;
 }
-@property(readonly, assign, nonatomic) SBFolderBackgroundView *backgroundView;
+@property(readonly, retain, nonatomic) SBFolderBackgroundView *backgroundView;
 - (id)initWithFrame:(CGRect)frame;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)dealloc;

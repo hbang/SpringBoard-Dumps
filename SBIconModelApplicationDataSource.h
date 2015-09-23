@@ -9,11 +9,7 @@
 
 @protocol SBIconModelApplicationDataSource <NSObject>
 - (id)allApplications;
-- (int)appVisibilityOverrideForBundleIdentifier:(id)bundleIdentifier;
 - (id)defaultIconState;
 - (id)firstPageLeafIdentifiers;
-- (BOOL)isNewsstandEnabled;
-- (BOOL)isNewsstandSupported;
-- (BOOL)updateAppIconVisibilityOverridesShowing:(id *)showing hiding:(id *)hiding;
 @end
 

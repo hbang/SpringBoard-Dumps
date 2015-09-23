@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 	NSMutableDictionary *_backgroundFetchTaskValueToWatchdoggableCompletion;
 	NSObject<OS_dispatch_queue> *_queue;
 	SBWorkStore *_pendingWorkStore;
-	AppLaunchStats *_appLaunchStats;
 	double _watchdogTimeout;
 }
 @property(readonly, copy) NSString *debugDescription;

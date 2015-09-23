@@ -11,11 +11,12 @@ __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadeAlertToRemoteAlert : SBUIMainScreenAnimationController {
 	SBAlert *_fromAlert;
 	SBRemoteAlertAdapter *_remoteAlert;
-	SBAlertManager *_alertManager;
+	SBMainAlertManager *_alertManager;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	BOOL _initialFakeStatusBarNeeded;
 	double _animationDuration;
 }
-- (id)initWithAlert:(id)alert toAlert:(id)alert2 alertManager:(id)manager;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_animationFinished;
 - (void)_cleanupAnimation;
 - (void)_prepareAnimation;

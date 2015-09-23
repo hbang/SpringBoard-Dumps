@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 	_UILegibilityImageSet *_pageIndicatorSet;
 	_UILegibilityImageSet *_enabledPageIndicatorSet;
 }
-@property(readonly, assign, nonatomic) _UILegibilityImageSet *enabledPageIndicatorSet;
-@property(readonly, assign, nonatomic) _UILegibilityImageSet *pageIndicatorSet;
+@property(readonly, retain, nonatomic) _UILegibilityImageSet *enabledPageIndicatorSet;
+@property(readonly, retain, nonatomic) _UILegibilityImageSet *pageIndicatorSet;
 - (id)initWithIndicatorSet:(id)indicatorSet enabledIndicatorSet:(id)set;
 - (void)dealloc;
 @end

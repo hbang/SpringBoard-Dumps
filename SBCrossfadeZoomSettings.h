@@ -10,9 +10,9 @@
 __attribute__((visibility("hidden")))
 @interface SBCrossfadeZoomSettings : SBScaleZoomSettings {
 	BOOL _morphWithZoom;
-	SBFAnimationSettings *_morphSettings;
+	SBAnimationSettings *_morphSettings;
 }
-@property(retain) SBFAnimationSettings *morphSettings;
+@property(retain) SBAnimationSettings *morphSettings;
 @property(assign) BOOL morphWithZoom;
 + (id)settingsControllerModule;
 - (id)effectiveMorphAnimationSettings;

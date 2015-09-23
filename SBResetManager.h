@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)passLibrary:(id)library removingPassesOfType:(unsigned)type didFinishWithSuccess:(BOOL)success;
 - (void)passLibrary:(id)library removingPassesOfType:(unsigned)type didUpdateWithProgress:(double)progress;
 - (void)performPaymentCardDeletionWithCompletion:(id)completion;
+- (void)prepareToResetInMode:(int)mode;
 - (float)progress;
 - (void)setMode:(int)mode;
 @end

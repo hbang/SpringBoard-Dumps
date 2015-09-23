@@ -12,9 +12,8 @@ __attribute__((visibility("hidden")))
 	SBRemoteAlertAdapter *_alert;
 	SBAlertManager *_alertManager;
 }
-- (id)initWithDeactivatingApp:(id)deactivatingApp toRemoteAlert:(id)remoteAlert alertManager:(id)manager;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_cleanupAnimation;
-- (void)_deferredAlertActivationStuff;
 - (void)_prepareAnimation;
 - (void)_startAnimation;
 - (double)animationDuration;

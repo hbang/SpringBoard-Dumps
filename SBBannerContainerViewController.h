@@ -8,8 +8,8 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBBannerContainerViewController : XXUnknownSuperclass <NCInteractiveNotificationHostDelegate, SBBannerButtonViewControllerDelegate, NCBannerAccessoryHostViewControllerDelegate, SBMotionGestureObserver, SBBulletinWindowClient, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning> {
-	NCInteractiveNotificationHostViewController *_interactiveViewController;
+@interface SBBannerContainerViewController : XXUnknownSuperclass <NCInteractiveNotificationHostDelegate, SBBannerButtonViewControllerDelegate, NCNotificationActionTextInputDelegate, NCBannerAccessoryHostViewControllerDelegate, SBMotionGestureObserver, SBBulletinWindowClient, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning> {
+	UIViewController<NCInteractiveNotificationHost> *_interactiveViewController;
 	NCBannerAccessoryHostViewController *_accessoryViewController;
 	NCContentHostViewController *_secondaryContentViewController;
 	NCContentHostViewController *_inlayContentViewController;
@@ -19,17 +19,18 @@ __attribute__((visibility("hidden")))
 	SBUIBannerContext *_bannerContext;
 	SBBannerContainerView *_containerView;
 	SBBannerContextView *_bannerContextView;
-	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
+	FBUIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
 	UIView *_backgroundView;
 	CGRect _keyboardFrame;
 	float _maximumBannerHeight;
+	NSObject<OS_dispatch_group> *_remoteLoadingGroup;
 	BOOL _pulledDown;
 	id<SBBannerContextViewControllerDelegate> _delegate;
 	UIImage *_backgroundImage;
 }
 @property(retain, nonatomic) UIImage *backgroundImage;
-@property(readonly, assign, nonatomic) UIView *backgroundView;
-@property(readonly, assign, nonatomic) SBBannerContextView *bannerContextView;
+@property(readonly, retain, nonatomic) UIView *backgroundView;
+@property(readonly, retain, nonatomic) SBBannerContextView *bannerContextView;
 @property(readonly, assign, nonatomic) BOOL canPullDown;
 @property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBBannerContextViewControllerDelegate> delegate;
@@ -56,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (float)_maximumPullDownViewHeight;
 - (float)_miniumBannerContentHeight;
 - (id)_newBackgroundViewWithFrame:(CGRect)frame;
-- (id)_newbuttonViewController;
+- (id)_newButtonViewController;
 - (void)_noteDidPullDown;
 - (float)_percentDismissed;
 - (float)_preferredPullDownViewHeight;
@@ -75,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)_setInlayContentViewController:(id)controller;
 - (void)_setInlayContentViewWithCompletion:(id)completion;
 - (void)_setInteractiveViewController:(id)controller;
+- (void)_setInteractiveViewController:(id)controller animated:(BOOL)animated;
 - (void)_setPullDownViewWithCompletion:(id)completion;
 - (void)_setSecondaryContentViewController:(id)controller;
 - (void)_setSecondaryContentViewWithCompletion:(id)completion;
@@ -87,9 +89,6 @@ __attribute__((visibility("hidden")))
 - (void)animateTransition:(id)transition;
 - (id)animationControllerForDismissedController:(id)dismissedController;
 - (id)animationControllerForPresentedController:(id)presentedController presentingController:(id)controller sourceController:(id)controller3;
-- (void)bulletinWindowDidRotateFromOrientation:(int)bulletinWindow;
-- (void)bulletinWindowIsAnimatingRotationToOrientation:(int)orientation duration:(double)duration;
-- (void)bulletinWindowWillRotateToOrientation:(int)bulletinWindow duration:(double)duration;
 - (void)buttonViewController:(id)controller didSelectButtonAtIndex:(unsigned)index;
 - (void)dealloc;
 - (void)didReceiveRaiseGesture;
@@ -101,13 +100,20 @@ __attribute__((visibility("hidden")))
 - (void)hostViewControllerDidRequestSticky:(id)hostViewController;
 - (void)invalidate;
 - (void)loadView;
+- (int)preferredInterfaceOrientationForPresentation;
 - (float)preferredMaximumHeight;
+- (id)presentationControllerForPresentedViewController:(id)presentedViewController presentingViewController:(id)controller sourceViewController:(id)controller3;
 - (BOOL)requiresKeyWindow;
 - (void)setBannerContext:(id)context withReplaceReason:(int)replaceReason completion:(id)completion;
 - (void)setBannerPullDisplacement:(float)displacement;
 - (void)setBannerPullPercentage:(float)percentage;
+- (void)textInputViewController:(id)controller didSendTypedText:(id)text;
 - (double)transitionDuration:(id)duration;
+- (void)transitionToAction:(id)action;
+- (void)transitionToActionWithIdentifier:(id)identifier;
 - (void)viewDidAppear:(BOOL)view;
+- (void)viewWillLayoutSubviews;
+- (void)viewWillTransitionToSize:(CGSize)view withTransitionCoordinator:(id)transitionCoordinator;
 - (void)willPresentFromActionIdentifier:(id)actionIdentifier;
 @end
 

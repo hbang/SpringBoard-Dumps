@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
 - (void)_cancelAnimation;
 - (void)_cleanupAnimation;
 - (void)_cleanupEverything;
+- (void)_didComplete;
 - (id)_getTransitionWindow;
 - (void)_prepareAnimation;
 - (void)_startAnimation;
 - (void)dealloc;
-- (void)endAnimation;
 @end
 

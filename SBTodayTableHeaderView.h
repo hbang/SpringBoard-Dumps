@@ -19,8 +19,9 @@ __attribute__((visibility("hidden")))
 	int _layoutMode;
 }
 @property(assign, nonatomic) int layoutMode;
+@property(readonly, assign, nonatomic) float visibleMinY;
 + (id)defaultBackgroundColor;
-+ (id)defaultDateFont;
++ (id)defaultDateFontForMode:(int)mode;
 + (id)defaultLunarDateFont;
 + (id)defaultTextColor;
 + (float)lunarDateBaselineOffset;

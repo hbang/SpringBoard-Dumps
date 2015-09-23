@@ -14,11 +14,13 @@
 - (id)bulletinsFilteredBy:(unsigned)by count:(unsigned)count lastCleared:(id)cleared;
 - (id)bulletinsFilteredBy:(unsigned)by enabledSectionIDs:(id)ids count:(unsigned)count lastCleared:(id)cleared;
 - (id)bulletinsWithRequestParameters:(id)requestParameters lastCleared:(id)cleared;
-- (id)clearedInfoAndBulletinsForClearingAllBulletinsWithLimit:(unsigned)limit lastClearedInfo:(id)info;
 - (id)clearedInfoForBulletins:(id)bulletins;
 - (id)clearedInfoForBulletins:(id)bulletins lastClearedInfo:(id)info;
+- (id)clearedInfoForClearingAllBulletinsWithLastClearedInfo:(id)lastClearedInfo;
+- (id)clearedInfoForClearingBulletinsFromDate:(id)date toDate:(id)date2 lastClearedInfo:(id)info;
 - (void)dataProviderDidLoad;
 - (id)defaultSubsectionInfos;
+- (id)displayNameForFilterID:(id)filterID;
 - (id)displayNameForSubsectionID:(id)subsectionID;
 - (void)handleBulletinActionResponse:(id)response;
 - (BOOL)migrateSectionInfo:(id)info oldSectionInfo:(id)info2;

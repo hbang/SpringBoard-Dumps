@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 @property(copy, nonatomic) NSString *cacheKey;
 - (void)dealloc;
+- (void)setOverrideBreadcrumbTitle:(id)title secondaryTitle:(id)title2;
 - (void)setSnapshotOverridesWithTimeEnabled:(BOOL)timeEnabled;
 @end
 

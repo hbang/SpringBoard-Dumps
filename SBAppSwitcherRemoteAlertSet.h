@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void)addRemoteAlert:(id)alert;
 - (id)alertAtIndex:(unsigned)index;
 - (id)alertForBundleIdentifier:(id)bundleIdentifier;
-- (id)alertForDisplayLayout:(id)displayLayout;
+- (id)alertForDisplayItem:(id)displayItem;
 - (BOOL)containsAlert:(id)alert;
 - (id)copyWithZone:(NSZone *)zone;
 - (unsigned)count;

@@ -22,15 +22,16 @@ __attribute__((visibility("hidden")))
 - (id)initFromApp:(id)app toAlertImpersonator:(id)alertImpersonator starkScreenController:(id)controller;
 - (id)initFromApp:(id)app toApp:(id)app2 starkScreenController:(id)controller;
 - (double)_animationDelay;
-- (id)_animationProgressDependency;
+- (id)_animationFactory;
+- (id)_animationProgressDependencies;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_cleanupHosting;
 - (void)_commonInitFromView:(id)view toView:(id)view2 alert:(id)alert toDisplay:(id)display;
 - (void)_maybeReportAnimationFinished;
-- (void)_prepareAnimation;
 - (void)_startAnimation;
 - (BOOL)_waitsForApplicationActivationIfNecessary;
+- (void)_willSetupStartDependencies;
 - (void)dealloc;
 - (void)noteDependencyDidInvalidate;
 @end

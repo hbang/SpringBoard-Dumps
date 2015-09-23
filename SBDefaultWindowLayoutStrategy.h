@@ -16,6 +16,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (CGRect)frameForWindow:(id)window;
-- (int)jailBehavior;
+- (BOOL)shouldClipForWindow:(id)window;
 @end
 

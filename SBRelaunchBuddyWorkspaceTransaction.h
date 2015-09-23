@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBRelaunchBuddyWorkspaceTransaction : SBRelaunchAppWorkspaceTransaction {
 }
 - (void)_begin;
-- (id)_setupAnimationForApp:(id)app;
+- (unsigned)_serialOverlayPreDismissalOptions;
+- (id)_setupAnimation;
 @end
 

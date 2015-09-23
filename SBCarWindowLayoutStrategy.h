@@ -22,6 +22,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isLayoutBoundsOnly;
 - (void)dealloc;
 - (CGRect)frameForWindow:(id)window;
-- (int)jailBehavior;
+- (BOOL)shouldClipForWindow:(id)window;
 @end
 

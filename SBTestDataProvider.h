@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBTestDataProvider : XXUnknownSuperclass <BBRemoteDataProvider> {
 	BBDataProviderConnection *_connection;
 	BBDataProviderProxy *_proxy;
-	NSMutableArray *_bulletins;
+	NSMutableArray *_bulletinRequests;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -19,13 +19,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
-- (id)_bulletin;
+- (id)_existingBulletinRequestForPublisherBulletinID:(id)publisherBulletinID;
+- (id)_newBulletinRequest:(id)request;
 - (float)attachmentAspectRatioForRecordID:(id)recordID;
 - (id)attachmentPNGDataForRecordID:(id)recordID sizeConstraints:(id)constraints;
-- (id)bulletinsFilteredBy:(unsigned)by count:(unsigned)count lastCleared:(id)cleared;
+- (id)bulletinsWithRequestParameters:(id)requestParameters lastCleared:(id)cleared;
 - (id)clearedInfoForBulletins:(id)bulletins lastClearedInfo:(id)info;
+- (id)clearedInfoForClearingAllBulletinsWithLastClearedInfo:(id)lastClearedInfo;
+- (id)clearedInfoForClearingBulletinsFromDate:(id)date toDate:(id)date2 lastClearedInfo:(id)info;
 - (void)dataProviderDidLoad;
 - (id)defaultSectionInfo;
+- (id)defaultSubsectionInfos;
+- (id)displayNameForSubsectionID:(id)subsectionID;
 - (void)noteSectionInfoDidChange:(id)noteSectionInfo;
 - (void)publish;
 - (void)receiveMessageWithName:(id)name userInfo:(id)info;

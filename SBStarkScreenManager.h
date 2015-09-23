@@ -9,10 +9,9 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkScreenManager : XXUnknownSuperclass <SBScreenConnectionHandler, SBStarkScreenControllerDelegate> {
-	NSMapTable *_screenToControllerMap;
-	NSHashTable *_observers;
+	NSMutableDictionary *_displayToControllerMap;
 	SBStarkScreenController *_currentScreenController;
-	SBStarkStatusBarStateProvider *_statusBarStateProvider;
+	NSHashTable *_observers;
 	SBSpuriousScreenUndimmingAssertion *_spuriousScreenUndimmingAssertion;
 	SBPasscodeLockDisableAssertion *_deviceLockDisableAssertion;
 	SBLockScreenDisableAssertion *_lockScreenDisableAssertion;
@@ -30,11 +29,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
 + (id)sharedInstance;
++ (BOOL)starkScreenIsAttached;
 - (id)init;
 - (void)_clearEarlyConnectState;
 - (void)_clearEarlyConnectStateTimerExpired;
 - (void)_clearPromptState;
 - (void)_earlyStarkConnection;
+- (void)_pairedVehiclesChanged:(id)changed;
 - (void)_promptConnectionSteps;
 - (void)_scheduleClearEarlyConnectStateExpirationTimer;
 - (void)_setCurrentController:(id)controller;
@@ -52,13 +53,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)promptRelockUIIfAppropriate;
 - (void)removeObserver:(id)observer;
 - (id)screenControllerForDisplay:(id)display;
-- (id)screenControllerForScreen:(id)screen;
 - (void)screenManager:(id)manager didTriggerConnectionHandlerEvent:(int)event forScreen:(id)screen;
 - (BOOL)screenManager:(id)manager shouldBindConnectionHandlerToScreen:(id)screen;
 - (BOOL)shouldShowCarPlayStatusBarItem;
 - (BOOL)starkScreenControllerShouldDelayUpdateLockoutMode:(id)starkScreenController;
 - (void)starkScreenControllerWantsRelockUI:(id)ui;
 - (BOOL)starkScreenIsAttached;
-- (id)statusBarStateProvider;
 @end
 

@@ -10,13 +10,15 @@
 __attribute__((visibility("hidden")))
 @interface SBDeviceLockController : XXUnknownSuperclass {
 	SecureBackup *_secureBackupHelper;
+	BOOL _inSecureMode;
 }
 + (id)_sharedControllerCreateIfNecessary:(BOOL)necessary;
 + (id)sharedController;
 - (id)init;
 - (void)_cachePassword:(id)password;
-- (void)_keybagLockStateChangedTo:(int)to;
+- (BOOL)_isInSecureMode;
 - (void)_lockStateChangedFrom:(int)from to:(int)to;
+- (void)_setSecureMode:(BOOL)mode postNotification:(BOOL)notification;
 - (BOOL)_shouldLockDeviceNow;
 - (BOOL)_shouldSuppressLockOnInit;
 - (void)_uncachePasscodeIfNecessary;

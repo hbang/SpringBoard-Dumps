@@ -26,13 +26,15 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
-- (void)_enqueueBlock:(id)block forBulletin:(id)bulletin;
+- (void)_enqueueBlock:(id)block forFeed:(unsigned)feed bulletin:(id)bulletin;
 - (void)_hardwareButtonPressed:(id)pressed;
 - (BOOL)_playSoundForBulletin:(id)bulletin playedInternally:(BOOL)internally;
 - (BOOL)_shouldHonorPlaySoundRequestForBulletin:(id)bulletin;
 - (void)_stopSoundWithID:(id)anId internalOnly:(BOOL)only;
 - (void)bulletinWindowStoppedBeingBusy;
 - (void)dealloc;
+- (BOOL)isDeviceUILocked;
+- (BOOL)isLockScreenActive;
 - (BOOL)isPlayingSoundForBulletin:(id)bulletin;
 - (void)killSoundForBulletin:(id)bulletin;
 - (void)killSounds;

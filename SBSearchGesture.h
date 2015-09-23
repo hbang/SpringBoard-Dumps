@@ -13,16 +13,17 @@ __attribute__((visibility("hidden")))
 	SBSearchScrollView *_scrollView;
 	BOOL _suppressObserverCallbacks;
 	UIPanGestureRecognizer *_panGestureRecognizer;
+	float _lastOffset;
+	NSMutableSet *_disabledReasons;
 	BOOL _isActivated;
+	BOOL _isDismissing;
 	BOOL _animatingResetOrReveal;
-	BOOL _enabled;
 	UIView *_targetView;
 }
 @property(readonly, assign, nonatomic, getter=isActivated) BOOL activated;
 @property(readonly, assign, nonatomic, getter=isAnimatingResetOrReveal) BOOL animatingResetOrReveal;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(assign, nonatomic) BOOL enabled;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
 @property(retain, nonatomic) UIView *targetView;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewDidScroll:(id)scrollView;
 - (void)scrollViewDidScrollToTop:(id)scrollView;
 - (void)scrollViewWillEndDragging:(id)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)offset;
+- (void)setDisabled:(BOOL)disabled forReason:(id)reason;
 - (void)updateForRotation;
 @end
 

@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSoftwareUpdateVerificationFailedAlertItem : SBBaseSoftwareUpdateAlertItem {
+@interface SBSoftwareUpdateVerificationFailedAlertItem : SBBaseSoftwareUpdateInstallFailureAlertItem {
 }
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (BOOL)allowMenuButtonDismissal;
@@ -16,6 +16,5 @@ __attribute__((visibility("hidden")))
 - (BOOL)dismissOnLock;
 - (BOOL)reappearsAfterLock;
 - (BOOL)shouldShowInLockScreen;
-- (BOOL)undimsScreen;
 @end
 
