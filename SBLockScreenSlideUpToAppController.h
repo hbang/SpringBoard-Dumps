@@ -5,16 +5,17 @@
  * Source: (null)
  */
 
-#import "SBUIPasscodeLockViewDelegate.h"
 #import "SBCoordinatedPresenting.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBPresentingDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import "SBUIPasscodeLockViewDelegate.h"
+#import "BSTransactionObserver.h"
 
 @protocol SBLockScreenSlideUpToAppControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenSlideUpToAppController : XXUnknownSuperclass <SBPresentingDelegate, SBUIPasscodeLockViewDelegate, SBCoordinatedPresenting> {
+@interface SBLockScreenSlideUpToAppController : XXUnknownSuperclass <SBPresentingDelegate, SBUIPasscodeLockViewDelegate, BSTransactionObserver, SBCoordinatedPresenting> {
 	BOOL _isInScreenOffMode;
 	UIView *_slidingStatusBarView;
 	SBLockScreenView *_lockScreenView;
@@ -24,12 +25,14 @@ __attribute__((visibility("hidden")))
 	id<SBPresentingDelegate> _presentingDelegate;
 	SBBounceSettings *_bounceSettings;
 	SBApplication *_targetApp;
-	LSBestAppSuggestion *_targetAppInfo;
+	SBBestAppSuggestion *_targetAppInfo;
 	BOOL _targetAppIsSiri;
 	BOOL _targetAppIsInCallService;
 	BOOL _deactivatingForInCallService;
+	BOOL _appSuggestionWasInvoked;
 	NSURL *_targetURL;
 	UIImage *_grabberImage;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	BBObserver *_bulletinObserver;
 	BOOL _attemptingUnlock;
 	BOOL _showingPasscodeView;
@@ -41,14 +44,11 @@ __attribute__((visibility("hidden")))
 	id _preUIUnlockActions;
 	SBPasscodeLockDisableAssertion *_passcodeDisableAssertionForContinuityUnlock;
 	UIView *_clippingView;
-	UIView *_appPortraitDefaultImageView;
-	UIView *_appLandscapeDefaultImageView;
+	UIView *_appDefaultImageView;
 	UIView *_appBackgroundView;
 	SBUIPasscodeViewWithLockScreenStyle *_passcodeView;
 	UIView *_passcodeOverscrollView;
-	UIView *_appContextHostView;
-	BOOL _disableGracePeriodForCamera;
-	SBPasscodeLockDisableAssertion *_disableGracePeriodForCameraAssertion;
+	SBLockScreenSlideUpToAppWorkspaceTransaction *_slideUpTransaction;
 	BOOL _disablingOcclusionsForTargetApp;
 	BOOL _launchingAppFromNonOccludedState;
 	id<SBLockScreenSlideUpToAppControllerDelegate> _delegate;
@@ -76,10 +76,11 @@ __attribute__((visibility("hidden")))
 - (void)_addOrRemovePasscodeViewIfNecessary;
 - (void)_animateSlideDownWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)_animateSlideUpWithVelocity:(CGPoint)velocity completion:(id)completion;
-- (void)_cleanupBackgroundLaunchAndContextHostingNonsense;
+- (void)_cleanupBackgroundLaunchNonsense;
 - (void)_cleanupFromDismissal;
-- (void)_clearAppDefaultImagesAndRemoveFromSuperview:(BOOL)superview;
+- (void)_clearAppDefaultImageAndRemoveFromSuperview:(BOOL)superview;
 - (void)_commonGestureCleanup;
+- (id)_createGrabberView;
 - (void)_deviceBlockedStateChanged:(id)changed;
 - (void)_executeDeferredAppUpdateBlocks;
 - (void)_finishSlideDownWithCompletion:(id)completion;
@@ -88,15 +89,13 @@ __attribute__((visibility("hidden")))
 - (id)_lockScreenViewFakeStatusBar;
 - (id)_newBounceAnimatorWithGrabberView:(id)grabberView;
 - (id)_newDynamicAnimationForTargetValue:(double)targetValue withInitialVelocity:(double)initialVelocity;
-- (id)_newGrabberView;
 - (void)_passcodeLockStateChanged;
-- (void)_reloadAppDefaultImages;
 - (void)_setupBounceAnimatorAndGrabberView;
 - (void)abortAnimatedTransition;
 - (void)abortDynamicAnimationForScreenOff;
 - (void)activate;
 - (void)activateTargetApp;
-- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
+- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation presentationBegunHandler:(id)handler;
 - (id)bounceAnimator;
 - (void)cancelGestureRecognizer:(id)recognizer;
 - (void)deactivate;
@@ -121,13 +120,14 @@ __attribute__((visibility("hidden")))
 - (void)presentingController:(id)controller willHandleGesture:(id)gesture;
 - (void)presentingControllerDidFinishPresentation:(id)presentingController;
 - (void)reenableGestureRecognizer:(id)recognizer;
-- (void)setDisableGracePeriodForCamera:(BOOL)camera;
 - (void)setGrabberOnLockScreen:(id)screen;
 - (void)setGrabberViewImage:(id)image;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
 - (void)setLockScreenView:(id)view force:(BOOL)force;
-- (void)setTargetApp:(id)app withLSInfo:(id)lsinfo;
+- (void)setTargetApp:(id)app withAppSuggestion:(id)appSuggestion;
 - (void)setTargetURL:(id)url;
+- (void)transactionDidBegin:(id)transaction;
+- (void)transactionDidComplete:(id)transaction;
 - (void)translateSlidingViewByY:(float)y;
 - (void)treatCurrentPositionAsBoundaryforGesture:(id)gesture;
 - (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;

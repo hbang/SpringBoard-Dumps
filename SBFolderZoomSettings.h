@@ -10,9 +10,9 @@
 
 __attribute__((visibility("hidden")))
 @interface SBFolderZoomSettings : SBScaleZoomSettings {
-	SBFAnimationSettings *_innerFolderFadeSettings;
+	SBAnimationSettings *_innerFolderFadeSettings;
 }
-@property(retain) SBFAnimationSettings *innerFolderFadeSettings;
+@property(retain) SBAnimationSettings *innerFolderFadeSettings;
 + (id)settingsControllerModule;
 - (void)setDefaultValues;
 @end

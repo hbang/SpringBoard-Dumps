@@ -5,14 +5,12 @@
  * Source: (null)
  */
 
-#import "SBAppToAppWorkspaceTransaction.h"
+#import "SBToAppsWorkspaceTransaction.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppExitedWorkspaceTransaction : SBAppToAppWorkspaceTransaction {
+@interface SBAppExitedWorkspaceTransaction : SBToAppsWorkspaceTransaction {
 }
-- (id)initWithAlertManager:(id)alertManager from:(id)from to:(id)to withResult:(id)result;
-- (id)_setupAnimationFrom:(id)from to:(id)to;
-- (id)_setupMilestonesFrom:(id)from to:(id)to;
+- (void)_begin;
 @end
 

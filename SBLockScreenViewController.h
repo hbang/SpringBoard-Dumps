@@ -7,7 +7,8 @@
 
 #import "SBWallpaperObserver.h"
 #import "SpringBoard-Structs.h"
-#import "SBLockScreenViewControllerBase.h"
+#import "_UISettingsKeyObserver.h"
+#import "UIGestureRecognizerDelegate.h"
 #import "SBLockScreenViewDelegate.h"
 #import "SBLockScreenTimerViewControllerDelegate.h"
 #import "SBLockScreenNotificationListDelegate.h"
@@ -16,10 +17,12 @@
 #import "SBLockScreenInfoOverlayDelegate.h"
 #import "SBLockScreenPluginControllerDelegate.h"
 #import "SBLockScreenSlideUpToAppControllerDelegate.h"
+#import "ISPlayerViewDelegate.h"
+#import "SBLockScreenViewControllerBase.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenViewController : SBLockScreenViewControllerBase <SBLockScreenViewDelegate, SBLockScreenTimerViewControllerDelegate, SBLockScreenNotificationListDelegate, SBUIPasscodeLockViewDelegate_Internal, SBLockScreenBatteryChargingViewControllerDelegate, SBLockScreenInfoOverlayDelegate, SBWallpaperObserver, SBLockScreenPluginControllerDelegate, SBLockScreenSlideUpToAppControllerDelegate> {
+@interface SBLockScreenViewController : SBLockScreenViewControllerBase <SBLockScreenViewDelegate, SBLockScreenTimerViewControllerDelegate, SBLockScreenNotificationListDelegate, SBUIPasscodeLockViewDelegate_Internal, SBLockScreenBatteryChargingViewControllerDelegate, SBLockScreenInfoOverlayDelegate, SBWallpaperObserver, SBLockScreenPluginControllerDelegate, SBLockScreenSlideUpToAppControllerDelegate, UIGestureRecognizerDelegate, ISPlayerViewDelegate, _UISettingsKeyObserver> {
 	BOOL _isInScreenOffMode;
 	SBLockScreenDeviceBlockViewController *_blockedController;
 	SBLockScreenDateViewController *_dateViewController;
@@ -63,6 +66,8 @@ __attribute__((visibility("hidden")))
 	SBLockScreenActionContext *_slideUpControllerActionContext;
 	SBLockScreenHintManager *_hintManager;
 	SBDisableAppStatusBarUserInteractionChangesAssertion *_statusBarUserInteractionAssertion;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
+	SBIrisWallpaperSettings *_irisWallpaperSettings;
 	BOOL _hasAuthenticatedForNotificationAction;
 }
 @property(retain, nonatomic, setter=_setBioLockScreenActionContext:) SBLockScreenActionContext *_bioLockScreenActionContext;
@@ -70,7 +75,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(assign, nonatomic) BOOL hasAuthenticatedForNotificationAction;
 @property(readonly, assign) unsigned hash;
-@property(readonly, assign, nonatomic) SBLockScreenPluginController *pluginController;
+@property(readonly, retain, nonatomic) SBLockScreenPluginController *pluginController;
 @property(readonly, assign) Class superclass;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (BOOL)__shouldHidePasscodeForActiveCall;
@@ -101,8 +106,11 @@ __attribute__((visibility("hidden")))
 - (void)_callCountChanged:(id)changed;
 - (void)_callInfoChanged:(id)changed;
 - (void)_cleanupBatteryChargingViewWithAnimationDuration:(double)animationDuration;
+- (void)_clearHideStatusBarAssertion;
+- (void)_createCameraControllerIfNecessary;
 - (id)_currentTextForResetOrRestoreState;
 - (void)_destroyEmergencyDialerAnimated:(BOOL)animated;
+- (BOOL)_didNotificationsPassTopGrabber;
 - (BOOL)_disableIdleTimer:(BOOL)timer;
 - (void)_dismissFullscreenBulletinAlertAnimated:(BOOL)animated;
 - (void)_dismissNotificationCenterToRevealPasscode;
@@ -114,15 +122,18 @@ __attribute__((visibility("hidden")))
 - (void)_endTimedPasscodeHysteresis;
 - (void)_evaluateLockUIForActiveCalls;
 - (void)_fadeViewsForChargingViewVisible:(BOOL)chargingViewVisible;
+- (void)_fadeViewsForIrisPlaying:(BOOL)irisPlaying;
 - (BOOL)_forcesPortraitOrientation;
 - (void)_handleBacklightFadeEnded;
 - (void)_handleBacklightLevelChanged:(id)changed;
 - (void)_handleDisplayTurnedOff;
-- (void)_handleDisplayTurnedOn:(id)on;
+- (void)_handleDisplayTurnedOnWhileUILocked:(id)locked;
 - (void)_handleDisplayWillUndim;
 - (void)_handlePasscodeLockStateChanged;
 - (void)_handlePasscodePolicyChanged;
 - (void)_handleSuggestedAppChanged:(id)changed;
+- (void)_incrementIrisPlayCount;
+- (BOOL)_isAnimatingNotificationListView;
 - (BOOL)_isFadeInAnimationInProgress;
 - (id)_lockScreenViewCreatingIfNecessary;
 - (void)_mediaControlsDidHideOrShow:(id)_mediaControls;
@@ -158,6 +169,7 @@ __attribute__((visibility("hidden")))
 - (void)_setHintManagerEnabledIfPossible:(BOOL)possible removingLockScreenView:(BOOL)view;
 - (void)_setMediaControlsVisible:(BOOL)visible;
 - (void)_setNowPlayingControllerEnabled:(BOOL)enabled;
+- (void)_setStationaryContentAlpha:(float)alpha;
 - (void)_setStatusBarUserInteractionEnabledForTopGrabber:(BOOL)topGrabber;
 - (BOOL)_shouldDismissSwitcherOnActivation;
 - (BOOL)_shouldShowChargingText;
@@ -165,6 +177,8 @@ __attribute__((visibility("hidden")))
 - (void)_startFadeInAnimationForBatteryView:(BOOL)batteryView;
 - (void)_toggleMediaControls;
 - (void)_togglePasscodeEmergencyCallButtonIfNecessary;
+- (void)_translateNotificationListView;
+- (void)_translateTopGrabber;
 - (void)_unsupportedChargingAccessoryStateChanged:(id)changed;
 - (void)_updateBatteryChargingViewAnimated:(BOOL)animated;
 - (void)_updateDateTimerStatusBarAndLockSlider;
@@ -209,29 +223,32 @@ __attribute__((visibility("hidden")))
 - (CGRect)defaultContentRegionForPluginController:(id)pluginController withOrientation:(int)orientation;
 - (id)dequeueAllPendingSuperModalAlertItems;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
-- (void)disableLockScreenBundleWithName:(id)name deactivationContext:(id)context;
+- (void)disableLockScreenBundleWithName:(id)name deactivationContext:(id)context auxiliaryDeactivationAnimationBlock:(id)block;
 - (void)dismissFullscreenBulletinAlertWithItem:(id)item;
 - (void)displayDidDisappear;
 - (id)effectiveCustomSlideToUnlockText;
 - (void)emergencyDialerExitedWithError:(id)error;
-- (void)enableLockScreenBundleWithName:(id)name activationContext:(id)context;
+- (void)enableLockScreenBundleWithName:(id)name activationContext:(id)context auxiliaryActivationAnimationBlock:(id)block;
 - (void)exitEmergencyDialerAnimated:(BOOL)animated;
 - (void)finishUIUnlockFromSource:(int)source;
+- (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
+- (BOOL)gestureRecognizer:(id)recognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)gestureRecognizer;
+- (BOOL)gestureRecognizerShouldBegin:(id)gestureRecognizer;
 - (id)grabberViewInLockScreenView:(id)lockScreenView forController:(id)controller;
 - (BOOL)handleHeadsetButtonPressed:(BOOL)pressed;
 - (BOOL)handleLockButtonPressed;
 - (BOOL)handleMenuButtonDoubleTap;
 - (BOOL)handleMenuButtonHeld;
 - (BOOL)handleMenuButtonTap;
-- (void)handlePhoneAppExitedIfNecessary;
 - (BOOL)handleVolumeDownButtonPressed;
 - (BOOL)handleVolumeUpButtonPressed;
+- (BOOL)hasAlertItem:(id)item;
+- (BOOL)hasNotifications;
 - (BOOL)hasSuperModalAlertItems;
 - (BOOL)hasTranslucentBackground;
 - (float)hintDisplacementForController:(id)controller;
 - (unsigned)hintEdgeForController:(id)controller;
 - (void)infoOverlayWantsDismissal;
-- (int)interfaceOrientationForActivation;
 - (BOOL)isAllowingWallpaperBlurUpdates;
 - (BOOL)isAnotherSlideUpControllerBlockingController:(id)controller;
 - (BOOL)isBounceEnabledForPresentingController:(id)presentingController locationInWindow:(CGPoint)window;
@@ -249,9 +266,9 @@ __attribute__((visibility("hidden")))
 - (id)legibilitySettings;
 - (void)loadView;
 - (id)lockScreenBottomLeftAppController;
-- (BOOL)lockScreenBulletinControllerIsActive;
 - (id)lockScreenCameraController;
 - (id)lockScreenHintManager;
+- (BOOL)lockScreenIsActive;
 - (BOOL)lockScreenIsShowingBulletins;
 - (id)lockScreenScrollView;
 - (id)lockScreenView;
@@ -279,7 +296,9 @@ __attribute__((visibility("hidden")))
 - (void)passcodeLockViewPasscodeEntered:(id)entered;
 - (void)passcodeLockViewPasscodeEnteredViaMesa:(id)mesa;
 - (void)passcodeViewDidBecomeActive:(BOOL)passcodeView forController:(id)controller;
+- (void)playerViewPlaybackStateDidChange:(id)playerViewPlaybackState;
 - (void)pluginController:(id)controller activePluginDidChange:(id)activePlugin;
+- (int)preferredInterfaceOrientationForPresentation;
 - (void)prepareForExternalUIUnlock;
 - (void)prepareForMesaUnlockWithCompletion:(id)completion;
 - (void)prepareForSlideUpAppLaunchAnimated:(BOOL)slideUpAppLaunchAnimated;
@@ -290,6 +309,7 @@ __attribute__((visibility("hidden")))
 - (void)removeCoordinatedPresentingController:(id)controller;
 - (void)removeOverlay;
 - (void)removeOverlay:(id)overlay transitionIfNecessary:(BOOL)necessary animated:(BOOL)animated completion:(id)completion;
+- (BOOL)requiresPasscodeInputForUIUnlockFromSource:(int)source withOptions:(id)options;
 - (void)setForcesPasscodeViewDuringCall:(BOOL)call;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
 - (void)setInScreenOffMode:(BOOL)screenOffMode forAutoUnlock:(BOOL)autoUnlock;
@@ -297,8 +317,9 @@ __attribute__((visibility("hidden")))
 - (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated withUnlockSource:(int)unlockSource andOptions:(id)options;
 - (void)setShowingMediaControls:(BOOL)controls;
 - (void)setUnlockActionContext:(id)context;
+- (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)shakeSlideToUnlockTextWithCustomText:(id)customText;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
+- (BOOL)shouldAutorotate;
 - (BOOL)shouldPendAlertItemsWhileActive;
 - (BOOL)shouldShowLockStatusBarTime;
 - (BOOL)shouldShowSlideToUnlockTextImmediately;
@@ -323,8 +344,6 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDisappear:(BOOL)view;
 - (void)wallpaperDidChangeForVariant:(int)wallpaper;
 - (void)wallpaperLegibilitySettingsDidChange:(id)wallpaperLegibilitySettings forVariant:(int)variant;
-- (BOOL)wantsPasscodeLockForUIUnlockFromSource:(int)source withOptions:(id)options;
-- (BOOL)wantsSupportedInterfaceOrientationsIgnoredDuringDeactivation;
 - (BOOL)wantsToHandleAlert:(id)handleAlert;
 - (BOOL)wantsToShowStatusBarTime;
 - (BOOL)wasAutoUnlocked;

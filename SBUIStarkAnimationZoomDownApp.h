@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)animationDidStop:(id)animation finished:(id)finished context:(void *)context;
 - (double)animationDuration;
 - (double)animationStartTime;
-- (id)appSettings;
 - (void)dealloc;
 - (BOOL)prefersLayerHostSnapshot;
 @end

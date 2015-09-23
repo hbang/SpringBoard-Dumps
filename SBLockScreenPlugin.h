@@ -13,7 +13,11 @@ __attribute__((visibility("hidden")))
 	SBAwayViewPluginController *_controller;
 	SBLockOverlayContext *_overlay;
 	NSString *_bundleName;
+	id _auxiliaryActivationAnimationBlock;
+	id _auxiliaryDeactivationAnimationBlock;
 }
+@property(copy) id auxiliaryActivationAnimationBlock;
+@property(copy) id auxiliaryDeactivationAnimationBlock;
 @property(copy) NSString *bundleName;
 @property(retain) SBAwayViewPluginController *controller;
 @property(retain) SBLockOverlayContext *overlay;

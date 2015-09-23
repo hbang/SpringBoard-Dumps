@@ -5,26 +5,33 @@
  * Source: (null)
  */
 
-#import "SBToAppWorkspaceTransaction.h"
+#import "SBToAppsWorkspaceTransaction.h"
+#import "SBAlertChangeTransactionDelegate.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBActivateAppUnderLockScreenWorkspaceTransaction : SBToAppWorkspaceTransaction {
+@interface SBActivateAppUnderLockScreenWorkspaceTransaction : SBToAppsWorkspaceTransaction <SBAlertChangeTransactionDelegate> {
 	SBLockScreenViewControllerBase *_lockScreenController;
 	SBDisableActiveInterfaceOrientationChangeAssertion *_disableActiveOrientationChangeAssertion;
-	BOOL _waitingForSceneDestruction;
+	SBAlertChangeTransaction *_toLockscreenAlertTransaction;
+	id _alertActivationCompletion;
 }
-- (id)initWithAlertManager:(id)alertManager application:(id)application lockScreenController:(id)controller;
-- (id)initWithAlertManager:(id)alertManager application:(id)application lockScreenController:(id)controller forRelaunch:(BOOL)relaunch withResult:(id)result;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
+- (id)initWithTransitionRequest:(id)transitionRequest lockScreenController:(id)controller;
 - (void)_alertDidActivate;
 - (void)_begin;
-- (void)_childTransactionDidComplete:(id)_childTransaction;
+- (void)_callAndClearAlertActivationCompletionIfNecessary;
 - (void)_didComplete;
+- (void)_endTransition;
 - (void)_kickoffAlertActivation;
 - (void)_setupAndActivate;
+- (BOOL)_shouldUpdateUnderLockStateForForegroundScenes;
+- (void)alert:(id)alert didActivateWithCompletion:(id)completion;
 - (void)dealloc;
 - (BOOL)shouldPerformToAppStateCleanupOnCompletion;
 - (BOOL)shouldPlaceOutgoingScenesUnderLockOnCompletion;
-- (BOOL)shouldToggleSpringBoardStatusBarOnCleanup;
 @end
 

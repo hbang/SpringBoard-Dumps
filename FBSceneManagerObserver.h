@@ -9,7 +9,9 @@
 
 
 @protocol FBSceneManagerObserver <NSObject>
+@optional
 - (void)sceneManager:(id)manager didCommitUpdateForScene:(id)scene transactionID:(unsigned)anId;
+- (void)sceneManager:(id)manager didCommitUpdateForScene:(id)scene transactionID:(unsigned)anId success:(BOOL)success;
 - (void)sceneManager:(id)manager didCreateScene:(id)scene withClient:(id)client;
 - (void)sceneManager:(id)manager didDestroyScene:(id)scene;
 - (void)sceneManager:(id)manager willCommitUpdateForScene:(id)scene transactionID:(unsigned)anId;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 	int _restoreStartedNotifyToken;
 	int _restoreEndedNotifyToken;
 	SBPasscodeLockDisableAssertion *_disableDeviceLockAssertion;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	BOOL _isAppSyncing;
 	BOOL _inExtendedAppSyncCoalescePeriod;
 }

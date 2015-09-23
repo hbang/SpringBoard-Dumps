@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBNotificationCell.h"
 #import "SpringBoard-Structs.h"
+#import "SBNotificationCell.h"
 
 @protocol UIScrollViewDelegate, SBAwayListCellButtonHandler;
 
@@ -22,8 +22,7 @@ __attribute__((visibility("hidden")))
 	BOOL _resetsScrollOnPluginWillDisable;
 	float _contentScrollViewWidth;
 }
-@property(retain, nonatomic) UIButton *actionButton;
-@property(readonly, assign, nonatomic) UIScrollView *contentScrollView;
+@property(readonly, retain, nonatomic) UIScrollView *contentScrollView;
 @property(assign, nonatomic) float contentScrollViewWidth;
 @property(assign, nonatomic) id<UIScrollViewDelegate> delegate;
 @property(assign, nonatomic) BOOL isTopCell;

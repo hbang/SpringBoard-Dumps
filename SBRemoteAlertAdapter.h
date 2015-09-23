@@ -5,15 +5,16 @@
  * Source: (null)
  */
 
-#import "SBAlertAdapter.h"
 #import "_SBRemoteAlertHostViewControllerDelegate.h"
+#import "SBAlertAdapter.h"
 
+@protocol SBRemoteAlertAdapterDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBRemoteAlertAdapter : SBAlertAdapter <_SBRemoteAlertHostViewControllerDelegate> {
 	_SBRemoteAlertHostViewController *_remoteAlertHostViewController;
+	id<SBRemoteAlertAdapterDelegate> _remoteAlertAdapterDelegate;
 	NSString *_impersonatedApplicationBundleID;
-	BOOL _activated;
 	BOOL _dismissWithHomeButton;
 	BOOL _userRequestedHomeButtonDismissal;
 	int _desiredButtonEvents;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 	id _clientDeactivationHandler;
 	BOOL _beingPresentedObscured;
 }
+@property(assign, nonatomic, getter=_remoteAlertAdapterDelegate, setter=_setRemoteAlertAdapterDelegate:) id<SBRemoteAlertAdapterDelegate> _remoteAlertAdapterDelegate;
 @property(assign, nonatomic, getter=isBeingPresentedObscured) BOOL beingPresentedObscured;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -52,9 +54,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic) BOOL userRequestedHomeButtonDismissal;
 @property(readonly, assign, nonatomic) BOOL wantsWallpaperTunnel;
++ (void)_requestWithServiceName:(id)serviceName serviceClass:(id)aClass options:(id)options completion:(id)completion;
 + (void)requestRemoteViewService:(id)service options:(id)options completion:(id)completion;
++ (void)requestWithConfiguration:(id)configuration completion:(id)completion;
 - (id)initWithViewController:(id)viewController;
 - (void)_cleanupIdleTimerDisabledReasons;
+- (void)_didTerminateWithError:(id)error;
+- (id)_displayLayoutElementIdentifier;
 - (id)_impersonatesApplicationWithBundleID;
 - (id)_initWithRemoteAlertHostViewController:(id)remoteAlertHostViewController;
 - (void)_setCustomStatusBarStyle:(int)style;
@@ -66,6 +72,8 @@ __attribute__((visibility("hidden")))
 - (void)_setShouldDisableFadeInAnimation:(BOOL)_set;
 - (void)_setSuppressesSiri:(BOOL)siri;
 - (void)_setWantsWallpaperTunnel:(BOOL)tunnel immediately:(BOOL)immediately;
+- (BOOL)_shouldDismissSwitcherOnActivation;
+- (void)_terminate;
 - (void)activate;
 - (BOOL)allowsStackingOfAlert:(id)alert;
 - (double)autoLockTime;
@@ -78,7 +86,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)handleVolumeDownButtonPressed;
 - (BOOL)handleVolumeUpButtonPressed;
 - (BOOL)hasTranslucentBackground;
-- (int)interfaceOrientationForActivation;
 - (BOOL)isRemote;
 - (BOOL)managesOwnStatusBarAtActivation;
 - (BOOL)matchesAnyInCallService;
@@ -87,6 +94,8 @@ __attribute__((visibility("hidden")))
 - (void)noteActivatedForActivityContinuationWithIdentifier:(id)identifier;
 - (void)noteActivatedForCustomReason:(id)customReason;
 - (void)noteShouldStopDisablingStatusBarOverrides;
+- (int)preferredInterfaceOrientationForPresentation;
+- (void)remoteAlertDidRequestDismissal;
 - (void)remoteAlertDidTerminateWithError:(id)remoteAlert;
 - (void)remoteAlertWantsMenuButtonDismissal:(BOOL)dismissal;
 - (void)remoteAlertWantsToAllowAlertStacking:(BOOL)allowAlertStacking;
@@ -102,18 +111,17 @@ __attribute__((visibility("hidden")))
 - (void)remoteAlertWantsToUpdateAllowedHardwareButtonEvents:(int)updateAllowedHardwareButtonEvents;
 - (void)remoteAlertWantsWallpaperTunnelActive:(BOOL)active;
 - (void)remoteAlertWantstoSetDismissalAnimationStyle:(int)style;
-- (void)remoteAlertWantstoSetSupportedInterfaceOrientationOverride:(unsigned)override;
 - (void)setActivationHandler:(id)handler deactivationHandler:(id)handler2;
 - (void)setCanManageStatusBarVisibility:(BOOL)visibility;
 - (void)setLockUIAndDismissActions:(id)actions;
 - (void)setWantsToManageStatusBarAtActivation:(BOOL)activation;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (BOOL)showsSpringBoardStatusBar;
 - (int)statusBarStyle;
 - (int)statusBarStyleOverridesToCancel;
 - (BOOL)suppressesControlCenter;
 - (BOOL)suppressesNotificationCenter;
 - (BOOL)suppressesSiri;
+- (void)synchronizeAnimationsInActions:(id)actions;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 

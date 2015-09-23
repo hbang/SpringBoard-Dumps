@@ -9,7 +9,10 @@
 
 
 @protocol BSSettingDescriptionProvider <NSObject>
+@optional
 - (id)keyDescriptionForSetting:(unsigned)setting;
+- (id)settings:(id)settings keyDescriptionForSetting:(unsigned)setting;
+- (id)settings:(id)settings valueDescriptionForFlag:(int)flag object:(id)object ofSetting:(unsigned)setting;
 - (id)valueDescriptionForFlag:(int)flag object:(id)object ofSetting:(unsigned)setting;
 @end
 

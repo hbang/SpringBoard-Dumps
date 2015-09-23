@@ -5,11 +5,11 @@
  * Source: (null)
  */
 
-#import "UIScrollViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconViewDelegate.h"
-#import "SpringBoard-Structs.h"
 #import "SBIconViewMapDelegate.h"
+#import "SpringBoard-Structs.h"
+#import "UIScrollViewDelegate.h"
 
 @protocol SBAppSwitcherIconControllerDelegate;
 
@@ -34,12 +34,12 @@ __attribute__((visibility("hidden")))
 	SBIconViewMap *_iconViewMap;
 	_UILegibilitySettings *_legibilitySettings;
 	id<SBAppSwitcherIconControllerDelegate> _delegate;
-	NSArray *_displayLayouts;
+	NSArray *_displayItems;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBAppSwitcherIconControllerDelegate> delegate;
 @property(readonly, copy) NSString *description;
-@property(copy, nonatomic) NSArray *displayLayouts;
+@property(copy, nonatomic) NSArray *displayItems;
 @property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) unsigned iconTransitionIndex;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)_iconsReloaded:(id)reloaded;
 - (BOOL)_isIndexVisible:(unsigned)visible withPadding:(BOOL)padding;
 - (void)_layoutForDistance:(float)distance;
+- (void)_layoutIconViewInsertingIfNecessaryForDisplayItemAtIndex:(unsigned)index;
 - (float)_maxXOffsetForDistance:(float)distance;
 - (void)_recalculateBaseIconSpacingValues;
 - (float)_recalculateLayout:(BOOL)layout;
@@ -84,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)loadView;
 - (void)reloadInOrientation:(int)orientation;
 - (void)removeItem:(id)item duration:(double)duration updateScrollPosition:(BOOL)position completion:(id)completion;
-- (void)replaceItemAtIndex:(unsigned)index withNewItem:(id)newItem duration:(double)duration;
+- (void)replaceItemAtIndex:(unsigned)index withNewItem:(id)newItem duration:(double)duration completion:(id)completion;
 - (void)scrollViewDidEndDecelerating:(id)scrollView;
 - (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidScroll:(id)scrollView;
@@ -92,9 +93,6 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewWillEndDragging:(id)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)offset;
 - (void)setNormalizedOffset:(float)offset;
 - (void)setOffsetToIndex:(unsigned)index animated:(BOOL)animated;
-- (BOOL)shouldAutomaticallyForwardRotationMethods;
-- (BOOL)shouldAutorotate;
-- (unsigned)supportedInterfaceOrientations;
 - (void)switcherWasDismissed:(BOOL)dismissed;
 - (Class)viewMap:(id)map iconViewClassForIcon:(id)icon;
 - (int)viewMap:(id)map locationForIcon:(id)icon;

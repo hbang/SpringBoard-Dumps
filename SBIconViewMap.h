@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBIconViewObserver.h"
 #import "SBIconObserver.h"
 #import "SBIconIndexNodeObserver.h"
 #import "SBReusableViewMap.h"
+#import "SBIconViewObserver.h"
 
 @protocol SBIconViewDelegate, SBIconViewMapDelegate;
 

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain) UIViewController *secondaryContentViewController;
 @property(assign, nonatomic) BOOL shouldPlayLightsAndSirens;
 - (id)initWithBulletin:(id)bulletin andObserver:(id)observer;
+- (BOOL)_hasCustomSecondaryContent;
 - (BOOL)_suppressesMessageForPrivacy;
 - (void)_update;
 - (void)_updateActiveBulletin;
@@ -34,12 +35,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateMessage;
 - (void)_updateSortDate;
 - (void)addBulletin:(id)bulletin;
+- (BOOL)allowsAutomaticRemovalFromLockScreen;
 - (id)attachmentImageForKey:(id)key;
 - (id)attachmentText;
 - (id)bulletinWithID:(id)anId;
 - (id)bulletins;
 - (void)buttonPressed;
-- (BOOL)canBeClearedByNotificationCenter;
+- (BOOL)canBeRemovedByNotificationCenterPresentation;
+- (BOOL)canBeRemovedByUnlock;
 - (BOOL)canCoalesceWithBulletin:(id)bulletin;
 - (BOOL)canSnooze;
 - (BOOL)containsBulletinWithID:(id)anId;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)message;
 - (void)modifyBulletin:(id)bulletin;
 - (id)observer;
+- (BOOL)overridesPocketMode;
 - (BOOL)overridesQuietMode;
 - (void)prepareWithCompletion:(id)completion;
 - (id)publishDate;

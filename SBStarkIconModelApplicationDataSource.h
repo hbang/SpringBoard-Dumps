@@ -13,19 +13,25 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkIconModelApplicationDataSource : XXUnknownSuperclass <SBIconModelApplicationDataSource> {
 	id<SBStarkSessionConfiguring> _configuration;
+	BOOL _loadedCustomIconState;
+	NSDictionary *_customIconState;
 }
+@property(copy, nonatomic) NSDictionary *customIconState;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
+@property(assign, nonatomic, getter=hasLoadedCustomIconState) BOOL loadedCustomIconState;
 @property(readonly, assign) Class superclass;
++ (id)customIconOrder;
++ (id)defaultIconOrder;
++ (id)persistedCustomIconOrderPath;
++ (void)setCustomIconOrder:(id)order;
 - (id)initWithConfiguration:(id)configuration;
+- (void)_loadCustomIconStateIfNecessary;
 - (id)allApplications;
-- (int)appVisibilityOverrideForBundleIdentifier:(id)bundleIdentifier;
 - (void)dealloc;
 - (id)defaultIconState;
 - (id)firstPageLeafIdentifiers;
-- (BOOL)isNewsstandEnabled;
-- (BOOL)isNewsstandSupported;
-- (BOOL)updateAppIconVisibilityOverridesShowing:(id *)showing hiding:(id *)hiding;
+- (void)resetCustomIconOrder;
 @end
 

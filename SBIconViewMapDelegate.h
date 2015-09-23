@@ -10,6 +10,9 @@
 
 @protocol SBIconViewMapDelegate <SBReusableViewMapDelegate>
 - (Class)iconViewClassForIcon:(id)icon location:(int)location;
+@optional
+- (void)viewMap:(id)map configureIconView:(id)view;
+@required
 - (int)viewMap:(id)map locationForIcon:(id)icon;
 @optional
 - (unsigned)viewMap:(id)map numberOfViewsToPrepareOfClass:(Class)aClass;

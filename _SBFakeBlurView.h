@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "_SBFakeBlur.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol _SBFakeBlurObserver;
 
@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
 	int _requestedStyle;
 	int _effectiveStyle;
 	SBFWallpaperView *_wallpaperView;
+	BOOL _fullscreen;
 	UIImageView *_imageView;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(assign, nonatomic) BOOL fullscreen;
 @property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) id<_SBFakeBlurObserver> observer;
 @property(readonly, assign) Class superclass;

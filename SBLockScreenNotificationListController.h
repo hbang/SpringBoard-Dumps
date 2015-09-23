@@ -5,32 +5,33 @@
  * Source: (null)
  */
 
-#import "SBVolumePressBandit.h"
+#import "SpringBoard-Structs.h"
 #import "SBMotionGestureObserver.h"
 #import "BBObserverDelegate.h"
 #import "SBCoordinatedPresenting.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBPresentingDelegate.h"
-#import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBLockScreenActionHandler.h"
 #import "SBLockScreenNotificationViewDelegate.h"
 #import "SBLockScreenNotificationModel.h"
 #import "SBUIBannerSource.h"
 #import "SBUIBannerTargetManagerObserver.h"
 #import "SBLockScreenNotificationBannerItemDelegate.h"
+#import "CMPocketStateDelegate.h"
+#import "SBVolumePressBandit.h"
 
-@protocol SBUIBannerTarget, SBLockScreenNotificationListDelegate;
+@protocol SBLockScreenNotificationListDelegate, SBUIBannerTarget;
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenNotificationListController : XXUnknownSuperclass <SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel, BBObserverDelegate, SBVolumePressBandit, SBUIBannerSource, SBUIBannerTargetManagerObserver, SBLockScreenActionHandler, SBLockScreenNotificationBannerItemDelegate, SBPresentingDelegate, SBCoordinatedPresenting, SBMotionGestureObserver> {
+@interface SBLockScreenNotificationListController : XXUnknownSuperclass <SBLockScreenNotificationViewDelegate, SBLockScreenNotificationModel, BBObserverDelegate, SBVolumePressBandit, SBUIBannerSource, SBUIBannerTargetManagerObserver, SBLockScreenActionHandler, SBLockScreenNotificationBannerItemDelegate, SBPresentingDelegate, CMPocketStateDelegate, SBCoordinatedPresenting, SBMotionGestureObserver> {
 	SBLockScreenNotificationListView *_notificationView;
 	id<SBLockScreenNotificationListDelegate> _delegate;
 	BBObserver *_observer;
 	NSMutableArray *_listItems;
 	NSMutableArray *_realertTimers;
 	BSSerializedRequestQueue *_bulletinRequestQueue;
-	BOOL _hibernating;
 	BOOL _quietModeEnabled;
+	BOOL _turnOnScreenForOutOfPocketEvent;
 	id _deferredModelUpdateBlock;
 	BOOL _hasDeferredUpdateToClearListItems;
 	SBLockScreenActionContext *_actionContext;
@@ -44,6 +45,9 @@ __attribute__((visibility("hidden")))
 	SBLockScreenBounceAnimator *_bounceAnimator;
 	SBLockScreenNotificationCell *_hintingCell;
 	CGPoint _hintingCellOriginalOffset;
+	CMPocketStateManager *_pocketStateManager;
+	NSString *_powerAssertionName;
+	unsigned _powerAssertionID;
 	BOOL _hasAnyContent;
 }
 @property(retain, nonatomic) SBAwayViewPluginController *activePlugin;
@@ -57,7 +61,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) float hintDisplacement;
 @property(readonly, assign, nonatomic) unsigned hintEdge;
-@property(assign, nonatomic) BOOL isHibernating;
 @property(retain, nonatomic) SBLockScreenActionContext *lockScreenActionContext;
 @property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
 @property(readonly, assign, nonatomic) BOOL quietModeEnabled;
@@ -69,12 +72,18 @@ __attribute__((visibility("hidden")))
 - (void)_activateOrUpdateCardItem:(id)item animated:(BOOL)animated;
 - (void)_addBounceAnimator;
 - (void)_addItem:(id)item forBulletin:(id)bulletin playLightsAndSirens:(BOOL)sirens withReply:(id)reply;
+- (void)_cancelTurnOnScreenForOutOfPocketEvents;
 - (id)_coalescableListItemForNewBulletin:(id)newBulletin;
+- (void)_createPowerAssertion;
+- (void)_disablePocketDetection;
 - (void)_dismissBulletinsForActionContext:(id)actionContext;
+- (void)_enablePocketDetection;
 - (id)_firstBulletin;
 - (BOOL)_firstBulletinHasRaiseAction;
 - (id)_firstItemWantingFullscreenPresentation;
+- (void)_handleClockNotificationUpdate:(id)update;
 - (void)_hardwareButtonPressed:(id)pressed;
+- (BOOL)_isPocketDetectionEnabled;
 - (void)_killRealerts:(id)realerts;
 - (id)_listItemContainingBulletinID:(id)anId;
 - (id)_listItemContainingCardItem:(id)item;
@@ -83,14 +92,21 @@ __attribute__((visibility("hidden")))
 - (void)_playSoundForBulletinIfPossible:(id)bulletinIfPossible;
 - (void)_presentFullscreenBulletinAlertIfNeeded;
 - (void)_realertTimerFired:(id)fired;
+- (void)_releasePowerAssertion;
 - (void)_reloadVolumePressBanditPreference;
 - (void)_removeCachedBannerForBulletinID:(id)bulletinID;
 - (void)_scheduleRealerts:(id)realerts;
+- (void)_scheduledClockLocalNotificationsDidChange:(id)_scheduledClockLocalNotifications;
 - (void)_setDeferredModelUpdateBlock:(id)block;
 - (BOOL)_shouldAddBannerItem:(id)item;
 - (BOOL)_shouldCacheBannerForBulletin:(id)bulletin;
+- (BOOL)_shouldDeterminePocketState;
+- (void)_shouldTurnOnScreenForItem:(id)item withResult:(id)result;
 - (void)_showTestBulletin;
 - (void)_sortItemList:(id)list;
+- (void)_turnOnScreen;
+- (void)_turnOnScreenForOutOfPocketEventBeforeTimeInterval:(double)pocketEventBeforeTimeInterval;
+- (void)_turnOnScreenForOutOfPocketEventIfNecessary;
 - (void)_updateModelAndViewForAdditionOfItem:(id)item;
 - (void)_updateModelAndViewForModificationOfItem:(id)item;
 - (void)_updateModelAndViewForRemovalOfItem:(id)item;
@@ -103,10 +119,9 @@ __attribute__((visibility("hidden")))
 - (void)bannerItemWasTapped:(id)tapped;
 - (void)bannerTargetManager:(id)manager didAddTarget:(id)target;
 - (void)bannerTargetManager:(id)manager didRemoveTarget:(id)target;
-- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
+- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation presentationBegunHandler:(id)handler;
 - (void)cancelGestureRecognizer:(id)recognizer;
 - (id)cellAtTouchLocation:(CGPoint)touchLocation;
-- (void)clearItemsForNotificationCenter;
 - (void)concealForChangeInMessagePrivacy;
 - (unsigned)count;
 - (void)deactivateAlertItem:(id)item animated:(BOOL)animated;
@@ -114,11 +129,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)dequeueNextBannerItemForTarget:(id)target;
 - (void)didReceiveRaiseGesture;
-- (BOOL)dismissReadNotifications;
 - (void)endTransitionWithVelocity:(CGPoint)velocity wasCancelled:(BOOL)cancelled completion:(id)completion;
 - (void)handleLockScreenActionWithContext:(id)context;
 - (void)handleVolumeDecrease;
 - (void)handleVolumeIncrease;
+- (BOOL)hasAlertItem:(id)item;
 - (BOOL)hasMissedUnreadNotifications;
 - (BOOL)isPresentingControllerTransitioning;
 - (void)killBulletinSounds;
@@ -144,19 +159,23 @@ __attribute__((visibility("hidden")))
 - (BOOL)observerShouldFetchAttachmentImageBeforeBulletinDelivery:(id)observer;
 - (id)peekNextBannerItemForTarget:(id)target;
 - (id)pendOrDeactivateAlertItems;
+- (void)pocketStateManager:(id)manager didUpdateState:(int)state;
 - (void)prepareForTeardown;
 - (BOOL)presentingController:(id)controller gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
 - (BOOL)presentingController:(id)controller gestureRecognizerShouldBegin:(id)gestureRecognizer;
 - (void)presentingController:(id)controller willHandleGesture:(id)gesture;
 - (void)presentingControllerDidFinishPresentation:(id)presentingController;
 - (void)reenableGestureRecognizer:(id)recognizer;
+- (BOOL)removeItemsForNotificationCenterPresentation;
+- (BOOL)removeItemsForUnlock;
+- (BOOL)removeLockScreenNotificationsPassingTest:(id)test;
 - (void)revealForChangeInMessagePrivacy;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
 - (void)setIsOnscreen:(BOOL)onscreen;
 - (BOOL)shouldBeginHintForGesture:(id)gesture;
 - (BOOL)shouldPlaySoundForItem:(id)item;
 - (BOOL)shouldTreatItemAsInert:(id)inert;
-- (void)turnOnScreenIfNecessaryForItem:(id)item;
+- (void)turnOnScreenIfNecessaryForItem:(id)item withCompletion:(id)completion;
 - (void)updateCardItem:(id)item;
 - (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
 - (void)viewWillAppear:(BOOL)view;

@@ -7,11 +7,11 @@
 
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBReusableView.h"
 #import "_UISettingsKeyObserver.h"
 #import "SBIconObserver.h"
-#import "SBReusableView.h"
 
-@protocol SBIconViewDelegate, SBIconViewObserver, SBIconAccessoryView;
+@protocol SBIconViewDelegate, SBIconAccessoryView, SBIconViewObserver;
 
 __attribute__((visibility("hidden")))
 @interface SBIconView : XXUnknownSuperclass <_UISettingsKeyObserver, SBIconObserver, SBReusableView> {
@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
 	UIView<SBReusableView> *_labelAccessoryView;
 	int _currentLabelAccessoryType;
 	SBFolderIconBackgroundView *_dropGlow;
+	UILongPressGestureRecognizer *_shortcutMenuPeekGesture;
+	UIPreviewForceInteractionProgress *_shortcutMenuPresentProgress;
 	unsigned _drawsLabel : 1;
 	unsigned _isEditing : 1;
 	unsigned _isPaused : 1;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 	CGPoint _unjitterPoint;
 	CGPoint _grabPoint;
 	NSTimer *_longPressTimer;
+	double _longPressGrabDuration;
 	CGRect _visibleImageRect;
 	id<SBIconViewDelegate> _delegate;
 	id<SBIconViewObserver> _observer;
@@ -66,6 +69,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(assign, nonatomic) int location;
 @property(assign, nonatomic) id<SBIconViewObserver> observer;
+@property(retain, nonatomic) UILongPressGestureRecognizer *shortcutMenuPeekGesture;
+@property(retain, nonatomic) UIPreviewForceInteractionProgress *shortcutMenuPresentProgress;
 @property(readonly, assign, nonatomic) BOOL shouldShowLabelAccessoryView;
 @property(readonly, assign) Class superclass;
 @property(assign, nonatomic) CGPoint wallpaperRelativeImageCenter;
@@ -76,12 +81,13 @@ __attribute__((visibility("hidden")))
 + (CGRect)_rectForLayoutMetric:(int)layoutMetric;
 + (BOOL)canShowLabelAccessoryView;
 + (CGPoint)defaultIconImageCenter;
++ (CGRect)defaultIconImageFrame;
 + (CGSize)defaultIconImageSize;
 + (CGSize)defaultIconSize;
 + (CGSize)defaultVisibleIconImageSize;
 + (float)labelAccessoryViewRightMargin;
 + (CGSize)maxLabelSize;
-- (id)initWithDefaultSize;
+- (id)initWithContentType:(unsigned)contentType;
 - (void)_applyEditingStateAnimated:(BOOL)animated;
 - (void)_applyIconAccessoryAlpha:(float)alpha;
 - (void)_applyIconImageAlpha:(float)alpha;
@@ -100,6 +106,8 @@ __attribute__((visibility("hidden")))
 - (CGRect)_frameForLabel;
 - (CGRect)_frameForLabelAccessoryViewWithLabelFrame:(CGRect)labelFrame;
 - (CGRect)_frameForVisibleImage;
+- (void)_handleFirstHalfLongPressTimer:(id)timer;
+- (void)_handleSecondHalfLongPressTimer:(id)timer;
 - (id)_iconImageView;
 - (BOOL)_isShowingCloseBox;
 - (id)_labelImage;
@@ -111,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (void)_recursiveNotifyInteractionTintColorDidChangeForReasons:(unsigned)_recursiveNotifyInteractionTintColor;
 - (void)_recursivelyUpdateBackdropMaskFrames;
 - (void)_setIcon:(id)icon animated:(BOOL)animated;
+- (void)_setPreparingForPotentialShortcutMenuPresentation:(BOOL)potentialShortcutMenuPresentation;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_updateAccessoryViewWithAnimation:(BOOL)animation;
 - (void)_updateAdaptiveColors;
@@ -140,8 +149,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isHighlighted;
 - (BOOL)isInDock;
 - (BOOL)isTouchDownInIcon;
+- (id)labelView;
 - (void)layoutSubviews;
-- (void)longPressTimerFired;
 - (BOOL)pointInside:(CGPoint)inside withEvent:(id)event;
 - (BOOL)pointMostlyInside:(CGPoint)inside withEvent:(id)event;
 - (void)prepareDropGlow;

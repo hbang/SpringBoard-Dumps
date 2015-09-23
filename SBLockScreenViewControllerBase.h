@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBAlert.h"
+#import "SpringBoard-Structs.h"
 
 @protocol SBLockScreenViewControllerDelegate;
 
@@ -43,14 +43,15 @@ __attribute__((visibility("hidden")))
 - (CGRect)defaultContentRegionForPluginController:(id)pluginController withOrientation:(int)orientation;
 - (id)dequeueAllPendingSuperModalAlertItems;
 - (void)disableLockScreenBundleWithName:(id)name deactivationContext:(id)context;
+- (void)disableLockScreenBundleWithName:(id)name deactivationContext:(id)context auxiliaryDeactivationAnimationBlock:(id)block;
 - (void)emergencyDialerExitedWithError:(id)error;
 - (void)enableLockScreenBundleWithName:(id)name activationContext:(id)context;
+- (void)enableLockScreenBundleWithName:(id)name activationContext:(id)context auxiliaryActivationAnimationBlock:(id)block;
 - (void)exitEmergencyDialerAnimated:(BOOL)animated;
 - (void)finishUIUnlockFromSource:(int)source;
 - (BOOL)handleExternalKeyDownEvent;
 - (BOOL)handleMenuButtonHeld;
 - (BOOL)handleMenuButtonTap;
-- (void)handlePhoneAppExitedIfNecessary;
 - (BOOL)hasActiveUIAccessories;
 - (BOOL)hasSuperModalAlertItems;
 - (BOOL)isHidingPasscodeViewDuringCall;
@@ -62,7 +63,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isShowingMediaControls;
 - (BOOL)isShowingOverheatUI;
 - (void)launchEmergencyDialer;
-- (BOOL)lockScreenBulletinControllerIsActive;
 - (BOOL)lockScreenIsShowingBulletins;
 - (void)noteDeviceBlockedStatusUpdated;
 - (void)noteExitingLostMode;
@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForMesaUnlockWithCompletion:(id)completion;
 - (void)prepareForUIUnlock;
 - (void)prepareToEnterLostMode;
+- (BOOL)requiresPasscodeInputForUIUnlockFromSource:(int)source withOptions:(id)options;
 - (void)setCustomLockScreenActionContext:(id)context;
 - (void)setForcesPasscodeViewDuringCall:(BOOL)call;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
@@ -94,7 +95,6 @@ __attribute__((visibility("hidden")))
 - (void)updateOrientationForUndim;
 - (void)viewDidDisappear:(BOOL)view;
 - (void)viewWillAppear:(BOOL)view;
-- (BOOL)wantsPasscodeLockForUIUnlockFromSource:(int)source withOptions:(id)options;
 - (BOOL)wantsScreenToAutoDim;
 - (BOOL)wantsToHandleAlert:(id)handleAlert;
 - (void)willBeginDeactivationForTransitionToApps:(id)apps animated:(BOOL)animated;

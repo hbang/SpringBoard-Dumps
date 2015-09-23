@@ -7,16 +7,21 @@
 
 #import "SBLiveIconImageView.h"
 #import "SpringBoard-Structs.h"
+#import "SBDateTimeOverrideObserver.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBClockApplicationIconImageView : SBLiveIconImageView {
+@interface SBClockApplicationIconImageView : SBLiveIconImageView <SBDateTimeOverrideObserver> {
 	CALayer *_seconds;
 	CALayer *_minutes;
 	CALayer *_hours;
 	CALayer *_blackDot;
 	CALayer *_redDot;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (void)_handleTimeChange:(id)change;
 + (void)_iconEditingStateChanged:(id)changed;
 + (void)_timerFired:(id)fired;
@@ -27,8 +32,11 @@ __attribute__((visibility("hidden")))
 - (void)_timerFiredWithComponents:(id)components flags:(unsigned)flags;
 - (void)_updateUnanimatedWithComponents:(id)components;
 - (id)contentsImage;
+- (void)controller:(id)controller didChangeOverrideDateFromDate:(id)date;
 - (void)dealloc;
+- (BOOL)isAnimationAllowed;
 - (void)layoutSubviews;
+- (void)setIcon:(id)icon location:(int)location animated:(BOOL)animated;
 - (void)updateAnimatingState;
 - (void)updateUnanimated;
 @end

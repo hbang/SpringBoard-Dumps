@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface SBStatusBarChangeAssertion : XXUnknownSuperclass {
 	NSString *_reason;
 }
-@property(readonly, assign, nonatomic) NSString *reason;
+@property(readonly, copy, nonatomic) NSString *reason;
 + (id)assertionWithReason:(id)reason;
 - (id)initWithReason:(id)reason;
 - (void)dealloc;

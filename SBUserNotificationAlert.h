@@ -8,10 +8,11 @@
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol OS_dispatch_source;
+@protocol NSCopying, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface SBUserNotificationAlert : XXUnknownSuperclass {
+	NSString *_alertSource;
 	unsigned _replyPort;
 	NSObject<OS_dispatch_source> *_portWatcher;
 	NSObject<OS_dispatch_source> *_expirationTimer;
@@ -22,6 +23,9 @@ __attribute__((visibility("hidden")))
 	NSString *_alertHeader;
 	id _alertMessage;
 	NSString *_alertMessageDelimiter;
+	NSString *_lockScreenAlertHeader;
+	id _lockScreenAlertMessage;
+	NSString *_lockScreenAlertMessageDelimiter;
 	NSString *_defaultButtonTitle;
 	NSString *_alternateButtonTitle;
 	NSString *_otherButtonTitle;
@@ -73,7 +77,11 @@ __attribute__((visibility("hidden")))
 	SBUISound *_sound;
 	BKSProcessAssertion *_processAssertion;
 	unsigned _dismissesAutomatically : 1;
+	NSString *_extensionIdentifier;
+	NSExtension *_alertExtension;
+	id<NSCopying> _extensionRequest;
 }
+@property(retain) NSExtension *alertExtension;
 @property(retain) NSString *alertHeader;
 @property(retain) NSString *alertMessage;
 @property(retain) NSString *alertMessageDelimiter;
@@ -85,7 +93,12 @@ __attribute__((visibility("hidden")))
 @property(retain) UIViewController *contentViewControllerForAlertController;
 @property(retain) NSString *defaultButtonTitle;
 @property(retain) NSString *defaultResponseLaunchBundleID;
+@property(retain) NSString *extensionIdentifier;
+@property(copy) id<NSCopying> extensionRequest;
 @property(retain) id keyboardTypes;
+@property(retain) NSString *lockScreenAlertHeader;
+@property(retain) NSString *lockScreenAlertMessage;
+@property(retain) NSString *lockScreenAlertMessageDelimiter;
 @property(retain) NSString *otherButtonTitle;
 @property(retain) NSString *remoteServiceBundleIdentifier;
 @property(retain) NSString *remoteViewControllerClassName;
@@ -116,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (void)cancel;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
+- (id)description;
 - (void)didDeactivateForReason:(int)reason;
 - (void)didFailToActivate;
 - (BOOL)dismissOnLock;

@@ -5,15 +5,16 @@
  * Source: (null)
  */
 
-#import "_SBFakeBlurObserver.h"
 #import "SpringBoard-Structs.h"
-#import "SBWallpaperObserver.h"
+#import "SBAppViewBackgroundView.h"
+#import "_SBFakeBlurObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBWallpaperObserver.h"
 
 @protocol _SBFakeBlur;
 
 __attribute__((visibility("hidden")))
-@interface SBWallpaperEffectView : XXUnknownSuperclass <_SBFakeBlurObserver, SBWallpaperObserver> {
+@interface SBWallpaperEffectView : XXUnknownSuperclass <_SBFakeBlurObserver, SBWallpaperObserver, SBAppViewBackgroundView> {
 	int _variant;
 	UIColor *_wallpaperAverageColor;
 	int _startStyle;
@@ -31,15 +32,21 @@ __attribute__((visibility("hidden")))
 	UIImage *_maskImage;
 	BOOL _shouldMaskBlur;
 	BOOL _shouldMaskTint;
-	BOOL _accessibilityIncreaseContrastEnabled;
+	BOOL _fullscreen;
+	BOOL _forcesOpaque;
+	BOOL _accessibilityReduceTransparencyEnabled;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(assign, nonatomic) BOOL forcesOpaque;
+@property(assign, nonatomic) BOOL fullscreen;
+@property(assign, nonatomic) BOOL hasDiscreteWallpaperEffect;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
+@property(assign, nonatomic) int wallpaperStyle;
 + (id)imageInRect:(CGRect)rect forVariant:(int)variant withStyle:(int)style zoomFactor:(float)factor mask:(id)mask masksBlur:(BOOL)blur masksTint:(BOOL)tint;
 - (id)initWithWallpaperVariant:(int)wallpaperVariant;
-- (void)_accessibilityEnhanceBackgroundContrastChanged:(id)changed;
+- (void)_accessibilityReduceTransparencyChanged:(id)changed;
 - (void)_clearView:(id *)view;
 - (void)_configureForCurrentBlurStyle;
 - (void)_configureFromScratch;

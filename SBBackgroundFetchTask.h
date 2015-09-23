@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 	int _sequenceNumber;
 }
 @property(retain, nonatomic) BKSProcessAssertion *assertion;
-@property(readonly, assign, nonatomic) NSString *bundleID;
+@property(readonly, retain, nonatomic) NSString *bundleID;
 @property(copy, nonatomic) id completionHandler;
 @property(readonly, assign) BOOL finished;
 @property(readonly, assign) int sequenceNumber;

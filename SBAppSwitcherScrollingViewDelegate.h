@@ -16,8 +16,7 @@
 - (void)switcherScroller:(id)scroller displayItemWantsToBeRemoved:(id)beRemoved;
 - (BOOL)switcherScroller:(id)scroller isDisplayItemRemovable:(id)removable;
 - (void)switcherScroller:(id)scroller itemTapped:(id)tapped;
-- (void)switcherScroller:(id)scroller updatedPeakPageOffset:(float)offset;
-- (id)switcherScroller:(id)scroller viewForDisplayLayout:(id)displayLayout;
+- (id)switcherScroller:(id)scroller viewForDisplayItem:(id)displayItem;
 - (void)switcherScrollerBeganMoving:(id)moving;
 - (void)switcherScrollerBeganPanning:(id)panning;
 - (void)switcherScrollerDidEndScrolling:(id)switcherScroller;

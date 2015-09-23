@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "NSObject.h"
 #import "SpringBoard-Structs.h"
+#import "NSObject.h"
 
 
 @protocol UIApplicationDelegate <NSObject>
@@ -26,11 +26,15 @@
 - (void)application:(id)application didRegisterUserNotificationSettings:(id)settings;
 - (void)application:(id)application didUpdateUserActivity:(id)activity;
 - (void)application:(id)application handleActionWithIdentifier:(id)identifier forLocalNotification:(id)localNotification completionHandler:(id)handler;
+- (void)application:(id)application handleActionWithIdentifier:(id)identifier forLocalNotification:(id)localNotification withResponseInfo:(id)responseInfo completionHandler:(id)handler;
 - (void)application:(id)application handleActionWithIdentifier:(id)identifier forRemoteNotification:(id)remoteNotification completionHandler:(id)handler;
+- (void)application:(id)application handleActionWithIdentifier:(id)identifier forRemoteNotification:(id)remoteNotification withResponseInfo:(id)responseInfo completionHandler:(id)handler;
 - (void)application:(id)application handleEventsForBackgroundURLSession:(id)backgroundURLSession completionHandler:(id)handler;
 - (BOOL)application:(id)application handleOpenURL:(id)url;
 - (void)application:(id)application handleWatchKitExtensionRequest:(id)request reply:(id)reply;
+- (BOOL)application:(id)application openURL:(id)url options:(id)options;
 - (BOOL)application:(id)application openURL:(id)url sourceApplication:(id)application3 annotation:(id)annotation;
+- (void)application:(id)application performActionForShortcutItem:(id)shortcutItem completionHandler:(id)handler;
 - (void)application:(id)application performFetchWithCompletionHandler:(id)completionHandler;
 - (BOOL)application:(id)application shouldAllowExtensionPointIdentifier:(id)identifier;
 - (BOOL)application:(id)application shouldRestoreApplicationState:(id)state;
@@ -48,6 +52,7 @@
 - (void)applicationDidReceiveMemoryWarning:(id)application;
 - (void)applicationProtectedDataDidBecomeAvailable:(id)applicationProtectedData;
 - (void)applicationProtectedDataWillBecomeUnavailable:(id)applicationProtectedData;
+- (void)applicationShouldRequestHealthAuthorization:(id)application;
 - (void)applicationSignificantTimeChange:(id)change;
 - (void)applicationWillEnterForeground:(id)application;
 - (void)applicationWillResignActive:(id)application;

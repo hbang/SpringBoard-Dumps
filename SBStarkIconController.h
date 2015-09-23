@@ -5,16 +5,16 @@
  * Source: (null)
  */
 
-#import "SBLeafIconDataSource.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBApplicationRestrictionObserver.h"
 #import "SBFolderControllerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconViewDelegate.h"
 #import "SBIconModelDelegate.h"
-#import "SpringBoard-Structs.h"
 #import "SBIconViewMapDelegate.h"
+#import "SpringBoard-Structs.h"
+#import "SBLeafIconDataSource.h"
 
-@protocol SBStarkSessionConfiguring, SBStarkIconControllerDelegate;
+@protocol SBStarkIconControllerDelegate, SBStarkSessionConfiguring;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkIconController : XXUnknownSuperclass <SBIconModelDelegate, SBApplicationRestrictionObserver, SBFolderControllerDelegate, SBIconViewMapDelegate, SBIconViewDelegate, SBLeafIconDataSource> {
@@ -27,10 +27,12 @@ __attribute__((visibility("hidden")))
 	SBIcon *_highlightedIcon;
 	SBIcon *_launchingIcon;
 	SBIcon *_focusedIconForLayout;
-	BOOL _preparingForLayout;
 	NSIndexPath *_indexPathToResetTo;
 	SBStarkFakeIconOperationController *_fakeIconOperationController;
 	SBStarkIconLayoutOverrideStrategy *_iconLayoutOverrideStrategy;
+	NSSet *_visibleTags;
+	NSSet *_hiddenTags;
+	BOOL _loaded;
 	BOOL _invalidated;
 	BOOL _hidden;
 }
@@ -39,11 +41,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) SBStarkFakeIconOperationController *fakeIconOperationController;
 @property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) SBStarkIconLayoutOverrideStrategy *iconLayoutOverrideStrategy;
+@property(readonly, retain, nonatomic) SBStarkFolderController *rootFolderController;
 @property(readonly, assign) Class superclass;
 - (id)initWithCoder:(id)coder;
 - (id)initWithConfiguration:(id)configuration delegate:(id)delegate;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
-- (BOOL)_buttons:(id)buttons hasType:(int)type;
 - (void)_clearHighlightedIcon;
 - (Class)_controllerClassForFolderClass:(Class)folderClass;
 - (void)_iconModelDidLayout:(id)_iconModel;
@@ -54,9 +56,8 @@ __attribute__((visibility("hidden")))
 - (void)_installedAppsDidChange:(id)_installedApps;
 - (void)_launchIcon:(id)icon;
 - (void)_moveWithEvent:(id)event;
-- (void)_physicalButtonsBegan:(id)began withEvent:(id)event;
-- (void)_physicalButtonsEnded:(id)ended withEvent:(id)event;
 - (void)_prepareToResetRootIconLists;
+- (void)_rebuildIconStore;
 - (void)_resetRootIconLists;
 - (void)applicationRestrictionController:(id)controller didUpdateVisibleTags:(id)tags hiddenTags:(id)tags3;
 - (BOOL)canAddDownloadingIconForApplication:(id)application;
@@ -82,7 +83,6 @@ __attribute__((visibility("hidden")))
 - (int)iconAccessoryType:(id)type;
 - (BOOL)iconAllowsLaunch:(id)launch;
 - (BOOL)iconAllowsUninstall:(id)uninstall;
-- (BOOL)iconAppearsInNewsstand:(id)newsstand;
 - (id)iconBadgeNumberOrString:(id)string;
 - (BOOL)iconCanEllipsizeLabel:(id)label;
 - (BOOL)iconCanTightenLabel:(id)label;
@@ -110,6 +110,11 @@ __attribute__((visibility("hidden")))
 - (unsigned)maxIconCountForListInFolderClass:(Class)folderClass;
 - (unsigned)maxListCountForFolders;
 - (unsigned)maxRowCountForListInRootFolderWithInterfaceOrientation:(int)interfaceOrientation;
+- (void)pressesBegan:(id)began withEvent:(id)event;
+- (void)pressesCancelled:(id)cancelled withEvent:(id)event;
+- (void)pressesChanged:(id)changed withEvent:(id)event;
+- (void)pressesEnded:(id)ended withEvent:(id)event;
+- (void)rebuildIconsAndLayout;
 - (void)relayout;
 - (id)rootFolder;
 - (float)scale;

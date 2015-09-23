@@ -15,5 +15,7 @@
 @required
 - (int)statusBar:(id)bar styleForRequestedStyle:(int)requestedStyle overrides:(int)overrides;
 - (void)statusBar:(id)bar willAnimateFromHeight:(float)height toHeight:(float)height3 duration:(double)duration animation:(int)animation;
+@optional
+- (id)statusBarSystemNavigationAction:(id)action;
 @end
 

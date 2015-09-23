@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
+#import "NCNotificationDateLabel.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBBulletinDateLabel.h"
 
 @protocol SBDateLabelDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBSnoozedAlarmDateLabel : XXUnknownSuperclass <SBBulletinDateLabel> {
+@interface SBSnoozedAlarmDateLabel : XXUnknownSuperclass <NCNotificationDateLabel> {
 	double _fireTime;
 	NSTimer *_tickTimer;
 	BOOL _allDay;

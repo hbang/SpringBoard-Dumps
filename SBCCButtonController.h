@@ -6,8 +6,8 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBUIControlCenterButtonDelegate.h"
 #import "SBCCButtonModuleDelegate.h"
+#import "SBUIControlCenterButtonDelegate.h"
 
 @protocol SBCCButtonControllerDelegate;
 

@@ -11,5 +11,6 @@
 @protocol SBAlertObserver <NSObject>
 @optional
 - (void)alertBannerSuppressionChanged:(id)changed;
+- (void)alertDidDeactivate:(id)alert;
 @end
 

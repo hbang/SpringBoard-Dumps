@@ -6,28 +6,22 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
-#import "BBObserverDelegate.h"
 
 @protocol SBLockScreenTimerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenTimerViewController : XXUnknownSuperclass <BBObserverDelegate> {
+@interface SBLockScreenTimerViewController : XXUnknownSuperclass {
 	BOOL _enabled;
 	NSTimer *_updateTimer;
 	NSDate *_endDate;
-	BBObserver *_observer;
 	id<SBLockScreenTimerViewControllerDelegate> _delegate;
-	BBBulletin *_timerBulletin;
 }
-@property(readonly, copy) NSString *debugDescription;
 @property(assign) id<SBLockScreenTimerViewControllerDelegate> delegate;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
-@property(retain) BBBulletin *timerBulletin;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
+- (void)_handleClockNotificationUpdate:(id)update;
 - (BOOL)_isEndDateValid;
+- (void)_scheduledLocalNotificationsDidChange:(id)_scheduledLocalNotifications;
+- (void)_scheduledTimerDidChange:(id)_scheduledTimer;
 - (void)_startTimer;
 - (void)_stopTimer;
 - (void)_updateTimerFired;
@@ -35,10 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)isTimerActive;
 - (void)loadView;
-- (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
-- (void)observer:(id)observer noteInvalidatedBulletinIDs:(id)ids;
-- (void)observer:(id)observer purgeReferencesToBulletinID:(id)bulletinID;
-- (void)observer:(id)observer removeBulletin:(id)bulletin;
 - (void)setContentAlpha:(float)alpha;
 - (void)setEnabled:(BOOL)enabled;
 - (void)setEndDate:(id)date;

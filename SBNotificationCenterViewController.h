@@ -5,19 +5,19 @@
  * Source: (null)
  */
 
-#import "SBNotificationCenterWidgetHost.h"
 #import "SpringBoard-Structs.h"
-#import "UIGestureRecognizerDelegate.h"
+#import "SBNCTableViewControllerDelegate.h"
+#import "SBUISizeObservingViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBNotificationCenterWidgetHost.h"
+#import "UIGestureRecognizerDelegate.h"
 #import "SBReachabilityObserver.h"
 #import "SBBulletinActionHandler.h"
-#import "SBUISizeObservingViewDelegate.h"
-#import "SBBulletinViewControllerDelegate.h"
 
 @protocol SBNotificationCenterViewControllerDelegate, SBWidgetViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBNotificationCenterViewController : XXUnknownSuperclass <SBBulletinViewControllerDelegate, SBUISizeObservingViewDelegate, UIGestureRecognizerDelegate, SBNotificationCenterWidgetHost, SBBulletinActionHandler, SBReachabilityObserver> {
+@interface SBNotificationCenterViewController : XXUnknownSuperclass <SBNCTableViewControllerDelegate, SBUISizeObservingViewDelegate, UIGestureRecognizerDelegate, SBNotificationCenterWidgetHost, SBBulletinActionHandler, SBReachabilityObserver> {
 	id<SBNotificationCenterViewControllerDelegate> _delegate;
 	UIView *_clippingView;
 	UIView *_containerView;
@@ -25,9 +25,7 @@ __attribute__((visibility("hidden")))
 	UIView *_backgroundView;
 	UIView *_modeClippingView;
 	SBNotificationSeparatorView *_bottomSeparator;
-	SBModeViewController *_modeController;
-	SBBulletinObserverViewController *_todayViewController;
-	SBBulletinObserverViewController *_allModeViewController;
+	SBNotificationCenterLayoutViewController *_layoutViewController;
 	UIStatusBar *_statusBar;
 	SBChevronView *_grabberView;
 	UIView *_grabberContentView;
@@ -61,22 +59,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBNotificationCenterViewControllerDelegate> delegate;
 @property(readonly, copy) NSString *description;
-@property(readonly, assign, nonatomic) SBChevronView *grabberView;
+@property(readonly, retain, nonatomic) SBChevronView *grabberView;
 @property(assign, nonatomic, getter=isGrabberViewEnabled) BOOL grabberViewEnabled;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) int layoutMode;
 @property(assign, nonatomic) BOOL showsBackground;
 @property(readonly, assign) Class superclass;
 @property(assign, nonatomic, getter=isSuppressingNotificationUpdates) BOOL suppressesNotificationUpdates;
-@property(readonly, assign, nonatomic) UIEdgeInsets todayContentEdgeInsets;
-@property(readonly, assign, nonatomic) CGSize todayContentMaxSize;
 @property(readonly, assign, nonatomic) NSSet *visibleContentViewControllers;
 @property(assign, nonatomic) id<SBWidgetViewControllerDelegate> widgetDelegate;
 @property(readonly, assign, nonatomic) NSSet *widgetHandlingViewControllers;
-+ (id)_localizableTitleForBulletinViewControllerOfClass:(Class)aClass;
 + (id)grayControlInteractionTintColor;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
-- (id)_allModeViewControllerCreateIfNecessary:(BOOL)necessary;
 - (void)_animateForReachabilityActivatedWithHandler:(id)handler;
 - (void)_animateForReachabilityDeactivatedWithHandler:(id)handler;
 - (void)_backgroundContrastDidChange:(id)_backgroundContrast;
@@ -91,21 +85,17 @@ __attribute__((visibility("hidden")))
 - (void)_loadClippingView;
 - (void)_loadContainerView;
 - (void)_loadContentView;
-- (void)_loadContentViewControllersForCurrentState;
 - (void)_loadGrabberContentView;
+- (void)_loadLayoutViewControllerView;
 - (void)_loadModeClippingView;
-- (void)_loadModeControllerView;
 - (void)_loadStatusBar;
 - (id)_newBackgroundView;
-- (id)_newBulletinObserverViewControllerOfClass:(Class)aClass;
 - (id)_newGrabberView;
 - (void)_performReachabilityTransactionForActivate:(BOOL)activate immediately:(BOOL)immediately;
 - (void)_registerGrabberView:(id)view withHideBlock:(id)hideBlock;
 - (id)_relevanceDateColor;
-- (void)_reloadAllWidgets;
 - (void)_setContainerFrame:(CGRect)frame;
 - (void)_setViewHitTestAsOpaque:(BOOL)opaque;
-- (id)_todayViewControllerCreateIfNecessary:(BOOL)necessary;
 - (void)_updateContrastSettingsForBottomSeparator;
 - (void)_updateContrastSettingsForGrabberView;
 - (void)_validateBackgroundViewIfNecessary;
@@ -125,15 +115,16 @@ __attribute__((visibility("hidden")))
 - (void)hostWillDismiss;
 - (void)hostWillPresent;
 - (BOOL)isGrabberLocked;
-- (void)loadInitialViewState;
 - (void)loadView;
 - (CGRect)positionContentForTouchAtLocation:(CGPoint)location;
+- (int)preferredInterfaceOrientationForPresentation;
 - (void)prepareLayoutForPresentationFromBanner;
 - (void)presentGrabberView;
 - (void)registerSharedGrabberView:(id)view withHideBlock:(id)hideBlock;
 - (CGRect)revealRectForBulletin:(id)bulletin;
 - (void)runScrollTest:(id)test iterations:(int)iterations delta:(int)delta useAAGView:(BOOL)view;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
+- (BOOL)shouldAutorotate;
 - (void)sizeObservingView:(id)view didChangeSize:(CGSize)size;
 - (id)unregisterSharedGrabberView;
 - (void)updateForChangeInMessagePrivacy;
@@ -141,5 +132,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)view;
 - (void)viewWillLayoutSubviews;
+- (id)widgetHandlingViewControllerForWidgetWithIdentifier:(id)identifier;
 @end
 

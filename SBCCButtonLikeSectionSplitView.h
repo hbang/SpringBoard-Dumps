@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBControlCenterSectionView.h"
 #import "SpringBoard-Structs.h"
+#import "SBControlCenterSectionView.h"
 
 
 __attribute__((visibility("hidden")))
@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 	SBCCButtonLikeSectionView *_leftSection;
 	SBCCButtonLikeSectionView *_rightSection;
 }
-@property(assign, nonatomic) SBCCButtonLikeSectionView *leftSection;
-@property(assign, nonatomic) SBCCButtonLikeSectionView *rightSection;
+@property(retain, nonatomic) SBCCButtonLikeSectionView *leftSection;
+@property(retain, nonatomic) SBCCButtonLikeSectionView *rightSection;
 - (id)initWithFrame:(CGRect)frame;
 - (CGRect)_frameForSectionSlot:(int)sectionSlot;
 - (UIEdgeInsets)_landscapeInsetsForSection;

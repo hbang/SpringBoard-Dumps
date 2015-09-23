@@ -9,6 +9,7 @@
 
 @protocol SBApplicationLifecycleObserver
 - (void)applicationsAdded:(id)added;
+- (void)applicationsDemoted:(id)demoted;
 - (void)applicationsModified:(id)modified;
 - (void)applicationsRemoved:(id)removed;
 @end

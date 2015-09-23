@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconAnimatorDelegate.h"
 #import "SBUIStarkScreenAnimationController.h"
+#import "SBIconAnimatorDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithActivatingApp:(id)activatingApp alertImpersonator:(id)impersonator starkScreenController:(id)controller;
 - (void)_animateZoomWithCompletion:(id)completion;
 - (double)_animationDelay;
-- (id)_animationProgressDependency;
+- (id)_animationProgressDependencies;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_cleanupHosting;

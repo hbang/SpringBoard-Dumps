@@ -5,6 +5,7 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "SBIconLabelAccessoryView.h"
 
 

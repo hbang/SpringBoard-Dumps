@@ -5,21 +5,22 @@
  * Source: (null)
  */
 
+#import "FBApplicationTerminationAssertionServiceDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBApplicationShortcutServerDelegate.h"
 #import "SBApplicationRestrictionDataSource.h"
 #import "SBApplicationLifecycleObserver.h"
 #import "FBUIApplicationServiceDelegate.h"
-#import "SBApplicationRestrictionControllerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface SBApplicationController : XXUnknownSuperclass <SBApplicationRestrictionDataSource, SBApplicationLifecycleObserver, FBUIApplicationServiceDelegate, SBApplicationRestrictionControllerDelegate> {
+@interface SBApplicationController : XXUnknownSuperclass <SBApplicationShortcutServerDelegate, SBApplicationRestrictionDataSource, SBApplicationLifecycleObserver, FBUIApplicationServiceDelegate, FBApplicationTerminationAssertionServiceDelegate> {
 	NSMutableDictionary *_applicationsByBundleIdentifer;
 	NSMutableSet *_applicationsPlayingMutedAudioSinceLastLock;
 	NSDictionary *_backgroundDisplayDict;
 	NSLock *_applicationsLock;
 	NSMutableDictionary *_systemAppsVisibilityOverrides;
-	BOOL _visibilityOverridesAreDirty;
+	NSSet *_cachedSystemAppsWithVisibilityOverrideHidden;
 	BKSApplicationStateMonitor *_appStateMonitor;
 	BOOL _booting;
 	NSMutableSet *_appsToAutoLaunchAfterBoot;
@@ -33,18 +34,19 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
++ (void)_setClearAllLegacySnapshotsWhenLoaded:(BOOL)loaded;
 + (void)_setClearSystemAppSnapshotsWhenLoaded:(BOOL)loaded;
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
 - (id)_appInfosToBundleIDs:(id)bundleIDs;
-- (Class)_applicationClassForInfoDictionary:(id)infoDictionary;
+- (Class)_applicationClassFromAppInfo:(id)appInfo infoDictionary:(id)dictionary;
 - (void)_autoLaunchAppsIfNecessaryAfterBoot;
 - (void)_deviceFirstUnlocked;
-- (void)_finishDeferredMajorVersionMigrationTasks;
+- (void)_finishDeferredMajorVersionMigrationTasks_FlushLegacySnapshots;
+- (void)_finishDeferredMajorVersionMigrationTasks_FlushSystemSnapshots;
 - (void)_loadApplicationFromApplicationInfo:(id)applicationInfo;
-- (void)_loadApplicationFromInfo:(id)info withBundle:(id)bundle;
 - (BOOL)_loadApplicationWithoutMutatingIconState:(id)state;
 - (id)_loadApplications:(id)applications removed:(id)removed;
 - (void)_loadApplicationsAndIcons:(id)icons removed:(id)removed reveal:(BOOL)reveal;
@@ -57,35 +59,43 @@ __attribute__((visibility("hidden")))
 - (void)_reloadBackgroundIDsDict;
 - (void)_removeApplicationsFromModelWithBundleIdentifier:(id)bundleIdentifier;
 - (void)_sendInstalledAppsDidChangeNotification:(id)_sendInstalledApps removed:(id)removed modified:(id)modified;
-- (void)_setVisibilityOverridesAreDirty:(BOOL)dirty;
 - (void)_unregisterForAVSystemControllerNotifications;
 - (void)_unusuallyMutedAudioPlaying:(id)playing;
 - (void)_updateIconControllerAndModelForLoadedApplications:(id)loadedApplications reveal:(BOOL)reveal popIn:(BOOL)anIn reloadAllIcons:(BOOL)icons;
+- (void)_updateVisibilityOverrides;
 - (id)allApplications;
 - (id)allBundleIdentifiers;
-- (int)appVisibilityOverrideForBundleIdentifier:(id)bundleIdentifier;
+- (id)appliationShortcutServer:(id)server dynamicShortcutItemsForBundleIdentifier:(id)bundleIdentifier;
+- (void)appliationShortcutServer:(id)server setDynamicShortcutItems:(id)items bundleIdentifier:(id)identifier;
+- (void)applicationService:(id)service deleteAllSnapshotsForBundleIdentifier:(id)bundleIdentifier;
 - (void)applicationService:(id)service getBadgeValueForBundleIdentifier:(id)bundleIdentifier withCompletion:(id)completion;
 - (void)applicationService:(id)service setBadgeValue:(id)value forBundleIdentifier:(id)bundleIdentifier;
 - (void)applicationService:(id)service setNextWakeDate:(id)date forBundleIdentifier:(id)bundleIdentifier;
+- (void)applicationService:(id)service suspendApplicationWithBundleIdentifier:(id)bundleIdentifier;
 - (id)applicationWithBundleIdentifier:(id)bundleIdentifier;
 - (id)applicationWithPid:(int)pid;
 - (void)applicationsAdded:(id)added;
+- (void)applicationsDemoted:(id)demoted;
 - (void)applicationsModified:(id)modified;
 - (void)applicationsRemoved:(id)removed;
+- (id)bundleIdentifiersWithVisibilityOverrideHidden;
 - (id)cameraApplication;
 - (id)clockApplication;
 - (id)dataActivation;
 - (void)dealloc;
 - (id)faceTimeApp;
 - (id)iPodOutApplication;
+- (id)inCallServiceApp;
 - (id)mobilePhone;
 - (id)musicApplication;
-- (id)newsstandApps;
-- (void)refreshVisiblityOverrides;
+- (void)noteNeedsToRefreshVisiblityOverrides;
 - (id)restrictionController;
+- (id)runningApplications;
+- (void)service:(id)service canAcquireTerminationAssertion:(id)assertion completionHandler:(id)handler;
+- (void)service:(id)service didAcquireTerminationAssertion:(id)assertion;
+- (void)service:(id)service didRelinquishTerminationAssertion:(id)assertion;
 - (id)setupApplication;
 - (void)uninstallApplication:(id)application;
-- (BOOL)updateAppIconVisibilityOverridesShowing:(id *)showing hiding:(id *)hiding;
 - (void)waitForUninstallsToComplete;
 - (id)webApplications;
 @end

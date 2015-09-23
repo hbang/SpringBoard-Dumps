@@ -9,7 +9,7 @@
 
 
 @protocol FBWorkspaceDelegate <NSObject>
-- (void)workspace:(id)workspace didReceiveCreateSceneRequestWithInitialClientSettings:(id)initialClientSettings withCompletion:(id)completion;
+- (void)workspace:(id)workspace didReceiveCreateSceneRequestForIdentifier:(id)identifier initialClientSettings:(id)settings withCompletion:(id)completion;
 - (void)workspace:(id)workspace didReceiveDestroySceneRequestForIdentifier:(id)identifier withCompletion:(id)completion;
 @end
 

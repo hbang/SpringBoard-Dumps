@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 	NSString *_dateString;
 	NSRange _ordinalRange;
 }
-@property(readonly, assign) NSString *dateString;
+@property(readonly, retain) NSString *dateString;
 @property(readonly, assign) NSRange ordinalRange;
 @property(readonly, assign) BOOL shouldSuperscriptOrdinal;
 + (id)dateHeaderWithDate:(id)date locale:(id)locale singleLine:(BOOL)line;

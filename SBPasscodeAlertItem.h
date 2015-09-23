@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "UITextFieldDelegate.h"
 
 
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface SBPasscodeAlertItem : XXUnknownSuperclass <UITextFieldDelegate> {
 	int _mode;
 	int _unlockScreenType;
+	int _simplePasscodeType;
 	NSString *_errorString;
 	BOOL _hasEmergencyCall;
 }
@@ -21,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-- (id)initWithPasscodeMode:(int)passcodeMode unlockScreenType:(int)type;
+- (id)initWithPasscodeMode:(int)passcodeMode unlockScreenType:(int)type simplePasscodeType:(int)type3;
 - (void)_setErrorString:(id)string;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
 - (void)cleanPreviousConfiguration;

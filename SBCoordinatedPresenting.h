@@ -25,7 +25,7 @@
 @property(readonly, assign, nonatomic) NSSet *tapExcludedViews;
 @required
 - (void)abortAnimatedTransition;
-- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
+- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation presentationBegunHandler:(id)handler;
 @optional
 - (void)cancelGestureRecognizer:(id)recognizer;
 @required

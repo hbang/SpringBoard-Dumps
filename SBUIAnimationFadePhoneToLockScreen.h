@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadePhoneToLockScreen : SBUIAnimationPhoneToLockScreenBase {
 	SBDisableUnlockAssertion *_disableUnlockAssertion;
-	int _launchingOrientation;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 }
 - (void)_prepareAnimation;
 - (void)_startAnimation;

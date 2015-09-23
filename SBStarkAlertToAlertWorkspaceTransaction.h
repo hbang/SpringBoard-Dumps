@@ -10,14 +10,12 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkAlertToAlertWorkspaceTransaction : SBStarkWorkspaceTransaction {
+	BOOL _activationTriggeredFromStark;
 	SBAlert *_activatingAlert;
 	SBAlert *_deactivatingAlert;
-	BOOL _activation;
 }
-- (id)initActivationWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
-- (id)initDeactivationWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller from:(id)from to:(id)to;
+- (id)initWithTransitionRequest:(id)transitionRequest;
 - (void)_begin;
-- (id)_initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller activatingAlert:(id)alert deactivatingAlert:(id)alert4 activation:(BOOL)activation;
 - (void)dealloc;
 - (id)debugDescription;
 @end

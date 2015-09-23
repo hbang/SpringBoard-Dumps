@@ -5,13 +5,15 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
+@protocol SBAlertWindowViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBAlertWindowViewController : XXUnknownSuperclass {
 	UIScreen *_screen;
+	id<SBAlertWindowViewControllerDelegate> _alertWindowViewControllerDelegate;
 	UIView *_contentView;
 	SBAlert *_activeAlert;
 	UIViewController *_activeViewController;
@@ -19,24 +21,26 @@ __attribute__((visibility("hidden")))
 }
 @property(retain, nonatomic) SBAlert *activeAlert;
 @property(retain, nonatomic) UIViewController *activeViewController;
+@property(assign, nonatomic) id<SBAlertWindowViewControllerDelegate> alertWindowViewControllerDelegate;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (id)initWithScreen:(id)screen;
 - (void)addAlertController:(id)controller;
 - (void)addView:(id)view toBeObscuredByAlert:(id)beObscuredByAlert;
 - (BOOL)alertWindow:(id)window canAnimateInAlert:(id)alert;
 - (void)dealloc;
-- (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)loadView;
 - (void)noteAlertWindow:(id)window didDisplayAlert:(id)alert;
+- (void)performEndAppearanceToController:(id)controller withTransitionBlock:(id)transitionBlock;
+- (int)preferredInterfaceOrientationForPresentation;
 - (void)removeAlertController:(id)controller;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
+- (BOOL)shouldAutorotate;
 - (int)stackedAlertCount;
 - (id)stackedAlertsIncludingActiveAlert:(BOOL)alert;
 - (id)stackedViewForAlert:(id)alert;
+- (unsigned)supportedInterfaceOrientations;
 - (BOOL)wantsFullScreenLayout;
-- (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)window:(id)window willAnimateFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame3;
 @end
 

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 #import "SBBulletinBusyClient.h"
+#import "SpringBoard-Structs.h"
 #import "BBObserverDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -30,13 +30,15 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
-- (void)_enqueueBlock:(id)block forBulletin:(id)bulletin;
+- (void)_enqueueBlock:(id)block forFeed:(unsigned)feed bulletin:(id)bulletin;
 - (void)_hardwareButtonPressed:(id)pressed;
 - (BOOL)_playSoundForBulletin:(id)bulletin playedInternally:(BOOL)internally;
 - (BOOL)_shouldHonorPlaySoundRequestForBulletin:(id)bulletin;
 - (void)_stopSoundWithID:(id)anId internalOnly:(BOOL)only;
 - (void)bulletinWindowStoppedBeingBusy;
 - (void)dealloc;
+- (BOOL)isDeviceUILocked;
+- (BOOL)isLockScreenActive;
 - (BOOL)isPlayingSoundForBulletin:(id)bulletin;
 - (void)killSoundForBulletin:(id)bulletin;
 - (void)killSounds;

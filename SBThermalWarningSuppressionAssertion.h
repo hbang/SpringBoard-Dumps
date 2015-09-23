@@ -7,7 +7,7 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol OS_dispatch_source, SBThermalWarningSuppressionAssertionDelegate;
+@protocol SBThermalWarningSuppressionAssertionDelegate, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface SBThermalWarningSuppressionAssertion : XXUnknownSuperclass {
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 	NSObject<OS_dispatch_source> *_source;
 }
 @property(assign, nonatomic) id<SBThermalWarningSuppressionAssertionDelegate> delegate;
-@property(readonly, assign, nonatomic) NSString *reason;
+@property(readonly, copy, nonatomic) NSString *reason;
 - (id)initWithClientPort:(unsigned)clientPort reason:(id)reason;
 - (void)dealloc;
 - (id)description;

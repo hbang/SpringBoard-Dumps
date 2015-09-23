@@ -10,7 +10,7 @@
 #import "SBDateLabelDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol SBBulletinDateLabel;
+@protocol NCNotificationDateLabel;
 
 __attribute__((visibility("hidden")))
 @interface SBNotificationCell : XXUnknownSuperclass <SBDateLabelDelegate, SBModalLayoutCaching> {
@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 	UILabel *_primaryLabel;
 	UILabel *_subtitleLabel;
 	UILabel *_secondaryLabel;
-	UILabel<SBBulletinDateLabel> *_relevanceDateLabel;
-	UILabel<SBBulletinDateLabel> *_eventDateLabel;
+	UILabel *_relevanceDateLabel;
+	UILabel<NCNotificationDateLabel> *_eventDateLabel;
 	UIButton *_actionButton;
 	UIImageView *_attachmentView;
 	CGSize _attachmentSize;
@@ -33,28 +33,28 @@ __attribute__((visibility("hidden")))
 }
 @property(retain, nonatomic) UIButton *actionButton;
 @property(assign, nonatomic) float attachmentAlpha;
-@property(readonly, assign, nonatomic) UIView *attachmentView;
+@property(readonly, retain, nonatomic) UIView *attachmentView;
 @property(readonly, assign, nonatomic) CGRect contentBounds;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(assign, nonatomic) float eventDateAlpha;
 @property(retain, nonatomic) UIColor *eventDateColor;
-@property(retain, nonatomic) UILabel<SBBulletinDateLabel> *eventDateLabel;
+@property(retain, nonatomic) UILabel<NCNotificationDateLabel> *eventDateLabel;
 @property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) UIImage *icon;
 @property(assign, nonatomic) float iconAlpha;
-@property(readonly, assign, nonatomic) UIView *iconView;
+@property(readonly, retain, nonatomic) UIView *iconView;
 @property(assign, nonatomic) int layoutMode;
-@property(readonly, assign, nonatomic) UILabel *primaryLabel;
+@property(readonly, retain, nonatomic) UILabel *primaryLabel;
 @property(copy, nonatomic) NSString *primaryText;
 @property(assign, nonatomic) float primaryTextAlpha;
 @property(retain, nonatomic) UIColor *primaryTextColor;
-@property(readonly, assign, nonatomic) UIView *realContentView;
+@property(readonly, retain, nonatomic) UIView *realContentView;
 @property(assign, nonatomic) float relevanceDateAlpha;
 @property(retain, nonatomic) UIColor *relevanceDateColor;
-@property(retain, nonatomic) UILabel<SBBulletinDateLabel> *relevanceDateLabel;
+@property(retain, nonatomic) UILabel *relevanceDateLabel;
 @property(retain, nonatomic) UIViewController *secondaryContentViewController;
-@property(readonly, assign, nonatomic) UILabel *secondaryLabel;
+@property(readonly, retain, nonatomic) UILabel *secondaryLabel;
 @property(copy, nonatomic) NSString *secondaryText;
 @property(assign, nonatomic) float secondaryTextAlpha;
 @property(retain, nonatomic) UIColor *secondaryTextColor;
@@ -62,7 +62,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) unsigned secondaryTextNumberOfLines;
 @property(readonly, assign, nonatomic) BOOL secondaryTextNumberOfLinesIsUpperBound;
 @property(readonly, assign, nonatomic) BOOL shouldVerticallyCenterContent;
-@property(readonly, assign, nonatomic) UILabel *subtitleLabel;
+@property(readonly, retain, nonatomic) UILabel *subtitleLabel;
 @property(copy, nonatomic) NSString *subtitleText;
 @property(assign, nonatomic) float subtitleTextAlpha;
 @property(retain, nonatomic) UIColor *subtitleTextColor;

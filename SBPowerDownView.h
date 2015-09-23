@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
-#import "SBAlertView.h"
 #import "_UIActionSliderDelegate.h"
 #import "SBPowerDownViewInterface.h"
+#import "SpringBoard-Structs.h"
+#import "SBAlertView.h"
 
 @protocol SBPowerDownViewDelegate;
 
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 	UIButton *_cancelButton;
 	UILabel *_cancelLabel;
 	BOOL _hiddenLockScreenForeground;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	BOOL _canAlterScreenBrightness;
 }
 @property(assign, nonatomic) BOOL canAlterScreenBrightness;

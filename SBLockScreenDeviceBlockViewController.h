@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) NSString *slideToUnlockText;
 - (void)dealloc;
 - (void)loadView;
+- (void)start;
 - (void)viewDidDisappear:(BOOL)view;
 - (void)viewWillAppear:(BOOL)view;
 @end

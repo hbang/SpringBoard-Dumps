@@ -11,11 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SBSnapshotDataProviderContext : XXUnknownSuperclass {
 	NSString *_sceneID;
-	float _scale;
-	BOOL _opaque;
 }
-@property(assign, nonatomic, getter=isOpaque) BOOL opaque;
-@property(assign, nonatomic) float scale;
 @property(copy, nonatomic) NSString *sceneID;
 - (void)dealloc;
 @end

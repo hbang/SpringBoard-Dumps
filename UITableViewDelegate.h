@@ -12,8 +12,10 @@
 
 @protocol UITableViewDelegate <NSObject, UIScrollViewDelegate>
 @optional
+- (id)indexPathForPreferredFocusedViewInTableView:(id)tableView;
 - (void)tableView:(id)view accessoryButtonTappedForRowWithIndexPath:(id)indexPath;
 - (int)tableView:(id)view accessoryTypeForRowWithIndexPath:(id)indexPath;
+- (BOOL)tableView:(id)view canFocusRowAtIndexPath:(id)indexPath;
 - (BOOL)tableView:(id)view canPerformAction:(SEL)action forRowAtIndexPath:(id)indexPath withSender:(id)sender;
 - (void)tableView:(id)view didDeselectRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didEndDisplayingCell:(id)cell forRowAtIndexPath:(id)indexPath;
@@ -23,6 +25,7 @@
 - (void)tableView:(id)view didHighlightRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didSelectRowAtIndexPath:(id)indexPath;
 - (void)tableView:(id)view didUnhighlightRowAtIndexPath:(id)indexPath;
+- (void)tableView:(id)view didUpdateFocusInContext:(id)context withAnimationCoordinator:(id)animationCoordinator;
 - (id)tableView:(id)view editActionsForRowAtIndexPath:(id)indexPath;
 - (int)tableView:(id)view editingStyleForRowAtIndexPath:(id)indexPath;
 - (float)tableView:(id)view estimatedHeightForFooterInSection:(int)section;
@@ -36,6 +39,7 @@
 - (BOOL)tableView:(id)view shouldHighlightRowAtIndexPath:(id)indexPath;
 - (BOOL)tableView:(id)view shouldIndentWhileEditingRowAtIndexPath:(id)indexPath;
 - (BOOL)tableView:(id)view shouldShowMenuForRowAtIndexPath:(id)indexPath;
+- (BOOL)tableView:(id)view shouldUpdateFocusInContext:(id)context;
 - (id)tableView:(id)view targetIndexPathForMoveFromRowAtIndexPath:(id)indexPath toProposedIndexPath:(id)proposedIndexPath;
 - (id)tableView:(id)view titleForDeleteConfirmationButtonForRowAtIndexPath:(id)indexPath;
 - (id)tableView:(id)view viewForFooterInSection:(int)section;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol OS_dispatch_semaphore;
 
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)passLibrary:(id)library removingPassesOfType:(unsigned)type didFinishWithSuccess:(BOOL)success;
 - (void)passLibrary:(id)library removingPassesOfType:(unsigned)type didUpdateWithProgress:(double)progress;
 - (void)performPaymentCardDeletionWithCompletion:(id)completion;
+- (void)prepareToResetInMode:(int)mode;
 - (float)progress;
 - (void)setMode:(int)mode;
 @end

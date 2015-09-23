@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBAppSwitcherPageView.h"
+#import "SBMainAppSwitcherPageView.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppSwitcherContinuityAppPageView : SBAppSwitcherPageView {
+@interface SBAppSwitcherContinuityAppPageView : SBMainAppSwitcherPageView {
 	UIView *_infoView;
 	UIView *_iconTintView;
 	SBSaturatedIconView *_saturatedIconView;

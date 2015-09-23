@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconBlurryBackgroundView.h"
 #import "SpringBoard-Structs.h"
+#import "SBIconBlurryBackgroundView.h"
 
 
 __attribute__((visibility("hidden")))

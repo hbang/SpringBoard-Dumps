@@ -11,19 +11,19 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkWorkspaceTransaction : SBWorkspaceTransaction <SBAlertManagerObserver> {
+	FBDisplayLayoutTransition *_rootLayoutTransition;
 	SBStarkScreenController *_starkScreenController;
 	SBAlertManager *_starkScreenAlertManager;
-	SBAlertManager *_mainScreenAlertManager;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
-@property(readonly, retain, nonatomic) SBAlertManager *mainScreenAlertManager;
 @property(readonly, retain, nonatomic) SBAlertManager *starkScreenAlertManager;
 @property(readonly, retain, nonatomic) SBStarkScreenController *starkScreenController;
 @property(readonly, assign) Class superclass;
-- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller;
+- (id)initWithTransitionRequest:(id)transitionRequest;
 - (void)_didComplete;
+- (void)_willBegin;
 - (void)dealloc;
 @end
 

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "UIGestureRecognizerDelegate.h"
-#import "SpringBoard-Structs.h"
 #import "SBFolderView.h"
+#import "SpringBoard-Structs.h"
 #import "_UISettingsKeyObserver.h"
+#import "UIGestureRecognizerDelegate.h"
 
 
 __attribute__((visibility("hidden")))

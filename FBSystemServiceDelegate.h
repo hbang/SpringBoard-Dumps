@@ -16,7 +16,9 @@
 - (void)systemService:(id)service handleOpenApplicationRequest:(id)request options:(id)options origin:(id)origin withResult:(id)result;
 - (void)systemService:(id)service handleOpenURLRequest:(id)request application:(id)application options:(id)options origin:(id)origin withResult:(id)result;
 @optional
+- (void)systemService:(id)service isPasscodeLockedOrBlockedWithResult:(id)result;
 - (void)systemServicePrepareForExit:(id)exit andRelaunch:(BOOL)relaunch;
 - (void)systemServicePrepareForShutdown:(id)shutdown andReboot:(BOOL)reboot;
+- (void)systemServicePrepareForShutdown:(id)shutdown withOptions:(unsigned)options;
 @end
 

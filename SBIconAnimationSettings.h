@@ -10,9 +10,9 @@
 
 __attribute__((visibility("hidden")))
 @interface SBIconAnimationSettings : XXUnknownSuperclass {
-	SBFAnimationSettings *_centralAnimationSettings;
+	SBAnimationSettings *_centralAnimationSettings;
 }
-@property(retain) SBFAnimationSettings *centralAnimationSettings;
+@property(retain) SBAnimationSettings *centralAnimationSettings;
 + (id)settingsControllerModule;
 - (void)setDefaultValues;
 @end

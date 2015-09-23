@@ -10,6 +10,7 @@
 
 @protocol BSTransactionObserver <NSObject>
 @optional
+- (void)transactionDidBegin:(id)transaction;
 - (void)transactionDidComplete:(id)transaction;
 @end
 

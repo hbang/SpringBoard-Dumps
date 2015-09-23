@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 	SBAlertManager *_alertManager;
 	SBIconAnimator *_iconAnimator;
 }
-- (id)initWithAlert:(id)alert andAlertManager:(id)manager;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_cleanupAnimation;
 - (void)_prepareAnimation;
 - (void)_startAnimation;

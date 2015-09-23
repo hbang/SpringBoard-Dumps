@@ -26,16 +26,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) BOOL implementsPerformUpdate;
 @property(readonly, assign, nonatomic, getter=isInternal) BOOL internal;
 @property(assign, nonatomic) int requestState;
-@property(readonly, assign, nonatomic) NSString *widgetIdentifier;
+@property(readonly, copy, nonatomic) NSString *widgetIdentifier;
 + (id)_requestLocalViewControllerOfClass:(Class)aClass context:(id)context handler:(id)handler;
-+ (id)displayNameForWidgetWithExtension:(id)extension containerBundleIdentifier:(id)identifier;
 + (id)requestViewController:(id)controller context:(id)context handler:(id)handler;
 + (id)widgetViewControllerWithIdentifier:(id)identifier bundlePath:(id)path;
 - (id)initWithWidgetIdentifier:(id)widgetIdentifier bundlePath:(id)path;
 - (id)_cancelTouches;
 - (void)_disconnectRemoteViewControllerImmediatelyWithCompletionHandler:(id)completionHandler;
 - (void)_requestLaunchOfURL:(id)url;
-- (void)_requestPresentationOfViewController:(id)viewController presentationStyle:(int)style context:(id)context completion:(id)completion;
 - (void)captureSnapshotWithCompletionHandler:(id)completionHandler;
 - (void)connectRemoteViewControllerWithCompletionHandler:(id)completionHandler;
 - (void)dealloc;

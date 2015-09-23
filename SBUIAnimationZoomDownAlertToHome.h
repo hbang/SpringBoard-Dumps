@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface SBUIAnimationZoomDownAlertToHome : SBUIAnimationZoomDownAppToHome {
 	SBAlert *_alert;
 }
-- (id)initWithAlert:(id)alert;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_prepareAnimation;
 - (void)animateZoomWithCompletion:(id)completion;
 - (void)dealloc;

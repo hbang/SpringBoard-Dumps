@@ -5,37 +5,34 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
+#import "BBObserverDelegate.h"
+#import "MCProfileConnectionObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBApplicationShortcutMenuDelegate.h"
 #import "SBApplicationRestrictionObserver.h"
 #import "SBFolderControllerDelegate.h"
 #import "SBSearchGestureObserver.h"
 #import "SBIconViewDelegate.h"
 #import "SBIconModelDelegate.h"
 #import "SBIconViewMapDelegate.h"
-#import "SBIconModelApplicationDataSource.h"
-#import "MCProfileConnectionObserver.h"
-#import "SpringBoard-Structs.h"
 #import "SBReachabilityObserver.h"
-#import "BBObserverDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBIconModelApplicationDataSource.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconController : XXUnknownSuperclass <BBObserverDelegate, MCProfileConnectionObserver, SBApplicationRestrictionObserver, SBFolderControllerDelegate, SBSearchGestureObserver, SBIconViewDelegate, SBIconModelDelegate, SBIconViewMapDelegate, SBIconModelApplicationDataSource, SBReachabilityObserver> {
+@interface SBIconController : XXUnknownSuperclass <SBApplicationShortcutMenuDelegate, BBObserverDelegate, MCProfileConnectionObserver, SBApplicationRestrictionObserver, SBFolderControllerDelegate, SBSearchGestureObserver, SBIconViewDelegate, SBIconModelDelegate, SBIconViewMapDelegate, SBIconModelApplicationDataSource, SBReachabilityObserver> {
 	NSSet *_visibleTags;
 	NSSet *_hiddenTags;
 	SBIconModel *_iconModel;
-	SBIconContentView *_contentView;
 	BOOL _needsRelayout;
 	BOOL _sendITunesNotification;
 	BBObserver *_bbObserver;
-	NSMutableSet *_displayIDsWithBadgingDisabled;
+	NSMutableSet *_displayIDsWithBadgingEnabled;
 	SBRootFolderController *_rootFolderController;
 	SBFolder *_closingFolder;
-@private
 	SBFolder *_folderToOpenWhenScrollingEnds;
-@protected
 	BOOL _rotating;
-	int _orientation;
 	SBIcon *_launchingIcon;
 	SBIcon *_highlightedIcon;
 	SBLeafIcon *_iconToReveal;
@@ -59,39 +56,52 @@ __attribute__((visibility("hidden")))
 	BOOL _isAnimatingForUnscatter;
 	BOOL _isAnimatingSignficantly;
 	unsigned _maxIconViewsInHierarchy;
-	unsigned _maxNewsstandItemViewsInHierarchy;
 	SBIconColorSettings *_iconColorSettings;
 	BOOL _reachabilityModeActive;
+	SBApplicationShortcutMenu *_presentedShortcutMenu;
+	BOOL _skipCancelTouchesAfterShortcutMenuDismiss;
 	BOOL _showingSearch;
 	_UILegibilitySettings *_legibilitySettings;
 	NSIndexPath *_indexPathToResetTo;
+	BOOL _performedInitialLayout;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(retain, nonatomic) SBApplicationShortcutMenu *presentedShortcutMenu;
 @property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
+- (void)_activateShortcutItem:(id)item fromApplication:(id)application;
 - (void)_addToFolderAnimation:(id)folderAnimation didFinish:(id)finish context:(id)context;
+- (id)_aggregateLoggingAppKeyForShortcutMenu:(id)shortcutMenu;
 - (void)_animateFolder:(id)folder open:(BOOL)open animated:(BOOL)animated withCompletion:(id)completion;
-- (BOOL)_badgesAreDisabledForSectionInfo:(id)sectionInfo;
+- (BOOL)_badgesAreEnabledForSectionInfo:(id)sectionInfo;
+- (BOOL)_canRevealShortcutMenu;
 - (void)_cancelFolderSpringloadTimer;
 - (void)_cleanupForClosingFolderAnimated:(BOOL)closingFolderAnimated;
+- (void)_cleanupForDismissingShortcutMenu:(id)dismissingShortcutMenu;
 - (void)_closeFolderController:(id)controller animated:(BOOL)animated withCompletion:(id)completion;
 - (void)_compactRootListsAfterFolderCloseWithAnimation:(BOOL)animation;
 - (CGRect)_contentViewRelativeFrameForIcon:(id)icon;
 - (Class)_controllerClassForFolderClass:(Class)folderClass;
 - (id)_currentFolderController;
 - (id)_debugStringForIconOrder:(int)iconOrder;
+- (void)_didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)_disableReachabilityImmediately:(BOOL)immediately;
+- (BOOL)_dismissRightEdgeSpotlight:(BOOL)spotlight;
+- (void)_dismissShortcutMenuAnimated:(BOOL)animated completionHandler:(id)handler;
+- (BOOL)_dismissTopEdgeSpotlight:(BOOL)spotlight;
 - (void)_dropIcon:(id)icon withInsertionPath:(id)insertionPath;
 - (void)_dropIconIntoOpenFolder:(id)folder withInsertionPath:(id)insertionPath;
 - (void)_dropIconOutOfClosingFolder:(id)closingFolder withInsertionPath:(id)insertionPath;
+- (int)_effectiveOrientation;
 - (void)_folderControllerDidReceiveCancelReachabilityAction:(id)_folderController;
 - (void)_folderDidFinishOpenClose:(BOOL)_folder animated:(BOOL)animated;
 - (unsigned)_folderRowsForFolder:(id)folder;
 - (unsigned)_folderRowsForFolder:(id)folder inOrientation:(int)orientation;
+- (void)_handleShortcutMenuPeek:(id)peek;
 - (BOOL)_iconCanBeGrabbed:(id)grabbed;
 - (void)_iconDropDidFinish:(id)_iconDrop;
 - (BOOL)_iconListIndexIsValid:(int)valid;
@@ -113,29 +123,41 @@ __attribute__((visibility("hidden")))
 - (void)_performReachabilityTransactionForActivate:(BOOL)activate immediately:(BOOL)immediately;
 - (void)_prepareToResetRootIconLists;
 - (void)_presentNotificationCenterForReachability;
+- (BOOL)_presentRightEdgeSpotlight:(BOOL)spotlight;
+- (BOOL)_presentTopEdgeSpotlight:(BOOL)spotlight;
 - (id)_proposedFolderNameForGrabbedIcon:(id)grabbedIcon recipientIcon:(id)icon;
 - (void)_resetFolderSpringloadTimer;
 - (void)_resetRootIconLists;
+- (void)_revealMenuForIconView:(id)iconView presentImmediately:(BOOL)immediately;
 - (id)_rootFolderController;
 - (void)_runFolderCloseTest;
 - (void)_runFolderOpenTest;
 - (void)_runScrollFolderTest:(int)test;
+- (void)_searchViewControllerIsPresented:(BOOL)presented fromBreadcrumb:(BOOL)breadcrumb;
 - (void)_selectIconModel:(BOOL)model;
 - (void)_setAnimatingFolderCreation:(BOOL)creation;
 - (void)_setFolderToOpenAfterScrolling:(id)openAfterScrolling;
 - (void)_setHasAnimatingFolder:(BOOL)folder;
+- (BOOL)_shouldCancelFailedReachability;
 - (BOOL)_shouldLockItemsInStoreDemoMode;
 - (BOOL)_shouldRespondToReachability;
 - (void)_snapshotFadeDidStop:(id)_snapshotFade finished:(id)finished snapshot:(id)snapshot;
-- (void)_updateDisabledBadgesSetWithSections:(id)sections;
+- (void)_updateEnabledBadgesSetWithSections:(id)sections;
+- (void)_willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (void)_willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)addIcons:(id)icons intoFolderIcon:(id)icon animated:(BOOL)animated openFolderOnFinish:(BOOL)finish complete:(id)complete;
 - (void)addNewIconToDesignatedLocation:(id)designatedLocation animate:(BOOL)animate scrollToList:(BOOL)list saveIconState:(BOOL)state;
 - (void)addNewIconsToDesignatedLocations:(id)designatedLocations saveIconState:(BOOL)state;
 - (id)allApplications;
+- (BOOL)allowsNestedFolders;
 - (BOOL)allowsUninstall;
 - (void)animationDidStop:(id)animation finished:(BOOL)finished;
-- (int)appVisibilityOverrideForBundleIdentifier:(id)bundleIdentifier;
 - (void)applicationRestrictionController:(id)controller didUpdateVisibleTags:(id)tags hiddenTags:(id)tags3;
+- (void)applicationShortcutMenu:(id)menu activateShortcutItem:(id)item index:(int)index;
+- (void)applicationShortcutMenu:(id)menu launchApplicationWithIconView:(id)iconView;
+- (void)applicationShortcutMenu:(id)menu startEditingForIconView:(id)iconView;
+- (void)applicationShortcutMenuDidDismiss:(id)applicationShortcutMenu;
+- (void)applicationShortcutMenuDidPresent:(id)applicationShortcutMenu;
 - (BOOL)canAddDownloadingIconForApplication:(id)application;
 - (BOOL)canAddWebClip:(id)clip;
 - (BOOL)canSaveIconState:(id)state;
@@ -156,8 +178,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)defaultIconState;
 - (void)didDeleteIconState:(id)state;
-- (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)didSaveIconState:(id)state;
+- (void)dismissShortcutMenuWithCompletionHandler:(id)completionHandler;
+- (BOOL)dismissSpotlightAnimated:(BOOL)animated;
 - (BOOL)dismissSpotlightIfNecessary;
 - (id)dockListView;
 - (id)dropDestinationIconList;
@@ -174,6 +197,7 @@ __attribute__((visibility("hidden")))
 - (void)folderControllerShouldBeginEditing:(id)folderController;
 - (void)folderControllerShouldClose:(id)folderController;
 - (id)folderIconListAtIndex:(unsigned)index;
+- (id)folderNameForDisplayID:(id)displayID;
 - (void)folderSpringloadTimerFired;
 - (void)getListView:(id *)view folder:(id *)folder relativePath:(id *)path forIndexPath:(id)indexPath createIfNecessary:(BOOL)necessary;
 - (id)grabbedIcon;
@@ -208,12 +232,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEditing;
 - (BOOL)isFolderScrolling;
 - (BOOL)isIconVisiblyRepresented:(id)represented;
-- (BOOL)isNewsstandEnabled;
-- (BOOL)isNewsstandOpen;
-- (BOOL)isNewsstandSupported;
 - (BOOL)isScrolling;
 - (id)lastTouchedIcon;
 - (void)layoutIconLists:(float)lists domino:(BOOL)domino forceRelayout:(BOOL)relayout;
+- (void)loadView;
 - (unsigned)maxColCountForListInRootFolderWithInterfaceOrientation:(int)interfaceOrientation;
 - (unsigned)maxIconCountForDock;
 - (unsigned)maxIconCountForListInFolderClass:(Class)folderClass;
@@ -230,6 +252,7 @@ __attribute__((visibility("hidden")))
 - (void)openFolder:(id)folder animated:(BOOL)animated;
 - (int)orientation;
 - (id)placeIcon:(id)icon atIndexPath:(id)indexPath moveNow:(BOOL)now layoutNow:(BOOL)now4 pop:(BOOL)pop;
+- (BOOL)presentSpotlightFromEdge:(unsigned)edge fromBreadcrumb:(BOOL)breadcrumb animated:(BOOL)animated;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)profileConnection userInfo:(id)info;
 - (id)recipientIcon;
 - (BOOL)relayout;
@@ -255,25 +278,26 @@ __attribute__((visibility("hidden")))
 - (void)setLastTouchedIcon:(id)icon;
 - (void)setRecipientIcon:(id)icon duration:(double)duration;
 - (void)shiftFolderViewsForKeyboardAppearing:(BOOL)keyboardAppearing keyboardHeight:(float)height;
+- (BOOL)shouldAutorotate;
 - (void)showCarrierDebuggingAlertIfNeeded;
-- (void)showDeveloperBuildExpirationAlertIfNecessary;
+- (void)showDeveloperBuildExpirationAlertIfNecessaryFromLockscreen:(BOOL)lockscreen toLauncher:(BOOL)launcher;
 - (void)showInfoAlertIfNeeded:(BOOL)needed;
-- (void)showSpotlightAlertIfNecessary;
+- (unsigned)supportedInterfaceOrientations;
 - (BOOL)supportsDock;
 - (void)uninstallIcon:(id)icon;
 - (void)uninstallIcon:(id)icon animate:(BOOL)animate;
 - (void)uninstallIconAnimationCompletedForIcon:(id)icon;
 - (void)unscatterAnimated:(BOOL)animated afterDelay:(double)delay withCompletion:(id)completion;
-- (BOOL)updateAppIconVisibilityOverridesShowing:(id *)showing hiding:(id *)hiding;
 - (void)updateCurrentIconListIndexAndVisibility;
 - (void)updateCurrentIconListIndexAndVisibility:(BOOL)visibility;
 - (void)updateNumberOfRowsWithDuration:(double)duration;
+- (void)viewMap:(id)map configureIconView:(id)view;
 - (int)viewMap:(id)map locationForIcon:(id)icon;
 - (unsigned)viewMap:(id)map maxRecycledViewsOfClass:(Class)aClass;
 - (unsigned)viewMap:(id)map numberOfViewsToPrepareOfClass:(Class)aClass;
 - (id)viewMapShouldPrepareViewsOfClasses:(id)viewMap;
-- (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
-- (void)willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
+- (void)viewWillLayoutSubviews;
+- (void)viewWillTransitionToSize:(CGSize)view withTransitionCoordinator:(id)transitionCoordinator;
 - (id)windowForRecycledViewsInViewMap:(id)viewMap;
 @end
 

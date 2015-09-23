@@ -6,27 +6,41 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBDosidoAnimator.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBStretchTransformer : XXUnknownSuperclass {
-	UIView *m_view;
-	int m_anchorEdge;
-	int m_orientation;
-	CAMutableMeshTransform *m_mesh;
-	float m_stretchFactor;
-	id m_animationCompletionHandler;
+@interface SBStretchTransformer : XXUnknownSuperclass <SBDosidoAnimator> {
+	float _percentage;
+	CAMutableMeshTransform *_mesh;
+	id _completionBlock;
+	float _stretchFactor;
+	UIView *_parentView;
+	SBStretchTransformerView *_transformView;
+	UIView *_view;
+	unsigned _anchorEdge;
+	int _orientation;
 }
-@property(assign, nonatomic) int anchorEdge;
+@property(assign, nonatomic) unsigned anchorEdge;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) int orientation;
-@property(assign, nonatomic) float stretchFactor;
+@property(assign, nonatomic) float stepPercentage;
+@property(readonly, assign, nonatomic, getter=isStepped) BOOL stepped;
+@property(readonly, assign) Class superclass;
 @property(retain, nonatomic) UIView *view;
-- (id)initWithView:(id)view anchorEdge:(int)edge orientation:(int)orientation;
-- (void)animateToZeroStretchFactor;
-- (void)animateToZeroStretchFactorWithCompletionHandler:(id)completionHandler;
+- (id)initWithParentView:(id)parentView anchorEdge:(unsigned)edge orientation:(int)orientation;
+- (void)_animateToZeroStretchFactor;
+- (void)_setAnchorEdge:(unsigned)edge;
+- (void)_setOrientation:(int)orientation;
+- (void)_setStretchFactor:(float)factor;
+- (void)animateDosidoWithFactory:(id)factory completion:(id)completion;
 - (void)animationDidStop:(id)animation finished:(BOOL)finished;
+- (void)cancelDosido;
 - (void)dealloc;
-- (id)meshTransform;
+- (void)finishSteppingBackwardToStart;
+- (void)finishSteppingForwardToEnd;
 - (void)updateMeshTransform:(id)transform stretchFactor:(float)factor;
 @end
 

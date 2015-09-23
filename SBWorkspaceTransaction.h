@@ -10,16 +10,26 @@
 
 __attribute__((visibility("hidden")))
 @interface SBWorkspaceTransaction : XXUnknownSuperclass {
-	SBAlertManager *_alertManager;
+	NSMutableSet *_slaveTransactions;
 	BOOL _clearsCompletionAsynchronously;
+	FBSDisplay *_display;
+	SBWorkspaceTransitionRequest *_transitionRequest;
+	SBAlertManager *_alertManager;
+	SBSceneLayoutViewController *_layoutController;
 }
-@property(readonly, assign, nonatomic) SBAlertManager *alertManager;
+@property(readonly, retain, nonatomic) SBAlertManager *alertManager;
 @property(assign, nonatomic) BOOL clearsCompletionAsynchronously;
-- (id)initWithAlertManager:(id)alertManager;
-- (BOOL)_canBeInterrupted;
+@property(readonly, retain, nonatomic) FBSDisplay *display;
+@property(readonly, retain, nonatomic) SBSceneLayoutViewController *layoutController;
+@property(readonly, retain, nonatomic) SBWorkspaceTransitionRequest *transitionRequest;
+- (id)init;
+- (id)initWithTransitionRequest:(id)transitionRequest;
+- (id)_customizedDescriptionProperties;
 - (void)_didComplete;
 - (void)_performDeviceCoherencyCheck;
+- (void)addSlaveTransaction:(id)transaction;
 - (void)dealloc;
 - (void)keepAliveForAsyncBlock:(id)asyncBlock;
+- (id)slaveTransactions;
 @end
 

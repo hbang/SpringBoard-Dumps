@@ -5,18 +5,22 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import "NSObject.h"
 
 
 @protocol SBWidgetViewControllerDelegate <NSObject>
 @optional
 - (int)activeLayoutModeForWidget:(id)widget;
+- (void)attemptReconnectionAfterUnanticipatedDisconnection:(id)disconnection;
 - (void)contentAvailabilityDidChangeForWidget:(id)contentAvailability;
+- (id)extensionForWidget:(id)widget;
+- (UIEdgeInsets)marginInsetsForWidget:(id)widget;
+- (CGSize)maxSizeForWidget:(id)widget;
 - (void)remoteViewControllerDidConnectForWidget:(id)remoteViewController;
 - (BOOL)shouldRequestWidgetRemoteViewControllers;
 - (id)widget:(id)widget didUpdatePreferredHeight:(float)height completion:(id)completion;
 - (void)widget:(id)widget requestsLaunchOfURL:(id)url;
-- (void)widget:(id)widget requestsPresentationOfViewController:(id)viewController presentationStyle:(int)style context:(id)context completion:(id)completion;
 - (BOOL)widgetShouldAttemptReconnectionAfterUnanticipatedDisconnection:(id)widget;
 @end
 

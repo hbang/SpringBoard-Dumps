@@ -5,11 +5,14 @@
  * Source: (null)
  */
 
-#import "NSObject.h"
+#import "FBSceneManagerObserver.h"
 
 
-@protocol FBSceneManagerDelegate <NSObject>
-- (void)sceneManager:(id)manager deviceOrientationChangedTo:(int)to;
+@protocol FBSceneManagerDelegate <FBSceneManagerObserver>
+@optional
+- (id)sceneManager:(id)manager createDefaultTransitionContextForScene:(id)scene;
+- (int)sceneManager:(id)manager hostingPolicyForScene:(id)scene;
+@required
 - (void)sceneManager:(id)manager scene:(id)scene didReceiveActions:(id)actions;
 - (void)sceneManager:(id)manager scene:(id)scene didUpdateClientSettingsWithDiff:(id)diff oldClientSettings:(id)settings transitionContext:(id)context;
 @end

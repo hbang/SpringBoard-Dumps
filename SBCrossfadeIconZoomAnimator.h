@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBScaleIconZoomAnimator.h"
 #import "SpringBoard-Structs.h"
+#import "SBScaleIconZoomAnimator.h"
 
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (void)_assertCrossfadeViewSizeIfNecessary;
 - (void)_cleanupAnimation;
+- (void)_cleanupZoom;
 - (void)_delayedForRotation;
 - (unsigned)_numberOfSignificantAnimations;
 - (void)_prepareAnimation;

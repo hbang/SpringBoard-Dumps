@@ -12,5 +12,6 @@
 - (void)searchGesture:(id)gesture changedPercentComplete:(float)complete;
 @optional
 - (void)searchGesture:(id)gesture completedShowing:(BOOL)showing;
+- (void)searchGesture:(id)gesture resetAnimated:(BOOL)animated;
 @end
 

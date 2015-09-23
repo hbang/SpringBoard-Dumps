@@ -5,20 +5,19 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
 @interface SBTodayTableFooterView : XXUnknownSuperclass {
-	SBNewWidgetsLabel *_newWidgetsLabel;
+	SBNewWidgetsButton *_newWidgetsButton;
 	SBNotificationVibrantButton *_button;
 	SBNotificationSeparatorView *_separatorView;
 	SBAttributionWrapperViewController *_attributionViewController;
 	int _layoutMode;
 }
 @property(retain, nonatomic) SBAttributionWrapperViewController *attributionViewController;
-@property(readonly, assign, nonatomic) UIControl *button;
 @property(assign, nonatomic) int layoutMode;
 - (id)initWithFrame:(CGRect)frame;
 - (float)_attributionOriginY;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateAttributionFrame;
 - (void)_updateForContentCategorySizeDidChange;
 - (void)_updateForLockStateDidChange:(id)_updateForLockState;
+- (void)addTarget:(id)target action:(SEL)action;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)setVisibleWidgetsIDs:(id)ids;

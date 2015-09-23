@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 @property(assign, nonatomic) BOOL showsInLockScreen;
 @property(assign, nonatomic) BOOL showsMessagePreview;
-@property(readonly, assign, nonatomic) NSString *subsectionID;
+@property(readonly, copy, nonatomic) NSString *subsectionID;
 - (id)initWithBulletinListSection:(id)bulletinListSection subsectionID:(id)anId;
 - (void)dealloc;
 @end

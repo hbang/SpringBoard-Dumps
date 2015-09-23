@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 	SBUISound *_sound;
 	unsigned _feed;
 }
-- (id)initWithBulletin:(id)bulletin feed:(unsigned)feed;
+- (id)initWithBulletin:(id)bulletin feed:(unsigned)feed configuration:(id)configuration;
+- (id)initWithConfiguration:(id)configuration;
 - (id)_bbDismissAction;
 - (id)_bbDismissAppearance;
 - (BOOL)_supportsSubActions;

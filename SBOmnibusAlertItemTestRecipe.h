@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBThermalWarningAlertItemDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBTestRecipe.h"
-#import "SBThermalWarningAlertItemDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
 + (id)title;
-- (id)_anyIcon;
+- (id)_anyAppIcon;
+- (id)_anyLeafIcon;
 - (id)_anySUDescriptor;
+- (id)_anyUserInstalledAppIcon;
 - (void)_dismissCurrentItem;
 - (id)_mapsApp;
 - (id)_nextAlertItemToTest;

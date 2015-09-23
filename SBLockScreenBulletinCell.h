@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBLockScreenNotificationCell.h"
 #import "SpringBoard-Structs.h"
+#import "SBLockScreenNotificationCell.h"
 
 
 __attribute__((visibility("hidden")))

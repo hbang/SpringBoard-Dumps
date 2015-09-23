@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
 	SBUISound *_sound;
 	NSDate *_originDate;
 }
-- (id)initWithAlertItem:(id)alertItem;
+- (id)initWithAlertItem:(id)alertItem configuration:(id)configuration;
+- (id)initWithConfiguration:(id)configuration;
 - (id)action;
 - (id)category;
 - (id)categoryImage;

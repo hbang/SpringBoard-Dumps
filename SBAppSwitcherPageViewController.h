@@ -5,18 +5,18 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
 #import "UIScrollViewDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBAppSwitcherScrollingViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherPageViewController : XXUnknownSuperclass <UIScrollViewDelegate> {
-	NSMutableArray *_displayLayouts;
+	NSMutableArray *_displayItems;
 	NSMutableDictionary *_items;
 	BOOL _itemsListIsValid;
-	SBAppSwitcherScrollView *_scrollView;
+	SBAppSwitcherLegacyScrollView *_scrollView;
 	BOOL _dragMaster;
 	BOOL _preventScroll;
 	UITapGestureRecognizer *_tapGesture;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBAppSwitcherScrollingViewDelegate> delegate;
 @property(readonly, copy) NSString *description;
-@property(copy, nonatomic) NSArray *displayLayouts;
+@property(copy, nonatomic) NSArray *displayItems;
 @property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) float normalizedOffset;
 @property(readonly, assign) Class superclass;
@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (float)_distanceBetweenCenters;
 - (void)_enableScrolling;
 - (void)_fireAndCleanupScrollCompleteBlockIfNecessary;
-- (void)_generateContentViewForDisplayLayoutIfNecessary:(id)displayLayoutIfNecessary;
+- (void)_generateContentViewForDisplayItemIfNecessary:(id)displayItemIfNecessary;
 - (float)_halfWidth;
 - (void)_handleStopGesture:(id)gesture;
 - (void)_handleTapGesture:(id)gesture;
@@ -53,7 +53,6 @@ __attribute__((visibility("hidden")))
 - (void)_layoutItemContainer:(id)container;
 - (float)_maxXOffset;
 - (CGRect)_naturalScrollViewFrame;
-- (void)_notifyDelegateOfKillOffsetChange;
 - (id)_safeDelegate;
 - (void)_setContentOffset:(CGPoint)offset animated:(BOOL)animated;
 - (void)_setScrollingDoneBlock:(id)block;
@@ -66,14 +65,14 @@ __attribute__((visibility("hidden")))
 - (void)handleReachabilityModeActivated;
 - (void)handleReachabilityModeDeactivated;
 - (void)insertItem:(id)item atIndex:(unsigned)index duration:(double)duration updateScrollPosition:(BOOL)position completion:(id)completion;
-- (BOOL)isDisplayLayoutVisible:(id)visible;
+- (BOOL)isDisplayItemVisible:(id)visible;
 - (BOOL)isScrolling;
 - (void)loadView;
-- (id)pageViewForDisplayLayout:(id)displayLayout;
+- (id)pageViewForDisplayItem:(id)displayItem;
 - (float)preferredHeightForOrientation:(int)orientation;
 - (void)reloadInOrientation:(int)orientation;
 - (void)removeItem:(id)item duration:(double)duration updateScrollPosition:(BOOL)position completion:(id)completion;
-- (void)replaceItemAtIndex:(unsigned)index withNewItem:(id)newItem duration:(double)duration;
+- (void)replaceItemAtIndex:(unsigned)index withNewItem:(id)newItem duration:(double)duration completion:(id)completion;
 - (void)scrollViewDidEndDecelerating:(id)scrollView;
 - (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidEndScrollingAnimation:(id)scrollView;
@@ -83,9 +82,6 @@ __attribute__((visibility("hidden")))
 - (void)setOffsetToIndex:(unsigned)index animated:(BOOL)animated;
 - (void)setOffsetToIndex:(unsigned)index animated:(BOOL)animated completion:(id)completion;
 - (unsigned)settledIndexForNormalizedOffset:(inout float *)normalizedOffset andXVelocity:(float)velocity;
-- (BOOL)shouldAutomaticallyForwardRotationMethods;
-- (BOOL)shouldAutorotate;
-- (unsigned)supportedInterfaceOrientations;
 - (void)switcherWasDismissed:(BOOL)dismissed;
 - (NSRange)visibleItems;
 @end

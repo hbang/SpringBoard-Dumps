@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isCritical;
 - (id)lockScreenActionContextWithContext:(id)context;
 - (id)message;
+- (BOOL)overridesPocketMode;
 - (BOOL)overridesQuietMode;
 - (id)pullDownNotification;
 - (id)seedBulletin;

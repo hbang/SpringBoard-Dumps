@@ -19,10 +19,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (id)title;
 - (id)_accessibilityVoiceOverTouchAlert;
-- (id)_accessibilityZoomBuddyAlert;
-- (id)_anyIcon;
 - (id)_anySUDescriptor;
-- (id)_assistantEducationAlert;
 - (id)_chatCMSBAlert;
 - (id)_chatCarrierSMSAlert;
 - (id)_chatMMSDelayedDownloadAlert;

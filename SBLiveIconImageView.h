@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SBControlCenterObserver.h"
-#import "SpringBoard-Structs.h"
 #import "SBIconImageView.h"
+#import "SpringBoard-Structs.h"
+#import "SBControlCenterObserver.h"
 
 
 __attribute__((visibility("hidden")))
@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)_removePauseCause:(unsigned)cause;
 - (void)_significantAnimationDidEnd:(id)_significantAnimation;
 - (void)_significantAnimationWillBegin:(id)_significantAnimation;
+- (void)_spotlightWillAppear:(id)_spotlight;
+- (void)_spotlightWillDismiss:(id)_spotlight;
 - (id)_stringForPauseCause:(unsigned)pauseCause;
 - (void)_willBeginScrolling:(id)scrolling;
 - (void)controlCenterDidDismiss;

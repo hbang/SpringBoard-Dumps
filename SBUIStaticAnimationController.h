@@ -13,17 +13,17 @@ __attribute__((visibility("hidden")))
 	UIView *_staticAppView;
 	UIView *_hostView;
 }
-@property(readonly, retain, nonatomic) SBApplication *app;
-- (id)initWithApp:(id)app;
-- (id)_animationProgressDependency;
+@property(readonly, retain, nonatomic) SBWorkspaceApplication *app;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
+- (id)_animationProgressDependencies;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_hideAppHostView;
-- (void)_prepareAnimation;
 - (void)_setupStartDependencies;
 - (BOOL)_shouldDismissBanner;
 - (void)_startAnimation;
 - (BOOL)_willAnimate;
+- (void)_willBeginWaitingForStartDependencies;
 - (void)dealloc;
 @end
 

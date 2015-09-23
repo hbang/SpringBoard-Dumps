@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "_SBIconWallpaperColorClient.h"
 #import "SpringBoard-Structs.h"
+#import "_SBIconWallpaperColorClient.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBIconBlurryBackgroundViewObserver;
 

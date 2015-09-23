@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 @interface SBIconAnimationContext : XXUnknownSuperclass {
 	float _fraction;
 	id _completion;
+	NSString *_identifier;
 	double _delay;
 }
 @property(copy, nonatomic) id completion;
 @property(assign, nonatomic) double delay;
 @property(assign, nonatomic) float fraction;
+@property(readonly, copy, nonatomic) NSString *identifier;
 - (id)initWithNotificationIdentifier:(id)notificationIdentifier;
 - (void)dealloc;
 - (void)invalidate;

@@ -5,28 +5,35 @@
  * Source: (null)
  */
 
+#import "SBUIAnimationZoomUpDown.h"
 #import "SBUIMainScreenAnimationController.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIAnimationZoomUpApp : SBUIMainScreenAnimationController {
+@interface SBUIAnimationZoomUpApp : SBUIMainScreenAnimationController <SBUIAnimationZoomUpDown> {
+	BSAnimationSettings *_animationSettings;
 	UIView *_contextHostView;
 	BOOL _zoomHostView;
 	FBWindowContextHostManager *_activatingContextHostManager;
 	SBAppStatusBarTransitionInfo *_appStatusBarTransitionInfo;
 	int _animationTransition;
+	SBSceneLayoutElementAnimationWrapperView *_placeholderView;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	BOOL _finishedZooming;
 	BOOL _finishedActivating;
 	BOOL _finishedCrossfadingToHostView;
 	BOOL _animationFinished;
-	BOOL _fromNC;
-	BOOL _fromCC;
-	BOOL _fromAssistant;
 	UIView *_viewToAnimate;
 }
+@property(copy, nonatomic) BSAnimationSettings *animationSettings;
 @property(assign, nonatomic) int animationTransition;
-- (id)initWithActivatingApp:(id)activatingApp;
-- (id)_animationProgressDependency;
+@property(readonly, retain, nonatomic) SBAppStatusBarTransitionInfo *appStatusBarTransitionInfo;
+@property(readonly, retain, nonatomic) BSUIAnimationFactory *crossfadeAnimationFactory;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
+- (id)_animationProgressDependencies;
 - (void)_applicationDependencyStateChanged;
 - (void)_cleanupAnimation;
 - (void)_maybeReportAnimationFinished;
@@ -37,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldWaitForSiriDismissBeforeZooming;
 - (void)_startAnimation;
 - (BOOL)_waitsForApplicationActivationIfNecessary;
-- (void)animateFakeStatusBarWithParameters:(id)parameters;
+- (void)_willSetupStartDependencies;
 - (void)animateZoomWithCompletion:(id)completion;
 - (double)animationDelay;
 - (double)animationDuration;
@@ -47,5 +54,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isReasonableMomentToInterrupt;
 - (void)noteDependencyDidInvalidate;
 - (void)prepareZoom;
+- (void)setAnimatableWrapperView:(id)view;
 @end
 

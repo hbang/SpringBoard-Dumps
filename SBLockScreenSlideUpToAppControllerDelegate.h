@@ -14,6 +14,7 @@
 - (BOOL)controllerShouldUseAdditionalTopPadding:(id)controller;
 - (id)grabberViewInLockScreenView:(id)lockScreenView forController:(id)controller;
 - (BOOL)isAnotherSlideUpControllerBlockingController:(id)controller;
+- (BOOL)lockScreenIsActive;
 - (void)passcodeViewDidBecomeActive:(BOOL)passcodeView forController:(id)controller;
 - (void)prepareForSlideUpAppLaunchAnimated:(BOOL)slideUpAppLaunchAnimated;
 - (int)presentingControllerIdentifierForController:(id)controller;

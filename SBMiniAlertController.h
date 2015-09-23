@@ -10,20 +10,21 @@
 
 __attribute__((visibility("hidden")))
 @interface SBMiniAlertController : XXUnknownSuperclass {
-	SBApplication *_displayShowingAnAlert;
+	NSMutableDictionary *_identifierToPresenters;
 	unsigned _sbMiniAlertVisible : 1;
-	UIView *_hiddenAlertWindow;
 }
 + (id)sharedInstance;
 - (id)init;
-- (void)_hideMiniAlertsForApp:(id)app;
-- (void)_setAlertVisibleNotifyState:(BOOL)state;
-- (void)_setDisplayShowingAnAlert:(id)alert;
+- (void)_addApplicationShowingAlert:(id)alert;
+- (BOOL)_applicationIsShowingAlert:(id)alert;
+- (void)_hideMiniAlertsForApp:(id)app withTransition:(id)transition;
+- (void)_removeApplicationShowingAlert:(id)alert;
+- (void)_setAlertVisibleNotifyState:(BOOL)state withFence:(BOOL)fence;
+- (void)_showApplicationMiniAlertsIfNeededAndFence:(BOOL)fence;
 - (BOOL)canShowAlerts;
 - (void)deactivateAlertItemsForDisplay:(id)display;
 - (void)dealloc;
 - (void)displayDidDismissMiniAlert:(id)display;
-- (id)displayShowingAnAlert;
 - (void)displayWillDismissMiniAlert:(id)display;
 - (void)displayWillShowMiniAlert:(id)display;
 - (void)hideApplicationMiniAlerts;

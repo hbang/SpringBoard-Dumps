@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SBControlCenterObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBAlertManagerObserver.h"
-#import "SBControlCenterObserver.h"
 
 
 __attribute__((visibility("hidden")))

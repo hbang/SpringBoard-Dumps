@@ -5,72 +5,76 @@
  * Source: (null)
  */
 
-#import "BSTransactionObserver.h"
+#import "SBUIAnimationControllerObserver.h"
+#import "SBUIAnimationStepping.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol BSLogging;
+@protocol SBUIAnimationControllerTransitionContextProvider;
 
 __attribute__((visibility("hidden")))
-@interface SBUIAnimationController : XXUnknownSuperclass <BSTransactionObserver> {
+@interface SBUIAnimationController : XXUnknownSuperclass <SBUIAnimationControllerObserver, SBUIAnimationStepping> {
 	UIWindow *_transitionWindow;
 	UIView *_transitionContainer;
-	SBApplication *_activatingApp;
-	SBApplication *_deactivatingApp;
-	SBDisplaySettings *_activatingAppSettings;
-	SBDisplaySettings *_deactivatingAppSettings;
 	id _commitBlock;
 	int _animationState;
-	BOOL _cancelOnNextSuspendIfNecessary;
 	BOOL _didPostBeginAnimationNotification;
 	BOOL _didNotifyObserversOfCompletion;
 	BOOL _needsCATransactionActivate;
-	NSHashTable *_observers;
+	id<SBUIAnimationControllerTransitionContextProvider> _transitionContextProvider;
 	NSMutableArray *_startDependencies;
-	BOOL _preparing;
-	SBApplication *_progressDependency;
-	BSTransaction *_waitForActivationDependency;
-	id<BSLogging> _debugLogger;
+	BOOL _settingUpInitialStartDependencies;
+	NSSet *_progressDependencies;
+	NSSet *_waitForActivationDependencies;
+	SBAnimationStepper *_stepper;
 }
-@property(retain, nonatomic) SBApplication *activatingApp;
-@property(retain, nonatomic) SBDisplaySettings *activatingAppSettings;
-@property(assign, nonatomic) BOOL cancelOnNextSuspendIfNecessary;
+@property(readonly, retain, nonatomic) SBWorkspaceApplication *activatingApp;
+@property(readonly, copy, nonatomic) NSSet *activatingApps;
 @property(copy, nonatomic) id commitBlock;
 @property(readonly, retain, nonatomic) UIView *containerView;
-@property(retain, nonatomic) SBApplication *deactivatingApp;
-@property(retain, nonatomic) SBDisplaySettings *deactivatingAppSettings;
+@property(readonly, retain, nonatomic) SBWorkspaceApplication *deactivatingApp;
+@property(readonly, copy, nonatomic) NSSet *deactivatingApps;
 @property(readonly, copy) NSString *debugDescription;
-@property(retain, nonatomic) id<BSLogging> debugLogger;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) BOOL needsCATransactionActivate;
+@property(assign, nonatomic) float stepPercentage;
+@property(readonly, assign, nonatomic, getter=isStepped) BOOL stepped;
 @property(readonly, assign) Class superclass;
+@property(retain, nonatomic) id<SBUIAnimationControllerTransitionContextProvider> transitionContextProvider;
 - (id)init;
-- (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (BOOL)__animationShouldStart;
 - (void)__cancelAnimation;
 - (void)__cleanupAnimation;
 - (void)__evaluateStartDependencies;
-- (id)__newWaitForAppActivationTransaction;
 - (void)__noteAnimationDidTerminateWithSuccess:(BOOL)__noteAnimation;
 - (void)__startAnimation;
+- (id)__waitForAppActivationTransactionForApplication:(id)application;
 - (BOOL)__wantsInitialProgressStateChange;
+- (void)_addDebugLogger:(id)logger;
 - (void)_addStartTransactionDependency:(id)dependency;
 - (id)_animationIdentifier;
-- (id)_animationProgressDependency;
+- (id)_animationProgressDependencies;
 - (int)_animationState;
 - (void)_applicationActivationStateDidChange;
 - (void)_applicationDependencyStateChanged;
+- (void)_begin;
+- (BOOL)_canBeInterrupted;
 - (void)_cancelAnimation;
 - (void)_cleanupAnimation;
-- (void)_enumerateObserversSafely:(id)safely;
+- (void)_didComplete;
 - (id)_getTransitionWindow;
+- (BOOL)_hasAnimationStartDependency;
 - (BOOL)_isNullAnimation;
 - (void)_noteAnimationDidCommit:(BOOL)_noteAnimation withDuration:(double)duration afterDelay:(double)delay;
+- (void)_noteAnimationDidCommit:(BOOL)_noteAnimation withSettings:(id)settings;
 - (void)_noteAnimationDidFail;
 - (void)_noteAnimationDidFinish;
 - (void)_noteAnimationDidRevealApplication;
-- (void)_notifyObserversOfCompletion;
+- (void)_notifyObserversOfAnimationCompletion;
 - (void)_prepareAnimation;
+- (void)_prependStartTransactionDependency:(id)dependency;
+- (void)_recursivelyEnumerateStartAnimationDependenciesWithBlock:(id)block;
 - (void)_removeStartTransactionDependency:(id)dependency;
 - (void)_setAnimationState:(int)state;
 - (void)_setHidden:(BOOL)hidden;
@@ -81,14 +85,20 @@ __attribute__((visibility("hidden")))
 - (id)_startTransactionDependencies;
 - (void)_startTransactionDependency:(id)dependency didComplete:(BOOL)complete;
 - (void)_stopMonitoringStartDependency:(id)dependency;
+- (id)_viewsForAnimationStepping;
 - (BOOL)_waitsForApplicationActivationIfNecessary;
 - (BOOL)_willAnimate;
+- (void)_willBeginWaitingForStartDependencies;
+- (void)_willComplete;
+- (void)_willSetupStartDependencies;
 - (void)addObserver:(id)observer;
+- (void)animateToStepPercentage:(float)stepPercentage;
 - (BOOL)animating;
-- (void)beginAnimation;
 - (void)dealloc;
-- (void)endAnimation;
-- (BOOL)isComplete;
+- (void)enableSteppingWithAnimationSettings:(id)animationSettings;
+- (void)finishSteppingBackwardToStart;
+- (void)finishSteppingForwardToEnd;
+- (BOOL)isFinishedAnimating;
 - (BOOL)isReasonableMomentToInterrupt;
 - (void)removeObserver:(id)observer;
 - (void)transactionDidComplete:(id)transaction;

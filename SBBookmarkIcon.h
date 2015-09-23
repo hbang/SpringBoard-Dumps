@@ -5,14 +5,15 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBLeafIcon.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBBookmarkIcon : SBLeafIcon {
 	SBBookmark *_bookmark;
 }
+@property(readonly, retain, nonatomic) SBBookmark *bookmark;
 @property(readonly, retain, nonatomic) NSURL *launchURL;
 @property(readonly, retain, nonatomic) UIWebClip *webClip;
 - (id)initWithBookmark:(id)bookmark;

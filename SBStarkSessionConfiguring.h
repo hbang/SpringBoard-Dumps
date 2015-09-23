@@ -9,11 +9,18 @@
 
 
 @protocol SBStarkSessionConfiguring <NSObject>
+@property(readonly, assign, nonatomic, getter=isOEMIconVisible) BOOL OEMIconVisible;
+@property(readonly, assign, nonatomic, getter=isAmbientBrightnessNighttime) BOOL ambientBrightnessNighttime;
+@property(readonly, assign, nonatomic, getter=isConnectedWirelessly) BOOL connectedWirelessly;
 @property(readonly, retain, nonatomic) AVExternalDevice *device;
+@property(readonly, retain, nonatomic) FBSDisplay *display;
 @property(readonly, assign, nonatomic, getter=isGeoSupported) BOOL geoSupported;
 @property(readonly, assign, nonatomic) unsigned interactionAffordances;
+@property(readonly, assign, nonatomic, getter=isKnownVehicle) BOOL knownVehicle;
 @property(readonly, assign, nonatomic) int layoutJustification;
+@property(readonly, assign, nonatomic, getter=isPairedVehicle) BOOL pairedVehicle;
 @property(readonly, retain, nonatomic) UIScreen *screen;
+@property(readonly, assign, nonatomic) float screenScale;
 @property(readonly, copy, nonatomic) NSSet *sessionProtocols;
 @property(readonly, copy, nonatomic) UITraitCollection *traitCollection;
 @end

@@ -5,20 +5,23 @@
  * Source: (null)
  */
 
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "UICollectionViewDataSource.h"
 #import "UICollectionViewDelegate.h"
+#import "SpringBoard-Structs.h"
 #import "SBCollectionViewCellDelegate.h"
 #import "SBStarkBannerTargetObserver.h"
 #import "UIGestureRecognizerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SpringBoard-Structs.h"
 
-@protocol SBStarkNotificationViewControllerDelegate;
+@protocol SBStarkSessionConfiguring, SBStarkNotificationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkNotificationViewController : XXUnknownSuperclass <UICollectionViewDataSource, UICollectionViewDelegate, SBCollectionViewCellDelegate, SBStarkBannerTargetObserver, UIGestureRecognizerDelegate> {
 	id<SBStarkNotificationViewControllerDelegate> _delegate;
+	id<SBStarkSessionConfiguring> _configuration;
+	SBStarkSystemGestureManager *_systemGestureManager;
 	BOOL _touchCapable;
+	BOOL _dismissingForSystemGesture;
 	UITapGestureRecognizer *_backGestureRecognizer;
 	UITapGestureRecognizer *_selectGestureRecognizer;
 	SBStarkBannerTarget *_bannerTarget;
@@ -30,6 +33,7 @@ __attribute__((visibility("hidden")))
 	int _state;
 	SBStarkNotificationLayout *_notificationsLayout;
 	SBCarBannerNotificationView *_notificationsView;
+	UITapGestureRecognizer *_cancelNotificationTapGestureRecognizer;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBStarkNotificationViewControllerDelegate> delegate;
@@ -37,11 +41,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) int state;
 @property(readonly, assign) Class superclass;
-- (id)initWithInteractionAffordances:(unsigned)interactionAffordances;
+- (id)initWithConfiguration:(id)configuration systemGestureManager:(id)manager;
 - (void)_performBackGesture:(id)gesture;
+- (void)_performCancelNotificationTapGesture:(id)gesture;
 - (void)_performSelectGesture:(id)gesture;
 - (void)_setState:(int)state;
 - (void)_showTestNotificationWithTitle:(id)title;
+- (void)_wheelChangedWithEvent:(id)event;
 - (id)collectionView:(id)view cellForItemAtIndexPath:(id)indexPath;
 - (void)collectionView:(id)view didEndDisplayingCell:(id)cell forItemAtIndexPath:(id)indexPath;
 - (void)collectionView:(id)view didSelectItemAtIndexPath:(id)indexPath;
@@ -52,6 +58,8 @@ __attribute__((visibility("hidden")))
 - (void)collectionView:(id)view willDisplayCell:(id)cell forItemAtIndexPath:(id)indexPath;
 - (void)dealloc;
 - (void)dismissCurrent;
+- (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
+- (BOOL)handleMenuEvent;
 - (BOOL)isSuspended;
 - (void)loadView;
 - (int)numberOfSectionsInCollectionView:(id)collectionView;

@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "SBUIBannerView.h"
 #import "SBVibrantBannerView.h"
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 	UIView *_pullDownContainerView;
 	UIView *_secondaryContentView;
 	SBNotificationSeparatorView *_separatorView;
+	UIView *_highlightView;
 	SBUIBannerContext *_context;
 	SBBannerViewCallbackManager *_callbacks;
 	SBBannerViewCallbackManager *_wrapperCallbacks;
@@ -31,11 +32,12 @@ __attribute__((visibility("hidden")))
 	BOOL _hidesGrabberOnPullDown;
 	float _minimumHeight;
 	struct {
-		unsigned deactivateDismissed : 1;
-		unsigned newWindow : 1;
+		unsigned scrollsToTop : 1;
+		unsigned isLayoutValid : 1;
 	} _contentViewFlags;
 	BOOL _grabberVisible;
 	BOOL _separatorVisible;
+	BOOL _highlighted;
 	float _maximumHeight;
 	float _pullDownViewHeight;
 	float _pullDownBottomOverhangHeight;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic, getter=isDismissing) BOOL dismissing;
 @property(assign, nonatomic) BOOL grabberVisible;
 @property(readonly, assign) unsigned hash;
+@property(assign, nonatomic) BOOL highlighted;
 @property(assign, nonatomic) float maximumHeight;
 @property(assign, nonatomic) float pullDownBottomOverhangHeight;
 @property(retain, nonatomic) UIView *pullDownView;
@@ -60,6 +63,7 @@ __attribute__((visibility("hidden")))
 + (id)_defaultGrabberColor;
 + (id)defaultColorForElement:(int)element;
 - (id)initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame backdropStyle:(int)style;
 - (BOOL)_canPullDown;
 - (CGRect)_centeredBounds;
 - (CGRect)_centeredBoundsForRect:(CGRect)rect;
@@ -74,10 +78,12 @@ __attribute__((visibility("hidden")))
 - (void)_layoutGrabber;
 - (void)_layoutPullDownContainerView;
 - (void)_layoutSeparatorView;
+- (id)_lazyHighlightView;
 - (id)_newGrabberView:(BOOL)view;
 - (float)_pullDownContentAlpha;
 - (void)_setGrabberColor:(id)color;
 - (void)_updateContentAlpha;
+- (void)_updateHighlightView;
 - (id)_vibrantContentView;
 - (id)bannerContext;
 - (id)colorForElement:(int)element;
@@ -91,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)noteWillAppear;
 - (void)noteWillDismissWithReason:(int)note;
 - (float)percentPulledDown;
+- (void)replacePullDownViewWithView:(id)view animated:(BOOL)animated;
 - (void)setBannerContext:(id)context withReplaceReason:(int)replaceReason;
 - (void)setColor:(id)color forElement:(int)element;
 - (BOOL)shouldBorrowScreen;

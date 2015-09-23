@@ -5,14 +5,15 @@
  * Source: (null)
  */
 
-#import "SBWindow.h"
 #import "SpringBoard-Structs.h"
+#import "SBWindow.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBBulletinWindow : SBWindow {
 }
 + (BOOL)_isSecure;
++ (BOOL)sb_autorotates;
 - (BOOL)_canBecomeKeyWindow;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
 @end

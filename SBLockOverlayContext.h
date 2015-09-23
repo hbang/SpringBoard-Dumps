@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) id activationBlock;
 @property(copy, nonatomic) id deactivationBlock;
 @property(readonly, assign, nonatomic) unsigned priority;
-@property(readonly, assign, nonatomic) SBLockOverlayViewController *viewController;
+@property(readonly, retain, nonatomic) SBLockOverlayViewController *viewController;
 - (id)initWithOverlayViewController:(id)overlayViewController priority:(unsigned)priority;
 - (void)dealloc;
 @end

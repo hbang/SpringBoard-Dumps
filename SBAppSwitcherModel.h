@@ -10,22 +10,26 @@
 
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherModel : XXUnknownSuperclass {
-	NSMutableArray *_recentDisplayLayouts;
+	NSMutableArray *_recentDisplayItems;
 	NSTimer *_saveTimer;
+	NSMutableDictionary *_displayItemsToRoles;
 }
 + (id)sharedInstance;
 - (id)init;
+- (void)_appActivationStateDidChange:(id)_appActivationState;
+- (id)_displayItemRolesFromPrefsForLoadedDisplayItems:(id)loadedDisplayItems;
 - (void)_invalidateSaveTimer;
+- (void)_pruneRoles;
 - (id)_recentsFromLegacyPrefs;
 - (id)_recentsFromPrefs;
 - (void)_saveRecents;
 - (void)_saveRecentsDelayed;
-- (void)_verifyAppList;
-- (void)addToFront:(id)front;
+- (void)_warmUpIconForDisplayItem:(id)displayItem;
+- (void)_warmUpRecentIcons;
+- (void)addToFront:(id)front role:(int)role;
 - (void)dealloc;
+- (id)displayItemsForAppsOfRoles:(id)roles;
+- (id)mainSwitcherDisplayItems;
 - (void)remove:(id)remove;
-- (void)removeDisplayItem:(id)item;
-- (id)snapshot;
-- (id)snapshotOfFlattenedArrayOfAppIdentifiersWhichIsOnlyTemporary;
 @end
 

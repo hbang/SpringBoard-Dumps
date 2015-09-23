@@ -5,34 +5,36 @@
  * Source: (null)
  */
 
+#import "BSDescriptionProviding.h"
+#import "FBSceneLayerManagerObserver.h"
 #import "SBAlertDelegate.h"
-#import "FBWindowContextManagerDelegate.h"
+#import "SBAlertWindowDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "FBWindowContextManagerObserver.h"
-#import "SpringBoard-Structs.h"
 
 @protocol SBAlertManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SBAlertManager : XXUnknownSuperclass <SBAlertDelegate, FBWindowContextManagerDelegate, FBWindowContextManagerObserver> {
+@interface SBAlertManager : XXUnknownSuperclass <SBAlertDelegate, SBAlertWindowDelegate, FBSceneLayerManagerObserver, BSDescriptionProviding> {
 	UIScreen *_screen;
-	CGRect _windowFrame;
-	FBScene *_alertScene;
+	FBScene *_alertServerScene;
+	NSSet *_alertClientSceneOcclusions;
+	FBSScene *_alertClientScene;
 	SBAlertWindow *_alertWindow;
 	SBAlertWindow *_deferredAlertWindow;
 	NSMutableArray *_alerts;
 	NSMapTable *_observers;
 	NSMutableSet *_removalPendingAlerts;
-	NSMapTable *_alertToAccessoryWrappersMap;
 	BOOL _deactivatingAllAlerts;
 	id<SBAlertManagerDelegate> _delegate;
-	SBDisableActiveInterfaceOrientationChangeAssertion *_orientationLockAssertion;
 	struct {
 		unsigned deactivateDismissed : 1;
 		unsigned newWindow : 1;
+		unsigned defaultShouldAutorotate : 1;
+		unsigned defaultPresentationOrientation : 1;
+		unsigned defaultSupportedOrientations : 1;
 	} _delegateFlags;
 }
-@property(readonly, assign, nonatomic) SBAlertWindow *alertWindow;
+@property(readonly, retain, nonatomic) SBAlertWindow *alertWindow;
 @property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBAlertManagerDelegate> delegate;
 @property(readonly, copy) NSString *description;
@@ -40,31 +42,25 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 - (id)init;
 - (id)initWithScreen:(id)screen delegate:(id)delegate;
-- (id)_accessoryWrapperForAlert:(id)alert withWindow:(id)window hostRequester:(id)requester;
 - (void)_activate:(id)activate;
-- (void)_assistantVisibilityDidChange:(id)_assistantVisibility;
-- (void)_controlCenterDidDeactivate:(id)_controlCenter;
-- (id)_createAlertWindowForAlert:(id)alert;
+- (id)_alertAtIndex:(unsigned)index;
+- (unsigned)_alertCount;
+- (BOOL)_canAutorotate;
+- (void)_createAlertWindowIfNecessaryForAlert:(id)alert;
 - (void)_deactivate:(id)deactivate;
-- (void)_disablePortraitOrientationLock;
-- (void)_disablePortraitOrientationLockIfPossibleForAlert:(id)alert;
-- (void)_enablePortraitOrientationLock;
-- (void)_hideHostedAccessoryViewsForAlert:(id)alert;
-- (void)_hostAccessoryWindowsForActivatingAlert:(id)activatingAlert;
-- (id)_hostedAccessoryViewsForAlert:(id)alert;
 - (void)_makeAlertWindowOpaque:(BOOL)opaque;
-- (BOOL)_needsPortraitOrientationLockForAlert:(id)alert;
-- (void)_notificationCenterDidDeactivate:(id)_notificationCenter;
+- (void)_noteAlertWillDismiss:(id)_noteAlert;
+- (void)_noteFinishedWithAlert:(id)alert atIndex:(unsigned)index;
+- (void)_noteWillDisplayAlert:(id)_note;
 - (void)_removeFromView:(id)view oldAlertIndex:(unsigned)index;
-- (void)_removeHostedAccessoryViewsForRequester:(id)requester;
 - (void)_resetAlertWindowOpacity;
-- (void)_stopHostingAccessoryWindowsForDeactivatingAlert:(id)deactivatingAlert;
-- (void)_stopHostingAccessoryWindowsForWrapper:(id)wrapper;
 - (void)activate:(id)activate;
 - (id)activeAlert;
 - (void)addObserver:(id)observer;
+- (void)alert:(id)alert didChangeStatusBarVisibility:(BOOL)visibility;
 - (void)alert:(id)alert requestsBackgroundStyleChangeWithAnimationFactory:(id)animationFactory;
-- (BOOL)alertCanAutorotateToInterfaceOrientation:(int)interfaceOrientation;
+- (void)alertDidChangeOccluding:(id)alert;
+- (void)alertDidChangeOrientationEventsEnabled:(id)alert;
 - (void)alertIsReadyToBeDeactivated:(id)beDeactivated;
 - (void)alertIsReadyToBeRemovedFromView:(id)view;
 - (void)alertWantsToForceWallpaperTunnelUpdate:(id)forceWallpaperTunnelUpdate;
@@ -74,17 +70,26 @@ __attribute__((visibility("hidden")))
 - (void)applicationWillAnimateActivation;
 - (BOOL)containsAlert:(id)alert;
 - (id)contextHostManager;
-- (void)deactivate:(id)deactivate;
+- (BOOL)deactivate:(id)deactivate;
 - (void)deactivateAlertsAfterLaunch;
 - (void)deactivateAll;
 - (void)dealloc;
+- (int)defaultInterfaceOrientationForPresentationOfAlert:(id)alert;
+- (int)defaultInterfaceOrientationForPresentationOfAlertWindow:(id)alertWindow;
+- (BOOL)defaultShouldAutorotateForAlert:(id)aDefault;
+- (BOOL)defaultShouldAutorotateForAlertWindow:(id)aDefault;
+- (unsigned)defaultSupportedInterfaceOrientationsForAlert:(id)alert;
+- (unsigned)defaultSupportedInterfaceOrientationsForAlertWindow:(id)alertWindow;
+- (id)descriptionBuilderWithMultilinePrefix:(id)multilinePrefix;
+- (id)descriptionWithMultilinePrefix:(id)multilinePrefix;
 - (BOOL)hasStackedAlerts;
 - (void)removeObserver:(id)observer;
+- (void)sceneLayerManagerDidStopTrackingLayers:(id)sceneLayerManager;
+- (void)sceneLayerManagerWillStartTrackingLayers:(id)sceneLayerManager;
 - (id)screen;
 - (void)setAlertsShouldDeactivateAfterLaunch;
 - (id)stackedAlertsIncludingActiveAlert:(BOOL)alert;
-- (BOOL)windowContextManager:(id)manager shouldAddContext:(id)context;
-- (void)windowContextManagerDidStopTrackingContexts:(id)windowContextManager;
-- (void)windowContextManagerWillStartTrackingContexts:(id)windowContextManager;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 @end
 

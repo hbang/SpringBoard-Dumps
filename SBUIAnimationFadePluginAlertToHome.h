@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 	SBAlert *_alert;
 	UIView *_viewToAnimate;
 }
-- (id)initWithDeactivatingAlert:(id)deactivatingAlert alertManager:(id)manager;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_cleanupAnimation;
 - (void)_prepareAnimation;
 - (void)_startAnimation;

@@ -9,20 +9,22 @@
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBUIBannerSource.h"
 
-@protocol SBUIBannerTarget;
+@protocol SBStarkSessionConfiguring, SBUIBannerTarget;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBannerSource : XXUnknownSuperclass <SBUIBannerSource, SBUIBannerTargetManagerObserver> {
+	id<SBStarkSessionConfiguring> _configuration;
 	id _allowedTargetIdentifier;
 	id<SBUIBannerTarget> _target;
 	NSMutableArray *_enqueuedItems;
 }
+@property(readonly, retain, nonatomic) id<SBStarkSessionConfiguring> configuration;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
 - (id)init;
-- (id)initWithAllowedTargetIdentifier:(void *)allowedTargetIdentifier;
+- (id)initWithConfiguration:(id)configuration allowedTargetIdentifier:(void *)identifier;
 - (void)bannerTargetManager:(id)manager didAddTarget:(id)target;
 - (void)bannerTargetManager:(id)manager didRemoveTarget:(id)target;
 - (id)currentItemFromTarget;

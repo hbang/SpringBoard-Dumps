@@ -5,22 +5,26 @@
  * Source: (null)
  */
 
-#import "SBUIBannerView.h"
 #import "SpringBoard-Structs.h"
+#import "SBUIBannerView.h"
 #import "SBCollectionViewCell.h"
 
+@protocol SBStarkSessionConfiguring;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkBannerCell : SBCollectionViewCell <SBUIBannerView> {
 	SBBannerContextView *_contextView;
-	UIView *_darkeningOverlayView;
+	id<SBStarkSessionConfiguring> _starkSessionConfiguration;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
+@property(retain, nonatomic) id<SBStarkSessionConfiguring> starkSessionConfiguration;
 @property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
+- (BOOL)_disableRasterizeInAnimations;
 - (id)bannerContext;
+- (BOOL)canBecomeFirstResponder;
 - (void)dealloc;
 - (void)noteDidAppear;
 - (void)noteDidDismiss;

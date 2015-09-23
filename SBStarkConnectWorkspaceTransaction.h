@@ -5,12 +5,16 @@
  * Source: (null)
  */
 
-#import "SBStarkWorkspaceTransaction.h"
+#import "SBMainWorkspaceTransaction.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBStarkConnectWorkspaceTransaction : SBStarkWorkspaceTransaction {
+@interface SBStarkConnectWorkspaceTransaction : SBMainWorkspaceTransaction {
+	SBStarkScreenController *_screenController;
 }
+- (id)initWithTransitionRequest:(id)transitionRequest;
+- (id)initWithTransitionRequest:(id)transitionRequest starkScreenController:(id)controller;
 - (void)_begin;
+- (void)dealloc;
 @end
 

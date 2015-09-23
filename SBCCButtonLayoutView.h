@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBControlCenterSectionView.h"
 #import "SpringBoard-Structs.h"
+#import "SBControlCenterSectionView.h"
 
 
 __attribute__((visibility("hidden")))

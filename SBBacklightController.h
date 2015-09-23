@@ -5,24 +5,30 @@
  * Source: (null)
  */
 
+#import "CMPocketStateDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
-@interface SBBacklightController : XXUnknownSuperclass {
+@interface SBBacklightController : XXUnknownSuperclass <CMPocketStateDelegate> {
 	double _minimumLockIdleTime;
 	NSTimer *_autoLockTimer;
 	double _lastTimeIdleCausedDim;
 	double _nextLockDurationAfterDim;
 	unsigned _disableAutoDimming : 1;
 	NSMutableSet *_idleTimerDisabledReasons;
-	NSMutableSet *_spuriousScreenUndimmingAssertions;
+	CMPocketStateManager *_pocketStateManager;
+	int _pocketStateType;
 	BOOL _isPendingScreenUnblankAfterCACommit;
 	BOOL _undimmedForBulletinSinceLastUserEvent;
 	BOOL _allowIdleTimerToBeReset;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) BOOL isPendingScreenUnblankAfterCACommit;
-@property(readonly, assign, nonatomic) BOOL screenIsOff;
+@property(readonly, assign, nonatomic) BOOL screenIsOn;
+@property(readonly, assign) Class superclass;
 + (id)_sharedInstanceCreateIfNeeded:(BOOL)needed;
 + (BOOL)deviceSupportsBacklightRamping;
 + (id)sharedInstance;
@@ -30,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_animateBacklightToFactor:(float)factor duration:(double)duration source:(int)source silently:(BOOL)silently completion:(id)completion;
 - (void)_autoLockTimerFired:(id)fired;
+- (void)_batterySaverModeDidChange:(id)_batterySaverMode;
 - (void)_cancelSetBacklightFactorToZeroAfterDelay;
 - (void)_clearAutoLockTimer;
 - (double)_currentLockScreenIdleTimerInterval;
@@ -50,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)_userEventOccurred;
 - (void)_userEventPresenceTimerExpired;
 - (void)_userEventsDidIdle;
-- (void)addSpuriousScreenUndimmingAssertion:(id)assertion;
+- (void)adjustIdleLockDuration:(double *)duration idleDimDuration:(double *)duration2;
 - (void)allowIdleSleep;
 - (void)animateBacklightToFactor:(float)factor duration:(double)duration source:(int)source completion:(id)completion;
 - (void)autoLockPrefsChanged;
@@ -59,9 +66,10 @@ __attribute__((visibility("hidden")))
 - (double)defaultLockScreenDimInterval;
 - (double)defaultLockScreenDimIntervalWhenNotificationsPresent;
 - (id)idleTimerDisabledReasons;
+- (void)pocketStateManager:(id)manager didUpdateState:(int)state;
 - (void)preventIdleSleep;
 - (void)preventIdleSleepForNumberOfSeconds:(float)seconds;
-- (void)removeSpuriousScreenUndimmingAssertion:(id)assertion;
+- (void)reloadDefaults;
 - (void)resetIdleTimerAndUndim:(BOOL)undim;
 - (void)resetIdleTimerAndUndimForBulletin;
 - (void)resetLockScreenIdleTimer;

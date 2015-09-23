@@ -6,38 +6,36 @@
  */
 
 #import "SBMainScreenApplicationSceneTransactionObserver.h"
-#import "FBSynchronizedTransactionDelegate.h"
+#import "SBSceneLayoutWorkspaceTransactionDelegate.h"
 #import "SBStarkWorkspaceTransaction.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBStarkToAppWorkspaceTransaction : SBStarkWorkspaceTransaction <FBSynchronizedTransactionDelegate, SBMainScreenApplicationSceneTransactionObserver> {
-	SBSceneBackgroundedStatusAssertion *_scenesBackgroundedStatusAssertion;
-	SBSceneManager *_sceneManager;
-	SBApplication *_toApp;
-	NSString *_reasonToPendClearingActivationSettings;
-	NSSet *_scenesToBackground;
+@interface SBStarkToAppWorkspaceTransaction : SBStarkWorkspaceTransaction <SBSceneLayoutWorkspaceTransactionDelegate, SBMainScreenApplicationSceneTransactionObserver> {
 	BOOL _fromAssistant;
-	FBSDisplay *_starkDisplay;
-	SBStarkScreenController *_screenController;
+	SBSceneLayoutWorkspaceTransaction *_layoutTransaction;
+	BOOL _mainScenesDidCommit;
+	id _transitionCompletion;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-@property(readonly, assign, nonatomic) SBApplication *toApp;
-- (id)initWithMainScreenAlertManager:(id)mainScreenAlertManager starkScreenController:(id)controller to:(id)to;
+@property(readonly, retain, nonatomic) SBWorkspaceEntity *toEntity;
+- (id)initWithTransitionRequest:(id)transitionRequest;
 - (void)_begin;
-- (void)_didComplete;
-- (void)_fixupSettingsAndCommit;
-- (BOOL)_shouldDisallowSuspension;
+- (void)_completeTransition;
+- (id)_displayForDisplayEntity:(id)displayEntity;
+- (id)_effectiveTopEntity;
+- (void)_evaluateShouldPerformTransition;
+- (void)_performTransition;
 - (void)dealloc;
 - (void)mainScreenApplicationSceneDidCommit:(id)mainScreenApplicationScene;
 - (void)mainScreenApplicationSceneWillCommit:(id)mainScreenApplicationScene;
 - (void)mainScreenApplicationUpdateScenesTransactionCompleted:(id)completed;
 - (void)mainScreenApplicationsDidCommitSceneUpdates:(id)mainScreenApplications;
-- (void)synchronizedTransaction:(id)transaction didCommitSynchronizedTransactions:(id)transactions;
-- (void)synchronizedTransaction:(id)transaction willCommitSynchronizedTransactions:(id)transactions;
-- (void)synchronizedTransactionReadyToCommit:(id)commit;
+- (void)transaction:(id)transaction didEndLayoutTransitionWithContinuation:(id)continuation;
+- (void)transaction:(id)transaction performTransitionWithCompletion:(id)completion;
+- (void)transactionWillBeginLayoutTransition:(id)transaction;
 @end
 

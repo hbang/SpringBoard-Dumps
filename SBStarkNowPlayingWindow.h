@@ -7,10 +7,17 @@
 
 #import "SBWindow.h"
 
+@protocol SBStarkWindowDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBStarkNowPlayingWindow : SBWindow {
+	id<SBStarkWindowDelegate> _starkWindowDelegate;
 }
+@property(assign, nonatomic) id<SBStarkWindowDelegate> starkWindowDelegate;
 - (id)contextHostManager;
+- (void)pressesBegan:(id)began withEvent:(id)event;
+- (void)pressesCancelled:(id)cancelled withEvent:(id)event;
+- (void)pressesChanged:(id)changed withEvent:(id)event;
+- (void)pressesEnded:(id)ended withEvent:(id)event;
 @end
 

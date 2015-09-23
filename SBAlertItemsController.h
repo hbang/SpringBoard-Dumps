@@ -5,16 +5,17 @@
  * Source: (null)
  */
 
-#import "SBVolumePressBandit.h"
-#import "SBAssertionDelegate.h"
-#import "BBObserverDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 #import "SpringBoard-Structs.h"
+#import "SBVolumePressBandit.h"
+#import "SBAssertionDelegate.h"
+#import "SBBannerPresentingAlertItemDelegate.h"
+#import "BBObserverDelegate.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBAlertItemsController : XXUnknownSuperclass <_UISettingsKeyObserver, SBVolumePressBandit, SBAssertionDelegate, BBObserverDelegate> {
+@interface SBAlertItemsController : XXUnknownSuperclass <_UISettingsKeyObserver, SBVolumePressBandit, SBAssertionDelegate, SBBannerPresentingAlertItemDelegate, BBObserverDelegate> {
 	NSMutableArray *_lockedAlertItems;
 	NSMutableArray *_unlockedAlertItems;
 	NSMutableArray *_pendingAlertItems;
@@ -34,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
-@property(readonly, assign, nonatomic) NSArray *lockedAlertItems;
+@property(readonly, retain, nonatomic) NSArray *lockedAlertItems;
 @property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
@@ -76,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)noteVolumeOrLockPressedOverLockedAlerts;
 - (void)notifySystemOfAlertItemActivation:(id)alertItemActivation;
 - (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
+- (void)presentBannerForBulletin:(id)bulletin action:(id)action;
 - (void)removeObserver:(id)observer;
 - (void)resetAutoDismissTimer;
 - (void)setForceAlertsToPend:(BOOL)pend forReason:(id)reason;

@@ -13,6 +13,7 @@
 - (void)applicationLibrary:(id)library didAddApplications:(id)applications;
 - (void)applicationLibrary:(id)library didAddPlaceholders:(id)placeholders;
 - (void)applicationLibrary:(id)library didCancelPlaceholders:(id)placeholders;
+- (void)applicationLibrary:(id)library didDemoteApplications:(id)applications;
 - (void)applicationLibrary:(id)library didRemoveApplications:(id)applications;
 - (void)applicationLibrary:(id)library didReplaceApplications:(id)applications withApplications:(id)applications3;
 - (void)applicationLibrary:(id)library networkUsageDidChange:(BOOL)networkUsage;

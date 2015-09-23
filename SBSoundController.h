@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_endPendingCallbacksBlock;
 - (void)_enqueueCallback:(id)callback;
 - (void)_killAVController;
+- (void)_maxDurationReachedForAVController;
 - (BOOL)_playAVItem:(id)item forSound:(id)sound;
 - (BOOL)_playRingtone:(id)ringtone;
 - (BOOL)_playSong:(id)song;

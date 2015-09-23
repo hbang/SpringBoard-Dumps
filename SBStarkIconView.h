@@ -5,15 +5,15 @@
  * Source: (null)
  */
 
-#import "SBIconView.h"
 #import "SpringBoard-Structs.h"
+#import "SBIconView.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBStarkIconView : SBIconView {
-	BOOL _focused;
+	BOOL _sbFocused;
 }
-@property(readonly, assign, nonatomic) BOOL focused;
+@property(assign, nonatomic, getter=sb_isFocused) BOOL sb_focused;
 + (int)_defaultIconFormat;
 + (float)_labelHeight;
 + (CGRect)_rectForLayoutMetric:(int)layoutMetric;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)_labelImageParameters;
 - (void)dealloc;
 - (void)prepareForReuse;
-- (void)setFocused:(BOOL)focused;
-- (void)setFocused:(BOOL)focused animated:(BOOL)animated;
+- (void)sb_setIsFocused:(BOOL)focused;
+- (void)sb_setIsFocused:(BOOL)focused animated:(BOOL)animated;
 @end
 

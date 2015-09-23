@@ -12,16 +12,26 @@
 
 __attribute__((visibility("hidden")))
 @interface SBReachabilityTrigger : XXUnknownSuperclass <SBUIBiometricEventObserver> {
+	BOOL _enabled;
+	BOOL _debouncedHome;
+	BOOL _debounced;
+	unsigned _numberOfTaps;
+	unsigned _currentNumberOfTaps;
+	unsigned _expirationGenCount;
+	unsigned _debounceGenCount;
 	id<SBReachabilityTriggerDelegate> _delegate;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, assign, nonatomic) id<SBReachabilityTriggerDelegate> delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
+@property(assign, nonatomic) unsigned numberOfTaps;
 @property(readonly, assign) Class superclass;
 - (id)initWithDelegate:(id)delegate;
+- (void)_debounce;
+- (void)_setExpirationTimer;
 - (void)biometricEventMonitor:(id)monitor handleBiometricEvent:(unsigned)event;
-- (void)clearPendingReachabilityTrigger;
+- (void)handleHomeButtonPress;
 - (void)setEnabled:(BOOL)enabled;
 @end
 

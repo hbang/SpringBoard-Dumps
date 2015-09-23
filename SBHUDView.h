@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -15,9 +15,7 @@ __attribute__((visibility("hidden")))
 	NSString *_title;
 	NSString *_subtitle;
 	UIImage *_image;
-@private
 	BOOL _showsProgress;
-@protected
 	float _progress;
 	UIView *_blockView;
 	_UIBackdropView *_backdropView;

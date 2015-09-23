@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "UIDynamicAnimatorDelegate.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "UIDynamicAnimatorDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 	SBBounceSettings *_settings;
 	CGRect _targetFrame;
 }
-@property(readonly, assign, nonatomic, getter=_animator) UIDynamicAnimator *animator;
+@property(readonly, retain, nonatomic, getter=_animator) UIDynamicAnimator *animator;
 @property(retain, nonatomic, getter=_behavior, setter=_setBehavior:) SBBounceBehavior *behavior;
 @property(copy, nonatomic, getter=_completion, setter=_setCompletion:) id completion;
 @property(readonly, copy) NSString *debugDescription;
@@ -32,5 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)beginBounceWithInitialFrame:(CGRect)initialFrame targetFrame:(CGRect)frame velocity:(CGPoint)velocity removingGravityAtMidway:(BOOL)midway stepper:(id)stepper completion:(id)completion;
 - (void)dealloc;
 - (void)dynamicAnimatorDidPause:(id)dynamicAnimator;
+- (void)stop;
 @end
 

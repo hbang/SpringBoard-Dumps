@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 	BOOL _alertViewIsAnimatingItself;
 	BOOL _finishedPrimaryFadeAnimation;
 }
-- (id)initWithAlertManager:(id)alertManager alert:(id)alert;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_alertViewFinishedAnimatingItself;
 - (void)_animationFinished;
 - (void)_cleanupAnimation;

@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "FBApplicationPlaceholderObserver.h"
 #import "SBLeafIconDataSource.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 	NSString *_applicationDisplayName;
 	double _fractionProgress;
 	BOOL _installing;
-	BOOL _isNewsstand;
 	BOOL _observingKVO;
 	unsigned _installType;
 	BOOL _invalidated;
@@ -39,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)_generatePendingIconFormats;
 - (id)_getOrGenerateIconImageWithFormat:(int)format;
 - (id)_iconImageKeyForBundleID:(id)bundleID format:(int)format;
-- (int)_newsstandImageOptions;
 - (void)_prioritize;
 - (void)_progressChanged;
 - (void)_reloadThumbnailImage;
@@ -53,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (int)iconAccessoryType:(id)type;
 - (BOOL)iconAllowsLaunch:(id)launch;
 - (BOOL)iconAllowsUninstall:(id)uninstall;
-- (BOOL)iconAppearsInNewsstand:(id)newsstand;
 - (id)iconBadgeNumberOrString:(id)string;
 - (BOOL)iconCanEllipsizeLabel:(id)label;
 - (BOOL)iconCanTightenLabel:(id)label;
@@ -77,7 +74,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)equal;
 - (BOOL)isFailed;
 - (BOOL)isInstalling;
-- (BOOL)isNewsstand;
 - (BOOL)isPausable;
 - (BOOL)isPaused;
 - (void)pause;

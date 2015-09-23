@@ -11,10 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationFadeAlertToLockscreen : SBUIMainScreenAnimationController {
 	SBLockScreenViewController *_lockScreenViewController;
-	SBAlert *_deactivatingAlert;
+	SBWorkspaceAlert *_deactivatingAlert;
 	SBAlertManager *_alertManager;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 }
-- (id)initWithLockScreenController:(id)lockScreenController deactivatingAlert:(id)alert alertManager:(id)manager;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_cleanupAnimation;
 - (void)_prepareAnimation;
 - (void)_startAnimation;

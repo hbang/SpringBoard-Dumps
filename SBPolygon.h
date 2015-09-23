@@ -11,40 +11,40 @@
 
 __attribute__((visibility("hidden")))
 @interface SBPolygon : XXUnknownSuperclass {
-	int m_pointCount;
-	CGPoint m_points[5];
-	unsigned m_pathIDs[5];
-	float m_weights[5];
-	CGPoint m_centroid;
-	CGPoint m_weightedCentroid;
-	unsigned m_baseLeftVertex;
-	unsigned m_bottomRightVertex;
+	NSMutableArray *_mutablePoints;
+	NSMutableArray *_weights;
+	CGPoint _centroid;
+	CGPoint _weightedCentroid;
 }
-@property(assign, nonatomic) CGPoint centroid;
-@property(readonly, assign, nonatomic) BOOL isLeftHanded;
-@property(readonly, assign, nonatomic) int pointCount;
-@property(assign, nonatomic) CGPoint weightedCentroid;
-+ (BOOL)candidate:(id)candidate matchesTemplate:(id)aTemplate transforms:(int)transforms acceptFactor:(float)factor;
-- (void)addPoint:(CGPoint)point;
-- (void)addPoint:(CGPoint)point pathIndex:(unsigned)index;
-- (float)baseOrientation;
-- (void)beginPointUpdate;
-- (CGPoint)calculateCentroid;
-- (CGPoint)calculateWeightedCentroid;
-- (void)clear;
-- (void)commonInit;
-- (void)endPointUpdate;
-- (float)findLongestOutsideEdge;
-- (void)flipHorizontally;
-- (float)height;
-- (void)makeLike:(id)like;
-- (float)meanFingertipRowAngle;
-- (float)meanRadius;
-- (void)rotate:(float)rotate;
-- (void)scale:(float)scale;
-- (void)sortAlongOutsideEdge;
-- (unsigned)thumbIndex;
-- (float)weightAtIndex:(int)index;
-- (float)width;
+@property(assign, nonatomic, getter=_centroid, setter=_setCentroid:) CGPoint centroid;
+@property(readonly, assign, nonatomic) float distanceOfFarthestPointFromCentroid;
+@property(retain, nonatomic, getter=_points, setter=_setPoints:) NSMutableArray *mutablePoints;
+@property(readonly, assign, nonatomic) unsigned pointCount;
+@property(assign, nonatomic, getter=_weightedCentroid, setter=_setWeightedCentroid:) CGPoint weightedCentroid;
+@property(retain, nonatomic, getter=_weights, setter=_setWeights:) NSMutableArray *weights;
++ (CGPoint)_pointAtIndex:(unsigned)index ofPointArray:(id)pointArray;
++ (id)_sortPoints:(id)points;
+- (id)initWithPoints:(id)points;
+- (id)initWithPoints:(CGPoint *)points pointCount:(unsigned)count;
+- (void)_applyTransform:(CGAffineTransform)transform;
+- (float)_baseOrientation;
+- (void)_flipHorizontally;
+- (BOOL)_isLeftHanded;
+- (float)_meanFingertipRowAngle;
+- (float)_meanRadius;
+- (CGPoint)_pointAtIndex:(unsigned)index;
+- (void)_rotate:(float)rotate;
+- (void)_scale:(float)scale;
+- (unsigned)_thumbIndex;
+- (void)_translate:(CGPoint)translate;
+- (void)_updateCentroid;
+- (void)_updateProperties;
+- (void)_updateWeightedCentroid;
+- (void)_updateWeights;
+- (float)_weightAtIndex:(unsigned)index;
+- (void)dealloc;
+- (id)description;
+- (void)enumeratePointsUsingBlock:(id)block;
+- (id)points;
 @end
 

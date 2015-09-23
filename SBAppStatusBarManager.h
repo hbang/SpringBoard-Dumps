@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
 	NSMutableDictionary *_windowLevelOverrideMap;
 	float _defaultWindowLevel;
 	NSMutableDictionary *_edgeInsetsDictionary;
+	NSPointerArray *_statusBarSettingsAssertionsByLevel[9];
 	NSMutableSet *_activeLayoutLayers;
+	XBStatusBarSettings *_currentStatusBarSettings;
 }
 @property(readonly, assign, nonatomic) UIEdgeInsets statusBarEdgeInsets;
 @property(readonly, assign, nonatomic) unsigned topmostActiveLayoutLayer;
@@ -26,15 +28,20 @@ __attribute__((visibility("hidden")))
 - (void)_addAssertion:(id)assertion toAssertions:(id)assertions;
 - (void)_addDisableAppStatusBarAlphaChangesAssertion:(id)assertion;
 - (void)_addDisableAppStatusBarUserInteractionChangesAssertion:(id)assertion;
+- (void)_addStatusBarSettingsAssertion:(id)assertion;
 - (void)_applyEdgeInsetsToStatusBar;
+- (void)_cleanUpAllStatusBarSettingsAssertions;
 - (id)_descriptionForPropertyWithAssertions:(id)assertions;
+- (void)_evaluateSettings;
 - (void)_removeAssertion:(id)assertion fromAssertions:(id)assertions;
 - (void)_removeDisableAppStatusBarAlphaChangesAssertion:(id)assertion;
 - (void)_removeDisableAppStatusBarUserInteractionChangesAssertion:(id)assertion;
+- (void)_removeStatusBarSettingsAssertion:(id)assertion;
 - (void)_setStatusBarValueForPropertyWithAssertions:(id)assertions setter:(id)setter;
 - (void)_updateWindowLevel;
 - (void)addActiveLayoutLayer:(unsigned)layer;
 - (void)dealloc;
+- (void)didTransitionFromSpringBoard;
 - (void)hideStatusBar;
 - (BOOL)isStatusBarHidden;
 - (BOOL)isStatusBarUserInteractionEnabled;
@@ -46,5 +53,6 @@ __attribute__((visibility("hidden")))
 - (void)setStatusBarUserInteractionEnabled:(BOOL)enabled;
 - (void)setWindowLevel:(float)level forOverrideReason:(id)overrideReason;
 - (void)showStatusBar;
+- (void)willTransitionToSpringBoard;
 @end
 

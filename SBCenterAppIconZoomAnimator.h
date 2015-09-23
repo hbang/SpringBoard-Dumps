@@ -5,13 +5,14 @@
  * Source: (null)
  */
 
-#import "SBCenterIconZoomAnimator.h"
 #import "SpringBoard-Structs.h"
+#import "SBCenterIconZoomAnimator.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBCenterAppIconZoomAnimator : SBCenterIconZoomAnimator {
 	UIView *_appView;
+	CGRect _destinationFrame;
 	float _distantScale;
 }
 @property(assign) float distantScale;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_prepareAnimation;
 - (void)_setAnimationFraction:(float)fraction;
 - (void)_zoomAppForZoomFraction:(float)zoomFraction;
+- (CGPoint)cameraPosition;
 - (void)dealloc;
 @end
 

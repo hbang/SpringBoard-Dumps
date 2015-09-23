@@ -5,25 +5,27 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "NSXPCListenerDelegate.h"
 #import "SBStatusBarStyleOverridesAssertionServer.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface SBStatusBarStyleOverridesAssertionManager : XXUnknownSuperclass <NSXPCListenerDelegate, SBStatusBarStyleOverridesAssertionServer> {
 	NSXPCListener *_xpcListener;
-	NSMapTable *_assertionsByClientConnection;
+	NSMapTable *_assertionsByIdentifierByClientConnection;
 	NSMapTable *_assertionsByStyleOverride;
 	NSObject<OS_dispatch_queue> *_internalQueue;
 	int _statusBarStyleOverrides;
 	int _exclusiveStatusBarStyleOverrides;
+	FBWorkspaceEventQueue *_eventQueue;
 }
-@property(retain, nonatomic) NSMapTable *assertionsByClientConnection;
+@property(retain, nonatomic) NSMapTable *assertionsByIdentifierByClientConnection;
 @property(retain, nonatomic) NSMapTable *assertionsByStyleOverride;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(retain, nonatomic) FBWorkspaceEventQueue *eventQueue;
 @property(assign, nonatomic) int exclusiveStatusBarStyleOverrides;
 @property(readonly, assign) unsigned hash;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue;
@@ -32,20 +34,20 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSXPCListener *xpcListener;
 + (id)sharedInstance;
 - (id)init;
-- (id)_internalQueue_addAssertionByStyleOverrides:(id)overrides returningAddedStyleOverrides:(int *)overrides2;
-- (void)_internalQueue_deactivateStatusBarStyleOverridesAssertions:(id)assertions forClientConnection:(id)clientConnection;
-- (id)_internalQueue_removeAssertionByStyleOverrides:(id)overrides returningRemovedStyleOverrides:(int *)overrides2;
+- (int)_internalQueue_addAssertionByStyleOverrides:(id)overrides;
+- (void)_internalQueue_deactivateStatusBarStyleOverridesAssertionsWithIdentifiers:(id)identifiers forClientConnection:(id)clientConnection;
+- (int)_internalQueue_removeAssertionByStyleOverrides:(id)overrides;
 - (void)_invalidateAssertionsWithIdentifiers:(id)identifiers forClientConnection:(id)clientConnection;
 - (void)_mainQueue_getStatusBarStyleOverridesToSuppressAndStatusStringsByStyleForForegroundApplications:(id)foregroundApplications withHandler:(id)handler;
-- (void)_mainQueue_getStatusBarStyleOverridesToSuppressForApplications:(id)applications withHandler:(id)handler;
 - (void)_postStatusStringsByStyle:(id)style;
-- (id)_statusStringsByStyleForBackgroundAssertionsByStyleOverride:(id)backgroundAssertionsByStyleOverride foregroundAssertionsByStyleOverride:(id)override;
-- (void)_updateAppSceneSettingsForPIDs:(id)pids andPostAddedStyleOverrides:(int)overrides removedStyleOverrides:(int)overrides3;
+- (id)_statusStringsByStyleForActiveAssertionsByStyleOverride:(id)activeAssertionsByStyleOverride inactiveAssertionsByStyleOverride:(id)override;
+- (void)_updateAppSceneSettingsForForegroundAppsAndPostAddedStyleOverrides:(int)foregroundAppsAndPostAddedStyleOverrides removedStyleOverrides:(int)overrides;
 - (void)activateStatusBarStyleOverridesAssertions:(id)assertions reply:(id)reply;
 - (void)deactivateStatusBarStyleOverridesAssertionsWithIdentifiers:(id)identifiers;
 - (void)dealloc;
 - (void)invalidateStatusBarStyleOverridesAssertions:(id)assertions;
 - (BOOL)listener:(id)listener shouldAcceptNewConnection:(id)connection;
-- (void)postStatusStringsForForegroundApplications:(id)foregroundApplications;
+- (void)setStatusString:(id)string forAssertionWithIdentifier:(id)identifier;
+- (void)updateForegroundApplications:(id)applications withOptions:(unsigned)options completion:(id)completion;
 @end
 

@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 	SBAlert *_fromAlert;
 	SBLockToAppStatusBarAnimator *_statusBarAnimator;
 }
-- (id)initFromAlert:(id)alert;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_startAnimation;
 - (void)dealloc;
 @end

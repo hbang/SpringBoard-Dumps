@@ -10,13 +10,13 @@
 
 __attribute__((visibility("hidden")))
 @interface SBCenterAppZoomSettings : SBCenterZoomSettings {
-	SBFAnimationSettings *_appZoomSettings;
-	SBFAnimationSettings *_appFadeSettings;
+	SBAnimationSettings *_appZoomSettings;
+	SBAnimationSettings *_appFadeSettings;
 	double _appHeadStart;
 }
-@property(retain) SBFAnimationSettings *appFadeSettings;
+@property(retain) SBAnimationSettings *appFadeSettings;
 @property(assign) double appHeadStart;
-@property(retain) SBFAnimationSettings *appZoomSettings;
+@property(retain) SBAnimationSettings *appZoomSettings;
 + (id)settingsControllerModule;
 @end
 

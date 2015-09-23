@@ -5,13 +5,13 @@
  * Source: (null)
  */
 
-#import "NSObject.h"
+#import "BSTransactionObserver.h"
 
 
-@protocol SBUIAnimationControllerObserver <NSObject>
+@protocol SBUIAnimationControllerObserver <BSTransactionObserver>
+@optional
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
-@optional
 - (void)animationControllerDidRevealApplication:(id)animationController;
 @end
 

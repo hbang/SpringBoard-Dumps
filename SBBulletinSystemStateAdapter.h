@@ -6,25 +6,19 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBApplicationRestrictionObserver.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBBulletinSystemStateAdapter : XXUnknownSuperclass <SBApplicationRestrictionObserver> {
+@interface SBBulletinSystemStateAdapter : XXUnknownSuperclass {
 	BBSystemStateProvider *_stateProvider;
 	BOOL _quietModeEnabled;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (id)init;
 - (void)_lockStateChanged:(id)changed;
 - (void)_lostModeStateChanged;
 - (void)_screenDimmed:(id)dimmed;
-- (void)applicationRestrictionController:(id)controller didUpdateVisibleTags:(id)tags hiddenTags:(id)tags3;
 - (void)dealloc;
 @end
 

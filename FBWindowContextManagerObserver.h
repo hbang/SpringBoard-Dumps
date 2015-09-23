@@ -5,12 +5,13 @@
  * Source: (null)
  */
 
-#import "NSObject.h"
+#import "FBSceneLayerManagerObserver.h"
+#import "SpringBoard-Structs.h"
 
 
-@protocol FBWindowContextManagerObserver <NSObject>
+@protocol FBWindowContextManagerObserver <FBSceneLayerManagerObserver>
 @optional
-- (void)windowContextManager:(id)manager didRepositionContext:(id)context from:(unsigned)from to:(unsigned)to;
+- (void)windowContextManager:(id)manager didRepositionContext:(FBSceneLayer *)context from:(unsigned)from to:(unsigned)to;
 - (void)windowContextManagerDidStopTrackingContexts:(id)windowContextManager;
 - (void)windowContextManagerWillStartTrackingContexts:(id)windowContextManager;
 @end

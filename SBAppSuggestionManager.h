@@ -6,16 +6,18 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "LSBestAppSuggestionManagerDelegate.h"
+#import "UABestAppSuggestionManagerDelegate.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppSuggestionManager : XXUnknownSuperclass <LSBestAppSuggestionManagerDelegate> {
-	LSBestAppSuggestionManager *_suggestionManager;
-	LSBestAppSuggestion *_currentBestSuggestion;
-	BOOL _isListeningForBestSuggestion;
+@interface SBAppSuggestionManager : XXUnknownSuperclass <UABestAppSuggestionManagerDelegate> {
+	UABestAppSuggestionManager *_continuitySuggestionManager;
+	UABestAppSuggestion *_continuityCurrentBestSuggestion;
+	SBBestAppSuggestion *_currentBestSuggestion;
+	BOOL _isListeningForContinuitySuggestion;
+	BOOL _isListeningForExpertCenterSuggestion;
 	BOOL _screenOnDueToUserEvent;
-	BOOL _lookingForEvent;
+	BOOL _screenOnAndLookingForEvent;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -23,22 +25,22 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
-- (void)_createSuggestionManager;
-- (void)_destroySuggestionManager;
+- (void)_calculateBestSuggestionAndNotifyListeners;
+- (void)_createSuggestionSources;
+- (void)_destroySuggestionSources;
 - (void)_evaluateSuggestionUpdates:(id)updates;
 - (void)_handleInitialSpringBoardLaunch;
 - (void)_listenForNotifications;
 - (void)_nextUserEventOccured:(id)occured;
 - (void)_screenDidDim:(id)_screen;
 - (void)_screenDidUndim:(id)_screen;
-- (void)_setAppSuggestionUpdatesEnabled:(BOOL)enabled;
+- (void)_setContinuitySuggestionUpdatesEnabled:(BOOL)enabled expertCenterSuggestionUpdatesEnabled:(BOOL)enabled2;
 - (void)_stopListeningForNotifications;
-- (id)allCurrentlySuggestedApps;
 - (void)bestAppSuggestionChanged:(id)changed;
 - (id)currentSuggestedApp;
 - (void)dealloc;
 - (void)noteActivatingForAppSuggestion:(id)appSuggestion fromSource:(int)source;
-- (void)noteNotActivatingForAppSuggestion:(id)appSuggestion;
+- (void)noteNotActivatingForAppSuggestion:(id)appSuggestion fromSource:(int)source;
 - (void)startFetchingPayloadForAppSuggestion:(id)appSuggestion;
 @end
 

@@ -6,12 +6,67 @@
  */
 
 #import "SBSceneManager.h"
+#import "SBApplicationRestrictionObserver.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBMainDisplaySceneManager : SBSceneManager {
+@interface SBMainDisplaySceneManager : SBSceneManager <SBApplicationRestrictionObserver> {
+	UIApplicationSceneClientSettingsDiffInspector *_appClientSettingsDiffInspector;
+	FBSSceneClientSettingsDiffInspector *_externalClientSettingsDiffInspector;
+	int _validInterfaceOrientation;
+	unsigned _validInterfaceOrientationChangeCount;
+	unsigned _processedValidInterfaceOrientationChangeCount;
+	SBSideAppState *_sideAppState;
+	NSMutableDictionary *_windowOverlayInsetsForSource;
+	UISystemNavigationAction *_currentBreadcrumbNavigationAction;
 }
-- (id)_newLayoutManager;
-- (id)layoutManager;
+@property(retain, nonatomic) UISystemNavigationAction *currentBreadcrumbNavigationAction;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) SBMainDisplaySceneLayoutViewController *layoutController;
+@property(retain, nonatomic) SBSideAppState *sideAppState;
+@property(readonly, assign) Class superclass;
+- (id)initWithDisplay:(id)display;
+- (void)_activateAppLink:(id)link withAppLinkState:(id)appLinkState transitionContext:(id)context wasFromSpotlight:(BOOL)spotlight previousBreadcrumb:(id)breadcrumb;
+- (void)_activateBreadcrumbApplication:(id)application;
+- (void)_adjustPIPInsetsForKeyboardFrameChangeNotification:(id)keyboardFrameChangeNotification;
+- (BOOL)_animateGeometryChangesForExternalForegroundApplicationScenes;
+- (id)_appClientSettingsDiffInspector;
+- (void)_appKilledInAppSwitcher:(id)appSwitcher;
+- (void)_application:(id)application initiatedChangefromInterfaceOrientation:(int)orientation toInterfaceOrientation:(int)interfaceOrientation scene:(id)scene sceneSettings:(id)settings transitionContext:(id)context;
+- (id)_applicationForAppLink:(id)appLink;
+- (id)_breadcrumbBundleIdForApplication:(id)application withTransitionContext:(id)transitionContext;
+- (id)_breadcrumbNavigationActionForApplication:(id)application withTransitionContext:(id)transitionContext;
+- (void)_bulletinWillDismiss:(id)_bulletin;
+- (void)_bulletinWillPresent:(id)_bulletin;
+- (id)_destinationContextsForApplication:(id)application withTransitionContext:(id)transitionContext;
+- (void)_deviceOrientationChanged:(id)changed;
+- (float)_effectiveKeyboardSceneLevelForClientSettings:(id)clientSettings;
+- (id)_externalClientSettingsDiffInspector;
+- (BOOL)_handleAction:(id)action forScene:(id)scene;
+- (int)_hostingPolicyForScene:(id)scene;
+- (BOOL)_isActivatingPinnedBreadcrumbApp:(id)app withTransitionContext:(id)transitionContext;
+- (void)_keyboardWillChangeFrame:(id)_keyboard;
+- (void)_keyboardWillDisappear:(id)_keyboard;
+- (void)_keyboardWillRotate:(id)_keyboard;
+- (id)_newLayoutControllerForDisplay:(id)display;
+- (int)_openStrategyForAppLinkState:(id)appLinkState;
+- (void)_presentSpotlightFromEdge:(unsigned)edge;
+- (void)_presentSpotlightFromEdge:(unsigned)edge fromBreadcrumb:(BOOL)breadcrumb;
+- (id)_rotationAnimationSettingsForRotationFromInterfaceOrientation:(int)interfaceOrientation toInterfaceOrientation:(int)interfaceOrientation2 medusaSettings:(id)settings;
+- (void)_scene:(id)scene didUpdateClientSettingsWithDiff:(id)diff oldClientSettings:(id)settings transitionContext:(id)context;
+- (BOOL)_shouldBreadcrumbApplication:(id)application withTransitionContext:(id)transitionContext;
+- (BOOL)_shouldFenceTransitionForScene:(id)scene updatedClientSettingsDiff:(id)diff oldClientSettings:(id)settings transitionContext:(id)context;
+- (id)_snapshotRequestsForApplication:(id)application scene:(id)scene settings:(id)settings;
+- (void)_updateExternalForegroundApplicationScenesToInterfaceOrientation:(int)interfaceOrientation force:(BOOL)force;
+- (void)_updateLevelForScene:(id)scene transitionContext:(id)context;
+- (void)_updatePictureInPictureOverlayInsetsWithDuration:(double)duration;
+- (void)_windowDidBecomeKey:(id)_window;
+- (id)additionalActionsForApplication:(id)application withTransitionContext:(id)transitionContext;
+- (void)applicationRestrictionController:(id)controller didUpdateVisibleTags:(id)tags hiddenTags:(id)tags3;
+- (void)applyWindowOverlayInsets:(UIEdgeInsets)insets fromSource:(int)source duration:(double)duration;
+- (void)dealloc;
 @end
 

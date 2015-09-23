@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
 	NSHashTable *_applicationObservers;
 	NSHashTable *_placeholderObservers;
 }
-@property(readonly, assign, nonatomic) FBApplicationLibrary *appLibrary;
+@property(readonly, retain, nonatomic) FBApplicationLibrary *appLibrary;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
-@property(readonly, assign, nonatomic) NSArray *placeholders;
+@property(readonly, copy, nonatomic) NSArray *placeholders;
 @property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)applicationLibrary:(id)library didAddApplications:(id)applications;
 - (void)applicationLibrary:(id)library didAddPlaceholders:(id)placeholders;
 - (void)applicationLibrary:(id)library didCancelPlaceholders:(id)placeholders;
+- (void)applicationLibrary:(id)library didDemoteApplications:(id)applications;
 - (void)applicationLibrary:(id)library didRemoveApplications:(id)applications;
 - (void)applicationLibrary:(id)library didReplaceApplications:(id)applications withApplications:(id)applications3;
 - (void)applicationLibrary:(id)library networkUsageDidChange:(BOOL)networkUsage;

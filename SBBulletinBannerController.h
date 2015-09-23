@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SBVolumePressBandit.h"
 #import "SBUIBannerSource.h"
-#import "SpringBoard-Structs.h"
 #import "SBUIBannerTargetManagerObserver.h"
-#import "BBObserverDelegate.h"
+#import "SBVolumePressBandit.h"
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "BBObserverDelegate.h"
 
 @protocol SBUIBannerTarget;
 
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)handleVolumeIncrease;
 - (void)modallyPresentBannerForBulletin:(id)bulletin action:(id)action;
 - (id)newBannerViewForContext:(id)context;
+- (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed;
 - (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed playLightsAndSirens:(BOOL)sirens withReply:(id)reply;
 - (id)observer:(id)observer composedAttachmentImageForType:(int)type thumbnailData:(id)data key:(id)key;
 - (void)observer:(id)observer modifyBulletin:(id)bulletin;

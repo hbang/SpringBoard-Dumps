@@ -5,49 +5,48 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface SBWiFiManager : XXUnknownSuperclass {
 	NSRecursiveLock *_lock;
-	WiFiManagerClient *_manager;
-	WiFiDeviceClient *_device;
+	CFRunLoopRef _callbackRunLoop;
+	void *_manager;
+	void *_device;
 	NSString *_deviceInterfaceName;
-	BOOL _devicePresent;
-	WiFiNetwork *_currentNetwork;
-	WiFiNetwork *_previousNetwork;
+	BOOL _mainThread_devicePresent;
+	void *_currentNetwork;
+	void *_previousNetwork;
 	BOOL _currentNetworkHasBeenSet;
 	BOOL _currentNetworkIsIOSHotspot;
 	BOOL _currentNetworkIsIOSHotspotHasBeenSet;
 	BOOL _powered;
 	BOOL _poweredHasBeenSet;
-	int _rssiThreshold;
-	int _signalStrengthBars;
-	int _signalStrengthRSSI;
-	BOOL _signalStrengthHasBeenSet;
+	int _mainThread_signalStrengthBars;
+	int _mainThread_signalStrengthRSSI;
+	BOOL _mainThread_signalStrengthHasBeenSet;
 	SCDynamicStoreRef _SCDynamicStoreNetworkState;
 	NSObject<OS_dispatch_source> *_SCUpdateTimeoutSource;
-	WiFiNetwork *_primaryInterface;
+	void *_primaryInterface;
 	BOOL _primaryInterfaceHasBeenSet;
 	BOOL _isPrimaryInterface;
 	BOOL _isPrimaryInterfaceChanging;
-	int linkToken;
-	int powerToken;
 }
 + (id)sharedInstance;
 - (id)init;
 - (BOOL)_cachedIsAssociated;
 - (void)_linkDidChange;
-- (WiFiManagerClient *)_manager;
+- (void *)_lock_manager;
+- (void)_lock_setWiFiDevice:(void *)device;
+- (void)_lock_spawnManagerCallbackThread;
 - (void)_powerStateDidChange;
 - (void)_primaryInterfaceChanged:(BOOL)changed;
+- (void)_runManagerCallbackThread;
 - (void)_setPrimaryInterfaceHasBeenSet;
-- (void)_setWiFiDevice:(WiFiDeviceClient *)device;
 - (void)_updateCurrentNetwork;
-- (void)_updateWiFiDevice:(id)device;
 - (void)_updateWiFiState;
 - (id)_wifiInterface;
 - (id)currentNetworkName;
@@ -66,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)updateSignalStrength;
 - (void)updateSignalStrengthFromRawRSSI:(int)rawRSSI andScaledRSSI:(float)rssi;
 - (BOOL)wiFiEnabled;
+- (CFRunLoopRef)wifiRunLoopRef;
 - (BOOL)wifiSupported;
 @end
 

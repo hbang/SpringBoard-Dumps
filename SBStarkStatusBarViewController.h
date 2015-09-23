@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkStatusBarViewController : XXUnknownSuperclass <UIStatusBarStyleDelegate> {
 	id<SBStarkSessionConfiguring> _configuration;
+	SBStarkStatusBarStateProvider *_statusBarStateProvider;
 	UIStatusBar *_statusBarView;
 	id<UIStatusBarStyleDelegate> _statusBarStyleDelegate;
 	NSMutableSet *_statusBarHideReasons;

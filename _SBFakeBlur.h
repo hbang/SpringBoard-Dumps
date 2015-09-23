@@ -10,6 +10,7 @@
 @protocol _SBFakeBlurObserver;
 
 @protocol _SBFakeBlur <NSObject>
+@property(assign, nonatomic) BOOL fullscreen;
 @property(assign, nonatomic) id<_SBFakeBlurObserver> observer;
 - (int)effectiveStyle;
 - (void)requestStyle:(int)style;

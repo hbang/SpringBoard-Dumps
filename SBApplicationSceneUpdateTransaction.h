@@ -11,21 +11,25 @@
 
 __attribute__((visibility("hidden")))
 @interface SBApplicationSceneUpdateTransaction : XXUnknownSuperclass {
-	SBApplication *_app;
+	SBWorkspaceApplication *_appContext;
+	SBWorkspaceApplicationTransitionContext *_transitionContext;
 	FBSDisplay *_display;
-	SBDisplayLayout *_layout;
 	NSString *_sceneIdentifier;
 	UIMutableApplicationSceneSettings *_settings;
-	UIApplicationSceneTransitionContext *_transitionContext;
+	UIApplicationSceneTransitionContext *_sceneTransitionContext;
 	FBSSceneClientSettings<UIApplicationSceneClientSettings> *_clientSettings;
 	BOOL _suspendedActivation;
+	BOOL _shouldSendActivationResult;
 }
-@property(retain, nonatomic) NSString *sceneIdentifier;
+@property(readonly, retain, nonatomic) SBWorkspaceApplication *application;
+@property(readonly, retain, nonatomic) NSString *sceneIdentifier;
 @property(readonly, retain, nonatomic) UIMutableApplicationSceneSettings *sceneSettings;
-- (id)initWithApplication:(id)application display:(id)display layout:(id)layout;
+@property(assign, nonatomic) BOOL shouldSendActivationResult;
+- (id)initWithApplication:(id)application transitionRequest:(id)request;
 - (id)_customizedDescriptionProperties;
+- (void)_didComplete;
 - (void)_performSynchronizedCommit:(id)commit;
-- (void)_willAddChildTransaction:(id)transaction;
+- (void)_sendActivationResultWithSuccess:(BOOL)success;
 - (void)dealloc;
 @end
 

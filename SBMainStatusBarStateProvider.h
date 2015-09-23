@@ -6,16 +6,18 @@
  */
 
 #import "SBStatusBarStateProvider.h"
-#import "SpringBoard-Structs.h"
 #import "UIStatusBarStateObserver.h"
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBMainStatusBarStateProvider : SBStatusBarStateProvider <UIStatusBarStateObserver> {
 	BOOL _overridePercent;
 	BOOL _killActivity;
-	BOOL _itemIsDisabled[26];
-	BOOL _itemWasDisabled[26];
+	BOOL _simulateInCallStatusBar;
+	SBSStatusBarStyleOverridesAssertion *_inCallStatusBarStyleOverrideAssertion;
+	BOOL _itemIsDisabled[27];
+	BOOL _itemWasDisabled[27];
 	BOOL _timeEnabled;
 	BOOL _timeCloaked;
 	BOOL _allButBatteryCloaked;
@@ -27,8 +29,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (id)init;
-- (void)_composePostDataFromAggregatorData:(XXStruct_gly1hD *)aggregatorData;
-- (BOOL)_shouldPostForVisitedItem:(int)visitedItem withUpdates:(BOOL)updates toAggregatorData:(const XXStruct_gly1hD *)aggregatorData;
+- (void)_composePostDataFromAggregatorData:(XXStruct_bjgjSD *)aggregatorData;
+- (void)_removeInCallStatusBarOverrideAssertion;
+- (BOOL)_shouldPostForVisitedItem:(int)visitedItem withUpdates:(BOOL)updates toAggregatorData:(const XXStruct_bjgjSD *)aggregatorData;
+- (void)_toggleSimulatesInCallStatusBar;
 - (void)_updateDisabledItems;
 - (void)dealloc;
 - (void)enableTime:(BOOL)time;
@@ -37,6 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)setAllItemsExceptBatteryCloaked:(BOOL)cloaked;
 - (void)setTelephonyAndBluetoothItemsCloaked:(BOOL)cloaked;
 - (void)setTimeCloaked:(BOOL)cloaked;
-- (void)statusBarStateProvider:(id)provider didPostStatusBarData:(const XXStruct_gly1hD *)data withActions:(int)actions;
+- (void)statusBarStateProvider:(id)provider didPostStatusBarData:(const XXStruct_bjgjSD *)data withActions:(int)actions;
 @end
 

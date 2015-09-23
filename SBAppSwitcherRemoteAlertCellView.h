@@ -6,38 +6,44 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "SBAppSwitcherPageContentView.h"
+#import "SBSwitcherWallpaperPageContentView.h"
 
-@protocol SBAppSwitcherCacheVended;
 
 __attribute__((visibility("hidden")))
-@interface SBAppSwitcherRemoteAlertCellView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {
-	UIView *_possiblyRotatedContainer;
-	UIView *_nonRotatedContainer;
-	SBWallpaperEffectView *_wallpaperView;
-	UIView<SBAppSwitcherCacheVended> *_fakeStatusBarView;
+@interface SBAppSwitcherRemoteAlertCellView : SBSwitcherWallpaperPageContentView {
+	SBDisplayItem *_displayItem;
+	SBOrientationTransformWrapperView *_portraitContentWrapper;
+	SBOrientationTransformWrapperView *_rotatingContentWrapper;
+	FBSceneHostManager *_contextHostManager;
+	UIView *_alertContentViewWrapper;
+	SBFakeStatusBarView *_fakeStatusBar;
 	UIView *_contentView;
-	SBAppSwitcherStatusBarViewCache *_statusBarCache;
 	SBRemoteAlertAdapter *_remoteAlert;
-	int _orientation;
+	BOOL _remoteAlertHasCustomWallpaperStyle;
+	BOOL _remoteAlertRemoteTunnelingWasActive;
+	int _remoteAlertWallpaperStyle;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, assign) unsigned hash;
-@property(assign, nonatomic) int orientation;
-@property(readonly, assign) Class superclass;
-- (id)initWithFrame:(CGRect)frame remoteAlert:(id)alert statusBarCache:(id)cache;
+@property(readonly, copy, nonatomic) SBDisplayItem *displayItem;
+@property(assign, nonatomic) BOOL remoteAlertHasCustomWallpaperStyle;
+@property(assign, nonatomic) BOOL remoteAlertRemoteTunnelingWasActive;
+@property(assign, nonatomic) int remoteAlertWallpaperStyle;
+- (id)initWithFrame:(CGRect)frame remoteAlert:(id)alert displayItem:(id)item;
 - (void)_addStatusBar;
-- (BOOL)_needsPortraitOnlyPresentation;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_updateBackgroundStyle;
+- (void)_updateHosting;
 - (void)dealloc;
+- (void)didMoveToSuperview;
+- (void)didMoveToWindow;
+- (void)hostAlertWithManager:(id)manager;
+- (void)installAlertInViewController:(id)viewController;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)keyPath ofObject:(id)object change:(id)change context:(void *)context;
 - (void)prepareToBecomeVisibleIfNecessary;
-- (void)respondToBecomingInvisibleIfNecessary;
 - (void)setAlert:(id)alert;
-- (void)setContentView:(id)view animated:(BOOL)animated;
+- (void)setOrientation:(int)orientation;
 - (CGSize)sizeThatFits:(CGSize)fits;
+- (void)viewDismissing:(id)dismissing withInteraction:(BOOL)interaction andInitialProgress:(float)progress forTransitionRequest:(id)transitionRequest;
+- (void)viewPresenting:(id)presenting withInteraction:(BOOL)interaction andInitialProgress:(float)progress forTransitionRequest:(id)transitionRequest;
 @end
 

@@ -7,14 +7,11 @@
 
 #import <XXUnknownSuperclass.h> // Unknown library
 
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface SBSceneBackgroundedStatusAssertion : XXUnknownSuperclass {
 	NSSet *_scenes;
-	NSObject<OS_dispatch_queue> *_synchronizingQueue;
-	BSAction *_invalidationAction;
-	id _synchronousInvalidationBlock;
+	id _invalidationHandler;
 }
 @property(readonly, copy, nonatomic) NSSet *scenes;
 - (id)initWithScenes:(id)scenes invalidationHandler:(id)handler;

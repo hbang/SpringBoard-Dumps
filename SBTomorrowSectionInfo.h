@@ -5,13 +5,15 @@
  * Source: (null)
  */
 
-#import "SBNotificationCenterSectionInfo.h"
+#import "SBSnippetSectionInfo.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBTomorrowSectionInfo : SBNotificationCenterSectionInfo {
+@interface SBTomorrowSectionInfo : SBSnippetSectionInfo {
 }
-- (id)identifier;
+- (id)displayName;
 - (void)populateReusableView:(id)view;
+- (Class)reusableViewClass;
+- (id)settingsDisplayName;
 @end
 

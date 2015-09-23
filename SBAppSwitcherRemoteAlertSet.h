@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "NSCopying.h"
 
 
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)addRemoteAlert:(id)alert;
 - (id)alertAtIndex:(unsigned)index;
 - (id)alertForBundleIdentifier:(id)bundleIdentifier;
-- (id)alertForDisplayLayout:(id)displayLayout;
+- (id)alertForDisplayItem:(id)displayItem;
 - (BOOL)containsAlert:(id)alert;
 - (id)copyWithZone:(NSZone *)zone;
 - (unsigned)count;

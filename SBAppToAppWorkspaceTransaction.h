@@ -5,47 +5,45 @@
  * Source: (null)
  */
 
-#import "SBUIAnimationControllerGroupObserver.h"
-#import "SBToAppWorkspaceTransaction.h"
+#import "SBToAppsWorkspaceTransaction.h"
 
+@protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface SBAppToAppWorkspaceTransaction : SBToAppWorkspaceTransaction <SBUIAnimationControllerGroupObserver> {
-	SBApplication *_fromApp;
-	SBUIAnimationController *_animationController;
+@interface SBAppToAppWorkspaceTransaction : SBToAppsWorkspaceTransaction {
+	SBAutoPiPWorkspaceTransaction *_autoPiPTransaction;
 	BOOL _animatedActivation;
 	BOOL _animatedDeactivation;
 	BOOL _deactivatingAppFromAppToAppGesture;
 	BOOL _appQuitFromSwitcher;
+	unsigned _autoPIPTransitionOrder;
+	NSObject<OS_dispatch_group> *_pipDuringSwitchTransitionTasksGroup;
+	BOOL _performingDosidoWithPinnedSideSwitcherVisible;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(retain, nonatomic) SBApplication *fromApp;
-@property(readonly, assign) unsigned hash;
-@property(readonly, assign) Class superclass;
-- (id)initWithAlertManager:(id)alertManager exitedApp:(id)app;
-- (id)initWithAlertManager:(id)alertManager from:(id)from to:(id)to withResult:(id)result;
+- (id)initWithTransitionRequest:(id)transitionRequest;
+- (void)_animationDidFinish;
+- (void)_animationDidRevealApplication;
+- (void)_animationWillBegin:(BOOL)_animation;
 - (void)_begin;
-- (void)_beginAnimation;
+- (void)_beginTransition;
 - (BOOL)_canBeInterrupted;
+- (void)_cleanUpAfterAnimation;
 - (void)_didComplete;
-- (void)_didInterruptWithReason:(id)reason;
-- (void)_endAnimation;
+- (BOOL)_fromAppWantsLiveContentForDosido;
 - (void)_handleApplicationDidNotChange:(id)_handleApplication;
 - (void)_handleApplicationUpdateScenesTransactionFailed:(id)failed;
-- (void)_kickOffActivation;
-- (void)_setupAnimation;
+- (BOOL)_hasPostAnimationTasks;
+- (BOOL)_hasPreAnimationTasks;
+- (void)_performPostAnimationTasksWithCompletion:(id)completion;
+- (void)_performPreAnimationTasksWithCompletion:(id)completion;
+- (unsigned)_serialOverlayPreDismissalOptions;
+- (id)_setupAnimation;
 - (id)_setupAnimationFrom:(id)from to:(id)to;
-- (id)_setupMilestonesFrom:(id)from to:(id)to;
 - (void)_synchronizeWithSceneUpdates;
-- (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
-- (void)animationControllerDidFinishAnimation:(id)animationController;
-- (void)animationControllerDidRevealApplication:(id)animationController;
 - (void)dealloc;
+- (id)debugDescription;
 - (BOOL)shouldAnimateOrientationChangeOnCompletion;
-- (BOOL)shouldDismissSwitcher;
 - (BOOL)shouldPerformToAppStateCleanupOnCompletion;
 - (BOOL)shouldRestoreSpringBoardContentOnCleanup;
-- (BOOL)shouldToggleSpringBoardStatusBarOnCleanup;
 @end
 

@@ -29,9 +29,7 @@
 - (void)observer:(id)observer removeBulletin:(id)bulletin forFeed:(unsigned)feed;
 - (id)observer:(id)observer thumbnailSizeConstraintsForAttachmentType:(int)attachmentType;
 - (void)observer:(id)observer updateSectionInfo:(id)info;
-- (void)observer:(id)observer updateSectionInfo:(id)info inCategory:(int)category;
 - (void)observer:(id)observer updateSectionOrder:(id)order;
-- (void)observer:(id)observer updateSectionOrder:(id)order forCategory:(int)category;
 - (void)observer:(id)observer updateSectionOrderRule:(int)rule;
 - (BOOL)observerShouldFetchAttachmentImageBeforeBulletinDelivery:(id)observer;
 - (BOOL)observerShouldFetchAttachmentSizeBeforeBulletinDelivery:(id)observer;

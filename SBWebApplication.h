@@ -12,22 +12,25 @@
 __attribute__((visibility("hidden")))
 @interface SBWebApplication : SBApplication {
 	SBBookmarkIcon *_bookmarkIcon;
+	NSURL *_launchURL;
 }
 @property(retain, nonatomic) SBBookmarkIcon *bookmarkIcon;
+@property(retain, nonatomic) NSURL *launchURL;
 + (id)_dataContainerURL;
++ (id)_primaryWebAppInfo;
 + (id)_snapshotDirectory;
++ (id)_snapshotManifest;
 + (id)_webAppIdentifierFromWebClipIdentifier:(id)webClipIdentifier;
 + (id)_webClipIdentifierFromWebAppIdentifier:(id)webAppIdentifier;
 - (id)_customStartupImageForLaunchingOrientation:(int)launchingOrientation;
-- (id)_defaultImageInfoForSceneID:(id)sceneID size:(CGSize)size scale:(float)scale launchingOrientation:(int)orientation;
-- (BOOL)_isSnapshotPresentForLaunchingInterfaceOrientation:(int)launchingInterfaceOrientation;
-- (id)_snapshotContainerName;
-- (id)_snapshotSceneContainerNameForSceneID:(id)sceneID;
+- (id)_snapshotManifest;
 - (void)dealloc;
+- (id)displayName;
 - (Class)iconClass;
+- (id)iconIdentifier;
 - (BOOL)isWebApplication;
-- (id)objectForActivationSetting:(unsigned)activationSetting;
-- (id)objectForDeactivationSetting:(unsigned)deactivationSetting;
+- (void)refreshLaunchImagesInSnapshotManifestIfNeededWithInfoDictionary:(id)infoDictionary;
 - (id)sandboxPath;
+- (id)sceneIdentifierForDisplay:(id)display;
 @end
 

@@ -12,9 +12,7 @@ __attribute__((visibility("hidden")))
 @interface SBScreenManager : XXUnknownSuperclass {
 	NSHashTable *_handlers;
 	NSMapTable *_screenIDToHandlerMap;
-	NSMapTable *_screenIDToObserversMap;
-	NSMapTable *_screenIDToScreenMap;
-	NSHashTable *_connectedScreenIDs;
+	NSMapTable *_screenIDToLastDisplayMap;
 }
 + (id)sharedInstance;
 - (id)init;
@@ -22,10 +20,8 @@ __attribute__((visibility("hidden")))
 - (void)_screenDidDisconnect:(id)_screen;
 - (void)_updateHandlerForConnectionToScreen:(id)screen;
 - (void)addConnectionHandler:(id)handler;
-- (void)addScreenObserver:(id)observer forScreen:(id)screen;
 - (void)dealloc;
-- (BOOL)isScreenConnected:(id)connected;
-- (void)removeScreenObserver:(id)observer forScreen:(id)screen;
-- (id)screenWithID:(unsigned)anId;
+- (id)lastDisplayForScreen:(id)screen;
+- (id)lastDisplayForScreenWithID:(unsigned)anId;
 @end
 

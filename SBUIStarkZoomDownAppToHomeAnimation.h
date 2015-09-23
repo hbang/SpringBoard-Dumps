@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBIconAnimatorDelegate.h"
 #import "SBUIStarkScreenAnimationController.h"
+#import "SBIconAnimatorDelegate.h"
 
 
 __attribute__((visibility("hidden")))

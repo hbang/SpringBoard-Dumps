@@ -11,15 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface SBBaseSoftwareUpdateAlertItem : XXUnknownSuperclass {
 	SUDescriptor *_descriptor;
+	SBSoftwareUpdateController *_controller;
 }
-@property(readonly, assign, nonatomic) SUDescriptor *descriptor;
-- (id)initWithDescriptor:(id)descriptor;
+@property(readonly, retain, nonatomic) SUDescriptor *descriptor;
+@property(readonly, retain, nonatomic) SBSoftwareUpdateController *softwareUpdateController;
+- (id)initWithDescriptor:(id)descriptor softwareUpdateController:(id)controller;
 - (void)activateDisplayWithURL:(id)url;
 - (void)activateSoftwareUpdateSettingsDisplay;
 - (void)dealloc;
 - (BOOL)dismissOnLock;
 - (BOOL)forcesModalAlertAppearance;
 - (BOOL)shouldShowInLockScreen;
+- (BOOL)undimsScreen;
+- (BOOL)unlocksScreen;
 - (id)updateName;
+- (void)willDeactivateForReason:(int)reason;
 @end
 

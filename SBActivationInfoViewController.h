@@ -16,7 +16,11 @@ __attribute__((visibility("hidden")))
 	NSString *_csn;
 	BOOL _isOnBootstrap;
 	float _alertHeight;
+	UIView *_containerView;
+	UITextView *_textView;
+	UIButton *_regulatoryInfoButton;
 }
+@property(readonly, assign, nonatomic) UIButton *regulatoryInfoButton;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (id)_formattedCSN;
 - (id)_formattedICCID;
@@ -26,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateTextView;
 - (void)dealloc;
 - (void)loadView;
-- (id)textView;
 - (void)viewWillAppear:(BOOL)view;
 @end
 

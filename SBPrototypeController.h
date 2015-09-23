@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBVolumePressBandit.h"
 #import "SpringBoard-Structs.h"
+#import "SBVolumePressBandit.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
 
@@ -17,10 +17,13 @@ __attribute__((visibility("hidden")))
 	SBRootSettings *_rootSettings;
 	UIWindow *_settingsWindow;
 	PTSettingsController *_settingsController;
+	_SBFallbackSettingsHelper *_fallbackHelper;
 	NSArray *_testRecipeClassNames;
 	id<SBTestRecipe> _activeTestRecipe;
 	BOOL _showingSettings;
 	BOOL _hasPreviousSettings;
+	BOOL _showingSettingsForFallback;
+	BOOL _hasActiveEventRouters;
 }
 @property(retain, nonatomic) id<SBTestRecipe> activeTestRecipe;
 @property(readonly, copy) NSString *debugDescription;
@@ -40,8 +43,10 @@ __attribute__((visibility("hidden")))
 - (void)_showSettings;
 - (void)_tearDownSettingsWindow;
 - (id)_testRecipeClassNames;
+- (void)_updateEventRouters;
 - (void)_updatePreventingLockover;
 - (void)dealloc;
+- (BOOL)handleKeyHIDEvent:(IOHIDEventRef)event;
 - (void)handleVolumeDecrease;
 - (void)handleVolumeIncrease;
 - (BOOL)isPrototypingEnabled;
@@ -49,5 +54,6 @@ __attribute__((visibility("hidden")))
 - (id)rootSettings;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)showOrHide;
+- (void)showSettingsForFallback;
 @end
 

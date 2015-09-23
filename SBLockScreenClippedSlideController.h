@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 	BOOL _hidesSpringBoardStatusBarInitially;
 	SBFakeStatusBarView *_fakeStatusBar;
 	SBDisableAppStatusBarAlphaChangesAssertion *_statusBarAssertion;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 }
 @property(assign, nonatomic) BOOL cleanupManually;
 @property(assign, nonatomic) BOOL hidesSpringBoardStatusBarInitially;

@@ -9,11 +9,16 @@
 
 
 @protocol SBAlertDelegate <NSObject>
+- (void)alert:(id)alert didChangeStatusBarVisibility:(BOOL)visibility;
 - (void)alert:(id)alert requestsBackgroundStyleChangeWithAnimationFactory:(id)animationFactory;
-- (BOOL)alertCanAutorotateToInterfaceOrientation:(int)interfaceOrientation;
+- (void)alertDidChangeOccluding:(id)alert;
+- (void)alertDidChangeOrientationEventsEnabled:(id)alert;
 - (void)alertIsReadyToBeDeactivated:(id)beDeactivated;
 - (void)alertIsReadyToBeRemovedFromView:(id)view;
 - (void)alertWantsToForceWallpaperTunnelUpdate:(id)forceWallpaperTunnelUpdate;
 - (void)alertWillDismiss:(id)alert;
+- (int)defaultInterfaceOrientationForPresentationOfAlert:(id)alert;
+- (BOOL)defaultShouldAutorotateForAlert:(id)aDefault;
+- (unsigned)defaultSupportedInterfaceOrientationsForAlert:(id)alert;
 @end
 

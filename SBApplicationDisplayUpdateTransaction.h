@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
 	SBApplication *_app;
 	FBApplicationProcess *_process;
 	unsigned _sceneState;
-	NSDictionary *_displaysToLayouts;
+	NSArray *_displays;
 }
-- (id)initWithApplication:(id)application process:(id)process displaysToLayouts:(id)layouts state:(unsigned)state;
+- (id)initWithApplication:(id)application process:(id)process displays:(id)displays state:(unsigned)state;
 - (id)_customizedDescriptionProperties;
 - (void)_willBegin;
 - (void)dealloc;

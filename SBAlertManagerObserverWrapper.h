@@ -13,8 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface SBAlertManagerObserverWrapper : XXUnknownSuperclass {
 	id<SBAlertManagerObserver> _observer;
-	XXStruct_scX9uA _flags;
+	XXStruct_cAKydB _flags;
 }
-- (id)initWithObserver:(id)observer flags:(XXStruct_scX9uA)flags;
+- (id)initWithObserver:(id)observer flags:(XXStruct_cAKydB)flags;
 @end
 

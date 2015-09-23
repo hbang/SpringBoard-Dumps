@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (id)generateIconImage:(int)image;
 - (id)getGenericIconImage:(int)image;
 - (unsigned)hash;
-- (BOOL)iconAppearsInNewsstand;
 - (BOOL)isBeta;
 - (BOOL)isEqual:(id)equal;
 - (BOOL)isRecentlyUpdated;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBIconProgressViewDelegate.h"
+#import "SBIconObserver.h"
 #import "SBReusableView.h"
 #import "SpringBoard-Structs.h"
-#import "SBIconObserver.h"
+#import "SBIconProgressViewDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 

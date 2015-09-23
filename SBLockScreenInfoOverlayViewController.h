@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SBLockOverlayViewDelegate.h"
 #import "SBLockOverlayViewController.h"
+#import "SBLockOverlayViewDelegate.h"
 
 @protocol SBLockScreenInfoOverlayDelegate;
 

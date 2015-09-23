@@ -18,6 +18,6 @@ __attribute__((visibility("hidden")))
 - (id)initFromOverlay:(id)overlay toOverlay:(id)overlay2 inside:(id)inside;
 - (void)_hideLockContent;
 - (void)dealloc;
-- (void)performTransitionAnimated:(BOOL)animated completion:(id)completion;
+- (void)performTransitionWithAnimationFactory:(id)animationFactory completion:(id)completion;
 @end
 

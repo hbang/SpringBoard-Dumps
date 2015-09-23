@@ -5,72 +5,106 @@
  * Source: (null)
  */
 
-#import "FBApplicationUpdateScenesTransactionObserver.h"
 #import "FBSynchronizedTransactionDelegate.h"
-#import "SBWorkspaceTransaction.h"
+#import "SBUIAnimationControllerObserver.h"
+#import "SBSceneLayoutWorkspaceTransactionDelegate.h"
+#import "FBApplicationUpdateScenesTransactionObserver.h"
+#import "SBMainWorkspaceTransaction.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBToAppsWorkspaceTransaction : SBWorkspaceTransaction <FBApplicationUpdateScenesTransactionObserver, FBSynchronizedTransactionDelegate> {
-	NSArray *_toApplications;
-	NSSet *_scenesToBackground;
-	NSSet *_fromApplicationScenes;
-	SBDisplayLayout *_toDisplayLayout;
-	BOOL _fromAssistant;
-	BOOL _fromSwitcher;
-	BOOL _toSpringBoard;
+@interface SBToAppsWorkspaceTransaction : SBMainWorkspaceTransaction <FBApplicationUpdateScenesTransactionObserver, SBSceneLayoutWorkspaceTransactionDelegate, FBSynchronizedTransactionDelegate, SBUIAnimationControllerObserver> {
+	id _transitionCompletion;
+	FBUIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
+	id _layoutTransitionContinuation;
+	SBAppRepairTransaction *_appRepairTransaction;
+	SBUIAnimationController *_animationController;
+	NSArray *_fromApplications;
 	BOOL _underLockScreenInForeground;
-	id _resultBlock;
-	SBSceneBackgroundedStatusAssertion *_scenesBackgroundedStatusAssertion;
-	NSMutableDictionary *_sceneIDsToApps;
-	FBUIApplicationResignActiveAssertion *_resignActiveAssertion;
-	NSMutableArray *_appsActivatingForeground;
+	BOOL _gestureInitiated;
+	unsigned _preactivationForegroundRunningApplicationCount;
+	BOOL _toAndFromApplicationsDiffer;
+	BOOL _notifiedSlaves;
+	BOOL _retriedAfterVoluntaryExit;
+	SBSceneLayoutWorkspaceTransaction *_layoutTransaction;
 	NSSet *_trackedProcesses;
 }
+@property(readonly, retain, nonatomic) NSArray *activatingApplications;
+@property(readonly, retain, nonatomic) NSArray *deactivatingApplications;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, retain, nonatomic) NSArray *fromApplications;
 @property(readonly, assign) unsigned hash;
+@property(readonly, retain, nonatomic) SBSceneLayoutWorkspaceTransaction *layoutTransaction;
 @property(readonly, assign) Class superclass;
 @property(readonly, retain, nonatomic) NSArray *toApplications;
 @property(readonly, retain, nonatomic) NSSet *trackedProcesses;
-- (id)initWithAlertManager:(id)alertManager activationRequest:(id)request withResult:(id)result;
+- (id)initWithTransitionRequest:(id)transitionRequest;
+- (void)_acquireResignActiveAssertion;
+- (void)_animationDidFinish;
+- (void)_animationDidRevealApplication;
+- (void)_animationWillBegin:(BOOL)_animation;
 - (id)_applicationForScene:(id)scene;
-- (void)_begin;
 - (void)_beginAnimation;
-- (void)_captureApplicationData;
+- (void)_beginTransition;
+- (BOOL)_canBeInterrupted;
+- (void)_checkForAnimationCompletion;
 - (void)_childTransactionDidComplete:(id)_childTransaction;
+- (void)_clearAnimation;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
 - (void)_didInterruptWithReason:(id)reason;
+- (void)_endTransition;
 - (void)_fireAndClearResultBlockIfNecessaryForFailure:(BOOL)failure;
 - (void)_handleApplicationDidNotChange:(id)_handleApplication;
 - (void)_handleApplicationUpdateScenesTransactionFailed:(id)failed;
+- (BOOL)_hasPostAnimationTasks;
+- (BOOL)_hasPreAnimationTasks;
+- (BOOL)_isGoingToMainSwitcher;
+- (void)_kickOffAnimation;
+- (void)_noteAnimationFinished;
+- (void)_notifySlavesIfNecessary;
+- (void)_performPostAnimationTasksWithCompletion:(id)completion;
+- (void)_performPreAnimationTasksWithCompletion:(id)completion;
 - (void)_relinquishResignActiveAssertion;
 - (id)_scenesToBackground;
-- (void)_setupAnimation;
-- (void)_synchronizeSceneUpdatesNowForScenes:(id)scenes;
+- (unsigned)_serialOverlayPreDismissalOptions;
+- (id)_setupAnimation;
+- (BOOL)_shouldFailForChildTransaction:(id)childTransaction;
+- (BOOL)_shouldUpdateUnderLockStateForForegroundScenes;
 - (void)_synchronizeWithSceneUpdates;
+- (id)_transitionContext;
 - (void)_willBegin;
+- (void)_willFailWithReason:(id)reason;
+- (void)_willInterruptWithReason:(id)reason;
 - (void)activateApplications;
+- (void)addSlaveTransaction:(id)transaction;
+- (id)animationController;
+- (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
+- (void)animationControllerDidFinishAnimation:(id)animationController;
+- (void)animationControllerDidRevealApplication:(id)animationController;
 - (void)dealloc;
-- (void)enumerateForegroundToApplicationsWithBlock:(id)block;
+- (void)enumerateDeactivatingApplicationsWithBlock:(id)block;
 - (void)enumerateToApplicationsWithBlock:(id)block;
+- (BOOL)isFromMainSwitcher;
+- (BOOL)isFromSideSwitcher;
 - (BOOL)isGoingToLauncher;
 - (void)performToAppStateCleanup;
 - (BOOL)shouldAnimateOrientationChangeOnCompletion;
-- (BOOL)shouldDismissSwitcher;
-- (BOOL)shouldHideSpringBoardStatusBarOnCleanup;
 - (BOOL)shouldPerformToAppStateCleanupOnCompletion;
 - (BOOL)shouldPlaceOutgoingScenesUnderLockOnCompletion;
 - (BOOL)shouldRestoreSpringBoardContentOnCleanup;
-- (BOOL)shouldToggleSpringBoardStatusBarOnCleanup;
 - (BOOL)shouldWatchdog:(id *)watchdog;
 - (void)synchronizedTransaction:(id)transaction didCommitSynchronizedTransactions:(id)transactions;
 - (void)synchronizedTransaction:(id)transaction willCommitSynchronizedTransactions:(id)transactions;
 - (void)synchronizedTransactionReadyToCommit:(id)commit;
-- (void)toggleStatusBarForCleanup;
+- (BOOL)toAndFromAppsDiffer;
 - (void)transaction:(id)transaction didCommitSceneUpdate:(id)update;
+- (void)transaction:(id)transaction didEndLayoutTransitionWithContinuation:(id)continuation;
+- (void)transaction:(id)transaction performTransitionWithCompletion:(id)completion;
 - (void)transaction:(id)transaction willCommitSceneUpdate:(id)update;
+- (BOOL)transactionShouldConsiderLockStateForForegroundScenesDuringTransition:(id)transaction;
+- (void)transactionWillBeginLayoutTransition:(id)transaction;
 - (double)watchdogTimeout;
 @end
 

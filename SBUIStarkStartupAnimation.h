@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) UIView *fromLockoutView;
 - (id)initFromLockoutView:(id)lockoutView starkScreenController:(id)controller;
 - (id)initWithActivatingApp:(id)activatingApp fromLockoutView:(id)lockoutView starkScreenController:(id)controller;
+- (void)_begin;
 - (void)_cancelAnimation;
 - (void)_cleanupAnimation;
 - (id)_getTransitionWindow;
-- (void)beginAnimation;
 - (void)dealloc;
 @end
 

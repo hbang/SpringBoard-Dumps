@@ -6,15 +6,16 @@
  */
 
 #import "SBIconIndexNode.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexMutableListObserver.h"
 #import "SBIconListModelObserver.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
 @interface SBFolder : XXUnknownSuperclass <SBIconIndexNode, SBIconIndexMutableListObserver, SBIconListModelObserver> {
 	NSString *_displayName;
 	NSString *_defaultDisplayName;
+	BOOL _displayNameDirty;
 	BOOL _open;
 	SBFolderIcon *_icon;
 	BOOL _cancelable;
@@ -35,7 +36,6 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) SBFolderIcon *icon;
 @property(assign, nonatomic) BOOL isOpen;
 @property(readonly, assign) Class superclass;
-+ (BOOL)isNewsstandFolderClass;
 + (BOOL)isRootFolderClass;
 - (id)init;
 - (id)initWithMaxListCount:(unsigned)maxListCount maxIconCountInLists:(unsigned)lists;
@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsNodeIdentifier:(id)identifier;
 - (void)dealloc;
 - (id)defaultDisplayName;
+- (void)enumerateAllIconsUsingBlock:(id)block;
 - (id)folderContainingIndexPath:(id)path relativeIndexPath:(id *)path2;
 - (id)folderIcons;
 - (id)iconAtIndexPath:(id)indexPath;
@@ -77,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEmpty;
 - (BOOL)isFull;
 - (BOOL)isIconStateDirty;
-- (BOOL)isNewsstandFolder;
 - (BOOL)isRootFolder;
 - (id)leafIcons;
 - (void)list:(id)list didAddContainedNodeIdentifiers:(id)identifiers;

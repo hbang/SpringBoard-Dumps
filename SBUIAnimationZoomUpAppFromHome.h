@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
+- (void)_cleanupAnimation;
 - (void)animateZoomWithCompletion:(id)completion;
 - (void)cleanupZoom;
 - (void)dealloc;

@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import "FBWindowContextManagerObserver.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "BSWatchdogDelegate.h"
 #import "FBSceneManagerObserver.h"
-#import "FBWindowContextManagerObserver.h"
 
 
 __attribute__((visibility("hidden")))

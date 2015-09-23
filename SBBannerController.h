@@ -5,20 +5,21 @@
  * Source: (null)
  */
 
-#import "SBBulletinBusyClient.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 #import "UIGestureRecognizerDelegate.h"
+#import "SBBulletinBusyClient.h"
 #import "SBUIBannerTargetImplementation.h"
 #import "SBAssistantObserver.h"
 #import "SBAlertObserver.h"
 #import "SBBannerContextViewControllerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBBannerGestureHandlerDelegate.h"
-#import "SpringBoard-Structs.h"
+#import "SBBannerDismissSystemGestureRecognizerDelegate.h"
 #import "SBBulletinWindowClient.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBBannerController : XXUnknownSuperclass <SBUIBannerTargetImplementation, SBAssistantObserver, SBAlertObserver, SBBannerContextViewControllerDelegate, SBBannerGestureHandlerDelegate, SBBulletinWindowClient, SBBulletinBusyClient, UIGestureRecognizerDelegate> {
+@interface SBBannerController : XXUnknownSuperclass <SBUIBannerTargetImplementation, SBAssistantObserver, SBAlertObserver, SBBannerContextViewControllerDelegate, SBBannerGestureHandlerDelegate, SBBannerDismissSystemGestureRecognizerDelegate, SBBulletinWindowClient, SBBulletinBusyClient, UIGestureRecognizerDelegate> {
 	NSHashTable *_sources;
 	NSMutableArray *_pendingBannerContextsNeedingRepop;
 	SBAlert *_topAlert;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 	BOOL _enableDelayActive;
 	BOOL _assistantIsFullyVisible;
 	BOOL _locked;
+	unsigned _transitionCount;
 	int _activeGestureType;
 	SBBannerGestureHandler *_activeGestureHandler;
 	int _overdueDismissReason;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 	id _assistantDismissCompletionBlock;
 	NSMapTable *_bannerContextToViewControllerCache;
 	SBLockScreenActionContext *_lockScreenActionContext;
+	SBBannerDismissSystemGestureRecognizer *_dismissSystemGestureRecognizer;
 }
 @property(readonly, assign, nonatomic) void *bannerTargetIdentifier;
 @property(readonly, assign, nonatomic) int bannerTargetIdiom;
@@ -66,13 +69,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)_dequeueBannerIfPossible;
 - (BOOL)_dequeueBannerIfPossibleIgnoringStickyBanner:(BOOL)banner existingDismissReason:(int)reason;
 - (id)_dequeueNextBannerContext;
-- (void)_dismissBannerWithAnimation:(BOOL)animation reason:(int)reason forceEvenIfBusy:(BOOL)busy completion:(id)completion;
 - (void)_dismissIntervalElapsed;
 - (void)_dismissOverdueOrDequeueIfPossible;
 - (void)_fireCompletionBlockForBannerAnimationForAssistantDismissIfNecessary;
 - (void)_fireCompletionBlockForBannerAnimationForAssistantRevealIfNecessary;
 - (void)_handleBannerPanGesture:(id)gesture;
+- (void)_handleDismissBannerSystemGesture:(id)gesture;
 - (void)_handleGestureState:(int)state location:(CGPoint)location displacement:(float)displacement velocity:(float)velocity;
+- (void)_handleSystemDismissGestureWithState:(int)state position:(CGPoint)position velocity:(CGPoint)velocity;
 - (BOOL)_isItemShowable:(id)showable fromSource:(id)source;
 - (void)_lockStateChanged:(id)changed;
 - (id)_newBannerContextViewController;
@@ -84,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)_performRevealTransitionWithContext:(id)context animated:(BOOL)animated completion:(id)completion;
 - (void)_performTransition:(int)transition withAnimation:(BOOL)animation context:(id)context reason:(int)reason completion:(id)completion;
 - (void)_playSoundForContext:(id)context;
+- (void)_playSoundIfNecessaryForContext:(id)context;
 - (void)_presentBannerForContext:(id)context reason:(int)reason;
 - (void)_removeActiveGestureHandler;
 - (void)_removePendingContextsForSourceNeedingRepop:(id)sourceNeedingRepop;
@@ -101,43 +106,45 @@ __attribute__((visibility("hidden")))
 - (void)_updateBannerSuppressionStateAndDequeueIfPossible:(BOOL)possible withDelay:(BOOL)delay;
 - (void)_updateGestureHandlerWithState:(int)state type:(int)type;
 - (void)_updateLockScreenForBannerVisible:(BOOL)bannerVisible;
+- (id)_viewControllerForPresentation;
 - (void)alertBannerSuppressionChanged:(id)changed;
 - (void)assistant:(id)assistant viewDidAppear:(int)view;
 - (void)assistant:(id)assistant viewDidDisappear:(int)view;
 - (void)assistant:(id)assistant viewWillAppear:(int)view;
 - (void)assistant:(id)assistant viewWillDisappear:(int)view;
+- (float)bannerHeight;
 - (void)bannerViewController:(id)controller didRequestSticky:(BOOL)sticky;
-- (void)bannerViewController:(id)controller willSelectActionWithContext:(id)context;
+- (void)bannerViewController:(id)controller willSelectAction:(id)action withContext:(id)context;
 - (void)bannerViewControllerDidPullDown:(id)bannerViewController;
 - (void)bannerViewControllerDidReceiveRaiseGesture:(id)bannerViewController;
 - (void)bannerViewControllerDidRequestDismissal:(id)bannerViewController;
 - (void)bannerViewControllerDidRequestSticky:(id)bannerViewController;
 - (void)bannerViewControllerDidSelectAction:(id)bannerViewController;
 - (void)bannerViewControllerDidShrinkForKeyboard:(id)bannerViewController;
-- (void)bulletinWindowDidRotateFromOrientation:(int)bulletinWindow;
-- (void)bulletinWindowIsAnimatingRotationToOrientation:(int)orientation duration:(double)duration;
 - (void)bulletinWindowStoppedBeingBusy;
-- (void)bulletinWindowWillRotateToOrientation:(int)bulletinWindow duration:(double)duration;
 - (void)cacheBannerForContext:(id)context withCompletion:(id)completion;
 - (id)currentBannerContextForSource:(id)source;
 - (float)currentBannerHeight;
 - (void)dealloc;
 - (void)dismissBannerWithAnimation:(BOOL)animation reason:(int)reason;
 - (void)dismissBannerWithAnimation:(BOOL)animation reason:(int)reason forceEvenIfBusy:(BOOL)busy;
+- (void)dismissBannerWithAnimation:(BOOL)animation reason:(int)reason forceEvenIfBusy:(BOOL)busy completion:(id)completion;
 - (void)dismissCurrentBannerContextForSource:(id)source;
+- (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
 - (BOOL)gestureRecognizerShouldBegin:(id)gestureRecognizer;
-- (void)handleSystemDismissGestureWithState:(int)state position:(CGPoint)position velocity:(float)velocity;
 - (void)handler:(id)handler pulledBannerByDisplacement:(float)displacement;
 - (void)invalidateLockScreenActionContext;
 - (BOOL)isShowingBanner;
 - (BOOL)isShowingModalBanner;
 - (BOOL)isShowingModalBannerWithKeyboard;
 - (BOOL)isTrackingDismissGesture;
+- (BOOL)isTransitioningBanner;
 - (void)modallyPresentBannerWithContext:(id)context;
 - (void)registerSource:(id)source;
 - (void)removeCachedBannerForContext:(id)context;
 - (void)setBannerAlpha:(float)alpha;
 - (void)signalSource:(id)source;
 - (void)unregisterSource:(id)source;
+- (id)viewForSystemGestureRecognizer:(id)systemGestureRecognizer;
 @end
 

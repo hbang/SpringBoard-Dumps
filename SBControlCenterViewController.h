@@ -5,12 +5,12 @@
  * Source: (null)
  */
 
-#import "SBControlCenterSectionViewControllerDelegate.h"
-#import "_UIBackdropViewObserver.h"
-#import "SBControlCenterObserver.h"
-#import "UIGestureRecognizerDelegate.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBControlCenterSectionViewControllerDelegate.h"
 #import "_UISettingsKeyObserver.h"
+#import "SBControlCenterObserver.h"
+#import "_UIBackdropViewObserver.h"
+#import "UIGestureRecognizerDelegate.h"
 
 @protocol SBControlCenterViewControllerDelegate;
 

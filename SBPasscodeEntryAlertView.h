@@ -8,18 +8,18 @@
 #import "SBAlertView.h"
 #import "SpringBoard-Structs.h"
 
-@protocol SBPasscodeEntryAlertViewDelegate, SBUIPasscodeLockView;
+@protocol SBUIPasscodeLockView, SBPasscodeEntryAlertViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SBPasscodeEntryAlertView : SBAlertView {
 	SBUIPasscodeViewWithLockScreenStyle *_passcodeView;
 	BOOL _dismissing;
+	SBAppStatusBarSettingsAssertion *_showStatusBarAssertion;
 	id<SBPasscodeEntryAlertViewDelegate> _delegate;
 }
 @property(assign, nonatomic) id<SBPasscodeEntryAlertViewDelegate> delegate;
 @property(readonly, assign, nonatomic) UIView<SBUIPasscodeLockView> *passcodeLockView;
 - (id)initWithFrame:(CGRect)frame;
-- (void)_animatePasscodeViewsToVisible:(BOOL)visible completion:(id)completion;
 - (void)_dismissAnimationCompleted;
 - (id)_passcodeViewGenerator;
 - (void)alertDisplayBecameVisible;
@@ -27,5 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)isReadyToBeRemovedFromView;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
+- (void)setPasscodeViewsToVisible:(BOOL)visible animated:(BOOL)animated completion:(id)completion;
 @end
 

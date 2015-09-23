@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
-#import "_NCWidgetController_Host_IPC.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "NSXPCListenerDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "_NCWidgetController_Host_IPC.h"
 
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)containingBundleIdentifierForWidgetWithBundleIdentifer:(id)bundleIdentifer;
++ (id)containingBundleProxyForWidgetWithBundleIdentifer:(id)bundleIdentifer;
 + (id)defaultWidgetController;
++ (BOOL)isInternalWidgetBundleIdentifier:(id)identifier;
 - (id)init;
 - (void)__setHasContent:(BOOL)content forWidgetWithBundleIdentifier:(id)bundleIdentifier;
 - (void)dealloc;

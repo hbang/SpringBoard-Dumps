@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 	SBLockScreenViewController *_lockScreenViewController;
 	SBLockToAppStatusBarAnimator *_statusBarAnimator;
 	SBIconAnimator *_iconAnimator;
+	SBWindowSelfHostWrapper *_alertWindowHostWrapper;
+	SBWorkspaceTransitionRequest *_transitionRequest;
 }
-- (id)initWithLockScreenViewController:(id)lockScreenViewController;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
 - (void)_prepareAnimation;
 - (BOOL)_shouldDismissBanner;
 - (void)animateZoomWithCompletion:(id)completion;

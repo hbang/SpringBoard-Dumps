@@ -5,19 +5,21 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "_SBFakeBlur.h"
 #import "SBWallpaperObserver.h"
+#import "_SBFakeBlur.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol _SBFakeBlurObserver;
 
 __attribute__((visibility("hidden")))
 @interface _SBAccessibilityTintView : XXUnknownSuperclass <_SBFakeBlur, SBWallpaperObserver> {
 	int _variant;
+	BOOL _fullscreen;
 	id<_SBFakeBlurObserver> _observer;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(assign, nonatomic) BOOL fullscreen;
 @property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) id<_SBFakeBlurObserver> observer;
 @property(readonly, assign) Class superclass;

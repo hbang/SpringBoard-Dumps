@@ -5,17 +5,19 @@
  * Source: (null)
  */
 
-#import "SBDisplayItem.h"
 #import "SpringBoard-Structs.h"
+#import "SBDisplayItem.h"
 
 
 __attribute__((visibility("hidden")))
 @interface SBContinuityDisplayItem : SBDisplayItem {
-	LSBestAppSuggestion *_appSuggestion;
+	SBBestAppSuggestion *_appSuggestion;
 }
-@property(readonly, assign, nonatomic) LSBestAppSuggestion *appSuggestion;
+@property(readonly, retain, nonatomic) SBBestAppSuggestion *appSuggestion;
 - (id)initWithType:(id)type displayIdentifier:(id)identifier;
 - (id)initWithType:(NSString *)type displayIdentifier:(id)identifier appSuggestion:(id)suggestion;
 - (void)dealloc;
+- (unsigned)hash;
+- (BOOL)isEqual:(id)equal;
 @end
 

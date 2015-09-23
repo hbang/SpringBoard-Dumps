@@ -5,93 +5,88 @@
  * Source: (null)
  */
 
-#import "SBAppSwitcherPageContentView.h"
 #import "SpringBoard-Structs.h"
-#import <XXUnknownSuperclass.h> // Unknown library
+#import "SBSwitcherWallpaperPageContentView.h"
 
-@protocol SBAppSwitcherCacheVended, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SBAppSwitcherSnapshotView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {
+@interface SBAppSwitcherSnapshotView : SBSwitcherWallpaperPageContentView {
 	SBDisplayItem *_displayItem;
 	SBApplication *_application;
 	UIView *_containerView;
 	SBAppSwitcherSettings *_settings;
-	SBWallpaperEffectView *_wallpaperEffectView;
-	SBSnapshotImageInfo *_snapshotImageInfo;
-	UIImageView *_snapshotImageView;
-	CGSize _imageSize;
+	_SBAppSwitcherSnapshotContext *_snapshotContext;
+	SBFakeStatusBarView *_fakeStatusBar;
+	float _cornerRadius;
+	CAShapeLayer *_solidColorBackstopLayer;
 	SBZoomableCrossfadeView *_updateCrossfadeView;
 	SBZoomableCrossfadeView *_zoomUpCrossfadeView;
-	UIImageView *_zoomUpSnapshotView;
-	CGSize _zoomUpImageSize;
-	UIImage *_deferredUpdateImage;
-	SBAppSwitcherStatusBarViewCache *_statusBarCache;
-	UIView<SBAppSwitcherCacheVended> *_statusBar;
+	_SBAppSwitcherSnapshotContext *_zoomUpSnapshotContext;
+	_SBAppSwitcherSnapshotContext *_deferredUpdateSnapshotContext;
 	BOOL _isVisible;
-	BOOL _simplifyForMotion;
+	BOOL _presenting;
+	BOOL _interactive;
 	BOOL _invalidated;
-	BOOL _needsZoomFilter;
 	BOOL _loadedImage;
 	BOOL _needsZoomUpImage;
+	BOOL _needsTwoAppZoomUpBackground;
+	BOOL _preferDownscaledSnapshot;
 	int _appSnapshotUpdatedSequenceID;
 	NSObject<OS_dispatch_queue> *_snapshotQueue;
 	BOOL _shouldTransitionToDefaultPng;
-	int _orientation;
+	CGRect _statusBarLayoutFrame;
 }
-@property(readonly, copy) NSString *debugDescription;
-@property(retain, nonatomic) UIImage *deferredUpdateImage;
-@property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) SBDisplayItem *displayItem;
-@property(readonly, assign) unsigned hash;
 @property(assign) BOOL invalidated;
-@property(assign, nonatomic) int orientation;
 @property(assign, nonatomic) BOOL shouldTransitionToDefaultPng;
-@property(retain, nonatomic) SBSnapshotImageInfo *snapshotImageInfo;
-@property(readonly, assign) Class superclass;
+@property(assign, nonatomic) CGRect statusBarLayoutFrame;
 @property(retain, nonatomic) SBZoomableCrossfadeView *updateCrossfadeView;
 + (id)_fallbackDefaultBackgroundColor;
-+ (id)appSwitcherSnapshotViewForDisplayItem:(id)displayItem orientation:(int)orientation loadAsync:(BOOL)async withQueue:(id)queue statusBarCache:(id)cache;
-- (id)initWithDisplayItem:(id)displayItem application:(id)application orientation:(int)orientation async:(BOOL)async withQueue:(id)queue statusBarCache:(id)cache;
++ (id)appSwitcherSnapshotViewForDisplayItem:(id)displayItem orientation:(int)orientation preferringDownscaledSnapshot:(BOOL)snapshot loadAsync:(BOOL)async withQueue:(id)queue;
+- (id)initWithDisplayItem:(id)displayItem application:(id)application orientation:(int)orientation preferringDownscaledSnapshot:(BOOL)snapshot async:(BOOL)async withQueue:(id)queue;
 - (id)initWithFrame:(CGRect)frame;
-- (id)_cachedImageForImageInfos:(id)imageInfos downscaled:(BOOL)downscaled foundInfo:(out id *)info;
-- (id)_cachedSnapshotForSnapshotInfos:(id)snapshotInfos downscaled:(BOOL)downscaled foundInfo:(out id *)info;
-- (CGImageRef)_cgImageForSnapshotInfo:(id)snapshotInfo downscaled:(BOOL)downscaled;
+- (void)_configureSnapshotImageView:(id)view;
 - (int)_containerOrientation;
-- (void)_crossfadeToNewSnapshotImage:(id)newSnapshotImage;
-- (void)_crossfadeToZoomUpViewIfNecessary;
-- (id)_imageFromSnapshotInfos:(id)snapshotInfos forZoomUp:(BOOL)zoomUp loadedImageInfoOut:(out id *)anOut loadedDownscaledOut:(out BOOL *)anOut4;
+- (id)_contextForAvailableSnapshotWithLayoutState:(id)layoutState preferringDownscaled:(BOOL)downscaled defaultImageOnly:(BOOL)only;
+- (void)_createStatusBarIfNeeded;
+- (void)_crossfadeToNewSnapshotImage:(id)newSnapshotImage withSnapshotContext:(id)snapshotContext;
+- (void)_crossfadeToZoomUpViewIfNecessaryForTransitionRequest:(id)transitionRequest;
+- (CGRect)_frameForBackstopLayer;
 - (void)_layoutContainer;
-- (void)_layoutStatusBar;
-- (void)_loadImageAsyncBodySnapshotInfo:(id)info displayItem:(id)item;
-- (void)_loadImageAsyncFromSnapshotInfo:(id)snapshotInfo;
-- (void)_loadSnapshotAsync;
-- (void)_loadSnapshotSync;
-- (void)_loadZoomUpSnapshotSync;
+- (void)_layoutFakeStatusBar;
+- (void)_loadImageAsyncFromSnapshotContext:(id)snapshotContext;
+- (void)_loadImageAsyncFromSnapshotContext:(id)snapshotContext displayItem:(id)item;
+- (void)_loadSnapshotAsyncPreferringDownscaled:(BOOL)downscaled;
+- (void)_loadSnapshotSyncPreferringDownscaled:(BOOL)downscaled;
+- (void)_loadZoomUpSnapshotSyncForTransitionRequest:(id)transitionRequest;
+- (BOOL)_needsDifferentSnapshotForMedusaForLayoutState:(id)layoutState;
+- (void)_prepareStatusBarIfNeededForTransitionRequest:(id)transitionRequest initialProgress:(float)progress;
 - (CGImageRef)_queue_createDecodedImageIfPossible:(CGImageRef)possible;
 - (BOOL)_queue_keepGoing;
 - (CGAffineTransform)_rotationTransformForOrientation;
+- (void)_setCornerRadiusIfNecessaryForSnapshotImageView:(id)snapshotImageView;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_snapshotChanged:(id)changed;
-- (CGRect)_snapshotFrame;
-- (id)_snapshotImageForImageInfo:(id)imageInfo downscaledIfAvailable:(BOOL)available downscaledWasAvailableOut:(out BOOL *)anOut;
-- (void)_snapshotImageLoaded:(CGImageRef)loaded withInfo:(id)info downscaled:(BOOL)downscaled;
-- (id)_snapshotInfoForDefaultPNG;
-- (id)_snapshotInfoForDefaultPNGWithLaunchOrientation:(int)launchOrientation;
-- (id)_snapshotInfoForSnapshotFromInfos:(id)infos;
-- (id)_snapshotInfos;
-- (id)_snapshotName;
-- (void)_updateStatusbarTranslucency;
+- (CGRect)_snapshotImageFrameForContext:(id)context;
+- (void)_snapshotImageLoaded:(CGImageRef)loaded forSnapshotContext:(id)snapshotContext downscaled:(BOOL)downscaled;
+- (id)_syncImageFromSnapshot:(id)snapshot;
+- (int)_transformOrientation;
 - (void)_updateTranslucency;
 - (void)_viewDismissing:(id)dismissing;
 - (void)_viewPresenting:(id)presenting;
+- (float)cornerRadius;
 - (void)dealloc;
+- (id)description;
+- (void)interactionDidEnd:(BOOL)interaction;
 - (void)invalidate;
 - (void)layoutSubviews;
 - (void)prepareToBecomeVisibleIfNecessary;
 - (void)respondToBecomingInvisibleIfNecessary;
-- (void)setOrientation:(int)orientation orientationBehavior:(int)behavior;
-- (void)simplifyForMotion;
+- (void)setCornerRadius:(float)radius;
+- (void)setOrientation:(int)orientation orientationBehavior:(int)behavior preferringDownscaledSnapshot:(BOOL)snapshot;
 - (CGSize)sizeThatFits:(CGSize)fits;
-- (void)unsimplifyAfterMotion;
+- (void)viewDismissing:(id)dismissing withInteraction:(BOOL)interaction andInitialProgress:(float)progress forTransitionRequest:(id)transitionRequest;
+- (void)viewPresenting:(id)presenting withInteraction:(BOOL)interaction andInitialProgress:(float)progress forTransitionRequest:(id)transitionRequest;
 @end
 

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBIconListPageControlDelegate;
 
@@ -14,17 +14,23 @@ __attribute__((visibility("hidden")))
 @interface SBIconListPageControl : XXUnknownSuperclass {
 	id<SBIconListPageControlDelegate> _delegate;
 	BOOL _hasSetLegibility;
+	BOOL _shouldShowSearchIndicator;
+	float _cachedDefaultHeight;
 	SBIconPageIndicatorImageSetResult *_pageIndicatorImageSets;
+	SBIconPageIndicatorImageSetResult *_searchIndicatorImageSets;
 	BOOL _legibilityEnabled;
 	SBIconPageIndicatorImageSetCache *_imageSetCache;
 }
 @property(assign, nonatomic) id<SBIconListPageControlDelegate> delegate;
 @property(retain, nonatomic) SBIconPageIndicatorImageSetCache *imageSetCache;
 @property(assign, nonatomic) BOOL legibilityEnabled;
+@property(assign, nonatomic) BOOL shouldShowSearchIndicator;
 - (id)initWithFrame:(CGRect)frame;
 - (id)_iconListIndicatorImage:(BOOL)image;
 - (id)_indicatorViewEnabled:(BOOL)enabled index:(int)index;
-- (void)_setIndicatorImage:(id)image toEnabled:(BOOL)enabled;
+- (void)_invalidateIndicators;
+- (id)_searchIndicatorImage:(BOOL)image;
+- (void)_setIndicatorImage:(id)image toEnabled:(BOOL)enabled index:(int)index;
 - (void)_transitionIndicator:(id)indicator toEnabled:(BOOL)enabled index:(int)index;
 - (void)dealloc;
 - (float)defaultHeight;

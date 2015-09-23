@@ -31,18 +31,19 @@
 - (void)dimScreen:(BOOL)screen;
 - (void)disableLockScreenBundleNamed:(id)named deactivationContext:(id)context;
 - (void)enableLockScreenBundleNamed:(id)named activationContext:(id)context;
+- (id)folderNameForDisplayID:(id)displayID;
 - (id)foregroundApplicationDisplayID;
 - (id)foregroundDisplayID;
 - (BOOL)isApplicationForegroundObscured:(id)obscured;
 - (BOOL)isIdleTimerDisabledForReason:(id)reason;
-- (BOOL)isSBUILoggingEnabled;
+- (BOOL)isNamedRemoteAlertServiceActive:(id)active controllerClassName:(id)name;
 - (BOOL)isScreenOn;
 - (BOOL)launchApplicationFromSource:(int)source withDisplayID:(id)displayID options:(id)options;
 - (BOOL)launchApplicationFromSource:(int)source withURL:(id)url options:(id)options;
 - (BOOL)launchDisplayWithURL:(id)url forCall:(BOOL)call sender:(id)sender;
 - (BOOL)launchFromAwayViewPluginWithURL:(id)url bundleID:(id)anId allowUnlock:(BOOL)unlock animate:(BOOL)animate;
 - (BOOL)launchFromBulletinWithURL:(id)url bundleID:(id)anId allowUnlock:(BOOL)unlock animate:(BOOL)animate launchOrigin:(int)origin;
-- (BOOL)launchFromPushOrLocalBulletin:(id)pushOrLocalBulletin actionIdentifier:(id)identifier origin:(int)origin;
+- (BOOL)launchFromPushOrLocalBulletin:(id)pushOrLocalBulletin actionIdentifier:(id)identifier userResponse:(id)response origin:(int)origin;
 - (BOOL)launchFromSource:(int)source withURL:(id)url bundleID:(id)anId allowUnlock:(BOOL)unlock;
 - (id)localizedDisplayNameForDisplayID:(id)displayID;
 - (void)lockAndDimDevice;
@@ -56,6 +57,8 @@
 - (void)openURL:(id)url animateIn:(BOOL)anIn scale:(float)scale start:(double)start duration:(float)duration animateOut:(BOOL)anOut;
 - (void)prepareToAnswerCall;
 - (void)removeActiveInterfaceOrientationObserver:(id)observer;
+- (id)searchBackdropView;
+- (id)searchBlurEffectView;
 - (void)setBadgeNumberOrString:(id)string forApplicationWithID:(id)anId;
 - (void)setIdleText:(id)text;
 - (void)setIdleTimerDisabled:(BOOL)disabled forReason:(id)reason;
@@ -67,5 +70,6 @@
 - (void)updateCustomSubtitleTextForAwayViewPlugin:(id)awayViewPlugin;
 - (void)updateInterfaceOrientationIfNecessary;
 - (void)updateLockScreenInterfaceIfNecessary;
+- (CFRunLoopRef)wifiRunLoopRef;
 @end
 

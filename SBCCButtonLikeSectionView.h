@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
-#import "SBUIControlCenterButtonDelegate.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "_UISettingsKeyObserver.h"
+#import "SBUIControlCenterButtonDelegate.h"
 
 
 __attribute__((visibility("hidden")))
@@ -35,13 +35,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldUseButtonAppearance;
 - (void)_updateBackgroundForStateChange;
 - (void)_updateEffects;
+- (void)_updateForReduceTransparencyChange;
 - (void)button:(id)button didChangeState:(int)state;
 - (void)buttonTapped:(id)tapped;
 - (void)dealloc;
 - (BOOL)isHighlighted;
 - (void)layoutSubviews;
+- (void)prepareBackgroundLayerForAnimation;
 - (void)setEnabled:(BOOL)enabled;
-- (void)setHighlighted:(BOOL)highlighted;
 - (void)setImage:(id)image;
 - (void)setNumberOfLines:(int)lines;
 - (void)setSelected:(BOOL)selected;

@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) unsigned numberOfSegments;
 @property(assign, nonatomic) int selectedSegmentIndex;
-@property(readonly, assign, nonatomic) NSArray *views;
+@property(readonly, retain, nonatomic) NSArray *views;
 + (void)_configureSegmentedControl:(id)control withColorSettings:(id)colorSettings;
 + (id)_segmentedControlForUse:(int)use colorSettings:(id)settings;
 - (id)initWithGraphicsQuality:(int)graphicsQuality;

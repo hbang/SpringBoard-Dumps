@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 #import "SBWindowLayoutStrategy.h"
 
 
@@ -19,6 +19,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 - (CGRect)frameForWindow:(id)window;
-- (int)jailBehavior;
+- (BOOL)shouldClipForWindow:(id)window;
 @end
 

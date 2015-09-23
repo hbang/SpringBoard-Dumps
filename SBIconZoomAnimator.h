@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
 - (void)_applyLabelAlphaFraction:(float)fraction;
 - (void)_cleanupAnimation;
+- (void)_cleanupZoom;
 - (void)_clearObservers;
 - (void)_iconModelDidRelayout;
 - (void)_iconModelDidReload;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)_setAnimationFraction:(float)fraction;
 - (void)_setDockListView:(id)view;
 - (void)_setIconListView:(id)view;
+- (void)cleanupZoom;
 - (void)dealloc;
 - (unsigned)dockIconCount;
 - (void)enumerateIconsAndIconViewsWithHandler:(id)handler;

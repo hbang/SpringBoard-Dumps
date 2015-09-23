@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 	UIImageView *_circleImageView;
 	UIImageView *_xImageView;
 	UIImageView *_compositeCircleXImageView;
+	UIView *_highlightView;
 	NSMutableArray *_glyphImageViews;
 	unsigned _animatingTransitionCount;
 	int _graphicsQuality;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)_glyphFramesWithCircleFrame:(CGRect)circleFrame forState:(int)state;
 - (id)_glyphImagesFromAttributedString:(id)attributedString;
 - (void)_layoutSubviewsForState:(int)state;
+- (id)_lazyHighlightView;
 - (CGRect)_unrolledCircleBounds;
 - (CGRect)_xFrameWithCircleFrame:(CGRect)circleFrame forState:(int)state;
 - (id)_xImage;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizerShouldBegin:(id)gestureRecognizer;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
 - (void)layoutSubviews;
+- (void)setHighlighted:(BOOL)highlighted;
 - (void)setState:(int)state animated:(BOOL)animated;
 - (CGSize)sizeThatFits:(CGSize)fits;
 @end

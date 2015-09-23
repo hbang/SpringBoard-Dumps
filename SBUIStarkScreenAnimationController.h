@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
 	SBStarkScreenController *_starkScreenController;
 }
 @property(readonly, retain, nonatomic) SBStarkScreenController *starkScreenController;
-- (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app starkScreenController:(id)controller;
-- (id)__newWaitForAppActivationTransaction;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider starkScreenController:(id)controller;
 - (void)__startAnimation;
+- (id)__waitForAppActivationTransactionForApplication:(id)application;
 - (BOOL)__wantsInitialProgressStateChange;
 - (void)_cleanupAnimation;
 - (id)_getTransitionWindow;

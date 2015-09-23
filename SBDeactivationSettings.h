@@ -5,17 +5,20 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import "BSSettingDescriptionProvider.h"
-#import "SBDeactivationSettings.h"
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "NSObject.h"
+#import "BSDescriptionProviding.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
+#import "SBDeactivationSettings.h"
 #import "NSCopying.h"
 
 
 @protocol SBDeactivationSettings <NSObject>
 - (void)applyDeactivationSettings:(id)settings;
 - (BOOL)boolForDeactivationSetting:(unsigned)deactivationSetting;
+- (void)clearDeactivationSettings;
+- (id)copyDeactivationSettings;
 - (int)flagForDeactivationSetting:(unsigned)deactivationSetting;
 - (id)objectForDeactivationSetting:(unsigned)deactivationSetting;
 - (void)setFlag:(int)flag forDeactivationSetting:(unsigned)deactivationSetting;
@@ -23,24 +26,30 @@
 @end
 
 __attribute__((visibility("hidden")))
-@interface SBDeactivationSettings : XXUnknownSuperclass <BSSettingDescriptionProvider, SBDeactivationSettings, NSCopying> {
+@interface SBDeactivationSettings : XXUnknownSuperclass <BSSettingDescriptionProvider, SBDeactivationSettings, NSCopying, BSDescriptionProviding> {
 	BSMutableSettings *_settings;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, assign, nonatomic, getter=isEmpty) BOOL empty;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
 - (id)init;
 - (void)applyDeactivationSettings:(id)settings;
-- (id)basicDescriptionWithPrefix:(id)prefix;
 - (BOOL)boolForDeactivationSetting:(unsigned)deactivationSetting;
+- (void)clearDeactivationSettings;
+- (id)copyDeactivationSettings;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
+- (id)descriptionBuilderWithMultilinePrefix:(id)multilinePrefix;
+- (id)descriptionWithMultilinePrefix:(id)multilinePrefix;
 - (int)flagForDeactivationSetting:(unsigned)deactivationSetting;
 - (id)keyDescriptionForSetting:(unsigned)setting;
 - (id)objectForDeactivationSetting:(unsigned)deactivationSetting;
 - (void)setFlag:(int)flag forDeactivationSetting:(unsigned)deactivationSetting;
 - (void)setObject:(id)object forDeactivationSetting:(unsigned)deactivationSetting;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 - (id)valueDescriptionForFlag:(int)flag object:(id)object ofSetting:(unsigned)setting;
 @end
 

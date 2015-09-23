@@ -5,9 +5,9 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBModalLayoutCaching.h"
-#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -15,21 +15,24 @@ __attribute__((visibility("hidden")))
 	UILabel *_titleLabel;
 	UIImageView *_iconImageView;
 	SBNotificationsClearButton *_clearButton;
-	id _xAction;
-	id _clearAction;
 	BOOL _showingClear;
 	int _layoutMode;
+	id _clearButtonVisibleAction;
+	id _clearButtonFinalAction;
 }
+@property(copy, nonatomic) id clearButtonFinalAction;
+@property(copy, nonatomic) id clearButtonVisibleAction;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
-@property(readonly, assign, nonatomic) UIImageView *iconImageView;
+@property(readonly, retain, nonatomic) UIImageView *iconImageView;
 @property(assign, nonatomic) int layoutMode;
 @property(readonly, assign) Class superclass;
-@property(readonly, assign, nonatomic) UILabel *titleLabel;
+@property(readonly, retain, nonatomic) UILabel *titleLabel;
 + (float)_titleBaseline;
-+ (id)titleFont;
-- (id)initWithFrame:(CGRect)frame;
++ (id)titleFontForLayoutMode:(int)layoutMode;
+- (id)initWithCoder:(id)coder;
+- (id)initWithReuseIdentifier:(id)reuseIdentifier;
 - (void)_addClearButton;
 - (CGRect)_clearButtonFrame;
 - (void)_removeClearButton;
@@ -41,7 +44,5 @@ __attribute__((visibility("hidden")))
 - (void)resetAnimated:(BOOL)animated;
 - (void)setBackgroundView:(id)view;
 - (void)setHasClearButton:(BOOL)button;
-- (void)setTarget:(id)target forClearButtonAction:(id)clearButtonAction;
-- (void)setTarget:(id)target forClearButtonVisibleAction:(id)clearButtonVisibleAction;
 @end
 

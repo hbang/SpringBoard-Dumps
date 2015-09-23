@@ -5,31 +5,31 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
+#import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBWindowLayoutStrategy;
 
 __attribute__((visibility("hidden")))
 @interface SBWindow : XXUnknownSuperclass {
 	SBRecycledViewsContainer *_recycledViewsContainerView;
-	int _jailBehavior;
 	id<SBWindowLayoutStrategy> _layoutStrategy;
 }
-@property(readonly, assign, nonatomic) UIEdgeInsets jailInsets;
 @property(readonly, retain, nonatomic) id<SBWindowLayoutStrategy> layoutStrategy;
-+ (CGRect)_actualBoundsForScreen:(id)screen withJailBehavior:(int)jailBehavior;
-+ (UIEdgeInsets)_jailInsetsForScreen:(id)screen;
++ (id)defaultLayoutStrategy;
++ (BOOL)sb_autorotates;
++ (BOOL)sb_disableStatusBarHeightChanges;
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithScreen:(id)screen debugName:(id)name;
-- (id)initWithScreen:(id)screen debugName:(id)name scene:(id)scene;
+- (id)initWithScreen:(id)screen debugName:(id)name rootViewController:(id)controller;
 - (id)initWithScreen:(id)screen layoutStrategy:(id)strategy debugName:(id)name;
 - (id)initWithScreen:(id)screen layoutStrategy:(id)strategy debugName:(id)name scene:(id)scene;
-- (id)_initWithScreen:(id)screen layoutStrategy:(id)strategy debugName:(id)name scene:(id)scene;
-- (BOOL)_isClippedByScreenJail;
-- (BOOL)_isConstrainedByScreenJail;
+- (id)_initWithScreen:(id)screen layoutStrategy:(id)strategy debugName:(id)name rootViewController:(id)controller scene:(id)scene;
 - (void)dealloc;
+- (void)handleStatusBarChangeFromHeight:(float)height toHeight:(float)height2;
+- (id)hostWrapperForUseInWindow:(id)window hostRequester:(id)requester;
 - (id)recycledViewsContainer;
 - (void)setAlphaAndObeyBecauseIAmTheWindowManager:(float)manager;
+- (void)setAutorotates:(BOOL)autorotates forceUpdateInterfaceOrientation:(BOOL)orientation;
 @end
 

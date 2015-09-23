@@ -5,10 +5,10 @@
  * Source: (null)
  */
 
+#import "NSFastEnumeration.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 #import "SBIconIndexNode.h"
-#import "NSFastEnumeration.h"
 
 
 __attribute__((visibility("hidden")))
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsNodeIdentifier:(id)identifier;
 - (unsigned)countByEnumeratingWithState:(XXStruct_kFm5bA *)state objects:(id *)objects count:(unsigned)count;
 - (void)dealloc;
+- (void)enumerateIconsUsingBlock:(id)block;
 - (unsigned)firstFreeSlotIndex;
 - (unsigned)firstFreeSlotIndexForType:(int)type;
 - (id)folder;

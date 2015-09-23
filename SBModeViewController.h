@@ -5,18 +5,18 @@
  * Source: (null)
  */
 
-#import <XXUnknownSuperclass.h> // Unknown library
 #import "SpringBoard-Structs.h"
-#import "_UISettingsKeyPathObserver.h"
 #import "SBUISizeObservingViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "_UISettingsKeyPathObserver.h"
 
-@protocol SBModeViewControllerContentProviding, SBBulletinActionHandler;
+@protocol SBModeViewControllerContentProviding, SBModeViewControllerDelegate, SBBulletinActionHandler;
 
 __attribute__((visibility("hidden")))
 @interface SBModeViewController : XXUnknownSuperclass <SBUISizeObservingViewDelegate, _UISettingsKeyPathObserver> {
-	id<SBBulletinActionHandler> _delegate;
-	SBBulletinObserverViewController *_selectedViewController;
-	SBBulletinObserverViewController *_deselectedViewController;
+	id<SBBulletinActionHandler> _bulletinActionHandler;
+	SBNCColumnViewController *_selectedViewController;
+	SBNCColumnViewController *_deselectedViewController;
 	UIScrollView *_contentView;
 	UIView *_headerView;
 	SBModeControlManager *_modeControl;
@@ -24,17 +24,21 @@ __attribute__((visibility("hidden")))
 	UISwipeGestureRecognizer *_rightSwipeGestureRecognizer;
 	SBNotificationSeparatorView *_separator;
 	struct {
-		unsigned isContentLayoutValid : 1;
-		unsigned isSegmentLayoutValid : 1;
-		unsigned isRequestHandlingEnabled : 1;
-		unsigned shouldLoadAllChildViews : 1;
+		unsigned suppliesInsertionAnimation : 1;
+		unsigned suppliesRemovalAnimation : 1;
+		unsigned suppliesReplacementAnimation : 1;
+		unsigned decidesHighlight : 1;
+		unsigned interestedInSelection : 1;
+		unsigned suppliesLayoutMode : 1;
 	} _modeViewControllerFlags;
+	id<SBModeViewControllerDelegate> _modeViewControllerDelegate;
 }
+@property(assign, nonatomic) id<SBBulletinActionHandler> bulletinActionHandler;
 @property(readonly, copy) NSString *debugDescription;
-@property(assign, nonatomic) id<SBBulletinActionHandler> delegate;
 @property(readonly, copy) NSString *description;
-@property(retain, nonatomic) SBBulletinObserverViewController *deselectedViewController;
+@property(retain, nonatomic) SBNCColumnViewController *deselectedViewController;
 @property(readonly, assign) unsigned hash;
+@property(assign, nonatomic) id<SBModeViewControllerDelegate> modeViewControllerDelegate;
 @property(assign, nonatomic, getter=isRequestHandlingEnabled) BOOL requestHandlingEnabled;
 @property(assign, nonatomic) UIViewController<SBModeViewControllerContentProviding> *selectedViewController;
 @property(readonly, assign) Class superclass;
@@ -42,9 +46,11 @@ __attribute__((visibility("hidden")))
 + (id)_buttonTitleFont;
 - (BOOL)_addBulletinObserverViewController:(id)controller;
 - (void)_backgroundContrastDidChange:(id)_backgroundContrast;
+- (UIEdgeInsets)_contentInsets;
 - (BOOL)_contentOffset:(CGPoint *)offset forChildViewController:(id)childViewController;
 - (float)_headerViewHeightForMode:(int)mode;
 - (void)_invalidateContentLayout;
+- (void)_invalidateHeaderLayout;
 - (void)_invalidateSegmentLayout;
 - (BOOL)_isChildViewControllerViewLoadedInContentView:(id)contentView;
 - (BOOL)_isRequestHandlingEnabled;

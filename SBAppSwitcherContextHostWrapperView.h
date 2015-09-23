@@ -5,17 +5,17 @@
  * Source: (null)
  */
 
+#import "SBMainAppSwitcherPageContentView.h"
 #import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
-#import "SBAppSwitcherPageContentView.h"
 
-@protocol FBWindowContextAppearance;
+@protocol FBSceneHostView;
 
 __attribute__((visibility("hidden")))
-@interface SBAppSwitcherContextHostWrapperView : XXUnknownSuperclass <SBAppSwitcherPageContentView> {
+@interface SBAppSwitcherContextHostWrapperView : XXUnknownSuperclass <SBMainAppSwitcherPageContentView> {
 	FBWindowContextHostManager *_contextHostManager;
 	UIView *_containerView;
-	UIView<FBWindowContextAppearance> *_contextHostView;
+	UIView<FBSceneHostView> *_contextHostView;
 	UIView *_snapshotView;
 	SBWallpaperEffectView *_wallpaperEffectView;
 	int _orientation;
@@ -26,15 +26,19 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) int orientation;
 @property(readonly, assign) Class superclass;
 - (id)initWithFrame:(CGRect)frame;
-- (id)initWithFrame:(CGRect)frame application:(id)application;
+- (id)initWithFrame:(CGRect)frame application:(id)application sideApplication:(id)application3;
 - (CGAffineTransform)_rotationTransformForOrientation:(int)orientation;
 - (void)_viewDidAnimateDismissal:(id)_view;
 - (void)_viewDidAnimatePresentation:(id)_view;
 - (void)_viewDismissing:(id)dismissing;
 - (void)_viewPresenting:(id)presenting;
+- (void)_viewWillPresent:(id)_view;
+- (float)cornerRadius;
 - (void)dealloc;
 - (void)didMoveToSuperview;
+- (void)invalidate;
 - (void)layoutSubviews;
+- (void)setCornerRadius:(float)radius;
 - (CGSize)sizeThatFits:(CGSize)fits;
 @end
 

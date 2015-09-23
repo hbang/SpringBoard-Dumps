@@ -6,11 +6,11 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "UIGestureRecognizerDelegate.h"
-#import <XXUnknownSuperclass.h> // Unknown library
-#import "UITextFieldDelegate.h"
 #import "SBIconListPageControlDelegate.h"
 #import "SBIconScrollViewDelegate.h"
+#import <XXUnknownSuperclass.h> // Unknown library
+#import "UITextFieldDelegate.h"
+#import "UIGestureRecognizerDelegate.h"
 
 @protocol SBFolderViewDelegate;
 
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 	SBIconViewMap *_viewMap;
 	NSMutableArray *_scrollFrames;
 	unsigned _scrollFrameCount;
+	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	SBIconListPageControl *_pageControl;
 	SBIconScrollView *_scrollView;
 	SBFolderTitleTextField *_titleTextField;
@@ -79,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)_disableUserInteractionBeforeSignificantAnimation;
 - (void)_enableUserInteractionAfterSignificantAnimation;
 - (void)_endScrollingTest;
+- (void)_endSpotlightScrollingTest;
 - (CGRect)_frameForScalingView;
 - (BOOL)_hasMinusPages;
 - (CGRect)_iconListFrameForPageRect:(CGRect)pageRect atIndex:(unsigned)index;
@@ -116,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateIconListFrames;
 - (void)_updateIconListViews;
 - (void)_updatePageControlToIndex:(int)index;
+- (void)_updateScalingViewFrame;
 - (void)_updateTitleLegibilitySettings;
 - (BOOL)_updatesWallpaperRelativeCenter;
 - (id)borrowScalingView;
@@ -155,6 +158,7 @@ __attribute__((visibility("hidden")))
 - (void)returnScalingView;
 - (CGRect)scalingViewFrame;
 - (id)scrollView;
+- (CGSize)scrollView:(id)view contentSizeForZoomScale:(float)zoomScale withProposedSize:(CGSize)proposedSize;
 - (void)scrollViewDidEndDecelerating:(id)scrollView;
 - (void)scrollViewDidEndDragging:(id)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidEndScrollingAnimation:(id)scrollView;

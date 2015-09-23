@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SBDeveloperBuildExpirationAlert : SBHomeScreenNagAlert {
 }
+- (id)init;
 - (id)dismissButtonText;
 @end
 

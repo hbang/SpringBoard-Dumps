@@ -12,8 +12,9 @@
 - (void)switcherIconScroller:(id)scroller activate:(id)activate;
 - (void)switcherIconScroller:(id)scroller contentOffsetChanged:(float)changed;
 - (unsigned)switcherIconScroller:(id)scroller settledIndexForNormalizedOffset:(inout float *)normalizedOffset andXVelocity:(float)velocity;
-- (BOOL)switcherIconScroller:(id)scroller shouldHideIconForDisplayLayout:(id)displayLayout;
+- (BOOL)switcherIconScroller:(id)scroller shouldHideIconForDisplayItem:(id)displayItem;
 - (void)switcherIconScrollerBeganPanning:(id)panning;
 - (void)switcherIconScrollerDidEndScrolling:(id)switcherIconScroller;
+- (id)switcherIconScrollerWindowForViewRecycling:(id)viewRecycling;
 @end
 

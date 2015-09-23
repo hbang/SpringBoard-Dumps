@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 	UILabel *_slideToUnlockView;
 	_UILegibilityLabel *_slideToUnlockLegibilityLabel;
 	SBFakeStatusBarView *_statusBar;
-	SBFLockScreenSimpleDateFormatter *_dateFormatter;
 	_UILegibilitySettings *_legibilitySettings;
 }
 + (id)preview;

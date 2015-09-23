@@ -6,16 +6,17 @@
  */
 
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SBDateTimeOverrideObserver.h"
 #import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
-@interface SBStatusBarStateAggregator : XXUnknownSuperclass {
+@interface SBStatusBarStateAggregator : XXUnknownSuperclass <SBDateTimeOverrideObserver> {
 	unsigned _coalescentBlockDepth;
 	BOOL _hasPostedOnce;
-	unsigned _itemPostState[26];
+	unsigned _itemPostState[27];
 	BOOL _nonItemDataChanged;
-	XXStruct_gly1hD _data;
+	XXStruct_bjgjSD _data;
 	int _actions;
 	NSHashTable *_postObservers;
 	BOOL _notifyingPostObservers;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 	BOOL _suppressCellServiceForAirplaneModeTransition;
 	BOOL _showsActivityIndicatorOnHomeScreen;
 	int _activityIndicatorEverywhereCount;
-	BOOL _showsActivityIndicatorForNewsstand;
 	int _syncActivityIndicatorCount;
 	NSString *_activityDisplayIdentifier;
 	BOOL _showingNotChargingItem;
@@ -39,7 +39,13 @@ __attribute__((visibility("hidden")))
 	BOOL _alarmEnabled;
 	BOOL _applyingAssistantStyle;
 	int _locationStatusBarIconType;
+	SBSStatusBarStyleOverridesAssertion *_siriEyesFreeStatusBarStyleOverrideAssertion;
+	SBSStatusBarStyleOverridesAssertion *_tetheringStatusBarStyleOverrideAssertion;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (int)_thermalColorForLevel:(int)level;
 + (id)sharedInstance;
 - (id)init;
@@ -52,6 +58,8 @@ __attribute__((visibility("hidden")))
 - (void)_notifyNonItemDataChanged;
 - (void)_postItem:(int)item withState:(unsigned)state;
 - (void)_registerForNotifications;
+- (void)_removeAssistantEyesFreeStatusBarStyleOverride;
+- (void)_removeTetheringStatusBarStyleOverrideAssertion;
 - (void)_requestActions:(int)actions;
 - (void)_resetTimeItemFormatter;
 - (void)_restartTimeItemTimer;
@@ -68,7 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateAirplayItem;
 - (void)_updateAlarmItem;
 - (void)_updateAssistantItem;
-- (void)_updateBatteryItems;
+- (void)_updateBatteryItems:(id)items;
 - (void)_updateBluetoothBatteryItem;
 - (void)_updateBluetoothItem;
 - (void)_updateCallForwardingItem;
@@ -87,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateVPNItem;
 - (void)addPostingObserver:(id)observer;
 - (void)beginCoalescentBlock;
+- (void)controller:(id)controller didChangeOverrideDateFromDate:(id)date;
 - (void)dealloc;
 - (void)endCoalescentBlock;
 - (id)operatorName;
@@ -94,7 +103,6 @@ __attribute__((visibility("hidden")))
 - (void)sendStatusBarActions:(int)actions;
 - (void)setAlarmEnabled:(BOOL)enabled;
 - (void)setShowsActivityIndicatorEverywhere:(BOOL)everywhere;
-- (void)setShowsActivityIndicatorForNewsstand:(BOOL)newsstand;
 - (void)setShowsActivityIndicatorOnHomeScreen:(BOOL)screen;
 - (void)setShowsOverridesForRecording:(BOOL)recording;
 - (void)setShowsSyncActivityIndicator:(BOOL)indicator;

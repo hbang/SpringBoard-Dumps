@@ -13,28 +13,26 @@ __attribute__((visibility("hidden")))
 	int _transitionStyle;
 	SBLockScreenViewControllerBase *_lockscreenViewController;
 	SBLockScreenClippedSlideController *_lockscreenClippedSlideController;
-	UIView *_appView;
-	double _animationDelay;
+	SBSceneLayoutAnimationWrapperView *_animationWrapperView;
+	NSMutableArray *_appsNeedingContextHosting;
 	double _animationDuration;
 	BOOL _fromCC;
 	BOOL _fromNC;
 	BOOL _finishedSliding;
 	BOOL _waitForAppActivationForContextHostView;
-	BOOL _useContextHostView;
 }
-- (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
-- (id)initWithActivatingApp:(id)activatingApp deactivatingLockscreen:(id)lockscreen;
-- (id)initWithActivatingLockscreen:(id)activatingLockscreen deactivatingApp:(id)app;
-- (id)_animationProgressDependency;
+- (id)initWithTransitionContextProvider:(id)transitionContextProvider;
+- (id)_animationProgressDependencies;
 - (void)_applicationDependencyStateChanged;
+- (BOOL)_areApplicationLaunchesFinished;
 - (void)_cleanupAnimation;
 - (void)_finishedSliding;
-- (BOOL)_isApplicationLaunchFinished;
 - (void)_maybeReportAnimationFinished;
 - (void)_prepareAnimation;
 - (void)_setup:(id)setup transitionStyle:(int)style;
 - (void)_startAnimation;
 - (BOOL)_waitsForApplicationActivationIfNecessary;
+- (void)_willSetupStartDependencies;
 - (void)dealloc;
 - (id)description;
 @end

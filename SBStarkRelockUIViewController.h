@@ -5,8 +5,8 @@
  * Source: (null)
  */
 
-#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
+#import "SpringBoard-Structs.h"
 
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 	CGSize _labelSize;
 }
 - (void)dealloc;
+- (unsigned)supportedInterfaceOrientations;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 @end

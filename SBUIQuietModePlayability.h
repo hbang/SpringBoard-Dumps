@@ -11,6 +11,7 @@
 @protocol SBUIQuietModePlayability <NSObject>
 - (BOOL)inertWhenLocked;
 - (BOOL)isCritical;
+- (BOOL)overridesPocketMode;
 - (BOOL)overridesQuietMode;
 @end
 

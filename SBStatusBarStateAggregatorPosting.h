@@ -10,9 +10,9 @@
 
 
 @protocol SBStatusBarStateAggregatorPosting <NSObject>
-- (void)statusBarStateAggregator:(id)aggregator didUpdateNonItemData:(const XXStruct_gly1hD *)data;
-- (void)statusBarStateAggregator:(id)aggregator didVisitItem:(int)item withUpdates:(BOOL)updates toData:(const XXStruct_gly1hD *)data;
-- (void)statusBarStateAggregatorDidFinishPost:(id)statusBarStateAggregator withData:(const XXStruct_gly1hD *)data actions:(int)actions;
+- (void)statusBarStateAggregator:(id)aggregator didUpdateNonItemData:(const XXStruct_bjgjSD *)data;
+- (void)statusBarStateAggregator:(id)aggregator didVisitItem:(int)item withUpdates:(BOOL)updates toData:(const XXStruct_bjgjSD *)data;
+- (void)statusBarStateAggregatorDidFinishPost:(id)statusBarStateAggregator withData:(const XXStruct_bjgjSD *)data actions:(int)actions;
 - (void)statusBarStateAggregatorDidStartPost:(id)statusBarStateAggregator;
 @end
 

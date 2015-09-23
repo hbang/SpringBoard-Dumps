@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)_scrollingEndedInScrollView:(id)scrollView;
 - (void)_setContentForTableCell:(id)tableCell withItem:(id)item atIndexPath:(id)indexPath;
 - (void)_setNonSelectedCellsToVisible:(BOOL)visible withSelectedCell:(id)selectedCell;
+- (id)_snoozedAlarmLocalNotificationForIndexPath:(id)indexPath;
 - (id)_tableFooterView;
 - (id)_tableHeaderView;
 - (void)_textDisabledTimerFired:(id)fired;
@@ -97,5 +98,6 @@ __attribute__((visibility("hidden")))
 - (void)updateForRemovalOfItemAtIndex:(unsigned)index removedItem:(id)item;
 - (void)updateForRemovalOfItems;
 - (id)visibleNotificationCells;
+- (CGRect)visibleRegionUsingPresentationLayer:(BOOL)layer;
 @end
 

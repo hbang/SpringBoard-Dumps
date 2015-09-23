@@ -6,8 +6,8 @@
  */
 
 #import "SpringBoard-Structs.h"
-#import "SBIconView.h"
 #import "_UISettingsKeyObserver.h"
+#import "SBIconView.h"
 
 
 __attribute__((visibility("hidden")))

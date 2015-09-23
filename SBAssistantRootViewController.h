@@ -5,6 +5,7 @@
  * Source: (null)
  */
 
+#import "SpringBoard-Structs.h"
 #import <XXUnknownSuperclass.h> // Unknown library
 
 @protocol SBUIPluginViewControllerInterface;
@@ -17,8 +18,8 @@ __attribute__((visibility("hidden")))
 	UIScreen *_screen;
 }
 @property(retain, nonatomic) UIViewController<SBUIPluginViewControllerInterface> *assistantController;
-@property(readonly, assign, nonatomic) UIView *clippingView;
-@property(readonly, assign, nonatomic) UIView *contentView;
+@property(readonly, retain, nonatomic) UIView *clippingView;
+@property(readonly, retain, nonatomic) UIView *contentView;
 @property(retain, nonatomic) UIScreen *screen;
 - (id)initWithScreen:(id)screen;
 - (void)dealloc;
@@ -26,9 +27,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
 - (BOOL)shouldAutorotate;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (unsigned)supportedInterfaceOrientations;
+- (void)viewWillTransitionToSize:(CGSize)view withTransitionCoordinator:(id)transitionCoordinator;
 - (BOOL)wantsFullScreenLayout;
-- (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 @end
 
