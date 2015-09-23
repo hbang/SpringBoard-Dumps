@@ -16,9 +16,13 @@ __attribute__((visibility("hidden")))
 	int _minAnimatingListViewIndex;
 	int _maxAnimatingListViewIndex;
 	int _disableUpdatingCurrentIconListCount;
+	int _firstDisplayedColumnOnCurrentList;
 	BOOL _animatedScrolling;
 	BOOL _scalingViewIsBorrowed;
 	SBIconViewMap *_viewMap;
+	NSMutableArray *_scrollFrames;
+	unsigned _scrollFrameCount;
+	BOOL _isN90;
 	SBIconListPageControl *_pageControl;
 	SBIconScrollView *_scrollView;
 	SBFolderTitleTextField *_titleTextField;
@@ -70,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_scrollViewThinksItsScrolling;
 - (void)_setAnimatedScrolling:(BOOL)scrolling;
 - (void)_setCurrentPageIndex:(int)index;
+- (void)_setCurrentPageIndex:(int)index deferringPageControlUpdate:(BOOL)update;
 - (void)_setFolderName:(id)name;
 - (BOOL)_shouldDisableUpdatingCurrentIconList;
 - (BOOL)_showsTitle;
@@ -83,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didAnimate;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;
+- (BOOL)doesPageContainIconListView:(int)view;
 - (void)fadeContentForMagnificationFraction:(float)magnificationFraction;
 - (void)fadeContentForMinificationFraction:(float)minificationFraction;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;
@@ -95,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutIconLists:(double)lists domino:(BOOL)domino forceRelayout:(BOOL)relayout;
 - (void)layoutSubviews;
 - (BOOL)locationCountsAsInsideFolder:(CGPoint)folder;
+- (int)lowestVisibleIconListIndexAndColumn:(int *)column columnsOnScreen:(int *)screen totalLists:(unsigned)lists columnsPerList:(unsigned)list;
 - (void)noteUserHasGrabbedIcon:(BOOL)icon;
 - (void)noteUserIsInteractingWithIcons;
 - (void)pageControl:(id)control didRecieveTouchInDirection:(int)direction;
@@ -120,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)updateIconListViews;
 - (void)willAnimate;
 - (void)willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation;
+- (void)willMoveToWindow:(id)window;
 - (void)willRotateToInterfaceOrientation:(int)interfaceOrientation;
 @end
 

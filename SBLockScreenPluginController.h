@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithLockScreenViewController:(id)lockScreenViewController;
 - (void)_addObservers;
 - (void)_disablePluginsPassingTest:(id)test withReason:(id)reason;
+- (void)_handleApplicationExit:(id)exit;
 - (void)_handlePluginDisable:(id)disable;
 - (void)_handleUIRelock;
 - (id)_highestPriorityPluginIgnoringViewDisplay:(BOOL)display;

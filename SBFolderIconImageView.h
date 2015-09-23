@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)setBackgroundScale:(float)scale;
 - (void)setFloatyFolderCrossfadeFraction:(float)fraction;
 - (void)setIconGridImageAlpha:(float)alpha;
+- (void)setSuppressesBlurryBackgroundChanges:(BOOL)changes;
 - (void)setWallpaperRelativeCenter:(CGPoint)center;
 - (id)snapshot;
 - (void)updateImageAnimated:(BOOL)animated;

@@ -143,6 +143,7 @@ __attribute__((visibility("hidden")))
 - (void)setLabelHidden:(BOOL)hidden;
 - (void)setPaused:(BOOL)paused;
 - (void)setRefusesRecipientStatus:(BOOL)status;
+- (void)setSuppressesBlurryBackgroundChanges:(BOOL)changes;
 - (void)setTouchDownInIcon:(BOOL)icon;
 - (void)setUpdatedMarkHidden:(BOOL)hidden;
 - (void)settings:(id)settings changedValueForKey:(id)key;

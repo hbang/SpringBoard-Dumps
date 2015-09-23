@@ -11,12 +11,14 @@ __attribute__((visibility("hidden")))
 @interface SBIconBlurryBackgroundView : XXUnknownSuperclass <_SBIconWallpaperColorClient> {
 	CGRect _wallpaperRelativeBounds;
 	BOOL _isBlurring;
+	BOOL _suppressesExternalUpdates;
 	id<SBIconBlurryBackgroundViewObserver> _observer;
 	id _wantsBlurEvaluator;
 	CGPoint _wallpaperRelativeCenter;
 }
 @property(readonly, assign, nonatomic) BOOL isBlurring;
 @property(assign, nonatomic) id<SBIconBlurryBackgroundViewObserver> observer;
+@property(assign, nonatomic, getter=isSuppressingExternalUpdates) BOOL suppressesExternalUpdates;
 @property(assign, nonatomic) CGPoint wallpaperRelativeCenter;
 @property(copy, nonatomic) id wantsBlurEvaluator;
 - (id)initWithFrame:(CGRect)frame;

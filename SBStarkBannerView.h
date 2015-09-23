@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 	UIImageView *_actionImageView;
 	UIEdgeInsets _contentInsets;
 }
+@property(copy, nonatomic) UIColor *grabberColor;
 + (UIEdgeInsets)_contentInsetsForActionType:(int)actionType;
 + (id)_imageForActionType:(int)actionType;
 - (id)initWithContext:(id)context;

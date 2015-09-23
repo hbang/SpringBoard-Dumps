@@ -15,15 +15,19 @@ __attribute__((visibility("hidden")))
 	NSArray *_testRecipeClassNames;
 	id<SBTestRecipe> _activeTestRecipe;
 	BOOL _showingSettings;
+	BOOL _hasPreviousSettings;
 }
 @property(retain, nonatomic) id<SBTestRecipe> activeTestRecipe;
++ (void)migrateSettings;
 + (void)reloadDefaults;
 + (id)sharedInstance;
 - (id)init;
 - (void)_changeActiveTestRecipeIfNecessary;
 - (void)_configureForDefaults;
+- (BOOL)_hasPreviousSettings;
 - (void)_hideSettings;
 - (CGRect)_offscreenFrame;
+- (BOOL)_restorePreviousSettings;
 - (void)_showSettings;
 - (void)_tearDownSettingsWindow;
 - (id)_testRecipeClassNames;

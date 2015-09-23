@@ -23,8 +23,10 @@ __attribute__((visibility("hidden")))
 	BOOL _hasShownBackgroundSinceLastClear;
 	id _fadeOutCompletionBlock;
 	BOOL _fadingOut;
+	BOOL _visible;
 }
 @property(readonly, assign, nonatomic, getter=isFadingOut) BOOL fadingOut;
+@property(readonly, assign, nonatomic, getter=isVisible) BOOL visible;
 + (id)sharedInstance;
 - (id)init;
 - (id)_auxiliaryTitleForABRecordID:(int)abrecordID;

@@ -8,8 +8,11 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBIconZoomSettings : SBIconAnimationSettings {
+@interface SBIconAnimationSettings : XXUnknownSuperclass {
+	SBFAnimationSettings *_centralAnimationSettings;
 }
+@property(retain) SBFAnimationSettings *centralAnimationSettings;
 + (id)settingsControllerModule;
+- (void)setDefaultValues;
 @end
 

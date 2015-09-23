@@ -13,9 +13,12 @@ __attribute__((visibility("hidden")))
 	SBIconViewMap *_viewMap;
 	SBIconView *_startView;
 	SBIconView *_endView;
+	CGPoint _wallpaperRelativeImageCenter;
 }
 @property(readonly, assign, nonatomic) SBIconCoordinate coordinate;
 @property(readonly, assign, nonatomic) SBIcon *endIcon;
+@property(readonly, assign, nonatomic) CGPoint iconImageCenter;
+@property(assign, nonatomic) CGPoint wallpaperRelativeImageCenter;
 - (id)initWithFrame:(CGRect)frame startIcon:(id)icon endIcon:(id)icon3 viewMap:(id)map coordinate:(SBIconCoordinate)coordinate;
 - (void)crossfadeWithDuration:(double)duration;
 - (void)dealloc;

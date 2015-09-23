@@ -8,23 +8,17 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBCenterAppIconZoomAnimator : SBCenterIconZoomAnimator {
-	UIView *_appView;
-	float _distantScale;
+@interface SBIconFadeAnimator : SBIconAnimator {
+	UIView *_crossfadeView;
+	BOOL _addedToWindow;
 }
-@property(assign) float distantScale;
-@property(retain, nonatomic) SBCenterAppZoomSettings *settings;
-- (id)initWithFolderController:(id)folderController appView:(id)view;
+- (id)initWithFolderController:(id)folderController crossfadeView:(id)view;
 - (void)_animateToFraction:(float)fraction afterDelay:(double)delay withSharedCompletion:(id)sharedCompletion;
-- (double)_appZoomDelay;
+- (void)_applyAlphaForFraction:(float)fraction;
 - (void)_cleanupAnimation;
-- (void)_delayedForRotation;
-- (void)_fadeAppForZoomFraction:(float)zoomFraction;
-- (double)_iconZoomDelay;
 - (unsigned)_numberOfSignificantAnimations;
 - (void)_prepareAnimation;
 - (void)_setAnimationFraction:(float)fraction;
-- (void)_zoomAppForZoomFraction:(float)zoomFraction;
 - (void)dealloc;
 @end
 

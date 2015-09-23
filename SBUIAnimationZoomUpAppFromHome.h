@@ -8,13 +8,13 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIAnimationZoomUpAppFromHome : SBUIAnimationZoomUpApp <SBIconZoomAnimatorDelegate> {
-	SBIconZoomAnimator *_zoomAnimator;
+@interface SBUIAnimationZoomUpAppFromHome : SBUIAnimationZoomUpApp <SBIconAnimatorDelegate> {
+	SBIconAnimator *_iconAnimator;
 }
 - (void)animateZoomWithCompletion:(id)completion;
 - (void)cleanupZoom;
 - (void)dealloc;
-- (void)iconZoomAnimatorWasInvalidated:(id)invalidated;
+- (void)iconAnimatorWasInvalidated:(id)invalidated;
 - (void)prepareZoom;
 @end
 

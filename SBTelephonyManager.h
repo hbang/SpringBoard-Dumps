@@ -16,13 +16,11 @@ __attribute__((visibility("hidden")))
 	BOOL _hasAnyTelephony;
 	NSString *_cachedCTRegistrationStatus;
 	int _registrationStatus;
-	void *_suspendDormancyAssertion;
 	BOOL _signalStrengthHasBeenSet;
 	long _signalStrength;
 	long _signalStrengthBars;
 	NSString *_operatorName;
 	NSString *_lastKnownNetworkCountryCode;
-	unsigned _suspendDormancyEnabled;
 	unsigned _usingWifi : 1;
 	unsigned _usingVPN : 1;
 	unsigned _iTunesNeedsToRecheckActivation : 1;
@@ -46,6 +44,7 @@ __attribute__((visibility("hidden")))
 	BOOL _modemDataConnectionTypeIsKnown;
 	BOOL _fallingBackToCellular;
 	tcp_connection_fallback_watch_s *_cellularFallbackWatcher;
+	void *_queue_fastDormancySuspendAssertion;
 	TUCall *_incomingCall;
 	TUCall *_activeCall;
 	TUCall *_heldCall;
@@ -119,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)dumpBasebandState:(id)state;
 - (void)exitEmergencyCallbackMode;
 - (unsigned)faceTimeAudioCallCount;
+- (void)handleCallAudioFinished:(id)finished;
 - (void)handleCallControlFailure:(id)failure;
 - (BOOL)hasAnyTelephony;
 - (BOOL)hasCellularData;
@@ -150,6 +150,7 @@ __attribute__((visibility("hidden")))
 - (id)operatorName;
 - (BOOL)outgoingCallExists;
 - (void)postponementStatusChanged;
+- (void)queue_setFastDormancySuspended:(BOOL)suspended withConnection:(CTServerConnectionRef)connection;
 - (int)registrationCauseCode;
 - (int)registrationStatus;
 - (void)setCallForwardingIndicator:(int)indicator;
