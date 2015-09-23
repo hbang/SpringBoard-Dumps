@@ -8,6 +8,7 @@
 
 
 @protocol SBFolderControllerDelegate <NSObject>
+- (Class)controllerClassForFolder:(id)folder;
 - (BOOL)folderController:(id)controller draggedIconDidMoveFromListView:(id)draggedIcon toListView:(id)listView;
 - (BOOL)folderController:(id)controller draggedIconDidPauseAtLocation:(CGPoint)draggedIcon inListView:(id)listView;
 - (BOOL)folderController:(id)controller draggedIconMightDropFromListView:(id)listView;

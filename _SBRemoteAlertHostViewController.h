@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)serviceViewControllerInterface;
 - (id)description;
 - (void)dismiss;
+- (void)setAllowsBanners:(BOOL)banners;
 - (void)viewServiceDidTerminateWithError:(id)viewService;
 @end
 

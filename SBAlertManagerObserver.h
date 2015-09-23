@@ -10,6 +10,7 @@
 @protocol SBAlertManagerObserver <NSObject>
 @optional
 - (void)alertManager:(id)manager didActivateAlert:(id)alert overAlerts:(id)alerts;
+- (void)alertManager:(id)manager didCreateAlertWindow:(id)window;
 - (void)alertManager:(id)manager didDeactivateAlert:(id)alert top:(BOOL)top;
 - (void)alertManager:(id)manager didRemoveAlert:(id)alert fromWindow:(id)window;
 - (void)alertManager:(id)manager didTearDownAlertWindow:(id)window;

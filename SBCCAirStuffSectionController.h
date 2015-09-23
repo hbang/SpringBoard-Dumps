@@ -8,16 +8,18 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBCCAirStuffSectionController : SBControlCenterSectionViewController <MPAudioVideoRoutingViewControllerDelegate, UIPopoverControllerDelegate, SFAirDropDiscoveryControllerDelegate, SFAirDropDiscoveryActionSheetDelegate, UIActionSheetDelegate> {
+@interface SBCCAirStuffSectionController : SBControlCenterSectionViewController <MPAVRoutingControllerDelegate, UIPopoverControllerDelegate, SFAirDropDiscoveryControllerDelegate, SFAirDropDiscoveryActionSheetDelegate, UIActionSheetDelegate> {
 	SBCCButtonLikeSectionView *_airPlaySection;
 	SBCCButtonLikeSectionView *_airDropSection;
-	MPAudioVideoRoutingActionSheet *_airPlayActionSheet;
-	MPAudioVideoRoutingViewController *_airPlayViewController;
+	MPAVRoutingController *_airPlayController;
+	MPAVRoutingSheet *_airPlayModalSheet;
+	MPAVRoutingViewController *_airPlayViewController;
 	MPAudioVideoRoutingPopoverController *_airPlayPopoverController;
 	SFAirDropDiscoveryController *_airDropDiscoveryController;
 	BOOL _isVisible;
 	BOOL _airPlayWasPreviouslyEnabled;
 	BKSTimer *_resetTimer;
+	BKSTimer *_airPlayTimer;
 	BOOL _airPlayEnabled;
 	BOOL _airDropEnabled;
 }
@@ -26,8 +28,8 @@ __attribute__((visibility("hidden")))
 + (Class)viewClass;
 - (id)init;
 - (void)_airDropTapped:(id)tapped;
+- (void)_airPlayDoneButtonTapped:(id)tapped;
 - (void)_airPlayTapped:(id)tapped;
-- (void)_availableRoutesDidChangeNotification:(id)_availableRoutes;
 - (void)_debugAirplaneStateDidChangeNotification:(id)_debugAirplaneState;
 - (void)_debugWifiStateDidChangeNotification:(id)_debugWifiState;
 - (void)_dismissAirplayControllerAnimated:(BOOL)animated;
@@ -48,9 +50,9 @@ __attribute__((visibility("hidden")))
 - (void)discoveryControllerVisibilityDidChange:(id)discoveryControllerVisibility;
 - (BOOL)enabledForOrientation:(int)orientation;
 - (void)popoverControllerDidDismissPopover:(id)popoverController;
+- (void)routingControllerAvailableRoutesDidChange:(id)routingControllerAvailableRoutes;
 - (id)sectionIdentifier;
 - (id)view;
-- (void)viewControllerRequestsDismissal:(id)dismissal;
 - (void)viewDidLoad;
 @end
 

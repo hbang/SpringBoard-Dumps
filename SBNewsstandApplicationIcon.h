@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)iconAppearsInNewsstand;
 - (int)iconFormatForLocation:(int)location;
 - (Class)iconImageViewClassForLocation:(int)location;
-- (Class)iconViewClassForLocation:(int)location;
 - (BOOL)isNewsstandApplicationIcon;
 - (BOOL)launchEnabled;
 - (void)launchFromLocation:(int)location;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property(copy) NSString *reason;
 @property(assign) SBWindowLevelRange_struct windowLevelRange;
 + (id)hideRequestWithWindowLevelRange:(SBWindowLevelRange_struct)windowLevelRange reason:(id)reason;
+- (void)dealloc;
 - (id)description;
 @end
 

@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) float shadowAlpha;
 @property(retain, nonatomic) UIView<SBAppSwitcherPageContentView> *view;
 + (float)_edgeBorderForOrientation:(int)orientation;
-+ (float)scale;
 + (CGSize)sizeForOrientation:(int)orientation;
 - (id)initWithFrame:(CGRect)frame;
 - (CGAffineTransform)_transformForOrientation:(int)orientation;
@@ -30,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)invalidate;
 - (void)layoutSubviews;
+- (void)setBlocksTouches:(BOOL)touches;
 - (void)setShadowEnabled:(BOOL)enabled;
 - (void)setView:(id)view animated:(BOOL)animated;
 - (CGSize)sizeThatFits:(CGSize)fits;

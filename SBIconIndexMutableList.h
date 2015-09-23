@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)removeAllNodes;
 - (void)removeNode:(id)node;
 - (void)removeNodeAtIndex:(unsigned)index;
+- (void)removeNodesAtIndexes:(id)indexes;
 - (void)replaceNodeAtIndex:(unsigned)index withNode:(id)node;
 @end
 

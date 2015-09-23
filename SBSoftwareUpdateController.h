@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 	BOOL _scheduleForcedInstallAlertAfterNextUnlock;
 	BOOL _scheduleForcedInstallAlertWhenAble;
 	BOOL _settingsResetPrefsBadgedFlag;
+	BOOL _downloadWasQueuedRemotely;
 }
 + (id)sharedInstance;
 + (id)stringFromReasons:(int)reasons;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_isUpdateInstallable:(id)installable;
 - (void)_lockStateChanged:(id)changed;
 - (void)_migrateForNewOSVersionIfNecessary;
+- (void)_passcodeLockStateChanged:(id)changed;
 - (void)_postDownloadStateChangeNotification:(BOOL)notification;
 - (void)_prepareMigrationForSettingsReset;
 - (void)_registerForInstallRelatedNotifications;
@@ -43,9 +45,10 @@ __attribute__((visibility("hidden")))
 - (void)_savePreferencesBadgeFlag:(id)flag;
 - (void)_scheduleForcedInstallRepeatAlert:(double)alert;
 - (void)_setUpdateToInstall:(id)install;
-- (void)_showForcedInstallAlert;
+- (void)_showForcedInstallAlertRequiringInstallationKeybag:(BOOL)keybag;
 - (void)_showOrScheduleNextForcedInstallAlert;
 - (void)_showOrScheduleNextForcedInstallAlertWithReasons:(int)reasons;
+- (void)_showSUAvailableAlertForDescriptor:(id)descriptor;
 - (id)_stringForCurrentVersionPreference;
 - (void)_syncDidEnd:(id)_sync;
 - (void)_syncWillStart:(id)_sync;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)client:(id)client downloadDidFail:(id)download withError:(id)error;
 - (void)client:(id)client downloadDidFinish:(id)download;
 - (void)client:(id)client downloadDidStart:(id)download;
+- (void)client:(id)client downloadProgressDidChange:(id)downloadProgress;
 - (void)client:(id)client downloadWasInvalidatedForNewUpdateAvailable:(id)newUpdateAvailable;
 - (void)client:(id)client installDidFail:(id)install withError:(id)error;
 - (void)client:(id)client installDidFinish:(id)install;

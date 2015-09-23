@@ -10,15 +10,14 @@
 __attribute__((visibility("hidden")))
 @interface SBCameraGrabberView : XXUnknownSuperclass <_SBFVibrantView> {
 	UIEdgeInsets _hitTestEdgeInsets;
-	UIView *_colorCompositingView;
-	UIView *_darkTintView;
-	UIView *_lightTintView;
+	UIView *_tintView;
 	UIView *_backgroundView;
 	SBLegibilityView *_legibilityView;
 	_SBFVibrantSettings *_vibrantSettings;
 	id<SBResponderTouchDelegate> _delegate;
 }
 @property(assign, nonatomic) id<SBResponderTouchDelegate> delegate;
+@property(readonly, assign, nonatomic) UIEdgeInsets hitTestEdgeInsets;
 @property(retain, nonatomic) _SBFVibrantSettings *vibrantSettings;
 - (id)initWithFrame:(CGRect)frame;
 - (id)_cameraGrabberImage;

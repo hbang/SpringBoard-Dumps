@@ -19,8 +19,6 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_disableLockScreenIfPossibleAssertions;
 	NSHashTable *_disableUnlockAssertions;
 	BOOL _isInLostMode;
-	BOOL _biometricEventStartedWithScreenOff;
-	unsigned long long _biometricEventStartTime;
 	unsigned _failedMesaUnlockAttempts;
 	BOOL _bioAuthenticatedWhileMenuButtonDown;
 }

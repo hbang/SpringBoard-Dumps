@@ -10,7 +10,6 @@
 __attribute__((visibility("hidden")))
 @interface SBNewsstandIconListModel : SBIconListModel {
 }
-+ (Class)viewClass;
 - (BOOL)allowsAddingIcon:(id)icon;
 - (unsigned)firstFreeSlotIndexForType:(int)type;
 @end

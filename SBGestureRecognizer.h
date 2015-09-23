@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 	int m_state;
 	id m_handler;
 	unsigned m_activeTouchesCount;
-	XXStruct_XgRpiA m_activeTouches[30];
+	XXStruct_pqIg_A m_activeTouches[30];
 	unsigned m_strikes;
 	unsigned m_templateMatches;
 	NSMutableArray *m_touchTemplates;

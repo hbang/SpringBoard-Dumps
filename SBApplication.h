@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 	unsigned _provisioningProfileValidated : 1;
 	unsigned _enabled : 1;
 	unsigned _isSystemApplication : 1;
+	unsigned _isInternalApplication : 1;
 	unsigned _isSystemProvisioningApplication : 1;
 	unsigned _hasMiniAlerts : 1;
 	unsigned _dataFlagsIsSet : 1;
@@ -129,11 +130,16 @@ __attribute__((visibility("hidden")))
 	float _minimumBrightnessLevel;
 	NSArray *_domainsToPreheat;
 	int _starkLaunchModes;
-	BOOL _starkStatusBarStartsTranslucent;
+	int _defaultStarkStatusBarStyle;
 	NSMutableArray *_activationContextStack;
 	NSMutableDictionary *_alertImpersonatorsByWorkspaceType;
+	NSMutableSet *_screensThatNeedSnapshotsDownscaled;
+	unsigned _isRecentlyUpdated : 3;
+	unsigned _isNewlyInstalled : 3;
+	unsigned _hasBadgeValue : 3;
 	BKSApplicationDataStore *_dataStore;
 	NSMutableDictionary *_currentSnoozingLocalNotificationAlerts;
+	int _appSnapshotSequenceID;
 }
 @property(copy, nonatomic) SBActivationContext *activationContext;
 @property(copy) NSString *displayIdentifier;
@@ -165,7 +171,7 @@ __attribute__((visibility("hidden")))
 - (void)_addImageName:(id)name toImageNamesArray:(id)imageNamesArray screen:(id)screen;
 - (id)_additionalDisplayQualification;
 - (id)_alertImpersonatorForWorkspaceType:(int)workspaceType;
-- (id)_allContextHostManagersCreatingForMainScreenIfNecessary;
+- (id)_allContextHostManagersCreatingIfNecessary:(BOOL)necessary;
 - (BOOL)_applicationDoesNotHaveRestorationArchive;
 - (void)_assignDefaultLaunchImages:(id)images forScreenType:(int)screenType;
 - (id)_baseAppSnapshotPath;
@@ -175,11 +181,13 @@ __attribute__((visibility("hidden")))
 - (void)_calculateSupportedTypesFromInfoDictionary:(id)infoDictionary;
 - (void)_calculateSupportedTypesLazilyIfNecessary;
 - (void)_cancelProcessAssertionForSimpleRemoteAction;
+- (void)_cleanupDefaultContextHostManagerForScreen:(id)screen;
 - (void)_clearContextHostManagers;
 - (void)_clearDefunctScreenHostingForScreen:(id)screen;
 - (void)_configureDisplayNameForInfoDictionary:(id)infoDictionary atBundlePath:(id)bundlePath;
 - (id)_copyApplicationMetadata;
 - (id)_copyUnexpiredScheduledLocalNotifications;
+- (void)_createDownscaledSnapshotFromFullSizeSnapshotForScreen:(id)screen;
 - (id)_deactivationFlags;
 - (id)_deactivationValues;
 - (id)_defaultImageInfoForScreen:(id)screen launchingOrientation:(int)orientation;
@@ -222,11 +230,13 @@ __attribute__((visibility("hidden")))
 - (id)_newValueTable;
 - (void)_noteIconDataSourceDidChange;
 - (void)_noteSnapshotDidUpdate;
+- (void)_noteSnapshotDidUpdate:(int)_noteSnapshot;
 - (id)_orientationImageTagForLaunchingOrientation:(int)launchingOrientation;
 - (id)_pathForExistingImageInCandidates:(id)candidates forScreen:(id)screen launchingOrientation:(int)orientation imageOrientation:(int *)orientation4 resultingScale:(float *)scale;
 - (id)_pathIfFileExistsAtPath:(id)path;
 - (id)_preferredImagePathByScaleInBundle:(id)bundle resourceName:(id)name ofType:(id)type screen:(id)screen outScale:(float *)scale;
 - (id)_preferredImagePathInBundle:(id)bundle baseResourceName:(id)name ofType:(id)type screen:(id)screen outScale:(float *)scale;
+- (void)_protectedDataDidBecomeAvailable:(id)_protectedData;
 - (void)_purgeCachedLocalNotifications;
 - (void)_purgeRemoteApplication;
 - (void)_removeAlertImpersonator:(id)impersonator;
@@ -239,6 +249,7 @@ __attribute__((visibility("hidden")))
 - (void)_saveSuspendSnapshot:(id)snapshot forScreen:(id)screen;
 - (id)_scaleSuffixForScale:(float)scale;
 - (id)_scheduledLocalNotifications;
+- (void)_screenManager:(id)manager didChangeSuppressionOfScreen:(id)screen creatingHostManagerIfNecessary:(BOOL)necessary;
 - (CGSize)_screenSizeForScreen:(id)screen;
 - (void)_sendDidLaunchNotification:(BOOL)_send;
 - (void)_setActivationState:(int)state;
@@ -250,6 +261,7 @@ __attribute__((visibility("hidden")))
 - (void)_setIsClassic:(BOOL)classic;
 - (void)_setLastLocalNotificationFireDate:(id)date;
 - (void)_setMonitoringForLocaleAndTimeChanges:(BOOL)localeAndTimeChanges;
+- (void)_setNewlyInstalled:(BOOL)installed;
 - (void)_setPendingLocalNotificationFromBulletin:(id)bulletin;
 - (void)_setProcessInfo:(id)info;
 - (void)_setRecentlyUpdated:(BOOL)updated;
@@ -261,10 +273,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldAutoRelaunchForEA;
 - (BOOL)_shouldUseSnapshotForAppLaunchIfPossible;
 - (id)_snapshotCreationDeletionQueueForScreen:(id)screen;
-- (id)_snapshotImageForSnapshotImageInfo:(id)snapshotImageInfo originalOrientation:(out int *)orientation currentOrientation:(out int *)orientation3;
-- (id)_snapshotImageInfoForScreen:(id)screen launchingOrientation:(int)orientation;
-- (id)_snapshotImageInfoForScreen:(id)screen named:(id)named launchingOrientation:(int)orientation;
-- (id)_snapshotImageWithImageName:(id)imageName forScreen:(id)screen launchingOrientation:(int)orientation originalOrientation:(int *)orientation4 currentOrientation:(int *)orientation5;
+- (id)_snapshotImageForSnapshotImageInfo:(id)snapshotImageInfo downscaled:(BOOL)downscaled originalOrientation:(out int *)orientation currentOrientation:(out int *)orientation4;
+- (id)_snapshotImageInfoForScreen:(id)screen downscaled:(BOOL)downscaled launchingOrientation:(int)orientation;
+- (id)_snapshotImageInfoForScreen:(id)screen named:(id)named downscaled:(BOOL)downscaled launchingOrientation:(int)orientation;
+- (id)_snapshotImageWithImageName:(id)imageName forScreen:(id)screen downscaled:(BOOL)downscaled launchingOrientation:(int)orientation originalOrientation:(int *)orientation5 currentOrientation:(int *)orientation6;
 - (id)_sortedLaunchImagesForMainScreen:(id)mainScreen bundle:(id)bundle;
 - (id)_stringForActivationState:(int)activationState;
 - (id)_stringForApplicationState:(unsigned)applicationState;
@@ -283,12 +295,11 @@ __attribute__((visibility("hidden")))
 - (void)activate;
 - (BOOL)activationFlag:(unsigned)flag;
 - (id)activationSettings;
-- (id)activationSettingsDescription;
 - (int)activationState;
 - (id)activationValue:(unsigned)value;
 - (id)alertSuppressionContexts;
 - (BOOL)allowsEventOnlySuspension;
-- (id)appSnapshotPathForScreen:(id)screen;
+- (id)appSnapshotPathForScreen:(id)screen downscaled:(BOOL)downscaled;
 - (id)applicationNextWakeDate;
 - (int)applicationSignatureState;
 - (unsigned)applicationState;
@@ -301,7 +312,7 @@ __attribute__((visibility("hidden")))
 - (id)bundle;
 - (id)bundleIdentifier;
 - (id)bundleVersion;
-- (id)cachedSnapshotForImageInfo:(id)imageInfo originalOrientation:(out int *)orientation currentOrientation:(out int *)orientation3;
+- (id)cachedSnapshotForImageInfo:(id)imageInfo downscaled:(BOOL)downscaled originalOrientation:(out int *)orientation currentOrientation:(out int *)orientation4;
 - (BOOL)canAccessScreen:(id)screen;
 - (void)cancelLocalNotification:(id)notification;
 - (BOOL)classicAppRequiresHiDPI;
@@ -313,6 +324,7 @@ __attribute__((visibility("hidden")))
 - (void)clearDisplaySettings;
 - (id)containerPath;
 - (id)contextHostManagerForScreen:(id)screen;
+- (id)contextHostManagerForScreen:(id)screen creatingIfNecessary:(BOOL)necessary;
 - (id)contextManagerCreatingIfNecessary:(BOOL)necessary;
 - (id)copyWithZone:(NSZone *)zone;
 - (id)customSpotlightIconPathsForKey:(id)key;
@@ -320,17 +332,13 @@ __attribute__((visibility("hidden")))
 - (void)deactivate;
 - (BOOL)deactivationFlag:(unsigned)flag;
 - (id)deactivationSettings;
-- (id)deactivationSettingsDescription;
 - (id)deactivationValue:(unsigned)value;
 - (void)dealloc;
 - (id)defaultImageForScreen:(id)screen snapshot:(BOOL *)snapshot originalOrientation:(int *)orientation currentOrientation:(int *)orientation4 canUseIOSurface:(BOOL)surface;
-- (id)defaultImagePathForSnapshotWithName:(id)name screen:(id)screen;
+- (id)defaultImagePathForSnapshotWithName:(id)name screen:(id)screen downscaled:(BOOL)downscaled;
 - (BOOL)defaultStatusBarHidden;
 - (int)defaultStatusBarStyle;
 - (id)description;
-- (id)descriptionForActivationSetting:(unsigned)activationSetting;
-- (id)descriptionForDeactivationSetting:(unsigned)deactivationSetting;
-- (id)descriptionForDisplaySetting:(unsigned)displaySetting;
 - (void)didActivate;
 - (void)didAnimateActivation;
 - (void)didAnimateActivationOnStarkScreenController:(id)controller;
@@ -342,9 +350,9 @@ __attribute__((visibility("hidden")))
 - (void)didFailToActivate;
 - (void)didLaunch:(id)launch;
 - (void)didSuspend;
+- (BOOL)disablesJailForScreen:(id)screen;
 - (BOOL)displayFlag:(unsigned)flag;
 - (id)displayName;
-- (id)displaySettingsDescription;
 - (id)displayValue:(unsigned)value;
 - (id)domainsToPreheat;
 - (int)effectiveStatusBarStyle;
@@ -355,7 +363,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)expectsFaceContactInLandscape;
 - (id)externalAccessoryProtocols;
 - (id)fallbackFolderName;
-- (id)fileSnapshotForImageInfo:(id)imageInfo originalOrientation:(out int *)orientation currentOrientation:(out int *)orientation3;
+- (id)fileSnapshotForImageInfo:(id)imageInfo downscaled:(BOOL)downscaled originalOrientation:(out int *)orientation currentOrientation:(out int *)orientation4;
 - (void)finishedBackgroundContentFetchingWithInfo:(id)info;
 - (void)flushSnapshotsForAllScreens;
 - (void)flushSnapshotsForScreen:(id)screen;
@@ -397,6 +405,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isLaunchableDuringSetup;
 - (BOOL)isMobilePhone;
 - (BOOL)isNewsstandApplication;
+- (BOOL)isNowPlayingApplication;
 - (BOOL)isNowRecordingApplication;
 - (BOOL)isRecordingAudio;
 - (BOOL)isRunning;
@@ -405,6 +414,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSystemApplication;
 - (BOOL)isSystemProvisioningApplication;
 - (BOOL)isTranslucent;
+- (BOOL)isUninstalled;
 - (BOOL)isWebApplication;
 - (double)lastBadgeClearTime;
 - (id)launchSettings;
@@ -503,6 +513,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsLocalNotifications;
 - (BOOL)supportsLocationBackgroundMode;
 - (BOOL)supportsRemoteNotificationBackgroundMode;
+- (BOOL)supportsStarkAudio;
 - (BOOL)supportsStarkFullScreen;
 - (BOOL)supportsStarkGateKeeper;
 - (BOOL)supportsVOIPBackgroundMode;

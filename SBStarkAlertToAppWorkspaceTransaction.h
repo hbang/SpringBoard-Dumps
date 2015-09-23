@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)_endAnimation;
 - (void)_handleFailure;
 - (BOOL)_hasAnimation;
-- (id)_newAnimationControllerFrom:(id)from to:(id)to;
 - (int)_setupMilestonesFrom:(id)from to:(id)to;
 - (void)_transactionComplete;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
@@ -41,5 +40,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)selfApplicationWillBecomeReceiver:(id)selfApplication fromApplication:(id)application;
 - (BOOL)selfStarkAlertDidDeactivate:(id)selfStarkAlert;
 - (BOOL)selfStarkAlertWillDeactivate:(id)selfStarkAlert;
+- (id)swizzledToDisplayIfNecessary;
 @end
 

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 	float _contentScrollViewWidth;
 }
 @property(retain, nonatomic) UIButton *actionButton;
+@property(readonly, assign, nonatomic) UIScrollView *contentScrollView;
 @property(assign, nonatomic) float contentScrollViewWidth;
 @property(assign, nonatomic) id<UIScrollViewDelegate> delegate;
 @property(assign, nonatomic) BOOL drawsSeparators;

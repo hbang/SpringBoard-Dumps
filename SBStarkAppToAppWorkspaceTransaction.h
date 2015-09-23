@@ -21,13 +21,20 @@ __attribute__((visibility("hidden")))
 - (void)_beginAnimation;
 - (BOOL)_canBeInterrupted;
 - (void)_commit;
+- (id)_defaultAnimationFactory;
 - (void)_doCommit;
 - (void)_endAnimation;
 - (void)_handleAppDidNotChange;
 - (void)_interruptWithReason:(int)reason;
 - (id)_newAnimationFromAppToApp;
 - (id)_newAnimationFromAppToLauncher;
+- (id)_newAnimationFromAppToNowPlaying;
 - (id)_newAnimationFromLauncherToApp;
+- (id)_newAnimationFromLauncherToNowPlaying;
+- (id)_newAnimationFromNowPlayingToApp;
+- (id)_newAnimationFromNowPlayingToLauncher;
+- (id)_newAnimationFromNowPlayingToNowPlaying;
+- (void)_noteWillActivateApplicationOnMainScreen:(id)_note underLock:(BOOL)lock;
 - (id)_setupAnimationFrom:(id)from to:(id)to;
 - (int)_setupMilestonesFrom:(id)from to:(id)to;
 - (void)_transactionComplete;
@@ -43,5 +50,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)selfApplicationLaunchDidFail:(id)selfApplicationLaunch;
 - (BOOL)selfApplicationWillBecomeReceiver:(id)selfApplication fromApplication:(id)application;
 - (BOOL)selfStarkAlertDidDeactivate:(id)selfStarkAlert;
+- (id)swizzledToDisplayIfNecessary;
 @end
 

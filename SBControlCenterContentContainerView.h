@@ -9,6 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBControlCenterContentContainerView : XXUnknownSuperclass <SBControlCenterObserver> {
+	UIView *_accessibilityBackgroundView;
 	_UIBackdropView *_backdropView;
 	SBControlCenterContentView *_contentView;
 	float _contentHeight;
@@ -17,6 +18,8 @@ __attribute__((visibility("hidden")))
 @property(assign) float contentHeight;
 @property(retain, nonatomic) SBControlCenterContentView *contentView;
 - (id)initWithFrame:(CGRect)frame;
+- (void)_accessibilityBackgroundContrastDidChange:(id)_accessibilityBackgroundContrast;
+- (void)_updateBackground;
 - (void)controlCenterDidDismiss;
 - (void)controlCenterDidFinishTransition;
 - (void)controlCenterWillBeginTransition;

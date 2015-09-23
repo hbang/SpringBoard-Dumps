@@ -8,49 +8,38 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBPowerDownView : SBAlertView <SBPowerDownViewInterface, UIGestureRecognizerDelegate> {
+@interface SBPowerDownView : SBAlertView <_UIActionSliderDelegate, SBPowerDownViewInterface> {
 	NSTimer *_autoDismissTimer;
 	id<SBPowerDownViewDelegate> _delegate;
-	SBFakeStatusBarView *_fakeStatusBarView;
-	SBShapeView *_darkeningOutsideBarsUnderlay;
-	SBShapeView *_darkeningInsideBarsUnderlay;
-	UIView *_topContainer;
-	UIView *_topBar;
-	SBFGlintyStringView *_topBarLabel;
-	UIView *_topBarLabelBackgroundView;
-	_UIBackdropView *_topBarBackground;
-	UIView *_bottomContainer;
-	UIView *_bottomBar;
-	UILabel *_bottomBarLabel;
-	_UIBackdropView *_bottomBarBackground;
-	BOOL _addedFakeStatusBar;
+	UIView *_backdropView;
+	SBShapeView *_darkeningUnderlayView;
+	UIView *_darkeningOverlayView;
+	_UIActionSlider *_actionSlider;
+	UIButton *_cancelButton;
+	UILabel *_cancelLabel;
 	BOOL _hiddenLockScreenForeground;
-	UIPanGestureRecognizer *_slideGestureRecognizer;
-	UILongPressGestureRecognizer *_touchGestureRecognizer;
-	CGPoint _slideGestureInitialPoint;
+	BOOL _canAlterScreenBrightness;
 }
+@property(assign, nonatomic) BOOL canAlterScreenBrightness;
 @property(assign, nonatomic) id<SBPowerDownViewDelegate> delegate;
 - (id)initWithFrame:(CGRect)frame;
-- (void)_addFakeStatusBarIfNecessary;
 - (void)_animatePowerDown;
-- (float)_bottomBarOffset;
 - (void)_cancelAutoDismissTimer;
-- (id)_insideBarsPath;
 - (id)_lockScreenView;
-- (id)_newDarkeningShapeView:(CGRect)view;
 - (void)_notifyDelegateCancelled;
 - (void)_notifyDelegatePowerDown;
-- (id)_outsideBarsPath;
-- (void)_removeFakeStatusBarIfNecessary;
 - (void)_resetAutoDismissTimer;
-- (void)_slideCompleted:(BOOL)completed;
-- (void)_slideGestureRecognizer:(id)recognizer;
-- (float)_topBarOffset;
-- (void)_touchGestureRecognizer:(id)recognizer;
+- (void)_resetScreenBrightness;
+- (void)_saveScreenBrightnessInformation;
+- (void)_updateSliderExclusionPath;
+- (void)actionSlider:(id)slider didUpdateSlideWithValue:(float)value;
+- (void)actionSliderDidBeginSlide:(id)actionSlider;
+- (void)actionSliderDidCancelSlide:(id)actionSlider;
+- (void)actionSliderDidCompleteSlide:(id)actionSlider;
 - (void)animateIn;
 - (void)animateOut;
 - (void)dealloc;
-- (BOOL)gestureRecognizer:(id)recognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)gestureRecognizer;
+- (void)dismiss;
 - (BOOL)isSupportedInterfaceOrientation:(int)orientation;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
 @end

@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBWorkspace : XXUnknownSuperclass <BKSWorkspaceDelegate, SBAlertManagerDelegate, SBAlertManagerObserver, SBWorkspaceTransactionGroupDelegate, SBStarkScreenManagerDelegate, SBStarkScreenControllerDelegate> {
+@interface SBWorkspace : XXUnknownSuperclass <BKSWorkspaceDelegate, SBAlertManagerDelegate, SBAlertManagerObserver, SBWorkspaceTransactionGroupDelegate, SBStarkScreenManagerDelegate, SBStarkScreenControllerObserver> {
 	BKSWorkspace *_bksWorkspace;
 	SBAlertManager *_alertManager;
 	BOOL _alertManagerIsDeactivatingAlert;
@@ -41,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (id)_selectTransactionForReturningToTheLockScreenFromApp:(id)app forceToBuddy:(BOOL)buddy withActivationHandler:(id)activationHandler;
 - (id)_selectTransactionForReturningToTheLockScreenWithActivationHandler:(id)activationHandler;
 - (void)_updateStatusBarTimeItemEnabled;
+- (void)_workspace:(id)workspace handleOpenApplicationRequest:(id)request withOptions:(id)options origin:(id)origin withResult:(id)result;
+- (void)_workspace:(id)workspace handleOpenURLRequest:(id)request application:(id)application withOptions:(id)options origin:(id)origin withResult:(id)result;
 - (void)alertManager:(id)manager didActivateAlert:(id)alert overAlerts:(id)alerts;
 - (void)alertManager:(id)manager didDeactivateAlert:(id)alert top:(BOOL)top;
 - (void)alertManager:(id)manager didRemoveAlert:(id)alert fromWindow:(id)window;

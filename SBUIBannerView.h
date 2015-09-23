@@ -8,10 +8,6 @@
 
 
 @protocol SBUIBannerView <NSObject>
-@optional
-@property(copy, nonatomic) UIColor *grabberColor;
-+ (id)defaultGrabberColor;
-@required
 - (id)bannerContext;
 @end
 

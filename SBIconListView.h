@@ -108,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (void)showAllIcons;
 - (void)showIconImagesFromColumn:(int)column toColumn:(int)column2 totalColumns:(int)columns allowAnimations:(BOOL)animations;
 - (float)sideIconInset;
+- (id)tintColor;
 - (float)topIconInset;
 - (void)updateEditingStateAnimated:(BOOL)animated;
 - (float)verticalIconPadding;

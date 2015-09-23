@@ -10,11 +10,9 @@
 __attribute__((visibility("hidden")))
 @interface SBStarkBulletinBannerSource : SBStarkBannerSource <BBObserverDelegate, SBVolumePressBandit> {
 	BBObserver *_bbObserver;
-	NSSet *_whitelistedSectionIDs;
 }
-- (id)initWithAllowedTarget:(id)allowedTarget;
+- (id)initWithAllowedTargetIdentifier:(void *)allowedTargetIdentifier;
 - (void)_reloadVolumePressBanditPreference;
-- (BOOL)_shouldShowBulletin:(id)bulletin;
 - (void)_showTestBanner:(id)banner;
 - (void)dealloc;
 - (void)handleVolumeDecrease;

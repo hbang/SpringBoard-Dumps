@@ -8,32 +8,61 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenSlideUpController : XXUnknownSuperclass {
+@interface SBLockScreenSlideUpController : XXUnknownSuperclass <SBPresentingDelegate, SBCoordinatedPresenting> {
 	BOOL _isInScreenOffMode;
 	UIView *_slidingStatusBarView;
 	SBLockScreenView *_lockScreenView;
 	SBLockScreenBounceAnimator *_bounceAnimator;
 	_UIDynamicValueAnimation *_dynamicAnimation;
+	id<SBPresentingDelegate> _presentingDelegate;
+	SBBounceSettings *_bounceSettings;
+	BOOL _didAbortBounce;
 	SBDisableAppStatusBarAlphaChangesAssertion *_disableStatusBarAssertion;
+	float _boundaryTranslationInY;
 }
-@property(retain) SBDisableAppStatusBarAlphaChangesAssertion *disableStatusBarAssertion;
+@property(assign, nonatomic) float boundaryTranslationInY;
+@property(readonly, assign, nonatomic) NSSet *conflictingGestures;
+@property(readonly, assign, nonatomic) int coordinatedPresentingControllerIdentifier;
+@property(assign, nonatomic) BOOL didAbortBounce;
+@property(retain, nonatomic) SBDisableAppStatusBarAlphaChangesAssertion *disableStatusBarAssertion;
+@property(readonly, assign, nonatomic) NSSet *gestures;
+@property(readonly, assign, nonatomic) float hintDisplacement;
+@property(readonly, assign, nonatomic) unsigned hintEdge;
+@property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
+@property(readonly, assign, nonatomic) NSSet *tapExcludedViews;
 + (id)lockScreenViewFakeStatusBar;
+- (id)init;
+- (void)_animateSlideDownWithVelocity:(CGPoint)velocity completion:(id)completion;
+- (void)_animateSlideUpWithVelocity:(CGPoint)velocity completion:(id)completion;
+- (void)_commonGestureCleanup;
+- (void)_finishSlideDownWithCompletion:(id)completion;
+- (float)_foregroundTranslationForLocation:(CGPoint)location;
 - (id)_newBounceAnimatorWithGrabberView:(id)grabberView;
-- (id)_newDynamicAnimationForGestureSucceeded:(BOOL)gestureSucceeded targetValue:(double)value withInitialVelocity:(double)initialVelocity;
+- (id)_newDynamicAnimationForTargetValue:(double)targetValue withInitialVelocity:(double)initialVelocity;
+- (void)abortAnimatedTransition;
 - (void)abortDynamicAnimationForScreenOff;
+- (void)beginPresentationWithTouchLocation:(CGPoint)touchLocation;
 - (id)bounceAnimator;
+- (void)cancelGestureRecognizer:(id)recognizer;
 - (void)cleanupFromGesture;
 - (void)dealloc;
+- (void)endTransitionWithVelocity:(CGPoint)velocity completion:(id)completion;
 - (void)finalizeGesture;
-- (void)gestureDidEnd:(BOOL)gesture;
-- (void)gestureWillEndWithVelocity:(float)gesture;
 - (id)grabberView;
 - (void)hideSlidingStatusBar;
+- (BOOL)isPresentingControllerTransitioning;
 - (id)lockScreenView;
 - (void)prepareForSlideUpAnimation;
+- (BOOL)presentingController:(id)controller gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
+- (BOOL)presentingController:(id)controller gestureRecognizerShouldBegin:(id)gestureRecognizer;
+- (void)presentingController:(id)controller willHandleGesture:(id)gesture;
+- (void)presentingControllerDidFinishPresentation:(id)presentingController;
+- (void)reenableGestureRecognizer:(id)recognizer;
 - (void)setGrabberOnLockScreen:(id)screen;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
 - (void)setLockScreenView:(id)view;
 - (void)translateSlidingViewByY:(float)y;
+- (void)treatCurrentPositionAsBoundaryforGesture:(id)gesture;
+- (void)updateTransitionWithTouchLocation:(CGPoint)touchLocation velocity:(CGPoint)velocity;
 @end
 

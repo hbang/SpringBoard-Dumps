@@ -10,7 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBNotificationsMissedModeSectionInfo : SBNotificationsSectionInfo {
 }
-- (float)heightForReusableViewInTableView:(id)tableView;
+- (float)heightForReusableViewForBulletinViewController:(id)bulletinViewController layoutMode:(int)mode;
 - (id)identifier;
 - (Class)reusableViewClass;
 - (int)sectionCategory;

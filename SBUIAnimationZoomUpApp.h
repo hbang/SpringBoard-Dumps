@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 	BOOL _finishedActivating;
 	BOOL _finishedCrossfadingToHostView;
 	BOOL _animationFinished;
-	BOOL _fromSwitcher;
 	BOOL _fromNC;
 	BOOL _fromCC;
 	BOOL _fromAssistant;

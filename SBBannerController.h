@@ -8,9 +8,10 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBBannerController : XXUnknownSuperclass <SBUIBannerTarget, SBAssistantObserver, SBBulletinWindowClient, SBBulletinBusyClient, UIGestureRecognizerDelegate> {
+@interface SBBannerController : XXUnknownSuperclass <SBUIBannerTargetImplementation, SBAssistantObserver, SBAlertObserver, SBBulletinWindowClient, SBBulletinBusyClient, UIGestureRecognizerDelegate> {
 	NSHashTable *_sources;
 	NSMutableArray *_pendingBannerContextsNeedingRepop;
+	SBAlert *_topAlert;
 	UIImage *_bannerViewBackgroundImage;
 	SBBannerContextView *_bannerView;
 	BOOL _soundIsPlaying;
@@ -29,7 +30,9 @@ __attribute__((visibility("hidden")))
 	id _assistantRevealCompletionBlock;
 	id _assistantDismissCompletionBlock;
 }
+@property(readonly, assign, nonatomic) void *bannerTargetIdentifier;
 @property(readonly, assign, nonatomic) int bannerTargetIdiom;
+@property(retain, nonatomic) SBAlert *topAlert;
 + (id)_sharedInstanceCreateIfNecessary:(BOOL)necessary;
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
@@ -68,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateBannerSuppressionState;
 - (void)_updateBannerSuppressionStateAndDequeueIfPossible:(BOOL)possible withDelay:(BOOL)delay;
 - (void)_updateDismissGestureState:(SBBannerDismissGestureState *)state withDisplacement:(float)displacement velocity:(float)velocity;
+- (void)alertBannerSuppressionChanged:(id)changed;
 - (void)assistant:(id)assistant viewDidAppear:(int)view;
 - (void)assistant:(id)assistant viewDidDisappear:(int)view;
 - (void)assistant:(id)assistant viewWillAppear:(int)view;

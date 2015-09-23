@@ -23,6 +23,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign, nonatomic) CGPoint movementVelocityInPointsPerSecond;
 @property(readonly, assign, nonatomic) UIEdgeInsets pixelDeltas;
 - (void)clear;
-- (void)extractHandMotionForActiveTouches:(XXStruct_XgRpiA *)activeTouches count:(unsigned)count centroid:(CGPoint)centroid;
+- (void)extractHandMotionForActiveTouches:(XXStruct_pqIg_A *)activeTouches count:(unsigned)count centroid:(CGPoint)centroid;
 @end
 

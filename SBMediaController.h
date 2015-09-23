@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 	BOOL _screenSharingSetsStatusBarOverride;
 	NSTimer *_screenSharingStatusBarOverrideTimer;
 	NSTimer *_videoOutStatusBarOverrideTimer;
-	MPAudioDeviceController *_audioDeviceController;
+	MPAVRoutingController *_routingController;
 }
 @property(assign, nonatomic, getter=isRingerMuted) BOOL ringerMuted;
 @property(assign) BOOL suppressHUD;
@@ -32,8 +32,6 @@ __attribute__((visibility("hidden")))
 + (void)sendResetPlaybackTimeoutCommand;
 + (id)sharedInstance;
 - (id)init;
-- (void)_airPlayPasswordAlertWillAppear;
-- (void)_airPlayPasswordAlertWillDisappear;
 - (float)_calcButtonRepeatDelay;
 - (void)_cancelPendingVolumeChange;
 - (void)_changeVolumeBy:(float)by;
@@ -57,8 +55,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateAVRoutes;
 - (BOOL)addTrackToWishList;
 - (id)artwork;
-- (void)audioDeviceControllerAudioRoutesChanged:(id)changed;
-- (void)audioDeviceControllerMediaServerDied:(id)died;
 - (BOOL)banTrack;
 - (BOOL)beginSeek:(int)seek;
 - (void)cancelVolumeEvent;
@@ -91,8 +87,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)pause;
 - (BOOL)play;
 - (int)repeatMode;
-- (void)requestAirPlayRouteDiscovery:(BOOL)discovery;
 - (BOOL)routeOtherThanHandsetIsAvailable;
+- (void)routingControllerAvailableRoutesDidChange:(id)routingControllerAvailableRoutes;
 - (void)setCurrentTrackTime:(float)time;
 - (void)setNowPlayingInfo:(id)info;
 - (BOOL)setPlaybackSpeed:(int)speed;
