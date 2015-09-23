@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)cachedImageForResult:(id)result inSection:(id)section;
 - (void)cancelPrefetchingAndStartNewBatch;
 - (id)currentToken;
+- (void)deactivate;
 - (void)dealloc;
 - (void)fetchImageForResult:(id)result inSection:(id)section withCompletionBlock:(id)completionBlock;
 - (void)getImageWithIdentifier:(id)identifier block:(id)block;

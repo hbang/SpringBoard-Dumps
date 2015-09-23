@@ -41,6 +41,8 @@ __attribute__((visibility("hidden")))
 	SBSlideUpAppGrabberView<_SBFVibrantView, SBLegibility> *_bottomLeftGrabberView;
 	UIView<SBUIPasscodeLockView> *_passcodeView;
 	UIView *_passcodeOverscrollBackgroundView;
+	UIView *_zoomDownOverlayTopBackgroundView;
+	UIView *_zoomDownOverlayBottomBackgroundView;
 	SBLockScreenBatteryChargingView *_batteryChargingView;
 	UIView *_modalAlertView;
 	UIView *_notificationView;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_foregroundLockContentHiddenRequesters;
 	NSMutableSet *_foregroundLockContentOverlaysHiddenRequesters;
 	NSMutableSet *_foregroundLockHUDHiddenRequesters;
+	NSMutableSet *_zoomDownOverlaysHiddenRequesters;
 	NSMutableSet *_slideToUnlockHiddenRequesters;
 	NSMutableSet *_modalAlertHiddenRequesters;
 	NSMutableSet *_notificationsHiddenRequesters;
@@ -136,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (void)_addLockContentUnderlayWithRequester:(id)requester;
 - (void)_addOrRemoveFakeStatusBars;
 - (void)_addViews;
+- (void)_addZoomDownOverlayViews;
 - (void)_adjustTextBlurForPercentScrolled:(float)percentScrolled;
 - (void)_adjustTopAndBottomGrabbersForPercentScrolled:(float)percentScrolled;
 - (id)_averageWallpaperColorForFrame:(CGRect)frame;
@@ -190,6 +194,7 @@ __attribute__((visibility("hidden")))
 - (void)_preventScrollingOnGrabberView:(id)view;
 - (void)_removeLockContentOverlay:(id)overlay;
 - (void)_removeLockContentUnderlayWithRequester:(id)requester;
+- (void)_removeZoomDownOverlayViews;
 - (void)_scrollBy:(float)by;
 - (id)_scrollViewInteractionDisabledRequesters;
 - (void)_scrollingDidFinish;
@@ -274,6 +279,7 @@ __attribute__((visibility("hidden")))
 - (void)setCameraGrabberHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setCustomSlideToUnlockLanguage:(id)unlockLanguage;
 - (void)setCustomSlideToUnlockText:(id)unlockText;
+- (void)setDimmingOverlaysHiddenForZoomDown:(BOOL)zoomDown forRequestor:(id)requestor;
 - (void)setEmergencyCallViewController:(id)controller withDuration:(double)duration completion:(id)completion;
 - (void)setForegroundHidden:(BOOL)hidden forRequester:(id)requester;
 - (void)setLockContentHidden:(BOOL)hidden forRequester:(id)requester;

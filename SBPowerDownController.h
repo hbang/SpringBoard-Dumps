@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
 	id _delegate;
 	SBAlertView<SBPowerDownViewInterface> *_powerDownView;
 	id _orderOutCompletion;
+	BOOL _wasStatusBarHiddenAtActivation;
 }
 @property(assign, nonatomic) id<SBPowerDownControllerDelegate> delegate;
 @property(copy, nonatomic) id orderOutCompletion;
+@property(assign, nonatomic) BOOL wasStatusBarHiddenAtActivation;
 - (id)init;
 - (void)_lockedOnTop;
 - (void)_restoreIconListIfNecessary;
@@ -31,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)powerDownViewAnimateOutCompleted:(id)completed;
 - (void)powerDownViewRequestCancel:(id)cancel;
 - (void)powerDownViewRequestPowerDown:(id)down;
-- (BOOL)powerDownViewShouldHideStatusBar:(id)powerDownView;
+- (BOOL)powerDownViewShouldShowStatusBarWhenAnimatingOut:(id)powerDownView;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;
 - (BOOL)showsSpringBoardStatusBar;
 @end

@@ -44,11 +44,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)overridesQuietMode;
 - (id)pullDownNotification;
 - (id)seedBulletin;
+- (BOOL)showMessagePreview;
 - (id)sortDate;
 - (id)sound;
 - (id)sourceDate;
 - (id)subActionLabels;
 - (id)subActions;
+- (id)subtitle;
 - (id)suppressedMessage;
 - (id)title;
 @end

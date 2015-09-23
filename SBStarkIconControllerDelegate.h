@@ -7,9 +7,7 @@
 
 
 
-__attribute__((visibility("hidden")))
-@interface SBCarDisplaySceneManager : SBSceneManager {
-}
-- (id)_newLayoutManager;
+@protocol SBStarkIconControllerDelegate <NSObject>
+- (id)animationWindowForIconController:(id)iconController;
 @end
 

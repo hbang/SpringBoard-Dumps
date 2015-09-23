@@ -9,13 +9,16 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkIconModelApplicationDataSource : XXUnknownSuperclass <SBIconModelApplicationDataSource> {
+	id<SBStarkSessionConfiguring> _configuration;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
+- (id)initWithConfiguration:(id)configuration;
 - (id)allApplications;
 - (int)appVisibilityOverrideForBundleIdentifier:(id)bundleIdentifier;
+- (void)dealloc;
 - (id)defaultIconState;
 - (id)firstPageLeafIdentifiers;
 - (BOOL)isNewsstandEnabled;

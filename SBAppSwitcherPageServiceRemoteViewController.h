@@ -12,8 +12,6 @@ __attribute__((visibility("hidden")))
 }
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
-- (id)initWithNibName:(id)nibName bundle:(id)bundle;
-- (void)didReceiveMemoryWarning;
-- (void)viewDidLoad;
+- (BOOL)__shouldRemoteViewControllerFenceOperations;
 @end
 

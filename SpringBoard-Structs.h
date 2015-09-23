@@ -63,7 +63,7 @@ typedef struct UIEdgeInsets {
 typedef struct CGColor *CGColorRef;
 
 typedef struct {
-	BOOL itemIsEnabled[25];
+	BOOL itemIsEnabled[26];
 	BOOL timeString[64];
 	int gsmSignalStrengthRaw;
 	int gsmSignalStrengthBars;
@@ -90,7 +90,7 @@ typedef struct {
 	unsigned locationIconType : 1;
 	unsigned quietModeInactive : 1;
 	unsigned tetheringConnectionCount;
-} XXStruct_8iXKhD;
+} XXStruct_gly1hD;
 
 typedef struct __IOHIDEvent *IOHIDEventRef;
 

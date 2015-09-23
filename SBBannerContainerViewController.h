@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 	NCContentHostViewController *_inlayContentViewController;
 	SBBannerButtonViewController *_buttonViewController;
 	BOOL _notifiedAppeared;
+	BOOL _manualDismissalEnabled;
 	SBUIBannerContext *_bannerContext;
 	SBBannerContainerView *_containerView;
 	SBBannerContextView *_bannerContextView;
@@ -94,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveRaiseGesture;
 - (void)hostViewController:(id)controller didRequestDismissalWithContext:(id)context;
 - (void)hostViewController:(id)controller didRequestSticky:(BOOL)sticky;
+- (void)hostViewController:(id)controller serviceRequestedDismissalEnabled:(BOOL)enabled;
 - (void)hostViewControllerDidChangePreferredContentSize:(id)hostViewController;
 - (void)hostViewControllerDidRequestDismissal:(id)hostViewController;
 - (void)hostViewControllerDidRequestSticky:(id)hostViewController;

@@ -9,6 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutView : XXUnknownSuperclass {
+	id<SBStarkSessionConfiguring> _configuration;
 	UILabel *_titleLabel;
 	float _titleAscender;
 	float _titleDescender;
@@ -26,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) UILabel *messageLabel;
 @property(readonly, retain, nonatomic) UILabel *titleLabel;
 - (id)initWithFrame:(CGRect)frame;
-- (id)initWithFrame:(CGRect)frame title:(id)title image:(id)image message:(id)message baselineSeparations:(id)separations;
+- (id)initWithFrame:(CGRect)frame configuration:(id)configuration title:(id)title image:(id)image message:(id)message baselineSeparations:(id)separations;
 - (void)_backToOEM;
 - (id)_messageFontOfSize:(float)size;
 - (void)_sizeMessageToFitInFrame:(CGRect)frame;
@@ -34,5 +35,6 @@ __attribute__((visibility("hidden")))
 - (id)_titleFontOfSize:(float)size;
 - (void)dealloc;
 - (void)layoutSubviews;
+- (id)preferredFocusedItem;
 @end
 

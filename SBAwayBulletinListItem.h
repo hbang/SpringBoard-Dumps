@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
 	NSDate *_displayDate;
 	NSString *_message;
 	UIImage *_listItemImage;
+	BOOL _shouldPlayLightsAndSirens;
 	BBBulletin *_activeBulletin;
 	UIViewController *_secondaryContentViewController;
 }
 @property(retain) BBBulletin *activeBulletin;
 @property(retain) UIViewController *secondaryContentViewController;
+@property(assign, nonatomic) BOOL shouldPlayLightsAndSirens;
 - (id)initWithBulletin:(id)bulletin andObserver:(id)observer;
 - (BOOL)_suppressesMessageForPrivacy;
 - (void)_update;

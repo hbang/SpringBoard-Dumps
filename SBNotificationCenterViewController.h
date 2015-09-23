@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic, getter=isSuppressingNotificationUpdates) BOOL suppressesNotificationUpdates;
 @property(readonly, assign, nonatomic) UIEdgeInsets todayContentEdgeInsets;
 @property(readonly, assign, nonatomic) CGSize todayContentMaxSize;
+@property(readonly, assign, nonatomic) NSSet *visibleContentViewControllers;
 @property(assign, nonatomic) id<SBWidgetViewControllerDelegate> widgetDelegate;
 @property(readonly, assign, nonatomic) NSSet *widgetHandlingViewControllers;
 + (id)_localizableTitleForBulletinViewControllerOfClass:(Class)aClass;

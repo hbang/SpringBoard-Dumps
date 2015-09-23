@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 @interface SBStatusBarStateAggregator : XXUnknownSuperclass {
 	unsigned _coalescentBlockDepth;
 	BOOL _hasPostedOnce;
-	unsigned _itemPostState[25];
+	unsigned _itemPostState[26];
 	BOOL _nonItemDataChanged;
-	XXStruct_8iXKhD _data;
+	XXStruct_gly1hD _data;
 	int _actions;
 	NSHashTable *_postObservers;
 	BOOL _notifyingPostObservers;
@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateBluetoothBatteryItem;
 - (void)_updateBluetoothItem;
 - (void)_updateCallForwardingItem;
+- (void)_updateCarPlayItem;
 - (void)_updateDataNetworkItem;
 - (void)_updateLocationItem;
 - (void)_updateLocationState;

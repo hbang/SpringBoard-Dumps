@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 	SBLockScreenPasscodeOverlayViewController *_passcodeOverlayViewController;
 	SBLockOverlayContext *_passcodeOverlayContext;
 	SBLockScreenEmergencyCallViewController *_emergencyCallController;
+	BOOL _retryingEmergencyDialerCreationWhileBlocked;
 	BOOL _suppressWallpaperAlphaChangeOnScroll;
 	SBLockScreenActionContext *_bioLockScreenActionContext;
 	BOOL _disabledMesaForPhoneCall;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)_addNotificationView;
 - (void)_addOrRemoveBlockedViewIfNecessary:(BOOL)necessary;
 - (void)_addOrRemoveBuddyBackgroundIfNecessary;
+- (void)_addOrRemoveModalBannerOverlay:(BOOL)overlay;
 - (void)_addOrRemoveResetRestoreViewIfNecessary:(BOOL)necessary;
 - (void)_addOrRemoveThermalTrapViewIfNecessary:(BOOL)necessary;
 - (void)_addPasscodeOverlayWithCompletion:(id)completion;
@@ -133,6 +135,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeInfoOverlayViewAnimated:(BOOL)animated;
 - (void)_removeMediaControls;
 - (void)_removeModalAlertView;
+- (void)_removeModalBannerOverlay:(BOOL)overlay;
 - (void)_removeNotificationView;
 - (void)_removePasscodeOverlayWithCompletion:(id)completion;
 - (void)_removeRestoreView:(BOOL)view;
@@ -251,6 +254,7 @@ __attribute__((visibility("hidden")))
 - (void)modifyFullscreenBulletinAlertWithItem:(id)item;
 - (void)noteDeviceBlockedStatusUpdated;
 - (void)noteExitingLostMode;
+- (void)noteModalBannerIsVisible:(BOOL)visible;
 - (void)noteNextUnlockShouldReturnToCallIfPossible:(BOOL)noteNextUnlock;
 - (void)noteResetRestoreStateUpdated;
 - (void)noteStartingPhoneCallWhileUILocked;

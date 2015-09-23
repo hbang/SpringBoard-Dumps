@@ -11,6 +11,7 @@
 - (void)actionManager:(id)manager dismissAnimated:(BOOL)animated completionBlock:(id)block;
 - (void)actionManager:(id)manager dismissViewController:(id)controller completion:(id)completion animated:(BOOL)animated;
 - (void)actionManager:(id)manager presentViewController:(id)controller completion:(id)completion modally:(BOOL)modally;
+- (void)actionManager:(id)manager sendFeedback:(id)feedback;
 - (UIEdgeInsets)actionManagerDetailsViewEdgeInsets:(id)insets;
 @end
 

@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 @interface SBAppExitedWorkspaceTransaction : SBAppToAppWorkspaceTransaction {
 }
 - (id)initWithAlertManager:(id)alertManager from:(id)from to:(id)to withResult:(id)result;
-- (void)_kickOffActivation;
 - (id)_setupAnimationFrom:(id)from to:(id)to;
 - (id)_setupMilestonesFrom:(id)from to:(id)to;
 @end

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)_configureAppStatusBarInsetsForOrientation:(int)orientation;
 - (void)_configureDockViewForOrientationDuringAnimation:(int)orientationDuringAnimation;
 - (void)_configureDockViewForOrientationWithoutAnimation:(int)orientationWithoutAnimation;
+- (void)_configureViewForOrientationWithoutAnimation:(int)orientationWithoutAnimation;
 - (Class)_contentViewClass;
 - (unsigned)_depth;
 - (unsigned)_dockEdgeForInterfaceOrientation:(int)interfaceOrientation;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isDockSwitchedForOrientation:(int)orientation;
 - (BOOL)_listIndexIsVisible:(unsigned)visible;
 - (BOOL)_shouldSlideDockOutDuringRotationFromOrientation:(int)orientation toOrientation:(int)orientation2;
+- (BOOL)_shouldUseDockAnimationWindowForRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)addAdditionalInnerFolderAnimations;
 - (void)dealloc;
 - (void)didRotateFromInterfaceOrientation:(int)interfaceOrientation;

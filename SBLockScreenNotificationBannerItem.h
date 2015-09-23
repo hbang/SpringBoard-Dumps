@@ -33,8 +33,11 @@ __attribute__((visibility("hidden")))
 - (id)lockScreenActionContext;
 - (id)message;
 - (BOOL)overridesQuietMode;
+- (BOOL)shouldPlayLightsAndSirens;
+- (BOOL)showMessagePreview;
 - (id)sortDate;
 - (id)sourceDate;
+- (id)subtitle;
 - (id)suppressedMessage;
 - (id)title;
 @end

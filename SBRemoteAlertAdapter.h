@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 	int _desiredStatusBarStyleOverrides;
 	BOOL _wantsToShowStatusBar;
 	BOOL _wantsToManageStatusBarAtActivation;
+	BOOL _canManageStatusBarVisibility;
 	BOOL _suppressesSiri;
 	BOOL _dismissOnUILock;
 	int _desiredLaunchingInterfaceOrientation;
@@ -101,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)remoteAlertWantstoSetDismissalAnimationStyle:(int)style;
 - (void)remoteAlertWantstoSetSupportedInterfaceOrientationOverride:(unsigned)override;
 - (void)setActivationHandler:(id)handler deactivationHandler:(id)handler2;
+- (void)setCanManageStatusBarVisibility:(BOOL)visibility;
 - (void)setLockUIAndDismissActions:(id)actions;
 - (void)setWantsToManageStatusBarAtActivation:(BOOL)activation;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)interfaceOrientation;

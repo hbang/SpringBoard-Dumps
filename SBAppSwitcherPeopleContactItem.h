@@ -10,15 +10,17 @@
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherPeopleContactItem : XXUnknownSuperclass <NSCopying> {
 	NSString *_name;
+	unsigned _nameFormatHash;
 	NSArray *_contactActions;
 	int _personRecordID;
 	NSDate *_recordLastUpdatedDate;
 }
 @property(copy, nonatomic) NSArray *contactActions;
 @property(copy, nonatomic) NSString *name;
+@property(assign, nonatomic) unsigned nameFormatHash;
 @property(readonly, assign, nonatomic) int personRecordID;
 @property(copy, nonatomic) NSDate *recordLastUpdatedDate;
-- (id)initWithName:(id)name abRecordID:(int)anId lastUpdated:(id)updated contactActions:(id)actions;
+- (id)initWithName:(id)name nameFormatHash:(unsigned)hash abRecordID:(int)anId lastUpdated:(id)updated contactActions:(id)actions;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
 - (id)description;

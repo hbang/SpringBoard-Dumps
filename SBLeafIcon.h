@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)equal;
 - (BOOL)isRecentlyUpdated;
 - (BOOL)launchEnabled;
-- (void)launchFromLocation:(int)location;
+- (void)launchFromLocation:(int)location context:(id)context;
 - (id)leafIdentifier;
 - (id)nodeIdentifier;
 - (BOOL)progressIsPaused;

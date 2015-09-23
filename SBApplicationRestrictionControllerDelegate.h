@@ -7,9 +7,7 @@
 
 
 
-__attribute__((visibility("hidden")))
-@interface SBCarDisplaySceneManager : SBSceneManager {
-}
-- (id)_newLayoutManager;
+@protocol SBApplicationRestrictionControllerDelegate <NSObject>
+- (void)refreshVisiblityOverrides;
 @end
 

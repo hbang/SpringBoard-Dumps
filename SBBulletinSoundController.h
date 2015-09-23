@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_stopSoundWithID:(id)anId internalOnly:(BOOL)only;
 - (void)bulletinWindowStoppedBeingBusy;
 - (void)dealloc;
+- (BOOL)isPlayingSoundForBulletin:(id)bulletin;
 - (void)killSoundForBulletin:(id)bulletin;
 - (void)killSounds;
 - (void)observer:(id)observer addBulletin:(id)bulletin forFeed:(unsigned)feed playLightsAndSirens:(BOOL)sirens withReply:(id)reply;

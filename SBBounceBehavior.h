@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBBounceBehavior : XXUnknownSuperclass {
 	float _midwayPosition;
 	float _completionThreshold;
+	float _previousLinearVelocity;
 	CGRect _targetFrame;
 	id<UIDynamicItem> _item;
 	UIDynamicItemBehavior *_bodyBehavior;

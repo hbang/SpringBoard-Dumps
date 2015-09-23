@@ -31,8 +31,10 @@ __attribute__((visibility("hidden")))
 	int _layoutInterfaceOrientation;
 	BOOL _interactionEnabled;
 	BOOL _visible;
-	BOOL _peopleDimmedForAppKilling;
+	BOOL _peopleDimmed;
 	unsigned _inflightPeopleDimmingAnimations;
+	BOOL _peopleShouldDimForKilling;
+	BOOL _peopleShouldDimForDismissal;
 	int _mode;
 	SBDisplayLayout *_startingDisplayLayout;
 	NSDictionary *_startingViews;
@@ -87,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)_insertDisplayLayout:(id)layout atIndex:(unsigned)index completion:(id)completion;
 - (void)_insertMultipleAppDisplayLayout:(id)layout atIndex:(unsigned)index completion:(id)completion;
 - (void)_insertRemoteAlertPlaceholder:(id)placeholder atIndex:(unsigned)index completion:(id)completion;
+- (void)_insertSwitcherService:(id)service atIndex:(unsigned)index completion:(id)completion;
 - (BOOL)_isBestAppSuggestionEligibleForSwitcher:(id)switcher;
 - (BOOL)_isSnapshotDisplayIdentifier:(id)identifier;
 - (void)_layout;
@@ -107,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (id)_snapshotViewForDisplayItem:(id)displayItem;
 - (void)_switcherRemoteAlertAdded:(id)added;
 - (void)_switcherRemoteAlertRemoved:(id)removed;
+- (void)_switcherServiceAdded:(id)added;
 - (void)_switcherServiceRemoved:(id)removed;
 - (float)_switcherThumbnailVerticalPositionOffset;
 - (void)_temporarilyHostAppForQuitting:(id)quitting;
@@ -116,6 +120,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateForAnimationFrame:(float)animationFrame withAnchor:(id)anchor;
 - (void)_updatePageViewScale:(float)scale;
 - (void)_updatePageViewScale:(float)scale xTranslation:(float)translation;
+- (void)_updatePeopleOpacity:(id)opacity;
 - (void)_updateSnapshots;
 - (void)_updateSnapshotsForce:(BOOL)force;
 - (id)_viewForContinuityApp:(id)continuityApp;

@@ -9,7 +9,10 @@
 
 __attribute__((visibility("hidden")))
 @interface SBCarDisplaySceneLayoutManager : SBSceneLayoutManager {
+	id<SBStarkSessionConfiguring> _configuration;
 }
+- (id)initWithManager:(id)manager configuration:(id)configuration;
+- (void)dealloc;
 - (CGRect)frameForDisplayItem:(id)displayItem inLayout:(id)layout;
 @end
 

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)_imageForRecordID:(id)recordID;
 - (BOOL)_isPushDataProvider;
 - (id)_latestBulletinInSet:(id)set;
+- (void)_migrateSectionInfo;
 - (id)_publisherBulletinIDForNotification:(id)notification;
 - (void)_saveUpdatedSectionInfo;
 - (id)_sortKey;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)bulletinsFilteredBy:(unsigned)by count:(unsigned)count lastCleared:(id)cleared;
 - (id)clearedInfoAndBulletinsForClearingAllBulletinsWithLimit:(unsigned)limit lastClearedInfo:(id)info;
 - (id)clearedInfoForBulletins:(id)bulletins lastClearedInfo:(id)info;
+- (void)dataProviderDidLoad;
 - (void)dealloc;
 - (id)defaultSectionInfo;
 - (void)invalidate;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(assign, nonatomic) BOOL isNewItem;
+@property(readonly, assign, nonatomic) BOOL shouldPlayLightsAndSirens;
 @property(readonly, assign) Class superclass;
 @property(retain, nonatomic) NSDate *timestamp;
 - (void)buttonPressed;

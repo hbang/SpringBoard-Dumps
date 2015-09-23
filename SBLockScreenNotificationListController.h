@@ -65,7 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)_listItemContainingBulletinID:(id)anId;
 - (id)_listItemContainingCardItem:(id)item;
 - (id)_listItemContainingSystemAlert:(id)alert;
-- (id)_newItemForBulletin:(id)bulletin;
+- (id)_newItemForBulletin:(id)bulletin shouldPlayLightsAndSirens:(BOOL)sirens;
 - (void)_playSoundForBulletinIfPossible:(id)bulletinIfPossible;
 - (void)_presentFullscreenBulletinAlertIfNeeded;
 - (void)_realertTimerFired:(id)fired;

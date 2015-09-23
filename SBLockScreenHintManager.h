@@ -78,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (id)_lockScreenNotificationListController;
 - (id)_lockScreenNotificationListView;
 - (id)_lockScreenViewController;
+- (void)_noteBioMatchingEnabledDidChange:(id)_noteBioMatchingEnabled;
 - (void)_presentingController:(id)controller willHandlePan:(id)pan;
 - (void)_presentingController:(id)controller willHandleTap:(id)tap;
 - (void)_reenableGestures;

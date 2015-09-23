@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBApplicationController : XXUnknownSuperclass <SBApplicationRestrictionDataSource, SBApplicationLifecycleObserver, FBUIApplicationServiceDelegate> {
+@interface SBApplicationController : XXUnknownSuperclass <SBApplicationRestrictionDataSource, SBApplicationLifecycleObserver, FBUIApplicationServiceDelegate, SBApplicationRestrictionControllerDelegate> {
 	NSMutableDictionary *_applicationsByBundleIdentifer;
 	NSMutableSet *_applicationsPlayingMutedAudioSinceLastLock;
 	NSDictionary *_backgroundDisplayDict;
@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (id)mobilePhone;
 - (id)musicApplication;
 - (id)newsstandApps;
+- (void)refreshVisiblityOverrides;
 - (id)restrictionController;
 - (id)setupApplication;
 - (void)uninstallApplication:(id)application;

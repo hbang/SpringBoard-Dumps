@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
 	NSMutableDictionary *_windowLevelOverrideMap;
 	float _defaultWindowLevel;
 	NSMutableDictionary *_edgeInsetsDictionary;
-	unsigned _activeLayoutLayer;
+	NSMutableSet *_activeLayoutLayers;
 }
-@property(assign, nonatomic) unsigned activeLayoutLayer;
 @property(readonly, assign, nonatomic) UIEdgeInsets statusBarEdgeInsets;
+@property(readonly, assign, nonatomic) unsigned topmostActiveLayoutLayer;
 + (id)sharedInstance;
 - (id)init;
 - (void)_addAssertion:(id)assertion toAssertions:(id)assertions;
@@ -31,10 +31,12 @@ __attribute__((visibility("hidden")))
 - (void)_removeDisableAppStatusBarUserInteractionChangesAssertion:(id)assertion;
 - (void)_setStatusBarValueForPropertyWithAssertions:(id)assertions setter:(id)setter;
 - (void)_updateWindowLevel;
+- (void)addActiveLayoutLayer:(unsigned)layer;
 - (void)dealloc;
 - (void)hideStatusBar;
 - (BOOL)isStatusBarHidden;
 - (BOOL)isStatusBarUserInteractionEnabled;
+- (void)removeActiveLayoutLayer:(unsigned)layer;
 - (void)removeWindowLevelOverrideReason:(id)reason;
 - (void)setDefaultWindowLevel:(float)level;
 - (void)setStatusBarAlpha:(float)alpha;

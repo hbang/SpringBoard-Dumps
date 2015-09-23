@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)_customLockScreenActionContext;
 - (BOOL)_isLockAlert;
 - (void)_transitionWallpaperFromLock;
-- (void)_transitionWallpaperFromLockWithOptionalOutTimingFunction:(id)optionalOutTimingFunction adjustWindowLevel:(BOOL)level;
+- (void)_transitionWallpaperFromLockWithOptionalOutTimingFunction:(id)optionalOutTimingFunction adjustWindowLevel:(BOOL)level completionHandler:(id)handler;
 - (BOOL)_wantsToAnimateFromPasscodeLockOnFailedPasscodeAttemptAndBlocked;
 - (void)activate;
 - (BOOL)activateAlertItem:(id)item animated:(BOOL)animated;
@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)lockScreenIsShowingBulletins;
 - (void)noteDeviceBlockedStatusUpdated;
 - (void)noteExitingLostMode;
+- (void)noteModalBannerIsVisible:(BOOL)visible;
 - (void)noteNextUnlockShouldReturnToCallIfPossible:(BOOL)noteNextUnlock;
 - (void)noteResetRestoreStateUpdated;
 - (void)noteStartingPhoneCallWhileUILocked;

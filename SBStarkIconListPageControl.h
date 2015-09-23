@@ -9,7 +9,9 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkIconListPageControl : SBIconListPageControl {
+	float _scale;
 }
+@property(assign, nonatomic) float scale;
 - (id)_iconListIndicatorImage:(BOOL)image;
 - (float)_indicatorSpacing;
 @end

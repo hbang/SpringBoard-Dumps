@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 @property(retain, nonatomic) SBStarkIconLayoutOverrideStrategy *iconLayoutOverrideStrategy;
 - (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map;
+- (id)initWithFolder:(id)folder orientation:(int)orientation viewMap:(id)map context:(id)context;
 - (void)_evaluateScrollingForListViewsIfNecessary;
 - (void)_layoutSubviews;
 - (id)_newPageControl;

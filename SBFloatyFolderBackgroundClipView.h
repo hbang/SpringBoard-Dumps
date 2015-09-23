@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 @property(readonly, assign, nonatomic) SBFolderBackgroundView *backgroundView;
 - (id)initWithFrame:(CGRect)frame;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)dealloc;
 - (void)layoutSubviews;
 @end

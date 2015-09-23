@@ -19,12 +19,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)_supportsSubActions;
 - (id)_uiBannerActionForBBAction:(id)bbaction context:(id)context;
 - (id)action;
-- (id)bbActions;
+- (id)bbAllActions;
+- (id)bbSupplementaryActions;
 - (id)categoryImage;
 - (void)dealloc;
 - (int)defaultActionType;
 - (BOOL)matchesContext:(id)context;
 - (id)message;
+- (BOOL)shouldShowModalSubActions;
 - (id)sound;
 - (id)sourceDate;
 - (id)subActionLabels;

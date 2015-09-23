@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 	NSString *_name;
 	int _type;
 	float _priority;
-	UIWindow *_window;
+	BSZeroingWeakReference *_weak_window;
 	NSString *_bundleID;
 	int _pid;
 }

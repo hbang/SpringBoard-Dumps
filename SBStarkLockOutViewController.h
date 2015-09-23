@@ -9,6 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBStarkLockOutViewController : XXUnknownSuperclass {
+	id<SBStarkSessionConfiguring> _configuration;
 	SBStarkScreenController *_screenController;
 	int _mode;
 	SBStarkLockOutView *_modeView;
@@ -21,12 +22,16 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) int lockOutMode;
 @property(readonly, retain, nonatomic) SBStarkLockOutView *lockoutView;
 @property(retain, nonatomic) SBStarkScreenController *screenController;
+- (id)initWithCoder:(id)coder;
+- (id)initWithConfiguration:(id)configuration;
+- (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (id)_newModeViewForMode:(int)mode;
 - (void)_updateLockOutModeIfPending;
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
 - (void)loadView;
+- (id)preferredFocusedItem;
 - (void)setLockOutMode:(int)mode animated:(BOOL)animated;
 - (void)viewDidAppear:(BOOL)view;
 - (void)viewWillLayoutSubviews;

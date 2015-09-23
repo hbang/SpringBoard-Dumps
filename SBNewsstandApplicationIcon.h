@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (Class)iconImageViewClassForLocation:(int)location;
 - (BOOL)isNewsstandApplicationIcon;
 - (BOOL)launchEnabled;
-- (void)launchFromLocation:(int)location;
+- (void)launchFromLocation:(int)location context:(id)context;
 - (BOOL)shouldWarmUp;
 @end
 
