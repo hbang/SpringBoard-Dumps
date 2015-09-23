@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
 		unsigned hasBeenActivated : 1;
 	} _voiceControlFlags;
 }
++ (BOOL)_bluetoothDevicesPickable;
++ (void)_configureSession:(id)session forAlert:(id)alert;
++ (void)_setNextRecognitionAudioInputPathForSession:(id)session resetting:(BOOL)resetting;
 + (void)bluetoothDeviceRequestedVoiceControl:(id)control;
 + (void)bluetoothDeviceTerminatedVoiceControl:(id)control;
 + (id)pendingOrActiveAlert;
@@ -24,19 +27,27 @@ __attribute__((visibility("hidden")))
 + (BOOL)shouldEnterVoiceControl;
 + (void)unregisterForAlerts;
 - (id)init;
+- (id)initFromBluetoothDevice:(id)bluetoothDevice;
 - (id)initFromMenuButton;
 - (id)initFromWiredHeadsetButton;
 - (void)_makeActive;
 - (void)_prime;
+- (void)_proximityChanged:(id)changed;
 - (void)_resign;
+- (id)_session;
 - (void)_setRoutingAttributesForWiredHeadset:(BOOL)wiredHeadset;
+- (void)_workspaceActivate;
+- (void)activate;
 - (void)activateWhenReady;
 - (id)alertDisplayViewWithSize:(CGSize)size;
+- (BOOL)allowsEventOnlySuspension;
 - (double)autoDimTime;
 - (void)cancel;
 - (void)cancelIfNotActivated;
+- (void)deactivate;
 - (void)dealloc;
 - (void)handleHeadsetButtonUpFromActivation:(BOOL)activation;
 - (BOOL)handleMenuButtonTap;
+- (BOOL)recognitionSessionWillBeginAction:(id)recognitionSession;
 @end
 

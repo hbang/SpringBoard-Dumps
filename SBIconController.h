@@ -104,7 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)_dropIcon:(id)icon withInsertionPath:(id)insertionPath;
 - (void)_dropIconIntoOpenFolder:(id)folder withInsertionPath:(id)insertionPath;
 - (void)_dropIconOutOfClosingFolder:(id)closingFolder withInsertionPath:(id)insertionPath;
-- (void)_finishedUnscattering;
+- (void)_finishedUnscatteringWithIconScroll:(BOOL)iconScroll;
 - (void)_folderRotationIconFadeAnimationDidStop:(id)_folderRotationIconFadeAnimation finished:(id)finished context:(id)context;
 - (unsigned)_folderRowsForFolder:(id)folder;
 - (unsigned)_folderRowsForFolder:(id)folder inOrientation:(int)orientation;

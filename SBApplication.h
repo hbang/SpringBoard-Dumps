@@ -161,12 +161,14 @@ __attribute__((visibility("hidden")))
 - (id)_defaultPNGOverrideName;
 - (id)_defaultPNGPathForLaunchingOrientation:(int)launchingOrientation scale:(float)scale imageOrientation:(int *)orientation resultingScale:(float *)scale4;
 - (void)_dismissAllSystemLocalNotificationAlerts;
+- (BOOL)_doesProfileMatchSignerIdentity:(MISProfileRef)identity;
 - (unsigned)_doingBackgroundNetworking;
 - (void)_dropPeriodicWakeProcessAssertion;
 - (void)_dropTransientProcessAssertion;
 - (id)_dynamicSnapshotSuffixForScale:(float)scale;
 - (void)_endDefaultImageAccess;
 - (void)_endRequireLocalNotificationsCachingWithReason:(id)reason;
+- (id)_expirationDateForProvisioningProfile;
 - (int)_fallbackImageOrientationForLaunchingOrientation:(int)launchingOrientation;
 - (id)_fallbackOrientationImageTagForLaunchingOrientation:(int)launchingOrientation;
 - (void)_fireNotification:(id)notification;
@@ -212,6 +214,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldAutoLaunchForVoIP;
 - (BOOL)_shouldAutoLaunchOnBootOrInstall:(BOOL)install;
 - (BOOL)_shouldAutoRelaunchForEA;
+- (BOOL)_signatureNeedsExplicitUserTrust;
 - (id)_snapshotImageForLaunchingOrientation:(int)launchingOrientation scale:(float)scale originalOrientation:(int *)orientation currentOrientation:(int *)orientation4;
 - (id)_stringForActivationState:(int)activationState;
 - (void)_suspendForPeriodicWakeTimerFired:(id)periodicWakeTimerFired;

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *title;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_createFormattersIfNecessary;
+- (void)_tearDownMediaControlsView;
 - (id)controlsView;
 - (void)dealloc;
 - (void)didMoveToSuperview;

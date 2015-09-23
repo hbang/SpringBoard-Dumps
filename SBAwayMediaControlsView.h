@@ -8,43 +8,76 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAwayMediaControlsView : XXUnknownSuperclass {
+@interface SBAwayMediaControlsView : XXUnknownSuperclass <MPDetailSliderDelegate> {
 	unsigned _beganSeeking : 1;
 	int _seekingDirection;
 	UIButton *_prevButton;
 	UIButton *_nextButton;
 	UIButton *_playPauseButton;
-	UIButton *_fifteenSecondRewindButton;
-	UIButton *_fifteenSecondFFButton;
+	UIButton *_repeatButton;
+	UIButton *_shuffleButton;
+	SBDetailSlider *_trackPositionSlider;
+	BOOL _isScrubbingTrack;
+	BOOL _wantsTicks;
+	NSTimer *_tickTimer;
+	SBScrollingTitlesView *_titlesView;
+	UIButton *_jumpFastForwardButton;
+	UILabel *_jumpFastForwardLabel;
+	UIButton *_jumpRewindButton;
+	UILabel *_jumpRewindLabel;
+	UILabel *_albumLabel;
+	UILabel *_artistLabel;
+	UILabel *_titleLabel;
 	MPVolumeView *_volumeView;
-	MPVolumeView *_iPhoneRouteButtonVolumeView;
 	int _orientation;
 }
+@property(copy, nonatomic) NSString *album;
+@property(copy, nonatomic) NSString *artist;
 @property(assign, nonatomic) int orientation;
+@property(copy, nonatomic) NSString *title;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_changeTrackButtonDown:(id)down;
 - (void)_changeTrackButtonEndSeek:(id)seek;
 - (void)_changeTrackButtonTouchPause:(id)pause;
 - (void)_changeTrackButtonUp:(id)up;
 - (void)_didPresentRoutePicker;
-- (id)_fifteenSecondFFButton;
-- (void)_fifteenSecondFFButtonAction:(id)action;
-- (id)_fifteenSecondRewindButton;
-- (void)_fifteenSecondRewindButtonAction:(id)action;
-- (id)_newButtonWithImage:(id)image action:(SEL)action tag:(int)tag;
+- (id)_jumpFastForwardButton;
+- (void)_jumpFastForwardButtonAction:(id)action;
+- (id)_jumpRewindButton;
+- (void)_jumpRewindButtonAction:(id)action;
+- (id)_newButtonWithImage:(id)image action:(SEL)action;
+- (id)_newJumpLabel;
+- (id)_newNowPlayingLabelWithFont:(id)font color:(id)color;
 - (void)_nowPlayingChanged:(id)changed;
 - (void)_playPauseButtonAction:(id)action;
 - (void)_registerForNowPlayingNotifications;
+- (void)_repeatButtonAction:(id)action;
+- (id)_repeatImageForMode:(int)mode;
+- (void)_resetProgressSlider;
+- (void)_restartTickingAfterProgressScrub;
+- (void)_routeButtonDidChangeNotification:(id)_routeButton;
+- (void)_shuffleButtonAction:(id)action;
+- (id)_shuffleImageForMode:(int)mode;
+- (void)_startTickTimer;
+- (void)_startTickingWithUpdate:(BOOL)update;
+- (void)_stopTickTimer;
+- (void)_stopTicking;
+- (void)_tickTimerHandler:(id)handler;
 - (void)_unregisterForNowPlayingNotifications;
 - (void)_updateInformation;
 - (void)_volumeChange:(id)change;
 - (void)_volumeViewVisibilityChanged;
 - (void)dealloc;
+- (void)detailSlider:(id)slider didChangeValue:(float)value;
+- (void)detailSliderTrackingDidBegin:(id)detailSliderTracking;
+- (void)detailSliderTrackingDidCancel:(id)detailSliderTracking;
+- (void)detailSliderTrackingDidEnd:(id)detailSliderTracking;
 - (void)dismissMediaControlsOverlaysAnimated:(BOOL)animated;
 - (BOOL)isMediaControlsShowingOverlays;
 - (void)layoutSubviews;
 - (void)removeFromSuperview;
 - (id)routeButtonVolumeView;
 - (void)setAlpha:(float)alpha;
+- (void)stopTickTimer;
 @end
 

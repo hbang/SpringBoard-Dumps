@@ -7,7 +7,9 @@
 
 
 
-@protocol RadiosPreferencesDelegate
-- (void)airplaneModeChanged;
+__attribute__((visibility("hidden")))
+@interface SBAwayMediaControlsVolumeView : XXUnknownSuperclass {
+}
+- (CGRect)routeButtonRectForBounds:(CGRect)bounds;
 @end
 

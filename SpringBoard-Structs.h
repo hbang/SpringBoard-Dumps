@@ -71,6 +71,10 @@ typedef struct {
 	unsigned _field1[8];
 } XXStruct_kUSYWB;
 
+typedef struct _MISProfile *MISProfileRef;
+
+typedef struct tcp_connection_fallback_watch_s tcp_connection_fallback_watch_s;
+
 typedef struct __CTServerConnection *CTServerConnectionRef;
 
 typedef struct {
@@ -102,6 +106,14 @@ typedef struct CATransform3D {
 typedef struct __CTCall *CTCallRef;
 
 typedef struct __CFDictionary *CFDictionaryRef;
+
+typedef struct __WiFiManagerClient WiFiManagerClient;
+
+typedef struct __WiFiDeviceClient WiFiDeviceClient;
+
+typedef struct __WiFiNetwork WiFiNetwork;
+
+typedef struct __SCDynamicStore *SCDynamicStoreRef;
 
 typedef struct __CFBoolean *CFBooleanRef;
 

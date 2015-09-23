@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
 	NSString *_bulletinID;
 	float _fontsize;
 	BOOL _requiresUnlock;
+	BOOL _deactivateAwayController;
 	BOOL _launchActionCanBypassPinLock;
 	BOOL _hasCustomUnlockLabel;
 	BOOL _canBypassPinLock;
 }
 @property(assign, nonatomic) BOOL canBypassPinLock;
+@property(assign, nonatomic) BOOL deactivateAwayController;
 @property(assign, nonatomic) BOOL hasCustomUnlockLabel;
 @property(assign, nonatomic) BOOL requiresUnlock;
 + (id)actionContextForAlertItem:(id)alertItem;

@@ -111,8 +111,8 @@
 
 @interface XXUnknownSuperclass (SBGraphics)
 + (unsigned long)sbg_bytesNeededForSize:(CGSize)size scale:(float)scale withContextType:(int)contextType;
-+ (id)sbg_imageFromContextWithSize:(CGSize)size scale:(float)scale type:(int)type data:(id)data drawing:(id)drawing;
-+ (id)sbg_imageFromContextWithSize:(CGSize)size scale:(float)scale type:(int)type data:(id)data drawing:(id)drawing encapsulation:(id)encapsulation;
++ (id)sbg_imageFromContextWithSize:(CGSize)size scale:(float)scale type:(int)type pool:(id)pool drawing:(id)drawing;
++ (id)sbg_imageFromContextWithSize:(CGSize)size scale:(float)scale type:(int)type pool:(id)pool drawing:(id)drawing encapsulation:(id)encapsulation;
 @end
 
 @interface XXUnknownSuperclass (SBBulletinBanner)
