@@ -8,30 +8,45 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBPowerDownView : SBAlertView {
-	id<SBPowerDownViewDelegate> _delegate;
-	UIView *_dimView;
-	TPTopLockBar *_lockView;
-	TPBottomSingleButtonBar *_cancelView;
+@interface SBPowerDownView : SBAlertView <SBPowerDownViewInterface, UIGestureRecognizerDelegate> {
 	NSTimer *_autoDismissTimer;
+	id<SBPowerDownViewDelegate> _delegate;
+	SBFakeStatusBarView *_fakeStatusBarView;
+	UIView *_darkeningUnderlay;
+	UIView *_topContainer;
+	UIView *_topBar;
+	SBFGlintyStringView *_topBarLabel;
+	UIView *_topBarLabelBackgroundView;
+	_UIBackdropView *_topBarBackground;
+	UIView *_bottomContainer;
+	UIView *_bottomBar;
+	UILabel *_bottomBarLabel;
+	_UIBackdropView *_bottomBarBackground;
+	BOOL _addedFakeStatusBar;
+	BOOL _hiddenLockScreenForeground;
+	UIPanGestureRecognizer *_slideGestureRecognizer;
+	UILongPressGestureRecognizer *_touchGestureRecognizer;
+	CGPoint _slideGestureInitialPoint;
 }
 @property(assign, nonatomic) id<SBPowerDownViewDelegate> delegate;
 - (id)initWithFrame:(CGRect)frame;
-- (void)animateDark;
+- (void)_addFakeStatusBarIfNecessary;
+- (void)_animatePowerDown;
+- (void)_cancelAutoDismissTimer;
+- (id)_lockScreenView;
+- (id)_newDarkeningView:(CGRect)view;
+- (void)_notifyDelegateCancelled;
+- (void)_notifyDelegatePowerDown;
+- (void)_removeFakeStatusBarIfNecessary;
+- (void)_resetAutoDismissTimer;
+- (void)_slideCompleted:(BOOL)completed;
+- (void)_slideGestureRecognizer:(id)recognizer;
+- (void)_touchGestureRecognizer:(id)recognizer;
 - (void)animateIn;
 - (void)animateOut;
-- (void)cancel:(id)cancel;
-- (void)cancelAutoDismissTimer;
 - (void)dealloc;
-- (void)finishedAnimatingIn;
-- (void)finishedAnimatingOut;
+- (BOOL)gestureRecognizer:(id)recognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)gestureRecognizer;
 - (BOOL)isSupportedInterfaceOrientation:(int)orientation;
 - (void)layoutForInterfaceOrientation:(int)interfaceOrientation;
-- (void)lockBarStartedTracking:(id)tracking;
-- (void)lockBarStoppedTracking:(id)tracking;
-- (void)lockBarUnlocked:(id)unlocked;
-- (void)notifyDelegateOfPowerDown;
-- (void)powerDown:(id)down;
-- (void)resetAutoDismissTimer;
 @end
 

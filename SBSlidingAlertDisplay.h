@@ -9,8 +9,8 @@
 
 __attribute__((visibility("hidden")))
 @interface SBSlidingAlertDisplay : SBAlertView <SBDeviceLockViewOwner> {
-	SBWallpaperView *_backgroundView;
 	UIImage *_defaultDesktopImage;
+	UIImageView *_replacementBackgroundView;
 	UIView *_topBar;
 	UIView *_bottomBar;
 	UIView *_overlayView;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) id<SBSlidingAlertDisplayDelegate> delegate;
 + (id)bottomBarForInstance:(id)instance;
 + (void)setDisplayPropertiesForActivationOfAlert:(id)alert;
++ (BOOL)shouldAnimateIconsIn;
 + (id)topBarForInstance:(id)instance;
 - (id)initWithFrame:(CGRect)frame;
 - (void)_adjustForDoubleHighStatusBar:(BOOL)doubleHighStatusBar;
@@ -40,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)_animateView:(id)view direction:(int)direction;
 - (void)_beginDismissAnimationAffectingWorkspace:(BOOL)workspace;
 - (void)_clearUnlockFailedIndicator;
-- (id)_defaultDesktopImage;
 - (void)_entryFinishedWithPassword:(id)password;
 - (void)_fadeOutCompleted:(id)completed;
 - (void)_fadeOutCompletedWithDisplayDisablingIconUnscatter:(BOOL)displayDisablingIconUnscatter;
@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)_zoomOutDeviceLockViewWithDelay:(double)delay;
 - (void)adjustForDoubleHighStatusBarIfNecessary;
 - (void)alertDisplayWillBecomeVisible;
-- (void)alertWindowResizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame2;
+- (void)alertWindowViewControllerResizedFromContentFrame:(CGRect)contentFrame toContentFrame:(CGRect)contentFrame2;
 - (void)animateDisplayIn:(float)anIn middleDelay:(float)delay animateStatusBar:(BOOL)bar;
 - (void)animateFromEmergencyCallWithDuration:(float)duration;
 - (void)animateOut;
@@ -65,7 +65,6 @@ __attribute__((visibility("hidden")))
 - (void)animateToHidingDeviceLockFinished;
 - (void)animateToShowingDeviceLock:(BOOL)showingDeviceLock duration:(float)duration;
 - (void)animateToShowingDeviceLockFinished;
-- (id)backgroundView;
 - (void)beginAnimatingDisplayIn:(BOOL)anIn;
 - (id)bottomBar;
 - (BOOL)bottomBarIsVisible;

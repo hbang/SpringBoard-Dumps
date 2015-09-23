@@ -8,9 +8,8 @@
 
 
 @protocol SBAlertManagerDelegate <NSObject>
-- (void)alertManager:(id)manager didActivateAlert:(id)alert overAlerts:(id)alerts;
-- (void)alertManager:(id)manager didDeactivateAlert:(id)alert overAlerts:(id)alerts;
-- (void)alertManager:(id)manager willActivateAlert:(id)alert overAlerts:(id)alerts;
-- (void)alertManager:(id)manager willDeactivateAlert:(id)alert overAlerts:(id)alerts;
+@optional
+- (id)alertManager:(id)manager newAlertWindowForLockAlerts:(BOOL)lockAlerts;
+- (BOOL)alertManager:(id)manager shouldDeactivateDismissedAlert:(id)alert;
 @end
 

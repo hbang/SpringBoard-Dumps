@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIAnimationWindow : XXUnknownSuperclass {
+@interface SBUIAnimationWindow : SBWindow {
 }
 - (id)initWithFrame:(CGRect)frame;
 @end

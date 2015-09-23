@@ -9,8 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBSoftwareUpdateVerifyingUpdateAlertItem : SBBaseSoftwareUpdateAlertItem {
-	UIActivityIndicatorView *_activityView;
-	UILabel *_label;
+	UIView *_activityAccessoryView;
 }
 - (id)initWithDescriptor:(id)descriptor;
 - (BOOL)allowMenuButtonDismissal;
@@ -22,6 +21,5 @@ __attribute__((visibility("hidden")))
 - (BOOL)reappearsAfterUnlock;
 - (BOOL)shouldShowInLockScreen;
 - (BOOL)undimsScreen;
-- (void)willPresentAlertView:(id)view;
 @end
 

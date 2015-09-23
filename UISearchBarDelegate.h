@@ -7,7 +7,7 @@
 
 
 
-@protocol UISearchBarDelegate <NSObject>
+@protocol UISearchBarDelegate <UIBarPositioningDelegate>
 @optional
 - (void)searchBar:(id)bar selectedScopeButtonIndexDidChange:(int)selectedScopeButtonIndex;
 - (BOOL)searchBar:(id)bar shouldChangeTextInRange:(NSRange)range replacementText:(id)text;

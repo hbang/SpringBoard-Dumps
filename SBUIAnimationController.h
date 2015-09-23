@@ -9,6 +9,7 @@
 
 __attribute__((visibility("hidden")))
 @interface SBUIAnimationController : XXUnknownSuperclass {
+	id<SBUIAnimationControllerDelegate> _delegate;
 	UIWindow *_transitionWindow;
 	UIView *_transitionContainer;
 	SBApplication *_activatingApp;
@@ -16,12 +17,12 @@ __attribute__((visibility("hidden")))
 	SBActivationContext *_activatingContext;
 	SBActivationContext *_deactivatingContext;
 	BKSApplicationActivationAssertion *_activationAssertion;
-	id<SBUIAnimationControllerDelegate> _delegate;
 	id _commitBlock;
 	int _animationState;
 	BOOL _cancelOnNextSuspendIfNecessary;
-	BOOL _didDisableUserInteraction;
+	BOOL _didPostBeginAnimationNotification;
 	BOOL _didNotifyDelegateOfCompletion;
+	BOOL _needsCATransactionActivate;
 }
 @property(retain, nonatomic) SBApplication *activatingApp;
 @property(retain, nonatomic) SBActivationContext *activatingContext;
@@ -32,13 +33,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) SBApplication *deactivatingApp;
 @property(retain, nonatomic) SBActivationContext *deactivatingContext;
 @property(assign, nonatomic) id<SBUIAnimationControllerDelegate> delegate;
-+ (id)_transitionWindow;
-+ (id)animation;
-+ (id)animationWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
+@property(assign, nonatomic) BOOL needsCATransactionActivate;
 - (id)init;
 - (id)initWithActivatingApp:(id)activatingApp deactivatingApp:(id)app;
 - (void)__cancelAnimation;
 - (void)__cleanupAnimation;
+- (void)__noteAnimationDidTerminateWithSuccess:(BOOL)__noteAnimation;
 - (void)__startAnimation;
 - (id)_animationIdentifier;
 - (id)_animationProgressDependency;
@@ -49,20 +49,26 @@ __attribute__((visibility("hidden")))
 - (void)_cancelAnimation;
 - (void)_cleanupAnimation;
 - (void)_evaluateProgressConditions;
+- (id)_getTransitionWindow;
 - (BOOL)_isNullAnimation;
 - (void)_noteAnimationDidCommit:(BOOL)_noteAnimation withDuration:(double)duration afterDelay:(double)delay;
-- (void)_noteAnimationDidFinish:(BOOL)_noteAnimation;
+- (void)_noteAnimationDidFail;
+- (void)_noteAnimationDidFinish;
 - (void)_notifyDelegateOfCompletion;
 - (void)_prepareAnimation;
 - (void)_releaseActivationAssertion;
 - (void)_setAnimationState:(int)state;
 - (void)_setHidden:(BOOL)hidden;
+- (BOOL)_shouldDismissBanner;
+- (BOOL)_shouldTakeActivationAssertionForDeactivatingApp;
 - (void)_startAnimation;
 - (BOOL)_willAnimate;
 - (BOOL)animating;
 - (void)beginAnimation;
 - (void)dealloc;
 - (void)endAnimation;
+- (BOOL)isComplete;
+- (BOOL)isReasonableMomentToInterrupt;
 - (BOOL)waitingToStart;
 @end
 

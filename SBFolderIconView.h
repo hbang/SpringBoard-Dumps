@@ -8,47 +8,42 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBFolderIconView : SBIconView <SBFolderIconObserver> {
-	UIImageView *_iconBackgroundView;
-	UIImageView *_iconForegroundView;
-	SBDownloadingProgressBar *_progressBar;
-	NSMutableSet *_animatingIcons;
-	unsigned _currentScrollRow;
-	BOOL _skippingGridIcons;
-	float _miniIconVisibleOffset;
+@interface SBFolderIconView : SBIconView <_UISettingsKeyObserver> {
+	SBFolderSettings *_folderSettings;
 }
-@property(readonly, assign) SBFolderIcon *folderIcon;
-- (id)_folderBackgroundImage;
-- (id)_folderForegroundImage;
-- (id)_iconBoundsForAccessory:(CGRect *)accessory;
-- (void)_positionMiniGrid;
-- (void)_updateProgressBar;
++ (BOOL)canShowUpdatedMark;
+- (id)initWithFrame:(CGRect)frame;
+- (void)_applyEditingStateAnimated:(BOOL)animated;
+- (id)_folderIconImageView;
+- (void)_updateAdaptiveColors;
 - (BOOL)allowsTapWhileEditing;
+- (unsigned)centerVisibleMiniIconIndex;
+- (void)cleanupAfterFloatyFolderCrossfade;
 - (void)dealloc;
-- (BOOL)delaysUnhighlightWhenTapped;
 - (id)description;
+- (id)dropGlow;
+- (unsigned)firstVisibleMiniIconIndex;
 - (id)folder;
-- (void)folderIcon:(id)icon didUpdateGridImage:(id)image withSkipping:(BOOL)skipping forContainedIconImageUpdate:(id)containedIconImageUpdate;
-- (CGRect)frameForIconOverlay;
+- (id)folderIcon;
+- (CGRect)frameForMiniIconAtIndex:(unsigned)index;
 - (double)grabDurationForEvent:(id)event;
-- (void)iconAccessoriesDidUpdate:(id)iconAccessories;
 - (id)iconBackgroundView;
-- (void)iconImageDidUpdate:(id)iconImage;
-- (id)iconImageSnapshot:(id)snapshot;
-- (void)placeGhostlyImageView;
-- (void)positionCloseBoxOfType:(int)type;
-- (void)positionIconImageView;
-- (void)prepareForRecycling;
-- (id)progressBar;
-- (CGRect)rectForMiniIconAtIndex:(unsigned)index;
-- (void)setFolderIcon:(id)icon;
-- (void)setGhostly:(BOOL)ghostly requester:(int)requester;
+- (unsigned)lastVisibleMiniIconIndex;
+- (void)prepareDropGlow;
+- (void)prepareToCrossfadeWithFloatyFolderView:(id)floatyFolderView allowFolderInteraction:(BOOL)interaction;
+- (void)removeDropGlow;
+- (void)scrollToFirstGapAnimated:(BOOL)firstGapAnimated;
+- (void)scrollToGapOrTopIfFullOfPage:(unsigned)page animated:(BOOL)animated;
+- (void)scrollToTopOfFirstPageAnimated:(BOOL)firstPageAnimated;
+- (void)scrollToTopOfPage:(unsigned)page animated:(BOOL)animated;
+- (void)setBackgroundAndIconGridImageAlpha:(float)alpha;
+- (void)setFloatyFolderCrossfadeFraction:(float)fraction;
 - (void)setIcon:(id)icon;
-- (void)setIconScrollPosition:(int)position animated:(BOOL)animated;
-- (void)setIsOverlapping:(BOOL)overlapping;
-- (void)setPartialGhostly:(float)ghostly requester:(int)requester;
+- (void)setIconGridImageAlpha:(float)alpha;
+- (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)showDropGlow:(BOOL)glow;
-- (id)snapshotSettings;
-- (CGAffineTransform)transformToMakeIconBorderExpandToSizeOfDropGlow;
+- (CGRect)visibleImageRelativeFrameForMiniIconAtIndex:(unsigned)index;
+- (unsigned)visibleMiniIconCount;
+- (unsigned)visibleMiniIconListIndex;
 @end
 

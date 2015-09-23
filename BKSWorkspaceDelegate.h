@@ -21,10 +21,17 @@
 @required
 - (void)workspace:(id)workspace applicationDidStartLaunching:(id)application;
 - (void)workspace:(id)workspace applicationExited:(id)exited withInfo:(id)info;
+@optional
+- (void)workspace:(id)workspace applicationFinishedBackgroundContentFetching:(id)fetching withInfo:(id)info;
+@required
 - (void)workspace:(id)workspace applicationSuspended:(id)suspended withSettings:(id)settings;
 - (void)workspace:(id)workspace applicationSuspensionSettingsUpdated:(id)updated withSettings:(id)settings;
 - (id)workspace:(id)workspace applicationWillBecomeReceiver:(id)application fromApplication:(id)application3;
-- (void)workspace:(id)workspace handleOpenURL:(id)url fromApplication:(id)application;
+@optional
+- (int)workspace:(id)workspace canOpenApplication:(id)application;
+- (void)workspace:(id)workspace handleOpenApplicationRequest:(id)request withOptions:(id)options origin:(id)origin withResult:(id)result;
+- (void)workspace:(id)workspace handleOpenURLRequest:(id)request application:(id)application withOptions:(id)options origin:(id)origin withResult:(id)result;
+@required
 - (void)workspace:(id)workspace handleStatusBarReturnActionFromApplication:(id)application statusBarStyle:(id)style;
 - (void)workspaceDidResume:(id)workspace;
 - (void)workspaceDidSuspend:(id)workspace;

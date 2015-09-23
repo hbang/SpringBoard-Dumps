@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_positionFakeStatusBarView:(id)view forOrientation:(int)orientation;
 - (void)_tearDownSheet:(id)sheet;
-- (void)animationDidStop:(id)animation finished:(id)finished context:(void *)context;
 - (id)applicationForTopSheet;
 - (void)dealloc;
 - (void)dismissAllSheets;

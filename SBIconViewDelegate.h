@@ -9,20 +9,17 @@
 
 @protocol SBIconViewDelegate <NSObject>
 @optional
-- (int)closeBoxTypeForIcon:(id)icon;
 - (BOOL)icon:(id)icon canReceiveGrabbedIcon:(id)icon2;
-- (void)icon:(id)icon closeFolderAnimated:(BOOL)animated;
 - (void)icon:(id)icon openFolder:(id)folder animated:(BOOL)animated;
 - (void)icon:(id)icon touchEnded:(BOOL)ended;
-- (void)icon:(id)icon touchMovedWithEvent:(id)event;
-- (BOOL)iconAllowJitter:(id)jitter;
+- (void)icon:(id)icon touchMoved:(id)moved;
 - (void)iconCloseBoxTapped:(id)tapped;
 - (void)iconHandleLongPress:(id)press;
-- (BOOL)iconPositionIsEditable:(id)editable;
+- (float)iconLabelWidth;
 - (BOOL)iconShouldAllowTap:(id)icon;
-- (BOOL)iconShouldPrepareGhostlyImage:(id)icon;
 - (void)iconTapped:(id)tapped;
 - (void)iconTouchBegan:(id)began;
 - (BOOL)iconViewDisplaysBadges:(id)badges;
+- (BOOL)iconViewDisplaysCloseBox:(id)box;
 @end
 

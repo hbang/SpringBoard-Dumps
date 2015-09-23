@@ -15,10 +15,11 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)_labelWithStartDate:(id)startDate endDate:(id)date timeZone:(id)zone allDay:(BOOL)day forStyle:(int)style forType:(int)type;
 - (void)_purgeRecycledLabels;
-- (int)_styleForLabel:(id)label;
+- (id)combinedDateLabelWithStartDate:(id)startDate endDate:(id)date timeZone:(id)zone allDay:(BOOL)day forStyle:(int)style;
 - (void)dealloc;
 - (id)endLabelWithStartDate:(id)startDate endDate:(id)date timeZone:(id)zone allDay:(BOOL)day forStyle:(int)style;
 - (void)recycleLabel:(id)label;
 - (id)startLabelWithStartDate:(id)startDate endDate:(id)date timeZone:(id)zone allDay:(BOOL)day forStyle:(int)style;
+- (int)styleForLabel:(id)label;
 @end
 

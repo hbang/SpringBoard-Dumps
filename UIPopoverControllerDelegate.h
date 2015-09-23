@@ -9,6 +9,7 @@
 
 @protocol UIPopoverControllerDelegate <NSObject>
 @optional
+- (void)popoverController:(id)controller willRepositionPopoverToRect:(inout CGRect *)rect inView:(inout id *)view;
 - (void)popoverControllerDidDismissPopover:(id)popoverController;
 - (BOOL)popoverControllerShouldDismissPopover:(id)popoverController;
 @end

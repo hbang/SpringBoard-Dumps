@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBBulletinWindow : XXUnknownSuperclass {
+@interface SBBulletinWindow : SBWindow {
 }
 - (BOOL)_canBecomeKeyWindow;
 - (id)hitTest:(CGPoint)test withEvent:(id)event;

@@ -8,7 +8,6 @@
 
 
 @protocol SBIconViewMapDelegate <NSObject>
-- (Class)viewMap:(id)map iconViewClassForIcon:(id)icon;
 - (int)viewMap:(id)map locationForIcon:(id)icon;
 - (unsigned)viewMap:(id)map maxRecycledIconViewsOfClass:(Class)aClass;
 @optional

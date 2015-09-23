@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)gridImageForNumberOfCells:(unsigned)cells withCellImageProviderBlock:(id)cellImageProviderBlock;
 + (unsigned)numberOfColumns;
 + (unsigned)numberOfRowsForNumberOfCells:(unsigned)cells;
-+ (CGRect)rectAtIndex:(unsigned)index forImage:(id)image maxCount:(unsigned)count;
++ (CGRect)rectAtIndex:(unsigned)index maxCount:(unsigned)count;
 + (CGSize)sizeForNumberOfRows:(unsigned)rows;
 - (id)gridImageByPatchingWithCellImageProviderBlock:(id)cellImageProviderBlock;
 @end

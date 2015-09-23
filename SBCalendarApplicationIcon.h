@@ -10,10 +10,16 @@
 __attribute__((visibility("hidden")))
 @interface SBCalendarApplicationIcon : SBApplicationIcon {
 }
++ (id)countriesRequiringBlackDayOfWeek;
 - (id)initWithApplication:(id)application;
+- (void)_drawIconIntoCurrentContextWithImageSize:(CGSize)imageSize iconBase:(id)base;
 - (BOOL)canGenerateImageInBackgroundForFormat:(int)format;
+- (id)colorForDayOfWeek;
 - (void)dealloc;
 - (id)generateIconImage:(int)image;
+- (id)getUnmaskedIconImage:(int)image;
+- (BOOL)isBlackDayOfWeekRequiredForLocale:(id)locale;
 - (void)localeChanged;
+- (id)numberFont;
 @end
 

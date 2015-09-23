@@ -20,9 +20,10 @@ __attribute__((visibility("hidden")))
 + (float)volumeStepUpForCurrentVolume:(float)currentVolume euVolumeLimit:(float)limit;
 + (BOOL)wouldShowAtLeastAYellowBlockForVolume:(float)volume euVolumeLimit:(float)limit;
 - (id)init;
+- (id)_blockColorForValue:(float)value;
+- (void)_updateBlockView:(id)view value:(float)value blockSize:(CGSize)size point:(CGPoint)point;
 - (void)_updateImage;
 - (void)_updateLabels;
-- (void)drawBlockForValue:(float)value point:(CGPoint)point;
 - (void)setProgress:(float)progress;
 @end
 

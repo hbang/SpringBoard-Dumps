@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)deactivate;
 - (void)dealloc;
 - (BOOL)receivedString;
+- (BOOL)sentResponse;
 - (void)setDismissOnActivate:(BOOL)activate;
 @end
 

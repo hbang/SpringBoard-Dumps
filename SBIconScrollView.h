@@ -10,6 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBIconScrollView : XXUnknownSuperclass {
 }
+@property(assign, nonatomic) id<SBIconScrollViewDelegate> delegate;
 - (BOOL)_scrollsToMakeFirstResponderVisible;
 - (BOOL)cancelTouchTracking;
 - (void)setContentOffset:(CGPoint)offset;

@@ -10,30 +10,22 @@
 __attribute__((visibility("hidden")))
 @interface SBApplicationIcon : SBLeafIcon {
 	NSString *_displayIdentifier;
-	unsigned _appIsBeingCleaned : 1;
 }
 - (id)initWithApplication:(id)application;
-- (id)__loadIconImage:(id)image format:(int)format scale:(float)scale;
+- (id)__loadIconImageForDataSource:(id)dataSource format:(int)format;
 - (id)_blockForGeneratingIconImageInBackgroundWithFormat:(int)format complete:(id)complete;
-- (void)_setAppIsBeingCleanedFlag;
-- (void)_terminationAssertionDidChange;
 - (id)application;
 - (id)applicationBundleID;
 - (id)automationID;
 - (id)blockForGeneratingIconImageInBackgroundWithFormat:(int)format;
-- (BOOL)canEllipsizeLabel;
 - (BOOL)canGenerateImageInBackgroundForFormat:(int)format;
-- (void)completeUninstall;
 - (id)copyWithZone:(NSZone *)zone;
 - (void)dealloc;
-- (id)displayName;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
 - (id)generateIconImage:(int)image;
 - (void)generateIconImageInBackground:(id)background;
-- (void)launch;
-- (BOOL)launchEnabled;
-- (void)launchFromViewSwitcher;
+- (id)getUnmaskedIconImage:(int)image;
 - (void)setBadge:(id)badge;
 - (id)tags;
 @end

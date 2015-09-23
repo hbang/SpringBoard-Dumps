@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithPasscodeMode:(int)passcodeMode unlockScreenType:(int)type;
 - (void)_setErrorString:(id)string;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (void)cleanPreviousConfiguration;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 - (void)didEndCall;
-- (void)dismiss:(int)dismiss;
 - (void)returnKeyPressed:(id)pressed;
 - (BOOL)shouldShowInLockScreen;
 - (BOOL)textField:(id)field shouldChangeCharactersInRange:(NSRange)range replacementString:(id)string;

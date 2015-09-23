@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_isUpdateInstallable:(id)installable;
 - (void)_lockStateChanged:(id)changed;
 - (void)_migrateForNewOSVersionIfNecessary;
+- (void)_postDownloadStateChangeNotification:(BOOL)notification;
 - (void)_prepareMigrationForSettingsReset;
 - (void)_registerForInstallRelatedNotifications;
 - (void)_resetAndCancelExistingScheduledForcedInstallAlerts;

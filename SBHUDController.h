@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void)_orderWindowOut:(id)anOut;
 - (void)_recenterHUDView;
 - (void)_tearDown;
-- (void)animationDidStop:(id)animation finished:(id)finished context:(void *)context;
 - (void)dealloc;
 - (void)hideHUDView;
 - (void)presentHUDView:(id)view;
