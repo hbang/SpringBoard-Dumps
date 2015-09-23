@@ -7,7 +7,7 @@
 
 
 
-@interface SBPasscodeField : UIPasscodeField {
+@interface SBPasscodeField : XXUnknownSuperclass {
 	int _style;
 	float _okFontSize;
 	float _cancelFontSize;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBBatteryChargingView : UIView {
+@interface SBBatteryChargingView : XXUnknownSuperclass {
 	int _type;
 	UIImageView *_topBatteryView;
 	UIImageView *_bottomBatteryView;

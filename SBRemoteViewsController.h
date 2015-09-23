@@ -7,7 +7,7 @@
 
 
 
-@interface SBRemoteViewsController : NSObject {
+@interface SBRemoteViewsController : XXUnknownSuperclass {
 	NSMutableDictionary *_registeredRemoteViewInfos;
 	NSMutableDictionary *_unregisteredRemoteViewInfos;
 }

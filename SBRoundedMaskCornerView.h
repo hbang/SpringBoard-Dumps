@@ -7,7 +7,8 @@
 
 
 
-@interface SBRoundedMaskCornerView : UIView {
+__attribute__((visibility("hidden")))
+@interface SBRoundedMaskCornerView : XXUnknownSuperclass {
 	float _cornerRadius;
 	unsigned _corner;
 }

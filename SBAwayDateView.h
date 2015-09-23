@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwayDateView : UIView {
+@interface SBAwayDateView : XXUnknownSuperclass {
 	NSTimer *_dateTimer;
 	TPLCDTextView *_timeLabel;
 	TPLCDTextView *_titleLabel;

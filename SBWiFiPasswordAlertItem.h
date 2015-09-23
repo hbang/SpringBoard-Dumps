@@ -10,6 +10,7 @@
 @interface SBWiFiPasswordAlertItem : SBAlertItem {
 	id _delegate;
 	NSString *_name;
+	BOOL _btStyle;
 }
 @property(assign, nonatomic) id delegate;
 - (id)initWithNetworkName:(id)networkName;
@@ -19,5 +20,6 @@
 - (void)dismiss:(int)dismiss;
 - (BOOL)dismissOnLock;
 - (void)returnKeyPressed:(id)pressed;
+- (void)setBluetoothStyle:(BOOL)style;
 @end
 

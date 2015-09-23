@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwayItemContentView : UIView {
+@interface SBAwayItemContentView : XXUnknownSuperclass {
 }
 - (void)drawItems;
 - (void)drawRect:(CGRect)rect;

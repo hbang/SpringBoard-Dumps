@@ -7,7 +7,7 @@
 
 
 
-@interface SBDownloadingProgressBar : UIImageView {
+@interface SBDownloadingProgressBar : XXUnknownSuperclass {
 	UIImageView *_clipView;
 	UIImageView *_fillView;
 	float _progress;

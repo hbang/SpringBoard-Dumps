@@ -7,7 +7,7 @@
 
 
 
-@interface SBAggregateDCommunicator : NSObject {
+@interface SBAggregateDCommunicator : XXUnknownSuperclass {
 	NSTimer *_periodicFlushTimer;
 	NSMutableDictionary *_applicationLastStateTime;
 	double _backlightOnStartTime;

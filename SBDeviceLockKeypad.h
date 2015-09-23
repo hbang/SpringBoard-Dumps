@@ -7,7 +7,7 @@
 
 
 
-@interface SBDeviceLockKeypad : TPPhonePad {
+@interface SBDeviceLockKeypad : XXUnknownSuperclass {
 	UIPushButton *_deleteButton;
 	UIPushButton *_cancelButton;
 	BOOL _deleteEnabled;

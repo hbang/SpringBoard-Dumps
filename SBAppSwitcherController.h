@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppSwitcherController : NSObject <SBIconDelegate, SBAppSwitcherBarViewDelegate> {
+@interface SBAppSwitcherController : XXUnknownSuperclass <SBIconDelegate, SBAppSwitcherBarViewDelegate> {
 	SBAppSwitcherModel *_model;
 	SBNowPlayingBar *_nowPlayingBar;
 	SBAppSwitcherBarView *_bottomBar;

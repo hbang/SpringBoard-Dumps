@@ -7,7 +7,7 @@
 
 
 
-@interface SBSoundPreferences : NSObject {
+@interface SBSoundPreferences : XXUnknownSuperclass {
 }
 + (id)calendarAlarmPath;
 + (BOOL)playLockSound;

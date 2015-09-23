@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwaySwipeGestureRecognizer : UIGestureRecognizer {
+@interface SBAwaySwipeGestureRecognizer : XXUnknownSuperclass {
 	CGPoint _startLocation;
 	unsigned _startTouchCount;
 	double _startTime;

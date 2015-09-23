@@ -7,7 +7,7 @@
 
 
 
-@interface SBRemoteLocalNotificationAlertSheet : UIAlertView {
+@interface SBRemoteLocalNotificationAlertSheet : XXUnknownSuperclass {
 	BOOL _lockToPortrait;
 }
 - (BOOL)requiresPortraitOrientation;

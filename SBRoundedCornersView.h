@@ -7,7 +7,7 @@
 
 
 
-@interface SBRoundedCornersView : UIView {
+@interface SBRoundedCornersView : XXUnknownSuperclass {
 	float _cornerRadius;
 	UIView *_contentView;
 	SBWallpaperClipView *_topLeftCorner;

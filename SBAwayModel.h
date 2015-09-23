@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwayModel : NSObject {
+@interface SBAwayModel : XXUnknownSuperclass {
 	SBAwayController *_controller;
 	NSMutableArray *_standardVMs;
 	NSMutableArray *_calls;

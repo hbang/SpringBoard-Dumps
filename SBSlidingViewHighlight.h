@@ -7,7 +7,7 @@
 
 
 
-@interface SBSlidingViewHighlight : UIView {
+@interface SBSlidingViewHighlight : XXUnknownSuperclass {
 	UIImage *_highlightImage;
 	UIImageView *_leftHighlight;
 	UIImageView *_rightHighlight;

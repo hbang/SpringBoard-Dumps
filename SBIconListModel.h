@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconListModel : NSObject {
+@interface SBIconListModel : XXUnknownSuperclass {
 	NSMutableArray *_icons;
 	BOOL _iconStateIsDirty;
 	SBFolder *_folder;

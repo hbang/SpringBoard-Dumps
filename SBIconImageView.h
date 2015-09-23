@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconImageView : UIImageView {
+@interface SBIconImageView : XXUnknownSuperclass {
 }
 @end
 

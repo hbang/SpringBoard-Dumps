@@ -7,7 +7,7 @@
 
 
 
-@interface SBCFBundle : NSObject {
+@interface SBCFBundle : XXUnknownSuperclass {
 	CFBundleRef _cfBundle;
 }
 - (id)initWithCFBundle:(CFBundleRef)cfbundle;

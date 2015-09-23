@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwayMediaControlsView : UIView {
+@interface SBAwayMediaControlsView : XXUnknownSuperclass {
 	unsigned _beganSeeking : 1;
 	int _seekingDirection;
 	MPAudioDeviceController *_audioDeviceController;

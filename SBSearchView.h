@@ -7,7 +7,7 @@
 
 
 
-@interface SBSearchView : UIView {
+@interface SBSearchView : XXUnknownSuperclass {
 	SBRoundedCornersView *_roundedCornersView;
 	UISearchBar *_searchBar;
 	UITableView *_tableView;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBTVOutController : NSObject {
+@interface SBTVOutController : XXUnknownSuperclass {
 	int _tvOutMode;
 }
 @property(readonly, assign, nonatomic) BOOL isTVSignalTypeDigital;
@@ -16,7 +16,7 @@
 - (id)init;
 - (void)dealloc;
 - (void)setIntialTVModeIfNeeded;
-- (BOOL)updateLayerKitSettings;
+- (void)updateLayerKitSettings;
 - (void)updateSettings;
 @end
 

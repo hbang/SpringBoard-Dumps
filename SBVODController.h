@@ -7,7 +7,7 @@
 
 
 
-@interface SBVODController : NSObject {
+@interface SBVODController : XXUnknownSuperclass {
 }
 + (id)sharedInstance;
 - (id)init;

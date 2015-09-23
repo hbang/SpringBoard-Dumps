@@ -7,7 +7,7 @@
 
 
 
-@interface SBFolder : NSObject {
+@interface SBFolder : XXUnknownSuperclass {
 	NSString *_displayName;
 	NSString *_defaultDisplayName;
 	NSMutableArray *_lists;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBAlertTearDownContext : NSObject {
+@interface SBAlertTearDownContext : XXUnknownSuperclass {
 	SBAlertWindow *_window;
 	SBAlert *_alert;
 }

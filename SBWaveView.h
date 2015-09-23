@@ -7,7 +7,7 @@
 
 
 
-@interface SBWaveView : UIView {
+@interface SBWaveView : XXUnknownSuperclass {
 	float _phaseWidth;
 	float _phaseShift;
 	float _minAmplitude;

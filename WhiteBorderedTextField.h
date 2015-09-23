@@ -7,7 +7,7 @@
 
 
 
-@interface WhiteBorderedTextField : UITextField {
+@interface WhiteBorderedTextField : XXUnknownSuperclass {
 }
 - (void)drawBorder:(CGRect)border;
 - (void)drawRect:(CGRect)rect;

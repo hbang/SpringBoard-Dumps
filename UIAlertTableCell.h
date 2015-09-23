@@ -7,7 +7,7 @@
 
 
 
-@interface UIAlertTableCell : UITableViewCell {
+@interface UIAlertTableCell : XXUnknownSuperclass {
 	int _cellOutline;
 	BOOL _checked;
 }

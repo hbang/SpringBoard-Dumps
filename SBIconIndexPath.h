@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconIndexPath : NSObject {
+@interface SBIconIndexPath : XXUnknownSuperclass {
 	NSIndexPath *_listIndexes;
 	NSIndexPath *_iconIndexes;
 }

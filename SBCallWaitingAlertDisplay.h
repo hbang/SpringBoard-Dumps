@@ -30,6 +30,7 @@
 - (void)answerCall:(CTCallRef)call;
 - (void)dealloc;
 - (void)dismiss;
+- (void)endAllCalls:(id)calls;
 - (void)ignore;
 - (void)lockBarUnlocked:(id)unlocked;
 - (void)setMiddleContentAlpha:(float)alpha;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBUserNotificationCenter : NSObject {
+@interface SBUserNotificationCenter : XXUnknownSuperclass {
 }
 + (void)_userNotificationDone:(id)done;
 + (void)startUserNotificationCenter;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBMiniAlertController : NSObject {
+@interface SBMiniAlertController : XXUnknownSuperclass {
 	SBApplication *_displayShowingAnAlert;
 	UIWindow *_dimmingWindow;
 	unsigned _miniAlertVisible : 1;
@@ -37,6 +37,7 @@
 - (void)hideApplicationMiniAlerts;
 - (void)hideDimmingWindow;
 - (void)hideDimmingWindowAfterDelay;
+- (BOOL)isHidingAlertWindow;
 - (BOOL)miniAlertVisible;
 - (void)noteFullscreenAlertsDismissed;
 - (void)noteMiniAlertStateChanged;

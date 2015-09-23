@@ -7,7 +7,7 @@
 
 
 
-@interface RoundedBorderView : UIView {
+@interface RoundedBorderView : XXUnknownSuperclass {
 	UIColor *_color;
 }
 - (id)initWithFrame:(CGRect)frame color:(id)color;

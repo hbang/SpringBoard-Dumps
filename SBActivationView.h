@@ -7,7 +7,7 @@
 
 
 
-@interface SBActivationView : UIView {
+@interface SBActivationView : XXUnknownSuperclass {
 	UIView *_backgroundView;
 	int _mode;
 }

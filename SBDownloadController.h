@@ -7,7 +7,7 @@
 
 
 
-@interface SBDownloadController : NSObject <SSDownloadQueueObserver> {
+@interface SBDownloadController : XXUnknownSuperclass <SSDownloadQueueObserver> {
 	SSDownloadQueue *_downloadQueue;
 	NSMutableSet *_pendingDownloadRemovals;
 }

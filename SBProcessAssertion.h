@@ -7,7 +7,7 @@
 
 
 
-@interface SBProcessAssertion : NSObject {
+@interface SBProcessAssertion : XXUnknownSuperclass {
 	unsigned _clientPort;
 	unsigned _reason;
 	NSString *_identifier;

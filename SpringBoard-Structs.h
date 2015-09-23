@@ -91,6 +91,8 @@ typedef struct __CFRunLoop *CFRunLoopRef;
 
 typedef struct __WiFiNetwork WiFiNetwork;
 
+typedef struct __SCDynamicStore *SCDynamicStoreRef;
+
 typedef struct dispatch_source_s dispatch_source_s;
 
 typedef struct __CFArray *CFArrayRef;
@@ -159,5 +161,18 @@ typedef struct {
 	int direction;
 	CGRect rect;
 } XXStruct_9ihRqB;
+
+typedef struct {
+	int type;
+	unsigned char pathIndex;
+	unsigned char pindex;
+	unsigned char pcount;
+	struct {
+		double timestamp;
+		CGPoint point;
+	} points[15];
+} XXStruct_YrWplC;
+
+typedef struct __SBGestureContext *SBGestureContextRef;
 
 

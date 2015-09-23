@@ -7,7 +7,7 @@
 
 
 
-@interface SBEmergencyCallView : UIView {
+@interface SBEmergencyCallView : XXUnknownSuperclass {
 	UIView *_topBar;
 }
 - (id)initWithFrame:(CGRect)frame topBarFrame:(CGRect)frame2 bottomBarFrame:(CGRect)frame3;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBUserNotificationAlertSheet : UIAlertView {
+@interface SBUserNotificationAlertSheet : XXUnknownSuperclass {
 	UIImage *_alertImage;
 }
 @property(retain, nonatomic) UIImage *alertImage;

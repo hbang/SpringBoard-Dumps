@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconContentView : UIView {
+@interface SBIconContentView : XXUnknownSuperclass {
 }
 @end
 

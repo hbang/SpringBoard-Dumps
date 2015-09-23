@@ -7,7 +7,9 @@
 
 
 
-@interface NSMutableSet (SBApplicationAdditions)
-- (void)addObjectsFromDictionary:(id)dictionary forKeys:(id)keys;
+@protocol SBAppPagerDelegate
+- (id)appPager:(id)pager viewForItem:(id)item;
+@optional
+- (void)appPagerFinishedScrolling:(id)scrolling;
 @end
 

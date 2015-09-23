@@ -7,7 +7,7 @@
 
 
 
-@interface SBResetProgressView : UIView {
+@interface SBResetProgressView : XXUnknownSuperclass {
 	UIColor *_progressColor;
 	UIBezierPath *_path;
 	float _resetProgress;

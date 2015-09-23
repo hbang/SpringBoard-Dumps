@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwayLockBar : TPBottomLockBar {
+@interface SBAwayLockBar : XXUnknownSuperclass {
 	UIButton *_slideshowButton;
 	NSMutableDictionary *_orientationToButtonImages;
 }

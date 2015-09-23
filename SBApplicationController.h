@@ -7,7 +7,7 @@
 
 
 
-@interface SBApplicationController : NSObject {
+@interface SBApplicationController : XXUnknownSuperclass {
 	NSDictionary *_pendingApplicationDictionaries;
 	NSMutableDictionary *_applications;
 	NSMutableDictionary *_applicationsByBundleIdentifer;
@@ -59,7 +59,7 @@
 - (id)displayNameForInfoDictionary:(id)infoDictionary inBundle:(id)bundle atPath:(id)path;
 - (id)iPod;
 - (id)loadApplications;
-- (void)loadApplicationsAndIcons:(id)icons reveal:(BOOL)reveal popIn:(BOOL)anIn;
+- (void)loadApplicationsAndIcons:(id)icons reveal:(BOOL)reveal popIn:(BOOL)anIn reloadAllIcons:(BOOL)icons4;
 - (void)loadRolesWithBundle:(id)bundle bundlePath:(id)path isSystemApplication:(BOOL)application defaultTags:(id)tags signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated seatbeltEnvironmentVariables:(id)variables;
 - (id)primaryRoleApplicationWithPid:(int)pid;
 - (void)processPendingInstalls;

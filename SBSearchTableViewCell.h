@@ -7,7 +7,7 @@
 
 
 
-@interface SBSearchTableViewCell : UITableViewCell {
+@interface SBSearchTableViewCell : XXUnknownSuperclass {
 	UIFont *_titleFont;
 	UIFont *_subtitleFont;
 	UIFont *_topHitFont;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBBatteryReflectionView : UIView {
+@interface SBBatteryReflectionView : XXUnknownSuperclass {
 	UIImage *_image;
 	UIImage *_maskImage;
 	float _bottomMargin;

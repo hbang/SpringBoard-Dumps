@@ -7,7 +7,7 @@
 
 
 
-@interface SBNoResultsView : UIView {
+@interface SBNoResultsView : XXUnknownSuperclass {
 	UILabel *_noResultsLabel;
 }
 - (id)initWithFrame:(CGRect)frame;

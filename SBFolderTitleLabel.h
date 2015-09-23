@@ -7,7 +7,7 @@
 
 
 
-@interface SBFolderTitleLabel : UILabel {
+@interface SBFolderTitleLabel : XXUnknownSuperclass {
 }
 - (void)drawRect:(CGRect)rect;
 - (CGSize)sizeThatFits:(CGSize)fits;

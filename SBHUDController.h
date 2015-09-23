@@ -7,7 +7,7 @@
 
 
 
-@interface SBHUDController : NSObject {
+@interface SBHUDController : XXUnknownSuperclass {
 	UIWindow *_hudWindow;
 	UIView *_hudContentView;
 	SBHUDView *_hudView;

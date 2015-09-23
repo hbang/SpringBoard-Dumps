@@ -7,7 +7,7 @@
 
 
 
-@interface SBResetView : UIView {
+@interface SBResetView : XXUnknownSuperclass {
 	SBResetProgressView *_progressView;
 	NSTimer *_progressTimer;
 }

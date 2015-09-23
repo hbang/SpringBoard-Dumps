@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwayInCallController : NSObject {
+@interface SBAwayInCallController : XXUnknownSuperclass {
 	TPLCDView *_lcdView;
 	BOOL _showsInCallInfo;
 	NSTimer *_durationTimer;

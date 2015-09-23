@@ -110,7 +110,11 @@
 @property(retain, nonatomic) SBProcess *process;
 @property(assign, getter=isUsingLocation) BOOL usingLocation;
 + (BOOL)allowAllInBackground;
++ (void *)cachedSnapshotSurfaceForPath:(id)path;
 + (void)flushLaunchAlertsOfType:(int)type;
++ (void)removeCachedSnapshotSurface:(void *)surface forPath:(id)path;
++ (void)removeCachedSnapshotsMatchingPath:(id)path;
++ (void)setCachedSnapshotSurface:(void *)surface forPath:(id)path;
 + (id)systemSnapshotsDirectory;
 - (id)initWithBundleIdentifier:(id)bundleIdentifier roleIdentifier:(id)identifier path:(id)path bundle:(id)bundle infoDictionary:(id)dictionary isSystemApplication:(BOOL)application signerIdentity:(id)identity provisioningProfileValidated:(BOOL)validated;
 - (void)_addInternalDebugVariablesToEnvironment;
@@ -203,6 +207,7 @@
 - (id)defaultImage:(BOOL *)image preferredScale:(float)scale originalOrientation:(int *)orientation currentOrientation:(int *)orientation4;
 - (id)defaultImage:(BOOL *)image preferredScale:(float)scale originalOrientation:(int *)orientation currentOrientation:(int *)orientation4 canUseIOSurface:(BOOL)surface;
 - (id)defaultImage:(BOOL *)image preferredScale:(float)scale originalOrientation:(int *)orientation currentOrientation:(int *)orientation4 launchingInterfaceOrientation:(int)orientation5 canUseIOSurface:(BOOL)surface;
+- (id)defaultImagePathForCurrentOrientationWithName:(id)name;
 - (BOOL)defaultStatusBarHidden;
 - (int)defaultStatusBarStyle;
 - (id)displayIdentifier;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBFolderView : UIView <UITextFieldDelegate> {
+@interface SBFolderView : XXUnknownSuperclass <UITextFieldDelegate> {
 	SBFolder *_folder;
 	SBFolderTitleLabel *_label;
 	SBFolderTextField *_textField;

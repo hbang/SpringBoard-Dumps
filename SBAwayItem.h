@@ -7,7 +7,7 @@
 
 
 
-@interface SBAwayItem : NSObject {
+@interface SBAwayItem : XXUnknownSuperclass {
 	NSString *_title;
 	NSString *_secondTitle;
 	NSString *_singletonTitle;

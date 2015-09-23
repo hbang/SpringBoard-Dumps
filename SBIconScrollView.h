@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconScrollView : UIScrollView {
+@interface SBIconScrollView : XXUnknownSuperclass {
 }
 - (BOOL)_scrollsToMakeFirstResponderVisible;
 - (BOOL)cancelTouchTracking;

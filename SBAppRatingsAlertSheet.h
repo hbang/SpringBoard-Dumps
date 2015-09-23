@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppRatingsAlertSheet : UIAlertView {
+@interface SBAppRatingsAlertSheet : XXUnknownSuperclass {
 }
 - (void)layout;
 @end

@@ -7,7 +7,7 @@
 
 
 
-@interface SBIconBadge : UIView {
+@interface SBIconBadge : XXUnknownSuperclass {
 	NSString *_badge;
 	CGSize _badgeContentSize;
 	BOOL _highlighted;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBWallpaperNotchView : UIView {
+@interface SBWallpaperNotchView : XXUnknownSuperclass {
 	XXStruct_9ihRqB _notchInfo;
 	SBWallpaperClipView *_clipView;
 }

@@ -7,7 +7,7 @@
 
 
 
-@interface SBSyncController : NSObject {
+@interface SBSyncController : XXUnknownSuperclass {
 	int _syncState;
 	int _restoreState;
 	int _resetState;

@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppToAppTransitionView : UIView {
+@interface SBAppToAppTransitionView : XXUnknownSuperclass {
 	id _delegate;
 	SBApplication *_fromApplication;
 	SBApplication *_toApplication;

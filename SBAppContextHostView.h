@@ -7,7 +7,7 @@
 
 
 
-@interface SBAppContextHostView : UIView {
+@interface SBAppContextHostView : XXUnknownSuperclass {
 	NSMutableArray *_contexts;
 	BOOL _hostingEnabled;
 }

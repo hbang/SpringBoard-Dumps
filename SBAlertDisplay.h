@@ -7,7 +7,7 @@
 
 
 
-@interface SBAlertDisplay : UIView {
+@interface SBAlertDisplay : XXUnknownSuperclass {
 	SBAlert *_alert;
 	unsigned _displaysAboveStatusBar : 1;
 	unsigned _shouldAnimateIn : 1;
