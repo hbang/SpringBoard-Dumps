@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
 }
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (id)_legalString;
-- (void)_restoreStateChanged:(id)changed;
-- (id)_restoreString;
 - (void)dealloc;
 - (void)didMoveToParentViewController:(id)parentViewController;
 - (void)loadView;

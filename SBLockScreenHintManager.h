@@ -122,5 +122,6 @@ __attribute__((visibility("hidden")))
 - (void)presentingController:(id)controller willHandleGesture:(id)gesture;
 - (void)presentingControllerDidFinishPresentation:(id)presentingController;
 - (void)removeCoordinatedPresentingController:(id)controller;
+- (void)resetCoordinatedPresentingController:(id)controller;
 @end
 

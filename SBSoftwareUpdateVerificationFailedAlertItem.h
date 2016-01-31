@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SBSoftwareUpdateVerificationFailedAlertItem : SBBaseSoftwareUpdateInstallFailureAlertItem {
 }
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (BOOL)allowInSetup;
 - (BOOL)allowMenuButtonDismissal;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (BOOL)dismissOnLock;

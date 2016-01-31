@@ -12,14 +12,10 @@ __attribute__((visibility("hidden")))
 	BOOL _orbCancelsScroll;
 	BOOL _scrollCancelsOrb;
 	BOOL _irisLoopFadesOutUI;
-	float _scrubThreshold;
-	float _playThreshold;
 }
 @property(assign, nonatomic) BOOL irisLoopFadesOutUI;
 @property(assign, nonatomic) BOOL orbCancelsScroll;
-@property(assign, nonatomic) float playThreshold;
 @property(assign, nonatomic) BOOL scrollCancelsOrb;
-@property(assign, nonatomic) float scrubThreshold;
 + (id)settingsControllerModule;
 - (void)setDefaultValues;
 @end

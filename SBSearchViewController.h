@@ -54,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (void)searchViewControllerWillTriggerLaunch;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)updatePresentationProgress:(float)progress;
-- (void)viewDidLayoutSubviews;
 - (void)willBeginDismissing:(BOOL)dismissing;
 - (void)willBeginPresentingAnimated:(BOOL)animated;
 - (void)willBeginPresentingAnimated:(BOOL)animated fromSource:(unsigned)source;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 	int _simplePasscodeType;
 	NSString *_errorString;
 	BOOL _hasEmergencyCall;
+	BOOL _alreadySubmittedPassword;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

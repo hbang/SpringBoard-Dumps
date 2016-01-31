@@ -10,18 +10,25 @@
 __attribute__((visibility("hidden")))
 @interface SBCCAirStuffSectionController : SBControlCenterSectionViewController <MPAVRoutingControllerDelegate, UIPopoverControllerDelegate, SFAirDropDiscoveryControllerDelegate, SFAirDropDiscoveryAlertControllerDelegate> {
 	SBCCButtonLikeSectionView *_airPlaySection;
+@private
 	SBCCButtonLikeSectionView *_airDropSection;
 	MPAVRoutingController *_airPlayController;
 	MPAVRoutingSheet *_airPlayModalSheet;
+@protected
 	MPAVRoutingViewController *_airPlayViewController;
 	MPAudioVideoRoutingPopoverController *_airPlayPopoverController;
+@private
 	SFAirDropDiscoveryController *_airDropDiscoveryController;
 	UIAlertController *_airDropAlertController;
+@protected
 	BOOL _isVisible;
+@private
 	BOOL _airPlayWasPreviouslyEnabled;
 	BSTimer *_resetTimer;
 	BSTimer *_airPlayTimer;
+@protected
 	BOOL _airPlayEnabled;
+@private
 	BOOL _airDropEnabled;
 }
 @property(assign, nonatomic) BOOL airDropEnabled;

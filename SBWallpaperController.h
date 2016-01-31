@@ -86,12 +86,12 @@ __attribute__((visibility("hidden")))
 - (void)_motionEffectsChanged;
 - (id)_newFakeBlurViewForVariant:(int)variant style:(int)style;
 - (id)_newWallpaperEffectViewForVariant:(int)variant transitionState:(XXStruct_S5WqmA)state;
-- (id)_newWallpaperViewForProcedural:(id)procedural orImage:(id)image withVideo:(id)video forVariant:(int)variant;
+- (id)_newWallpaperViewForProcedural:(id)procedural orImage:(id)image withVideoURL:(id)videoURL forVariant:(int)variant;
 - (void)_noteSignificantTimeChanged:(id)changed;
 - (id)_observersForVariant:(int)variant;
 - (void)_reconfigureBlurViewsForVariant:(int)variant;
 - (void)_registerFakeBlurView:(id)view;
-- (void)_saveWallpaperAggdKeysForLocations:(int)locations withVideo:(id)video procedural:(id)procedural;
+- (void)_saveWallpaperAggdKeysForLocations:(int)locations withVideoURL:(id)videoURL procedural:(id)procedural;
 - (BOOL)_setDisallowRasterization:(BOOL)rasterization withReason:(id)reason reasons:(id)reasons;
 - (void)_setWallpaperHidden:(BOOL)hidden variant:(int)variant reason:(id)reason;
 - (BOOL)_shouldSuspendMotionEffectsForState:(XXStruct_S5WqmA)state;
@@ -130,12 +130,11 @@ __attribute__((visibility("hidden")))
 - (void)endRequiringWithReason:(id)reason;
 - (CGColorRef)homescreenLightForegroundBlurColor;
 - (CGSize)homescreenLightForegroundBlurColorPhaseForRect:(CGRect)rect;
-- (id)irisGestureRecognizer;
+- (id)irisWallpaperView;
 - (id)legibilitySettingsForVariant:(int)variant;
 - (void)orientationSource:(int)source didRotateFromInterfaceOrientation:(int)interfaceOrientation;
 - (void)orientationSource:(int)source willAnimateRotationToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
 - (void)orientationSource:(int)source willRotateToInterfaceOrientation:(int)interfaceOrientation duration:(double)duration;
-- (id)playerView;
 - (id)previewCache;
 - (void)providerLegibilitySettingsChanged:(id)changed;
 - (BOOL)removeHomescreenStyleForBundleIdentifier:(id)bundleIdentifier withPriority:(int)priority animationFactory:(id)factory;

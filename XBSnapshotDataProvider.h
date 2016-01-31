@@ -9,6 +9,8 @@
 
 @protocol XBSnapshotDataProvider <NSObject>
 @property(readonly, retain, nonatomic) XBSnapshotDataProviderContext *context;
+@optional
+- (id)fetchImage;
 - (id)fetchImageData:(out CGAffineTransform *)data;
 @end
 

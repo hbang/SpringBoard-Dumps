@@ -8,12 +8,11 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSwitchAppSystemGestureWorkspaceTransaction : SBSystemGestureWorkspaceTransaction <SBSwitchAppSwipeTransactionDelegate, SBWorkspaceTransitionLayoutDelegate> {
+@interface SBSwitchAppSystemGestureWorkspaceTransaction : SBSystemGestureWorkspaceTransaction <SBSwitchAppSwipeTransactionDelegate> {
 	FBUIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
 	SBWorkspaceApplicationTransitionContext *_currentTransitionContext;
 	BOOL _newGesturePending;
 	SBSwitchAppSwipeTransaction *_trackingSwipeTransaction;
-	SBAutoPiPWorkspaceTransaction *_autoPiPTransaction;
 	SBSwitchAppList *_switchAppList;
 }
 @property(readonly, copy) NSString *debugDescription;
@@ -30,12 +29,9 @@ __attribute__((visibility("hidden")))
 - (void)_lockOrientation:(int)orientation;
 - (void)_unlockOrientation;
 - (void)dealloc;
-- (id)layoutStateForTransitionContext:(id)transitionContext;
-- (id)originalLayoutStateForTransitionContext:(id)transitionContext;
 - (BOOL)shouldWatchdog:(id *)watchdog;
 - (void)swipeTransactionFinishedAnimating:(id)animating;
 - (void)systemGestureStateChanged:(id)changed;
-- (CGRect)transitionContext:(id)context referenceFrameForEntity:(id)entity;
 - (double)watchdogTimeout;
 @end
 

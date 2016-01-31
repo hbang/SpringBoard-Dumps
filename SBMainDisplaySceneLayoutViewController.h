@@ -72,8 +72,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)_presentationChangesSignificantlyOnTransitioningFromLayoutElement:(id)layoutElement toLayoutElement:(id)layoutElement2;
 - (id)_primaryAppPopOffAnimationControllerWithTransitionRequest:(id)transitionRequest;
 - (id)_primaryAppSlideOverAnimationControllerWithTransitionRequest:(id)transitionRequest;
-- (void)_pushSideAppControllerForSwitcher:(id)switcher withAnimationSettings:(id)animationSettings fadeInForReduceMotion:(BOOL)reduceMotion completion:(id)completion;
-- (void)_pushSideAppOverlayController:(id)controller dimOtherViews:(BOOL)views withAnimationSettings:(id)animationSettings fadeInForReduceMotion:(BOOL)reduceMotion completion:(id)completion;
+- (void)_pushSideAppControllerForSwitcher:(id)switcher withAnimationSettings:(id)animationSettings fadeIn:(BOOL)anIn completion:(id)completion;
+- (void)_pushSideAppOverlayController:(id)controller dimOtherViews:(BOOL)views withAnimationSettings:(id)animationSettings fadeIn:(BOOL)anIn completion:(id)completion;
 - (void)_pushSideAppOverlayController:(id)controller withAnimationSettings:(id)animationSettings completion:(id)completion;
 - (void)_recoilByHighestPriorityWithAnimationFactory:(id)animationFactory;
 - (void)_recoilMainSceneLayout:(float)layout withAnimationFactory:(id)animationFactory;

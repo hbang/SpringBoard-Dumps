@@ -19,6 +19,7 @@
 - (BOOL)lockScreenViewPhonePluginIsActive;
 - (void)lockScreenViewWillEndDraggingWithPercentScrolled:(float)lockScreenView percentScrolledVelocity:(float)velocity targetScrollPercentage:(float)percentage;
 - (void)removeCoordinatedPresentingController:(id)controller;
+- (void)resetCoordinatedPresentingController:(id)controller;
 - (BOOL)shouldShowSlideToUnlockTextImmediately;
 - (BOOL)wantsToShowStatusBarTime;
 @end

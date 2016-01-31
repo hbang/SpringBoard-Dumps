@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 @property(retain, nonatomic) NSError *error;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (BOOL)allowInSetup;
 - (BOOL)allowMenuButtonDismissal;
 - (void)buildDefaultSheetWithBody:(id)body isLocked:(BOOL)locked;
 - (void)buildUnavailableSheet;

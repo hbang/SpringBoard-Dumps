@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 	_SBSearchBackdropView *_backdropView;
 	SBWallpaperEffectView *_effectView;
 	UIView *_tintView;
+	BOOL _needToEnsureThatWeUpdateBackdropAtLeastOnce;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

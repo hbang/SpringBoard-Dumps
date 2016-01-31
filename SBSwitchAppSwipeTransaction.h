@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSwitchAppSwipeTransaction : SBSystemGestureWorkspaceTransaction <SBUIAnimationControllerObserver, SBSceneLayoutWorkspaceTransactionDelegate> {
+@interface SBSwitchAppSwipeTransaction : SBSystemGestureWorkspaceTransaction <SBUIAnimationControllerObserver, SBSceneLayoutWorkspaceTransactionDelegate, SBWorkspaceTransitionLayoutDelegate> {
 	id<SBSwitchAppSwipeTransactionDelegate> _delegate;
 	SBUISwitchAppSwipeAnimationController *_animationController;
 	SBSceneLayoutWorkspaceTransaction *_sceneLayoutTransaction;
@@ -19,10 +19,12 @@ __attribute__((visibility("hidden")))
 	BOOL _endLayoutTransition;
 	BOOL _completingAnimation;
 	float _basePercentage;
+	SBWorkspaceApplicationTransitionContext *_originalTransitionContext;
 	SBWorkspaceApplicationTransitionContext *_startingTransitionContext;
 	SBWorkspaceApplicationTransitionContext *_nextTransitionContext;
 	SBWorkspaceApplicationTransitionContext *_previousTransitionContext;
 	SBWorkspaceApplicationTransitionContext *_endingTransitionContext;
+	SBAutoPiPWorkspaceTransaction *_autoPiPTransaction;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(assign, nonatomic) id<SBSwitchAppSwipeTransactionDelegate> delegate;
@@ -35,11 +37,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 @property(readonly, assign, nonatomic, getter=isTrackingGesture) BOOL trackingGesture;
 - (id)initWithTransitionRequest:(id)transitionRequest;
+- (id)initWithTransitionRequest:(id)transitionRequest originalTransitionContext:(id)context;
 - (void)_begin;
 - (BOOL)_canBeInterrupted;
 - (void)_cancelPendingAppLaunch;
-- (void)_continueLayoutTransitionToCompletion:(BOOL)completion updateScenes:(BOOL)scenes;
-- (void)_continueLayoutTransitionWithContext:(id)context toCompletion:(BOOL)completion updateScenes:(BOOL)scenes;
+- (void)_childTransactionDidComplete:(id)_childTransaction;
+- (void)_continueLayoutTransitionToCompletion:(BOOL)completion startAutoPiP:(BOOL)p updateScenes:(BOOL)scenes;
+- (void)_continueLayoutTransitionWithContext:(id)context toCompletion:(BOOL)completion startAutoPiP:(BOOL)p updateScenes:(BOOL)scenes;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
 - (void)_finishWithCompletionType:(int)completionType;
@@ -51,10 +55,13 @@ __attribute__((visibility("hidden")))
 - (void)animationController:(id)controller willBeginAnimation:(BOOL)animation;
 - (void)animationControllerDidFinishAnimation:(id)animationController;
 - (void)dealloc;
+- (id)layoutStateForTransitionContext:(id)transitionContext;
+- (id)originalLayoutStateForTransitionContext:(id)transitionContext;
 - (void)startTrackingGesture:(id)gesture;
 - (void)systemGestureStateChanged:(id)changed;
 - (void)transaction:(id)transaction didEndLayoutTransitionWithContinuation:(id)continuation;
 - (void)transaction:(id)transaction performTransitionWithCompletion:(id)completion;
 - (void)transactionWillBeginLayoutTransition:(id)transaction;
+- (CGRect)transitionContext:(id)context referenceFrameForEntity:(id)entity;
 @end
 

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 @property(retain, nonatomic) NSError *error;
 - (void)alertView:(id)view clickedButtonAtIndex:(int)index;
+- (BOOL)allowInSetup;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
 @end

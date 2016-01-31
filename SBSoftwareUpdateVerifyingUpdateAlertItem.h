@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 	SBSoftwareUpdateVerifyingUpdateAlertViewController *_activityViewController;
 }
 - (id)initWithDescriptor:(id)descriptor softwareUpdateController:(id)controller;
+- (BOOL)allowInSetup;
 - (BOOL)allowMenuButtonDismissal;
 - (BOOL)behavesSuperModally;
 - (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;

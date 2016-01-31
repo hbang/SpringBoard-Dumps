@@ -8,18 +8,28 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBAppStatusBarSettingsAssertion : XXUnknownSuperclass {
+@interface SBAppStatusBarSettingsAssertion : XXUnknownSuperclass <BSDescriptionProviding> {
 	XBStatusBarSettings *_settings;
 	unsigned _level;
+	NSString *_reason;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) unsigned level;
+@property(readonly, copy, nonatomic) NSString *reason;
 @property(readonly, copy, nonatomic) XBStatusBarSettings *settings;
-+ (id)assertionWithSettings:(id)settings atLevel:(unsigned)level;
-+ (id)assertionWithStatusBarHidden:(BOOL)statusBarHidden atLevel:(unsigned)level;
+@property(readonly, assign) Class superclass;
++ (id)assertionWithSettings:(id)settings atLevel:(unsigned)level reason:(id)reason;
++ (id)assertionWithStatusBarHidden:(BOOL)statusBarHidden atLevel:(unsigned)level reason:(id)reason;
 - (id)init;
-- (id)initWithSettings:(id)settings atLevel:(unsigned)level;
-- (id)initWithStatusBarHidden:(BOOL)statusBarHidden atLevel:(unsigned)level;
+- (id)initWithSettings:(id)settings atLevel:(unsigned)level reason:(id)reason;
+- (id)initWithStatusBarHidden:(BOOL)statusBarHidden atLevel:(unsigned)level reason:(id)reason;
 - (void)dealloc;
+- (id)descriptionBuilderWithMultilinePrefix:(id)multilinePrefix;
+- (id)descriptionWithMultilinePrefix:(id)multilinePrefix;
 - (void)invalidate;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 @end
 

@@ -12,8 +12,7 @@ __attribute__((visibility("hidden")))
 	FBSceneSnapshot *_snapshot;
 	SBSnapshotDataProviderContext *_context;
 	float _scaleFactor;
-	NSData *_cachedImageData;
-	CGAffineTransform _cachedOutTransform;
+	UIImage *_cachedImage;
 	void *_processedSurface;
 }
 @property(readonly, retain, nonatomic) XBSnapshotDataProviderContext *context;
@@ -25,6 +24,6 @@ __attribute__((visibility("hidden")))
 - (void *)IOSurface;
 - (void)_invalidateSnapshotData;
 - (void)dealloc;
-- (id)fetchImageData:(out CGAffineTransform *)data;
+- (id)fetchImage;
 @end
 

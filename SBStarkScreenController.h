@@ -134,7 +134,7 @@ __attribute__((visibility("hidden")))
 - (float)sceneLevelForAlerts;
 - (void)setEffectiveTopDisplay:(id)display actualTopDisplay:(id)display2 forStarkTrigger:(BOOL)starkTrigger withAnimationFactory:(id)animationFactory;
 - (void)setEffectiveTopDisplay:(id)display forStarkTrigger:(BOOL)starkTrigger withAnimationFactory:(id)animationFactory;
-- (void)setNowPlayingBundleID:(id)anId;
+- (void)setNowPlayingForWorkspaceApplication:(id)workspaceApplication;
 - (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)siriRequestedWithAction:(int)action;
 - (void)starkWindowDidTriggerUnhandledBack:(id)starkWindow;

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_bioUnlockingDisabledRequesters;
 	SBPassKitPrearmTrigger *_prearmTrigger;
 	BOOL _presentingPassKitInterface;
+	BOOL _justDismissedPassKitInterface;
 	PKPaymentService *_paymentService;
 	BOOL _didMatchBeforeTriggerTimeout;
 }
@@ -69,8 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)activationChanged:(id)changed;
 - (void)addLockScreenDisableAssertion:(id)assertion;
 - (void)alertDidDeactivate:(id)alert;
-- (void)applicationRequestedDeviceUnlock;
-- (void)applicationRequestedDeviceUnlockWithCompletion:(id)completion;
+- (BOOL)applicationRequestedDeviceUnlockWithCompletion:(id)completion;
 - (BOOL)attemptUnlockWithPasscode:(id)passcode;
 - (void)biometricEventMonitor:(id)monitor handleBiometricEvent:(unsigned)event;
 - (BOOL)biometricEventMonitorShouldRelockAfterBioUnlock:(id)biometricEventMonitor;

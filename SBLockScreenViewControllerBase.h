@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 }
 @property(assign, nonatomic) id<SBLockScreenViewControllerDelegate> delegate;
 - (id)_customLockScreenActionContext;
+- (void)_handlePassKitDismissal;
+- (void)_handlePassKitPresentation;
 - (BOOL)_isLockAlert;
 - (void)_transitionWallpaperFromLock;
 - (void)_transitionWallpaperFromLockWithOptionalOutTimingFunction:(id)optionalOutTimingFunction adjustWindowLevel:(BOOL)level completionHandler:(id)handler;

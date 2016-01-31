@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)_beginAnimation;
 - (void)_beginDismissalWithCurrentTranslation:(float)currentTranslation;
 - (void)_cancelInteractionWithGesture:(id)gesture;
+- (void)_crossFadeToEndInteraction;
 - (float)_currentProgressForForceObserver:(id)forceObserver withMaxProgress:(float)maxProgress;
 - (float)_currentProgressForGesture:(id)gesture rawNormalizedTranslation:(float *)translation normalizedTranslation:(float *)translation3;
 - (void)_didComplete;

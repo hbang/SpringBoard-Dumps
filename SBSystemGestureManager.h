@@ -8,17 +8,20 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSystemGestureManager : XXUnknownSuperclass <BSDescriptionProviding> {
+@interface SBSystemGestureManager : XXUnknownSuperclass <UIGestureRecognizerDelegate, BSDescriptionProviding> {
 	FBSDisplay *_display;
 	NSMutableDictionary *_typeToGesture;
 	NSMutableDictionary *_typeToState;
 	NSMutableSet *_recognizingGestures;
+	NSSet *_gesturesPreventedByStylus;
+	UIGestureRecognizer *_stylusPriorityRecognizer;
 	BOOL _systemGesturesDisabledForAccessibility;
 }
 @property(readonly, assign, nonatomic, getter=isAnyGestureRunning) BOOL anyGestureRunning;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, retain, nonatomic) FBSDisplay *display;
+@property(retain, nonatomic) NSSet *gesturesPreventedByStylus;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
 @property(assign, nonatomic, getter=areSystemGesturesDisabledForAccessibility) BOOL systemGesturesDisabledForAccessibility;
@@ -35,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)multilinePrefix;
 - (id)descriptionWithMultilinePrefix:(id)multilinePrefix;
+- (BOOL)gestureRecognizer:(id)recognizer shouldBeRequiredToFailByGestureRecognizer:(id)failByGestureRecognizer;
 - (BOOL)isGestureWithTypeAllowed:(unsigned)typeAllowed;
 - (void)removeGestureRecognizer:(id)recognizer;
 - (id)succinctDescription;

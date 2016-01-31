@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 @property(assign, nonatomic) id<SBBannerDismissSystemGestureRecognizerDelegate> delegate;
 - (id)initWithTarget:(id)target action:(SEL)action;
-- (void)touchesBegan:(id)began withEvent:(id)event;
 - (void)touchesMoved:(id)moved withEvent:(id)event;
 @end
 

@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBDeckSwitcherViewController : XXUnknownSuperclass <SBDeckSwitcherItemContainerDelegate, SBDeckSwitcherPageViewProviderDelegate, SBAppViewHostRequester, UIScrollViewDelegate, _UISettingsKeyObserver, SBSwitcherAppSuggestionViewControllerDelegate, SBMainAppSwitcherContentViewControlling> {
+@interface SBDeckSwitcherViewController : XXUnknownSuperclass <SBDeckSwitcherPageViewProviderDelegate, SBAppViewHostRequester, UIScrollViewDelegate, _UISettingsKeyObserver, SBSwitcherAppSuggestionViewControllerDelegate, SBDeckSwitcherItemContainerDelegate, SBMainAppSwitcherContentViewControlling> {
 	id<SBMainAppSwitcherContentViewControllerDelegate> _delegate;
 	_UILegibilitySettings *_legibilitySettings;
 	NSMutableArray *_displayItems;
@@ -40,7 +40,10 @@ __attribute__((visibility("hidden")))
 	SBAppSwitcherSettings *_settings;
 	BOOL _isScrolling;
 	int _grabbedDraggingIndex;
-	float _scrollingAdjustmentForIndexChange;
+	float _inputContentOffsetAdjustmentForIndexChange;
+	float _outputContentOffsetAdjustmentForIndexChange;
+	CGPoint _start;
+	CGPoint _originalLocationInView;
 	BOOL _invalidated;
 	BOOL _isWallpaperConfigured;
 }
@@ -58,9 +61,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) Class superclass;
 + (float)snapshotScale;
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
-- (float)_adjustedCentroidForIndex:(int)index locationX:(float)x;
+- (CGPoint)_adjustedOffsetForIndex:(int)index offset:(CGPoint)offset start:(CGPoint)start originalLocationInView:(CGPoint)view locationInView:(CGPoint)view5;
+- (void)_animateDismissalWithCompletionBlock:(id)completionBlock;
+- (void)_animatePresentationWithCompletionBlock:(id)completionBlock;
 - (void)_animateWallpaperDismissal;
 - (void)_animateWallpaperPresentationForTransitionRequest:(id)transitionRequest;
+- (id)_animationFactoryForWallpaper;
+- (id)_animationSettingsForHidingSideAppForPresentation;
+- (id)_animationSettingsForRevealingSideAppForDismissal;
 - (void)_applyPrototypeSettingsToConstants;
 - (void)_applyStyleToItemContainer:(id)itemContainer;
 - (void)_applyStyleToItemContainer:(id)itemContainer forceRealBlur:(BOOL)blur;
@@ -74,43 +82,56 @@ __attribute__((visibility("hidden")))
 - (CGSize)_contentSizeForPageViewOfDisplayItem:(id)displayItem;
 - (double)_depthForIndex:(unsigned)index displayItemsCount:(unsigned)count scrollProgress:(double)progress ignoringKillOffset:(BOOL)offset;
 - (double)_desiredXOriginForQuantizedTopPage;
+- (void)_didAddVisibleItemContainer:(id)container forDisplayItem:(id)displayItem;
+- (void)_didRemoveVisibleItemContainerForDisplayItem:(id)displayItem;
 - (BOOL)_displayItemWantsToBeKeptInViewHierarchy:(id)viewHierarchy;
+- (id)_displayItems;
 - (float)_effectiveIndexForIndex:(unsigned)index;
 - (float)_effectiveInsertionRemovalSlideInProgressForIndex:(unsigned)index;
 - (void)_endInsertionOrRemovalOfDisplayItem:(id)displayItem;
 - (void)_ensureCardSubviewOrdering;
 - (CGRect)_frameForIndex:(unsigned)index;
-- (CGRect)_frameForIndex:(unsigned)index displayItemsCount:(unsigned)count transitionParameters:(UIEdgeInsets)parameters scrollProgress:(double)progress ignoringScrollOffsetAndKillingAdjustments:(BOOL)adjustments;
+- (CGRect)_frameForIndex:(unsigned)index displayItemsCount:(unsigned)count transitionParameters:(UIEdgeInsets)parameters scrollProgress:(double)progress ignoringScrollOffsetAndKillingAdjustments:(BOOL)adjustments ignoringPinning:(BOOL)pinning;
 - (void)_getIndiciesAndDirectionToPreserveScrollPositionWhenInsertingAtIndex:(unsigned)index prior:(unsigned *)prior subsequent:(unsigned *)subsequent direction:(unsigned *)direction animated:(BOOL)animated;
 - (void)_getItemToKeepStill:(id *)keepStill andDirection:(unsigned *)direction whenRemovingItem:(id)item;
 - (void)_hideSideAppForPresentation;
 - (unsigned)_indexForPresentationOrDismissalIsPresenting:(BOOL)presentationOrDismissalIsPresenting;
 - (id)_insertingOrRemovingDisplayItems;
+- (double)_insertionRemovalProgressForDisplayItem:(id)displayItem;
 - (id)_insertionRemovalSlideAnimation;
 - (XXStruct_4Kv2bB)_insertionRemovalStatusForDisplayItem:(id)displayItem;
 - (BOOL)_isAboveTransitioningItemDuringPresentation:(id)presentation;
 - (BOOL)_isAboveTransitioningItemDuringPresentationAndWillEndUpOffscreen:(id)_isAboveTransitioningItemDuringPresentationAnd;
 - (BOOL)_isItemVisible:(id)visible;
+- (BOOL)_isReadyForScrollViewLayout;
 - (id)_itemContainerForDisplayItem:(id)displayItem;
 - (float)_killGestureHysteresis;
 - (void)_layoutDisplayItem:(id)item;
+- (float)_leadingOffsetForIndex:(unsigned)index displayItemsCount:(unsigned)count transitionParameters:(UIEdgeInsets)parameters scrollProgress:(double)progress ignoringScrollOffsetAndKillingAdjustments:(BOOL)adjustments;
 - (double)_normalizedScrollProgress;
 - (float)_opacityForIndex:(unsigned)index;
 - (float)_opacityForIndex:(unsigned)index scrollProgress:(double)progress;
-- (id)_reduceMotionAnimationFactory;
+- (float)_preferredVisibleMarginForTopPage;
 - (void)_revealSideAppForDismissalWithTransitionRequest:(id)transitionRequest;
 - (double)_scaleForPresentedProgress:(float)presentedProgress;
 - (double)_scaleForTransformForIndex:(unsigned)index progressPresented:(float)presented scrollProgress:(double)progress;
 - (CGRect)_scaleTransformedFrameForIndex:(unsigned)index;
-- (CGRect)_scaleTransformedFrameForIndex:(unsigned)index withUntransformedFrame:(CGRect)untransformedFrame;
+- (CGRect)_scaleTransformedFrameForIndex:(unsigned)index withUntransformedFrame:(CGRect)untransformedFrame scrollProgress:(float)progress;
+- (float)_scaleTransformedXOrigin:(float)origin scrollProgress:(float)progress;
 - (double)_scrollProgressForIndex:(unsigned)index displayItemsCount:(unsigned)count depth:(double)depth ignoringKillOffset:(BOOL)offset;
 - (double)_scrollProgressForIndex:(unsigned)index displayItemsCount:(unsigned)count progressPresented:(float)presented frameOrigin:(float)origin ignoringScrollOffset:(BOOL)offset;
-- (CGPoint)_scrollView:(id)view adjustedCentroidForCentroid:(CGPoint)centroid;
+- (id)_scrollView;
+- (CGPoint)_scrollView:(id)view adjustedOffsetForOffset:(CGPoint)offset translation:(CGPoint)translation startPoint:(CGPoint)point locationInView:(CGPoint)view5;
 - (CGSize)_scrollViewContentSizeForDisplayItemCount:(unsigned)displayItemCount;
 - (BOOL)_scrollViewThinksItsScrolling;
 - (void)_sendViewDismissingToPageViewsForTransitionRequest:(id)transitionRequest;
 - (void)_sendViewPresentingToPageViewsForTransitionRequest:(id)transitionRequest;
 - (void)_setContentOffset:(CGPoint)offset animated:(BOOL)animated completion:(id)completion;
+- (BOOL)_shouldAdjustScrollViewTracking;
+- (BOOL)_shouldFadeInToRevealSideAppForDismissal;
+- (BOOL)_shouldScrollForDismissalToItem:(id)item;
+- (BOOL)_shouldShowIconAndTitleInItemContainers;
+- (BOOL)_shouldUseDepth;
 - (CGSize)_sizeForPageViewOfDisplayItem:(id)displayItem progressPresented:(float)presented;
 - (float)_titleAndIconOpacityForIndex:(unsigned)index;
 - (float)_titleAndIconOpacityForIndex:(unsigned)index withInitialTransitionProgress:(float)initialTransitionProgress forTransitionProgress:(float)transitionProgress;
@@ -120,13 +141,16 @@ __attribute__((visibility("hidden")))
 - (id)_topVisibleItem;
 - (CGAffineTransform)_transformForIndex:(unsigned)index;
 - (CGAffineTransform)_transformForIndex:(unsigned)index progressPresented:(float)presented scrollProgress:(double)progress;
+- (double)_transitionProgress;
 - (void)_unhostSideApp;
 - (void)_updateContentSizePreservingScrollPositionOfDisplayItem:(id)displayItem acrossMutation:(id)mutation;
-- (void)_updateContentSizePreservingScrollPositionOfPriorIndex:(unsigned)priorIndex subsequentIndex:(unsigned *)index acrossMutation:(id)mutation;
+- (void)_updateContentSizePreservingScrollPositionOfPriorIndex:(unsigned)priorIndex subsequentIndex:(unsigned)index acrossMutation:(id)mutation;
 - (void)_updateProgressOfInsertingOrRemovingDisplayItem:(id)insertingOrRemovingDisplayItem progress:(float)progress;
 - (void)_updateScrollViewContentOffsetToCenterIndex:(unsigned)centerIndex animated:(BOOL)animated completion:(id)completion;
 - (void)_updateScrollViewFrameAndContentSize;
 - (void)_updateVisibleItems;
+- (id)_visibleItemContainers;
+- (NSRange)_visibleItemRange;
 - (void)animateDismissalToDisplayItem:(id)displayItem forTransitionRequest:(id)transitionRequest withCompletion:(id)completion;
 - (void)animatePresentationForTransitionRequest:(id)transitionRequest withCompletion:(id)completion;
 - (id)appViewRequesterIdentifier:(id)identifier;

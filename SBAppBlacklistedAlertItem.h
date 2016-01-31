@@ -8,18 +8,17 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIImageDataProvider : XXUnknownSuperclass <XBSnapshotDataProvider> {
-	UIImage *_image;
-	SBSnapshotDataProviderContext *_context;
-	float _scaleFactor;
+@interface SBAppBlacklistedAlertItem : XXUnknownSuperclass <UIAlertViewDelegate> {
+	SBApplicationIcon *_icon;
 }
-@property(readonly, retain, nonatomic) XBSnapshotDataProviderContext *context;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-- (id)initWithImage:(id)image context:(id)context scaleFactor:(float)factor;
+- (id)initWithIcon:(id)icon;
+- (void)configure:(BOOL)configure requirePasscodeForActions:(BOOL)actions;
 - (void)dealloc;
-- (id)fetchImage;
+- (BOOL)dismissOnLock;
+- (BOOL)shouldShowInLockScreen;
 @end
 

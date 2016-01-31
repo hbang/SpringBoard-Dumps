@@ -55,6 +55,8 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDisappear:(BOOL)view;
 - (void)viewWillLayoutSubviews;
 - (void)widgetViewController:(id)controller beginAppearanceTransitionIfNecessary:(BOOL)necessary animated:(BOOL)animated;
+- (void)widgetViewController:(id)controller beginAppearanceTransitionIfNecessary:(BOOL)necessary animated:(BOOL)animated completion:(id)completion;
 - (void)widgetViewControllerEndAppearanceTransitionIfNecessary:(id)necessary;
+- (void)widgetViewControllerEndAppearanceTransitionIfNecessary:(id)necessary completion:(id)completion;
 @end
 

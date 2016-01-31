@@ -246,7 +246,7 @@
 
 @interface XXUnknownSuperclass (UIGestureRecognizer_SpringBoard)
 - (id)sb_briefDescription;
-- (void)sb_disallowStylusTouches;
+- (void)sb_setStylusTouchesAllowed:(BOOL)allowed;
 - (id)sb_stringForState;
 @end
 

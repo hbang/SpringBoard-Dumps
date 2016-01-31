@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 	int _shadowStyle;
 	float _shadowAlpha;
 	float _cornerRadius;
-	UIImageView *_shadowView;
+	SBAppSwitcherSoftOutlineShadowView *_shadowView;
 	UIView *auxiliaryView;
 	id<SBAppSwitcherPageViewDelegate> _delegate;
 }
@@ -30,8 +30,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *overlay;
 @property(assign, nonatomic) float overlayAlpha;
 @property(assign, nonatomic) float shadowAlpha;
+@property(assign, nonatomic) CGRect shadowClippingFrame;
 @property(assign, nonatomic) int shadowStyle;
+@property(assign, nonatomic) BOOL shouldClipShadow;
 @property(retain, nonatomic) UIView<SBAppSwitcherPageContentView> *view;
++ (float)shadowOutset;
 - (id)initWithFrame:(CGRect)frame;
 - (CGPoint)_centerForSubviewLayout;
 - (void)_orderSubviews;

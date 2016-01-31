@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 	int _contentOrientation;
 }
 @property(assign, nonatomic) int contentOrientation;
+- (id)initWithFrame:(CGRect)frame;
 - (id)description;
 @end
 

@@ -31,7 +31,9 @@ __attribute__((visibility("hidden")))
 	NSDate *_lastUnanticipatedDisconnectionDate;
 	NSMapTable *_openAppearanceTransactions;
 	_SBBrokenWidgetView *_brokenView;
+	id _activeAppearanceTransitionCompletion;
 }
+@property(copy, nonatomic, getter=_activeAppearanceTransitionCompletion, setter=_setActiveAppearanceTransitionCompletion:) id activeAppearanceTransitionCompletion;
 @property(assign, nonatomic, getter=_isBlacklisted, setter=_setBlacklisted:) BOOL blacklisted;
 @property(retain, nonatomic, getter=_brokenView, setter=_setBrokenView:) _SBBrokenWidgetView *brokenView;
 @property(retain, nonatomic, getter=_contentProvidingView, setter=_setContentProvidingView:) UIView *contentProvidingView;
@@ -72,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)_disconnectionTimerDidFire:(id)_disconnectionTimer;
 - (BOOL)_effectiveHasContent;
 - (void)_endRemoteViewControllerAppearanceTransitionIfNecessary;
+- (void)_endRemoteViewControllerAppearanceTransitionIfNecessaryWithCompletion:(id)completion;
 - (void)_endRequestState:(int)state;
 - (void)_enqueueRemoteServiceRequest:(id)request withDescription:(id)description;
 - (void)_enqueueRequest:(id)request inQueue:(id)queue trampolinedToMainQueue:(BOOL)mainQueue withDescription:(id)description;
@@ -105,11 +108,13 @@ __attribute__((visibility("hidden")))
 - (id)_widgetSnapshotURLForLayoutMode:(int)layoutMode ensuringDirectoryExists:(BOOL)exists;
 - (void)_writeSnapshotData:(id)data toURLForLayoutMode:(int)layoutMode;
 - (id)auditToken;
+- (void)beginAppearanceTransition:(BOOL)transition animated:(BOOL)animated completion:(id)completion;
 - (void)captureSnapshotWithCompletionHandler:(id)completionHandler;
 - (void)connectRemoteViewControllerWithCompletionHandler:(id)completionHandler;
 - (void)dealloc;
 - (id)description;
 - (void)disconnectRemoteViewControllerWithCompletionHandler:(id)completionHandler;
+- (void)endAppearanceTransitionWithCompletion:(id)completion;
 - (void)handleReconnectionRequest:(id)request;
 - (void)insertSnapshotWithCompletionHandler:(id)completionHandler;
 - (void)invalidateCachedSnapshotWithCompletionHandler:(id)completionHandler;

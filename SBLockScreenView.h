@@ -100,6 +100,7 @@ __attribute__((visibility("hidden")))
 	BOOL _isPresentingNotificationCenter;
 	id<SBPresentingDelegate> _presentingDelegate;
 	SBIrisWallpaperSettings *_irisWallpaperSettings;
+	UIGestureRecognizer *_irisGestureRecognizer;
 	BOOL _statusBarLegibilityEnabled;
 	BOOL _legibilitySettingsOverrideVibrancy;
 	id<SBLockScreenViewDelegate> _delegate;
@@ -124,6 +125,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign, nonatomic) float hintDisplacement;
 @property(readonly, assign, nonatomic) unsigned hintEdge;
+@property(retain, nonatomic) UIGestureRecognizer *irisGestureRecognizer;
 @property(readonly, assign, nonatomic) BOOL isShakingSlideToUnlockText;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(assign, nonatomic) BOOL legibilitySettingsOverrideVibrancy;

@@ -32,10 +32,12 @@ __attribute__((visibility("hidden")))
 - (id)_cancelTouches;
 - (void)_disconnectRemoteViewControllerImmediatelyWithCompletionHandler:(id)completionHandler;
 - (void)_requestLaunchOfURL:(id)url;
+- (void)beginAppearanceTransition:(BOOL)transition animated:(BOOL)animated completion:(id)completion;
 - (void)captureSnapshotWithCompletionHandler:(id)completionHandler;
 - (void)connectRemoteViewControllerWithCompletionHandler:(id)completionHandler;
 - (void)dealloc;
 - (void)disconnectRemoteViewControllerWithCompletionHandler:(id)completionHandler;
+- (void)endAppearanceTransitionWithCompletion:(id)completion;
 - (void)hostDidDismiss;
 - (void)hostDidPresent;
 - (void)hostWillDismiss;

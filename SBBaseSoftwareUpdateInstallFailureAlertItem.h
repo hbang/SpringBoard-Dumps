@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 	BOOL _actionTaken;
 }
 @property(assign, nonatomic) BOOL actionTaken;
+- (BOOL)allowInSetup;
 - (void)willDeactivateForReason:(int)reason;
 @end
 

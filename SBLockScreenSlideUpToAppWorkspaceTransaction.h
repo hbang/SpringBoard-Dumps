@@ -8,12 +8,13 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenSlideUpToAppWorkspaceTransaction : SBMainWorkspaceTransaction <BSTransactionObserver> {
+@interface SBLockScreenSlideUpToAppWorkspaceTransaction : SBMainWorkspaceTransaction <BSTransactionObserver, FBSynchronizedTransactionDelegate> {
 	BOOL _launchedApp;
 	SBWorkspaceTransaction *_earlyLaunchTransaction;
 	SBWorkspaceTransaction *_deferredFinalLaunchTransaction;
 	BOOL _gestureCompleted;
 	BOOL _didBegin;
+	BOOL _notifiedSlaves;
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -22,9 +23,14 @@ __attribute__((visibility("hidden")))
 - (id)initWithTransitionRequest:(id)transitionRequest;
 - (void)_begin;
 - (void)_childTransactionDidComplete:(id)_childTransaction;
+- (void)_notifySlavesIfNecessary;
+- (void)addSlaveTransaction:(id)transaction;
 - (void)dealloc;
 - (BOOL)isGestureCompleted;
 - (void)launchAppUnderLockScreenWithTransaction:(id)transaction;
 - (void)noteGestureCompletedSuccessfully:(BOOL)successfully cleanupTransaction:(id)transaction;
+- (void)synchronizedTransaction:(id)transaction didCommitSynchronizedTransactions:(id)transactions;
+- (void)synchronizedTransaction:(id)transaction willCommitSynchronizedTransactions:(id)transactions;
+- (void)synchronizedTransactionReadyToCommit:(id)commit;
 @end
 

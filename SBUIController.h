@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBUIController : XXUnknownSuperclass <SBUIActiveOrientationObserver, SBWallpaperObserver, _UISettingsKeyObserver, SBTouchTemplateGestureRecognizerDelegate, BSTransactionObserver, UIWindowDelegate> {
+@interface SBUIController : XXUnknownSuperclass <SBWallpaperObserver, _UISettingsKeyObserver, SBTouchTemplateGestureRecognizerDelegate, BSTransactionObserver, UIWindowDelegate> {
 	SBHomeScreenWindow *_window;
 	UIView *_iconsView;
 	UIView *_contentView;
@@ -101,8 +101,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateLegibility;
 - (void)activateApplication:(id)application;
 - (void)activateApplication:(id)application fromIcon:(id)icon location:(int)location;
-- (void)activeInterfaceOrientationDidChangeToOrientation:(int)activeInterfaceOrientation willAnimateWithDuration:(double)duration fromOrientation:(int)orientation;
-- (void)activeInterfaceOrientationWillChangeToOrientation:(int)activeInterfaceOrientation;
 - (void)animateAppleDown:(BOOL)down;
 - (void)animateFakeStatusBarWithParameters:(id)parameters transition:(id)transition;
 - (float)batteryCapacity;

@@ -8,15 +8,21 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSMSClass0Alert : SBUSSDAlert {
+@interface SBSMSClass0Alert : SBUSSDAlert <SBSMSClass0AlertDisplayDelegate> {
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (void)alertWithString:(id)string address:(id)address;
 + (void)playMessageReceived;
 + (void)registerForAlerts;
 - (id)_initWithString:(id)string;
 - (void)_registerForNotifications;
 - (void)_unregisterForNotifications;
+- (id)alertDisplayViewWithSize:(CGSize)size;
 - (BOOL)allowsStackingOfAlert:(id)alert;
 - (void)deactivate;
+- (void)smsClass0AlertDisplayDidTapLearnMoreButton:(id)smsClass0AlertDisplay;
 @end
 

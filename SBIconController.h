@@ -115,7 +115,7 @@ __attribute__((visibility("hidden")))
 - (id)_proposedFolderNameForGrabbedIcon:(id)grabbedIcon recipientIcon:(id)icon;
 - (void)_resetFolderSpringloadTimer;
 - (void)_resetRootIconLists;
-- (void)_revealMenuForIconView:(id)iconView presentImmediately:(BOOL)immediately;
+- (void)_revealMenuForIconView:(id)iconView;
 - (id)_rootFolderController;
 - (void)_runFolderCloseTest;
 - (void)_runFolderOpenTest;

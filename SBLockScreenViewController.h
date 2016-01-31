@@ -8,7 +8,7 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBLockScreenViewController : SBLockScreenViewControllerBase <SBLockScreenViewDelegate, SBLockScreenTimerViewControllerDelegate, SBLockScreenNotificationListDelegate, SBUIPasscodeLockViewDelegate_Internal, SBLockScreenBatteryChargingViewControllerDelegate, SBLockScreenInfoOverlayDelegate, SBWallpaperObserver, SBLockScreenPluginControllerDelegate, SBLockScreenSlideUpToAppControllerDelegate, UIGestureRecognizerDelegate, ISPlayerViewDelegate, _UISettingsKeyObserver> {
+@interface SBLockScreenViewController : SBLockScreenViewControllerBase <SBLockScreenViewDelegate, SBLockScreenTimerViewControllerDelegate, SBLockScreenNotificationListDelegate, SBUIPasscodeLockViewDelegate_Internal, SBLockScreenBatteryChargingViewControllerDelegate, SBLockScreenInfoOverlayDelegate, SBWallpaperObserver, SBLockScreenPluginControllerDelegate, SBLockScreenSlideUpToAppControllerDelegate, UIGestureRecognizerDelegate, SBFIrisWallpaperViewDelegate> {
 	BOOL _isInScreenOffMode;
 	SBLockScreenDeviceBlockViewController *_blockedController;
 	SBLockScreenDateViewController *_dateViewController;
@@ -53,10 +53,12 @@ __attribute__((visibility("hidden")))
 	SBLockScreenHintManager *_hintManager;
 	SBDisableAppStatusBarUserInteractionChangesAssertion *_statusBarUserInteractionAssertion;
 	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
+	BOOL _hidNowPlayingForWallet;
+	BOOL _handlingMenuDoubleTap;
 	SBIrisWallpaperSettings *_irisWallpaperSettings;
 	BOOL _irisPlayerIsInteracting;
 	BOOL _shouldTransitionIrisWallpaperToStillWhenPlaybackFinishes;
-	BOOL _isObservingForIris;
+	NSMutableSet *_irisGestureDisabledReasons;
 	BOOL _hasAuthenticatedForNotificationAction;
 }
 @property(retain, nonatomic, setter=_setBioLockScreenActionContext:) SBLockScreenActionContext *_bioLockScreenActionContext;
@@ -121,6 +123,8 @@ __attribute__((visibility("hidden")))
 - (void)_handleDisplayTurnedOff;
 - (void)_handleDisplayTurnedOnWhileUILocked:(id)locked;
 - (void)_handleDisplayWillUndim;
+- (void)_handlePassKitDismissal;
+- (void)_handlePassKitPresentation;
 - (void)_handlePasscodeLockStateChanged;
 - (void)_handlePasscodePolicyChanged;
 - (void)_handleSuggestedAppChanged:(id)changed;
@@ -161,6 +165,7 @@ __attribute__((visibility("hidden")))
 - (void)_resetActivePlugin;
 - (void)_setHintManagerEnabledIfPossible:(BOOL)possible;
 - (void)_setHintManagerEnabledIfPossible:(BOOL)possible removingLockScreenView:(BOOL)view;
+- (void)_setIrisGestureDisabled:(BOOL)disabled forRequester:(id)requester;
 - (void)_setMediaControlsVisible:(BOOL)visible;
 - (void)_setNowPlayingControllerEnabled:(BOOL)enabled;
 - (void)_setStationaryContentAlpha:(float)alpha;
@@ -244,6 +249,9 @@ __attribute__((visibility("hidden")))
 - (float)hintDisplacementForController:(id)controller;
 - (unsigned)hintEdgeForController:(id)controller;
 - (void)infoOverlayWantsDismissal;
+- (void)irisWallpaperView:(id)view didReplaceGestureRecognizer:(id)recognizer withGestureRecognizer:(id)gestureRecognizer;
+- (void)irisWallpaperViewIsInteractingDidChange:(id)irisWallpaperViewIsInteracting;
+- (void)irisWallpaperViewPlaybackStateDidChange:(id)irisWallpaperViewPlaybackState;
 - (BOOL)isAllowingWallpaperBlurUpdates;
 - (BOOL)isAnotherSlideUpControllerBlockingController:(id)controller;
 - (BOOL)isBounceEnabledForPresentingController:(id)presentingController locationInWindow:(CGPoint)window;
@@ -274,7 +282,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)lockScreenViewIsCurrentlyBeingDisplayed;
 - (BOOL)lockScreenViewPhonePluginIsActive;
 - (void)lockScreenViewWillEndDraggingWithPercentScrolled:(float)lockScreenView percentScrolledVelocity:(float)velocity targetScrollPercentage:(float)percentage;
-- (void)mediaServerdDidCrash:(id)mediaServerd;
 - (void)modifyFullscreenBulletinAlertWithItem:(id)item;
 - (void)noteDeviceBlockedStatusUpdated;
 - (void)noteExitingLostMode;
@@ -292,8 +299,6 @@ __attribute__((visibility("hidden")))
 - (void)passcodeLockViewPasscodeEntered:(id)entered;
 - (void)passcodeLockViewPasscodeEnteredViaMesa:(id)mesa;
 - (void)passcodeViewDidBecomeActive:(BOOL)passcodeView forController:(id)controller;
-- (void)playerViewIsInteractingDidChange:(id)playerViewIsInteracting;
-- (void)playerViewPlaybackStateDidChange:(id)playerViewPlaybackState;
 - (void)pluginController:(id)controller activePluginDidChange:(id)activePlugin;
 - (int)preferredInterfaceOrientationForPresentation;
 - (void)prepareForExternalUIUnlock;
@@ -307,6 +312,7 @@ __attribute__((visibility("hidden")))
 - (void)removeOverlay;
 - (void)removeOverlay:(id)overlay transitionIfNecessary:(BOOL)necessary animated:(BOOL)animated completion:(id)completion;
 - (BOOL)requiresPasscodeInputForUIUnlockFromSource:(int)source withOptions:(id)options;
+- (void)resetCoordinatedPresentingController:(id)controller;
 - (void)setForcesPasscodeViewDuringCall:(BOOL)call;
 - (void)setInScreenOffMode:(BOOL)screenOffMode;
 - (void)setInScreenOffMode:(BOOL)screenOffMode forAutoUnlock:(BOOL)autoUnlock;
@@ -314,7 +320,6 @@ __attribute__((visibility("hidden")))
 - (void)setPasscodeLockVisible:(BOOL)visible animated:(BOOL)animated withUnlockSource:(int)unlockSource andOptions:(id)options;
 - (void)setShowingMediaControls:(BOOL)controls;
 - (void)setUnlockActionContext:(id)context;
-- (void)settings:(id)settings changedValueForKey:(id)key;
 - (void)shakeSlideToUnlockTextWithCustomText:(id)customText;
 - (BOOL)shouldAutorotate;
 - (BOOL)shouldPendAlertItemsWhileActive;
