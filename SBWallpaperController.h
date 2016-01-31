@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 	NSMutableSet *_homescreenStyleChangeDelayReasons;
 	float _homescreenWallpaperScale;
 	float _lockscreenWallpaperScale;
+	SBWallpaperAggdLogger *_wallpaperAggdLogger;
 }
 @property(readonly, assign, nonatomic) int activeOrientationSource;
 @property(readonly, copy) NSString *debugDescription;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property(assign, nonatomic) float lockscreenWallpaperScale;
 @property(readonly, assign) Class superclass;
 @property(assign, nonatomic) int variant;
+@property(retain, nonatomic) SBWallpaperAggdLogger *wallpaperAggdLogger;
 @property(assign, nonatomic) float windowLevel;
 + (id)_homescreenLightForegroundBlurMappedImageCache;
 + (id)sharedInstance;
@@ -85,11 +87,12 @@ __attribute__((visibility("hidden")))
 - (id)_newFakeBlurViewForVariant:(int)variant style:(int)style;
 - (id)_newWallpaperEffectViewForVariant:(int)variant transitionState:(XXStruct_S5WqmA)state;
 - (id)_newWallpaperViewForProcedural:(id)procedural orImage:(id)image withVideo:(id)video forVariant:(int)variant;
+- (void)_noteSignificantTimeChanged:(id)changed;
 - (id)_observersForVariant:(int)variant;
 - (void)_reconfigureBlurViewsForVariant:(int)variant;
 - (void)_registerFakeBlurView:(id)view;
+- (void)_saveWallpaperAggdKeysForLocations:(int)locations withVideo:(id)video procedural:(id)procedural;
 - (BOOL)_setDisallowRasterization:(BOOL)rasterization withReason:(id)reason reasons:(id)reasons;
-- (void)_setWallpaperAggdKeysForLocations:(int)locations withVideo:(id)video procedural:(id)procedural;
 - (void)_setWallpaperHidden:(BOOL)hidden variant:(int)variant reason:(id)reason;
 - (BOOL)_shouldSuspendMotionEffectsForState:(XXStruct_S5WqmA)state;
 - (id)_sourceForFakeBlurView:(id)fakeBlurView;
@@ -158,6 +161,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldDelayHomescreenStyleUpdates;
 - (void)suspendColorSamplingForReason:(id)reason;
 - (void)suspendWallpaperAnimationForReason:(id)reason;
+- (void)updateIrisWallpaperForLockedState;
+- (BOOL)updateIrisWallpaperForUnlockedState;
 - (BOOL)variantsShareWallpaper;
 - (id)vendWallpaperViewForVariant:(int)variant;
 - (void)wallpaperView:(id)view didChangeZoomFactor:(float)factor;

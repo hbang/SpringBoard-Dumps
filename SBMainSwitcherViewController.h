@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 	NSMutableArray *_servicesRemovedWhileAwayFromSwitcher;
 	NSMutableSet *_appsHostedForTermination;
 	_UILegibilitySettings *_legibilitySettings;
-	SBAppStatusBarSettingsAssertion *_hideStatusBarForSwitcherAssertion;
+	SBAppStatusBarSettingsAssertion *_showStatusBarForSwitcherAssertion;
 	FBUIApplicationSceneDeactivationAssertion *_appSwitcherResignActiveAssertion;
 }
 @property(copy, nonatomic, setter=_setInitialDisplayItem:) SBDisplayItem *_initialDisplayItem;

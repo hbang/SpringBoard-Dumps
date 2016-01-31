@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isBulletin:(id)bulletin associatedWithSection:(id)section forFeed:(unsigned)feed;
 - (BOOL)_isSectionVisible:(id)visible;
 - (void)_loadSection:(id)section;
+- (id)_lockScreenViewController;
 - (unsigned)_numberOfBulletinsInSection:(id)section;
 - (unsigned)_numberOfVisibleSections;
 - (id)_reassociateBulletin:(id)bulletin withSection:(id)section;

@@ -134,6 +134,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *pluginBackgroundView;
 @property(assign, nonatomic) id<SBPresentingDelegate> presentingDelegate;
 @property(readonly, retain, nonatomic) UIScrollView *scrollView;
+@property(readonly, assign, nonatomic, getter=isScrolling) BOOL scrolling;
 @property(assign, nonatomic) BOOL statusBarLegibilityEnabled;
 @property(retain, nonatomic) UIView<SBLegibility> *statusTextView;
 @property(readonly, assign) Class superclass;
@@ -203,6 +204,7 @@ __attribute__((visibility("hidden")))
 - (float)_percentScrolled;
 - (float)_percentScrolledForOffset:(float)offset;
 - (void)_preventScrollingOnGrabberView:(id)view;
+- (BOOL)_reachedThreshold;
 - (void)_removeLockContentOverlay:(id)overlay;
 - (void)_removeLockContentUnderlayWithRequester:(id)requester;
 - (void)_removeZoomDownOverlayViews;

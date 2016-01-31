@@ -118,7 +118,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAutorotate;
 - (void)sizeObservingView:(id)view didChangeSize:(CGSize)size;
 - (id)unregisterSharedGrabberView;
-- (void)updateForChangeInMessagePrivacy;
+- (void)updateForChangeInLockedState;
 - (void)viewDidDisappear:(BOOL)view;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)view;

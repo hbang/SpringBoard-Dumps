@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
 	UIView *_darkeningView;
 	SBWindowSelfHostWrapper *_iconsWindowHostWrapper;
 	UIView *_snapshotView;
-	UIView *_fakeStatusBarWrapper;
-	SBFakeStatusBarView *_fakeStatusBar;
+	SBWindowSelfHostWrapper *_statusBarWindowHostWrapper;
+	UIView *_fakeStatusBar;
 	SBAppSwitcherSettings *_settings;
 	BOOL _presenting;
 	BOOL _interactive;
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(CGRect)frame;
 - (void)_createFakeStatusBar;
 - (float)_darkeningFactor;
-- (void)_layoutFakeStatusBar;
 - (void)_removeSnapshotIfNecessary;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)key;
 - (void)_substituteSnapshotIfNecessary;

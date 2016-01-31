@@ -8,14 +8,15 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBSwitcherForcePressSystemGestureRecognizer : SBScreenEdgePanGestureRecognizer <_UISettingsKeyObserver> {
+@interface SBAdvanceDateOverrideTestRecipe : XXUnknownSuperclass <SBTestRecipe> {
 }
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, assign) unsigned hash;
 @property(readonly, assign) Class superclass;
-- (id)initWithTarget:(id)target action:(SEL)action;
-- (void)dealloc;
-- (void)settings:(id)settings changedValueForKey:(id)key;
++ (id)title;
+- (void)advanceOverrideDateByAmount:(int)amount;
+- (void)handleVolumeDecrease;
+- (void)handleVolumeIncrease;
 @end
 

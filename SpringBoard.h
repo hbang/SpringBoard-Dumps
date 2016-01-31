@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 	BOOL _medusaEnabled;
 	BOOL _atHomescreen;
 	NSObject<OS_dispatch_queue> *_volumePowerQueue;
+	SBBluetoothAccessoryBatteryMonitor *_bluetoothBatteryMonitor;
 	BOOL _typingActive;
 	BOOL _batterySaverModeActive;
 	NSMutableArray *_nowLocatingApps;

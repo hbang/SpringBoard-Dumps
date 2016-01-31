@@ -13,8 +13,10 @@
 - (id)irisPlayerViewViewHostingGestureRecognizers:(id)recognizers;
 - (void)playerViewDidEndVisualPlayback:(id)playerView;
 - (void)playerViewDidPlaybackVideoAssetToEnd:(id)playerView;
+- (void)playerViewGestureRecognizerDidChange:(id)playerViewGestureRecognizer;
 - (void)playerViewIsInteractingDidChange:(id)playerViewIsInteracting;
 - (void)playerViewPlaybackStateDidChange:(id)playerViewPlaybackState;
 - (void)playerViewWillBeginVisualPlayback:(id)playerView;
+- (void)playerViewWillPlaybackVideoAssetToEnd:(id)playerView;
 @end
 

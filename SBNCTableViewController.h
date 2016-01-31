@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)_registerOrQueueReusableClass:(Class)aClass forIdentifier:(id)identifier registerBlock:(id)block queueBlock:(id)block4;
 - (void)_registerOrQueueReusableViewClassForInfo:(id)info;
 - (void)_reloadOrInvalidateTableViewData;
+- (void)_reloadTableForOperationIfNecessary:(id)operationIfNecessary;
 - (void)_reloadTableViewData;
 - (BOOL)_removeRow:(id)row fromSection:(id)section dryRun:(BOOL)run;
 - (BOOL)_removeSection:(id)section dryRun:(BOOL)run;

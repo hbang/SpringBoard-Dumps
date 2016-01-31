@@ -8,11 +8,16 @@
 
 
 __attribute__((visibility("hidden")))
-@interface SBWindowHidingManager : XXUnknownSuperclass {
+@interface SBWindowHidingManager : XXUnknownSuperclass <FBSceneMonitorDelegate> {
 	NSMapTable *_windowStateMap;
 	NSMapTable *_hidingContextMap;
+	FBSceneMonitor *_keyboardMonitor;
 	SBWindowLevelRange_struct _hideRange;
 }
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, assign) unsigned hash;
+@property(readonly, assign) Class superclass;
 + (id)sharedInstance;
 + (void)start;
 - (id)init;
@@ -25,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)_takeNoteOfWindow:(id)window onScreen:(id)screen;
 - (id)dumpHidingState;
 - (id)dumpKnownWindows;
+- (void)sceneMonitor:(id)monitor sceneSettingsDidChangeWithDiff:(id)sceneSettings;
 - (void)setAlpha:(float)alpha forWindow:(id)window;
 - (void)startHidingWindowsExclusivelyFromLevel:(float)level toLevel:(float)level2 forContext:(id)context reason:(id)reason;
 - (void)stopHidingWindowsForContext:(id)context;

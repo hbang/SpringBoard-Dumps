@@ -54,6 +54,9 @@ __attribute__((visibility("hidden")))
 	SBDisableAppStatusBarUserInteractionChangesAssertion *_statusBarUserInteractionAssertion;
 	SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
 	SBIrisWallpaperSettings *_irisWallpaperSettings;
+	BOOL _irisPlayerIsInteracting;
+	BOOL _shouldTransitionIrisWallpaperToStillWhenPlaybackFinishes;
+	BOOL _isObservingForIris;
 	BOOL _hasAuthenticatedForNotificationAction;
 }
 @property(retain, nonatomic, setter=_setBioLockScreenActionContext:) SBLockScreenActionContext *_bioLockScreenActionContext;
@@ -66,6 +69,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)nibName bundle:(id)bundle;
 - (BOOL)__shouldHidePasscodeForActiveCall;
 - (void)__transitionOverlayAnimated:(BOOL)animated from:(id)from to:(id)to completion:(id)completion;
+- (void)_actuallyUpdateUIForIrisNotPlaying;
+- (void)_actuallyUpdateUIForIrisPlaying;
+- (void)_actuallyUpdateUIForIrisPlaying:(BOOL)irisPlaying;
 - (void)_addBatteryChargingViewAndShowBattery:(BOOL)battery;
 - (void)_addBottomLeftGrabberIfNecessaryForAutoUnlock:(BOOL)autoUnlock;
 - (void)_addCameraGrabberIfNecessary;
@@ -132,6 +138,8 @@ __attribute__((visibility("hidden")))
 - (id)_pluginLegibilitySettings;
 - (void)_postPasscodeLockNotification:(int)notification;
 - (void)_powerStatusChanged:(id)changed;
+- (void)_prepareWallpaperForLockedMode;
+- (void)_prepareWallpaperForUnlockedMode;
 - (void)_releaseLockScreenView;
 - (void)_removeActivePluginView;
 - (void)_removeAllOverlays;
@@ -172,6 +180,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateGrabbersForScreenOffMode;
 - (void)_updateLegibility;
 - (void)_updateMediaControlsForScreenMode;
+- (void)_updateUIForPlaying:(BOOL)playing immediately:(BOOL)immediately;
 - (id)_wallpaperLegibilitySettings;
 - (BOOL)_wantsToAnimateFromPasscodeLockOnFailedPasscodeAttemptAndBlocked;
 - (void)activate;
@@ -265,6 +274,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)lockScreenViewIsCurrentlyBeingDisplayed;
 - (BOOL)lockScreenViewPhonePluginIsActive;
 - (void)lockScreenViewWillEndDraggingWithPercentScrolled:(float)lockScreenView percentScrolledVelocity:(float)velocity targetScrollPercentage:(float)percentage;
+- (void)mediaServerdDidCrash:(id)mediaServerd;
 - (void)modifyFullscreenBulletinAlertWithItem:(id)item;
 - (void)noteDeviceBlockedStatusUpdated;
 - (void)noteExitingLostMode;
@@ -282,6 +292,7 @@ __attribute__((visibility("hidden")))
 - (void)passcodeLockViewPasscodeEntered:(id)entered;
 - (void)passcodeLockViewPasscodeEnteredViaMesa:(id)mesa;
 - (void)passcodeViewDidBecomeActive:(BOOL)passcodeView forController:(id)controller;
+- (void)playerViewIsInteractingDidChange:(id)playerViewIsInteracting;
 - (void)playerViewPlaybackStateDidChange:(id)playerViewPlaybackState;
 - (void)pluginController:(id)controller activePluginDidChange:(id)activePlugin;
 - (int)preferredInterfaceOrientationForPresentation;

@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithScreen:(id)screen layoutStrategy:(id)strategy debugName:(id)name scene:(id)scene;
 - (id)_initWithScreen:(id)screen layoutStrategy:(id)strategy debugName:(id)name rootViewController:(id)controller scene:(id)scene;
 - (void)dealloc;
+- (id)description;
 - (void)handleStatusBarChangeFromHeight:(float)height toHeight:(float)height2;
-- (id)hostWrapperForUseInWindow:(id)window hostRequester:(id)requester;
 - (id)recycledViewsContainer;
 - (void)setAlphaAndObeyBecauseIAmTheWindowManager:(float)manager;
 - (void)setAutorotates:(BOOL)autorotates forceUpdateInterfaceOrientation:(BOOL)orientation;

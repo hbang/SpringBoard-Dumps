@@ -236,12 +236,17 @@
 - (void)sbs_printLayerHierarchy;
 @end
 
+@interface XXUnknownSuperclass (SelfHosting)
+- (id)sb_hostWrapperForUseInWindow:(id)window hostRequester:(id)requester;
+@end
+
 @interface XXUnknownSuperclass (SBStarkBannerItem)
 - (BOOL)isStarkBannerItem;
 @end
 
 @interface XXUnknownSuperclass (UIGestureRecognizer_SpringBoard)
 - (id)sb_briefDescription;
+- (void)sb_disallowStylusTouches;
 - (id)sb_stringForState;
 @end
 

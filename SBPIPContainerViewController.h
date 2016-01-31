@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (CGSize)_constrainContentViewSize:(CGSize)size;
 - (CGPoint)_contentViewCenter;
 - (CGRect)_contentViewFrameInDisplayReferenceSpace;
-- (CGRect)_convertContentViewFrameFromScreen:(CGRect)screen;
+- (CGRect)_convertContentViewFrameFromReferenceSpace:(CGRect)referenceSpace;
 - (void)_handlePanGesture:(id)gesture;
 - (void)_handlePanRotationPinchGestureBeganState;
 - (void)_handlePanRotationPinchGestureEndedState;

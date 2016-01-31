@@ -10,6 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBMainSwitcherGestureCoordinator : XXUnknownSuperclass <BSTransactionObserver> {
 	SBSwitcherForcePressSystemGestureTransaction *_switcherForcePressTransaction;
+	BOOL _waitingForTransactionCreation;
 	SBMainSwitcherViewController *_switcherController;
 	BOOL _switcherAnimationRevealing;
 	BOOL _slideUpGestureRevealedOrDismissedSwitcher;

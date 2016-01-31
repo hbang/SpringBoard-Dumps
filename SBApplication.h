@@ -251,6 +251,7 @@ __attribute__((visibility("hidden")))
 - (int)_supportedTypeForClassicModeNone;
 - (BOOL)_supportsClassicMode:(int)mode;
 - (void)_suspendForPeriodicWakeTimerFired:(id)periodicWakeTimerFired;
+- (id)_temporaryHelperColorAtCoordinate:(id)coordinate xCoordinate:(int)coordinate2 yCoordinate:(int)coordinate3;
 - (void)_terminationAssertionAdded:(id)added;
 - (void)_terminationAssertionRemoved:(id)removed;
 - (id)_transientIdentifier;

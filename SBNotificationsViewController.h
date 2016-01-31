@@ -82,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (int)notificationCenterTableViewController:(id)controller insertionAnimationForRow:(id)row inSection:(id)section;
 - (int)notificationCenterTableViewController:(id)controller removalAnimationForRow:(id)row inSection:(id)section;
 - (int)notificationCenterTableViewController:(id)controller replacementAnimationForRow:(id)row inSection:(id)section;
-- (void)updateForChangeInMessagePrivacy;
+- (void)updateForChangeInLockedState;
 - (void)updateSection:(id)section withInfo:(id)info;
 - (void)updateSection:(id)section withParameters:(id)parameters;
 - (void)viewDidAppear:(BOOL)view;

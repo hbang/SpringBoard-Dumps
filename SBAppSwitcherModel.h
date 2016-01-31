@@ -10,6 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface SBAppSwitcherModel : XXUnknownSuperclass {
 	NSMutableArray *_recentDisplayItems;
+	NSMutableArray *_recentDisplayItemsForCommandTab;
 	NSTimer *_saveTimer;
 	NSMutableDictionary *_displayItemsToRoles;
 }
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_warmUpIconForDisplayItem:(id)displayItem;
 - (void)_warmUpRecentIcons;
 - (void)addToFront:(id)front role:(int)role;
+- (id)commandTabDisplayItems;
 - (void)dealloc;
 - (id)displayItemsForAppsOfRoles:(id)roles;
 - (id)mainSwitcherDisplayItems;

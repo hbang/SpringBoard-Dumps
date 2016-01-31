@@ -103,7 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)_showNotificationCenterGestureFailed;
 - (void)_unregisterNotificationCenterBulletinWindowClient:(id)client;
 - (void)_updateCoveredContentSnapshot;
-- (void)_updateForChangeInMessagePrivacy;
+- (void)_updateForChangeInLockedState;
 - (void)_updateShouldShowGrabberOnFirstSwipe;
 - (void)abortAnimatedTransition;
 - (void)animateTransition:(id)transition;

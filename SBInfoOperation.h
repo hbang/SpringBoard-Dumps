@@ -10,10 +10,11 @@
 __attribute__((visibility("hidden")))
 @interface SBInfoOperation : XXUnknownSuperclass {
 	id _operand;
+	NSString *_label;
 }
 @property(readonly, retain, nonatomic) id operand;
-+ (id)operationWithOperand:(id)operand;
-- (id)initWithOperand:(id)operand;
++ (id)operationWithOperand:(id)operand label:(id)label;
+- (id)initWithOperand:(id)operand label:(id)label;
 - (void)dealloc;
 - (id)description;
 - (unsigned)hash;

@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
 	CGSize _sizeThatFitsCalculatedDateLabelFrame;
 	CGRect _calculatedLunarDateLabelFrame;
 	int _layoutMode;
+	UIView *_miniMonthView;
 }
 @property(assign, nonatomic) int layoutMode;
+@property(retain, nonatomic) UIView *miniMonthView;
 @property(readonly, assign, nonatomic) float visibleMinY;
 + (id)defaultBackgroundColor;
 + (id)defaultDateFontForMode:(int)mode;

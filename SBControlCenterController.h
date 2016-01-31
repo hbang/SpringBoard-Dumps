@@ -94,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)_showControlCenterGestureChangedWithGestureRecognizer:(id)gestureRecognizer;
 - (void)_showControlCenterGestureEndedWithGestureRecognizer:(id)gestureRecognizer;
 - (void)_showControlCenterGestureFailed;
+- (void)_teardownWindowAfterPresentation;
 - (void)_uiRelockedNotification:(id)notification;
 - (void)_updateControlAlphaForBrightness:(float)brightness;
 - (void)_updateCoveredContentSnapshot;

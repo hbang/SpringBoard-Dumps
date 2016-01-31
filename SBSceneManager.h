@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 	BSCopyingCacheSet *_externalForegroundApplicationScenes;
 	BSCopyingCacheSet *_reportedExternalForegroundApplicationScenes;
 	NSCountedSet *_assertedBackgroundScenes;
-	NSMutableSet *_externalForegroundApplicationHostReasons;
 	NSMutableSet *_outgoingSnapshots;
 	NSMutableSet *_incomingSnapshots;
 }
@@ -60,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (id)externalApplicationScenes;
 - (id)externalForegroundApplicationScenes;
 - (id)foregroundApplicationScenes;
-- (BOOL)isHostingExternalForegroundApplicationScenes;
 - (id)pluginScenes;
 - (void)sceneLayoutController:(id)controller noteHasVisibleElements:(BOOL)elements;
 - (id)sceneManager:(id)manager createDefaultTransitionContextForScene:(id)scene;
@@ -73,6 +71,5 @@ __attribute__((visibility("hidden")))
 - (void)sceneManager:(id)manager willCommitUpdateForScene:(id)scene transactionID:(unsigned)anId;
 - (void)sceneManager:(id)manager willDestroyScene:(id)scene;
 - (void)sceneManager:(id)manager willUpdateScene:(id)scene withSettings:(id)settings transitionContext:(id)context;
-- (void)setShouldHostExternalForegroundApplicationScenes:(BOOL)hostExternalForegroundApplicationScenes forReason:(id)reason;
 @end
 

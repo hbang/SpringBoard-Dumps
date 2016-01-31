@@ -10,6 +10,7 @@
 @protocol UIGestureRecognizerDelegate <NSObject>
 @optional
 - (BOOL)gestureRecognizer:(id)recognizer shouldBeRequiredToFailByGestureRecognizer:(id)failByGestureRecognizer;
+- (BOOL)gestureRecognizer:(id)recognizer shouldReceivePress:(id)press;
 - (BOOL)gestureRecognizer:(id)recognizer shouldReceiveTouch:(id)touch;
 - (BOOL)gestureRecognizer:(id)recognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)gestureRecognizer;
 - (BOOL)gestureRecognizer:(id)recognizer shouldRequireFailureOfGestureRecognizer:(id)gestureRecognizer;
